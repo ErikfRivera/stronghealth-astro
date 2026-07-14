@@ -1,0 +1,364 @@
+/**
+ * Schema.org JSON-LD builders (port of src/components/seo/JsonLd.tsx from the
+ * old repo). Pure functions returning objects — render through
+ * <JsonLd schema={...} />. Emitted JSON is identical to production.
+ */
+import type { Author } from "../../data/articleAuthors";
+import {
+  MIAMI_BRICKELL_CLINIC,
+  STRONG_HEALTH_ORG_ID,
+  STRONG_HEALTH_SAME_AS,
+} from "../../data/miamiClinic";
+
+const SITE_URL = "https://www.stronghealth.com";
+const ORG_ID = STRONG_HEALTH_ORG_ID;
+
+const absUrl = (url: string) => (url.startsWith("http") ? url : `${SITE_URL}${url}`);
+
+function personRef(author: Author): Record<string, unknown> {
+  return {
+    "@type": "Person",
+    name: author.name,
+    jobTitle: author.role,
+    ...(author.profileUrl ? { url: absUrl(author.profileUrl) } : {}),
+    worksFor: { "@id": ORG_ID },
+  };
+}
+
+export interface ArticleSchemaProps {
+  headline: string;
+  description: string;
+  author: Author;
+  reviewer?: Author;
+  publishDate: string;
+  updatedDate?: string;
+  imageUrl?: string;
+  url: string;
+}
+
+export function articleSchema({
+  headline,
+  description,
+  author,
+  reviewer,
+  publishDate,
+  updatedDate,
+  imageUrl,
+  url,
+}: ArticleSchemaProps) {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    description,
+    author: personRef(author),
+    publisher: { "@id": ORG_ID },
+    datePublished: publishDate,
+    mainEntityOfPage: { "@type": "WebPage", "@id": absUrl(url) },
+  };
+  if (updatedDate) schema.dateModified = updatedDate;
+  if (imageUrl) schema.image = imageUrl;
+  if (reviewer) schema.reviewedBy = personRef(reviewer);
+  return schema;
+}
+
+export interface MedicalWebPageSchemaProps {
+  name: string;
+  description: string;
+  url: string;
+  lastReviewed?: string;
+  reviewedBy?: Author;
+}
+
+export function medicalWebPageSchema({
+  name,
+  description,
+  url,
+  lastReviewed,
+  reviewedBy,
+}: MedicalWebPageSchemaProps) {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name,
+    description,
+    url: absUrl(url),
+    isPartOf: { "@type": "WebSite", name: "Strong Health", url: SITE_URL },
+  };
+  if (lastReviewed) schema.lastReviewed = lastReviewed;
+  if (reviewedBy) schema.reviewedBy = personRef(reviewedBy);
+  return schema;
+}
+
+export interface ProductSchemaProps {
+  name: string;
+  description: string;
+  imageUrl?: string;
+  brand?: string;
+  rating?: { value: number; count: number };
+  offers?: { price: string; currency?: string; availability?: string };
+}
+
+export function productSchema({
+  name,
+  description,
+  imageUrl,
+  brand,
+  rating,
+  offers,
+}: ProductSchemaProps) {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name,
+    description,
+  };
+  if (imageUrl) schema.image = imageUrl;
+  if (brand) schema.brand = { "@type": "Brand", name: brand };
+  if (rating) {
+    schema.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: rating.value,
+      reviewCount: rating.count,
+    };
+  }
+  if (offers) {
+    schema.offers = {
+      "@type": "Offer",
+      price: offers.price,
+      priceCurrency: offers.currency || "USD",
+      availability: offers.availability || "https://schema.org/InStock",
+    };
+  }
+  return schema;
+}
+
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "@id": ORG_ID,
+    name: "Strong Health",
+    url: SITE_URL,
+    logo: `${SITE_URL}/favicon.svg`,
+    description:
+      "Physician-supervised testosterone replacement therapy in South Florida. In-person exams, 40+ biomarker labs, telehealth follow-ups.",
+    telephone: MIAMI_BRICKELL_CLINIC.phoneTel,
+    sameAs: STRONG_HEALTH_SAME_AS,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: MIAMI_BRICKELL_CLINIC.streetAddress,
+      addressLocality: MIAMI_BRICKELL_CLINIC.city,
+      addressRegion: MIAMI_BRICKELL_CLINIC.state,
+      postalCode: MIAMI_BRICKELL_CLINIC.postalCode,
+      addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: MIAMI_BRICKELL_CLINIC.lat,
+      longitude: MIAMI_BRICKELL_CLINIC.lng,
+    },
+    areaServed: { "@type": "State", name: "Florida" },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "18:00",
+      },
+    ],
+    priceRange: "$$",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Medical Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Testosterone Replacement Therapy (TRT)",
+            description:
+              "Physician-supervised TRT with in-person exams and 40+ biomarker lab testing.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Comprehensive Lab Testing",
+            description:
+              "40+ biomarker panels including hormone levels, metabolic markers, and more.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Peptide Therapy",
+            description:
+              "Physician-supervised peptide therapy for healing, performance, and wellness.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Sexual Health",
+            description:
+              "Evidence-based treatment for erectile dysfunction and related conditions.",
+          },
+        },
+      ],
+    },
+  };
+}
+
+export interface BreadcrumbItem {
+  name: string;
+  /** Omit for trail entries with no real destination URL. */
+  path?: string;
+}
+
+export function breadcrumbSchema(items: BreadcrumbItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      ...(item.path ? { item: `${SITE_URL}${item.path}` } : {}),
+    })),
+  };
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export function faqPageSchema(faqs: FAQItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+}
+
+export interface JobPostingSchemaProps {
+  title: string;
+  /** HTML description string (Google requires HTML formatting). */
+  description: string;
+  datePosted: string;
+  validThrough: string;
+  employmentType: string | string[];
+  identifier: string;
+  baseSalary: {
+    min: number;
+    max: number;
+    currency?: string;
+    unitText?: string;
+  };
+  jobLocation: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    addressCountry?: string;
+  };
+  hiringOrganizationName?: string;
+}
+
+export function jobPostingSchema({
+  title,
+  description,
+  datePosted,
+  validThrough,
+  employmentType,
+  identifier,
+  baseSalary,
+  jobLocation,
+  hiringOrganizationName = "Strong Health",
+}: JobPostingSchemaProps) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title,
+    description,
+    datePosted,
+    validThrough,
+    employmentType,
+    directApply: true,
+    identifier: {
+      "@type": "PropertyValue",
+      name: hiringOrganizationName,
+      value: identifier,
+    },
+    hiringOrganization: {
+      "@id": ORG_ID,
+      "@type": "Organization",
+      name: hiringOrganizationName,
+      sameAs: SITE_URL,
+      logo: `${SITE_URL}/favicon.svg`,
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: jobLocation.streetAddress,
+        addressLocality: jobLocation.addressLocality,
+        addressRegion: jobLocation.addressRegion,
+        postalCode: jobLocation.postalCode,
+        addressCountry: jobLocation.addressCountry ?? "US",
+      },
+    },
+    baseSalary: {
+      "@type": "MonetaryAmount",
+      currency: baseSalary.currency ?? "USD",
+      value: {
+        "@type": "QuantitativeValue",
+        minValue: baseSalary.min,
+        maxValue: baseSalary.max,
+        unitText: baseSalary.unitText ?? "YEAR",
+      },
+    },
+  };
+}
+
+export interface CollectionPageItem {
+  name: string;
+  url: string;
+}
+
+export function collectionPageSchema({
+  name,
+  description,
+  url,
+  items,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  items: CollectionPageItem[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url: absUrl(url),
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: items.map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: item.name,
+        url: absUrl(item.url),
+      })),
+    },
+  };
+}

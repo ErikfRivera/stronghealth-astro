@@ -1,7 +1,166 @@
 ---
-// Placeholder homepage — replaced with the real port of HomePage.tsx in US-004.
-// Title/description already match production exactly.
+// Homepage — port of src/components/HomePage.tsx (source commit 9398453).
 import BaseLayout from "../layouts/BaseLayout.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import { organizationSchema } from "../components/seo/schemas";
+import FadeIn from "../components/shared/FadeIn.astro";
+import Tag from "../components/shared/Tag.astro";
+import Btn from "../components/shared/Btn.astro";
+import Icon from "../components/shared/Icon.astro";
+import AnnouncementBar from "../components/shared/AnnouncementBar.astro";
+import Nav from "../components/shared/Nav.astro";
+import Footer from "../components/shared/Footer.astro";
+import BlogArticlesSection from "../components/BlogArticlesSection.astro";
+import LocationsGridSection from "../components/shared/LocationsGridSection.astro";
+import { STRONG_HEALTH_PHONE_DISPLAY } from "../data/miamiClinic";
+
+// --- DeclineSection data ---
+const yMin = 300;
+const yMax = 700;
+const yRange = yMax - yMin;
+const yTicks = [300, 400, 500, 600, 700];
+const declineData = [
+  { year: "1980", ngValue: 600, ng: "~600" },
+  { year: "1990", ngValue: 540, ng: "~540" },
+  { year: "2000", ngValue: 480, ng: "~480" },
+  { year: "2010", ngValue: 420, ng: "~420" },
+  { year: "2020", ngValue: 370, ng: "~370" },
+];
+const symptoms = [
+  { icon: "zap", text: "Persistent fatigue that sleep doesn't fix" },
+  { icon: "brain", text: "Loss of focus, motivation, mental sharpness" },
+  { icon: "trending-down", text: "Decreased libido and sexual performance" },
+  { icon: "dumbbell", text: "Losing muscle, gaining fat — despite effort" },
+  { icon: "frown", text: "Mood swings, irritability, brain fog" },
+];
+
+// --- SolutionSection data ---
+const solutionCards = [
+  {
+    icon: "hospital",
+    title: "Real Exams, Not Video Calls",
+    desc: "Your first visit is in-person — a physical exam, face-to-face consultation, and on-site labs. Not a 20-second video call and a prescription.",
+  },
+  {
+    icon: "microscope",
+    title: "40+ Biomarkers, Not Just Total T",
+    desc: "Your PCP checks 1–2 numbers. We run testosterone (total & free), estradiol, SHBG, thyroid, metabolic, CBC, lipids, PSA — and explain every result.",
+  },
+  {
+    icon: "smartphone",
+    title: "Thorough Start, Convenient After",
+    desc: "After your in-person assessment, ongoing optimization happens via telehealth — dosing adjustments, lab reviews, check-ins from home. In-person anytime.",
+  },
+];
+
+// --- TimelineSection data ---
+const phases = [
+  {
+    period: "Week 1–2",
+    title: "Assessment & Baseline",
+    color: "#C9A84C",
+    items: [
+      "In-person physical exam with your physician",
+      "40+ biomarker lab panel drawn on-site",
+      "Full health history and symptom review",
+      "Custom treatment protocol designed",
+    ],
+  },
+  {
+    period: "Week 3–6",
+    title: "Early Response",
+    color: "#5DADE2",
+    items: [
+      "Energy levels begin improving",
+      "Mental clarity starts returning",
+      "Sleep quality improvements",
+      "First follow-up labs and dosing review",
+    ],
+  },
+  {
+    period: "Month 2–3",
+    title: "Optimization",
+    color: "#34D399",
+    items: [
+      "Body composition changes visible",
+      "Libido and sexual function improving",
+      "Mood stabilization and motivation",
+      "Lab-driven dosing adjustments",
+    ],
+  },
+  {
+    period: "Month 3+",
+    title: "Sustained Results",
+    color: "#D4B96A",
+    items: [
+      "Full treatment benefits realized",
+      "Ongoing telehealth optimization",
+      "Quarterly comprehensive labs",
+      "In-person visits available anytime",
+    ],
+  },
+];
+
+// --- BiomarkerGrid data ---
+const markers = [
+  { name: "Total & Free Testosterone", desc: "Primary hormone levels — the foundation of your protocol", icon: "syringe" },
+  { name: "Estradiol (E2)", desc: "Estrogen balance — critical for mood, joints, cardiovascular health", icon: "scale" },
+  { name: "SHBG", desc: "Sex hormone binding globulin — determines bioavailable testosterone", icon: "link" },
+  { name: "Complete Thyroid Panel", desc: "TSH, Free T3, Free T4 — thyroid dysfunction mimics low T symptoms", icon: "activity" },
+  { name: "CBC + Hematocrit", desc: "Red blood cell monitoring — essential safety marker during TRT", icon: "droplets" },
+  { name: "Comprehensive Metabolic Panel", desc: "Liver, kidney, glucose, electrolytes — whole-body health baseline", icon: "activity" },
+  { name: "Lipid Panel", desc: "Cholesterol, triglycerides — cardiovascular risk monitoring", icon: "heart-pulse" },
+  { name: "PSA", desc: "Prostate-specific antigen — proactive screening during hormone therapy", icon: "shield" },
+];
+const labBadges = ["CLIA-Certified Labs", "Results in 48–72 hrs", "Same-Visit Draw", "Physician-Reviewed", "Full Panel Included"];
+
+// --- ComparisonSection data ---
+const comparisonRows = [
+  { label: "Initial Exam", sh: "In-person physical exam", online: "Video call (or none)", supp: "N/A" },
+  { label: "Lab Testing", sh: "40+ biomarkers on-site", online: "Mail-in kit (limited)", supp: "None" },
+  { label: "Physician", sh: "Board-certified, named", online: 'Anonymous "provider"', supp: "None" },
+  { label: "Treatment", sh: "Rx testosterone (FDA)", online: "Rx testosterone", supp: "Herbal blends" },
+  { label: "Monitoring", sh: "Regular labs + check-ins", online: "Minimal follow-up", supp: "None" },
+  { label: "Fertility Options", sh: "HCG / enclomiphene protocols", online: "Rarely offered", supp: "N/A" },
+  { label: "Convenience", sh: "Hybrid: in-person + telehealth", online: "Telehealth only", supp: "Order online" },
+  { label: "Clinical Evidence", sh: "Decades of published data", online: "Same treatment, less oversight", supp: "Limited / no clinical data" },
+];
+
+// --- CommitmentSection data ---
+const commitments = [
+  { icon: "microscope", title: "Comprehensive labs — always", desc: "40+ biomarkers at baseline and every follow-up. No cutting corners." },
+  { icon: "user-check", title: "Named physicians — always", desc: "You'll know your doctor's name, credentials, and training. No anonymous providers." },
+  { icon: "activity", title: "Full transparency — always", desc: "Your labs, your data, your access. We share everything we find." },
+  { icon: "shield", title: "Honest answers — even uncomfortable ones", desc: "If your levels are normal, we'll say so. If TRT isn't indicated, we won't prescribe it." },
+];
+
+// --- TrustSection data ---
+const physicians = [
+  { name: "Dr. Angel Rivera, M.D.", cred: "Board Certified · University of Medicine & Health Sciences · Medical Director", yrs: "15+ years" },
+];
+const testimonials = [
+  { name: "Mark R.", city: "Austin, TX", text: "Finally found a clinic that actually listens. The in-person exam made all the difference — I felt like they actually cared about getting it right." },
+  { name: "David L.", city: "Miami, FL", text: "Comprehensive labs, real doctor, telehealth follow-ups. Exactly what I needed. No BS, no upsells, just good medicine." },
+  { name: "Chris W.", city: "Denver, CO", text: "They told me what I didn't want to hear — and it was exactly what I needed to hear. That's how you know they're legit." },
+];
+const trustBadges = ["LegitScript Certified", "HIPAA Compliant", "FSA/HSA Accepted", "FDA Risk Info"];
+
+// --- Pricing data ---
+const plans = [
+  { name: "Essential", price: "$149", features: ["Initial in-person assessment", "Comprehensive lab panel", "Treatment protocol", "Quarterly check-ins", "Telehealth follow-ups"], featured: false },
+  { name: "Optimized", price: "$199", features: ["Everything in Essential", "Monthly physician check-ins", "Full biomarker monitoring", "Priority scheduling", "Patient portal access"], featured: true },
+  { name: "Complete", price: "$299", features: ["Everything in Optimized", "Unlimited telehealth visits", "Advanced panels (thyroid, metabolic)", "Sexual health protocols", "Dedicated care coordinator"], featured: false },
+];
+
+// --- FAQ data ---
+const faqs = [
+  { q: "What is testosterone replacement therapy?", a: "Testosterone Replacement Therapy (TRT) is a medically supervised treatment designed to restore healthy testosterone levels in men with clinically diagnosed deficiencies. It involves customized protocols using bioidentical testosterone." },
+  { q: "How do I know if I need TRT?", a: "Symptoms like persistent fatigue, reduced muscle mass, low libido, and brain fog are common indicators. However, the only way to know definitively is through comprehensive blood work and a thorough physician evaluation." },
+  { q: "What does the initial assessment include?", a: "Your first visit includes a comprehensive physical exam, an in-depth review of your health history and symptoms, and a 40+ biomarker blood panel drawn on-site. You'll meet face-to-face with a board-certified physician." },
+  { q: "Will TRT affect my fertility?", a: "Standard TRT can reduce sperm count. However, for men concerned about fertility, we offer specialized protocols incorporating HCG or enclomiphene to maintain natural testicular function and fertility while treating low T." },
+  { q: "What's the difference between your clinic and an online TRT service?", a: "We provide the clinical rigor of a physical medical practice—including real in-person exams and extensive lab work—combined with the ongoing convenience of telehealth for follow-ups and management." },
+  { q: "Are there side effects of TRT?", a: "When properly monitored by a physician, TRT is safe and effective. Potential side effects can include elevated red blood cell count or changes in estradiol. This is exactly why we run comprehensive labs regularly to proactively manage your health." },
+];
 ---
 
 <BaseLayout
@@ -9,5 +168,516 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   description="Physician-supervised testosterone replacement therapy in South Florida. In-person exams, 40+ biomarker labs, telehealth follow-ups. Book your free assessment."
   path="/"
 >
-  <h1 class="text-cream font-black text-4xl p-8">Strong Health — Astro migration scaffold</h1>
+  <JsonLd slot="head" schema={organizationSchema()} />
+  <div class="min-h-screen bg-surface font-['DM_Sans',sans-serif] selection:bg-gold selection:text-surface text-cream overflow-x-hidden">
+    <AnnouncementBar />
+    <Nav />
+    <main>
+      <!-- Hero -->
+      <section class="relative px-6 md:px-8 pt-10 md:pt-20 pb-16 md:pb-24 overflow-hidden border-b border-white/5">
+        <div aria-hidden="true" class="hidden md:block absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy/20 rounded-full blur-[100px] pointer-events-none"></div>
+        <div aria-hidden="true" class="hidden md:block absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-[1000px] mx-auto relative z-10">
+          <div class="flex items-center gap-2.5 mb-4 md:mb-7">
+            <div class="flex gap-0.5">
+              {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={16} class="fill-[#C9A84C] text-gold" />)}
+            </div>
+            <span class="text-sm font-bold text-gold">4.9</span>
+            <span class="text-[13px] text-muted">from 2,500+ verified patient reviews</span>
+          </div>
+
+          <Tag>Physician-Supervised TRT · In-Person + Telehealth</Tag>
+
+          <h1 class="text-[36px] md:text-[56px] font-black text-cream leading-[1.08] mt-4 md:mt-6 mb-5 max-w-[700px] tracking-[-1.5px]">
+            Testosterone Replacement Therapy.<br />
+            <span class="text-gold">Not supplements.<br />Not guesswork.</span>
+          </h1>
+
+          <p class="text-[17px] text-muted leading-relaxed max-w-[540px] mb-8">
+            In-person physician exams. 40+ biomarker labs drawn on-site. Real treatment protocols
+            supervised by board-certified doctors — with telehealth convenience after.
+          </p>
+
+          <div class="flex flex-col gap-3.5 mb-9">
+            {
+              [
+                "Board-certified physicians — named, credentialed, verifiable",
+                "40+ biomarker lab panel drawn on-site at your first visit",
+                "Telehealth follow-ups after — in-person visits anytime you want",
+              ].map((item) => (
+                <div class="flex items-start gap-3">
+                  <div class="w-[22px] h-[22px] rounded-full bg-[#34D399]/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <Icon name="check" size={12} class="text-[#34D399]" />
+                  </div>
+                  <span class="text-[15px] text-cream-muted leading-[1.4]">{item}</span>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="flex flex-wrap gap-3.5 items-center">
+            <Btn trackLead>Book Your Free Assessment →</Btn>
+          </div>
+          <div class="mt-4 text-xs text-muted">
+            No commitment · No insurance needed · 15–20 min in-person visit
+          </div>
+        </div>
+      </section>
+
+      <!-- Decline -->
+      <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+        <div class="max-w-[1000px] mx-auto">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <FadeIn>
+              <div class="bg-surface-raised rounded-2xl p-8 pb-16 border border-white/10 relative min-h-[360px]">
+                <div class="text-[11px] font-bold tracking-[1.5px] text-gold uppercase mb-4">
+                  Average Male Testosterone · ng/dL
+                </div>
+                <div class="flex items-end h-[220px] pt-5">
+                  <div class="flex flex-col justify-between h-full pr-2 shrink-0" style="width:44px">
+                    {[...yTicks].reverse().map((tick) => (
+                      <span class="text-[10px] text-muted font-semibold text-right leading-none">{tick}</span>
+                    ))}
+                  </div>
+                  <div class="flex-1 flex items-end gap-2 h-full border-l border-b border-[#7A8599]/30 relative">
+                    {yTicks.slice(0, -1).map((tick) => (
+                      <div
+                        class="absolute left-0 right-0 border-t border-dashed border-[#7A8599]/15"
+                        style={`bottom:${((tick - yMin) / yRange) * 100}%`}
+                      ></div>
+                    ))}
+                    {declineData.map((d, i) => (
+                      <div class="flex-1 flex flex-col items-center gap-1.5 group h-full justify-end">
+                        <span class="text-[10px] text-muted font-semibold transition-colors group-hover:text-white">{d.ng}</span>
+                        <div
+                          class="w-full rounded-t-md transition-all duration-700 ease-out"
+                          style={`height:${((d.ngValue - yMin) / yRange) * 100}%;background:linear-gradient(180deg, ${i === 4 ? "#EF4444" : "#C9A84C"} 0%, ${i === 4 ? "rgba(239,68,68,0.2)" : "rgba(201,168,76,0.2)"} 100%);min-height:8px`}
+                        ></div>
+                        <span class="text-[10px] text-muted font-semibold">{d.year}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div class="absolute bottom-4 left-8 right-8 text-[11px] text-[#EF4444] font-semibold text-center py-2 px-3 bg-[#EF4444]/10 rounded-md">
+                  ↓ 1% decline per year since 1980s — <a href="https://pubmed.ncbi.nlm.nih.gov/17062768/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white transition-colors">Travison et al., J Clin Endocrinol Metab, 2007</a>
+                </div>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={200}>
+              <h2 class="text-[32px] font-extrabold text-cream leading-[1.15] mb-4">
+                This isn't about aging.<br />
+                <span class="text-gold">It's a clinical trend.</span>
+              </h2>
+              <p class="text-[15px] text-muted leading-[1.7] mb-5">
+                Men's average testosterone levels have dropped every decade for 40+ years.
+                Your symptoms aren't weakness — they're biology. And biology responds to medicine, not willpower.
+              </p>
+              <div class="flex flex-col gap-3">
+                {symptoms.map((s) => (
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-surface-raised flex items-center justify-center shrink-0 border border-white/5">
+                      <Icon name={s.icon} size={18} class="text-gold" />
+                    </div>
+                    <span class="text-sm text-cream-muted">{s.text}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="mt-8">
+                <Btn trackLead>Book Your Free Assessment →</Btn>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solution -->
+      <section class="px-8 py-20 border-b border-white/5 bg-surface">
+        <div class="max-w-[1000px] mx-auto">
+          <FadeIn class="text-center mb-10">
+            <h2 class="text-[34px] font-extrabold text-cream mb-3">
+              The solution? <span class="text-gold">Actual medicine.</span>
+            </h2>
+            <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+              Supplements can't fix clinically low testosterone. TRT can. Here's what physician-supervised
+              treatment actually looks like.
+            </p>
+          </FadeIn>
+
+          <div class="grid md:grid-cols-3 gap-5">
+            {solutionCards.map((card, i) => (
+              <FadeIn delay={i * 150}>
+                <div class="bg-surface-card rounded-2xl p-8 pb-6 border border-white/10 border-t-[3px] border-t-[#C9A84C] h-full flex flex-col hover:-translate-y-1 transition-transform duration-300">
+                  <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#1A1F2A] to-[#2A303C] flex items-center justify-center mb-5 border border-white/5 shadow-inner">
+                    <Icon name={card.icon} size={32} class="text-white" />
+                  </div>
+                  <h3 class="text-lg font-bold text-cream mb-2.5 leading-snug">{card.title}</h3>
+                  <p class="text-[13px] text-muted leading-relaxed flex-grow">{card.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section class="px-8 py-20 bg-surface-card border-b border-white/5 relative">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div class="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+          <div class="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+        </div>
+
+        <div id="what-to-expect" class="max-w-[1000px] mx-auto relative z-10">
+          <FadeIn class="text-center mb-10">
+            <h2 class="text-[34px] font-extrabold text-cream mb-3">What to Expect</h2>
+            <p class="text-[15px] text-muted max-w-[500px] mx-auto">
+              Real timelines based on clinical data — not marketing promises.
+            </p>
+          </FadeIn>
+
+          <div class="grid md:grid-cols-4 gap-4">
+            {phases.map((p, i) => (
+              <FadeIn delay={i * 100}>
+                <div
+                  class="bg-surface-raised rounded-[14px] p-6 border border-white/10 relative h-full group hover:border-white/20 transition-colors"
+                  style={`border-top:3px solid ${p.color}`}
+                >
+                  <div class="absolute -top-[3px] left-0 w-full h-[3px] opacity-50 blur-[2px]" style={`background-color:${p.color}`}></div>
+                  <div class="text-[10px] font-bold tracking-[1.5px] uppercase mb-2" style={`color:${p.color}`}>
+                    {p.period}
+                  </div>
+                  <h3 class="text-base font-bold text-cream mb-4">{p.title}</h3>
+                  <div class="flex flex-col gap-2.5">
+                    {p.items.map((item) => (
+                      <div class="flex items-start gap-2">
+                        <div class="w-1.5 h-1.5 rounded-full mt-[5px] shrink-0" style={`background-color:${p.color}`}></div>
+                        <span class="text-xs text-cream-muted leading-relaxed">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn delay={400} class="text-center mt-6 text-xs text-muted italic">
+            Individual results vary. Timeline based on published clinical literature for physician-supervised TRT.
+          </FadeIn>
+        </div>
+      </section>
+
+      <!-- Biomarkers -->
+      <section class="px-8 py-20 bg-surface border-b border-white/5">
+        <div class="max-w-[1000px] mx-auto">
+          <FadeIn class="text-center mb-10">
+            <h2 class="text-[34px] font-extrabold text-cream mb-3">
+              40+ Biomarkers. <span class="text-gold">Not Just "Total T."</span>
+            </h2>
+            <p class="text-[15px] text-muted max-w-[540px] mx-auto">
+              Your PCP runs 1–2 markers and calls it a day. We run a comprehensive panel and explain
+              every single result.
+            </p>
+          </FadeIn>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5">
+            {markers.map((m, i) => (
+              <FadeIn delay={i * 50}>
+                <div class="bg-surface-card rounded-xl p-5 border border-white/10 text-center hover:bg-surface-raised transition-colors h-full flex flex-col items-center">
+                  <div class="text-gold mb-3 p-3 rounded-full bg-surface-raised border border-white/5 shadow-sm">
+                    <Icon name={m.icon} size={24} />
+                  </div>
+                  <h4 class="text-[13px] font-bold text-cream mb-1.5 leading-snug">{m.name}</h4>
+                  <p class="text-[11px] text-muted leading-relaxed">{m.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn delay={400} class="flex flex-wrap items-center justify-center gap-6 mt-7 py-3.5 border-t border-white/5">
+            {labBadges.map((b) => (
+              <div class="flex items-center gap-1.5">
+                <Icon name="star" size={10} class="text-gold fill-[#C9A84C]" />
+                <span class="text-[11px] font-semibold text-muted uppercase tracking-wider">{b}</span>
+              </div>
+            ))}
+          </FadeIn>
+        </div>
+      </section>
+
+      <!-- Comparison -->
+      <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+        <div class="max-w-[1000px] mx-auto">
+          <FadeIn class="text-center mb-10">
+            <h2 class="text-[34px] font-extrabold text-cream mb-3">Us vs. Them</h2>
+            <p class="text-[15px] text-muted">Not all testosterone treatment is created equal.</p>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="bg-surface-raised rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+              <div class="grid grid-cols-[120px_1fr_1fr_1fr] md:grid-cols-[180px_1fr_1fr_1fr] bg-white/[0.03] border-b border-white/5">
+                <div class="p-4 md:p-5"></div>
+                <div class="p-3 md:p-4 text-center border-l border-r border-white/5 bg-gold/10 relative">
+                  <div class="absolute top-0 left-0 w-full h-[3px] bg-gold"></div>
+                  <div class="text-[13px] md:text-sm font-extrabold text-gold tracking-wide">Strong Health</div>
+                  <div class="hidden md:block text-[10px] text-muted mt-0.5">Hybrid TRT Clinic</div>
+                </div>
+                <div class="p-3 md:p-4 text-center border-r border-white/5">
+                  <div class="text-[12px] md:text-[13px] font-bold text-muted">Online-Only TRT</div>
+                  <div class="hidden md:block text-[10px] text-muted/60 mt-0.5">Telehealth clinics</div>
+                </div>
+                <div class="p-3 md:p-4 text-center">
+                  <div class="text-[12px] md:text-[13px] font-bold text-muted">T-Supplements</div>
+                  <div class="hidden md:block text-[10px] text-muted/60 mt-0.5">OTC products</div>
+                </div>
+              </div>
+
+              {comparisonRows.map((r, i) => (
+                <div class={`grid grid-cols-[120px_1fr_1fr_1fr] md:grid-cols-[180px_1fr_1fr_1fr] ${i < comparisonRows.length - 1 ? "border-b border-white/5" : ""}`}>
+                  <div class="p-3 md:p-[14px_20px] flex items-center text-[11px] md:text-xs font-bold text-cream-muted">
+                    {r.label}
+                  </div>
+                  <div class="p-3 md:p-[14px_20px] text-[11px] md:text-xs text-[#34D399] font-semibold border-l border-r border-white/5 bg-gold/[0.03] flex items-center gap-1.5">
+                    <Icon name="circle-check" size={14} class="shrink-0" />
+                    <span>{r.sh}</span>
+                  </div>
+                  <div class="p-3 md:p-[14px_20px] text-[11px] md:text-xs text-muted border-r border-white/5 flex items-center">
+                    {r.online}
+                  </div>
+                  <div class="p-3 md:p-[14px_20px] text-[11px] md:text-xs text-muted flex items-center">
+                    {r.supp}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <!-- Commitment -->
+      <section class="px-8 py-20 bg-gradient-to-br from-[#C9A84C]/[0.08] to-[#0D0F12] border-b border-white/5">
+        <div class="max-w-[1000px] mx-auto">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <FadeIn>
+              <Tag>Our Promise</Tag>
+              <h2 class="text-[34px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+                The Strong Health<br />
+                <span class="text-gold">Clinical Commitment</span>
+              </h2>
+              <p class="text-[15px] text-muted leading-[1.7] mb-6">
+                We don't guarantee results — that's not how medicine works.
+                What we guarantee is thoroughness, transparency, and honesty.
+                If TRT isn't right for you, we'll tell you.
+              </p>
+              <Btn trackLead>Book Your Free Assessment →</Btn>
+            </FadeIn>
+
+            <FadeIn delay={200}>
+              <div class="bg-surface-card rounded-2xl p-8 border border-white/10 shadow-xl">
+                {commitments.map((c, i) => (
+                  <div class={`flex gap-4 py-4 ${i < 3 ? "border-b border-white/5" : ""}`}>
+                    <div class="shrink-0 mt-0.5 p-2 bg-surface-raised rounded-lg border border-white/5">
+                      <Icon name={c.icon} size={24} class="text-gold" />
+                    </div>
+                    <div>
+                      <h4 class="text-sm font-bold text-cream mb-1">{c.title}</h4>
+                      <p class="text-xs text-muted leading-relaxed">{c.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust -->
+      <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+        <div class="max-w-[1000px] mx-auto">
+          <FadeIn class="text-center mb-8">
+            <h2 class="text-[34px] font-extrabold text-cream mb-2">Our Physicians</h2>
+            <p class="text-[15px] text-muted">
+              Named doctors with verifiable credentials — not anonymous "licensed providers."
+            </p>
+          </FadeIn>
+
+          <div class="grid md:grid-cols-3 gap-4 mb-12">
+            {physicians.map((d, i) => (
+              <FadeIn delay={i * 100}>
+                <a
+                  href="/author/dr-angel-rivera/"
+                  class="block bg-surface-raised rounded-2xl p-6 border border-white/10 hover:border-gold/50 focus-visible:border-gold/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 transition-colors cursor-pointer group"
+                >
+                  <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mb-3 group-hover:bg-gold/20 transition-colors">
+                    <Icon name="user" size={24} class="text-gold" />
+                  </div>
+                  <h4 class="text-base font-bold text-cream mb-1">{d.name}</h4>
+                  <p class="text-xs text-muted leading-relaxed mb-3 min-h-[36px]">{d.cred}</p>
+                  <span class="text-xs font-semibold text-gold flex items-center gap-1">
+                    {d.yrs} experience <span class="group-hover:translate-x-1 transition-transform">→</span>
+                  </span>
+                </a>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn delay={200}>
+            <div class="flex flex-col md:flex-row items-center gap-7 mb-6 p-5 md:p-6 bg-gradient-to-r from-[#C9A84C]/10 to-[#C9A84C]/5 rounded-2xl border border-gold/20">
+              <div class="text-center md:text-left shrink-0">
+                <div class="text-[40px] font-black text-gold leading-none mb-1">4.9</div>
+                <div class="flex gap-0.5 justify-center md:justify-start">
+                  {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={14} class="fill-[#C9A84C] text-gold" />)}
+                </div>
+              </div>
+              <div class="text-center md:text-left flex-grow">
+                <div class="text-base font-bold text-cream">2,500+ verified patient reviews</div>
+                <div class="text-xs text-muted">Serving patients since 2018</div>
+              </div>
+              <div class="flex gap-2 shrink-0">
+                {["Google", "Trustpilot"].map((p) => (
+                  <div class="px-3.5 py-1.5 bg-surface-raised rounded-lg text-[11px] font-semibold text-muted border border-white/10 flex items-center gap-1.5">
+                    <Icon name="circle-check" size={12} class="text-[#34D399]" /> {p}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+
+          <div class="grid md:grid-cols-3 gap-3.5 mb-8">
+            {testimonials.map((r, i) => (
+              <FadeIn delay={300 + i * 100}>
+                <div class="bg-surface-raised rounded-xl p-5 border border-white/10 h-full flex flex-col">
+                  <div class="flex gap-0.5 mb-3">
+                    {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={12} class="fill-[#C9A84C] text-gold" />)}
+                  </div>
+                  <p class="text-[13px] text-cream-muted leading-relaxed mb-4 italic flex-grow">
+                    "{r.text}"
+                  </p>
+                  <div>
+                    <div class="text-[13px] font-semibold text-cream">{r.name}</div>
+                    <div class="text-[11px] text-muted">{r.city}</div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn delay={600} class="flex flex-wrap items-center justify-center gap-5 md:gap-7 py-4">
+            {trustBadges.map((b) => (
+              <div class="flex items-center gap-1.5 opacity-70">
+                <Icon name="shield-check" size={14} class="text-gold" />
+                <span class="text-[11px] font-semibold text-muted uppercase tracking-wide">{b}</span>
+              </div>
+            ))}
+          </FadeIn>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section class="px-8 py-20 bg-surface border-b border-white/5">
+        <div class="max-w-[1000px] mx-auto">
+          <FadeIn class="text-center mb-10">
+            <h2 class="text-[34px] font-extrabold text-cream mb-3">Transparent Pricing</h2>
+            <p class="text-[15px] text-muted">
+              We publish our pricing because you deserve to know before you walk in.
+            </p>
+          </FadeIn>
+
+          <div class="grid md:grid-cols-3 gap-5 max-w-[840px] mx-auto">
+            {plans.map((p, i) => (
+              <FadeIn delay={i * 150}>
+                <div class={`bg-surface-card rounded-2xl p-7 relative h-full flex flex-col ${p.featured ? "border-2 border-gold shadow-[0_0_30px_rgba(201,168,76,0.1)]" : "border border-white/10"}`}>
+                  {p.featured && (
+                    <div class="absolute -top-[2px] left-1/2 -translate-x-1/2 bg-gold text-surface text-[9px] font-extrabold px-3.5 py-1 rounded-b-md tracking-[1.2px] uppercase">
+                      Recommended
+                    </div>
+                  )}
+                  <div class="text-[15px] font-bold text-cream mb-2">{p.name}</div>
+                  <div class="flex items-baseline gap-1 mb-6">
+                    <span class="text-4xl font-black text-gold">{p.price}</span>
+                    <span class="text-[13px] text-muted">/month</span>
+                  </div>
+                  <div class="flex flex-col gap-3 flex-grow mb-7">
+                    {p.features.map((f) => (
+                      <div class="flex items-start gap-2.5">
+                        <Icon name="check" size={14} class="text-[#34D399] shrink-0 mt-[3px] stroke-[3]" />
+                        <span class="text-[13px] text-cream-muted leading-snug">{f}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Btn variant={p.featured ? "primary" : "ghost"} class="w-full" trackLead>
+                    Book Free Assessment
+                  </Btn>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+          <FadeIn delay={500} class="text-center mt-6 text-xs text-muted">
+            No hidden fees · No surprise charges · Cancel anytime · FSA/HSA eligible
+          </FadeIn>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+        <div class="max-w-[720px] mx-auto">
+          <FadeIn class="text-center mb-10">
+            <h2 class="text-[34px] font-extrabold text-cream mb-3">Frequently Asked Questions</h2>
+            <p class="text-[15px] text-muted">Honest answers. No fine print.</p>
+          </FadeIn>
+
+          <div class="flex flex-col gap-2">
+            {faqs.map((f, i) => (
+              <FadeIn delay={i * 100}>
+                <details
+                  class="group bg-surface-raised rounded-[10px] border border-white/10 hover:border-white/20 open:border-gold transition-all duration-300 overflow-hidden cursor-pointer"
+                  open={i === 0}
+                >
+                  <summary class="p-4 md:p-5 flex justify-between items-center gap-4 list-none [&::-webkit-details-marker]:hidden">
+                    <span class="text-[14px] md:text-[15px] font-semibold transition-colors text-cream-muted group-open:text-cream">
+                      {f.q}
+                    </span>
+                    <Icon
+                      name="chevron-down"
+                      size={20}
+                      class="shrink-0 transition-transform duration-300 text-muted group-open:text-gold group-open:rotate-180"
+                    />
+                  </summary>
+                  <div class="px-4 md:px-5 pb-5 text-[13px] md:text-[14px] text-muted leading-[1.6]">
+                    <div class="border-t border-white/5 pt-3">{f.a}</div>
+                  </div>
+                </details>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="px-8 py-24 bg-gradient-to-br from-[#C9A84C]/[0.15] via-[#0D0F12] to-[#1B4F72]/[0.15] border-b border-white/5 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-20 pointer-events-none"></div>
+        <div class="max-w-[1000px] mx-auto text-center relative z-10">
+          <FadeIn>
+            <h2 class="text-[38px] md:text-[46px] font-black text-cream mb-4 tracking-tight leading-tight">
+              Ready to Find Out What's Possible?
+            </h2>
+            <p class="text-[17px] text-muted mb-10 max-w-[500px] mx-auto">
+              Book your free in-person assessment. No commitment. No pressure. Just answers.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Btn trackLead class="!text-[15px] !px-9 !py-4 w-full sm:w-auto">Book Your Free Assessment →</Btn>
+              <Btn variant="outline" class="!text-[15px] !px-9 !py-4 w-full sm:w-auto gap-2">
+                <Icon name="phone" size={18} /> Call {STRONG_HEALTH_PHONE_DISPLAY}
+              </Btn>
+            </div>
+            <div class="mt-5 text-xs text-muted">Speak with a real person, not a phone tree.</div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <LocationsGridSection />
+      <BlogArticlesSection />
+    </main>
+    <Footer />
+  </div>
 </BaseLayout>

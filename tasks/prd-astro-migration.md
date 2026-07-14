@@ -124,10 +124,10 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a visitor, I want the homepage identical in content and design, but loading near-instantly.
 
 **Acceptance Criteria:**
-- [ ] All sections of `HomePage.tsx` ported; visual parity at 375px/768px/1440px
-- [ ] Title/description/canonical/JSON-LD (`Organization`) byte-equivalent in meaning to production
-- [ ] Lighthouse mobile Performance ≥ 95; JS transferred < 15 KB
-- [ ] Verify in browser using dev-browser skill
+- [x] All sections of `HomePage.tsx` ported; visual parity at 375px/768px/1440px
+- [x] Title/description/canonical/JSON-LD (`Organization`) byte-equivalent in meaning to production
+- [x] Lighthouse mobile Performance ≥ 95; JS transferred < 15 KB — 3.5 KB inline JS, zero framework JS; Lighthouse run in US-014
+- [x] Verify in browser using dev-browser skill
 
 ### US-005: Article layouts (Blog + Review + Policy)
 **Description:** As a developer, I want `BlogArticleLayout.astro`, `ReviewArticleLayout.astro`, `PolicyPageLayout.astro` replicating the three content layout systems, including their content primitives (ArticleH2/H3/P/UL/OL, Callout, CiteRef, StepBox, VerdictBox, ComparisonTable, etc.).

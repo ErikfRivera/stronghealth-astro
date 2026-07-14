@@ -1,0 +1,78 @@
+---
+import FadeIn from "./shared/FadeIn.astro";
+import Icon from "./shared/Icon.astro";
+import { articles, categoryColors } from "../data/articles";
+
+const DISPLAY_COUNT = 16;
+
+const displayArticles = [...articles]
+  .sort((a, b) => new Date(b.datePublished).getTime() - new Date(a.datePublished).getTime())
+  .slice(0, DISPLAY_COUNT);
+---
+
+<section class="relative px-8 py-20 border-t border-white/5 overflow-hidden">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="max-w-[1100px] mx-auto relative z-10">
+    <FadeIn>
+      <div class="text-center mb-12">
+        <span class="text-[11px] font-bold uppercase tracking-[0.15em] text-gold mb-3 block">
+          Evidence-Based Resources
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1] mb-4">
+          Latest from the Blog
+        </h2>
+        <p class="text-[15px] text-muted leading-[1.7] max-w-[550px] mx-auto">
+          Physician-reviewed articles on testosterone, peptide therapy, sexual health, and men's health optimization. Medical content reviewed by{" "}
+          <a href="/author/dr-angel-rivera/" class="text-gold hover:text-gold-hover transition-colors">
+            Dr. Angel Rivera, M.D.
+          </a>
+        </p>
+      </div>
+    </FadeIn>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {
+        displayArticles.map((article, i) => {
+          const color = categoryColors[article.category];
+          return (
+            <FadeIn delay={Math.floor(i / 4) * 100}>
+              <a
+                href={article.path}
+                class="group block bg-surface-card rounded-xl border border-white/5 hover:border-gold/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A84C] transition-all duration-300"
+                aria-label={`Read: ${article.title}`}
+              >
+                <div class="p-5">
+                  <span
+                    class="inline-block text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full mb-3"
+                    style={`color:${color};background-color:${color}15`}
+                  >
+                    {article.category}
+                  </span>
+                  <h3 class="text-[15px] font-bold text-cream leading-[1.4] mb-2 group-hover:text-gold transition-colors line-clamp-2">
+                    {article.title}
+                  </h3>
+                  <div class="flex items-center gap-1.5 text-[12px] text-muted">
+                    <Icon name="clock" size={12} />
+                    <span>{article.readTime}</span>
+                  </div>
+                </div>
+              </a>
+            </FadeIn>
+          );
+        })
+      }
+    </div>
+
+    <FadeIn delay={200}>
+      <div class="text-center mt-10">
+        <a
+          href="/blog/"
+          class="inline-flex items-center gap-2 text-[14px] font-semibold text-gold hover:text-gold-hover transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A84C]"
+        >
+          View All Articles
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+    </FadeIn>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+---
+// Placeholder homepage — replaced with the real port of HomePage.tsx in US-004.
+// Font preloads for the two critical weights (900 = LCP hero heading, 400 = body)
+// move into BaseLayout.astro in US-002.
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0D0F12" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-900.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-400.woff2" crossorigin />
+    <title>Strong Health</title>
+  </head>
+  <body>
+    <h1 class="text-cream font-black text-4xl p-8">Strong Health — Astro migration scaffold</h1>
+  </body>
+</html>

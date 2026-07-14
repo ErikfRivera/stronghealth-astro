@@ -89,13 +89,13 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a developer, I want a clean Astro 5 project so all further work has a home with CI from day one.
 
 **Acceptance Criteria:**
-- [ ] `pnpm create astro` (minimal template), TypeScript strict, `output: 'static'`
-- [ ] `site: 'https://www.stronghealth.com'` and `trailingSlash: 'always'` in `astro.config.mjs`
-- [ ] Tailwind 4 via `@tailwindcss/vite`; design tokens defined as CSS theme variables
-- [ ] DM Sans subset woff2 files copied to `public/fonts/` with `preload` links for the 2 critical weights
-- [ ] `robots.txt`, `ads.txt`, `favicon.svg`, `opengraph.jpg`, `/authors/*` images copied to `public/`
-- [ ] GitHub Actions workflow: install → `astro check` → `astro build` on every PR
-- [ ] `pnpm build` produces `dist/` locally with zero errors
+- [x] `pnpm create astro` (minimal template), TypeScript strict, `output: 'static'`
+- [x] `site: 'https://www.stronghealth.com'` and `trailingSlash: 'always'` in `astro.config.mjs`
+- [x] Tailwind 4 via `@tailwindcss/vite`; design tokens defined as CSS theme variables
+- [x] DM Sans subset woff2 files copied to `public/fonts/` with `preload` links for the 2 critical weights
+- [x] `robots.txt`, `ads.txt`, `favicon.svg`, `opengraph.jpg`, `/authors/*` images copied to `public/`
+- [x] GitHub Actions workflow: install → `astro check` → `astro build` on every PR
+- [x] `pnpm build` produces `dist/` locally with zero errors
 
 ### US-002: Base layout + SEO component
 **Description:** As a developer, I want a single `BaseLayout.astro` + `Seo.astro` so every page gets correct head tags from one code path.

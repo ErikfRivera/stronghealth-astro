@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /account
+Disallow: /login
+Disallow: /cart
+Disallow: /checkout
+
+Sitemap: https://www.stronghealth.com/sitemap.xml

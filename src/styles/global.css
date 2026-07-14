@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+/* Self-hosted DM Sans (woff2). The variable font from Google Fonts is
+   instantiated down to a small set of static weights per style and then
+   subset to only the glyphs the site renders. The roman family ships three
+   instances (400, 700, 900) so font-extrabold (800) and font-black (900)
+   keep their visual weight on LCP headings; italic ships two (400, 700) —
+   it's only used in blockquotes. The font-weight *ranges* below map every
+   CSS weight onto the closest static instance: 100-500 -> 400,
+   501-750 -> 700, 751-900 -> 900 (so font-extrabold/800 picks 900, not 700).
+   Callers can still write `font-weight: 600` without pulling another file. The latin / latin-ext
+   split mirrors Google Fonts' so the browser only fetches the latin files
+   for English copy. Regenerate via
+   `node artifacts/strong-health/scripts/subset-fonts.mjs` after copy
+   changes (see public/fonts/README.md). */
+
+/* --- Roman (normal) --- */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 100 500;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 501 750;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 751 900;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-900.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 100 500;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-ext-400.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 501 750;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-ext-700.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 751 900;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-ext-900.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* --- Italic --- */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 100 500;
+  font-display: swap;
+  src: url('/fonts/dm-sans-italic-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 501 900;
+  font-display: swap;
+  src: url('/fonts/dm-sans-italic-latin-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 100 500;
+  font-display: swap;
+  src: url('/fonts/dm-sans-italic-latin-ext-400.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 501 900;
+  font-display: swap;
+  src: url('/fonts/dm-sans-italic-latin-ext-700.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@theme inline {
+  --font-sans: 'DM Sans', sans-serif;
+  --color-surface: #0D0F12;
+  --color-surface-card: #141820;
+  --color-cream: #F5F5F0;
+  --color-cream-muted: #E8E4DC;
+  --color-body: #A0AEC0;
+  --color-muted: #7A8599;
+  --color-gold: #C9A84C;
+  --color-gold-hover: #D4B96A;
+  --color-navy: #1B4F72;
+  --color-surface-dark: #080A0D;
+  --color-surface-raised: #1A1F2A;
+  --color-text-dim: #C0BDB5;
+  --color-text-subtle: #4A5568;
+  --color-text-mid: #B0B8C8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  * {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-surface);
+    color: var(--color-cream);
+    margin: 0;
+  }
+}
+
+@layer components {
+  .prose-strong-health h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    color: var(--color-cream);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+  }
+  .prose-strong-health h3 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: var(--color-cream-muted);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-strong-health p {
+    font-size: 15px;
+    color: var(--color-body);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+  }
+  .prose-strong-health ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.25rem;
+    list-style-type: disc;
+  }
+  .prose-strong-health ul li,
+  .prose-strong-health ol li {
+    font-size: 15px;
+    color: var(--color-body);
+    line-height: 1.7;
+  }
+  .prose-strong-health ol {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.25rem;
+    list-style-type: decimal;
+  }
+  .prose-strong-health strong {
+    color: var(--color-cream-muted);
+    font-weight: 600;
+  }
+  .prose-strong-health a {
+    color: var(--color-gold);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.15s;
+  }
+  .prose-strong-health a:hover {
+    color: var(--color-gold-hover);
+  }
+  .prose-strong-health blockquote {
+    border-left: 2px solid rgba(201, 168, 76, 0.4);
+    padding-left: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    color: var(--color-muted);
+  }
+  .prose-strong-health sup {
+    color: var(--color-gold);
+    font-size: 10px;
+    font-weight: 700;
+    cursor: help;
+  }
+}

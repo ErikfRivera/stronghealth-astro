@@ -1,0 +1,99 @@
+---
+/**
+ * The single HTML skeleton for every page. All head tags flow through
+ * <Seo /> (FR-3); pages must never emit their own <title> / meta tags.
+ *
+ * Third-party scripts (same IDs as production index.html):
+ *  - Google AdSense (ca-pub-7951814481749634)
+ *  - Ahrefs analytics (mUsqdURGMvgEYUov5WFjXw)
+ *  - GA4 (G-ESG16019L2)
+ * plus the LeadConnector chat widget, injected on scroll ≥ 300px or after
+ * 8s (port of src/lib/loadChatWidget.ts).
+ */
+import "../styles/global.css";
+import Seo from "../components/seo/Seo.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+}
+
+const { title, description, path, ogImage, ogType, noindex } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0D0F12" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-900.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-400.woff2" crossorigin />
+    <Seo
+      title={title}
+      description={description}
+      path={path}
+      ogImage={ogImage}
+      ogType={ogType}
+      noindex={noindex}
+    />
+    <slot name="head" />
+    <meta name="google-adsense-account" content="ca-pub-7951814481749634" />
+    <script
+      is:inline
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7951814481749634"
+      crossorigin="anonymous"></script>
+    <script
+      is:inline
+      src="https://analytics.ahrefs.com/analytics.js"
+      data-key="mUsqdURGMvgEYUov5WFjXw"
+      async></script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-ESG16019L2"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ESG16019L2');
+    </script>
+  </head>
+  <body>
+    <slot />
+    <script is:inline>
+      // Chat widget loader (port of src/lib/loadChatWidget.ts): inject the
+      // LeadConnector bubble once the user scrolls past the hero (300px) or
+      // after 8s, whichever comes first.
+      (function () {
+        var SRC = "https://widgets.leadconnectorhq.com/loader.js";
+        var injected = false;
+        function inject() {
+          if (injected || document.querySelector('script[src="' + SRC + '"]')) return;
+          injected = true;
+          var s = document.createElement("script");
+          s.async = true;
+          s.src = SRC;
+          s.setAttribute("data-resources-url", "https://widgets.leadconnectorhq.com/chat-widget/loader.js");
+          s.setAttribute("data-widget-id", "69fcc800d663de762a50e94d");
+          s.setAttribute("data-source", "WEB_USER");
+          document.body.appendChild(s);
+        }
+        var timer;
+        function cleanup() {
+          window.removeEventListener("scroll", onScroll);
+          if (timer !== undefined) window.clearTimeout(timer);
+        }
+        function onScroll() {
+          if (window.scrollY >= 300) { cleanup(); inject(); }
+        }
+        if (window.scrollY >= 300) { inject(); return; }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        timer = window.setTimeout(function () { cleanup(); inject(); }, 8000);
+      })();
+    </script>
+  </body>
+</html>

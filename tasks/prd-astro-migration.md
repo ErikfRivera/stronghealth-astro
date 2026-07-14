@@ -101,11 +101,11 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a developer, I want a single `BaseLayout.astro` + `Seo.astro` so every page gets correct head tags from one code path.
 
 **Acceptance Criteria:**
-- [ ] `Seo.astro` props: `title`, `description`, `path`, `ogImage?`, `robots?`, `type?`; renders title with single `" | Strong Health"` suffix (root exempt), canonical from `Astro.site` + trailing-slash path, OG + Twitter tags
-- [ ] Build fails (CI script) if any page's final title > 60 chars or description outside 120–160 — codifying `SEO_NEW_PAGE_CHECKLIST.md`
-- [ ] GA4, Ahrefs, AdSense scripts included in layout head exactly as today (same IDs)
-- [ ] `JsonLd.astro` helper renders arbitrary schema objects as `<script type="application/ld+json">`
-- [ ] `astro check` passes
+- [x] `Seo.astro` props: `title`, `description`, `path`, `ogImage?`, `robots?`, `type?`; renders title with single `" | Strong Health"` suffix (root exempt), canonical from `Astro.site` + trailing-slash path, OG + Twitter tags
+- [x] Build fails (CI script) if any page's final title > 60 chars or description outside 120–160 — codifying `SEO_NEW_PAGE_CHECKLIST.md`
+- [x] GA4, Ahrefs, AdSense scripts included in layout head exactly as today (same IDs)
+- [x] `JsonLd.astro` helper renders arbitrary schema objects as `<script type="application/ld+json">`
+- [x] `astro check` passes
 
 ### US-003: Shared UI components ported to Astro
 **Description:** As a developer, I want Nav, Footer, AnnouncementBar, Btn, Tag, FadeIn, CTABlock, FAQSection, CitationList, MedicalDisclaimer, TableOfContents, AuthorByline ported as zero-JS Astro components.

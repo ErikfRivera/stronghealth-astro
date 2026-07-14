@@ -1,0 +1,14 @@
+---
+/**
+ * Renders a schema.org object (or an array / @graph) as an application/ld+json
+ * script. All JSON-LD on the site flows through this component so schema and
+ * visible content can share the same typed data (FR-4).
+ */
+interface Props {
+  schema: object;
+}
+
+const { schema } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />

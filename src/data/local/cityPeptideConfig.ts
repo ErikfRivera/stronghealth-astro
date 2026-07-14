@@ -371,7 +371,7 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   seoTitle: "Peptide Therapy in Delray Beach, FL",
   seoDescription:
-    "Physician-supervised peptide therapy for Delray Beach, FL patients. Telehealth visits with in-person evaluation at our Miami Brickell clinic. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141.",
+    "Physician-supervised peptide therapy for Delray Beach, FL patients. Telehealth visits, in-person evaluation in Miami. BPC-157, CJC-1295, Ipamorelin, PT-141.",
   lastReviewed: "2026-04-22",
   jsonLdPageName: "Peptide Therapy for Delray Beach, FL — Strong Health (Telehealth + Miami Brickell)",
   jsonLdPageDescription:

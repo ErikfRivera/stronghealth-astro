@@ -38,6 +38,19 @@ meaning; the US-014 parity audit flags everything else as a defect.
    `<details>` port includes all food items statically. Food-group data lifted
    verbatim from the page source.
 
-_Title/description texts are unchanged from production (production had already
-been trimmed to budget after the April SEO audit; the build now enforces the
-budgets: title ≤ 60 chars incl. brand, description 120–160)._
+9. **City-page FAQ answers ship in the initial HTML** (same details/summary
+   conversion as site-wide change #1).
+10. **Delray Beach SEO trims** (production strings exceeded budget; SEO_AUDIT
+    finding #4/#5 — the only title/description text changes in the migration):
+    - `/fl/delray-beach/trt-therapy/` title: "Delray Beach, FL TRT — Telehealth
+      + Miami Clinic" → "Delray Beach TRT — Telehealth + Miami Clinic"
+      (final 64 → 60 chars); description 167 → 150 chars (dropped trailing
+      "Board-certified.").
+    - `/fl/delray-beach/weight-loss-clinic/` description 191 → 155 chars
+      (dropped "Snowbird-friendly. Book today.").
+    - `/fl/delray-beach/peptide-therapy/` description 193 → 156 chars
+      (tightened clinic phrasing, dropped "Tesamorelin" from the list).
+
+_All other title/description texts are unchanged from production (production
+had already been trimmed to budget after the April SEO audit; the build now
+enforces the budgets: title ≤ 60 chars incl. brand, description 120–160)._

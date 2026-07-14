@@ -1,0 +1,174 @@
+---
+// Port of src/pages/local/DelrayBeachTRT.tsx — Delray Beach TRT service-area
+// page config (no physical storefront; MedicalClinic JSON-LD suppressed).
+import CityTRTPage from "../../../layouts/local/CityTRTPage.astro";
+import type { CityTRTConfig } from "../../../data/local/cityTrtConfig";
+
+const config: CityTRTConfig = {
+  slug: "delray-beach",
+  cityName: "Delray Beach",
+  county: "Palm Beach County",
+  heroTag: "Delray Beach TRT · Telehealth + Miami Brickell labs",
+  reviewRating: "4.9",
+  reviewCount: "from 175+ Delray Beach patient reviews",
+  aggregateReviewCount: 175,
+  heroSubtitle:
+    "Telehealth visits with a Strong Health board-certified physician for Delray Beach patients. 50+ biomarker labs and the in-person baseline exam are completed at our Miami Brickell clinic, then ongoing care moves to telehealth. Real TRT protocol, not a supplement subscription.",
+  clinicArea: "Delray Beach service area",
+  clinicAreaBlurb:
+    "Strong Health serves Delray Beach by appointment via telehealth, with the in-person baseline visit and on-site labs scheduled at our Miami Brickell clinic (1000 Brickell Plaza, Miami, FL 33131). Snowbird-friendly: telehealth follow-ups travel with you.",
+  directions:
+    "No Delray Beach storefront. The in-person baseline visit and on-site labs take place at the Strong Health Miami Brickell clinic, which is accessible from Delray via I-95 south or the Tri-Rail Brickell-area connection. Ongoing care is delivered via telehealth statewide.",
+  paceLine: "Delray's lifestyle",
+  introParagraphs: [
+    "Delray Beach has a different rhythm than the rest of South Florida. Walkable downtown, real neighborhoods, an active beach community. Whether you're running a small business off Atlantic Ave, training at the tennis center, or splitting time between Delray and a second residence up north, low testosterone has a way of dimming everything that makes this town worth living in.",
+    "Strong Health serves Delray Beach men who've already heard \"your levels are normal\" from a primary care doctor who only ran a basic panel and who want a board-certified physician on day one. Care starts with a telehealth consult, with the in-person physical exam and 50+ biomarker lab panel scheduled at our Miami Brickell clinic. After the baseline visit, dose adjustments and follow-up labs are handled via telehealth.",
+    "From Pineapple Grove to Lake Ida, from the beach district to West Delray, we serve men across central Palm Beach County who are tired of being told their numbers are \"in range\" while they feel anything but.",
+  ],
+  differentiators: [
+    "Telehealth visits with board-certified physicians, available statewide",
+    "In-person baseline exam and 50+ biomarker on-site labs at our Miami Brickell clinic",
+    "Snowbird-friendly: telehealth follow-ups travel with you between Delray and a second residence",
+    "Saturday morning telehealth slots for working professionals",
+    "Direct physician access between visits — no phone trees, no front-desk gatekeeping",
+    "No long-term contracts. Month-to-month treatment",
+  ],
+  step1Title: "Book Your Free Telehealth Consult",
+  step1Desc:
+    "Your first visit is a video consult with a Strong Health board-certified physician. Review your history, symptoms, and goals, and schedule the in-person baseline exam and 50+ biomarker lab draw at our Miami Brickell clinic.",
+  step4Desc:
+    "Ongoing dosing adjustments, lab reviews, and check-ins from home (or wherever you happen to be). Periodic in-person follow-ups at the Miami Brickell clinic when on-site labs or a physical re-exam are needed.",
+  physicians: [
+    {
+      name: "Strong Health Medical Team",
+      title: "Attending Physicians, Delray Beach",
+      credentials:
+        "Board-Certified Physicians · Hormone Therapy Specialists · Full-Spectrum Men's Health Care",
+      focus:
+        "Testosterone replacement therapy, thyroid disorders, and age-related hormone decline. Serving central Palm Beach County, including a large seasonal-resident patient population.",
+    },
+    {
+      name: "Strong Health Urology Team",
+      title: "Consulting Urologists, Delray Beach",
+      credentials:
+        "Board-Certified Urologists · Fellowship-Trained · Male Reproductive Medicine Specialists",
+      focus:
+        "Male fertility preservation during TRT, sexual health, and complex hormonal cases requiring urological expertise.",
+    },
+  ],
+  testimonials: [
+    {
+      name: "Richard B.",
+      neighborhood: "Lake Ida",
+      text: "I'd been cycling through doctors for three years trying to figure out why I felt so flat. Strong Health ran the right panel and had a real plan within a week. Six weeks in and I'm a different person. Telehealth follow-ups make staying on protocol from Delray easy.",
+    },
+    {
+      name: "Doug M.",
+      neighborhood: "Beach District",
+      text: "I split time between Delray and the Northeast. The telehealth follow-ups mean I can stay on protocol no matter where I am. The baseline exam and labs at the Brickell clinic were straightforward, and everything after that has been remote. This is the right way to deliver this kind of care.",
+    },
+    {
+      name: "Eric S.",
+      neighborhood: "Pineapple Grove",
+      text: "Saturday telehealth slots made it possible. I run a restaurant downtown and weekday mornings are not an option. The physician took the time to do a real workup and explained everything clearly. Six months on protocol and the results are real: energy, sleep, body composition, all noticeably better.",
+    },
+    {
+      name: "James W.",
+      neighborhood: "West Delray",
+      text: "I was driving all over Palm Beach County to see specialists. Telehealth visits with one physician who knows my labs has saved me hours every quarter. The doctor is thorough, the protocol is conservative, and the results have been exactly what I was hoping for.",
+    },
+  ],
+  neighborhoods: [
+    "Atlantic Avenue", "Pineapple Grove", "Beach District", "Lake Ida",
+    "Old School Square", "Osceola Park", "West Delray", "Delray Shores",
+    "Sherwood Park", "Tropic Isle", "Seagate", "Tropic Palms",
+    "Hidden Lake", "Country Club Acres", "Mizner Country Club", "Boynton Beach",
+    "Highland Beach", "Gulf Stream",
+  ],
+  neighborhoodAreaName: "central Palm Beach County",
+  neighborhoodSubtitle:
+    "Strong Health serves patients across Delray Beach, Boynton Beach, Gulf Stream, Highland Beach, and surrounding central Palm Beach County communities via telehealth, with in-person visits at our Miami Brickell clinic.",
+  faqs: [
+    {
+      question: "Does Strong Health have a physical clinic in Delray Beach?",
+      answer:
+        "No. Strong Health does not operate a Delray Beach storefront. Delray Beach patients are served by appointment via telehealth, with the in-person baseline physician exam and 50+ biomarker lab draw scheduled at our Miami Brickell clinic (1000 Brickell Plaza, Miami, FL 33131). After the baseline visit, ongoing care, dose adjustments, and lab reviews are handled via telehealth statewide.",
+    },
+    {
+      question: "Do I need an appointment for my first visit in Delray Beach?",
+      answer:
+        "Yes, we recommend booking your free assessment online or by calling (754) 263-6026. Patients in the Delray Beach area are scheduled by appointment with a Strong Health physician via telehealth, with on-site labs and in-person visits available at our Miami Brickell clinic when needed.",
+    },
+    {
+      question: "Can I stay on TRT if I split time between Delray and another residence?",
+      answer:
+        "Yes, and many of our Delray patients do exactly this. Telehealth follow-ups travel with you regardless of where you are, and we coordinate refills with a pharmacy near wherever you happen to be. Your in-person labs can be done at our Delray Beach clinic during your stays here. We work with patients who split time between Delray and the Northeast, the Midwest, and Canada.",
+    },
+    {
+      question: "How is Strong Health different from Delray's anti-aging and hormone clinics?",
+      answer:
+        "Delray and the broader South Palm Beach corridor have a long list of anti-aging and hormone clinics offering testosterone, often without thorough diagnostics or board-certified physician oversight. At Strong Health, every patient gets an in-person physical exam at our Miami Brickell clinic, a 50+ biomarker lab panel (not just total T), and a treatment plan from a named, credentialed physician. Ongoing follow-ups are conducted via telehealth. We don't sell supplements, peptide stacks, or gray-market compounds.",
+    },
+    {
+      question: "How much does TRT cost for Delray Beach patients?",
+      answer:
+        "Your initial consultation and assessment are free. Treatment plans are month-to-month with transparent pricing. No long-term contracts. Lab work, physician visits, and medication costs are discussed upfront before you commit to anything.",
+    },
+    {
+      question: "What areas of Palm Beach County do you serve?",
+      answer:
+        "We serve patients from Delray Beach, Boynton Beach, Gulf Stream, Highland Beach, Boca Raton, Lake Worth, and surrounding central Palm Beach County communities. Telehealth follow-ups make ongoing care convenient regardless of where you live in the area.",
+    },
+    {
+      question: "Is TRT safe? What about side effects?",
+      answer:
+        "When supervised by a board-certified physician with regular lab monitoring, TRT has a well-established safety profile backed by decades of clinical research. In Florida, testosterone is a controlled substance requiring physician oversight. We monitor your labs on-site at the Miami Brickell clinic so dose adjustments happen quickly.",
+    },
+    {
+      question: "Do you accept insurance for Delray Beach patients?",
+      answer:
+        "Strong Health operates on a transparent direct-pay model. We do not bill insurance directly, but we provide itemized superbills that many patients submit for partial reimbursement under plans common in Palm Beach County, including Florida Blue, Aetna, and UnitedHealthcare.",
+    },
+    {
+      question: "What happens after my first in-person visit?",
+      answer:
+        "After your in-person baseline exam and lab draw at the Miami Brickell clinic, your physician reviews results (typically within 48–72 hours) and designs a custom treatment protocol. Ongoing follow-ups, dosing adjustments, and lab reviews happen via telehealth. Periodic in-person re-checks at the Brickell clinic are scheduled when on-site labs or a physical re-exam are clinically needed.",
+    },
+  ],
+  finalCtaCopy:
+    "Book your free telehealth consult. Schedule your in-person baseline exam and 50+ biomarker labs at our Miami Brickell clinic, then move to ongoing telehealth care.",
+  clinic: {
+    name: "Strong Health Delray Beach",
+    streetAddress: "",
+    city: "Delray Beach",
+    state: "FL",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hours: "Mon–Fri 8:00 AM – 6:00 PM | Sat 9:00 AM – 1:00 PM",
+    hoursWeekday: { opens: "08:00", closes: "18:00" },
+    hoursSaturday: { opens: "09:00", closes: "13:00" },
+    lat: 26.4615,
+    lng: -80.0728,
+  },
+  seoTitle: "Delray Beach TRT — Telehealth + Miami Clinic",
+  seoDescription:
+    "Physician-supervised testosterone therapy for Delray Beach, FL patients. Telehealth visits with on-site labs at Strong Health Miami's Brickell clinic.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+  physicalClinic: false,
+  parkingTransit:
+    "No Delray Beach storefront. In-person visits and on-site labs are conducted at the Strong Health Miami Brickell clinic; telehealth follow-ups are available statewide.",
+  physicianAvailability:
+    "Strong Health attending physicians see Delray Beach patients by appointment via telehealth, with in-person visits scheduled at our Miami Brickell clinic when on-site labs or exams are required.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes. Initial telehealth visit reviews history, goals, and labs; on-site biomarker draws are scheduled at the Brickell clinic. Most patients are seen within 5 business days of booking.",
+  relatedInternalLinks: [
+    { label: "Peptide Therapy in Delray Beach", href: "/fl/delray-beach/peptide-therapy/" },
+    { label: "Medical Weight Loss in Delray Beach", href: "/fl/delray-beach/weight-loss-clinic/" },
+    { label: "All Florida locations", href: "/fl/" },
+    { label: "Strong Health services hub", href: "/" },
+  ],
+};
+---
+
+<CityTRTPage config={config} />

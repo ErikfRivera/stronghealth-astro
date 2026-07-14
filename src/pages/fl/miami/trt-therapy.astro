@@ -1,0 +1,196 @@
+---
+// Port of src/pages/local/MiamiTRT.tsx — Miami TRT city page config.
+import CityTRTPage from "../../../layouts/local/CityTRTPage.astro";
+import type { CityTRTConfig } from "../../../data/local/cityTrtConfig";
+import { MIAMI_BRICKELL_CLINIC } from "../../../data/miamiClinic";
+
+const config: CityTRTConfig = {
+  slug: "miami",
+  cityName: "Miami",
+  county: "Miami-Dade County",
+  heroTag: "Miami TRT Clinic · In-Person + Telehealth",
+  reviewRating: "4.9",
+  reviewCount: "from 850+ Miami patient reviews",
+  aggregateReviewCount: 850,
+  heroSubtitle:
+    "Walk into our Brickell clinic. Meet your physician face-to-face. Get 50+ biomarker labs drawn on-site. Start a real TRT protocol, not a supplement subscription.",
+  clinicArea: "Brickell",
+  clinicAreaBlurb:
+    "Centrally located in Miami's Brickell financial district with easy access from I-95, the Metrorail, and plenty of parking.",
+  directions:
+    "Parking available at Brickell Plaza garage. Metrorail: Brickell station (0.3 mi). I-95 exit 1A, turn east on SW 13th St.",
+  paceLine: "Miami's pace",
+  introParagraphs: [
+    "Miami doesn't slow down, and neither should your health. Whether you're closing deals in Brickell, training at a Wynwood gym, out on the water off Key Biscayne, or keeping up with your family in Coral Gables, low testosterone makes everything harder than it needs to be.",
+    "We built Strong Health Miami for men who've already tried the supplement route, already heard \"your levels are normal\" from a PCP who only checked total T, and already know the difference between real medicine and marketing. Our Brickell clinic sits in the heart of the city because we believe your first visit should be face-to-face: a real physical exam, a real conversation, and real labs drawn before you walk out the door.",
+    "From Little Havana to Doral, from Coconut Grove to Miami Beach, we serve men across Miami-Dade who are done guessing and ready for answers backed by data.",
+  ],
+  differentiators: [
+    "Same-day lab draws. No separate Quest or LabCorp trip",
+    "Brickell location with validated parking and Metrorail access",
+    "Bilingual staff (English & Spanish)",
+    "Saturday morning appointments for busy schedules",
+    "Telehealth follow-ups after your in-person baseline",
+    "No long-term contracts. Month-to-month treatment",
+  ],
+  step1Title: "Walk Into Our Brickell Clinic",
+  step1Desc:
+    "Your first visit is in-person at our Miami location. Meet your physician, get a physical exam, and have your 50+ biomarker panel drawn on-site, all in one visit.",
+  step4Desc:
+    "Ongoing dosing adjustments, lab reviews, and check-ins from home. In-person visits at our Brickell office anytime you want. It's your call.",
+  physicians: [
+    {
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Medical Director, Miami",
+      credentials:
+        "Board-Certified · University of Medicine & Health Sciences · Medical Director, Strong Health",
+      focus:
+        "Men's hormonal health, metabolic optimization, and preventive medicine. 12+ years of clinical experience in South Florida.",
+    },
+    {
+      name: "Strong Health Medical Team",
+      title: "Attending Physicians, Miami",
+      credentials:
+        "Board-Certified Physicians · Hormone Therapy Specialists · Full-Spectrum Men's Health Care",
+      focus:
+        "Testosterone replacement therapy, thyroid disorders, and age-related hormone decline. Bilingual (English/Spanish).",
+    },
+    {
+      name: "Strong Health Urology Team",
+      title: "Consulting Urologists, Miami",
+      credentials:
+        "Board-Certified Urologists · Fellowship-Trained · Male Reproductive Medicine Specialists",
+      focus:
+        "Male fertility preservation during TRT, sexual health, and complex hormonal cases requiring urological expertise.",
+    },
+  ],
+  testimonials: [
+    {
+      name: "Carlos M.",
+      neighborhood: "Brickell",
+      text: "I'd been dragging through every morning for two years. My PCP said my testosterone was 'fine' at 310. Strong Health ran a full panel. Turns out my free T was tanked. Three months on TRT and I feel like I did at 30. The Brickell office is five minutes from my condo.",
+    },
+    {
+      name: "David R.",
+      neighborhood: "Coral Gables",
+      text: "As a Cuban-American, I appreciate that the staff speaks Spanish. Dr. Rivera actually sat down and explained every lab result. No other clinic in Miami has given me that level of attention. My energy, my mood, my workouts... everything changed.",
+    },
+    {
+      name: "Jason K.",
+      neighborhood: "Coconut Grove",
+      text: "I tried two online TRT clinics before finding Strong Health. Both were video calls and a prescription within 10 minutes. Here, I got a real physical exam, thorough bloodwork, and a doctor who actually knew my name. The telehealth follow-ups are incredibly convenient too.",
+    },
+    {
+      name: "Miguel S.",
+      neighborhood: "Doral",
+      text: "Driving from Doral to Brickell for the first visit was worth it. They drew everything on-site. No separate lab trip. Now I do telehealth check-ins from home and only come in for quarterly labs. Lost 18 lbs of fat and put on real muscle in six months.",
+    },
+  ],
+  neighborhoods: [
+    "Brickell", "Wynwood", "Coral Gables", "Coconut Grove",
+    "Little Havana", "Doral", "Kendall", "Miami Beach",
+    "Key Biscayne", "Edgewater", "Midtown", "Design District",
+    "Overtown", "Little Haiti", "Aventura", "Pinecrest",
+    "South Miami", "Hialeah", "Westchester", "Flagami",
+  ],
+  neighborhoodAreaName: "Miami-Dade",
+  neighborhoodSubtitle:
+    "Our Brickell clinic is centrally located for patients across the greater Miami area.",
+  faqs: [
+    {
+      question: "Where is the Strong Health Miami clinic located?",
+      answer:
+        "Our Miami clinic is located at 1000 Brickell Plaza, Miami, FL 33131, in the heart of the Brickell financial district. We're accessible via I-95 (exit 1A), Metrorail (Brickell station, 0.3 miles), and offer validated parking in the Brickell Plaza garage.",
+    },
+    {
+      question: "Do I need an appointment for my first visit in Miami?",
+      answer:
+        "Yes, we recommend booking your free assessment online or by calling (754) 263-6026. Your first visit includes a physician consultation, physical exam, and full lab draw, all completed in about 30–45 minutes at our Brickell location.",
+    },
+    {
+      question: "Does the Miami clinic offer Spanish-speaking staff?",
+      answer:
+        "Yes. Our Miami clinic has bilingual staff (English and Spanish) to ensure every patient can communicate comfortably with their care team. Dr. Rivera and several team members are fluent in Spanish, reflecting the community we serve across Miami-Dade.",
+    },
+    {
+      question: "How much does TRT cost at Strong Health Miami?",
+      answer:
+        "Your initial consultation and assessment are free. Treatment plans are month-to-month with transparent pricing. No long-term contracts. Unlike many Brickell concierge clinics and South Beach med spas, we focus on physician-supervised medicine at straightforward prices. Lab work, physician visits, and medication costs are discussed upfront before you commit to anything.",
+    },
+    {
+      question: "What areas of Miami do you serve?",
+      answer:
+        "We serve patients from across Miami-Dade County including Brickell, Wynwood, Coral Gables, Coconut Grove, Little Havana, Doral, Kendall, Miami Beach, Key Biscayne, Aventura, Pinecrest, and surrounding neighborhoods. Telehealth follow-ups make ongoing care convenient regardless of where you live in the greater Miami area.",
+    },
+    {
+      question: "Is TRT safe? What about side effects?",
+      answer:
+        "When supervised by a board-certified physician with regular lab monitoring, TRT has a well-established safety profile backed by decades of clinical research. In Florida, testosterone is a controlled substance requiring physician oversight. That's a feature, not a barrier. We monitor your labs at our Brickell clinic's on-site lab so adjustments happen quickly. Miami's year-round warm climate means our patients stay active outdoors, and many notice energy and recovery improvements within the first few weeks of an optimized protocol.",
+    },
+    {
+      question: "Do you accept insurance at your Miami location?",
+      answer:
+        "Strong Health operates on a transparent direct-pay model. We do not bill insurance directly, but we provide itemized superbills that many patients submit for partial reimbursement. This works well with Florida Blue, Aetna, UnitedHealthcare, and other plans common among Miami-Dade employers. Our direct-pay model keeps care affordable and free from insurance-driven restrictions on lab work and treatment options.",
+    },
+    {
+      question: "What happens after my first in-person visit?",
+      answer:
+        "After your initial assessment and labs at our Brickell clinic, your physician reviews results (typically within 48–72 hours) and designs a custom treatment protocol. Ongoing follow-ups, dosing adjustments, and lab reviews happen via telehealth. No fighting I-95 or Palmetto traffic for routine check-ins. Quarterly in-person labs are available on Saturday mornings for busy professionals. You can always visit the Brickell office in person anytime.",
+    },
+    {
+      question: "How is Strong Health different from Miami's med spas and anti-aging clinics?",
+      answer:
+        "Miami has no shortage of med spas and anti-aging clinics offering testosterone, often without thorough diagnostics or board-certified physician oversight. At Strong Health, every patient gets a face-to-face physical exam, a 50+ biomarker lab panel (not just total T), and a treatment plan designed by a named, credentialed physician. We don't sell supplements, peptide stacks, or gray-market compounds. We practice evidence-based medicine with FDA-approved medications and ongoing lab monitoring.",
+    },
+    {
+      question: "Can I start TRT if I train outdoors regularly in Miami's heat?",
+      answer:
+        "Absolutely. Many of our Miami patients are active men who train outdoors year-round: CrossFit, beach workouts, cycling, paddleboarding, and more. TRT can support faster recovery, sustained energy, and better body composition. Our physicians factor in South Florida's heat and humidity when designing your protocol, including guidance on hydration and training load. Active patients often see some of the most dramatic improvements because optimized testosterone supports the demands they're already placing on their bodies.",
+    },
+  ],
+  finalCtaCopy:
+    "Book your free assessment at our Brickell clinic. In-person exam, 50+ biomarker labs, and honest answers, in one visit.",
+  clinic: {
+    name: MIAMI_BRICKELL_CLINIC.name,
+    streetAddress: MIAMI_BRICKELL_CLINIC.streetAddress,
+    city: MIAMI_BRICKELL_CLINIC.city,
+    state: MIAMI_BRICKELL_CLINIC.state,
+    postalCode: MIAMI_BRICKELL_CLINIC.postalCode,
+    phone: MIAMI_BRICKELL_CLINIC.phone,
+    hours: MIAMI_BRICKELL_CLINIC.hours,
+    hoursWeekday: MIAMI_BRICKELL_CLINIC.hoursWeekday,
+    hoursSaturday: MIAMI_BRICKELL_CLINIC.hoursSaturday,
+    lat: MIAMI_BRICKELL_CLINIC.lat,
+    lng: MIAMI_BRICKELL_CLINIC.lng,
+  },
+  seoTitle: "Miami, FL TRT Clinic — Testosterone Therapy",
+  seoDescription:
+    "Physician-supervised testosterone therapy in Miami, FL. Brickell clinic, 50+ biomarker labs, telehealth follow-ups. Board-certified. Free assessment.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Miami",
+  relatedServiceLink: {
+    label: "Peptide Therapy in Miami",
+    href: "/fl/miami/peptide-therapy/",
+  },
+  physicalClinic: true,
+  parkingTransit:
+    "Parking available at Brickell Plaza garage. Metrorail: Brickell station (0.3 mi). I-95 exit 1A, turn east on SW 13th St.",
+  physicianAvailability:
+    "Dr. Angel Rivera, M.D. and the Strong Health attending physician team see patients in person on weekdays and Saturday mornings; telehealth follow-ups available between visits.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes. Bring photo ID and a list of any current medications. Initial visit includes a physical exam and a 50+ biomarker lab panel drawn on-site (please arrive fasted; water is fine). Most patients are seen within 5 business days of booking.",
+  reviewLinks: [
+    { label: "Trustpilot reviews for Strong Health", url: "https://www.trustpilot.com/review/stronghealth.com" },
+    { label: "Google Business Profile — Strong Health Miami", url: "https://www.google.com/maps/search/?api=1&query=Strong%20Health%20Miami%2C%201000%20Brickell%20Plaza%2C%20Miami%2C%20FL%2033131" },
+  ],
+  relatedInternalLinks: [
+    { label: "Peptide Therapy in Miami", href: "/fl/miami/peptide-therapy/" },
+    { label: "Medical Weight Loss in Miami", href: "/fl/miami/weight-loss-clinic/" },
+    { label: "DEXA Scan in Miami", href: "/fl/miami/dexascan/" },
+    { label: "All Florida locations", href: "/fl/" },
+    { label: "Strong Health services hub", href: "/" },
+  ],
+};
+---
+
+<CityTRTPage config={config} />

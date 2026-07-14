@@ -1,0 +1,144 @@
+---
+// Port of src/pages/local/DelrayBeachWeightLoss.tsx — Delray Beach weight-loss city page.
+import CityWeightLossPage from "../../../layouts/local/CityWeightLossPage.astro";
+import type { CityWeightLossConfig } from "../../../data/local/cityWeightLossConfig";
+
+const config: CityWeightLossConfig = {
+  slug: "delray-beach",
+  cityName: "Delray Beach",
+  county: "Palm Beach County",
+  heroTag: "Delray Beach Weight Loss Clinic · GLP-1 Programs",
+  reviewRating: "4.9",
+  reviewCount: "from 175+ Delray Beach patient reviews",
+  aggregateReviewCount: 175,
+  heroSubtitle:
+    "Telehealth visits with a Strong Health board-certified physician for Delray Beach patients. The full medical evaluation and any required labs are completed in person at our Miami Brickell clinic, then the GLP-1 weight loss protocol (semaglutide or tirzepatide) is managed via telehealth with ongoing physician monitoring.",
+  physicians: [
+    {
+      name: "Strong Health Medical Team",
+      title: "Attending Physicians, Delray Beach",
+      credentials:
+        "Board-Certified Physicians · Obesity Medicine Specialists · Full-Spectrum Weight Loss Care",
+      focus:
+        "GLP-1 medication management, metabolic health, and long-term weight maintenance. Serving central Palm Beach County, including a large seasonal-resident patient population.",
+    },
+    {
+      name: "Strong Health Care Team",
+      title: "Nutrition & Care Coordinators, Delray Beach",
+      credentials: "Registered Dietitians · Patient Care Coordinators",
+      focus:
+        "Nutritional counseling, side-effect management, and refill coordination for patients on semaglutide and tirzepatide, including snowbirds traveling between residences.",
+    },
+  ],
+  testimonials: [
+    {
+      name: "Richard B.",
+      neighborhood: "Lake Ida",
+      text: "Cycled through three different doctors and two diet programs over four years. Down 44 lbs in six months on tirzepatide. Atlantic Ave clinic is two blocks from where I work and I see the same physician every visit.",
+    },
+    {
+      name: "Doug M.",
+      neighborhood: "Beach District",
+      text: "I split time between Delray and the Northeast. The telehealth follow-ups mean I can stay on protocol no matter where I am. When I'm in Delray, the office is a five-minute walk from my condo. Down 38 lbs in five months.",
+    },
+    {
+      name: "Eric S.",
+      neighborhood: "Pineapple Grove",
+      text: "Saturday hours made it possible. I run a restaurant downtown and weekday mornings are not an option. The physician took the time to do a real workup and explained everything clearly. Down 31 lbs and the food noise has finally stopped.",
+    },
+    {
+      name: "James W.",
+      neighborhood: "West Delray",
+      text: "I was driving down to Boca to see a specialist. Having the program right here in Delray with on-site labs has saved me hours every quarter. Down 41 lbs and 6 inches off my waist in five months.",
+    },
+  ],
+  neighborhoods: [
+    "Atlantic Avenue", "Pineapple Grove", "Beach District", "Lake Ida",
+    "Old School Square", "Osceola Park", "West Delray", "Delray Shores",
+    "Sherwood Park", "Tropic Isle", "Seagate", "Tropic Palms",
+    "Hidden Lake", "Country Club Acres", "Mizner Country Club", "Boynton Beach",
+    "Highland Beach", "Gulf Stream",
+  ],
+  neighborhoodAreaName: "central Palm Beach County",
+  faqs: [
+    {
+      question: "Where is the Strong Health Delray Beach weight loss clinic located?",
+      answer:
+        "Strong Health does not operate a physical weight-loss clinic in Delray Beach. Delray Beach patients are served via telehealth, with the in-person medical evaluation and any required labs scheduled at our Miami Brickell clinic (1000 Brickell Plaza, Miami, FL 33131), which is accessible via I-95 south or the Tri-Rail Brickell-area connection.",
+    },
+    {
+      question: "Can I stay on GLP-1 therapy if I split time between Delray and another residence?",
+      answer:
+        "Yes, and many of our Delray patients do exactly this. Telehealth follow-ups travel with you regardless of where you are, and we coordinate refills with a pharmacy near wherever you happen to be. Your in-person labs can be done at our Delray Beach clinic during your stays here. We work with patients who split time between Delray and the Northeast, the Midwest, and Canada.",
+    },
+    {
+      question: "How is Strong Health different from Delray's anti-aging and hormone clinics?",
+      answer:
+        "Delray and the broader South Palm Beach corridor have a long list of anti-aging and hormone clinics offering GLP-1 medications, often without thorough diagnostics or board-certified physician oversight. At Strong Health, every patient gets a face-to-face physical exam, a full metabolic lab panel, and a treatment plan from a named, credentialed physician. We don't sell supplements, peptide stacks, or gray-market compounds.",
+    },
+    {
+      question: "Will I gain the weight back if I stop the medication?",
+      answer:
+        "GLP-1 medications are most effective as a long-term treatment, similar to how blood pressure medication manages hypertension. Stopping medication can lead to weight regain if the underlying biological drivers of obesity haven't changed. Your physician will work with you on a maintenance strategy that balances medication use, lifestyle habits, and ongoing monitoring.",
+    },
+    {
+      question: "How much does medical weight loss cost in Delray Beach?",
+      answer:
+        "Your initial consultation is free. Treatment plans are month-to-month with transparent pricing covering the prescription, lab work, and physician visits. We discuss exact pricing before you commit, and our seasonal-resident patients appreciate that there are no long-term contracts to manage between residences.",
+    },
+    {
+      question: "Do you accept insurance for GLP-1 medications at the Delray clinic?",
+      answer:
+        "Strong Health operates on a transparent direct-pay model. We do not bill insurance directly, but we provide itemized superbills that many patients submit for partial reimbursement under plans common in Palm Beach County, including Florida Blue, Aetna, and UnitedHealthcare.",
+    },
+    {
+      question: "Does Strong Health have a physical weight-loss clinic in Delray Beach?",
+      answer:
+        "No. Strong Health does not operate a Delray Beach storefront. Delray Beach weight-loss patients are served by appointment via telehealth, with the in-person medical evaluation and any required labs scheduled at our Miami Brickell clinic (1000 Brickell Plaza, Miami, FL 33131). Ongoing GLP-1 management, dose adjustments, and follow-ups are handled via telehealth statewide.",
+    },
+  ],
+  clinic: {
+    name: "Strong Health Delray Beach",
+    streetAddress: "",
+    city: "Delray Beach",
+    state: "FL",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hours: "Mon–Fri 8:00 AM – 6:00 PM | Sat 9:00 AM – 1:00 PM",
+    hoursWeekday: { opens: "08:00", closes: "18:00" },
+    hoursSaturday: { opens: "09:00", closes: "13:00" },
+    lat: 26.4615,
+    lng: -80.0728,
+  },
+  servingArea: "Delray Beach and central Palm Beach County",
+  clinicAreaBlurb:
+    "Delray Beach patients are served by appointment via telehealth, with in-person visits and on-site labs at the Strong Health Miami Brickell clinic.",
+  directions:
+    "No Delray Beach storefront. In-person visits and on-site labs take place at the Strong Health Miami Brickell clinic; telehealth follow-ups are available statewide.",
+  lifestyleHeading: "Delray's lifestyle, fully back in reach",
+  lifestyleParagraphs: [
+    "Delray Beach has a different rhythm than the rest of South Florida: walkable downtown, real neighborhoods, an active beach community. Excess weight quietly takes the joy out of it, the dinners on Atlantic, the tennis, the beach mornings.",
+    "Patients consistently tell us the most meaningful change is rejoining the lifestyle they love: walking the Avenue with friends without exhaustion, putting on a swimsuit without anxiety, and feeling steady in their own body again.",
+  ],
+  seoTitle: "Weight Loss Clinic in Delray Beach, FL",
+  seoDescription:
+    "Delray Beach physician-supervised GLP-1 weight loss with semaglutide and tirzepatide. Telehealth visits, in-person evaluation at our Miami Brickell clinic.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+  physicalClinic: false,
+  parkingTransit:
+    "No Delray Beach storefront. In-person visits and on-site labs are conducted at the Strong Health Miami Brickell clinic; telehealth follow-ups are available statewide.",
+  physicianAvailability:
+    "Strong Health attending physicians see Delray Beach patients by appointment via telehealth, with in-person visits scheduled at our Miami Brickell clinic when on-site labs or exams are required.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes. Initial telehealth visit reviews history, goals, and GLP-1 candidacy; on-site biomarker draws are scheduled at the Brickell clinic. Most patients are seen within 5 business days of booking.",
+  relatedInternalLinks: [
+    { label: "Testosterone Therapy in Delray Beach", href: "/fl/delray-beach/trt-therapy/" },
+    { label: "Peptide Therapy in Delray Beach", href: "/fl/delray-beach/peptide-therapy/" },
+    { label: "All Florida locations", href: "/fl/" },
+    { label: "Strong Health services hub", href: "/" },
+  ],
+};
+---
+
+<CityWeightLossPage config={config} />

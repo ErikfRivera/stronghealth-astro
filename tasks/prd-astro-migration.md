@@ -166,9 +166,9 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a local searcher, I want city landing pages preserved (hero, symptoms, USPs, map, physicians, testimonials, neighborhoods, FAQ) with MedicalClinic schema.
 
 **Acceptance Criteria:**
-- [ ] City pages built from shared config files (`cityTrtConfig.ts`, etc.) ported as typed data → one `.astro` template per page type, mirroring today's CityTRTPage/CityWeightLossPage/CityPeptidePage pattern
-- [ ] MedicalClinic/MedicalWebPage/FAQPage/Breadcrumb JSON-LD parity (NAP data identical — from `miamiClinic.ts`)
-- [ ] Clinic map embed loads lazily (facade or `loading=lazy`) so it doesn't hurt LCP
+- [x] City pages built from shared config files (`cityTrtConfig.ts`, etc.) ported as typed data → one `.astro` template per page type, mirroring today's CityTRTPage/CityWeightLossPage/CityPeptidePage pattern
+- [x] MedicalClinic/MedicalWebPage/FAQPage/Breadcrumb JSON-LD parity (NAP data identical — from `miamiClinic.ts`)
+- [x] Clinic map embed loads lazily (facade or `loading=lazy`) so it doesn't hurt LCP
 
 ### US-010: Core pages (blog index, services, about, careers, authors, legal)
 **Description:** As a visitor, I want all remaining pages migrated.

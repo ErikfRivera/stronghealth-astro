@@ -1,0 +1,171 @@
+---
+// Port of src/pages/local/MiamiWeightLoss.tsx — Miami weight-loss city page.
+import CityWeightLossPage from "../../../layouts/local/CityWeightLossPage.astro";
+import type { CityWeightLossConfig } from "../../../data/local/cityWeightLossConfig";
+import { MIAMI_BRICKELL_CLINIC } from "../../../data/miamiClinic";
+
+const config: CityWeightLossConfig = {
+  slug: "miami",
+  cityName: "Miami",
+  county: "Miami-Dade County",
+  heroTag: "Miami Weight Loss Clinic · GLP-1 Programs",
+  reviewRating: "4.9",
+  reviewCount: "from 850+ Miami patient reviews",
+  aggregateReviewCount: 850,
+  heroSubtitle:
+    "Walk into our Brickell clinic. Meet your physician face-to-face. Get a full medical evaluation and start a real GLP-1 weight loss protocol (semaglutide or tirzepatide), physician-supervised, with ongoing monitoring.",
+  physicians: [
+    {
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Medical Director, Miami",
+      credentials:
+        "Board-Certified · University of Medicine & Health Sciences · Medical Director, Strong Health",
+      focus:
+        "Metabolic health, GLP-1 therapy protocols, and physician-supervised weight loss. 15+ years of clinical experience in South Florida.",
+    },
+    {
+      name: "Strong Health Medical Team",
+      title: "Attending Physicians, Miami",
+      credentials:
+        "Board-Certified Physicians · Obesity Medicine Specialists · Full-Spectrum Weight Loss Care",
+      focus:
+        "GLP-1 medication management, nutritional counseling, and long-term weight maintenance strategies. Bilingual (English/Spanish).",
+    },
+  ],
+  testimonials: [
+    {
+      name: "Maria L.",
+      neighborhood: "Coral Gables",
+      text: "I lost 47 pounds in six months on tirzepatide. For the first time in 15 years, I'm not thinking about food constantly. Dr. Rivera adjusted my dose twice based on labs. That's the kind of attention you don't get from an app.",
+    },
+    {
+      name: "Roberto C.",
+      neighborhood: "Brickell",
+      text: "I tried Ro and Found before Strong Health. Both sent me pills through the mail with zero follow-up. Here, they actually check my bloodwork, adjust my medication, and I can call the office if something feels off. Down 38 lbs and my A1C dropped from 6.4 to 5.2.",
+    },
+    {
+      name: "Jennifer T.",
+      neighborhood: "Kendall",
+      text: "The food noise is gone. I can't explain it any other way. I used to plan my entire day around meals and now I just... eat when I'm hungry and stop. I've lost 52 pounds and my blood pressure medication was cut in half.",
+    },
+    {
+      name: "Daniel M.",
+      neighborhood: "Miami Beach",
+      text: "My wife and I both started the program. She's on semaglutide, I'm on tirzepatide. Between us we've lost over 90 lbs. The Brickell office is easy to get to and the Saturday hours work for our schedule.",
+    },
+  ],
+  neighborhoods: [
+    "Brickell", "Miami Beach", "Coral Gables", "Coconut Grove",
+    "Hialeah", "Kendall", "Doral", "Little Havana",
+    "Wynwood", "Edgewater", "Midtown", "Key Biscayne",
+    "Aventura", "Pinecrest", "South Miami", "Design District",
+  ],
+  neighborhoodAreaName: "Miami-Dade",
+  faqs: [
+    {
+      question: "Will I gain the weight back if I stop the medication?",
+      answer:
+        "GLP-1 medications are most effective as a long-term treatment, similar to how blood pressure medication manages hypertension. Stopping medication can lead to weight regain if the underlying biological drivers of obesity haven't changed. Your physician will work with you on a maintenance strategy that balances medication use, lifestyle habits, and ongoing monitoring.",
+    },
+    {
+      question: "Is semaglutide safe?",
+      answer:
+        "Semaglutide has been extensively studied in large-scale clinical trials involving thousands of participants. Common side effects include nausea, constipation, and decreased appetite, most of which are mild and improve over time. Your physician will review your full medical history to ensure GLP-1 therapy is safe for you specifically.",
+    },
+    {
+      question: "How much does medical weight loss cost in Miami?",
+      answer:
+        "Program costs vary based on medication type, dosing, and insurance coverage. We provide full pricing transparency during your initial consultation, before you commit to anything. For context, the average American spends over $1,400 per year on diet programs and supplements that don't address the underlying biology. Many patients find that the cost of a medical weight loss program is offset by reductions in other healthcare expenses (fewer medications, lower insurance premiums, and avoided hospitalizations) as their metabolic health improves.",
+    },
+    {
+      question: "Do I need to follow a specific diet while on GLP-1 medication?",
+      answer:
+        "There's no rigid meal plan required. Your physician and care team will provide nutritional guidance focused on adequate protein intake, hydration, and food choices that complement the medication's effects. Most patients find that healthy eating becomes significantly easier when the constant cravings and food noise are reduced.",
+    },
+    {
+      question: "What's the difference between your clinic and an online program like Ro, Hims, or Found?",
+      answer:
+        "Online telehealth platforms can be convenient, but they typically lack in-person medical evaluations, regular lab monitoring, and responsive physician access. The most common complaints about online programs are prescription delays, impersonal coaching, and difficulty reaching a provider when something goes wrong. Strong Health provides direct physician access, in-person care, and the accountability that makes the difference between starting a program and finishing one.",
+    },
+    {
+      question: "How do I know if I'm a candidate for GLP-1 medication?",
+      answer:
+        "The best way to find out is a medical consultation. Generally, candidates have a BMI of 30+ or a BMI of 27+ with a weight-related health condition. Your physician will evaluate your complete health picture, not just your weight, to determine whether GLP-1 therapy is appropriate. Call us at (754) 263-6026 or book online.",
+    },
+    {
+      question: "Can I get Ozempic or Wegovy for weight loss in Miami without insurance?",
+      answer:
+        "Yes. Strong Health offers GLP-1 medications including semaglutide (the active ingredient in Ozempic and Wegovy) to self-pay patients. We provide transparent pricing with no hidden fees, and many patients find our program more affordable than dealing with insurance prior authorizations. Your physician will determine which medication is best for your medical profile during your consultation.",
+    },
+  ],
+  clinic: {
+    name: MIAMI_BRICKELL_CLINIC.name,
+    streetAddress: MIAMI_BRICKELL_CLINIC.streetAddress,
+    city: MIAMI_BRICKELL_CLINIC.city,
+    state: MIAMI_BRICKELL_CLINIC.state,
+    postalCode: MIAMI_BRICKELL_CLINIC.postalCode,
+    phone: MIAMI_BRICKELL_CLINIC.phone,
+    hours: MIAMI_BRICKELL_CLINIC.hours,
+    hoursWeekday: MIAMI_BRICKELL_CLINIC.hoursWeekday,
+    hoursSaturday: MIAMI_BRICKELL_CLINIC.hoursSaturday,
+    lat: MIAMI_BRICKELL_CLINIC.lat,
+    lng: MIAMI_BRICKELL_CLINIC.lng,
+  },
+  servingArea: "Miami and South Florida",
+  clinicAreaBlurb:
+    "Centrally located in Miami's Brickell financial district with easy access from I-95, the Metrorail, and plenty of parking.",
+  directions:
+    "Parking available at Brickell Plaza garage. Metrorail: Brickell station (0.3 mi). I-95 exit 1A, turn east on SW 13th St.",
+  lifestyleHeading: "Miami's outdoor lifestyle awaits",
+  lifestyleParagraphs: [
+    "Miami's year-round outdoor lifestyle, from beach days to waterfront dining, means looking and feeling your best isn't just vanity. It's about fully participating in the life this city offers.",
+    "Whether you want to walk the boardwalk without knee pain, enjoy Calle Ocho without dreading photos, or finally feel confident at the beach, medical weight loss can help you get there.",
+  ],
+  seoTitle: "Weight Loss Clinic in Miami, FL",
+  seoDescription:
+    "Miami weight loss clinic offering physician-supervised GLP-1 programs with semaglutide and tirzepatide. Transparent pricing, no contracts. Book today.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Miami",
+  showNearbyCities: false,
+  clinicImage: "https://www.stronghealth.com/images/miami-clinic.jpg",
+  schemaEmployees: [
+    {
+      name: "Dr. Angel Rivera",
+      jobTitle: "Medical Director",
+      medicalSpecialty: "Bariatric Medicine",
+      qualifications: "M.D., Board-Certified",
+    },
+  ],
+  schemaSameAs: [
+    "https://www.facebook.com/stronghealth",
+    "https://www.instagram.com/stronghealth",
+    "https://www.linkedin.com/company/stronghealth",
+  ],
+  citySameAs: "https://en.wikipedia.org/wiki/Miami",
+  countySameAs: "https://en.wikipedia.org/wiki/Miami-Dade_County,_Florida",
+  relatedServiceLink: {
+    label: "Peptide Therapy in Miami",
+    href: "/fl/miami/peptide-therapy/",
+  },
+  physicalClinic: true,
+  parkingTransit:
+    "Parking available at Brickell Plaza garage. Metrorail: Brickell station (0.3 mi). I-95 exit 1A, turn east on SW 13th St.",
+  physicianAvailability:
+    "Dr. Angel Rivera, M.D. and the Strong Health attending physician team see patients in person on weekdays and Saturday mornings; telehealth follow-ups available between visits.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes. Bring photo ID, a list of any current medications, and recent A1C / metabolic labs if you have them. Visit includes a physician evaluation, weight & vitals, and review of GLP-1 candidacy. Most patients are seen within 5 business days of booking.",
+  reviewLinks: [
+    { label: "Trustpilot reviews for Strong Health", url: "https://www.trustpilot.com/review/stronghealth.com" },
+    { label: "Google Business Profile — Strong Health Miami", url: "https://www.google.com/maps/search/?api=1&query=Strong%20Health%20Miami%2C%201000%20Brickell%20Plaza%2C%20Miami%2C%20FL%2033131" },
+  ],
+  relatedInternalLinks: [
+    { label: "Testosterone Therapy in Miami", href: "/fl/miami/trt-therapy/" },
+    { label: "Peptide Therapy in Miami", href: "/fl/miami/peptide-therapy/" },
+    { label: "DEXA Scan in Miami", href: "/fl/miami/dexascan/" },
+    { label: "All Florida locations", href: "/fl/" },
+    { label: "Strong Health services hub", href: "/" },
+  ],
+};
+---
+
+<CityWeightLossPage config={config} />

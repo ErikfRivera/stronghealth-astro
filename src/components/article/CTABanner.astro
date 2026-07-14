@@ -1,0 +1,27 @@
+---
+import FadeIn from "../shared/FadeIn.astro";
+
+const btnBase =
+  "inline-flex items-center justify-center px-7 py-3.5 rounded-lg cursor-pointer uppercase tracking-[1.2px] transition-all duration-200 text-sm";
+---
+
+<FadeIn>
+  <div class="mt-16 mb-12 px-6 py-10 bg-gradient-to-br from-[#C9A84C]/[0.12] via-[#0D0F12] to-[#1B4F72]/[0.12] border border-white/10 rounded-xl text-center">
+    <h2 class="text-2xl font-bold text-cream mb-3">Ready to Optimize Your Health?</h2>
+    <p class="text-[15px] text-muted mb-6 max-w-[480px] mx-auto">
+      Strong Health offers physician-supervised treatment plans tailored to your needs. Lab testing, hormone optimization, and nutritional guidance — all in one place.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/services/">
+        <span class={`${btnBase} bg-gold text-surface font-bold hover:bg-gold-hover !text-[14px] !px-8 !py-3.5 w-full sm:w-auto`} role="presentation">
+          Explore Lab Testing
+        </span>
+      </a>
+      <a href="/services/">
+        <span class={`${btnBase} bg-transparent text-cream border-[1.5px] border-white/25 font-semibold hover:bg-white/5 !text-[14px] !px-8 !py-3.5 w-full sm:w-auto`} role="presentation">
+          Preventive Health
+        </span>
+      </a>
+    </div>
+  </div>
+</FadeIn>

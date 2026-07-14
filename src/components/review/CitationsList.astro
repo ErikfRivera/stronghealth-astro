@@ -1,0 +1,35 @@
+---
+export interface Citation {
+  id: number;
+  text: string;
+  url?: string;
+}
+
+interface Props {
+  citations: Citation[];
+}
+
+const { citations } = Astro.props;
+---
+
+<section class="my-12 border-t border-white/10 pt-8">
+  <h3 class="text-sm font-bold text-muted uppercase tracking-wider mb-4">References &amp; Citations</h3>
+  <ol class="space-y-2 text-xs text-text-subtle leading-[1.7]">
+    {
+      citations.map((c) => (
+        <li id={`cite-${c.id}`}>
+          <span class="text-gold mr-2">[{c.id}]</span>
+          {c.text}
+          {c.url && (
+            <>
+              {" "}
+              <a href={c.url} target="_blank" rel="noopener noreferrer" class="text-gold hover:underline">
+                Link →
+              </a>
+            </>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</section>

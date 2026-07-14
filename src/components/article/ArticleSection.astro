@@ -1,0 +1,16 @@
+---
+import FadeIn from "../shared/FadeIn.astro";
+
+interface Props {
+  id: string;
+  title: string;
+}
+const { id, title } = Astro.props;
+---
+
+<FadeIn>
+  <section id={id} class="mb-12">
+    <h2 class="text-[24px] md:text-[28px] font-black text-cream mb-4 mt-2">{title}</h2>
+    <slot />
+  </section>
+</FadeIn>

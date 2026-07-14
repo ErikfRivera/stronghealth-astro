@@ -1,0 +1,37 @@
+---
+export interface ComparisonRow {
+  feature: string;
+  subject: string;
+  strongHealth: string;
+}
+
+interface Props {
+  rows: ComparisonRow[];
+  subjectName: string;
+}
+
+const { rows, subjectName } = Astro.props;
+---
+
+<div class="overflow-x-auto my-8">
+  <table class="w-full border-collapse text-sm">
+    <thead>
+      <tr class="border-b border-white/10">
+        <th class="text-left py-3 px-4 text-muted font-semibold text-xs uppercase tracking-wider">Feature</th>
+        <th class="text-left py-3 px-4 text-muted font-semibold text-xs uppercase tracking-wider">{subjectName}</th>
+        <th class="text-left py-3 px-4 text-gold font-semibold text-xs uppercase tracking-wider">Strong Health</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((row) => (
+          <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+            <td class="py-3 px-4 text-cream-muted font-medium">{row.feature}</td>
+            <td class="py-3 px-4 text-muted">{row.subject}</td>
+            <td class="py-3 px-4 text-cream">{row.strongHealth}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

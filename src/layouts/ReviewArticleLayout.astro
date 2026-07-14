@@ -1,0 +1,258 @@
+---
+/**
+ * Port of src/components/ReviewArticleLayout.tsx — layout for the 5 review
+ * pages, including its own compact footer variant. Byline uses the named
+ * physician (Dr. Angel Rivera) by default, matching production source.
+ */
+import BaseLayout from "./BaseLayout.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import {
+  breadcrumbSchema,
+  buildReviewStructuredData,
+  type ReviewStructuredDataProps,
+} from "../components/seo/schemas";
+import Nav from "../components/shared/Nav.astro";
+import Icon from "../components/shared/Icon.astro";
+import ArticleLocationsSection from "../components/shared/ArticleLocationsSection.astro";
+import { reviews } from "../data/reviews";
+import { DR_ANGEL_RIVERA, EDITORIAL_GUIDELINES_URL, type Author } from "../data/articleAuthors";
+import { BOOKING_SMS_HREF } from "../lib/booking";
+import { STRONG_HEALTH_PHONE_DISPLAY } from "../data/miamiClinic";
+
+interface RelatedLink {
+  url: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  seoTitle?: string;
+  subtitle: string;
+  badge: string;
+  datePublished: string;
+  dateModified: string;
+  readTime: string;
+  structuredData: ReviewStructuredDataProps;
+  path: string;
+  relatedLinks?: RelatedLink[];
+  author?: Author;
+  reviewer?: Author;
+}
+
+const {
+  title,
+  seoTitle,
+  subtitle,
+  badge,
+  datePublished,
+  dateModified,
+  readTime,
+  structuredData,
+  path,
+  relatedLinks,
+  author,
+  reviewer,
+} = Astro.props;
+
+const byline = {
+  author: author ?? structuredData.author ?? DR_ANGEL_RIVERA,
+  reviewer: reviewer ?? structuredData.reviewer ?? DR_ANGEL_RIVERA,
+};
+const schemas = buildReviewStructuredData(
+  { ...structuredData, author: byline.author, reviewer: byline.reviewer },
+  DR_ANGEL_RIVERA,
+);
+
+const fmt = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+
+const footerColumns = [
+  {
+    title: "Services",
+    links: [
+      { label: "TRT Therapy", href: "/services/" },
+      { label: "Lab Testing", href: "/services/" },
+      { label: "Monitoring", href: "/services/" },
+    ],
+  },
+  {
+    title: "Reviews",
+    links: [
+      { label: "All Reviews", href: "/reviews/" },
+      ...reviews.map((r) => ({ label: r.shortTitle, href: r.path })),
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy-policy/" },
+      { label: "HIPAA", href: "/hipaa-policy/" },
+      { label: "Terms of Use", href: "/terms-of-use/" },
+    ],
+  },
+];
+const year = new Date().getFullYear();
+---
+
+<BaseLayout title={seoTitle || title} description={subtitle} path={path} ogType="article">
+  <div class="min-h-screen bg-surface font-['DM_Sans',sans-serif] selection:bg-gold selection:text-surface text-cream">
+    <JsonLd
+      schema={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Reviews", path: "/reviews/" },
+        { name: title, path },
+      ])}
+    />
+    {schemas.map((schema) => <JsonLd schema={schema} />)}
+    <Nav />
+    <main class="px-6 md:px-8">
+      <article class="max-w-[720px] mx-auto pt-10 pb-20">
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-2 text-[13px] text-muted">
+            <li><a href="/" class="hover:text-cream transition-colors">Home</a></li>
+            <li><span>/</span></li>
+            <li><a href="/reviews/" class="hover:text-cream transition-colors">Reviews</a></li>
+            <li><span>/</span></li>
+            <li class="text-cream-muted line-clamp-1"><span>{title}</span></li>
+          </ol>
+        </nav>
+        <header class="mb-12">
+          <span class="inline-block text-[10px] font-bold tracking-[1.8px] uppercase text-gold bg-gold/10 px-3 py-1.5 rounded mb-4">
+            {badge}
+          </span>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-cream leading-[1.2] mb-4">
+            {title}
+          </h1>
+          <p class="text-lg text-muted leading-[1.6] mb-6">{subtitle}</p>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-text-subtle">
+            <span>
+              Written by{" "}
+              {
+                byline.author.profileUrl ? (
+                  <a href={byline.author.profileUrl} class="text-muted hover:text-gold transition-colors">
+                    <strong>{byline.author.name}</strong>
+                  </a>
+                ) : (
+                  <strong class="text-muted">{byline.author.name}</strong>
+                )
+              }
+            </span>
+            <span>•</span>
+            <span>
+              Medically reviewed by{" "}
+              {
+                byline.reviewer.profileUrl ? (
+                  <a href={byline.reviewer.profileUrl} class="text-muted hover:text-gold transition-colors">
+                    <strong>{byline.reviewer.name}</strong>
+                  </a>
+                ) : (
+                  <strong class="text-muted">{byline.reviewer.name}</strong>
+                )
+              }
+            </span>
+            <span>•</span>
+            <time datetime={datePublished}>Published {fmt(datePublished)}</time>
+            <span>•</span>
+            <time datetime={dateModified}>Updated {fmt(dateModified)}</time>
+            <span>•</span>
+            <span>{readTime}</span>
+            <span>•</span>
+            <a
+              href={EDITORIAL_GUIDELINES_URL}
+              class="text-gold hover:text-gold-hover underline underline-offset-2 transition-colors"
+            >
+              Editorial Standards
+            </a>
+          </div>
+          <div class="mt-3 text-[11px] text-muted leading-snug">
+            {byline.author.credentials} · {byline.author.role}
+            {
+              byline.reviewer && byline.reviewer.name !== byline.author.name && (
+                <> · Reviewed by {byline.reviewer.credentials}</>
+              )
+            }
+          </div>
+          <div class="mt-6 border-b border-white/10"></div>
+        </header>
+        <div class="prose-strong-health">
+          <slot />
+        </div>
+        {
+          relatedLinks && relatedLinks.length > 0 && (
+            <section class="mt-12 pt-8 border-t border-white/10">
+              <h3 class="text-lg font-bold text-cream mb-4">Related Articles</h3>
+              <div class="flex flex-col gap-2">
+                {relatedLinks.map((link) => (
+                  <a href={link.url} class="text-[14px] text-gold hover:text-gold-hover transition-colors">
+                    &rarr; {link.label}
+                  </a>
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        <ArticleLocationsSection />
+
+        <section class="mt-16 px-6 py-10 bg-gradient-to-br from-[#C9A84C]/[0.12] via-[#0D0F12] to-[#1B4F72]/[0.12] border border-white/10 rounded-xl text-center">
+          <h2 class="text-2xl font-bold text-cream mb-3">Talk to a real physician</h2>
+          <p class="text-[15px] text-muted mb-6 max-w-[480px] mx-auto">
+            Skip the supplement guesswork. Get a free assessment with a board-certified Strong Health physician at the clinic nearest you.
+          </p>
+          <a
+            href={BOOKING_SMS_HREF}
+            data-track-lead
+            class="inline-flex items-center justify-center gap-2 px-9 py-4 rounded-lg cursor-pointer uppercase tracking-[1.2px] transition-all duration-200 text-[14px] bg-gold text-surface font-bold hover:bg-gold-hover"
+          >
+            Book Your Free Assessment <Icon name="arrow-right" size={16} />
+          </a>
+        </section>
+      </article>
+    </main>
+    <footer class="bg-surface-dark px-8 pt-16 pb-8 border-t border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 mb-12">
+          <div>
+            <a href="/">
+              <span class="flex items-center gap-2.5 mb-4 cursor-pointer">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C9A84C] to-[#A88832] flex items-center justify-center">
+                  <span class="text-surface font-black text-base">S</span>
+                </div>
+                <span class="font-extrabold text-base text-cream">STRONG HEALTH</span>
+              </span>
+            </a>
+            <p class="text-xs text-muted leading-[1.7] max-w-[240px]">
+              Physician-supervised testosterone therapy. In-person exams. Telehealth convenience. Honest answers.
+            </p>
+          </div>
+          {
+            footerColumns.map((col) => (
+              <div>
+                <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">{col.title}</div>
+                <div class="flex flex-col gap-2.5">
+                  {col.links.map((l) => (
+                    <a href={l.href} class="text-xs text-muted hover:text-cream transition-colors w-fit">
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-text-subtle">
+          <div>© {year} Strong Health TRT. All rights reserved.</div>
+          <div class="flex gap-4">
+            <span>Not available in all states.</span>
+            <span>Prescriptions subject to physician approval.</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

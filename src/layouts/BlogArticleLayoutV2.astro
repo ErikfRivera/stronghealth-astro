@@ -1,0 +1,204 @@
+---
+/**
+ * Port of the NEW src/components/layouts/BlogArticleLayout.tsx — used by
+ * /dexa-scan/ only. Auto-injects Breadcrumb + Article + MedicalWebPage +
+ * FAQPage JSON-LD, and uses the shared PageShell (AnnouncementBar + Nav +
+ * Footer).
+ */
+import BaseLayout from "./BaseLayout.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import {
+  articleSchema,
+  medicalWebPageSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+} from "../components/seo/schemas";
+import PageShell from "../components/shared/PageShell.astro";
+import FadeIn from "../components/shared/FadeIn.astro";
+import Tag from "../components/shared/Tag.astro";
+import AuthorByline from "../components/shared/AuthorByline.astro";
+import TableOfContents, { type TOCItem } from "../components/shared/TableOfContents.astro";
+import FAQSection, { type FAQItem } from "../components/shared/FAQSection.astro";
+import CitationList, { type Citation } from "../components/shared/CitationList.astro";
+import MedicalDisclaimer from "../components/shared/MedicalDisclaimer.astro";
+import CTABlock from "../components/shared/CTABlock.astro";
+import ArticleLocationsSection from "../components/shared/ArticleLocationsSection.astro";
+import type { Author } from "../data/articleAuthors";
+
+interface RelatedLink {
+  url: string;
+  label: string;
+}
+
+interface Props {
+  tag?: string;
+  title: string;
+  seoTitle?: string;
+  subtitle?: string;
+  seoDescription?: string;
+  path: string;
+  author: Author;
+  reviewer?: Author;
+  publishDate: string;
+  updatedDate?: string;
+  heroImageUrl?: string;
+  heroImageAlt?: string;
+  tocItems?: TOCItem[];
+  faqs?: FAQItem[];
+  citations?: Citation[];
+  ctaVariant?: "consultation" | "assessment" | "testing";
+  relatedLinks?: RelatedLink[];
+}
+
+const {
+  tag,
+  title,
+  seoTitle,
+  subtitle,
+  seoDescription,
+  path,
+  author,
+  reviewer,
+  publishDate,
+  updatedDate,
+  heroImageUrl,
+  heroImageAlt,
+  tocItems = [],
+  faqs = [],
+  citations = [],
+  ctaVariant = "assessment",
+  relatedLinks,
+} = Astro.props;
+
+const metaDescription = seoDescription || subtitle || title;
+---
+
+<BaseLayout
+  title={seoTitle || title}
+  description={metaDescription}
+  path={path}
+  ogType="article"
+>
+  <PageShell>
+    <JsonLd
+      schema={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Blog", path: "/blog/" },
+        { name: title, path },
+      ])}
+    />
+    <JsonLd
+      schema={articleSchema({
+        headline: title,
+        description: subtitle || title,
+        author,
+        reviewer,
+        publishDate,
+        updatedDate,
+        imageUrl: heroImageUrl,
+        url: path,
+      })}
+    />
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: title,
+        description: subtitle || title,
+        url: path,
+        lastReviewed: updatedDate || publishDate,
+        reviewedBy: reviewer,
+      })}
+    />
+    {faqs.length > 0 && <JsonLd schema={faqPageSchema(faqs)} />}
+
+    <article class="max-w-[720px] mx-auto px-6 py-12">
+      <FadeIn>
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-2 text-[13px] text-muted">
+            <li><a href="/" class="hover:text-cream transition-colors">Home</a></li>
+            <li><span>/</span></li>
+            <li><a href="/blog/" class="hover:text-cream transition-colors">Blog</a></li>
+            <li><span>/</span></li>
+            <li class="text-cream-muted line-clamp-1"><span>{title}</span></li>
+          </ol>
+        </nav>
+      </FadeIn>
+      <FadeIn>
+        <header class="mb-10">
+          {
+            tag && (
+              <div class="mb-4">
+                <Tag>{tag}</Tag>
+              </div>
+            )
+          }
+          <h1 class="text-3xl md:text-4xl font-extrabold text-cream leading-tight mb-4">
+            {title}
+          </h1>
+          {subtitle && <p class="text-base text-muted leading-relaxed">{subtitle}</p>}
+        </header>
+      </FadeIn>
+
+      <FadeIn delay={100}>
+        <AuthorByline
+          author={author}
+          reviewer={reviewer}
+          publishDate={publishDate}
+          updatedDate={updatedDate}
+        />
+      </FadeIn>
+
+      {
+        heroImageUrl && (
+          <FadeIn delay={150}>
+            <div class="my-8 rounded-xl overflow-hidden border border-white/10">
+              <img
+                src={heroImageUrl}
+                alt={heroImageAlt || title}
+                width={1200}
+                height={630}
+                loading="eager"
+                fetchpriority="high"
+                class="w-full h-auto object-cover"
+              />
+            </div>
+          </FadeIn>
+        )
+      }
+
+      {
+        tocItems.length > 0 && (
+          <FadeIn delay={200}>
+            <TableOfContents items={tocItems} />
+          </FadeIn>
+        )
+      }
+
+      <div class="prose-content"><slot /></div>
+
+      {faqs.length > 0 && <FAQSection items={faqs} />}
+
+      <MedicalDisclaimer />
+
+      {
+        relatedLinks && relatedLinks.length > 0 && (
+          <section class="mt-12 pt-8 border-t border-white/10">
+            <h3 class="text-lg font-bold text-cream mb-4">Related Articles</h3>
+            <div class="flex flex-col gap-2">
+              {relatedLinks.map((link) => (
+                <a href={link.url} class="text-[14px] text-gold hover:text-gold-hover transition-colors">
+                  &rarr; {link.label}
+                </a>
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      <ArticleLocationsSection />
+
+      <CTABlock variant={ctaVariant} />
+
+      {citations.length > 0 && <CitationList citations={citations} />}
+    </article>
+  </PageShell>
+</BaseLayout>

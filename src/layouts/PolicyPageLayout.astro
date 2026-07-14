@@ -1,0 +1,116 @@
+---
+/**
+ * Port of src/components/layouts/PolicyPageLayout.tsx — the 4 legal pages.
+ * Mobile TOC uses native <details>; desktop TOC is a static list.
+ */
+import BaseLayout from "./BaseLayout.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import { breadcrumbSchema } from "../components/seo/schemas";
+import PageShell from "../components/shared/PageShell.astro";
+import FadeIn from "../components/shared/FadeIn.astro";
+import Icon from "../components/shared/Icon.astro";
+
+export interface PolicyTOCItem {
+  id: string;
+  title: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  seoDescription: string;
+  path: string;
+  effectiveDate: string;
+  lastUpdated?: string;
+  tocItems: PolicyTOCItem[];
+  structuredData?: Record<string, unknown>;
+}
+
+const {
+  title,
+  subtitle,
+  seoDescription,
+  path,
+  effectiveDate,
+  lastUpdated,
+  tocItems,
+  structuredData,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={seoDescription} path={path}>
+  <PageShell>
+    <JsonLd
+      schema={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: title, path },
+      ])}
+    />
+    {structuredData && <JsonLd schema={structuredData} />}
+
+    <section class="pt-20 pb-12 px-8">
+      <div class="max-w-[720px] mx-auto">
+        <FadeIn>
+          <div class="w-12 h-0.5 bg-gold mb-6"></div>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-cream tracking-tight mb-4">
+            {title}
+          </h1>
+          <p class="text-sm text-muted leading-relaxed max-w-[540px] mb-6">{subtitle}</p>
+          <div class="flex flex-wrap gap-4 text-[11px] text-text-subtle tracking-wide uppercase">
+            <span>Effective: {effectiveDate}</span>
+            {lastUpdated && <span>Last Updated: {lastUpdated}</span>}
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    <section class="px-8 pb-24">
+      <div class="max-w-[720px] mx-auto">
+        <div class="md:hidden mb-8">
+          <details class="group">
+            <summary class="w-full flex items-center justify-between p-4 rounded-lg border border-white/5 bg-surface-card text-sm font-semibold text-cream cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              Table of Contents
+              <Icon name="chevron-down" class="w-4 h-4 text-muted transition-transform group-open:rotate-180" />
+            </summary>
+            <nav class="mt-2 p-4 rounded-lg border border-white/5 bg-surface-card">
+              <ol class="flex flex-col gap-2">
+                {
+                  tocItems.map((item, i) => (
+                    <li>
+                      <a href={`#${item.id}`} class="text-xs text-muted hover:text-gold transition-colors">
+                        {i + 1}. {item.title}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ol>
+            </nav>
+          </details>
+        </div>
+
+        <FadeIn class="hidden md:block mb-10">
+          <nav class="p-6 rounded-lg border border-white/5 bg-surface-card">
+            <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">
+              Table of Contents
+            </div>
+            <ol class="flex flex-col gap-2.5">
+              {
+                tocItems.map((item, i) => (
+                  <li>
+                    <a href={`#${item.id}`} class="text-sm text-muted hover:text-cream transition-colors">
+                      {i + 1}. {item.title}
+                    </a>
+                  </li>
+                ))
+              }
+            </ol>
+          </nav>
+        </FadeIn>
+
+        <FadeIn>
+          <div class="prose-strong-health"><slot /></div>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

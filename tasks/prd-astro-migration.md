@@ -133,10 +133,10 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a developer, I want `BlogArticleLayout.astro`, `ReviewArticleLayout.astro`, `PolicyPageLayout.astro` replicating the three content layout systems, including their content primitives (ArticleH2/H3/P/UL/OL, Callout, CiteRef, StepBox, VerdictBox, ComparisonTable, etc.).
 
 **Acceptance Criteria:**
-- [ ] Each primitive exists as an Astro component with the same rendered markup/classes
-- [ ] Layout renders byline, TOC, medical disclaimer, FAQ, citations, related links, CTA sections from frontmatter/props
-- [ ] Article/FAQPage/MedicalWebPage/Breadcrumb JSON-LD emitted from one structured data source per page (no drift between visible FAQ and FAQPage schema — generated from same array)
-- [ ] `.prose-strong-health` styles ported
+- [x] Each primitive exists as an Astro component with the same rendered markup/classes
+- [x] Layout renders byline, TOC, medical disclaimer, FAQ, citations, related links, CTA sections from frontmatter/props
+- [x] Article/FAQPage/MedicalWebPage/Breadcrumb JSON-LD emitted from one structured data source per page (no drift between visible FAQ and FAQPage schema — generated from same array)
+- [x] `.prose-strong-health` styles ported
 
 ### US-006: Migrate all 20 article pages (sexual health ×5, nutrients ×5, peptides ×9, dexa-scan)
 **Description:** As a reader, I want every article preserved word-for-word with identical URLs and schema.

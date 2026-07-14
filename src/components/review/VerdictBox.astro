@@ -1,0 +1,16 @@
+---
+import Icon from "../shared/Icon.astro";
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<div class="my-10 p-8 rounded-xl bg-gradient-to-br from-[#C9A84C]/10 to-transparent border border-gold/20">
+  <div class="flex items-center gap-3 mb-4">
+    <Icon name="shield-check" size={24} class="text-gold" />
+    <h3 class="text-xl font-bold text-cream">{title}</h3>
+  </div>
+  <div class="text-cream-muted leading-[1.8] text-[15px]"><slot /></div>
+</div>

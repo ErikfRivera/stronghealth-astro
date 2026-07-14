@@ -329,6 +329,90 @@ export function jobPostingSchema({
   };
 }
 
+/**
+ * Review-page schema graph (port of buildStructuredData in
+ * ReviewArticleLayout.tsx): Article + FAQPage, plus Product with review /
+ * aggregateRating for product-type reviews. Author/reviewer default to the
+ * named physician (Dr. Angel Rivera).
+ */
+export interface ReviewStructuredDataProps {
+  type: "product" | "competitor";
+  title: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+  faqs: FAQItem[];
+  productName?: string;
+  productRating?: number;
+  productReviewCount?: number;
+  author?: Author;
+  reviewer?: Author;
+}
+
+function reviewPersonSchema(author: Author) {
+  const url = author.profileUrl
+    ? author.profileUrl.startsWith("http")
+      ? author.profileUrl
+      : `${SITE_URL}${author.profileUrl}`
+    : undefined;
+  return {
+    "@type": "Person",
+    name: author.name,
+    jobTitle: author.role,
+    ...(url ? { url } : {}),
+  };
+}
+
+export function buildReviewStructuredData(
+  props: ReviewStructuredDataProps,
+  defaultAuthor: Author,
+): object[] {
+  const author = props.author ?? defaultAuthor;
+  const reviewer = props.reviewer ?? defaultAuthor;
+  const schemas: object[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: props.title,
+      description: props.description,
+      datePublished: props.datePublished,
+      dateModified: props.dateModified,
+      author: reviewPersonSchema(author),
+      reviewedBy: reviewPersonSchema(reviewer),
+      publisher: { "@type": "Organization", name: "Strong Health" },
+      mainEntityOfPage: { "@type": "WebPage" },
+    },
+    faqPageSchema(props.faqs),
+  ];
+
+  if (props.type === "product" && props.productName) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: props.productName,
+      description: props.description,
+      review: {
+        "@type": "Review",
+        author: reviewPersonSchema(author),
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: props.productRating ?? 3,
+          bestRating: 5,
+        },
+      },
+      aggregateRating: props.productReviewCount
+        ? {
+            "@type": "AggregateRating",
+            ratingValue: props.productRating ?? 3,
+            reviewCount: props.productReviewCount,
+          }
+        : undefined,
+    });
+  }
+
+  return schemas;
+}
+
 export interface CollectionPageItem {
   name: string;
   url: string;

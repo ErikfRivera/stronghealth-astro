@@ -1,0 +1,476 @@
+---
+/**
+ * Port of the OLD src/components/BlogArticleLayout.tsx — the layout used by
+ * the 20 long-form article pages (sexual health, nutrients, peptides, diet).
+ * Includes its own lighter footer variant, exactly as production.
+ *
+ * JSON-LD comes from three places, mirroring production:
+ *  - BreadcrumbJsonLd (always)
+ *  - Article + MedicalWebPage when the shared byline (author/reviewer) is used
+ *  - caller-supplied `structuredData` / `schemaData` object or array
+ */
+import BaseLayout from "./BaseLayout.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import { articleSchema, medicalWebPageSchema, breadcrumbSchema } from "../components/seo/schemas";
+import Nav from "../components/shared/Nav.astro";
+import FadeIn from "../components/shared/FadeIn.astro";
+import Icon from "../components/shared/Icon.astro";
+import AuthorByline from "../components/shared/AuthorByline.astro";
+import ArticleLocationsSection from "../components/shared/ArticleLocationsSection.astro";
+import { BOOKING_SMS_HREF } from "../lib/booking";
+import { STRONG_HEALTH_PHONE_DISPLAY } from "../data/miamiClinic";
+import type { Author } from "../data/articleAuthors";
+
+interface TOCItem {
+  id: string;
+  label?: string;
+  title?: string;
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface Citation {
+  id: number;
+  text: string;
+  url?: string;
+}
+
+export interface LegacyAuthor {
+  name: string;
+  credentials?: string;
+  credential?: string;
+  role?: string;
+  profileUrl?: string;
+}
+
+interface RelatedLink {
+  url: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  seoTitle?: string;
+  subtitle?: string;
+  seoDescription?: string;
+  path: string;
+  breadcrumb?: string;
+  lastUpdated?: string;
+  publishDate?: string;
+  updateDate?: string;
+  readTime: string;
+  authors?: LegacyAuthor[];
+  author?: Author;
+  reviewer?: Author;
+  datePublishedISO?: string;
+  dateModifiedISO?: string;
+  pageDescription?: string;
+  tocItems?: TOCItem[];
+  faqs: FAQItem[];
+  citations: Citation[];
+  relatedLinks?: RelatedLink[];
+  structuredData?: object | object[];
+  schemaData?: object | object[];
+  ctaHeading?: string;
+  ctaText?: string;
+  ctaTitle?: string;
+  ctaDescription?: string;
+  ctaButtonText?: string;
+}
+
+const {
+  title,
+  seoTitle,
+  subtitle,
+  seoDescription,
+  path,
+  breadcrumb,
+  lastUpdated,
+  publishDate,
+  updateDate,
+  readTime,
+  authors,
+  author,
+  reviewer,
+  datePublishedISO,
+  dateModifiedISO,
+  pageDescription,
+  tocItems,
+  faqs,
+  citations,
+  relatedLinks,
+  structuredData,
+  schemaData,
+  ctaHeading,
+  ctaText,
+  ctaTitle = "Ready to Talk to a Doctor?",
+  ctaDescription = "Strong Health offers physician-supervised treatment plans tailored to your needs. No judgment. No pressure. Just answers.",
+  ctaButtonText = "Book Your Free Assessment →",
+} = Astro.props;
+
+const jsonLdData = structuredData || schemaData;
+const jsonLdList = jsonLdData ? (Array.isArray(jsonLdData) ? jsonLdData : [jsonLdData]) : [];
+const showSharedByline = !!(author && reviewer && (datePublishedISO || publishDate));
+const isoPublish = datePublishedISO || publishDate;
+const isoModified = dateModifiedISO || updateDate || lastUpdated;
+const heading = ctaHeading || ctaTitle;
+const ctaBody = ctaText || ctaDescription;
+const displayDate = lastUpdated || updateDate;
+const hasBreadcrumb = !!breadcrumb;
+const hasDetailedDates = !!(publishDate || updateDate);
+const hasToc = tocItems && tocItems.length > 0;
+const metaDescription = seoDescription || subtitle || title;
+
+const breadcrumbItems = hasBreadcrumb
+  ? [
+      { name: "Home", path: "/" },
+      { name: "Peptides", path: "/peptides/" },
+      { name: breadcrumb!, path },
+    ]
+  : [
+      { name: "Home", path: "/" },
+      { name: "Blog", path: "/blog/" },
+      { name: title, path },
+    ];
+
+const articleFooterColumns = [
+  {
+    title: "Peptide Therapy",
+    links: [
+      { label: "Peptides for Healing", href: "/peptides-for-healing/" },
+      { label: "Peptides for Tendon Repair", href: "/peptides-for-tendon-repair/" },
+      { label: "Peptides for Muscle Growth", href: "/peptides-for-muscle-growth/" },
+      { label: "Peptides for Sleep", href: "/peptides-for-sleep/" },
+      { label: "Collagen Peptides", href: "/collagen-peptides/" },
+    ],
+  },
+  {
+    title: "Sexual Health",
+    links: [
+      { label: "Porn-Induced ED", href: "/porn-induced-erectile-dysfunction/" },
+      { label: "PE Exercises", href: "/premature-ejaculation-exercises/" },
+      { label: "Home Remedies for PE", href: "/home-remedies-for-premature-ejaculation/" },
+      { label: "Baking Soda & ED", href: "/baking-soda-for-ed/" },
+      { label: "Garlic & Honey for ED", href: "/garlic-and-honey-for-erectile-dysfunction/" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy-policy/" },
+      { label: "HIPAA", href: "/hipaa-policy/" },
+      { label: "Editorial Standards", href: "/editorial-guidelines/" },
+      { label: "Terms of Use", href: "/terms-of-use/" },
+    ],
+  },
+];
+const year = new Date().getFullYear();
+const btnBase =
+  "inline-flex items-center justify-center px-7 py-3.5 rounded-lg cursor-pointer uppercase tracking-[1.2px] transition-all duration-200 text-sm";
+---
+
+<BaseLayout
+  title={seoTitle || title}
+  description={metaDescription}
+  path={path}
+  ogType="article"
+>
+  <div class="min-h-screen bg-surface font-['DM_Sans',sans-serif] selection:bg-gold selection:text-surface text-cream overflow-x-hidden">
+    <JsonLd schema={breadcrumbSchema(breadcrumbItems)} />
+    {
+      showSharedByline && author && (
+        <JsonLd
+          schema={articleSchema({
+            headline: title,
+            description: pageDescription || metaDescription,
+            author,
+            reviewer,
+            publishDate: isoPublish!,
+            updatedDate: isoModified,
+            url: path,
+          })}
+        />
+      )
+    }
+    {
+      showSharedByline && reviewer && (
+        <JsonLd
+          schema={medicalWebPageSchema({
+            name: title,
+            description: pageDescription || metaDescription,
+            url: path,
+            lastReviewed: isoModified || isoPublish,
+            reviewedBy: reviewer,
+          })}
+        />
+      )
+    }
+    {jsonLdList.map((schema) => <JsonLd schema={schema} />)}
+    <Nav />
+    <main class="px-4 md:px-8">
+      <div class="max-w-[760px] mx-auto pt-8 pb-20">
+        <FadeIn>
+          <div class="flex items-center gap-2 text-[13px] text-muted mb-6">
+            <a href="/" class="hover:text-cream transition-colors">Home</a>
+            <span>/</span>
+            {
+              hasBreadcrumb ? (
+                <>
+                  <a href="/peptides/" class="hover:text-cream transition-colors">Peptides</a>
+                  <span>/</span>
+                  <span class="text-cream-muted">{breadcrumb}</span>
+                </>
+              ) : (
+                <>
+                  <a href="/blog/" class="hover:text-cream transition-colors">Blog</a>
+                  <span>/</span>
+                  <span class="text-cream-muted line-clamp-1">{title}</span>
+                </>
+              )
+            }
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={100}>
+          <h1 class="text-[32px] md:text-[42px] font-black text-cream leading-[1.12] tracking-[-1px] mb-4">
+            {title}
+          </h1>
+        </FadeIn>
+
+        {
+          subtitle && (
+            <FadeIn delay={150}>
+              <p class="text-[17px] text-muted leading-relaxed mb-6">{subtitle}</p>
+            </FadeIn>
+          )
+        }
+
+        {
+          showSharedByline && author ? (
+            <FadeIn delay={200}>
+              <div class="mb-6">
+                <AuthorByline
+                  author={author}
+                  reviewer={reviewer}
+                  publishDate={isoPublish!}
+                  updatedDate={isoModified}
+                />
+                <div class="mt-3 flex items-center gap-1.5 text-[12px] text-muted">
+                  <Icon name="clock" size={14} />
+                  <span>{readTime} read</span>
+                </div>
+              </div>
+            </FadeIn>
+          ) : (
+            <FadeIn delay={200}>
+              <div class="flex flex-wrap items-center gap-4 text-[12px] text-muted mb-6 pb-6 border-b border-white/10">
+                {(authors ?? []).map((a) => {
+                  const cred = a.credentials || a.credential || "";
+                  return (
+                    <div class="flex items-center gap-1.5">
+                      <Icon name="user" size={14} class="text-gold" />
+                      {a.profileUrl ? (
+                        <a href={a.profileUrl} class="font-semibold text-cream-muted hover:text-gold transition-colors">
+                          {a.name}
+                        </a>
+                      ) : (
+                        <span class="font-semibold text-cream-muted">{a.name}</span>
+                      )}
+                      {cred && (
+                        <>
+                          <span class="text-text-subtle">&middot;</span>
+                          <span>{cred}</span>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
+                {hasDetailedDates ? (
+                  <>
+                    {publishDate && (
+                      <div class="flex items-center gap-1.5">
+                        <Icon name="calendar" size={14} />
+                        <span>Published {publishDate}</span>
+                      </div>
+                    )}
+                    {updateDate && (
+                      <div class="flex items-center gap-1.5">
+                        <Icon name="calendar" size={14} />
+                        <span>Updated {updateDate}</span>
+                      </div>
+                    )}
+                  </>
+                ) : displayDate ? (
+                  <span>Last updated: {displayDate}</span>
+                ) : null}
+                <div class="flex items-center gap-1.5">
+                  <Icon name="clock" size={14} />
+                  <span>{readTime} read</span>
+                </div>
+              </div>
+            </FadeIn>
+          )
+        }
+
+        {
+          hasToc && (
+            <FadeIn delay={300}>
+              <div class="bg-surface-card rounded-xl border border-white/10 p-6 mb-10">
+                <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-3">Table of Contents</div>
+                <nav class="flex flex-col gap-2">
+                  {tocItems!.map((item) => (
+                    <a href={`#${item.id}`} class="text-[14px] text-body hover:text-cream transition-colors">
+                      {item.title || item.label}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            </FadeIn>
+          )
+        }
+
+        <FadeIn>
+          <div class="bg-navy/10 border border-[#1B4F72]/30 rounded-lg p-5 mb-10">
+            <p class="text-[13px] text-body leading-relaxed">
+              <strong class="text-cream">Medical Disclaimer:</strong>{" "}
+              This content is for informational purposes only and does not
+              constitute medical advice, diagnosis, or treatment. Always consult
+              a qualified healthcare provider before making decisions about your
+              health. Individual results may vary.
+            </p>
+          </div>
+        </FadeIn>
+
+        <div class="prose-strong-health"><slot /></div>
+
+        <section id="faq" class="mt-16 pt-10 border-t border-white/10">
+          <h2 class="text-2xl font-bold text-cream mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-3">
+            {
+              faqs.map((faq) => (
+                <details class="border border-white/10 rounded-lg overflow-hidden group">
+                  <summary class="w-full flex items-center justify-between px-5 py-4 text-left text-[15px] font-semibold text-cream hover:bg-white/5 transition-colors cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <span>{faq.question}</span>
+                    <Icon name="chevron-down" size={18} class="text-muted shrink-0 group-open:rotate-180 group-open:text-gold transition-transform" />
+                  </summary>
+                  <div class="px-5 pb-4 text-[14px] text-body leading-relaxed">{faq.answer}</div>
+                </details>
+              ))
+            }
+          </div>
+        </section>
+
+        {
+          relatedLinks && relatedLinks.length > 0 && (
+            <section class="mt-12 pt-8 border-t border-white/10">
+              <h3 class="text-lg font-bold text-cream mb-4">Related Articles</h3>
+              <div class="flex flex-col gap-2">
+                {relatedLinks.map((link) => (
+                  <a href={link.url} class="text-[14px] text-gold hover:text-gold-hover transition-colors">
+                    &rarr; {link.label}
+                  </a>
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        <ArticleLocationsSection />
+
+        <section class="mt-16 px-6 py-10 bg-gradient-to-br from-[#C9A84C]/[0.12] via-[#0D0F12] to-[#1B4F72]/[0.12] border border-white/10 rounded-xl text-center">
+          <h2 class="text-2xl font-bold text-cream mb-3">{heading}</h2>
+          <p class="text-[15px] text-muted mb-6 max-w-[480px] mx-auto">{ctaBody}</p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href={BOOKING_SMS_HREF} data-track-lead>
+              <span class={`${btnBase} bg-gold text-surface font-bold hover:bg-gold-hover !text-[14px] !px-8 !py-3.5 w-full sm:w-auto`} role="presentation">
+                {ctaButtonText}
+              </span>
+            </a>
+            <a href="/">
+              <span class={`${btnBase} bg-transparent text-cream border-[1.5px] border-white/25 font-semibold hover:bg-white/5 !text-[14px] !px-8 !py-3.5 w-full sm:w-auto gap-2`} role="presentation">
+                <Icon name="phone" size={16} /> Call {STRONG_HEALTH_PHONE_DISPLAY}
+              </span>
+            </a>
+          </div>
+        </section>
+
+        <section id="references" class="mt-12 pt-8 border-t border-white/10">
+          <h3 class="text-lg font-bold text-cream mb-4">References &amp; Citations</h3>
+          <ol class="list-decimal list-inside space-y-2">
+            {
+              citations.map((c) => (
+                <li id={`cite-${c.id}`} class="text-[13px] text-muted leading-relaxed">
+                  {c.url ? (
+                    <a
+                      href={c.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:text-body transition-colors underline underline-offset-2"
+                    >
+                      {c.text}
+                    </a>
+                  ) : (
+                    c.text
+                  )}
+                </li>
+              ))
+            }
+          </ol>
+        </section>
+
+        {
+          hasBreadcrumb && (
+            <FadeIn>
+              <div class="text-center mt-12">
+                <a href="/peptides/" class="inline-flex items-center gap-2 text-[14px] text-gold hover:text-gold-hover transition-colors">
+                  <Icon name="arrow-left" size={16} /> Back to Peptides Hub
+                </a>
+              </div>
+            </FadeIn>
+          )
+        }
+      </div>
+    </main>
+    <footer class="bg-surface-dark px-8 pt-16 pb-8 border-t border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 mb-12">
+          <div>
+            <a href="/" class="flex items-center gap-2.5 mb-4">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C9A84C] to-[#A88832] flex items-center justify-center">
+                <span class="text-surface font-black text-base">S</span>
+              </div>
+              <span class="font-extrabold text-base text-cream">STRONG HEALTH</span>
+            </a>
+            <p class="text-xs text-muted leading-[1.7] max-w-[240px]">
+              Physician-supervised hormone and peptide therapy. In-person exams. Telehealth convenience. Honest answers.
+            </p>
+          </div>
+          {
+            articleFooterColumns.map((col) => (
+              <div>
+                <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">{col.title}</div>
+                <div class="flex flex-col gap-2.5">
+                  {col.links.map((l) => (
+                    <a href={l.href} class="text-xs text-muted hover:text-cream transition-colors w-fit">
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-text-subtle">
+          <div>&copy; {year} Strong Health TRT. All rights reserved.</div>
+          <div class="flex gap-4">
+            <span>Not available in all states.</span>
+            <span>Prescriptions subject to physician approval.</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQItem[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<section class="my-12">
+  <h2 class="text-2xl font-bold text-cream mb-8">Frequently Asked Questions</h2>
+  <div class="space-y-6">
+    {
+      faqs.map((faq) => (
+        <details class="group border border-white/10 rounded-lg overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-4 text-cream font-semibold hover:bg-white/[0.02] transition-colors list-none [&::-webkit-details-marker]:hidden">
+            {faq.question}
+            <span class="text-gold text-xl group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <div class="px-6 pb-5 text-muted leading-[1.8] text-[15px]">{faq.answer}</div>
+        </details>
+      ))
+    }
+  </div>
+</section>

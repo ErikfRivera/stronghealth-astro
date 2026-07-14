@@ -51,6 +51,13 @@ meaning; the US-014 parity audit flags everything else as a defect.
     - `/fl/delray-beach/peptide-therapy/` description 193 → 156 chars
       (tightened clinic phrasing, dropped "Tesamorelin" from the list).
 
+11. **Sitemap `<lastmod>` one-time bump on 21 URLs** (home, hubs, local pages,
+    legal, authors, careers, services): production derived these from the old
+    repo's git history; the new repo's history starts at the migration, and
+    these pages did materially change (see #1–#3). All 26 URLs with hand-
+    curated JSON-LD `dateModified` keep their exact production lastmod;
+    priority/changefreq match production 47/47.
+
 _All other title/description texts are unchanged from production (production
 had already been trimmed to budget after the April SEO audit; the build now
 enforces the budgets: title ≤ 60 chars incl. brand, description 120–160)._

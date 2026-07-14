@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "postbuild": "node scripts/check-seo.mjs",
+    "postbuild": "node scripts/generate-sitemap.mjs && node scripts/check-seo.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro"

@@ -185,10 +185,10 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a search engine, I want `sitemap.xml` functionally identical to today's.
 
 **Acceptance Criteria:**
-- [ ] Custom sitemap generation (Astro integration or postbuild script) emitting per-route `<lastmod>`, `<priority>`, `<changefreq>` per the rules in §3.3
-- [ ] `lastmod` = hand-curated `dateModified` when present, else latest git commit of the page's source file(s), else build date
-- [ ] 404 and any noindex routes excluded
-- [ ] XML validates; diff vs. production sitemap shows only expected differences
+- [x] Custom sitemap generation (Astro integration or postbuild script) emitting per-route `<lastmod>`, `<priority>`, `<changefreq>` per the rules in §3.3
+- [x] `lastmod` = hand-curated `dateModified` when present, else latest git commit of the page's source file(s), else build date
+- [x] 404 and any noindex routes excluded
+- [x] XML validates; diff vs. production sitemap shows only expected differences
 
 ### US-012: Redirects + 404 on Vercel
 **Description:** As a search engine and user, I want old wildcard paths to 301 and unknown URLs to return real 404s.

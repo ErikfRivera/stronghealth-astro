@@ -194,10 +194,10 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a search engine and user, I want old wildcard paths to 301 and unknown URLs to return real 404s.
 
 **Acceptance Criteria:**
-- [ ] `vercel.json` `redirects` (permanent: true) for every §3.2 mapping; trailing-slash normalization via Astro/Vercel config (no redirect chains: slashless → canonical in ONE hop)
-- [ ] Astro `src/pages/404.astro` builds `404.html`; Vercel serves it with HTTP 404 (default static behavior — verify)
-- [ ] `curl -I` checks: known page → 200; slashless → single 308/301 to trailing slash; `/services/anything` → 301 to `/services/`; garbage URL → 404
-- [ ] 404 page is `noindex,follow`, not in sitemap, no internal links to it
+- [x] `vercel.json` `redirects` (permanent: true) for every §3.2 mapping; trailing-slash normalization via Astro/Vercel config (no redirect chains: slashless → canonical in ONE hop)
+- [x] Astro `src/pages/404.astro` builds `404.html`; Vercel serves it with HTTP 404 (default static behavior — verify)
+- [x] `curl -I` checks (verified against the Vercel preview deploy in US-014): known page → 200; slashless → single 308/301 to trailing slash; `/services/anything` → 301 to `/services/`; garbage URL → 404
+- [x] 404 page is `noindex,follow`, not in sitemap, no internal links to it
 
 ### US-013: Fix known SEO defects
 **Description:** As the site owner, I want the SEO_AUDIT.md failures fixed in the new build, not carried over.

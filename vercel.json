@@ -1,0 +1,41 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/about/:path+", "destination": "/about/", "permanent": true },
+    { "source": "/services/:path+", "destination": "/services/", "permanent": true },
+    { "source": "/peptides/:path+", "destination": "/peptides/", "permanent": true },
+    { "source": "/peptides-for-tendon-repair/:path+", "destination": "/peptides-for-tendon-repair/", "permanent": true },
+    { "source": "/peptides-for-libido/:path+", "destination": "/peptides-for-libido/", "permanent": true },
+    { "source": "/peptides-for-sleep/:path+", "destination": "/peptides-for-sleep/", "permanent": true },
+    { "source": "/peptides-for-belly-fat/:path+", "destination": "/peptides-for-belly-fat/", "permanent": true },
+    { "source": "/peptides-for-muscle-growth/:path+", "destination": "/peptides-for-muscle-growth/", "permanent": true },
+    { "source": "/peptides-for-arthritis/:path+", "destination": "/peptides-for-arthritis/", "permanent": true },
+    { "source": "/peptides-for-healing/:path+", "destination": "/peptides-for-healing/", "permanent": true },
+    { "source": "/collagen-peptides/:path+", "destination": "/collagen-peptides/", "permanent": true },
+    { "source": "/semaglutide-diet/:path+", "destination": "/semaglutide-diet/", "permanent": true },
+    { "source": "/stillman-diet/:path+", "destination": "/stillman-diet/", "permanent": true },
+    { "source": "/fl/boca-raton/:path*", "destination": "/", "permanent": true },
+    { "source": "/fl/hollywood/:path*", "destination": "/", "permanent": true },
+    { "source": "/fl/homestead/:path*", "destination": "/", "permanent": true },
+    { "source": "/fl/hialeah/:path*", "destination": "/", "permanent": true },
+    { "source": "/fl/pembroke-pines/:path*", "destination": "/", "permanent": true },
+    { "source": "/fl/fort-lauderdale/:path*", "destination": "/", "permanent": true },
+    { "source": "/fl/coral-gables/:path*", "destination": "/", "permanent": true },
+    { "source": "/dexascans/:path*", "destination": "https://www.dexascans.com/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}

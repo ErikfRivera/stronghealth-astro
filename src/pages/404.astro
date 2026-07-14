@@ -1,0 +1,100 @@
+---
+// 404 page — port of src/pages/NotFoundPage.tsx. Astro builds this as
+// dist/404.html, which Vercel serves with a real HTTP 404 status for any
+// unknown URL. noindex,follow; excluded from the sitemap (generate-sitemap
+// only walks index.html files); never internally linked (check-seo enforces).
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageShell from "../components/shared/PageShell.astro";
+import { articles, type ArticleMeta } from "../data/articles";
+import { ALL_CITIES } from "../data/local/cityTrtConfig";
+import { ALL_WEIGHT_LOSS_CITIES } from "../data/local/cityWeightLossConfig";
+
+const peptideArticles: ArticleMeta[] = articles.filter(
+  (a) => a.category === "Peptide Therapy",
+);
+
+type GridLink = { to: string; title: string };
+
+const peptideLinks: GridLink[] = [
+  { to: "/peptides/", title: "Peptide Therapy Hub" },
+  ...peptideArticles.map((a) => ({ to: a.path, title: a.title })),
+];
+
+const clinicLinks: GridLink[] = [
+  { to: "/fl/", title: "Florida Clinics Hub" },
+  ...ALL_CITIES.map((c) => ({
+    to: `/fl/${c.slug}/trt-therapy/`,
+    title: `${c.name} TRT Therapy`,
+  })),
+  ...ALL_WEIGHT_LOSS_CITIES.map((c) => ({
+    to: `/fl/${c.slug}/weight-loss-clinic/`,
+    title: `${c.name} Weight Loss Clinic`,
+  })),
+];
+---
+
+<BaseLayout
+  title="Page Not Found (404)"
+  description="The page you're looking for couldn't be found. Browse Strong Health peptide therapy guides and South Florida TRT and weight loss clinic locations."
+  path="/404/"
+  noindex
+>
+  <PageShell>
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          <li>
+            <a href="/" class="hover:text-gold transition-colors">Home</a>
+          </li>
+          <li class="text-text-subtle">/</li>
+          <li class="text-gold font-semibold">Page not found</li>
+        </ol>
+      </div>
+    </nav>
+    <section class="px-8 pt-10 pb-16">
+      <div class="max-w-[1000px] mx-auto">
+        <h1 class="text-[32px] md:text-[40px] font-black text-cream tracking-[-1px] mb-3">
+          Page not found
+        </h1>
+        <p class="text-[15px] text-muted mb-4">
+          The page you're looking for doesn't exist or has moved.
+        </p>
+        <a href="/" class="inline-block text-[14px] font-semibold text-gold hover:underline mb-12">
+          ← Back to homepage
+        </a>
+
+        <h2 class="text-[20px] font-extrabold text-cream mb-4">Peptide guides</h2>
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {
+            peptideLinks.map((link) => (
+              <li>
+                <a
+                  href={link.to}
+                  class="block bg-surface-card rounded-lg p-4 border border-white/10 text-[14px] text-cream hover:border-gold/40 hover:text-gold transition-colors"
+                >
+                  {link.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <h2 class="text-[20px] font-extrabold text-cream mt-12 mb-4">Clinic locations</h2>
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {
+            clinicLinks.map((link) => (
+              <li>
+                <a
+                  href={link.to}
+                  class="block bg-surface-card rounded-lg p-4 border border-white/10 text-[14px] text-cream hover:border-gold/40 hover:text-gold transition-colors"
+                >
+                  {link.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

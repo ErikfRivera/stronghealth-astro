@@ -215,10 +215,10 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As the site owner, I want proof nothing regressed before DNS cutover.
 
 **Acceptance Criteria:**
-- [ ] Script crawls production sitemap URLs on both prod and Vercel preview; diffs per URL: HTTP status, title, description, canonical, robots, JSON-LD types, H1, word count (±5%)
-- [ ] Report checked into repo; all diffs either "expected (US-013 fix)" or resolved
-- [ ] Internal link crawl: zero broken internal links on preview
-- [ ] Lighthouse CI run on 8 representative pages (home, hub, article, review, local, legal, blog, 404): all ≥ 95 mobile performance
+- [x] Script crawls production sitemap URLs on both prod and Vercel preview; diffs per URL: HTTP status, title, description, canonical, robots, JSON-LD types, H1, word count (±5%)
+- [x] Report checked into repo; all diffs either "expected (US-013 fix)" or resolved
+- [x] Internal link crawl: zero broken internal links on preview
+- [x] Lighthouse CI run on 8 representative pages (home, hub, article, review, local, legal, blog, 404): all ≥ 95 mobile performance
 
 ### US-015: Vercel production cutover
 **Description:** As the site owner, I want www.stronghealth.com served by Vercel with zero downtime.

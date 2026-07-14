@@ -33,6 +33,11 @@ meaning; the US-014 parity audit flags everything else as a defect.
    resveratrol, foods-that-lower-testosterone, all 8 old-layout peptide pages).
    Now renders "X min read" once.
 
+8. **Diet-page food accordions ship every item in the initial HTML.** Production
+   (React AccordionFoodList) rendered only category headers until clicked; the
+   `<details>` port includes all food items statically. Food-group data lifted
+   verbatim from the page source.
+
 _Title/description texts are unchanged from production (production had already
 been trimmed to budget after the April SEO audit; the build now enforces the
 budgets: title ≤ 60 chars incl. brand, description 120–160)._

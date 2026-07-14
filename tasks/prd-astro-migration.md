@@ -151,9 +151,9 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a reader, I want `/semaglutide-diet/` and `/stillman-diet/` with their specialized components (EvidenceQualityBadge, VisualScorecard, MacroProfileCard, DietComparisonTable, AccordionFoodList, SampleMealPlan, ContextualCTA).
 
 **Acceptance Criteria:**
-- [ ] Donut chart (MacroProfileCard) rendered as static SVG at build time — no client JS
-- [ ] All 7 diet components visually match production
-- [ ] FAQPage/MedicalWebPage/Article schema parity
+- [x] Donut chart (MacroProfileCard) rendered as static SVG at build time — no client JS
+- [x] All 7 diet components visually match production
+- [x] FAQPage/MedicalWebPage/Article schema parity
 
 ### US-008: Migrate reviews hub + 5 review pages
 **Description:** As a reader, I want the reviews cluster with verdicts, comparison tables, and Product schema intact.

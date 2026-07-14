@@ -1,0 +1,62 @@
+---
+/**
+ * Port of components/diet/AccordionFoodList.tsx as native <details>/<summary>.
+ * Unlike production (React useState — items absent from static HTML until a
+ * click), every food item ships in the initial HTML (see
+ * CHANGES-FROM-PRODUCTION.md).
+ */
+import Icon from "../shared/Icon.astro";
+
+export interface FoodGroup {
+  category: string;
+  emoji?: string;
+  items: string[];
+}
+
+interface Props {
+  groups: FoodGroup[];
+  title?: string;
+  variant?: "eat" | "avoid";
+}
+
+const { groups, title, variant = "eat" } = Astro.props;
+
+const accentColor = variant === "eat" ? "#34D399" : "#EF4444";
+const openBg = variant === "eat" ? "open:bg-[rgba(52,211,153,0.06)]" : "open:bg-[rgba(239,68,68,0.06)]";
+const openBorder = variant === "eat" ? "open:border-[rgba(52,211,153,0.15)]" : "open:border-[rgba(239,68,68,0.15)]";
+const mark = variant === "eat" ? "✓" : "✕";
+---
+
+<div class="mb-6">
+  {title && <h4 class="text-[15px] font-bold mb-3" style={`color:${accentColor}`}>{title}</h4>}
+  <div class="flex flex-col gap-2">
+    {
+      groups.map((group) => (
+        <details class={`group rounded-lg overflow-hidden border border-[rgba(255,255,255,0.08)] bg-transparent ${openBg} ${openBorder}`}>
+          <summary class="w-full flex items-center justify-between px-4 py-3 text-left cursor-pointer hover:bg-white/[0.03] transition-colors list-none [&::-webkit-details-marker]:hidden">
+            <span class="text-[14px] font-semibold text-cream-muted flex items-center gap-2">
+              {group.emoji && <span>{group.emoji}</span>}
+              {group.category}
+              <span class="text-[11px] text-muted font-normal">({group.items.length})</span>
+            </span>
+            <Icon
+              name="chevron-down"
+              size={16}
+              class="text-muted group-open:rotate-180 transition-transform"
+            />
+          </summary>
+          <div class="px-4 pb-3">
+            <ul class="flex flex-col gap-1.5">
+              {group.items.map((item) => (
+                <li class="flex items-start gap-2 text-[13px] text-body leading-[1.6]">
+                  <span class="mt-0.5 shrink-0" style={`color:${accentColor}`}>{mark}</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</div>

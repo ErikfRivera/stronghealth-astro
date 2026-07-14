@@ -1,0 +1,145 @@
+---
+// /dexa-scan/ — data arrays ported from src/pages/dexa-scan.tsx (source commit
+// 9398453); body text extracted from rendered production HTML into the
+// imported fragment. Uses the V2 layout (auto Breadcrumb/Article/
+// MedicalWebPage/FAQPage JSON-LD from these same arrays).
+import BlogArticleLayoutV2 from "../layouts/BlogArticleLayoutV2.astro";
+import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../data/articleAuthors";
+import body from "../content/fragments/dexa-scan.html?raw";
+
+const tocItems = [
+  { id: "what-is-dexa", title: "What Is a DEXA Scan?" },
+  { id: "what-dexa-measures", title: "What DEXA Measures" },
+  { id: "dexa-vs-other-methods", title: "DEXA vs. Other Body Composition Methods" },
+  { id: "how-dexa-works", title: "How a DEXA Scan Works" },
+  { id: "preparing-for-dexa", title: "How to Prepare for Your Scan" },
+  { id: "reading-results", title: "Reading Your DEXA Results" },
+  { id: "dexa-and-trt", title: "DEXA Scans and TRT Monitoring" },
+  { id: "how-often", title: "How Often Should You Get Scanned?" },
+  { id: "faq", title: "Frequently Asked Questions" },
+];
+
+const faqs = [
+  {
+    question: "Is a DEXA scan safe?",
+    answer:
+      "Yes. A DEXA scan uses an extremely low dose of ionizing radiation: roughly 1/10th of a standard chest X-ray and less than a day of natural background exposure. It is considered one of the safest imaging technologies available and is FDA-approved for repeated use.",
+  },
+  {
+    question: "How long does a DEXA scan take?",
+    answer:
+      "A full-body DEXA scan typically takes between 10 and 20 minutes. You lie flat on an open table while the scanner arm passes over your body. There is no enclosed space, no injections, and no discomfort.",
+  },
+  {
+    question: "How accurate is DEXA compared to other methods?",
+    answer:
+      "DEXA is considered the clinical gold standard for body composition analysis with a margin of error of approximately 1–2%. Bioelectrical impedance (BIA) scales can vary by 5–8% depending on hydration, and skinfold calipers are highly operator-dependent. Only underwater weighing (hydrostatic) approaches DEXA's precision, but it is far less practical.",
+  },
+  {
+    question: "Will insurance cover a DEXA scan?",
+    answer:
+      "Insurance typically covers DEXA scans for bone density screening in patients over 65 or those with osteoporosis risk factors. Body composition DEXA scans are generally not covered by insurance and are paid out of pocket. Costs typically range from $75 to $200 per scan depending on location.",
+  },
+  {
+    question: "Can I eat or drink before a DEXA scan?",
+    answer:
+      "You can eat and drink normally, but for the most consistent results, avoid eating a large meal within 2 hours of your scan and stay well-hydrated at a normal level. Avoid calcium supplements on the day of your scan, as they can interfere with bone density readings.",
+  },
+  {
+    question: "How does DEXA help with testosterone therapy?",
+    answer:
+      "DEXA provides objective data on lean mass gains and fat loss: two key outcomes of TRT. By comparing baseline scans with follow-ups at 3–6 month intervals, physicians can verify that therapy is producing measurable body composition improvements and adjust dosing if needed.",
+  },
+  {
+    question: "What is the difference between a bone density DEXA and a body composition DEXA?",
+    answer:
+      "Both use the same technology, but they measure different things. A bone density DEXA focuses on specific skeletal sites (hip, spine) to screen for osteoporosis. A body composition DEXA scans the entire body and reports fat mass, lean mass, and bone mineral content across every region, giving you a complete picture of your physical makeup.",
+  },
+  {
+    question: "Do I need a doctor's referral for a DEXA scan?",
+    answer:
+      "Requirements vary by state and facility. Many body composition DEXA providers accept walk-ins without a referral. If you're pursuing a DEXA as part of a hormone optimization or TRT program, your prescribing physician can order the scan as part of your treatment plan.",
+  },
+];
+
+const citations = [
+  {
+    id: 1,
+    authors: "Shepherd JA, Ng BK, Sommer MJ, Heymsfield SB",
+    title: "Body composition by DXA",
+    journal: "Bone",
+    year: 2017,
+    url: "https://pubmed.ncbi.nlm.nih.gov/28625918/",
+  },
+  {
+    id: 2,
+    authors: "Snyder PJ, Bhasin S, Cunningham GR, et al.",
+    title: "Effects of Testosterone Treatment in Older Men",
+    journal: "New England Journal of Medicine",
+    year: 2016,
+    url: "https://pubmed.ncbi.nlm.nih.gov/26906150/",
+  },
+  {
+    id: 3,
+    authors: "Kendler DL, Borges JLC, Fielding RA, et al.",
+    title: "The Official Positions of the International Society for Clinical Densitometry: Indications of Use and Reporting of DXA",
+    journal: "Journal of Clinical Densitometry",
+    year: 2013,
+    url: "https://pubmed.ncbi.nlm.nih.gov/24183638/",
+  },
+  {
+    id: 4,
+    authors: "Borga M, West J, Bell JD, et al.",
+    title: "Advanced body composition assessment: from body mass index to body composition profiling",
+    journal: "Journal of Investigative Medicine",
+    year: 2018,
+    url: "https://pubmed.ncbi.nlm.nih.gov/29581385/",
+  },
+  {
+    id: 5,
+    authors: "Storer TW, Basaria S, Traustadottir T, et al.",
+    title: "Effects of Testosterone Supplementation for 3 Years on Muscle Performance and Physical Function in Older Men",
+    journal: "Journal of Clinical Endocrinology & Metabolism",
+    year: 2017,
+    url: "https://pubmed.ncbi.nlm.nih.gov/27105904/",
+  },
+  {
+    id: 6,
+    authors: "Hangartner TN, Warner S, Braillon P, Jankowski L, Shepherd J",
+    title: "The Official Positions of the International Society for Clinical Densitometry: acquisition of dual-energy X-ray absorptiometry body composition and considerations regarding analysis and repeatability of measures",
+    journal: "Journal of Clinical Densitometry",
+    year: 2013,
+    url: "https://pubmed.ncbi.nlm.nih.gov/24183637/",
+  },
+];
+
+const relatedLinks = [
+  { url: "/fl/miami/dexascan/", label: "DEXA Scan in Miami: Strong Health Clinic" },
+  { url: "/peptides-for-muscle-growth/", label: "Peptides for Muscle Growth: CJC-1295, Ipamorelin & BPC-157" },
+  { url: "/peptides-for-belly-fat/", label: "Peptides for Belly Fat: Tesamorelin and AOD-9604" },
+  { url: "/peptides-for-healing/", label: "Peptides for Healing: BPC-157 and TB-500" },
+  { url: "/semaglutide-diet/", label: "Semaglutide Diet: Complete Guide for Weight Loss" },
+  { url: "/baking-soda-for-ed/", label: "Baking Soda for ED: What the Science Actually Says" },
+  { url: "/reviews/nugenix-ultimate-testosterone/", label: "Nugenix Ultimate Testosterone Review" },
+];
+---
+
+<BlogArticleLayoutV2
+  tag="Body Composition"
+  title="DEXA Scan: The Gold Standard for Body Composition Analysis"
+  seoTitle="DEXA Scan: Body Composition Analysis"
+  subtitle="Everything you need to know about dual-energy X-ray absorptiometry: what it measures, how it compares to other methods, how to prepare, and why it matters for TRT and hormone optimization monitoring."
+  path="/dexa-scan/"
+  seoDescription="How DEXA scans measure body fat, muscle mass, and bone density with clinical precision. Compare DEXA to other methods and its role in TRT monitoring."
+  author={MAHADEV_MUKHERJEE}
+  reviewer={DR_ANGEL_RIVERA}
+  publishDate="2025-03-15"
+  updatedDate="2025-03-28"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  ctaVariant="assessment"
+  relatedLinks={relatedLinks}
+>
+  <Fragment set:html={body} />
+</BlogArticleLayoutV2>

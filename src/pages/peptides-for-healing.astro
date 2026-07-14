@@ -1,0 +1,48 @@
+---
+// /peptides-for-healing/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-healing.html?raw";
+
+const path = "/peptides-for-healing/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "What are peptides used for in medicine?", "answer": "Peptides are used in regenerative medicine to support tissue healing, reduce inflammation, modulate immune function, and optimize hormonal balance. Specific applications include tendon and joint repair, body composition optimization, sleep improvement, sexual health, and anti-aging protocols. All therapeutic peptide use requires physician supervision."}, {"question": "Are healing peptides FDA-approved?", "answer": "FDA approval status varies by peptide. PT-141 (bremelanotide) and Tesamorelin have specific FDA approvals. BPC-157, TB-500, and GHK-Cu are used as research peptides under physician supervision but do not hold FDA approval for clinical use. Insulin and other well-known peptides have long-standing FDA approvals for their specific indications."}, {"question": "How are peptides administered?", "answer": "Most therapeutic peptides are administered via subcutaneous injection: a small injection just under the skin, similar to how insulin is administered. Some peptides are available in oral, topical, or nasal spray formulations, though bioavailability may vary by route. Your physician will determine the most appropriate administration method."}, {"question": "How long does peptide therapy take to work?", "answer": "Response timelines vary by peptide and condition. Some patients notice improvements within 1–2 weeks (pain reduction, sleep quality), while body composition and tissue healing changes typically become apparent over 4–12 weeks. Most protocols run 8–16 weeks with regular physician monitoring."}, {"question": "Can multiple peptides be used together?", "answer": "Yes. Many treatment protocols combine peptides that work through complementary mechanisms: for example, BPC-157 and TB-500 for healing, or Ipamorelin and CJC-1295 for GH optimization. All combination protocols must be designed and monitored by a physician."}, {"question": "Are peptides safe?", "answer": "When used under physician supervision at appropriate doses, therapeutic peptides have generally favorable safety profiles based on available research. Side effects are typically mild (injection site reactions, mild headache). However, long-term human safety data is limited for some peptides, which is why physician oversight is essential."}, {"question": "How much does peptide therapy cost?", "answer": "Costs vary based on the specific peptide(s), treatment duration, and individual protocol. Most peptide therapy is not covered by insurance. Strong Health provides transparent pricing during the consultation process so patients can make informed decisions before committing to treatment."}];
+
+const citations = [{"id": 1, "text": "Seiwerth S, et al. BPC 157 and standard angiogenic growth factors: Gastrointestinal tract healing, lessons from tendon, ligament, muscle and bone healing. Curr Pharm Des. 2018;24(18):1972-1989.", "url": "https://pubmed.ncbi.nlm.nih.gov/29737246/"}, {"id": 2, "text": "Sikiric P, et al. Brain-gut axis and pentadecapeptide BPC 157: Theoretical and practical implications. Curr Neuropharmacol. 2016;14(8):857-865.", "url": "https://pubmed.ncbi.nlm.nih.gov/27306034/"}, {"id": 3, "text": "Malinda KM, et al. Thymosin beta4 accelerates wound healing. J Invest Dermatol. 1999;113(3):364-368.", "url": "https://pubmed.ncbi.nlm.nih.gov/10469334/"}, {"id": 4, "text": "Sosne G, et al. Thymosin beta 4 promotes dermal healing. Ann N Y Acad Sci. 2007;1112:413-421.", "url": "https://pubmed.ncbi.nlm.nih.gov/17600293/"}, {"id": 5, "text": "Pickart L, Margolina A. Regenerative and protective actions of the GHK-Cu peptide in the light of the new gene data. Int J Mol Sci. 2018;19(7):1987.", "url": "https://pubmed.ncbi.nlm.nih.gov/29986520/"}, {"id": 6, "text": "Huff T, et al. Beta-thymosins, small acidic peptides with multiple functions. Int J Biochem Cell Biol. 2001;33(3):205-220.", "url": "https://pubmed.ncbi.nlm.nih.gov/11311851/"}, {"id": 7, "text": "Sikiric P, et al. Stable gastric pentadecapeptide BPC 157 in trials for inflammatory bowel disease. World J Gastroenterol. 2021;27(15):1584-1602.", "url": "https://pubmed.ncbi.nlm.nih.gov/33958845/"}, {"id": 8, "text": "Junnila RK, et al. The GH/IGF-1 axis in ageing and longevity. Nat Rev Endocrinol. 2013;9(6):366-376.", "url": "https://pubmed.ncbi.nlm.nih.gov/23591370/"}];
+
+const tocItems = [{"id": "what-are-peptides", "title": "What Are Therapeutic Peptides?"}, {"id": "bpc-157", "title": "BPC-157: The Body Protection Compound"}, {"id": "tb-500", "title": "TB-500 (Thymosin Beta-4)"}, {"id": "ghk-cu", "title": "GHK-Cu: The Regenerative Tripeptide"}, {"id": "how-healing-peptides-work", "title": "How Healing Peptides Work"}, {"id": "conditions-treated", "title": "Conditions That May Benefit"}, {"id": "peptide-guides", "title": "Condition-Specific Peptide Guides"}, {"id": "clinical-evidence", "title": "Clinical Evidence Overview"}, {"id": "treatment-approach", "title": "Our Treatment Approach"}, {"id": "safety", "title": "Safety and Physician Supervision"}, {"id": "faq", "title": "FAQ"}];
+
+const relatedLinks = [{"url": "/peptides-for-tendon-repair/", "label": "Peptides for Tendon Repair: BPC-157 and TB-500"}, {"url": "/peptides-for-sleep/", "label": "Peptides for Sleep: DSIP and Sleep Architecture"}, {"url": "/peptides-for-muscle-growth/", "label": "Peptides for Muscle Growth: CJC-1295, Ipamorelin & BPC-157"}, {"url": "/peptides-for-arthritis/", "label": "Peptides for Arthritis: Joint Inflammation Treatment"}, {"url": "/peptides-for-belly-fat/", "label": "Peptides for Belly Fat: Tesamorelin and AOD-9604"}, {"url": "/dexa-scan/", "label": "DEXA Scan: The Gold Standard for Body Composition Analysis"}];
+
+// Production wrapped this page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Healing: Your Complete Guide to BPC-157, TB-500, and GHK-Cu"
+  seoTitle="Healing Peptides: BPC-157, TB-500 & GHK-Cu"
+  subtitle="Therapeutic peptides represent a new frontier in regenerative medicine. This in-depth guide covers the three most studied healing peptides: how they work, what conditions they address, and what the clinical evidence says: to help you make informed decisions with your physician."
+  seoDescription="Explore BPC-157, TB-500, and GHK-Cu healing peptides. Learn how they work, what conditions they treat, and what clinical evidence supports their use."
+  path={path}
+  breadcrumb="Peptides for Healing"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-01-10"
+  dateModifiedISO="2026-03-15"
+  readTime="15 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Interested in Peptide Therapy?"
+  ctaText="Our physician team evaluates your health goals and determines if peptide therapy is right for you. Every protocol is individualized and physician-supervised."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

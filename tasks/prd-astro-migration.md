@@ -142,10 +142,10 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a reader, I want every article preserved word-for-word with identical URLs and schema.
 
 **Acceptance Criteria:**
-- [ ] Content ported into Astro pages (or MDX with layout) — text content diff vs. production HTML shows no meaningful differences
-- [ ] Every page: same URL, title (fixing over-length only where SEO_AUDIT flags it — see US-013), description, canonical, JSON-LD types
-- [ ] Internal links preserved (same hrefs)
-- [ ] Citations render with same numbering/links
+- [x] Content ported into Astro pages (or MDX with layout) — text content diff vs. production HTML shows no meaningful differences
+- [x] Every page: same URL, title (fixing over-length only where SEO_AUDIT flags it — see US-013), description, canonical, JSON-LD types
+- [x] Internal links preserved (same hrefs)
+- [x] Citations render with same numbering/links
 
 ### US-007: Migrate diet cluster + diet components
 **Description:** As a reader, I want `/semaglutide-diet/` and `/stillman-diet/` with their specialized components (EvidenceQualityBadge, VisualScorecard, MacroProfileCard, DietComparisonTable, AccordionFoodList, SampleMealPlan, ContextualCTA).

@@ -1,0 +1,39 @@
+---
+// /nadh-benefits/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/nadh-benefits.html?raw";
+
+const path = "/nadh-benefits/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "What is the difference between NAD+ and NADH?", "answer": "NAD+ (nicotinamide adenine dinucleotide, oxidized form) and NADH (the reduced form) are two states of the same coenzyme. NAD+ accepts electrons during metabolic reactions (it gets 'reduced' to NADH), while NADH donates electrons, particularly to the mitochondrial electron transport chain to produce ATP. They work as a redox pair: the ratio between them influences cellular energy production, gene expression, and metabolic health. NAD+ is often emphasized for its role in activating sirtuins and DNA repair, while NADH is the direct fuel for ATP generation."}, {"question": "Should I supplement with NAD+ or NADH?", "answer": "It depends on your primary goal. NADH supplements directly provide the reduced form that feeds into ATP production, making it potentially useful for energy and cognitive support. NAD+ precursors like NR (nicotinamide riboside) or NMN (nicotinamide mononucleotide) are taken to boost total NAD+ pool levels, which supports sirtuin activation, DNA repair, and longevity-related pathways. Many researchers consider NAD+ precursors more broadly beneficial for aging, while NADH may provide more immediate subjective energy effects."}, {"question": "How much NADH should I take?", "answer": "Most clinical studies on NADH have used doses of 5–20 mg per day. For cognitive support and general energy, 5–10 mg daily is the most commonly studied range. Higher doses (20 mg) have been used in chronic fatigue syndrome research. NADH supplements should be taken on an empty stomach, typically 30 minutes before breakfast, as stomach acid and food can degrade the compound. Enteric-coated or sublingual formulations offer better bioavailability."}, {"question": "Can NADH improve athletic performance?", "answer": "The theoretical basis is sound: NADH is the primary electron donor in mitochondrial ATP synthesis, and more available NADH could support greater energy output. However, clinical evidence for NADH supplementation improving athletic performance in healthy individuals is limited. Most positive studies have been in populations with fatigue or mitochondrial dysfunction. For healthy athletes, strategies that boost total NAD+ pools (through NR, NMN, or lifestyle factors like exercise and fasting) may be more effective."}, {"question": "Does NADH have side effects?", "answer": "NADH is generally well tolerated at standard supplemental doses (5–20 mg/day). Reported side effects are rare and mild, including occasional GI discomfort, restlessness, or insomnia if taken later in the day. Because NADH can be stimulating, it's best taken in the morning. There are no well-documented serious adverse effects, though long-term safety data from large trials is limited. As with any supplement, men taking medications should consult their physician."}];
+
+const citations = [{"id": 1, "text": "Belenky P, et al. NAD+ metabolism in health and disease. Trends Biochem Sci. 2007;32(1):12-19.", "url": "https://pubmed.ncbi.nlm.nih.gov/17161604/"}, {"id": 2, "text": "Xie N, et al. NAD+ metabolism: pathophysiologic mechanisms and therapeutic potential. Signal Transduct Target Ther. 2020;5(1):227.", "url": "https://pubmed.ncbi.nlm.nih.gov/33028824/"}, {"id": 3, "text": "Braidy N, et al. Age related changes in NAD+ metabolism, oxidative stress and Sirt1 activity in Wistar rats. PLoS One. 2011;6(4):e19194.", "url": "https://pubmed.ncbi.nlm.nih.gov/21541336/"}, {"id": 4, "text": "Birkmayer JG, et al. Nicotinamide adenine dinucleotide (NADH): a new therapeutic approach to Parkinson's disease. Acta Neurol Scand Suppl. 1993;146:32-35.", "url": "https://pubmed.ncbi.nlm.nih.gov/8101414/"}, {"id": 5, "text": "Forsyth LM, et al. Therapeutic effects of oral NADH on the symptoms of patients with chronic fatigue syndrome. Ann Allergy Asthma Immunol. 1999;82(2):185-191.", "url": "https://pubmed.ncbi.nlm.nih.gov/10071523/"}, {"id": 6, "text": "Demarin V, et al. Treatment of Alzheimer's disease with stabilized oral nicotinamide adenine dinucleotide. Drugs Exp Clin Res. 2004;30(1):27-33.", "url": "https://pubmed.ncbi.nlm.nih.gov/15134388/"}, {"id": 7, "text": "Imai S, Guarente L. NAD+ and sirtuins in aging and disease. Trends Cell Biol. 2014;24(8):464-471.", "url": "https://pubmed.ncbi.nlm.nih.gov/24786309/"}, {"id": 8, "text": "Cantó C, et al. NAD+ metabolism and the control of energy homeostasis: a balancing act between mitochondria and the nucleus. Cell Metab. 2015;22(1):31-53.", "url": "https://pubmed.ncbi.nlm.nih.gov/26118927/"}, {"id": 9, "text": "Verdin E. NAD+ in aging, metabolism, and neurodegeneration. Science. 2015;350(6265):1208-1213.", "url": "https://pubmed.ncbi.nlm.nih.gov/26785480/"}];
+
+const structuredData = faqPageSchema(faqs);
+---
+
+<BlogArticleLayout
+  title="NADH Benefits: Cellular Energy, Cognition & the NAD+/NADH Distinction Explained"
+  seoTitle="NADH vs NAD+: Benefits, Energy & Cognition"
+  subtitle="NADH is the reduced form of NAD+ and the primary electron carrier that drives mitochondrial ATP production. Understanding how it works, and how it differs from NAD+, can inform smarter decisions about energy, brain health, and aging."
+  seoDescription="Understand NADH benefits for cellular energy, cognition, and aging. Learn how NADH differs from NAD+ and which supplement strategy fits your goals."
+  path={path}
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-03-28"
+  dateModifiedISO="2026-03-28"
+  readTime="10 min"
+  faqs={faqs}
+  citations={citations}
+  structuredData={structuredData}
+  ctaHeading="Ready to Talk to a Doctor?"
+  ctaText="Strong Health offers physician-supervised treatment plans tailored to your needs. No judgment. No pressure. Just answers."
+  ctaButtonText="Book Your Free Assessment →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

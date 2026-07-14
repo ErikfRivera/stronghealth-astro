@@ -56,9 +56,21 @@ function routeForFile(file) {
   return "/" + rel.replace(/index\.html$/, "");
 }
 
+function decodeEntities(s) {
+  return s
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, " ");
+}
+
 function extract(html, re) {
   const m = html.match(re);
-  return m ? m[1] : null;
+  return m ? decodeEntities(m[1]) : null;
 }
 
 // TEMPORARY migration scaffolding: the 46 canonical routes that WILL exist

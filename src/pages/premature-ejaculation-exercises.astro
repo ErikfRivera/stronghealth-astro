@@ -1,0 +1,45 @@
+---
+// /premature-ejaculation-exercises/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/premature-ejaculation-exercises.html?raw";
+
+const path = "/premature-ejaculation-exercises/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "How long do pelvic floor exercises take to improve PE?", "answer": "Most men begin noticing improvements in ejaculatory control within 4–6 weeks of consistent practice. A 2014 study found that 82.5% of men with lifelong PE gained ejaculatory control after 12 weeks of pelvic floor rehabilitation. The key factor is consistency: exercises must be performed daily for the muscle adaptations to occur."}, {"question": "What's the difference between Kegels and reverse Kegels?", "answer": "Standard Kegels involve contracting (tightening) the pelvic floor muscles, the same muscles you use to stop urine midstream. This builds strength for voluntary ejaculation control. Reverse Kegels involve consciously relaxing and lengthening the pelvic floor muscles. This teaches you to release tension during sex, which is equally important because a chronically tense pelvic floor can actually trigger faster ejaculation."}, {"question": "Can I do pelvic floor exercises too much?", "answer": "Yes. Like any muscle, the pelvic floor can become fatigued or hypertonic (chronically tight) from overtraining. Signs of overdoing it include pelvic discomfort, urinary urgency, or worsening of PE symptoms. Follow the progressive schedule outlined in this guide and take rest days as recommended. If symptoms worsen, reduce frequency and consult a pelvic floor physiotherapist."}, {"question": "Should I do Kegels or reverse Kegels for PE?", "answer": "Both. A balanced approach is most effective. Standard Kegels build the strength needed to voluntarily inhibit ejaculation. Reverse Kegels teach you to release pelvic floor tension, which reduces the involuntary contractions that trigger ejaculation. Most PE exercise programs include both types."}, {"question": "Can women tell if I'm doing Kegel exercises?", "answer": "No. Pelvic floor exercises are internal and invisible. You can practice them anywhere (at your desk, while driving, or watching television) without anyone knowing. During sexual activity, your partner would only notice the positive results: improved control and confidence."}];
+
+const citations = [{"id": 1, "text": "Pastore AL, et al. Pelvic Floor Muscle Rehabilitation for Patients With Lifelong Premature Ejaculation: A Novel Therapeutic Approach. Therapeutic Advances in Urology. 2014;6(3):83–88.", "url": "https://doi.org/10.1177/1756287214523329"}, {"id": 2, "text": "La Pera G, Nicastro A. A New Treatment for Premature Ejaculation: The Rehabilitation of the Pelvic Floor. Journal of Sex & Marital Therapy. 1996;22(1):22–26.", "url": "https://doi.org/10.1080/00926239608405302"}, {"id": 3, "text": "Dorey G, et al. Pelvic Floor Exercises for Erectile Dysfunction. BJU International. 2005;96(4):595–597.", "url": "https://doi.org/10.1111/j.1464-410X.2005.05690.x"}, {"id": 4, "text": "Kegel AH. Progressive Resistance Exercise in the Functional Restoration of the Perineal Muscles. American Journal of Obstetrics and Gynecology. 1948;56(2):238–248.", "url": "https://doi.org/10.1016/0002-9378(48)90266-X"}, {"id": 5, "text": "Althof SE, et al. An Update of the International Society of Sexual Medicine's Guidelines for the Diagnosis and Treatment of Premature Ejaculation (PE). Sexual Medicine. 2014;2(2):60–90.", "url": "https://doi.org/10.1002/sm2.28"}, {"id": 6, "text": "Siegel AL. Pelvic Floor Muscle Training in Males: Practical Applications. Urology. 2014;84(1):1–7.", "url": "https://doi.org/10.1016/j.urology.2014.03.016"}, {"id": 7, "text": "Myers C, Smith M. Pelvic Floor Muscle Training Improves Erectile Dysfunction and Premature Ejaculation: A Systematic Review. Physiotherapy. 2019;105(2):235–243.", "url": "https://doi.org/10.1016/j.physio.2019.01.002"}, {"id": 8, "text": "Cohen D, et al. Pelvic Floor Muscle Rehabilitation in the Treatment of Premature Ejaculation: A Systematic Review. Sexual Medicine Reviews. 2016;4(2):156–162.", "url": "https://doi.org/10.1016/j.sxmr.2016.01.001"}];
+
+const tocItems = [{"id": "why-exercises-work", "title": "Why Pelvic Floor Exercises Work for PE"}, {"id": "finding-muscles", "title": "Step 1: Finding Your Pelvic Floor Muscles"}, {"id": "basic-kegels", "title": "Step 2: Basic Kegel Exercises"}, {"id": "reverse-kegels", "title": "Step 3: Reverse Kegel Exercises"}, {"id": "advanced-routine", "title": "Step 4: Advanced Training Routine"}, {"id": "breathing-techniques", "title": "Breathing Techniques During Sex"}, {"id": "training-schedule", "title": "Complete 12-Week Training Schedule"}, {"id": "common-mistakes", "title": "Common Mistakes to Avoid"}, {"id": "when-to-see-doctor", "title": "When to See a Doctor"}, {"id": "faq", "title": "Frequently Asked Questions"}];
+
+const relatedLinks = [{"url": "/home-remedies-for-premature-ejaculation/", "label": "Home Remedies for Premature Ejaculation: Complete Guide"}, {"url": "/porn-induced-erectile-dysfunction/", "label": "Porn-Induced Erectile Dysfunction: Causes & Recovery"}, {"url": "/baking-soda-for-ed/", "label": "Baking Soda for ED: What the Evidence Says"}, {"url": "/garlic-and-honey-for-erectile-dysfunction/", "label": "Garlic & Honey for ED: Fact vs. Fiction"}];
+
+const structuredData = faqPageSchema(faqs);
+---
+
+<BlogArticleLayout
+  title="Premature Ejaculation Exercises: Step-by-Step Kegel & Reverse Kegel Guide"
+  seoTitle="Premature Ejaculation Exercises: Kegel Guide"
+  subtitle="A clinician-reviewed, progressive training program to improve ejaculatory control through pelvic floor strengthening."
+  seoDescription="Follow this 12-week Kegel and reverse Kegel exercise program to improve ejaculatory control. Step-by-step pelvic floor training reviewed by clinicians."
+  path={path}
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-02-05"
+  dateModifiedISO="2026-03-20"
+  readTime="10 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Want Professional Guidance?"
+  ctaText="Strong Health physicians can evaluate your situation and build a complete treatment plan: exercises, medication, and lifestyle optimization."
+  ctaButtonText="Book Your Free Assessment →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

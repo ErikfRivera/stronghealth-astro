@@ -1,0 +1,48 @@
+---
+// /collagen-peptides/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/collagen-peptides.html?raw";
+
+const path = "/collagen-peptides/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "What's the difference between collagen peptides and collagen protein?", "answer": "Collagen peptides (also called hydrolyzed collagen) are collagen proteins that have been broken down into smaller, more easily absorbed fragments. Regular collagen protein has larger molecules that are harder to absorb. Hydrolyzed collagen peptides have higher bioavailability, meaning more of the product reaches your tissues."}, {"question": "Can your body actually absorb collagen supplements?", "answer": "Yes. Research has confirmed that hydrolyzed collagen peptides are absorbed through the intestinal wall and can be detected in the bloodstream. Di- and tripeptide fragments containing hydroxyproline are particularly well-absorbed and have been shown to accumulate in skin and cartilage tissue."}, {"question": "How long does it take to see results from collagen supplementation?", "answer": "Most clinical studies show measurable improvements in skin elasticity after 4–8 weeks and joint comfort after 8–12 weeks of consistent supplementation. Structural benefits (tendon, bone) may take 3–6 months to become apparent."}, {"question": "Should I take Type I, Type II, or Type III collagen?", "answer": "It depends on your primary health goal. Type I and III are best for skin, tendons, bones, and general structural support. Type II is specifically researched for cartilage and joint health. Many well-rounded products include multiple types. Your physician can recommend the most appropriate type based on your needs."}, {"question": "Are collagen peptide supplements the same as peptide therapy?", "answer": "No. Over-the-counter collagen peptide supplements are nutritional products that provide collagen building blocks. Clinical peptide therapy (BPC-157, TB-500, GHK-Cu) involves specific signaling peptides administered under physician supervision. They serve different purposes and work through different mechanisms."}, {"question": "How much collagen should I take daily?", "answer": "Most clinical studies used doses of 5–15 grams of hydrolyzed collagen per day. For joint health, studies on UC-II (undenatured Type II collagen) used much smaller doses of 40 mg per day. Optimal dosing depends on the specific product and your health goals."}, {"question": "Can I get enough collagen from food?", "answer": "Bone broth, chicken skin, fish skin, and organ meats contain collagen, but the collagen in food is not hydrolyzed, making absorption less efficient. Supplemental hydrolyzed collagen peptides offer higher bioavailability and more consistent dosing than dietary collagen sources."}];
+
+const citations = [{"id": 1, "text": "Proksch E, et al. Oral supplementation of specific collagen peptides has beneficial effects on human skin physiology: a double-blind, placebo-controlled study. Skin Pharmacol Physiol. 2014;27(1):47-55.", "url": "https://pubmed.ncbi.nlm.nih.gov/23949208/"}, {"id": 2, "text": "Clark KL, et al. 24-Week study on the use of collagen hydrolysate as a dietary supplement in athletes with activity-related joint pain. Curr Med Res Opin. 2008;24(5):1485-1496.", "url": "https://pubmed.ncbi.nlm.nih.gov/18416885/"}, {"id": 3, "text": "Crowley DC, et al. Safety and efficacy of undenatured type II collagen in the treatment of osteoarthritis of the knee. Int J Med Sci. 2009;6(6):312-321.", "url": "https://pubmed.ncbi.nlm.nih.gov/19847319/"}, {"id": 4, "text": "Zdzieblik D, et al. Collagen peptide supplementation in combination with resistance training improves body composition and increases muscle strength in elderly sarcopenic men. Br J Nutr. 2015;114(8):1237-1245.", "url": "https://pubmed.ncbi.nlm.nih.gov/26353786/"}, {"id": 5, "text": "Bolke L, et al. A collagen supplement improves skin hydration, elasticity, roughness, and density. Nutrients. 2019;11(10):2494.", "url": "https://pubmed.ncbi.nlm.nih.gov/31627309/"}, {"id": 6, "text": "Oesser S, et al. Oral administration of 14C labeled gelatin hydrolysate leads to an accumulation of radioactivity in cartilage of mice. J Nutr. 1999;129(10):1891-1895.", "url": "https://pubmed.ncbi.nlm.nih.gov/10498764/"}, {"id": 7, "text": "Chen Q, et al. Collagen peptides ameliorate intestinal epithelial barrier dysfunction in immunostimulatory Caco-2 cell monolayers. Food Funct. 2017;8(3):1144-1151.", "url": "https://pubmed.ncbi.nlm.nih.gov/28174772/"}];
+
+const tocItems = [{"id": "what-is-collagen", "title": "What Is Collagen?"}, {"id": "collagen-types", "title": "Collagen Types I, II, and III"}, {"id": "supplement-vs-clinical", "title": "Supplement-Grade vs. Clinical-Grade Collagen"}, {"id": "how-collagen-works", "title": "How Collagen Peptides Work"}, {"id": "clinical-evidence", "title": "Clinical Evidence"}, {"id": "joint-health", "title": "Collagen for Joint Health"}, {"id": "skin-and-aging", "title": "Collagen for Skin and Aging"}, {"id": "gut-health", "title": "Collagen and Gut Health"}, {"id": "choosing-collagen", "title": "How to Choose a Collagen Product"}, {"id": "faq", "title": "FAQ"}];
+
+const relatedLinks = [{"url": "/peptides/", "label": "Peptides Hub: All Peptide Therapies"}, {"url": "/peptides-for-healing/", "label": "Peptides for Healing: BPC-157 and TB-500"}, {"url": "/peptides-for-arthritis/", "label": "Peptides for Arthritis"}, {"url": "/peptides-for-tendon-repair/", "label": "Peptides for Tendon Repair"}];
+
+// Production wrapped this page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Collagen Peptides: Supplement vs. Clinical-Grade: What Actually Works"
+  seoTitle="Collagen Peptides: Supplement vs. Clinical"
+  subtitle="Collagen is the most abundant protein in the human body, critical for tendons, joints, skin, and gut health. But not all collagen products are created equal. This guide separates evidence-based collagen therapy from marketing hype."
+  seoDescription="Compare supplement-grade vs clinical-grade collagen peptides. Learn which collagen types work for joints, skin, and gut health based on clinical evidence."
+  path={path}
+  breadcrumb="Collagen Peptides"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-02-20"
+  dateModifiedISO="2026-03-15"
+  readTime="10 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Interested in Collagen or Peptide Therapy?"
+  ctaText="Our physicians can evaluate whether collagen supplementation, clinical peptide therapy, or a combination approach is right for your health goals."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

@@ -1,0 +1,39 @@
+---
+// /lysine-benefit-men-health/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/lysine-benefit-men-health.html?raw";
+
+const path = "/lysine-benefit-men-health/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "How much lysine should men take daily?", "answer": "The recommended dietary allowance for lysine in adult men is approximately 38 mg per kilogram of body weight per day. For a 180-pound (82 kg) man, that translates to roughly 3,100 mg daily. Most men consuming adequate protein from animal sources meet this threshold, but plant-based eaters may need to pay closer attention to lysine-rich foods or supplementation."}, {"question": "Can lysine boost testosterone levels?", "answer": "While lysine does not directly increase testosterone production, it plays a supporting role by facilitating calcium absorption and zinc uptake: both minerals critical for healthy testosterone synthesis. Research also shows lysine helps reduce cortisol levels, and chronically elevated cortisol is known to suppress testosterone. So lysine can indirectly support a hormonal environment favorable to testosterone production."}, {"question": "What foods are highest in lysine?", "answer": "Animal proteins are the richest lysine sources: chicken breast (2,500 mg per 100g), beef (2,200 mg), pork (2,000 mg), eggs (900 mg), and Greek yogurt (700 mg). Among plant foods, soybeans, lentils, quinoa, and pumpkin seeds offer meaningful amounts, though they provide less per serving than animal sources."}, {"question": "Does lysine help with cold sores?", "answer": "Yes. Clinical evidence supports lysine supplementation at doses of 1,000–3,000 mg/day for reducing the frequency and severity of herpes simplex virus (HSV-1) outbreaks. Lysine competes with arginine, an amino acid the virus requires for replication. Men who experience recurrent cold sores may benefit from consistent lysine supplementation alongside managing arginine-rich food intake."}, {"question": "Are there side effects from lysine supplements?", "answer": "Lysine is generally well tolerated at recommended doses. High doses (above 10g/day) may cause GI discomfort including nausea, cramping, and diarrhea. Very high chronic intake has been associated with gallstone formation in rare cases. Men with kidney disease should consult their physician before supplementing, as excess amino acid metabolism places additional stress on the kidneys."}];
+
+const citations = [{"id": 1, "text": "Flodin NW. The metabolic roles, pharmacology, and toxicology of lysine. J Am Coll Nutr. 1997;16(1):7-21.", "url": "https://pubmed.ncbi.nlm.nih.gov/9013429/"}, {"id": 2, "text": "Ghosh J, et al. Role of lysine in collagen cross-linking and its effects on connective tissue integrity. Amino Acids. 2012;42(4):1155-1169."}, {"id": 3, "text": "Civitelli R, et al. Dietary L-lysine and calcium absorption in humans. Nutrition. 1992;8(6):400-405.", "url": "https://pubmed.ncbi.nlm.nih.gov/8353378/"}, {"id": 4, "text": "Smriga M, Torii K. L-Lysine acts like a partial serotonin receptor 4 antagonist and inhibits serotonin-mediated intestinal pathology and anxiety in rats. Proc Natl Acad Sci USA. 2003;100(26):15370-15375.", "url": "https://pubmed.ncbi.nlm.nih.gov/14676321/"}, {"id": 5, "text": "Smriga M, et al. Oral treatment with L-lysine and L-arginine reduces anxiety and basal cortisol levels in healthy humans. Biomed Res. 2007;28(2):85-90.", "url": "https://pubmed.ncbi.nlm.nih.gov/17510493/"}, {"id": 6, "text": "Griffith RS, et al. Success of L-lysine therapy in frequently recurrent herpes simplex infection. Dermatologica. 1987;175(4):183-190.", "url": "https://pubmed.ncbi.nlm.nih.gov/3115841/"}, {"id": 7, "text": "Prasad AS. Zinc is an antioxidant and anti-inflammatory agent: its role in human health. Front Nutr. 2014;1:14.", "url": "https://pubmed.ncbi.nlm.nih.gov/25988117/"}, {"id": 8, "text": "Leproult R, Van Cauter E. Effect of 1 week of sleep restriction on testosterone levels in young healthy men. JAMA. 2011;305(21):2173-2174.", "url": "https://pubmed.ncbi.nlm.nih.gov/21632481/"}];
+
+const structuredData = faqPageSchema(faqs);
+---
+
+<BlogArticleLayout
+  title="Lysine Benefits for Men's Health: Collagen, Calcium, Immunity & Testosterone Support"
+  seoTitle="Lysine Benefits for Men: Evidence Guide"
+  subtitle="This essential amino acid does more than fight cold sores: lysine supports connective tissue integrity, bone density, immune defense, and may indirectly support testosterone production in men."
+  seoDescription="Explore lysine benefits for men: collagen synthesis, calcium absorption, immune support, and indirect testosterone support. Dosing and food sources inside."
+  path={path}
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-03-28"
+  dateModifiedISO="2026-03-28"
+  readTime="9 min"
+  faqs={faqs}
+  citations={citations}
+  structuredData={structuredData}
+  ctaHeading="Ready to Talk to a Doctor?"
+  ctaText="Strong Health offers physician-supervised treatment plans tailored to your needs. No judgment. No pressure. Just answers."
+  ctaButtonText="Book Your Free Assessment →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

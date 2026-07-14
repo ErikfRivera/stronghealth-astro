@@ -1,0 +1,39 @@
+---
+// /nac-benefits-men/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/nac-benefits-men.html?raw";
+
+const path = "/nac-benefits-men/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Is NAC safe for daily use?", "answer": "NAC has a well-established safety profile when taken at standard supplemental doses of 600–1,800 mg/day. It has been used clinically for decades as a mucolytic and acetaminophen antidote. Common side effects at typical doses include mild GI symptoms such as nausea and bloating. However, the FDA has raised questions about NAC's classification as a dietary supplement versus a drug, so regulatory availability may vary."}, {"question": "Can NAC improve male fertility?", "answer": "Multiple clinical studies suggest NAC supplementation can improve semen quality by reducing oxidative stress on sperm cells. Research has demonstrated improvements in sperm concentration, motility, and morphology, as well as reductions in DNA fragmentation. Doses used in fertility studies typically range from 600–1,200 mg/day over 3–6 months. NAC is particularly promising for men with oxidative stress-related infertility."}, {"question": "How does NAC support liver health?", "answer": "NAC is a direct precursor to glutathione, the liver's primary endogenous antioxidant. In emergency medicine, IV NAC is the standard treatment for acetaminophen (Tylenol) overdose, where it works by replenishing hepatic glutathione stores. At supplemental doses, oral NAC supports the liver's phase II detoxification pathways, helps neutralize reactive oxygen species, and may be protective against alcohol- and medication-induced liver stress."}, {"question": "What is the FDA's position on NAC supplements?", "answer": "In 2020, the FDA sent warning letters to supplement companies claiming that NAC couldn't be marketed as a dietary supplement because it was first approved as a drug (Mucomyst) in 1963. This created uncertainty about NAC's supplement status. However, as of 2022, the FDA exercised enforcement discretion and NAC supplements remain widely available. The regulatory situation is evolving and worth monitoring."}, {"question": "Can NAC help with respiratory health?", "answer": "Yes. NAC has been used clinically as a mucolytic for decades: it breaks down disulfide bonds in mucus, making it thinner and easier to clear. Beyond this mechanical effect, NAC's antioxidant properties help reduce airway inflammation. Studies have shown benefits for chronic bronchitis, COPD exacerbation frequency, and overall respiratory function. Typical mucolytic doses range from 600–1,200 mg/day."}];
+
+const citations = [{"id": 1, "text": "Mokhtari V, et al. A review on various uses of N-acetyl cysteine. Cell J. 2017;19(1):11-17.", "url": "https://pubmed.ncbi.nlm.nih.gov/28367412/"}, {"id": 2, "text": "Forman HJ, et al. Glutathione: overview of its protective roles, measurement, and biosynthesis. Mol Aspects Med. 2009;30(1-2):1-12.", "url": "https://pubmed.ncbi.nlm.nih.gov/18796312/"}, {"id": 3, "text": "Samuni Y, et al. The chemistry and biological activities of N-acetylcysteine. Biochim Biophys Acta. 2013;1830(8):4117-4129.", "url": "https://pubmed.ncbi.nlm.nih.gov/23618697/"}, {"id": 4, "text": "Smilkstein MJ, et al. Efficacy of oral N-acetylcysteine in the treatment of acetaminophen overdose. N Engl J Med. 1988;319(24):1557-1562.", "url": "https://pubmed.ncbi.nlm.nih.gov/3059186/"}, {"id": 5, "text": "Jannatifar R, et al. Effects of N-acetyl-cysteine supplementation on sperm quality, chromatin integrity, and level of oxidative stress in infertile men. Reprod Biol Endocrinol. 2019;17(1):24.", "url": "https://pubmed.ncbi.nlm.nih.gov/30771790/"}, {"id": 6, "text": "Ciftci H, et al. Effects of N-acetylcysteine on semen parameters and oxidative/antioxidant status. Urology. 2009;74(1):73-76.", "url": "https://pubmed.ncbi.nlm.nih.gov/19428083/"}, {"id": 7, "text": "Dean O, et al. N-acetylcysteine in psychiatry: current therapeutic evidence and potential mechanisms of action. J Psychiatry Neurosci. 2011;36(2):78-86.", "url": "https://pubmed.ncbi.nlm.nih.gov/21118657/"}, {"id": 8, "text": "Sadowska AM, et al. Role of N-acetylcysteine in the management of COPD. Int J Chron Obstruct Pulmon Dis. 2006;1(4):425-434.", "url": "https://pubmed.ncbi.nlm.nih.gov/18044098/"}, {"id": 9, "text": "US Food and Drug Administration. FDA Answers Questions About N-Acetyl-L-Cysteine (NAC) Products. FDA.gov. Updated 2022.", "url": "https://www.fda.gov/food/cfsan-constituent-updates/fda-responds-citizen-petitions-n-acetyl-l-cysteine-nac-products"}];
+
+const structuredData = faqPageSchema(faqs);
+---
+
+<BlogArticleLayout
+  title="NAC Benefits for Men: Glutathione, Liver Health, Fertility & What You Need to Know"
+  seoTitle="NAC Benefits for Men: The Complete Guide"
+  subtitle="N-acetylcysteine is one of the most versatile supplements available: a glutathione precursor with clinical evidence for liver protection, male fertility, respiratory health, and mental well-being. But its regulatory future remains uncertain."
+  seoDescription="How NAC (N-acetylcysteine) benefits men: glutathione production, liver support, fertility, respiratory health. Dosing and safety reviewed."
+  path={path}
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-03-28"
+  dateModifiedISO="2026-03-28"
+  readTime="10 min"
+  faqs={faqs}
+  citations={citations}
+  structuredData={structuredData}
+  ctaHeading="Ready to Talk to a Doctor?"
+  ctaText="Strong Health offers physician-supervised treatment plans tailored to your needs. No judgment. No pressure. Just answers."
+  ctaButtonText="Book Your Free Assessment →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

@@ -1,0 +1,48 @@
+---
+// /peptides-for-tendon-repair/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-tendon-repair.html?raw";
+
+const path = "/peptides-for-tendon-repair/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "How long does it take for BPC-157 to help with tendon pain?", "answer": "Most patients report noticeable improvement in tendon pain and mobility within 2–4 weeks of treatment initiation. Full recovery timelines vary depending on the severity of the injury, but clinical protocols typically run 6–12 weeks under physician supervision."}, {"question": "Can peptides replace surgery for tendon injuries?", "answer": "Peptide therapy may help avoid surgery in cases of partial tears, chronic tendinopathy, and overuse injuries. However, complete tendon ruptures or severe structural damage typically still require surgical intervention. A physician evaluation is essential to determine the appropriate treatment path."}, {"question": "Are BPC-157 and TB-500 FDA-approved?", "answer": "Neither BPC-157 nor TB-500 currently holds FDA approval for clinical use. They are classified as research peptides. However, they are available through physician-supervised protocols at licensed clinics, and a growing body of preclinical and clinical evidence supports their therapeutic potential."}, {"question": "Can I use peptides alongside physical therapy?", "answer": "Yes, peptide therapy is commonly used as a complementary approach alongside physical therapy, PRP injections, and other rehabilitation protocols. Many clinicians find that combining peptides with structured rehabilitation accelerates recovery timelines."}, {"question": "What is the difference between BPC-157 and TB-500?", "answer": "BPC-157 is a gastric peptide that promotes angiogenesis and tendon-specific healing. TB-500 (Thymosin Beta-4) is a naturally occurring peptide that reduces inflammation and promotes cell migration. They work through different but complementary mechanisms, which is why many protocols combine them."}, {"question": "Is peptide therapy for tendon repair covered by insurance?", "answer": "Peptide therapy is generally not covered by insurance as it is considered an elective, off-label treatment. Strong Health offers transparent pricing and consultation to discuss costs upfront before beginning any protocol."}];
+
+const citations = [{"id": 1, "text": "Seiwerth S, et al. BPC 157's effect on healing. J Physiol Paris. 1999;93(6):501-504.", "url": "https://pubmed.ncbi.nlm.nih.gov/10672998/"}, {"id": 2, "text": "Chang CH, et al. BPC 157 promotes tendon-to-bone healing in a rat rotator cuff model. J Orthop Res. 2021;39(6):1292-1301.", "url": "https://pubmed.ncbi.nlm.nih.gov/32779270/"}, {"id": 3, "text": "Staresinic M, et al. Gastric pentadecapeptide BPC 157 accelerates healing of transected rat Achilles tendon. J Orthop Res. 2003;21(6):976-983.", "url": "https://pubmed.ncbi.nlm.nih.gov/14554208/"}, {"id": 4, "text": "Sosne G, et al. Thymosin beta 4 promotes dermal healing. Ann N Y Acad Sci. 2007;1112:413-421.", "url": "https://pubmed.ncbi.nlm.nih.gov/17600293/"}, {"id": 5, "text": "Malinda KM, et al. Thymosin beta4 accelerates wound healing. J Invest Dermatol. 1999;113(3):364-368.", "url": "https://pubmed.ncbi.nlm.nih.gov/10469334/"}, {"id": 6, "text": "Sikiric P, et al. Brain-gut axis and pentadecapeptide BPC 157: Theoretical and practical implications. Curr Neuropharmacol. 2016;14(8):857-865.", "url": "https://pubmed.ncbi.nlm.nih.gov/27306034/"}, {"id": 7, "text": "Huff T, et al. Beta-thymosins, small acidic peptides with multiple functions. Int J Biochem Cell Biol. 2001;33(3):205-220.", "url": "https://pubmed.ncbi.nlm.nih.gov/11311851/"}];
+
+const tocItems = [{"id": "what-are-peptides", "title": "What Are Healing Peptides?"}, {"id": "bpc-157", "title": "BPC-157 for Tendon Repair"}, {"id": "tb-500", "title": "TB-500 (Thymosin Beta-4)"}, {"id": "how-they-work", "title": "How BPC-157 and TB-500 Work Together"}, {"id": "clinical-evidence", "title": "Clinical Evidence"}, {"id": "treatment-protocols", "title": "Treatment Protocols"}, {"id": "who-benefits", "title": "Who Benefits Most?"}, {"id": "safety", "title": "Safety and Side Effects"}, {"id": "vs-traditional", "title": "Peptides vs. Traditional Treatments"}, {"id": "faq", "title": "FAQ"}];
+
+const relatedLinks = [{"url": "/peptides-for-healing/", "label": "Peptides for Healing: BPC-157 and TB-500 for Full-Body Recovery"}, {"url": "/peptides-for-arthritis/", "label": "Peptides for Arthritis: Joint Inflammation Treatment"}, {"url": "/peptides-for-muscle-growth/", "label": "Peptides for Muscle Growth: CJC-1295, Ipamorelin & BPC-157"}, {"url": "/collagen-peptides/", "label": "Collagen Peptides: Structural Support for Joints & Connective Tissue"}, {"url": "/peptides-for-sleep/", "label": "Peptides for Sleep: DSIP and Sleep Architecture"}];
+
+// Production wrapped this page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Tendon Repair: How BPC-157 and TB-500 Accelerate Healing"
+  seoTitle="Peptides for Tendon Repair: BPC-157 & TB-500"
+  subtitle="Tendon injuries are notoriously slow to heal. BPC-157 and TB-500 represent a new frontier in regenerative medicine, offering clinically studied mechanisms that may accelerate tendon recovery under physician supervision."
+  seoDescription="Learn how BPC-157 and TB-500 peptides accelerate tendon healing. Review clinical evidence, treatment protocols, and safety under physician supervision."
+  path={path}
+  breadcrumb="Peptides for Tendon Repair"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-01-15"
+  dateModifiedISO="2026-03-15"
+  readTime="12 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Struggling With a Tendon Injury?"
+  ctaText="Our physicians evaluate your injury history and determine if peptide therapy could accelerate your recovery."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

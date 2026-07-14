@@ -1,0 +1,39 @@
+---
+// /resveratrol-side-effects/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/resveratrol-side-effects.html?raw";
+
+const path = "/resveratrol-side-effects/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "What are the most common resveratrol side effects?", "answer": "The most common side effects of resveratrol supplementation are gastrointestinal: nausea, abdominal discomfort, diarrhea, and bloating. These are dose-dependent and more likely at doses above 1,000 mg/day. Most people tolerating standard doses (150–500 mg/day) report no significant side effects. Taking resveratrol with food can help minimize GI symptoms."}, {"question": "Does resveratrol thin the blood?", "answer": "Yes, resveratrol has documented antiplatelet activity, meaning it can reduce the ability of blood platelets to aggregate (clump together). While this anti-clotting effect may contribute to cardiovascular benefits in some contexts, it raises concern for men taking blood thinners (warfarin, apixaban, rivarelbant), aspirin, or NSAIDs, and for those facing surgery. If you take any anticoagulant or antiplatelet medication, consult your physician before using resveratrol."}, {"question": "Is resveratrol estrogenic? Should men be concerned?", "answer": "Resveratrol has a complex relationship with estrogen. Structurally, it resembles the synthetic estrogen diethylstilbestrol and can bind to estrogen receptors. However, its activity is context-dependent: it can act as a weak estrogen agonist in some tissues while acting as an antagonist in others. At typical supplemental doses, the estrogenic effect in men appears to be clinically insignificant, but men with estrogen-sensitive conditions or those on testosterone therapy should be aware of this property."}, {"question": "Can resveratrol interact with medications?", "answer": "Yes. Resveratrol inhibits several cytochrome P450 enzymes (particularly CYP3A4, CYP2D6, and CYP1A2) that metabolize many common medications. This can increase the blood levels and effects of drugs processed through these pathways, including certain statins, calcium channel blockers, immunosuppressants, antidepressants, and benzodiazepines. It also interacts with anticoagulants and antiplatelet drugs. Men taking prescription medications should discuss resveratrol with their pharmacist or physician."}, {"question": "How much resveratrol is safe to take?", "answer": "Most clinical studies have used doses ranging from 150–1,500 mg/day. Doses under 500 mg/day are generally well tolerated in healthy adults. Above 1,000 mg/day, GI side effects become more common, and at 2,500+ mg/day, clinical studies have reported GI distress, diarrhea, and potential kidney-related changes. There is no established upper limit, but staying within 150–500 mg/day represents the best balance of potential benefit and minimal risk for most men."}];
+
+const citations = [{"id": 1, "text": "Boocock DJ, et al. Phase I dose escalation pharmacokinetic study in healthy volunteers of resveratrol. Cancer Epidemiol Biomarkers Prev. 2007;16(6):1246-1252.", "url": "https://pubmed.ncbi.nlm.nih.gov/17548692/"}, {"id": 2, "text": "Brown VA, et al. Repeat dose study of the cancer chemopreventive agent resveratrol in healthy volunteers: safety, pharmacokinetics, and effect on the insulin-like growth factor axis. Cancer Res. 2010;70(22):9003-9011.", "url": "https://pubmed.ncbi.nlm.nih.gov/20935227/"}, {"id": 3, "text": "Bertelli A, et al. Antiplatelet activity of synthetic and natural resveratrol in red wine. Int J Tissue React. 1995;17(1):1-3.", "url": "https://pubmed.ncbi.nlm.nih.gov/7499059/"}, {"id": 4, "text": "Pace-Asciak CR, et al. The red wine phenolics trans-resveratrol and quercetin block human platelet aggregation and eicosanoid synthesis. Clin Chim Acta. 1995;235(2):207-219.", "url": "https://pubmed.ncbi.nlm.nih.gov/7554275/"}, {"id": 5, "text": "Gehm BD, et al. Resveratrol, a polyphenolic compound found in grapes and wine, is an agonist for the estrogen receptor. Proc Natl Acad Sci USA. 1997;94(25):14138-14143.", "url": "https://pubmed.ncbi.nlm.nih.gov/9391166/"}, {"id": 6, "text": "Bowers JL, et al. Resveratrol acts as a mixed agonist/antagonist for estrogen receptors alpha and beta. Endocrinology. 2000;141(10):3657-3667.", "url": "https://pubmed.ncbi.nlm.nih.gov/11014220/"}, {"id": 7, "text": "Chow HH, et al. Resveratrol modulates drug- and carcinogen-metabolizing enzymes in a healthy volunteer study. Cancer Prev Res. 2010;3(9):1168-1175.", "url": "https://pubmed.ncbi.nlm.nih.gov/20716633/"}, {"id": 8, "text": "Detampel P, et al. Drug interaction potential of resveratrol. Drug Metab Rev. 2012;44(3):253-265.", "url": "https://pubmed.ncbi.nlm.nih.gov/22788578/"}];
+
+const structuredData = faqPageSchema(faqs);
+---
+
+<BlogArticleLayout
+  title="Resveratrol Side Effects: GI Issues, Blood Thinning & Estrogenic Concerns for Men"
+  seoTitle="Resveratrol Side Effects: Men's Safety Guide"
+  subtitle="Resveratrol is widely promoted for anti-aging and cardiovascular benefits, but it carries real side effects and drug interactions that men should understand before supplementing."
+  seoDescription="Resveratrol side effects: GI issues, blood thinning risks, estrogenic activity, and drug interactions. Essential safety info for men before supplementing."
+  path={path}
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-03-28"
+  dateModifiedISO="2026-03-28"
+  readTime="8 min"
+  faqs={faqs}
+  citations={citations}
+  structuredData={structuredData}
+  ctaHeading="Ready to Talk to a Doctor?"
+  ctaText="Strong Health offers physician-supervised treatment plans tailored to your needs. No judgment. No pressure. Just answers."
+  ctaButtonText="Book Your Free Assessment →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

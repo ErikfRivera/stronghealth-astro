@@ -1,0 +1,45 @@
+---
+// /home-remedies-for-premature-ejaculation/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/home-remedies-for-premature-ejaculation.html?raw";
+
+const path = "/home-remedies-for-premature-ejaculation/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "What counts as premature ejaculation?", "answer": "The International Society for Sexual Medicine defines lifelong PE as ejaculation that always or nearly always occurs within about 1 minute of penetration, from the first sexual experience. Acquired PE involves a clinically significant reduction in latency time, often to about 3 minutes or less. However, the key criterion is that it causes distress. If you and your partner are both satisfied, the timing matters less than the experience."}, {"question": "Can home remedies really help with PE?", "answer": "Some home approaches have genuine evidence behind them. Behavioral techniques (start-stop, squeeze method) and pelvic floor exercises have been studied in clinical trials and shown meaningful improvements. Lifestyle changes like exercise, stress management, and sleep optimization support overall sexual health. However, supplements and herbal remedies have much weaker evidence and should not be relied upon as primary treatments."}, {"question": "How long do behavioral techniques take to work?", "answer": "Most men begin noticing improvements within 2–4 weeks of consistent practice with behavioral techniques like the start-stop method. Significant improvements typically occur over 6–12 weeks. Pelvic floor exercises generally require 8–12 weeks of consistent practice before noticeable results. Consistency is the key factor."}, {"question": "Do numbing sprays and creams work for PE?", "answer": "Yes, topical anesthetics (lidocaine or benzocaine-based sprays and creams) are one of the most effective and well-studied treatments for PE. They work by reducing penile sensitivity, which can extend time to ejaculation. They are available over the counter and have been shown in clinical trials to increase intravaginal ejaculatory latency time (IELT) by 2–3 times or more."}, {"question": "Is premature ejaculation psychological or physical?", "answer": "PE can be both. Some men have heightened penile sensitivity or neurobiological factors (such as serotonin receptor differences) that contribute to rapid ejaculation. Psychological factors, including performance anxiety, stress, relationship issues, and early sexual conditioning, also play significant roles. Many men have a combination of physical and psychological contributors."}];
+
+const citations = [{"id": 1, "text": "Althof SE, et al. An Update of the International Society of Sexual Medicine's Guidelines for the Diagnosis and Treatment of Premature Ejaculation (PE). Sexual Medicine. 2014;2(2):60–90.", "url": "https://doi.org/10.1002/sm2.28"}, {"id": 2, "text": "Semans JH. Premature Ejaculation: A New Approach. Southern Medical Journal. 1956;49(4):353–358.", "url": "https://doi.org/10.1097/00007611-195604000-00008"}, {"id": 3, "text": "Masters WH, Johnson VE. Human Sexual Inadequacy. Little, Brown and Company. 1970."}, {"id": 4, "text": "Pastore AL, et al. Pelvic Floor Muscle Rehabilitation for Patients With Lifelong Premature Ejaculation: A Novel Therapeutic Approach. Therapeutic Advances in Urology. 2014;6(3):83–88.", "url": "https://doi.org/10.1177/1756287214523329"}, {"id": 5, "text": "Dinsmore WW, et al. Topical Eutectic Mixture for Premature Ejaculation (TEMPE): A Novel Aerosol-Delivery Form of Lidocaine-Prilocaine. BJU International. 2007;99(2):369–375.", "url": "https://doi.org/10.1111/j.1464-410X.2006.06583.x"}, {"id": 6, "text": "Waldinger MD, et al. Premature Ejaculation and Serotonergic Antidepressants-Induced Delayed Ejaculation: The Involvement of the Serotonergic System. Behavioural Brain Research. 1998;92(2):111–118.", "url": "https://doi.org/10.1016/S0166-4328(97)00183-6"}, {"id": 7, "text": "McMahon CG, et al. An Evidence-Based Definition of Lifelong Premature Ejaculation. The Journal of Sexual Medicine. 2008;5(7):1590–1606.", "url": "https://doi.org/10.1111/j.1743-6109.2008.00835.x"}, {"id": 8, "text": "Rowland DL, et al. Self-Reported Premature Ejaculation and Aspects of Sexual Functioning and Satisfaction. The Journal of Sexual Medicine. 2004;1(2):225–232.", "url": "https://doi.org/10.1111/j.1743-6109.2004.04033.x"}, {"id": 9, "text": "Gerbild H, et al. Physical Activity to Improve Erectile Function: A Systematic Review of Intervention Studies. Sexual Medicine. 2018;6(2):75–89.", "url": "https://doi.org/10.1016/j.esxm.2018.02.001"}, {"id": 10, "text": "Carson C, Gunn K. Premature Ejaculation: Definition and Prevalence. International Journal of Impotence Research. 2006;18(S1):S5–S13.", "url": "https://doi.org/10.1038/sj.ijir.3901507"}];
+
+const tocItems = [{"id": "understanding-pe", "title": "Understanding Premature Ejaculation"}, {"id": "behavioral-techniques", "title": "Behavioral Techniques"}, {"id": "pelvic-floor-exercises", "title": "Pelvic Floor Exercises"}, {"id": "topical-treatments", "title": "Topical Treatments & Desensitizers"}, {"id": "lifestyle-modifications", "title": "Lifestyle Modifications"}, {"id": "supplements-herbs", "title": "Supplements & Herbal Remedies"}, {"id": "mindfulness-psychology", "title": "Mindfulness & Psychological Approaches"}, {"id": "medical-treatments", "title": "Medical Treatments for PE"}, {"id": "when-to-see-doctor", "title": "When to See a Doctor"}, {"id": "faq", "title": "Frequently Asked Questions"}];
+
+const relatedLinks = [{"url": "/porn-induced-erectile-dysfunction/", "label": "Porn-Induced Erectile Dysfunction: Causes & Recovery"}, {"url": "/baking-soda-for-ed/", "label": "Baking Soda for ED: What the Evidence Says"}, {"url": "/garlic-and-honey-for-erectile-dysfunction/", "label": "Garlic & Honey for ED: Fact vs. Fiction"}, {"url": "/fl/miami/trt-therapy/", "label": "TRT Therapy in Miami, FL"}, {"url": "/foods-that-lower-testosterone/", "label": "Foods That Lower Testosterone"}];
+
+const structuredData = faqPageSchema(faqs);
+---
+
+<BlogArticleLayout
+  title="Home Remedies for Premature Ejaculation: What Actually Works"
+  seoTitle="Home Remedies for PE: What Actually Works"
+  subtitle="Evidence-based behavioral techniques, topical treatments, and lifestyle changes that can help, and the claims that don't hold up."
+  seoDescription="Discover proven home remedies for premature ejaculation, including behavioral techniques, topical treatments, pelvic floor exercises, and lifestyle changes."
+  path={path}
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-02-01"
+  dateModifiedISO="2026-03-18"
+  readTime="11 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Ready for a Real Solution?"
+  ctaText="Strong Health physicians can evaluate your situation and create a personalized treatment plan, including medications when appropriate."
+  ctaButtonText="Book Your Free Assessment →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

@@ -1,0 +1,45 @@
+---
+// /garlic-and-honey-for-erectile-dysfunction/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/garlic-and-honey-for-erectile-dysfunction.html?raw";
+
+const path = "/garlic-and-honey-for-erectile-dysfunction/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Can garlic and honey cure erectile dysfunction?", "answer": "No. While both garlic and honey contain compounds that have been studied for general cardiovascular health benefits, there is no clinical evidence that consuming them, alone or in combination, can treat erectile dysfunction. ED is a medical condition that typically requires professional evaluation and evidence-based treatment."}, {"question": "Is there any benefit to eating garlic for overall health?", "answer": "Yes. Garlic has well-documented benefits for cardiovascular health, including modest blood pressure reduction and cholesterol-lowering effects. Since cardiovascular health is connected to erectile function, maintaining a diet rich in garlic and other heart-healthy foods is generally a positive step, but it's not a substitute for ED treatment."}, {"question": "Is honey good for sexual health?", "answer": "There is no strong clinical evidence that honey directly improves sexual function. Honey does contain some antioxidants and minerals, but the amounts are small and unlikely to produce measurable effects on erectile function. Be cautious of 'male enhancement honey' products, which sometimes contain undisclosed pharmaceutical ingredients."}, {"question": "What is the best natural approach to improving ED?", "answer": "The most evidence-supported natural approaches include: regular aerobic exercise (150+ minutes/week), maintaining a healthy weight, following a Mediterranean-style diet, getting adequate sleep, managing stress, limiting alcohol, and quitting smoking. These lifestyle changes can meaningfully improve erectile function, especially when combined with medical treatment when indicated."}, {"question": "Should I try garlic and honey before seeing a doctor?", "answer": "While there's nothing wrong with including garlic and honey in a healthy diet, delaying medical evaluation for ED is not recommended. ED can be an early warning sign of cardiovascular disease, diabetes, or hormonal imbalances. A physician can identify these underlying conditions and provide treatments that are actually proven to work."}];
+
+const citations = [{"id": 1, "text": "Ried K, et al. Effect of Garlic on Blood Pressure: A Systematic Review and Meta-Analysis. BMC Cardiovascular Disorders. 2008;8:13.", "url": "https://doi.org/10.1186/1471-2261-8-13"}, {"id": 2, "text": "Morihara N, et al. Aged Garlic Extract Enhances Production of Nitric Oxide. Life Sciences. 2002;71(5):509–517.", "url": "https://doi.org/10.1016/S0024-3205(02)01706-1"}, {"id": 3, "text": "Ried K, Fakler P. Potential of Garlic (Allium Sativum) in Lowering High Blood Pressure: Mechanisms of Action and Clinical Relevance. Integrated Blood Pressure Control. 2014;7:71–82.", "url": "https://doi.org/10.2147/IBPC.S51434"}, {"id": 4, "text": "Erejuwa OO, et al. Honey: A Novel Antioxidant. Molecules. 2012;17(4):4400–4423.", "url": "https://doi.org/10.3390/molecules17044400"}, {"id": 5, "text": "FDA Warning Letter. Hidden Drug Ingredients in Male Enhancement Products. U.S. Food & Drug Administration. Updated 2023.", "url": "https://www.fda.gov/drugs/medication-health-fraud/tainted-sexual-enhancement-products"}, {"id": 6, "text": "Burnett AL, et al. Erectile Dysfunction: AUA Guideline. The Journal of Urology. 2018;200(3):633–641.", "url": "https://doi.org/10.1016/j.juro.2018.05.004"}, {"id": 7, "text": "Esposito K, et al. Effect of Lifestyle Changes on Erectile Dysfunction in Obese Men. JAMA. 2004;291(24):2978–2984.", "url": "https://doi.org/10.1001/jama.291.24.2978"}, {"id": 8, "text": "Gerbild H, et al. Physical Activity to Improve Erectile Function: A Systematic Review of Intervention Studies. Sexual Medicine. 2018;6(2):75–89.", "url": "https://doi.org/10.1016/j.esxm.2018.02.001"}, {"id": 9, "text": "Shamloul R, Ghanem H. Erectile Dysfunction. The Lancet. 2013;381(9861):153–165.", "url": "https://doi.org/10.1016/S0140-6736(12)60520-0"}];
+
+const tocItems = [{"id": "folk-remedy-origins", "title": "The Folk Remedy: Garlic & Honey for ED"}, {"id": "garlic-science", "title": "What Science Says About Garlic & Sexual Health"}, {"id": "honey-science", "title": "What Science Says About Honey & Sexual Health"}, {"id": "combination-evidence", "title": "The Garlic-Honey Combination: Any Evidence?"}, {"id": "limitations", "title": "Important Limitations to Consider"}, {"id": "proven-treatments", "title": "Proven Treatments for Erectile Dysfunction"}, {"id": "when-to-see-doctor", "title": "When to See a Doctor"}, {"id": "faq", "title": "Frequently Asked Questions"}];
+
+const relatedLinks = [{"url": "/baking-soda-for-ed/", "label": "Baking Soda for ED: What the Science Says"}, {"url": "/porn-induced-erectile-dysfunction/", "label": "Porn-Induced Erectile Dysfunction: Understanding & Recovery"}, {"url": "/home-remedies-for-premature-ejaculation/", "label": "Home Remedies for Premature Ejaculation"}, {"url": "/fl/miami/trt-therapy/", "label": "TRT Therapy in Miami, FL"}, {"url": "/foods-that-lower-testosterone/", "label": "Foods That Lower Testosterone"}];
+
+const structuredData = faqPageSchema(faqs);
+---
+
+<BlogArticleLayout
+  title="Garlic and Honey for Erectile Dysfunction: Fact vs. Fiction"
+  seoTitle="Garlic and Honey for ED: Fact vs. Fiction"
+  subtitle="Examining the traditional folk remedy claim: what science supports, what it doesn't, and what actually works."
+  seoDescription="Does garlic and honey help with erectile dysfunction? We examine the folk remedy claims, review the evidence, and explain proven ED treatments that work."
+  path={path}
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-01-25"
+  dateModifiedISO="2026-03-12"
+  readTime="9 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Want Answers, Not Guesswork?"
+  ctaText="Strong Health provides thorough evaluation (blood work, hormones, vascular health) and proven treatments that actually work."
+  ctaButtonText="Book Your Free Assessment →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

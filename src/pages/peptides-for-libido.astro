@@ -1,0 +1,48 @@
+---
+// /peptides-for-libido/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-libido.html?raw";
+
+const path = "/peptides-for-libido/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "How is PT-141 different from Viagra or Cialis?", "answer": "PT-141 works through the central nervous system by activating melanocortin receptors in the brain, addressing the neurological component of sexual desire. Viagra and Cialis work peripherally by increasing blood flow to erectile tissue. PT-141 addresses desire (libido), while PDE5 inhibitors primarily address the mechanical aspect of erection."}, {"question": "Can women use PT-141?", "answer": "Yes. PT-141 (branded as Vyleesi) received FDA approval specifically for hypoactive sexual desire disorder (HSDD) in premenopausal women. It is one of the few FDA-approved treatments for female sexual dysfunction related to low desire."}, {"question": "How quickly does PT-141 work?", "answer": "PT-141 typically takes 30–60 minutes to take effect when administered subcutaneously. Effects can last several hours. Unlike PDE5 inhibitors, PT-141's effects on desire may be more gradual and subtle."}, {"question": "Is PT-141 safe to use with blood pressure medication?", "answer": "PT-141 does not interact with the nitric oxide pathway, making it generally safer to combine with blood pressure medications compared to PDE5 inhibitors. However, all medication interactions should be reviewed by your prescribing physician."}, {"question": "How often can PT-141 be used?", "answer": "Current prescribing guidelines recommend no more than one dose per 24 hours and no more than 8 doses per month. Your physician will determine the appropriate frequency based on your health profile and response."}, {"question": "Does PT-141 require a prescription?", "answer": "Yes. PT-141 is a prescription medication that requires physician evaluation and oversight. At Strong Health, our physicians conduct a thorough health assessment before prescribing any peptide therapy."}, {"question": "Can PT-141 be combined with other peptide therapies?", "answer": "In some cases, PT-141 may be part of a broader peptide protocol. For example, patients using growth hormone secretagogues for body composition may also benefit from PT-141 for libido support. All combinations require physician oversight."}];
+
+const citations = [{"id": 1, "text": "Kingsberg SA, et al. Bremelanotide for the treatment of hypoactive sexual desire disorder: Two randomized phase 3 trials. Obstet Gynecol. 2019;134(5):899-908.", "url": "https://pubmed.ncbi.nlm.nih.gov/31599840/"}, {"id": 2, "text": "Clayton AH, et al. Bremelanotide for female sexual dysfunctions in premenopausal women: a randomized, placebo-controlled dose-finding trial. Womens Health (Lond). 2016;12(3):325-337.", "url": "https://pubmed.ncbi.nlm.nih.gov/27216523/"}, {"id": 3, "text": "Safarinejad MR. Evaluation of the safety and efficacy of bremelanotide, a melanocortin receptor agonist, in female subjects with arousal disorder. J Sex Med. 2008;5(5):1184-1198.", "url": "https://pubmed.ncbi.nlm.nih.gov/18331260/"}, {"id": 4, "text": "Molinoff PB, et al. PT-141: a melanocortin agonist for the treatment of sexual dysfunction. Ann N Y Acad Sci. 2003;994:96-102.", "url": "https://pubmed.ncbi.nlm.nih.gov/12851303/"}, {"id": 5, "text": "Diamond LE, et al. An effect on the subjective sexual response in premenopausal women with sexual arousal disorder by bremelanotide (PT-141). J Sex Med. 2006;3(4):628-638.", "url": "https://pubmed.ncbi.nlm.nih.gov/16839319/"}, {"id": 6, "text": "Rosen RC, et al. Bremelanotide: a melanocortin receptor agonist for female sexual dysfunction. Expert Opin Investig Drugs. 2018;27(2):223-229."}];
+
+const tocItems = [{"id": "understanding-pt141", "title": "Understanding PT-141 (Bremelanotide)"}, {"id": "how-pt141-works", "title": "How PT-141 Works"}, {"id": "fda-status", "title": "FDA Approval Status"}, {"id": "vs-pde5", "title": "PT-141 vs. PDE5 Inhibitors (Viagra, Cialis)"}, {"id": "clinical-evidence", "title": "Clinical Evidence"}, {"id": "treatment-protocols", "title": "Treatment Protocols"}, {"id": "safety", "title": "Safety and Side Effects"}, {"id": "who-benefits", "title": "Who Benefits Most?"}, {"id": "faq", "title": "FAQ"}];
+
+const relatedLinks = [{"url": "/peptides/", "label": "Peptides Hub: All Peptide Therapies"}, {"url": "/porn-induced-erectile-dysfunction/", "label": "Porn-Induced ED: Causes & Recovery"}, {"url": "/baking-soda-for-ed/", "label": "Baking Soda for ED: What the Evidence Says"}, {"url": "/fl/miami/trt-therapy/", "label": "TRT Therapy in Miami, FL"}, {"url": "/foods-that-lower-testosterone/", "label": "Foods That Lower Testosterone"}];
+
+// Production wrapped this page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Libido: How PT-141 Addresses Sexual Desire at the Neurological Level"
+  seoTitle="Peptides for Libido: PT-141 Explained"
+  subtitle="Sexual desire is a complex interplay of hormones, neurotransmitters, and psychology. PT-141 (bremelanotide) represents a fundamentally different approach to treating low libido: one that works through the brain rather than blood flow."
+  seoDescription="How PT-141 (bremelanotide) treats low libido via the central nervous system. PT-141 vs Viagra/Cialis, clinical evidence, and protocols."
+  path={path}
+  breadcrumb="Peptides for Libido"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-02-01"
+  dateModifiedISO="2026-03-15"
+  readTime="10 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Experiencing Low Libido?"
+  ctaText="Our physicians provide confidential consultations to evaluate whether PT-141 or other peptide therapies are appropriate for your situation."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

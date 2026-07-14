@@ -1,0 +1,45 @@
+---
+// /baking-soda-for-ed/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/baking-soda-for-ed.html?raw";
+
+const path = "/baking-soda-for-ed/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Can baking soda cure erectile dysfunction?", "answer": "No. There's no scientific evidence that baking soda (sodium bicarbonate) can treat or cure erectile dysfunction. No peer-reviewed clinical trial has demonstrated any effect of baking soda on erectile function. ED is a medical condition with well-established treatments, so consult a physician for effective options."}, {"question": "Is baking soda safe to ingest regularly?", "answer": "Occasional use of small amounts of baking soda as an antacid is generally considered safe for most adults. However, regular or excessive consumption can cause serious side effects including metabolic alkalosis, electrolyte imbalances, high blood pressure (due to sodium content), and kidney problems. It can also interact with medications."}, {"question": "What actually works for ED?", "answer": "Proven ED treatments include PDE5 inhibitors (sildenafil/Viagra, tadalafil/Cialis), hormone optimization (if low testosterone is a factor), vacuum erection devices, lifestyle modifications (exercise, weight loss, smoking cessation), and in some cases, penile injections or implants. A physician can determine which option is best for your specific situation."}, {"question": "Could improving blood flow help my ED?", "answer": "Yes. Erectile dysfunction is frequently a vascular condition, meaning it's related to blood flow. However, improving blood flow requires evidence-based approaches like cardiovascular exercise, managing blood pressure and cholesterol, maintaining a healthy weight, and in many cases, prescription medications that directly improve penile blood flow."}, {"question": "Are there any natural remedies that actually help ED?", "answer": "Some natural approaches have modest evidence: regular aerobic exercise has strong evidence for improving erectile function, the Mediterranean diet is associated with lower ED risk, pelvic floor exercises may help some men, and adequate sleep is important for testosterone production. However, no dietary supplement or home remedy is a substitute for medical evaluation and treatment."}];
+
+const citations = [{"id": 1, "text": "National Institutes of Health. Sodium Bicarbonate. LiverTox: Clinical and Research Information on Drug-Induced Liver Injury. NCBI Bookshelf. Updated 2020.", "url": "https://www.ncbi.nlm.nih.gov/books/NBK482457/"}, {"id": 2, "text": "Burnett AL, et al. Erectile Dysfunction: AUA Guideline. The Journal of Urology. 2018;200(3):633–641.", "url": "https://doi.org/10.1016/j.juro.2018.05.004"}, {"id": 3, "text": "Al-Abri SA, Olson KR. Baking Soda Misuse as a Home Remedy: Case Experience of the California Poison Control System. Journal of Clinical Pharmacy and Therapeutics. 2013;38(1):73–77.", "url": "https://doi.org/10.1111/j.1365-2710.2012.01386.x"}, {"id": 4, "text": "Hatzimouratidis K, et al. Guidelines on Male Sexual Dysfunction: Erectile Dysfunction and Premature Ejaculation. European Association of Urology. 2015.", "url": "https://uroweb.org/guidelines/sexual-and-reproductive-health"}, {"id": 5, "text": "Esposito K, et al. Effect of Lifestyle Changes on Erectile Dysfunction in Obese Men. JAMA. 2004;291(24):2978–2984.", "url": "https://doi.org/10.1001/jama.291.24.2978"}, {"id": 6, "text": "Gerbild H, et al. Physical Activity to Improve Erectile Function: A Systematic Review of Intervention Studies. Sexual Medicine. 2018;6(2):75–89.", "url": "https://doi.org/10.1016/j.esxm.2018.02.001"}, {"id": 7, "text": "Feldman HA, et al. Impotence and Its Medical and Psychosocial Correlates: Results of the Massachusetts Male Aging Study. The Journal of Urology. 1994;151(1):54–61.", "url": "https://doi.org/10.1016/S0022-5347(17)34871-1"}, {"id": 8, "text": "Laumann EO, et al. Sexual Dysfunction in the United States: Prevalence and Predictors. JAMA. 1999;281(6):537–544.", "url": "https://doi.org/10.1001/jama.281.6.537"}];
+
+const tocItems = [{"id": "the-claim", "title": "The Claim: Baking Soda as an ED Treatment"}, {"id": "what-evidence-says", "title": "What Does the Evidence Actually Say?"}, {"id": "how-baking-soda-works", "title": "How Baking Soda Works in the Body"}, {"id": "risks-side-effects", "title": "Risks & Side Effects of Ingesting Baking Soda"}, {"id": "why-myth-persists", "title": "Why This Myth Persists"}, {"id": "proven-treatments", "title": "Proven, Evidence-Based ED Treatments"}, {"id": "when-to-see-doctor", "title": "When to See a Doctor About ED"}, {"id": "faq", "title": "Frequently Asked Questions"}];
+
+const relatedLinks = [{"url": "/garlic-and-honey-for-erectile-dysfunction/", "label": "Garlic & Honey for ED: What Does the Evidence Say?"}, {"url": "/porn-induced-erectile-dysfunction/", "label": "Porn-Induced Erectile Dysfunction: Causes & Recovery"}, {"url": "/home-remedies-for-premature-ejaculation/", "label": "Home Remedies for Premature Ejaculation"}, {"url": "/fl/miami/trt-therapy/", "label": "TRT Therapy in Miami, FL"}, {"url": "/foods-that-lower-testosterone/", "label": "Foods That Lower Testosterone"}];
+
+const structuredData = faqPageSchema(faqs);
+---
+
+<BlogArticleLayout
+  title="Baking Soda for Erectile Dysfunction: What the Science Actually Says"
+  seoTitle="Baking Soda for ED: Does It Work?"
+  subtitle="Separating internet claims from medical evidence, and what actually works for ED."
+  seoDescription="Can baking soda treat erectile dysfunction? We review the science behind this popular claim and explain what ED treatments are actually proven to work."
+  path={path}
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-01-20"
+  dateModifiedISO="2026-03-10"
+  readTime="8 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Looking for ED Treatment That Actually Works?"
+  ctaText="Skip the internet myths. Strong Health physicians provide thorough evaluation and proven treatments tailored to your body."
+  ctaButtonText="Book Your Free Assessment →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

@@ -1,0 +1,48 @@
+---
+// /peptides-for-arthritis/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-articles.py. Body text lives in the imported fragment;
+// FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-arthritis.html?raw";
+
+const path = "/peptides-for-arthritis/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Can peptides cure arthritis?", "answer": "No. Peptide therapy cannot cure arthritis, particularly osteoarthritis where structural cartilage damage has already occurred. However, peptides may help manage symptoms, reduce inflammation, slow progression, and improve quality of life as part of a complete treatment plan under physician supervision."}, {"question": "Are peptides safe for older adults with arthritis?", "answer": "Peptide therapy can be appropriate for older adults when supervised by a physician who accounts for the patient's complete medical history, current medications, and overall health status. Age alone is not a contraindication, and older adults may benefit significantly from the anti-inflammatory and tissue-supporting properties of certain peptides."}, {"question": "How long before peptides help with joint pain?", "answer": "Many patients report improvement in joint pain and stiffness within 2–4 weeks of starting peptide therapy. More substantial benefits, including improved mobility and reduced need for pain medications, typically develop over 6–12 weeks. Individual response varies based on the severity and type of arthritis."}, {"question": "Can I use peptides alongside my current arthritis medications?", "answer": "In many cases, peptide therapy can complement existing arthritis treatments. However, potential interactions must be evaluated by your physician. Some patients are able to reduce their reliance on NSAIDs or corticosteroids after initiating peptide therapy, but any medication changes should be made under medical supervision."}, {"question": "Is peptide therapy covered by Medicare or insurance for arthritis?", "answer": "Peptide therapy for arthritis is generally not covered by Medicare or commercial insurance, as it is considered an off-label use. Strong Health provides transparent pricing and can discuss costs during your initial consultation."}, {"question": "What types of arthritis respond best to peptide therapy?", "answer": "Osteoarthritis and inflammatory arthritis (including mild-to-moderate rheumatoid arthritis) may respond to peptide therapy. Patients with mechanical joint pain from cartilage degeneration and those with chronic low-grade joint inflammation tend to report the most benefit. Severe inflammatory autoimmune arthritis typically requires immunosuppressive medications as the primary treatment."}, {"question": "Can peptides help after joint replacement surgery?", "answer": "BPC-157 and TB-500 may support recovery after joint replacement surgery by promoting tissue healing, reducing inflammation, and supporting rehabilitation. However, peptide therapy for post-surgical recovery should be coordinated between your surgeon and prescribing physician."}];
+
+const citations = [{"id": 1, "text": "Seiwerth S, et al. BPC 157 and standard angiogenic growth factors: Gastrointestinal tract healing, lessons from tendon, ligament, muscle and bone healing. Curr Pharm Des. 2018;24(18):1972-1989.", "url": "https://pubmed.ncbi.nlm.nih.gov/29737246/"}, {"id": 2, "text": "Kang EA, et al. BPC 157 as potential agent in treating osteoarthritis: a preliminary study. J Orthop Res. 2023.", "url": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": 3, "text": "Sosne G, et al. Thymosin beta 4: a potential novel therapy for neurotrophic keratopathy, dry eye, and ocular surface diseases. Vitam Horm. 2016;102:277-306.", "url": "https://pubmed.ncbi.nlm.nih.gov/27450738/"}, {"id": 4, "text": "Pickart L, Margolina A. Regenerative and protective actions of the GHK-Cu peptide in the light of the new gene data. Int J Mol Sci. 2018;19(7):1987.", "url": "https://pubmed.ncbi.nlm.nih.gov/29986520/"}, {"id": 5, "text": "Hunter DJ, Bierma-Zeinstra S. Osteoarthritis. Lancet. 2019;393(10182):1745-1759.", "url": "https://pubmed.ncbi.nlm.nih.gov/31034380/"}, {"id": 6, "text": "Sikiric P, et al. Stable gastric pentadecapeptide BPC 157 in trials for inflammatory bowel disease and other conditions. World J Gastroenterol. 2021;27(15):1584-1602.", "url": "https://pubmed.ncbi.nlm.nih.gov/33958845/"}];
+
+const tocItems = [{"id": "arthritis-challenge", "title": "The Joint Health Challenge"}, {"id": "bpc-157-joints", "title": "BPC-157 for Joint Health"}, {"id": "tb-500-joints", "title": "TB-500 for Joint Inflammation"}, {"id": "ghk-cu", "title": "GHK-Cu for Cartilage Support"}, {"id": "how-peptides-help", "title": "How Peptides Address Arthritis Symptoms"}, {"id": "clinical-evidence", "title": "Clinical Evidence"}, {"id": "treatment-approach", "title": "Treatment Approach"}, {"id": "vs-conventional", "title": "Peptides vs. Conventional Arthritis Treatments"}, {"id": "safety", "title": "Safety Considerations"}, {"id": "faq", "title": "FAQ"}];
+
+const relatedLinks = [{"url": "/peptides/", "label": "Peptides Hub: All Peptide Therapies"}, {"url": "/peptides-for-healing/", "label": "Peptides for Healing: BPC-157 and TB-500"}, {"url": "/peptides-for-tendon-repair/", "label": "Peptides for Tendon Repair"}, {"url": "/collagen-peptides/", "label": "Collagen Peptides: Evidence and Use Cases"}];
+
+// Production wrapped this page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Arthritis: Managing Joint Pain and Inflammation With BPC-157 and TB-500"
+  seoTitle="Peptides for Arthritis: BPC-157 & TB-500"
+  subtitle="Joint pain from arthritis affects millions of adults, limiting mobility and quality of life. Peptide therapy offers a physician-supervised approach to managing inflammation and supporting joint health: particularly for patients seeking alternatives or complements to conventional treatments."
+  seoDescription="How BPC-157, TB-500, and GHK-Cu peptides help manage arthritis pain and inflammation. Clinical evidence and physician-supervised treatment approaches."
+  path={path}
+  breadcrumb="Peptides for Arthritis"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-02-15"
+  dateModifiedISO="2026-03-15"
+  readTime="11 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Living With Joint Pain?"
+  ctaText="Our physicians evaluate your joint health and determine if peptide therapy could help manage your arthritis symptoms and improve mobility."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

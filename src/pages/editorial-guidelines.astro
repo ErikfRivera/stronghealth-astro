@@ -1,0 +1,340 @@
+---
+// Port of src/pages/EditorialGuidelines.tsx from the old repo.
+import PolicyPageLayout, { type PolicyTOCItem } from "../layouts/PolicyPageLayout.astro";
+import { STRONG_HEALTH_ORG_ID, MIAMI_BRICKELL_FULL_ADDRESS } from "../data/miamiClinic";
+
+const seoDescription =
+  "Strong Health's editorial guidelines outline our commitment to physician-reviewed, evidence-based health content on TRT, peptide therapy, and men's wellness.";
+
+const tocItems: PolicyTOCItem[] = [
+  { id: "editorial-mission", title: "Our Editorial Mission" },
+  { id: "content-process", title: "Content Creation Process" },
+  { id: "medical-review", title: "Medical Review Standards" },
+  { id: "author-qualifications", title: "Author Qualifications" },
+  { id: "source-standards", title: "Source & Citation Standards" },
+  { id: "affiliate-disclosure", title: "Affiliate & Advertising Disclosure" },
+  { id: "updates-corrections", title: "Content Updates & Corrections" },
+  { id: "contact-editorial", title: "Contact Our Editorial Team" },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Editorial Guidelines",
+  "description": seoDescription,
+  "url": "https://www.stronghealth.com/editorial-guidelines/",
+  "lastReviewed": "2026-03-15",
+  "publisher": { "@id": STRONG_HEALTH_ORG_ID },
+};
+---
+
+<PolicyPageLayout
+  title="Editorial Guidelines"
+  subtitle="At Strong Health, we hold ourselves to the highest standards of medical accuracy and editorial integrity. Every piece of health content we publish is grounded in peer-reviewed evidence and reviewed by licensed physicians."
+  seoDescription={seoDescription}
+  path="/editorial-guidelines/"
+  effectiveDate="January 1, 2026"
+  lastUpdated="March 15, 2026"
+  tocItems={tocItems}
+  structuredData={structuredData}
+>
+  {/* 1. Our Editorial Mission */}
+  <h2 id="editorial-mission">Our Editorial Mission</h2>
+  <p>
+    Strong Health exists to provide men with trustworthy, clinically accurate
+    health information that empowers them to make informed decisions about
+    their well-being. We publish in-depth content on testosterone replacement
+    therapy (TRT), peptide therapy, sexual health, dietary supplements, and
+    broader men's wellness topics.
+  </p>
+  <p>
+    Our editorial mission is guided by a simple principle: every claim we
+    make must be supported by credible scientific evidence. We do not publish
+    content driven by trends, marketing interests, or anecdotal reports
+    alone. Instead, we prioritize accuracy, transparency, and clinical
+    relevance in everything we produce.
+  </p>
+  <p>
+    As a health and wellness platform operating in a Your Money or Your Life
+    (YMYL) category, we recognize that our content can directly influence
+    medical decisions. This responsibility shapes every aspect of our
+    editorial process, from topic selection through final publication.
+  </p>
+
+  {/* 2. Content Creation Process */}
+  <h2 id="content-process">Content Creation Process</h2>
+  <p>
+    Every article published on Strong Health follows a rigorous, multi-step
+    editorial workflow designed to ensure clinical accuracy and readability.
+    All content goes through at least two rounds of review before it reaches
+    our readers.
+  </p>
+
+  <h3>Step 1: Topic Research &amp; Planning</h3>
+  <p>
+    Our editorial team identifies topics based on clinical relevance,
+    emerging research, and the questions our readers ask most frequently. We
+    prioritize subjects where evidence-based guidance can meaningfully
+    improve patient outcomes or correct widespread misinformation.
+  </p>
+
+  <h3>Step 2: Medical Literature Review</h3>
+  <p>
+    Before drafting begins, our writers conduct a thorough review of the
+    current medical literature. This includes searching PubMed, Cochrane
+    Library, and relevant clinical practice guidelines to establish the
+    evidence base for each topic.
+  </p>
+
+  <h3>Step 3: Drafting by Qualified Writers</h3>
+  <p>
+    Articles are drafted by writers with demonstrated expertise in health and
+    science communication. Writers are required to cite primary sources for
+    all medical claims and clearly distinguish between established evidence
+    and areas of ongoing research.
+  </p>
+
+  <h3>Step 4: Physician Review</h3>
+  <p>
+    Every piece of health content undergoes a detailed review by a licensed
+    physician on our medical team. The reviewing physician verifies clinical
+    accuracy, checks dosage information, confirms that recommendations align
+    with current clinical guidelines, and flags any claims that require
+    additional substantiation.
+  </p>
+
+  <h3>Step 5: Fact-Checking &amp; Editorial Review</h3>
+  <p>
+    Following physician review, our editorial team conducts a secondary
+    review focused on source verification, readability, and consistency. Each
+    citation is independently confirmed, and the article is checked for
+    clarity and accessibility without sacrificing medical precision.
+  </p>
+
+  <h3>Step 6: Publication &amp; Ongoing Monitoring</h3>
+  <p>
+    Once an article passes both review stages, it is published with a clear
+    publication date and the name of the medical reviewer. Published content
+    is monitored for accuracy on an ongoing basis and updated as new evidence
+    becomes available.
+  </p>
+
+  {/* 3. Medical Review Standards */}
+  <h2 id="medical-review">Medical Review Standards</h2>
+  <p>
+    Medical review is the cornerstone of our editorial integrity. All health
+    and wellness content published on Strong Health is reviewed and approved
+    by a licensed physician before publication. We do not publish medical
+    content that has not been physician-reviewed.
+  </p>
+  <p>
+    Our medical review team includes board-certified physicians with 15 or
+    more years of clinical experience in endocrinology, urology, internal
+    medicine, and men's health. Each reviewer brings direct patient care
+    experience that informs their evaluation of our content.
+  </p>
+  <p>
+    Medical reviewers are responsible for:
+  </p>
+  <ul>
+    <li>Verifying the clinical accuracy of all medical claims and data</li>
+    <li>Confirming that dosage ranges, protocols, and treatment descriptions reflect current standards of care</li>
+    <li>Ensuring content does not overstate the efficacy of any therapy or minimize known risks and side effects</li>
+    <li>Evaluating whether the cited evidence appropriately supports the conclusions presented</li>
+    <li>Adding clinical context based on their firsthand patient care experience</li>
+  </ul>
+  <p>
+    Each article displays the name and credentials of the physician who
+    reviewed it. You can view our medical reviewer profiles to learn more
+    about their qualifications. For example, see the profile of{" "}
+    <a href="/author/dr-angel-rivera/">Dr. Angel Rivera</a>, one of our
+    lead medical reviewers.
+  </p>
+
+  {/* 4. Author Qualifications */}
+  <h2 id="author-qualifications">Author Qualifications</h2>
+  <p>
+    Strong Health maintains strict qualification standards for everyone who
+    contributes to our content. We distinguish between two primary roles:
+    medical reviewers and health content writers.
+  </p>
+
+  <h3>Medical Reviewer Requirements</h3>
+  <ul>
+    <li>Doctor of Medicine (MD) or Doctor of Osteopathic Medicine (DO) degree from an accredited institution</li>
+    <li>Active, unrestricted medical license in at least one U.S. state</li>
+    <li>Board certification in a relevant specialty (endocrinology, urology, internal medicine, or a related field)</li>
+    <li>Minimum of 10 years of direct clinical experience</li>
+    <li>No active disciplinary actions or sanctions from any medical board</li>
+  </ul>
+
+  <h3>Health Content Writer Requirements</h3>
+  <ul>
+    <li>Demonstrated background in health journalism, medical writing, or science communication</li>
+    <li>Proficiency in reading and interpreting peer-reviewed clinical research, including understanding of study design, statistical significance, and limitations</li>
+    <li>Familiarity with medical terminology and clinical practice guidelines relevant to men's health</li>
+    <li>Commitment to accurate source attribution and transparent reporting</li>
+  </ul>
+  <p>
+    All contributors, whether physicians or writers, are required to disclose
+    any financial relationships, consulting arrangements, or potential
+    conflicts of interest that could influence their work.
+  </p>
+
+  {/* 5. Source & Citation Standards */}
+  <h2 id="source-standards">Source &amp; Citation Standards</h2>
+  <p>
+    Credibility begins with sourcing. Strong Health requires that all medical
+    claims be supported by high-quality, verifiable evidence. We maintain
+    strict standards for the types of sources we consider acceptable.
+  </p>
+
+  <h3>Preferred Source Categories</h3>
+  <ul>
+    <li>
+      <strong>Peer-reviewed journals:</strong> PubMed-indexed publications,
+      The Journal of the American Medical Association (JAMA), The New England
+      Journal of Medicine (NEJM), The Lancet, The Journal of Clinical
+      Endocrinology &amp; Metabolism, and other respected medical journals
+    </li>
+    <li>
+      <strong>Government and institutional sources:</strong> National
+      Institutes of Health (NIH), U.S. Food and Drug Administration (FDA),
+      Centers for Disease Control and Prevention (CDC), World Health
+      Organization (WHO)
+    </li>
+    <li>
+      <strong>Clinical practice guidelines:</strong> Guidelines published by
+      the American Urological Association (AUA), the Endocrine Society, and
+      other recognized professional medical organizations
+    </li>
+    <li>
+      <strong>Systematic reviews and meta-analyses:</strong> Cochrane Reviews
+      and other rigorous evidence syntheses that represent the highest level
+      of available evidence
+    </li>
+  </ul>
+
+  <h3>Citation Requirements</h3>
+  <ul>
+    <li>Every medical article must include a minimum of three citations from acceptable sources</li>
+    <li>Claims about treatment efficacy, safety, or side effects must be directly supported by at least one peer-reviewed study or clinical guideline</li>
+    <li>When studies have conflicting results, we present the range of evidence rather than cherry-picking outcomes that support a predetermined conclusion</li>
+    <li>We do not rely on anecdotal evidence, testimonials, or non-peer-reviewed sources as the sole basis for medical claims</li>
+    <li>All citations link directly to the original source material whenever possible so readers can verify our claims independently</li>
+  </ul>
+
+  {/* 6. Affiliate & Advertising Disclosure */}
+  <h2 id="affiliate-disclosure">Affiliate &amp; Advertising Disclosure</h2>
+  <p>
+    Strong Health believes that editorial integrity and commercial
+    relationships must remain strictly separated. We are committed to full
+    transparency about how we fund our operations and how financial
+    relationships may relate to the content we publish.
+  </p>
+
+  <h3>Product Reviews &amp; Recommendations</h3>
+  <p>
+    When we review supplements, health products, or wellness services, our
+    evaluations are conducted independently by our editorial and medical
+    teams. Product reviews are based on ingredient analysis, available
+    clinical evidence, manufacturing quality, and value. No manufacturer,
+    brand, or affiliate partner has editorial input into our reviews or the
+    ability to alter our findings before publication.
+  </p>
+
+  <h3>Affiliate Relationships</h3>
+  <p>
+    Some articles on Strong Health contain affiliate links. When you purchase
+    a product through one of these links, we may earn a commission at no
+    additional cost to you. We clearly disclose the presence of affiliate
+    links within each article that contains them.
+  </p>
+  <p>
+    Importantly, affiliate relationships do not influence:
+  </p>
+  <ul>
+    <li>Which products we choose to review or recommend</li>
+    <li>The ratings, conclusions, or clinical assessments in our content</li>
+    <li>Whether we highlight potential risks, side effects, or drawbacks of a product</li>
+    <li>The selection or placement of products within comparison articles</li>
+  </ul>
+
+  <h3>Advertising &amp; Sponsored Content</h3>
+  <p>
+    Any sponsored content or paid partnerships are clearly labeled as such
+    and identified separately from our independent editorial content. Paid
+    content is subject to the same medical review standards as all other
+    content on our site, but is always transparently marked so readers can
+    distinguish between editorial and commercial content.
+  </p>
+
+  {/* 7. Content Updates & Corrections */}
+  <h2 id="updates-corrections">Content Updates &amp; Corrections</h2>
+  <p>
+    Medical knowledge evolves, and our content must evolve with it. Strong
+    Health is committed to keeping our published articles current, accurate,
+    and aligned with the latest clinical evidence.
+  </p>
+
+  <h3>Scheduled Reviews</h3>
+  <p>
+    All published health content is reviewed on at least an annual basis. During
+    these reviews, our editorial and medical teams assess whether new research,
+    updated clinical guidelines, or regulatory changes warrant revisions. Articles
+    that are updated display a visible "Last Updated" date so readers always know
+    when the information was most recently verified.
+  </p>
+
+  <h3>Evidence-Triggered Updates</h3>
+  <p>
+    In addition to scheduled reviews, we update content proactively when
+    significant new evidence emerges. This includes the publication of major
+    clinical trials, FDA safety communications, updates to clinical practice
+    guidelines, or the identification of new safety concerns related to
+    therapies we cover.
+  </p>
+
+  <h3>Correction Policy</h3>
+  <p>
+    We take factual accuracy seriously and have a clear process for
+    addressing errors:
+  </p>
+  <ul>
+    <li>Readers, clinicians, and researchers can report potential errors by emailing our editorial team</li>
+    <li>All reported errors are investigated by our editorial and medical review teams within 48 hours of receipt</li>
+    <li>If an error is confirmed, we correct the content promptly and add a visible correction notice at the top of the article describing the nature of the change</li>
+    <li>For significant corrections that materially affect the medical guidance in an article, we conduct a full re-review by a physician</li>
+    <li>A log of all corrections is maintained internally for editorial accountability</li>
+  </ul>
+
+  {/* 8. Contact Our Editorial Team */}
+  <h2 id="contact-editorial">Contact Our Editorial Team</h2>
+  <p>
+    We welcome feedback, questions, and correction requests from our readers,
+    healthcare professionals, and the research community. Maintaining open
+    communication with our audience is an essential part of our commitment to
+    accuracy and trust.
+  </p>
+  <p>
+    If you have questions about our editorial process, would like to report a
+    factual error, or have suggestions for topics we should cover, please
+    reach out to us:
+  </p>
+  <ul>
+    <li>
+      <strong>Email:</strong>{" "}
+      <a href="mailto:editorial@stronghealth.com">editorial@stronghealth.com</a>
+    </li>
+    <li>
+      <strong>Mailing Address:</strong>{" "}
+      Strong Health Editorial Team, {MIAMI_BRICKELL_FULL_ADDRESS}
+    </li>
+  </ul>
+  <p>
+    We make every effort to respond to editorial inquiries within two
+    business days. For urgent correction requests related to patient safety
+    information, please indicate "Urgent Correction" in your email subject
+    line, and our team will prioritize your request.
+  </p>
+</PolicyPageLayout>

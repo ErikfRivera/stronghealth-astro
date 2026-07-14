@@ -1,0 +1,373 @@
+---
+// Author profile — port of src/pages/authors/MahadevMukherjee.tsx.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageShell from "../../components/shared/PageShell.astro";
+import FadeIn from "../../components/shared/FadeIn.astro";
+import JsonLd from "../../components/seo/JsonLd.astro";
+import { breadcrumbSchema } from "../../components/seo/schemas";
+
+const SITE_URL = "https://www.stronghealth.com";
+const PAGE_PATH = "/author/mahadev-mukherjee/";
+const PROFILE_IMAGE = "/authors/mahadev-mukherjee.jpg";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE_URL}${PAGE_PATH}#person`,
+  name: "Mahadev Mukherjee",
+  givenName: "Mahadev",
+  familyName: "Mukherjee",
+  jobTitle: "Scientific Content Writer",
+  description:
+    "Scientific content writer with 17 years of experience in pharmaceutical sales, marketing, product management, and clinical data management across respiratory, gynecology, diabetology, and endocrinology. Specializes in peptide research, metabolic therapeutics, obesity pharmacology, and GLP-1/GIP/GCGR pathway mechanisms.",
+  url: `${SITE_URL}${PAGE_PATH}`,
+  image: `${SITE_URL}${PROFILE_IMAGE}`,
+  worksFor: { "@id": `${SITE_URL}/#organization` },
+  alumniOf: [
+    {
+      "@type": "EducationalOrganization",
+      name: "University of Calcutta",
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "Chitkara University",
+    },
+  ],
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      name: "B.Sc. (Hons) in Chemistry",
+      recognizedBy: {
+        "@type": "EducationalOrganization",
+        name: "University of Calcutta",
+      },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      name: "MBA in Pharmaceutical Management (Pursuing)",
+      recognizedBy: {
+        "@type": "EducationalOrganization",
+        name: "Chitkara University",
+      },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "certification",
+      name: "Google Digital Marketing Fundamentals",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "certification",
+      name: "Data Analytics Foundation Course",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "certification",
+      name: "Pharmaceutical Sales & Marketing Corporate Training",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "certification",
+      name: "Human Physiology",
+      recognizedBy: {
+        "@type": "EducationalOrganization",
+        name: "Duke University",
+      },
+    },
+  ],
+  knowsAbout: [
+    "Peptide research",
+    "Metabolic therapeutics",
+    "Obesity pharmacology",
+    "GLP-1 / GIP / GCGR pathway mechanisms",
+    "Monoclonal antibody forecasting",
+    "Respiratory therapeutics",
+    "Gynecology",
+    "Diabetology",
+    "Endocrinology",
+    "Clinical data management",
+  ],
+  award: [
+    "Excellence Award – Pharmaceutical Sales Leadership (2021)",
+    "Internal client appreciation for scientific and SEO-aligned writing work",
+  ],
+};
+
+const education = [
+  {
+    institution: "Chitkara University",
+    degree: "MBA in Pharmaceutical Management",
+    year: "Pursuing",
+  },
+  {
+    institution: "University of Calcutta",
+    degree: "B.Sc. (Hons) in Chemistry",
+    year: "",
+  },
+];
+
+const certifications = [
+  {
+    name: "Google Digital Marketing Fundamentals",
+    issuer: "Google",
+    short: "G",
+  },
+  {
+    name: "Data Analytics Foundation Course",
+    issuer: "",
+    short: "DA",
+  },
+  {
+    name: "Pharmaceutical Sales & Marketing Corporate Training",
+    issuer: "",
+    short: "PS",
+  },
+  {
+    name: "Human Physiology",
+    issuer: "Duke University",
+    short: "DU",
+  },
+];
+
+const awards = [
+  {
+    title: "Excellence Award – Pharmaceutical Sales Leadership",
+    year: "2021",
+  },
+  {
+    title: "Internal client appreciation for scientific and SEO-aligned writing work",
+    year: "",
+  },
+];
+
+const articles = [
+  { url: "/peptides/", label: "Peptides Hub: All Peptide Therapies" },
+  { url: "/peptides-for-muscle-growth/", label: "Peptides for Muscle Growth: CJC-1295, Ipamorelin & BPC-157" },
+  { url: "/peptides-for-belly-fat/", label: "Peptides for Belly Fat: Tesamorelin and AOD-9604" },
+  { url: "/peptides-for-healing/", label: "Peptides for Healing: BPC-157 and TB-500" },
+  { url: "/peptides-for-tendon-repair/", label: "Peptides for Tendon Repair" },
+  { url: "/peptides-for-arthritis/", label: "Peptides for Arthritis" },
+  { url: "/peptides-for-sleep/", label: "Peptides for Sleep: DSIP and Growth Hormone Releasers" },
+  { url: "/peptides-for-libido/", label: "Peptides for Libido: PT-141 (Bremelanotide)" },
+  { url: "/collagen-peptides/", label: "Collagen Peptides: Evidence and Use Cases" },
+  { url: "/semaglutide-diet/", label: "Semaglutide Diet: Complete Guide for Weight Loss" },
+  { url: "/stillman-diet/", label: "The Stillman Diet: History, Risks, and Why Modern Medicine Moved On" },
+  { url: "/foods-that-lower-testosterone/", label: "Foods That Lower Testosterone" },
+  { url: "/nadh-benefits/", label: "NADH Benefits: Cellular Energy & Cognition" },
+  { url: "/resveratrol-side-effects/", label: "Resveratrol Side Effects in Men" },
+  { url: "/nac-benefits-men/", label: "NAC Benefits for Men" },
+  { url: "/lysine-benefit-men-health/", label: "Lysine Benefits for Men's Health" },
+];
+---
+
+<BaseLayout
+  title="Mahadev Mukherjee, Scientific Writer"
+  description="Scientific content writer with 17 years in pharma sales, marketing, product management, and clinical data — focused on peptides, GLP-1/GIP/GCGR, and obesity Rx."
+  path={PAGE_PATH}
+  ogType="profile"
+  ogImage={`${SITE_URL}${PROFILE_IMAGE}`}
+>
+  <PageShell>
+    <JsonLd
+      schema={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Our Team", path: "/about/" },
+        { name: "Mahadev Mukherjee", path: PAGE_PATH },
+      ])}
+    />
+    <JsonLd schema={personSchema} />
+
+    <div class="max-w-[720px] mx-auto px-6 py-12">
+      <!-- Hero -->
+      <FadeIn>
+        <header class="mb-10">
+          <nav class="flex items-center gap-2 text-xs text-muted mb-8">
+            <a href="/" class="hover:text-cream transition-colors">
+              Home
+            </a>
+            <span>/</span>
+            <span class="text-gold">Mahadev Mukherjee</span>
+          </nav>
+
+          <div class="flex flex-col sm:flex-row items-start gap-6">
+            <img
+              src={PROFILE_IMAGE}
+              alt="Mahadev Mukherjee, Scientific Content Writer"
+              width={96}
+              height={96}
+              loading="eager"
+              class="w-24 h-24 rounded-full object-cover border border-gold/20 shrink-0 bg-gradient-to-br from-[#C9A84C]/30 to-[#C9A84C]/10"
+            />
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-1">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-cream">
+                  Mahadev Mukherjee
+                </h1>
+              </div>
+              <p class="text-gold font-semibold text-sm mb-2">
+                Scientific Content Writer &middot; Pharmaceutical Professional
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full border border-gold/30 text-gold bg-gold/5">
+                  B.Sc. (Hons) Chemistry
+                </span>
+                <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full border border-white/10 text-muted bg-white/5">
+                  17 Years Pharma Experience
+                </span>
+                <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full border border-white/10 text-muted bg-white/5">
+                  MBA (Pursuing)
+                </span>
+              </div>
+              <p class="text-sm text-body leading-relaxed">
+                Focused on research-driven, SEO-optimized writing across peptide research,
+                metabolic therapeutics, and GLP-1/GIP/GCGR pathway mechanisms.
+              </p>
+            </div>
+          </div>
+        </header>
+      </FadeIn>
+
+      <div class="border-t border-white/10 my-8"></div>
+
+      <!-- About -->
+      <FadeIn delay={100}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            About
+          </h2>
+          <div class="text-sm text-body leading-[1.8] space-y-4">
+            <p>
+              I have 17 years of experience in pharmaceutical sales, marketing, product
+              management, and clinical data management across therapeutic areas, including
+              respiratory, gynecology, diabetology, and endocrinology.
+            </p>
+            <p>
+              Along with my pharma background, I work as a scientific content writer
+              specializing in peptide research, metabolic therapeutics, obesity pharmacology,
+              and GLP-1/GIP/GCGR pathway mechanisms. I focus on research-driven, SEO-optimized
+              content that aligns smoothly with Surfer guidelines and maintains strong
+              accuracy, clarity, and structure.
+            </p>
+            <p>
+              Recently, I&apos;ve also been working on monoclonal antibody forecasting models,
+              including dosing analysis and demand modeling across multiple mAb molecules.
+              My writing style is clear, evidence-based, and tailored for scientific, medical,
+              and wellness research audiences.
+            </p>
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Education -->
+      <FadeIn delay={150}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Education
+          </h2>
+          <div class="space-y-4">
+            {
+              education.map((edu) => (
+                <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                  <div class="flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <h3 class="text-sm font-bold text-cream">{edu.degree}</h3>
+                      <div class="text-xs text-gold font-medium">{edu.institution}</div>
+                    </div>
+                    {edu.year && (
+                      <span class="text-xs text-muted whitespace-nowrap">{edu.year}</span>
+                    )}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Certifications -->
+      <FadeIn delay={200}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Certifications
+          </h2>
+          <div class="space-y-3">
+            {
+              certifications.map((cert) => (
+                <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center text-gold text-sm font-bold border border-gold/20 shrink-0">
+                      {cert.short}
+                    </div>
+                    <div>
+                      <h3 class="text-sm font-bold text-cream">{cert.name}</h3>
+                      {cert.issuer && (
+                        <div class="text-xs text-muted">{cert.issuer}</div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Articles by Mahadev -->
+      <FadeIn delay={225}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Articles by Mahadev Mukherjee
+          </h2>
+          <p class="text-xs text-muted mb-4">
+            Selected scientific writing across peptide therapy, GLP-1
+            metabolic medicine, and men's health nutrition.
+          </p>
+          <ul class="space-y-2">
+            {
+              articles.map((a) => (
+                <li class="p-3 rounded-lg border border-white/5 bg-white/[0.02] hover:border-gold/20 transition-colors">
+                  <a href={a.url} class="text-sm text-cream hover:text-gold transition-colors">
+                    {a.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </FadeIn>
+
+      <!-- Awards -->
+      <FadeIn delay={250}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Honors &amp; Awards
+          </h2>
+          <div class="space-y-3">
+            {
+              awards.map((award) => (
+                <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02] flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold text-xs border border-gold/20 shrink-0">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-semibold text-cream">{award.title}</h3>
+                    {award.year && <div class="text-xs text-muted">{award.year}</div>}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </FadeIn>
+    </div>
+  </PageShell>
+</BaseLayout>

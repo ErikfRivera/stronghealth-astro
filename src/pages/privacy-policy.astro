@@ -1,0 +1,449 @@
+---
+// Port of src/pages/PrivacyPolicy.tsx from the old repo.
+import PolicyPageLayout, { type PolicyTOCItem } from "../layouts/PolicyPageLayout.astro";
+import {
+  MIAMI_BRICKELL_CLINIC,
+  STRONG_HEALTH_PHONE_DISPLAY,
+  STRONG_HEALTH_PHONE_HREF,
+} from "../data/miamiClinic";
+
+const tocItems: PolicyTOCItem[] = [
+  { id: "information-collected", title: "Information We Collect" },
+  { id: "how-we-use", title: "How We Use Your Information" },
+  { id: "how-we-share", title: "How We Share Information" },
+  { id: "hipaa-phi", title: "HIPAA & Protected Health Information" },
+  { id: "cookies", title: "Cookies & Tracking Technologies" },
+  { id: "your-rights", title: "Your Rights & Choices" },
+  { id: "data-security", title: "Data Security" },
+  { id: "childrens-privacy", title: "Children's Privacy" },
+  { id: "policy-changes", title: "Changes to This Policy" },
+  { id: "contact-info", title: "Contact Information" },
+];
+
+const seoDescription =
+  "Learn how Strong Health collects, uses, and protects your personal and health information. Review our privacy practices, HIPAA compliance, and your data rights.";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Privacy Policy",
+  description: seoDescription,
+  url: "https://www.stronghealth.com/privacy-policy/",
+  lastReviewed: "2026-03-15",
+  publisher: {
+    "@type": "Organization",
+    name: "Strong Health",
+    url: "https://www.stronghealth.com",
+  },
+};
+---
+
+<PolicyPageLayout
+  title="Privacy Policy"
+  subtitle="How Strong Health collects, uses, and protects your personal and health information"
+  seoDescription={seoDescription}
+  path="/privacy-policy/"
+  effectiveDate="January 1, 2026"
+  lastUpdated="March 15, 2026"
+  tocItems={tocItems}
+  structuredData={structuredData}
+>
+  {/* 1. Information We Collect */}
+  <h2 id="information-collected">Information We Collect</h2>
+  <p>
+    Strong Health collects information necessary to provide you with
+    physician-supervised testosterone replacement therapy and related
+    medical services. The types of information we collect depend on how you
+    interact with our clinic, website, and services.
+  </p>
+
+  <h3>Personal Information</h3>
+  <p>
+    When you create an account, schedule a consultation, or otherwise
+    engage with our services, we may collect the following personal
+    information:
+  </p>
+  <ul>
+    <li>Full name, including any preferred names</li>
+    <li>Email address</li>
+    <li>Phone number</li>
+    <li>Date of birth</li>
+    <li>Mailing address and residential address</li>
+    <li>Government-issued identification (for identity verification)</li>
+  </ul>
+
+  <h3>Health and Medical Information</h3>
+  <p>
+    To provide safe and effective medical care, we collect health-related
+    information, including but not limited to:
+  </p>
+  <ul>
+    <li>
+      Symptoms and health concerns reported during consultations or intake
+      questionnaires
+    </li>
+    <li>
+      Medical history, including current medications, allergies, prior
+      diagnoses, and family health history
+    </li>
+    <li>
+      Laboratory test results, including blood panels, hormone levels, and
+      metabolic markers
+    </li>
+    <li>
+      Prescription and treatment records related to testosterone
+      replacement therapy, peptide therapy, and related protocols
+    </li>
+  </ul>
+
+  <h3>Usage Data</h3>
+  <p>
+    When you visit our website, we automatically collect certain technical
+    information to help us understand how our site is used and to improve
+    your experience:
+  </p>
+  <ul>
+    <li>IP address and approximate geographic location</li>
+    <li>Browser type, version, and operating system</li>
+    <li>Pages visited, time spent on pages, and navigation paths</li>
+    <li>Referring website or source that directed you to our site</li>
+    <li>
+      Cookies and similar tracking technologies (see the{" "}
+      <a href="#cookies">Cookies &amp; Tracking Technologies</a> section
+      below)
+    </li>
+  </ul>
+
+  <h3>Payment Information</h3>
+  <p>
+    When you pay for our services, payment transactions are processed
+    through secure, PCI-compliant third-party payment processors. Strong
+    Health does not store, process, or have access to your full credit
+    card numbers, debit card numbers, or bank account details. We may
+    retain a transaction reference ID, the last four digits of your
+    payment method, and billing address for record-keeping purposes.
+  </p>
+
+  {/* 2. How We Use Your Information */}
+  <h2 id="how-we-use">How We Use Your Information</h2>
+  <p>
+    Strong Health uses the information we collect for the following
+    purposes:
+  </p>
+  <ul>
+    <li>
+      <strong>Providing medical services:</strong> To deliver
+      physician-supervised testosterone replacement therapy, coordinate
+      laboratory testing, prescribe peptide therapy protocols, and manage
+      your ongoing treatment plan
+    </li>
+    <li>
+      <strong>Communication:</strong> To contact you regarding upcoming
+      appointments, share lab results, provide treatment updates, and
+      respond to your inquiries
+    </li>
+    <li>
+      <strong>Payment processing:</strong> To process payments for
+      consultations, lab work, prescriptions, and other services rendered
+    </li>
+    <li>
+      <strong>Service improvement:</strong> To analyze usage patterns,
+      improve our website functionality, enhance patient experience, and
+      develop new services
+    </li>
+    <li>
+      <strong>Legal compliance:</strong> To comply with applicable federal
+      and state laws, regulations, and legal processes, including HIPAA,
+      Florida medical record retention requirements, and tax obligations
+    </li>
+    <li>
+      <strong>Health-related communications:</strong> To send you
+      educational content, wellness tips, and information about new
+      services that may be relevant to your treatment. You may opt out of
+      non-essential communications at any time by clicking the
+      "unsubscribe" link in any email or by contacting us directly
+    </li>
+  </ul>
+
+  {/* 3. How We Share Information */}
+  <h2 id="how-we-share">How We Share Information</h2>
+  <p>
+    We do not sell your personal information to third parties. We will
+    never sell, rent, or trade your personal data for marketing or
+    advertising purposes. We may share your information only in the
+    following limited circumstances:
+  </p>
+  <ul>
+    <li>
+      <strong>Healthcare providers:</strong> With physicians, nurse
+      practitioners, and other licensed healthcare professionals directly
+      involved in your treatment and care coordination
+    </li>
+    <li>
+      <strong>Laboratories:</strong> With CLIA-certified laboratory
+      partners to process blood work, hormone panels, and other diagnostic
+      tests ordered as part of your treatment
+    </li>
+    <li>
+      <strong>Payment processors:</strong> With PCI-compliant third-party
+      payment processors to securely handle billing and payment
+      transactions
+    </li>
+    <li>
+      <strong>Legal requirements:</strong> When required by law, including
+      in response to valid court orders, subpoenas, government
+      investigations, or to protect the rights, safety, or property of
+      Strong Health, our patients, or the public
+    </li>
+    <li>
+      <strong>Business transfers:</strong> In the event of a merger,
+      acquisition, reorganization, or sale of assets, your information may
+      be transferred as part of that transaction. We will notify you via
+      email and/or a prominent notice on our website of any change in
+      ownership or use of your personal information
+    </li>
+  </ul>
+
+  {/* 4. HIPAA & Protected Health Information */}
+  <h2 id="hipaa-phi">HIPAA &amp; Protected Health Information</h2>
+  <p>
+    As a healthcare provider, Strong Health is subject to the Health
+    Insurance Portability and Accountability Act of 1996 (HIPAA) and its
+    implementing regulations. Your Protected Health Information (PHI) —
+    which includes any individually identifiable health information
+    created, received, maintained, or transmitted in connection with your
+    care — is handled in strict accordance with HIPAA requirements.
+  </p>
+  <p>
+    Under HIPAA, you have specific rights regarding your PHI, including
+    the right to access your medical records, request amendments to
+    inaccurate information, obtain an accounting of certain disclosures,
+    and request restrictions on how your PHI is used or shared.
+  </p>
+  <p>
+    Strong Health maintains administrative, physical, and technical
+    safeguards designed to protect the confidentiality, integrity, and
+    availability of your PHI. All staff members with access to PHI
+    receive regular HIPAA compliance training, and we conduct periodic
+    risk assessments to identify and address potential vulnerabilities.
+  </p>
+  <p>
+    For a comprehensive description of how we use and disclose your
+    protected health information and a full explanation of your rights
+    under HIPAA, please review our{" "}
+    <a href="/hipaa-policy/">HIPAA Notice of Privacy Practices</a>.
+  </p>
+
+  {/* 5. Cookies & Tracking Technologies */}
+  <h2 id="cookies">Cookies &amp; Tracking Technologies</h2>
+  <p>
+    Our website uses cookies and similar technologies to provide core
+    functionality and understand how visitors use our site. We categorize
+    these technologies as follows:
+  </p>
+
+  <h3>Essential Cookies</h3>
+  <p>
+    These cookies are strictly necessary for the operation of our
+    website. They enable core functionality such as session management,
+    security features, and user authentication. Essential cookies cannot
+    be disabled without impairing the website's functionality.
+  </p>
+
+  <h3>Analytics Cookies</h3>
+  <p>
+    We use Google Analytics with IP anonymization enabled to collect
+    aggregated, non-personally-identifiable data about how visitors
+    interact with our website. This information helps us understand
+    traffic patterns, identify popular content, and improve site
+    performance. Analytics data is processed in a manner that does not
+    directly identify individual users.
+  </p>
+
+  <h3>No Advertising or Third-Party Tracking Cookies</h3>
+  <p>
+    Strong Health does not use advertising cookies, retargeting pixels,
+    or third-party tracking technologies that follow your activity across
+    other websites.
+  </p>
+
+  <h3>Managing Cookie Preferences</h3>
+  <p>
+    You can manage or disable cookies through your web browser settings.
+    Most browsers allow you to block or delete cookies, set preferences
+    for specific websites, or receive notifications when a cookie is
+    being set. Please note that disabling essential cookies may affect
+    the functionality of certain features on our website. For detailed
+    instructions, consult your browser's help documentation.
+  </p>
+
+  {/* 6. Your Rights & Choices */}
+  <h2 id="your-rights">Your Rights &amp; Choices</h2>
+  <p>
+    Strong Health respects your right to control your personal
+    information. Depending on your jurisdiction, you may have the
+    following rights under applicable federal and Florida state privacy
+    laws:
+  </p>
+  <ul>
+    <li>
+      <strong>Access your data:</strong> You have the right to request a
+      copy of the personal information we hold about you, including your
+      medical records, in a commonly used electronic format
+    </li>
+    <li>
+      <strong>Correct inaccuracies:</strong> If you believe any of your
+      personal or health information is inaccurate or incomplete, you may
+      request that we correct or update it
+    </li>
+    <li>
+      <strong>Request deletion:</strong> You may request the deletion of
+      your personal information, subject to legal retention requirements.
+      Please note that we are required by Florida law and federal
+      regulations to retain medical records for a minimum period and
+      cannot delete information that must be preserved for legal,
+      regulatory, or clinical purposes
+    </li>
+    <li>
+      <strong>Opt out of marketing emails:</strong> You may unsubscribe
+      from promotional or marketing communications at any time by
+      clicking the "unsubscribe" link in any email or by contacting our
+      Privacy Officer. Please note that opting out of marketing
+      communications does not affect transactional messages related to
+      your treatment, appointments, or account
+    </li>
+    <li>
+      <strong>Request data portability:</strong> You may request that we
+      provide your personal data in a structured, machine-readable format
+      so that it can be transferred to another provider
+    </li>
+  </ul>
+  <p>
+    To exercise any of these rights, please contact our Privacy Officer
+    using the information provided in the{" "}
+    <a href="#contact-info">Contact Information</a> section below. We
+    will respond to your request within the timeframe required by
+    applicable law.
+  </p>
+
+  {/* 7. Data Security */}
+  <h2 id="data-security">Data Security</h2>
+  <p>
+    Strong Health takes the security of your personal and health
+    information seriously. We implement a comprehensive set of
+    administrative, technical, and physical safeguards designed to
+    protect your data against unauthorized access, alteration,
+    disclosure, or destruction. Our security measures include:
+  </p>
+  <ul>
+    <li>
+      <strong>Encryption in transit:</strong> All data transmitted
+      between your browser and our servers is protected using 256-bit
+      TLS/SSL encryption, ensuring that your information cannot be
+      intercepted during transmission
+    </li>
+    <li>
+      <strong>Encryption at rest:</strong> Personal and health
+      information stored in our systems is encrypted at rest using
+      industry-standard AES-256 encryption
+    </li>
+    <li>
+      <strong>Role-based access controls:</strong> Access to patient
+      data is restricted on a need-to-know basis. Only authorized
+      personnel with a legitimate clinical or operational need may access
+      your information, and all access is logged and auditable
+    </li>
+    <li>
+      <strong>Regular security audits:</strong> We conduct periodic
+      security assessments, vulnerability scans, and penetration testing
+      to identify and remediate potential risks to our systems
+    </li>
+    <li>
+      <strong>Employee training:</strong> All team members receive
+      regular training on data handling best practices, HIPAA compliance,
+      and security awareness to ensure your information is treated with
+      the utmost care
+    </li>
+  </ul>
+  <p>
+    While no system can guarantee absolute security, we are committed to
+    continually evaluating and strengthening our safeguards to protect
+    your information.
+  </p>
+
+  {/* 8. Children's Privacy */}
+  <h2 id="childrens-privacy">Children's Privacy</h2>
+  <p>
+    Strong Health's services, including testosterone replacement therapy
+    and related medical treatments, are intended exclusively for adults
+    aged 18 and older. We do not knowingly collect, solicit, or maintain
+    personal information from individuals under the age of 18.
+  </p>
+  <p>
+    If we become aware that we have inadvertently collected personal
+    information from an individual under 18, we will take prompt steps
+    to delete that information from our records. If you believe that a
+    minor has provided us with personal information, please contact our
+    Privacy Officer immediately so that we can investigate and take
+    appropriate action.
+  </p>
+
+  {/* 9. Changes to This Policy */}
+  <h2 id="policy-changes">Changes to This Policy</h2>
+  <p>
+    Strong Health reserves the right to update or modify this Privacy
+    Policy at any time to reflect changes in our practices, legal
+    requirements, or operational needs. When we make material changes to
+    this policy, we will notify you by:
+  </p>
+  <ul>
+    <li>
+      Sending a notification to the email address associated with your
+      account
+    </li>
+    <li>
+      Posting a prominent notice on our website with the updated
+      effective date
+    </li>
+  </ul>
+  <p>
+    We encourage you to review this Privacy Policy periodically to stay
+    informed about how we protect your information. Your continued use
+    of our services after any changes to this policy constitutes your
+    acceptance of the updated terms.
+  </p>
+
+  {/* 10. Contact Information */}
+  <h2 id="contact-info">Contact Information</h2>
+  <p>
+    If you have any questions, concerns, or requests regarding this
+    Privacy Policy or our data practices, please contact our Privacy
+    Officer:
+  </p>
+  <ul>
+    <li>
+      <strong>Privacy Officer</strong>
+      <br />
+      Strong Health
+      <br />
+      {MIAMI_BRICKELL_CLINIC.streetAddress}
+      <br />
+      {MIAMI_BRICKELL_CLINIC.city}, {MIAMI_BRICKELL_CLINIC.state} {MIAMI_BRICKELL_CLINIC.postalCode}
+    </li>
+    <li>
+      <strong>Email:</strong>{" "}
+      <a href="mailto:privacy@stronghealth.com">
+        privacy@stronghealth.com
+      </a>
+    </li>
+    <li>
+      <strong>Phone:</strong>{" "}
+      <a href={STRONG_HEALTH_PHONE_HREF}>{STRONG_HEALTH_PHONE_DISPLAY}</a>
+    </li>
+  </ul>
+  <p>
+    We will make every effort to respond to your inquiry within a
+    reasonable timeframe and in accordance with applicable legal
+    requirements.
+  </p>
+</PolicyPageLayout>

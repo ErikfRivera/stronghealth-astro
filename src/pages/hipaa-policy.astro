@@ -1,0 +1,458 @@
+---
+// Port of src/pages/HipaaPolicy.tsx from the old repo.
+import PolicyPageLayout, { type PolicyTOCItem } from "../layouts/PolicyPageLayout.astro";
+import {
+  MIAMI_BRICKELL_CLINIC,
+  MIAMI_BRICKELL_FULL_ADDRESS,
+  STRONG_HEALTH_PHONE_DISPLAY,
+  STRONG_HEALTH_PHONE_HREF,
+} from "../data/miamiClinic";
+
+const tocItems: PolicyTOCItem[] = [
+  { id: "hipaa-commitment", title: "Our HIPAA Commitment" },
+  { id: "phi-definition", title: "Protected Health Information" },
+  { id: "uses-disclosures", title: "Uses & Disclosures of PHI" },
+  { id: "your-rights", title: "Your HIPAA Rights" },
+  { id: "our-responsibilities", title: "Our Responsibilities" },
+  { id: "business-associates", title: "Business Associates" },
+  { id: "minimum-necessary", title: "Minimum Necessary Standard" },
+  { id: "ephi-security", title: "Electronic PHI Security" },
+  { id: "filing-complaint", title: "Filing a Complaint" },
+  { id: "privacy-officer", title: "Privacy Officer Contact" },
+];
+
+const seoDescription =
+  "Strong Health's HIPAA Notice of Privacy Practices. Learn how we protect your health information, your patient rights, and how to file a complaint.";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "HIPAA Notice of Privacy Practices",
+  description: seoDescription,
+  url: "https://www.stronghealth.com/hipaa-policy/",
+  lastReviewed: "2026-03-15",
+  publisher: {
+    "@type": "Organization",
+    name: "Strong Health",
+    url: "https://www.stronghealth.com",
+  },
+};
+---
+
+<PolicyPageLayout
+  title="HIPAA Notice of Privacy Practices"
+  subtitle="Your rights regarding protected health information at Strong Health"
+  seoDescription={seoDescription}
+  path="/hipaa-policy/"
+  effectiveDate="January 1, 2026"
+  lastUpdated="March 15, 2026"
+  tocItems={tocItems}
+  structuredData={structuredData}
+>
+  {/* 1. Our HIPAA Commitment */}
+  <h2 id="hipaa-commitment">Our HIPAA Commitment</h2>
+  <p>
+    Strong Health is committed to protecting the privacy and security of
+    your health information. As a healthcare provider that delivers
+    physician-supervised testosterone replacement therapy, peptide therapy,
+    lab testing, and related medical services, we are required by the Health
+    Insurance Portability and Accountability Act of 1996 (HIPAA) and its
+    implementing regulations to:
+  </p>
+  <ul>
+    <li>
+      Maintain the privacy of your Protected Health Information (PHI)
+    </li>
+    <li>Provide you with this Notice describing our privacy practices</li>
+    <li>Follow the terms of this Notice currently in effect</li>
+    <li>
+      Notify you in the event of a breach of your unsecured PHI
+    </li>
+  </ul>
+  <p>
+    This Notice of Privacy Practices describes how medical information
+    about you may be used and disclosed by Strong Health, and how you can
+    access this information. Please review it carefully.
+  </p>
+
+  {/* 2. Protected Health Information */}
+  <h2 id="phi-definition">Protected Health Information</h2>
+  <p>
+    Protected Health Information (PHI) is individually identifiable health
+    information that is created, received, maintained, or transmitted by
+    Strong Health in connection with the provision of healthcare services.
+    PHI includes, but is not limited to:
+  </p>
+  <ul>
+    <li>
+      Medical records and clinical notes from physician consultations and
+      examinations
+    </li>
+    <li>
+      Laboratory test results, including hormone panels, comprehensive
+      metabolic panels, CBC, PSA, and all biomarkers tested as part of
+      your treatment
+    </li>
+    <li>
+      Treatment plans, prescriptions, and medication records related to
+      testosterone replacement therapy, peptide therapy, and other
+      prescribed treatments
+    </li>
+    <li>
+      Billing records and insurance information associated with your
+      healthcare services
+    </li>
+    <li>
+      Demographic information such as name, address, date of birth, and
+      Social Security number when linked to health information
+    </li>
+    <li>
+      Communications between you and your physician, including telehealth
+      session records
+    </li>
+  </ul>
+
+  {/* 3. Uses & Disclosures of PHI */}
+  <h2 id="uses-disclosures">Uses &amp; Disclosures of PHI</h2>
+  <p>
+    Strong Health may use and disclose your PHI without your written
+    authorization for the following purposes:
+  </p>
+
+  <h3>Treatment</h3>
+  <p>
+    We may use and share your PHI to provide, coordinate, and manage your
+    healthcare. This includes sharing information with physicians involved
+    in your care, sending prescriptions to pharmacies, transmitting lab
+    orders and results to CLIA-certified laboratories, and consulting with
+    specialists when clinically appropriate.
+  </p>
+
+  <h3>Payment</h3>
+  <p>
+    We may use and disclose your PHI to obtain payment for services
+    provided to you. This includes billing activities, claims processing,
+    insurance verification, and collections. If you pay out of pocket in
+    full, you have the right to restrict disclosures to your health plan
+    for that specific service.
+  </p>
+
+  <h3>Healthcare Operations</h3>
+  <p>
+    We may use your PHI for activities necessary to operate our clinic and
+    ensure quality care. This includes quality assessment and improvement,
+    physician credentialing, staff training, compliance audits, business
+    planning, and customer service.
+  </p>
+
+  <h3>Disclosures That Do Not Require Authorization</h3>
+  <p>
+    Federal and state law permit or require us to disclose your PHI
+    without authorization in certain circumstances, including:
+  </p>
+  <ul>
+    <li>As required by law, including court orders and subpoenas</li>
+    <li>Public health activities and reporting</li>
+    <li>Health oversight activities and government audits</li>
+    <li>
+      To avert a serious threat to the health or safety of a person or the
+      public
+    </li>
+    <li>Workers' compensation as required by law</li>
+    <li>
+      To coroners, medical examiners, and funeral directors as required
+    </li>
+  </ul>
+
+  <h3>Disclosures That Require Your Authorization</h3>
+  <p>
+    For uses and disclosures not described above, we will obtain your
+    written authorization before using or disclosing your PHI. This
+    includes marketing communications, sale of PHI, and most uses of
+    psychotherapy notes. You may revoke your authorization at any time in
+    writing, except to the extent that we have already acted on the
+    previous authorization.
+  </p>
+
+  {/* 4. Your HIPAA Rights */}
+  <h2 id="your-rights">Your HIPAA Rights</h2>
+  <p>
+    Under HIPAA, you have the following rights with respect to your
+    Protected Health Information:
+  </p>
+  <ul>
+    <li>
+      <strong>Right to access:</strong> You have the right to inspect and
+      obtain a copy of your medical records and other PHI maintained by
+      Strong Health. We will provide your records in the format you
+      request if readily producible, or in a mutually agreed-upon
+      alternative format. We may charge a reasonable, cost-based fee for
+      copies.
+    </li>
+    <li>
+      <strong>Right to request amendment:</strong> If you believe your PHI
+      is inaccurate or incomplete, you may request an amendment to your
+      records. We will respond within 60 days. We may deny the request if
+      the information was not created by us, is not part of the records
+      used to make decisions about you, or is already accurate and
+      complete.
+    </li>
+    <li>
+      <strong>Right to an accounting of disclosures:</strong> You have the
+      right to receive a list of certain disclosures we have made of your
+      PHI during the six years prior to your request. This accounting does
+      not include disclosures made for treatment, payment, or healthcare
+      operations.
+    </li>
+    <li>
+      <strong>Right to request restrictions:</strong> You may request that
+      we restrict how we use or disclose your PHI for treatment, payment,
+      or healthcare operations. While we are not required to agree to most
+      restrictions, we must comply with your request to restrict
+      disclosures to a health plan for services you paid for entirely out
+      of pocket.
+    </li>
+    <li>
+      <strong>Right to confidential communications:</strong> You may
+      request that we communicate with you about your health information
+      by alternative means or at an alternative location. For example, you
+      may ask that we contact you only at a specific phone number or send
+      correspondence to a particular address.
+    </li>
+    <li>
+      <strong>Right to a paper copy of this notice:</strong> You have the
+      right to obtain a paper copy of this Notice of Privacy Practices at
+      any time, even if you previously agreed to receive it
+      electronically.
+    </li>
+    <li>
+      <strong>Right to file a complaint:</strong> If you believe your
+      privacy rights have been violated, you have the right to file a
+      complaint with Strong Health or with the U.S. Department of Health
+      and Human Services. See the{" "}
+      <a href="#filing-complaint">Filing a Complaint</a> section below.
+    </li>
+  </ul>
+
+  {/* 5. Our Responsibilities */}
+  <h2 id="our-responsibilities">Our Responsibilities</h2>
+  <p>Strong Health is required by law to:</p>
+  <ul>
+    <li>
+      Maintain the privacy and security of your PHI using appropriate
+      administrative, physical, and technical safeguards
+    </li>
+    <li>
+      Provide you with this Notice of our legal duties and privacy
+      practices regarding your health information
+    </li>
+    <li>Follow the terms of this Notice currently in effect</li>
+    <li>
+      Notify you promptly if a breach occurs that may have compromised
+      the privacy or security of your unsecured PHI, in accordance with
+      the HIPAA Breach Notification Rule
+    </li>
+    <li>
+      Ensure that all workforce members receive appropriate training on
+      HIPAA privacy and security requirements
+    </li>
+    <li>
+      Designate a Privacy Officer responsible for overseeing compliance
+      with HIPAA and this Notice
+    </li>
+  </ul>
+  <p>
+    We reserve the right to change the terms of this Notice and to make
+    new provisions effective for all PHI that we maintain. If we make
+    material changes, we will post the revised Notice on our website and
+    make it available at our clinic.
+  </p>
+
+  {/* 6. Business Associates */}
+  <h2 id="business-associates">Business Associates</h2>
+  <p>
+    Strong Health works with certain third-party vendors and service
+    providers (known as "Business Associates" under HIPAA) who may have
+    access to your PHI in the course of performing services on our behalf.
+    These include:
+  </p>
+  <ul>
+    <li>CLIA-certified laboratory partners that process your lab work</li>
+    <li>
+      Electronic health record (EHR) and practice management system
+      vendors
+    </li>
+    <li>Billing and payment processing companies</li>
+    <li>
+      IT service providers who maintain and support our technology
+      infrastructure
+    </li>
+    <li>
+      Telehealth platform providers used for virtual follow-up
+      appointments
+    </li>
+  </ul>
+  <p>
+    Each Business Associate is required to sign a Business Associate
+    Agreement (BAA) that obligates them to safeguard your PHI in
+    accordance with HIPAA requirements. Business Associates are
+    prohibited from using or disclosing your PHI for any purpose other
+    than the services they perform for Strong Health.
+  </p>
+
+  {/* 7. Minimum Necessary Standard */}
+  <h2 id="minimum-necessary">Minimum Necessary Standard</h2>
+  <p>
+    Strong Health adheres to the HIPAA Minimum Necessary Standard, which
+    requires that we make reasonable efforts to limit the use, disclosure,
+    and requests for PHI to the minimum amount necessary to accomplish
+    the intended purpose. This means:
+  </p>
+  <ul>
+    <li>
+      Staff members have access only to the PHI they need to perform
+      their specific job functions
+    </li>
+    <li>
+      When we disclose PHI to Business Associates or other parties, we
+      share only the information relevant to the specific purpose of the
+      disclosure
+    </li>
+    <li>
+      Our role-based access controls ensure that each team member's
+      access to patient records is limited to what is necessary for
+      their role
+    </li>
+  </ul>
+  <p>
+    The Minimum Necessary Standard does not apply to disclosures made for
+    treatment purposes, disclosures made to you, disclosures made
+    pursuant to your authorization, or disclosures required by law.
+  </p>
+
+  {/* 8. Electronic PHI Security */}
+  <h2 id="ephi-security">Electronic PHI Security</h2>
+  <p>
+    Strong Health implements comprehensive technical safeguards to protect
+    electronic Protected Health Information (ePHI) in accordance with the
+    HIPAA Security Rule. Our security measures include:
+  </p>
+  <ul>
+    <li>
+      <strong>Encryption:</strong> All ePHI is encrypted in transit using
+      TLS/SSL protocols and encrypted at rest using AES-256 encryption
+    </li>
+    <li>
+      <strong>Access controls:</strong> Unique user identification,
+      automatic logoff, multi-factor authentication, and role-based
+      permissions for all systems containing ePHI
+    </li>
+    <li>
+      <strong>Audit controls:</strong> Comprehensive audit trails that
+      record all access to, and activity within, systems containing
+      ePHI, allowing us to monitor for unauthorized access or suspicious
+      activity
+    </li>
+    <li>
+      <strong>Secure messaging:</strong> Patient communications
+      containing PHI are transmitted through encrypted, HIPAA-compliant
+      messaging platforms
+    </li>
+    <li>
+      <strong>Backup and disaster recovery:</strong> Regular encrypted
+      backups of all ePHI with tested disaster recovery procedures to
+      ensure data availability and integrity
+    </li>
+    <li>
+      <strong>Risk assessments:</strong> Periodic security risk
+      assessments to identify vulnerabilities and implement appropriate
+      remediation measures
+    </li>
+  </ul>
+
+  {/* 9. Filing a Complaint */}
+  <h2 id="filing-complaint">Filing a Complaint</h2>
+  <p>
+    If you believe that your privacy rights have been violated or that
+    Strong Health has not followed the practices described in this Notice,
+    you have the right to file a complaint. You will not be penalized,
+    retaliated against, or otherwise disadvantaged for filing a complaint.
+  </p>
+
+  <h3>File a Complaint with Strong Health</h3>
+  <p>
+    You may file a complaint directly with our Privacy Officer by
+    contacting:
+  </p>
+  <ul>
+    <li>
+      <strong>Email:</strong>{" "}
+      <a href="mailto:privacy@stronghealth.com">
+        privacy@stronghealth.com
+      </a>
+    </li>
+    <li>
+      <strong>Mail:</strong> Privacy Officer, Strong Health, {MIAMI_BRICKELL_FULL_ADDRESS}
+    </li>
+    <li>
+      <strong>Phone:</strong>{" "}
+      <a href={STRONG_HEALTH_PHONE_HREF}>{STRONG_HEALTH_PHONE_DISPLAY}</a>
+    </li>
+  </ul>
+
+  <h3>File a Complaint with the U.S. Department of Health and Human Services</h3>
+  <p>
+    You may also file a complaint with the Office for Civil Rights (OCR)
+    at the U.S. Department of Health and Human Services. Complaints must
+    be filed in writing within 180 days of the date you knew or should
+    have known about the alleged violation:
+  </p>
+  <ul>
+    <li>
+      <strong>Online:</strong> HHS Office for Civil Rights Complaint
+      Portal
+    </li>
+    <li>
+      <strong>Mail:</strong> Office for Civil Rights, U.S. Department of
+      Health and Human Services, 200 Independence Avenue SW, Washington,
+      DC 20201
+    </li>
+    <li>
+      <strong>Phone:</strong> 1-800-368-1019 (TDD: 1-800-537-7697)
+    </li>
+  </ul>
+
+  {/* 10. Privacy Officer Contact */}
+  <h2 id="privacy-officer">Privacy Officer Contact</h2>
+  <p>
+    For questions about this Notice, to exercise any of your HIPAA
+    rights, or to file a privacy complaint, please contact our designated
+    Privacy Officer:
+  </p>
+  <ul>
+    <li>
+      <strong>Privacy Officer</strong>
+      <br />
+      Strong Health
+      <br />
+      {MIAMI_BRICKELL_CLINIC.streetAddress}
+      <br />
+      {MIAMI_BRICKELL_CLINIC.city}, {MIAMI_BRICKELL_CLINIC.state} {MIAMI_BRICKELL_CLINIC.postalCode}
+    </li>
+    <li>
+      <strong>Email:</strong>{" "}
+      <a href="mailto:privacy@stronghealth.com">
+        privacy@stronghealth.com
+      </a>
+    </li>
+    <li>
+      <strong>Phone:</strong>{" "}
+      <a href={STRONG_HEALTH_PHONE_HREF}>{STRONG_HEALTH_PHONE_DISPLAY}</a>
+    </li>
+  </ul>
+  <p>
+    For more information about how we handle your personal data beyond
+    HIPAA requirements, please review our{" "}
+    <a href="/privacy-policy/">Privacy Policy</a>.
+  </p>
+</PolicyPageLayout>

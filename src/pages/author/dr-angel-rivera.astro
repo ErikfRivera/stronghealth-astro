@@ -1,0 +1,513 @@
+---
+// Author profile — port of src/pages/authors/DrAngelRivera.tsx.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageShell from "../../components/shared/PageShell.astro";
+import FadeIn from "../../components/shared/FadeIn.astro";
+import JsonLd from "../../components/seo/JsonLd.astro";
+import { breadcrumbSchema } from "../../components/seo/schemas";
+
+const SITE_URL = "https://www.stronghealth.com";
+const PAGE_PATH = "/author/dr-angel-rivera/";
+
+const physicianSchema = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "@id": `${SITE_URL}${PAGE_PATH}#physician`,
+  name: "Angel Rivera, M.D.",
+  givenName: "Angel",
+  familyName: "Rivera",
+  honorificSuffix: "M.D.",
+  jobTitle: "Staff Psychiatrist",
+  description:
+    "Bilingual board-eligible psychiatrist with over 15 years of clinical experience spanning forensic psychiatry, geriatric psychiatry, correctional medicine, crisis intervention, and telepsychiatry. Specializes in enhancing patient outcomes through telemedicine.",
+  url: `${SITE_URL}${PAGE_PATH}`,
+  image: `${SITE_URL}/opengraph.jpg`,
+  worksFor: { "@id": `${SITE_URL}/#strong-health-miami` },
+  memberOf: [
+    { "@id": `${SITE_URL}/#organization` },
+    { "@type": "Organization", name: "Florida Medical Association" },
+  ],
+  alumniOf: [
+    {
+      "@type": "EducationalOrganization",
+      name: "SUNY Downstate College of Medicine",
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "Mount Sinai Beth Israel",
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "UT Southwestern Medical Center",
+    },
+  ],
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Medical Doctor",
+      recognizedBy: {
+        "@type": "EducationalOrganization",
+        name: "SUNY Downstate College of Medicine",
+      },
+    },
+  ],
+  knowsLanguage: ["en", "es"],
+  medicalSpecialty: "Psychiatric",
+  publication: [
+    {
+      "@type": "ScholarlyArticle",
+      name: "Condom Knowledge, History of Use and Attitude among Chemically Addicted",
+      url: "https://www.jsatjournal.com/article/0740-5472(91)90045-C/pdf",
+      datePublished: "1999-06-01",
+      isPartOf: {
+        "@type": "Periodical",
+        name: "Journal of Substance Abuse",
+      },
+    },
+  ],
+};
+
+const expertise = [
+  { label: "Psychiatry", desc: "Comprehensive psychiatric evaluation and treatment" },
+  { label: "Telepsychiatry", desc: "Remote patient care via telemedicine platforms" },
+  { label: "Forensic Psychiatry", desc: "Forensic evaluations and correctional settings" },
+  { label: "Geriatric Psychiatry", desc: "Specialized care for patients aged 55+" },
+  { label: "Crisis Intervention", desc: "CISD/crisis unit and acute stabilization" },
+  { label: "Medication Management", desc: "Psychopharmacology and treatment planning" },
+  { label: "Correctional Medicine", desc: "Maximum-security and state prison facilities" },
+  { label: "Substance Abuse", desc: "Assessment and treatment of chemical dependency" },
+];
+
+const experience = [
+  {
+    title: "Staff Psychiatrist",
+    org: "Tulare County Health & Human Services Agency",
+    location: "Hanford, California",
+    period: "2020 – Present",
+    type: "Full-time",
+    desc: "Provides full-time psychiatric services for a county health and human services agency, delivering comprehensive mental health care to underserved populations.",
+  },
+  {
+    title: "Chief Medical Officer",
+    org: "Thrive Talk",
+    location: "",
+    period: "",
+    type: "Leadership",
+    desc: "Served as Chief Medical Officer overseeing clinical operations and medical standards for a telehealth mental health platform.",
+  },
+  {
+    title: "Staff Psychiatrist",
+    org: "Robert J. Demarco, CSCR",
+    location: "San Diego, California",
+    period: "2015 – 2020",
+    type: "Full-time",
+    desc: "Assessed patients admitted to the inpatient CISD/crisis unit and Administrative Segregation inpatient unit in a forensic setting. Conducted intakes, developed treatment plans, and provided ongoing psychiatric care.",
+  },
+  {
+    title: "Staff Psychiatrist",
+    org: "Santa Clara County Jail-Valley Medical Center",
+    location: "San Jose, California",
+    period: "2013 – 2015",
+    type: "Full-time",
+    desc: "Delivered comprehensive psychiatric evaluations, diagnostic clarification, medication management, discharge planning, and referrals for psychological services within a county correctional facility.",
+  },
+  {
+    title: "Staff Psychiatrist",
+    org: "CSP-Senior Impact",
+    location: "San Diego, California",
+    period: "2012 – 2013",
+    type: "Full-time",
+    desc: "Provided geriatric psychiatric services for patients aged 55 and older, including diagnostic assessments, prescribing, and pharmacological management.",
+  },
+  {
+    title: "Staff Physician",
+    org: "Salinas Valley State Prison",
+    location: "Soledad, California",
+    period: "2011 – 2012",
+    type: "Contract",
+    desc: "Delivered psychiatric services at a maximum-security/forensic facility, including comprehensive evaluations, diagnostic clarification, medication management, and discharge planning.",
+  },
+];
+
+const education = [
+  {
+    institution: "SUNY Downstate College of Medicine",
+    degree: "Doctor of Medicine (M.D.)",
+    year: "1990",
+    detail: "",
+  },
+  {
+    institution: "Mount Sinai Beth Israel",
+    degree: "Psychiatry Residency",
+    year: "1992 – 1993",
+    detail:
+      "Trained in geriatric psychiatry including geriatric psychopharmacology, psychosocial frameworks, and clinical rotations in inpatient/outpatient nursing home and geriatric satellite clinics.",
+  },
+  {
+    institution: "UT Southwestern Medical Center",
+    degree: "Residency Programs",
+    year: "1990 – 1992",
+    detail:
+      "Trained in inpatient and outpatient psychiatry across Veterans Hospital, University Hospital, Parkland Hospital, and Terrell State Hospital.",
+  },
+];
+
+const reviewedArticles = [
+  { url: "/foods-that-lower-testosterone/", label: "Foods That Lower Testosterone: Separating Myth from Evidence" },
+  { url: "/porn-induced-erectile-dysfunction/", label: "Porn-Induced Erectile Dysfunction: Understanding & Recovery" },
+  { url: "/baking-soda-for-ed/", label: "Baking Soda for ED: What the Science Actually Says" },
+  { url: "/garlic-and-honey-for-erectile-dysfunction/", label: "Garlic and Honey for Erectile Dysfunction: Fact vs. Fiction" },
+  { url: "/home-remedies-for-premature-ejaculation/", label: "Home Remedies for Premature Ejaculation: What Actually Works" },
+  { url: "/semaglutide-diet/", label: "Semaglutide Diet: Complete Guide for Weight Loss" },
+  { url: "/stillman-diet/", label: "The Stillman Diet: History, Risks, and Why Modern Medicine Moved On" },
+  { url: "/dexa-scan/", label: "DEXA Scan: The Gold Standard for Body Composition Analysis" },
+  { url: "/peptides-for-libido/", label: "Peptides for Libido: PT-141 (Bremelanotide) Explained" },
+  { url: "/peptides/", label: "Peptides Hub: All Peptide Therapies" },
+  { url: "/reviews/", label: "All Strong Health Reviews" },
+];
+---
+
+<BaseLayout
+  title="Dr. Angel Rivera, M.D. — Psychiatrist"
+  description="Bilingual (EN/ES) psychiatrist with 15+ years in forensic, geriatric, correctional, and telepsychiatry. SUNY Downstate M.D., Mount Sinai trained."
+  path={PAGE_PATH}
+  ogType="profile"
+>
+  <PageShell>
+    <JsonLd
+      schema={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Our Team", path: "/team/" },
+        { name: "Dr. Angel Rivera", path: PAGE_PATH },
+      ])}
+    />
+    <JsonLd schema={physicianSchema} />
+
+    <div class="max-w-[720px] mx-auto px-6 py-12">
+      <!-- Hero -->
+      <FadeIn>
+        <header class="mb-10">
+          <nav class="flex items-center gap-2 text-xs text-muted mb-8">
+            <a href="/" class="hover:text-cream transition-colors">
+              Home
+            </a>
+            <span>/</span>
+            <span class="text-gold">Dr. Angel Rivera</span>
+          </nav>
+
+          <div class="flex flex-col sm:flex-row items-start gap-6">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[#C9A84C]/30 to-[#C9A84C]/10 flex items-center justify-center text-2xl font-bold text-gold shrink-0 border border-gold/20">
+              AR
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-1">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-cream">
+                  Dr. Angel Rivera, M.D.
+                </h1>
+              </div>
+              <p class="text-gold font-semibold text-sm mb-2">
+                Bilingual Psychiatrist &middot; Telemedicine Specialist
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full border border-gold/30 text-gold bg-gold/5">
+                  M.D.
+                </span>
+                <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full border border-white/10 text-muted bg-white/5">
+                  15+ Years Experience
+                </span>
+                <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full border border-white/10 text-muted bg-white/5">
+                  English &middot; Spanish
+                </span>
+              </div>
+              <p class="text-sm text-body leading-relaxed">
+                Focused on enhancing patient outcomes through the use of telemedicine and telepsychiatry.
+              </p>
+            </div>
+          </div>
+        </header>
+      </FadeIn>
+
+      <div class="border-t border-white/10 my-8"></div>
+
+      <!-- About -->
+      <FadeIn delay={100}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            About
+          </h2>
+          <div class="text-sm text-body leading-[1.8] space-y-4">
+            <p>
+              Dr. Angel Rivera is a bilingual psychiatrist with over 15 years of diverse clinical
+              experience spanning forensic psychiatry, geriatric psychiatry, correctional medicine,
+              crisis intervention, and telepsychiatry. He earned his Doctor of Medicine degree from
+              SUNY Downstate College of Medicine and completed residency training at UT Southwestern
+              Medical Center and Mount Sinai Beth Israel, where he developed expertise in geriatric
+              psychopharmacology and psychosocial treatment frameworks.
+            </p>
+            <p>
+              Throughout his career, Dr. Rivera has served in high-acuity clinical environments
+              including maximum-security state prisons, county correctional facilities, and crisis
+              stabilization units. He has held leadership roles including Chief Medical Officer at
+              Thrive Talk, a telehealth mental health platform. His forensic psychiatry background
+              includes comprehensive psychiatric evaluations, diagnostic clarification, medication
+              management, and discharge planning in correctional and forensic settings.
+            </p>
+            <p>
+              Dr. Rivera is a member of the Florida Medical Association and is fluent in both
+              English and Spanish, allowing him to provide culturally competent psychiatric care to
+              diverse patient populations. His commitment to improving access to mental health
+              services drives his focus on telemedicine and telepsychiatry as tools for reaching
+              underserved communities.
+            </p>
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Areas of Expertise -->
+      <FadeIn delay={150}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Areas of Expertise
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {
+              expertise.map((item) => (
+                <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-gold/20 transition-colors">
+                  <div class="text-sm font-semibold text-cream mb-1">{item.label}</div>
+                  <div class="text-xs text-muted leading-relaxed">{item.desc}</div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Clinical Experience -->
+      <FadeIn delay={200}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Clinical Experience
+          </h2>
+          <div class="relative">
+            <div class="absolute left-[7px] top-2 bottom-2 w-px bg-white/10"></div>
+            <div class="space-y-6">
+              {
+                experience.map((role) => (
+                  <div class="relative pl-8">
+                    <div class="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 border-gold/40 bg-surface flex items-center justify-center">
+                      <div class="w-[5px] h-[5px] rounded-full bg-gold" />
+                    </div>
+                    <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                      <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <h3 class="text-sm font-bold text-cream">{role.title}</h3>
+                        <span class="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full border border-white/10 text-muted">
+                          {role.type}
+                        </span>
+                      </div>
+                      <div class="text-xs text-gold font-medium mb-1">{role.org}</div>
+                      <div class="text-xs text-muted mb-2">
+                        {[role.location, role.period].filter(Boolean).join(" · ")}
+                      </div>
+                      <p class="text-xs text-body leading-relaxed">{role.desc}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Education & Training -->
+      <FadeIn delay={250}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Education &amp; Training
+          </h2>
+          <div class="space-y-4">
+            {
+              education.map((edu) => (
+                <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                  <div class="flex flex-wrap items-start justify-between gap-2 mb-1">
+                    <div>
+                      <h3 class="text-sm font-bold text-cream">{edu.degree}</h3>
+                      <div class="text-xs text-gold font-medium">{edu.institution}</div>
+                    </div>
+                    <span class="text-xs text-muted whitespace-nowrap">{edu.year}</span>
+                  </div>
+                  {edu.detail && (
+                    <p class="text-xs text-body leading-relaxed mt-2">{edu.detail}</p>
+                  )}
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Licenses & Certifications -->
+      <FadeIn delay={300}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Licenses &amp; Certifications
+          </h2>
+          <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center text-gold text-sm font-bold border border-gold/20">
+                MD
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-cream">Medical Doctor</h3>
+                <div class="text-xs text-muted">
+                  SUNY Downstate College of Medicine &middot; Issued May 1990
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Publications -->
+      <FadeIn delay={350}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Publications
+          </h2>
+          <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+            <h3 class="text-sm font-semibold text-cream mb-1">
+              <a
+                href="https://www.jsatjournal.com/article/0740-5472(91)90045-C/pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-gold transition-colors"
+              >
+                Condom Knowledge, History of Use and Attitude among Chemically Addicted
+              </a>
+            </h3>
+            <div class="text-xs text-gold font-medium mb-2">
+              Journal of Substance Abuse &middot; June 1, 1999
+            </div>
+            <p class="text-xs text-body leading-relaxed">
+              Research examining the behavioral change of risky sexual practices in the context of
+              the AIDS epidemic, with emphasis on condom use education for safe sex among
+              chemically addicted populations.
+            </p>
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Honors & Awards -->
+      <FadeIn delay={400}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Honors &amp; Awards
+          </h2>
+          <div class="space-y-3">
+            <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02] flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold text-xs border border-gold/20">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-cream">Substance Abuse Rotation</h3>
+                <div class="text-xs text-muted">May 1989</div>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02] flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold text-xs border border-gold/20">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-cream">Senior Year Psychiatric Research Rotation</h3>
+                <div class="text-xs text-muted">December 1988</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Professional Memberships & Languages -->
+      <FadeIn delay={450}>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+          <section>
+            <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+              <span class="w-1 h-6 bg-gold rounded-full"></span>
+              Memberships
+            </h2>
+            <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+              <h3 class="text-sm font-semibold text-cream">Florida Medical Association</h3>
+              <div class="text-xs text-muted">Member</div>
+            </div>
+          </section>
+          <section>
+            <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+              <span class="w-1 h-6 bg-gold rounded-full"></span>
+              Languages
+            </h2>
+            <div class="space-y-2">
+              <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm font-semibold text-cream">English</span>
+                  <span class="text-[10px] font-bold tracking-wider uppercase text-muted">Fluent</span>
+                </div>
+              </div>
+              <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm font-semibold text-cream">Spanish</span>
+                  <span class="text-[10px] font-bold tracking-wider uppercase text-gold">Native / Bilingual</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </FadeIn>
+
+      <!-- Articles reviewed by Dr. Rivera -->
+      <FadeIn delay={500}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Articles Reviewed by Dr. Rivera
+          </h2>
+          <p class="text-xs text-muted mb-4">
+            Dr. Rivera serves as the medical reviewer on Strong Health's
+            evidence-based articles covering testosterone therapy, sexual
+            health, weight loss, and peptide therapeutics.
+          </p>
+          <ul class="space-y-2">
+            {
+              reviewedArticles.map((a) => (
+                <li class="p-3 rounded-lg border border-white/5 bg-white/[0.02] hover:border-gold/20 transition-colors">
+                  <a href={a.url} class="text-sm text-cream hover:text-gold transition-colors">
+                    {a.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </FadeIn>
+
+      <!-- Trust Footer -->
+      <FadeIn delay={550}>
+        <div class="p-5 rounded-xl border border-gold/10 bg-gold/[0.03] text-center">
+          <p class="text-xs text-body leading-relaxed">
+            Dr. Rivera's profile is maintained by the Strong Health editorial team. All credentials
+            and experience have been verified. For more information about our editorial standards,
+            please visit our <a href="/" class="text-gold hover:underline">editorial policy</a>.
+          </p>
+        </div>
+      </FadeIn>
+    </div>
+  </PageShell>
+</BaseLayout>

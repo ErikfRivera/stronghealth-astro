@@ -1,0 +1,201 @@
+---
+// /blog/ — port of src/pages/Blog.tsx. All cards render statically from the
+// shared articles.ts data source; the category filter is a small inline
+// script that toggles card visibility (production used React state).
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageShell from "../components/shared/PageShell.astro";
+import FadeIn from "../components/shared/FadeIn.astro";
+import Icon from "../components/shared/Icon.astro";
+import LocationsGridSection from "../components/shared/LocationsGridSection.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import { collectionPageSchema } from "../components/seo/schemas";
+import { articles, categoryColors, type Category } from "../data/articles";
+import { BOOKING_SMS_HREF } from "../lib/booking";
+
+const categories: Category[] = [
+  "All",
+  "Diet & Nutrition",
+  "Sexual Health",
+  "Men's Health Nutrients",
+  "Peptide Therapy",
+  "Supplement Reviews",
+  "Services",
+];
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr + "T00:00:00Z");
+  return d.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+const sorted = [...articles].sort(
+  (a, b) => new Date(b.datePublished).getTime() - new Date(a.datePublished).getTime(),
+);
+
+const categoryCounts = Object.fromEntries(
+  categories.map((cat) => [
+    cat,
+    cat === "All" ? articles.length : articles.filter((a) => a.category === cat).length,
+  ]),
+) as Record<Category, number>;
+---
+
+<BaseLayout
+  title="Evidence-Based Men's Health Blog"
+  description="Physician-reviewed articles on testosterone, sexual health, peptide therapy, nutrition, and men's health optimization from Strong Health."
+  path="/blog/"
+>
+  <PageShell>
+    <JsonLd
+      schema={collectionPageSchema({
+        name: "Strong Health Blog",
+        description:
+          "Physician-reviewed articles on testosterone, sexual health, peptide therapy, nutrition, and men's health optimization.",
+        url: "/blog/",
+        items: articles.map((a) => ({ name: a.title, url: a.path })),
+      })}
+    />
+    <header class="relative px-8 pt-16 pb-12 overflow-hidden border-b border-white/5">
+      <div class="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-navy/15 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[400px] h-[400px] bg-gold/8 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <FadeIn>
+          <span class="text-[11px] font-bold uppercase tracking-[0.15em] text-gold mb-3 block">
+            Evidence-Based Resources
+          </span>
+          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-4">
+            Evidence-Based Men's Health Articles
+          </h1>
+          <p class="text-[16px] text-muted leading-[1.7] max-w-[600px]">
+            Physician-reviewed articles on testosterone, sexual health, peptide therapy, nutrition, and men's health optimization.
+          </p>
+        </FadeIn>
+      </div>
+    </header>
+
+    <div class="max-w-[1000px] mx-auto px-8 py-10">
+      <FadeIn>
+        <div class="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter articles by category" id="blog-filters">
+          {
+            categories.map((cat) => (
+              <button
+                data-filter={cat}
+                aria-pressed={cat === "All" ? "true" : "false"}
+                class={`text-[12px] font-semibold px-3.5 py-2 rounded-lg transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A84C] ${
+                  cat === "All"
+                    ? "bg-gold text-surface"
+                    : "bg-surface-card text-muted hover:text-cream border border-white/5 hover:border-white/10"
+                }`}
+              >
+                {cat} ({categoryCounts[cat]})
+              </button>
+            ))
+          }
+        </div>
+      </FadeIn>
+
+      <p class="text-[13px] text-muted mb-6" aria-live="polite" id="blog-count">
+        {sorted.length} {sorted.length === 1 ? "article" : "articles"}
+      </p>
+      <FadeIn>
+        <LocationsGridSection variant="inline" />
+      </FadeIn>
+      <FadeIn>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="blog-grid">
+          {
+            sorted.map((article) => {
+              const color = categoryColors[article.category];
+              return (
+                <a
+                  href={article.path}
+                  data-category={article.category}
+                  class="group block bg-surface-card rounded-xl border border-white/5 hover:border-gold/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A84C] transition-all duration-300 overflow-hidden"
+                  aria-label={`Read: ${article.title}`}
+                >
+                  <div class="p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                      <span
+                        class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                        style={`color:${color};background-color:${color}15`}
+                      >
+                        {article.category}
+                      </span>
+                      <time class="text-[12px] text-muted" datetime={article.datePublished}>
+                        {formatDate(article.datePublished)}
+                      </time>
+                    </div>
+                    <h3 class="text-[17px] font-bold text-cream leading-[1.4] mb-2.5 group-hover:text-gold transition-colors line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <p class="text-[13px] text-muted leading-[1.7] mb-4 line-clamp-2">{article.subtitle}</p>
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-1.5 text-[12px] text-muted">
+                        <Icon name="clock" size={13} />
+                        <span>{article.readTime}</span>
+                      </div>
+                      <span
+                        class="text-[12px] font-semibold text-gold flex items-center gap-1 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity"
+                        aria-hidden="true"
+                      >
+                        Read article <Icon name="arrow-right" size={13} />
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              );
+            })
+          }
+        </div>
+      </FadeIn>
+    </div>
+
+    <section class="px-8 py-16 border-t border-white/5">
+      <div class="max-w-[600px] mx-auto text-center">
+        <h2 class="text-2xl font-bold mb-3">Ready to Take the Next Step?</h2>
+        <p class="text-[14px] text-muted leading-[1.7] mb-6">
+          Our physicians can help you understand how these topics apply to your individual health goals.
+        </p>
+        <a
+          href={BOOKING_SMS_HREF}
+          data-track-lead
+          class="inline-flex items-center gap-2 bg-gold text-surface font-bold text-[13px] px-7 py-3.5 rounded-lg hover:bg-[#D4B85C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A84C] transition-colors"
+        >
+          Book Your Free Assessment
+          <Icon name="arrow-right" size={15} />
+        </a>
+      </div>
+    </section>
+  </PageShell>
+
+  <script>
+    // Category filter (port of the Blog.tsx useState filter).
+    const filters = document.getElementById("blog-filters")!;
+    const grid = document.getElementById("blog-grid")!;
+    const count = document.getElementById("blog-count")!;
+    const activeClasses = ["bg-gold", "text-surface"];
+    const inactiveClasses = ["bg-surface-card", "text-muted", "hover:text-cream", "border", "border-white/5", "hover:border-white/10"];
+
+    filters.addEventListener("click", (e) => {
+      const btn = (e.target as HTMLElement).closest("button[data-filter]") as HTMLButtonElement | null;
+      if (!btn) return;
+      const cat = btn.dataset.filter!;
+      for (const b of filters.querySelectorAll("button[data-filter]")) {
+        const active = b === btn;
+        b.setAttribute("aria-pressed", String(active));
+        b.classList.remove(...(active ? inactiveClasses : activeClasses));
+        b.classList.add(...(active ? activeClasses : inactiveClasses));
+      }
+      let visible = 0;
+      for (const card of grid.querySelectorAll<HTMLElement>("[data-category]")) {
+        const show = cat === "All" || card.dataset.category === cat;
+        card.style.display = show ? "" : "none";
+        if (show) visible++;
+      }
+      count.textContent = `${visible} ${visible === 1 ? "article" : "articles"}`;
+    });
+  </script>
+</BaseLayout>

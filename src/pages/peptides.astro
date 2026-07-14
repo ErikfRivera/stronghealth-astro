@@ -1,0 +1,394 @@
+---
+// /peptides/ hub — port of src/pages/peptides/PeptidesHub.tsx. Guide cards,
+// nav dropdown, footer, and sitemap all read the shared articles.ts module.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageShell from "../components/shared/PageShell.astro";
+import FadeIn from "../components/shared/FadeIn.astro";
+import Tag from "../components/shared/Tag.astro";
+import Btn from "../components/shared/Btn.astro";
+import Icon from "../components/shared/Icon.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import ArticleLocationsSection from "../components/shared/ArticleLocationsSection.astro";
+import {
+  breadcrumbSchema,
+  collectionPageSchema,
+  faqPageSchema,
+  medicalWebPageSchema,
+} from "../components/seo/schemas";
+import { articles, type ArticleMeta } from "../data/articles";
+import { ALL_CITIES } from "../data/local/cityTrtConfig";
+
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Peptides", path: "/peptides/" },
+];
+
+const peptideArticles: ArticleMeta[] = articles.filter(
+  (a) => a.category === "Peptide Therapy",
+);
+
+type CategoryGroup = {
+  name: string;
+  description: string;
+  match: (article: ArticleMeta) => boolean;
+};
+
+const CATEGORY_GROUPS: CategoryGroup[] = [
+  {
+    name: "Recovery & Healing",
+    description:
+      "Tissue repair peptides like BPC-157 and TB-500 for tendons, joints, and full-body recovery.",
+    match: (a) =>
+      a.path === "/peptides-for-healing/" ||
+      a.path === "/peptides-for-tendon-repair/" ||
+      a.path === "/peptides-for-arthritis/",
+  },
+  {
+    name: "Body Composition",
+    description:
+      "GH secretagogues and targeted peptides that support fat loss and lean muscle growth.",
+    match: (a) =>
+      a.path === "/peptides-for-belly-fat/" || a.path === "/peptides-for-muscle-growth/",
+  },
+  {
+    name: "Sexual Health",
+    description:
+      "Neurologically-targeted peptides like PT-141 for desire and arousal in men and women.",
+    match: (a) => a.path === "/peptides-for-libido/",
+  },
+  {
+    name: "Sleep & Restoration",
+    description:
+      "DSIP and related peptides that improve deep-sleep architecture without sedation.",
+    match: (a) => a.path === "/peptides-for-sleep/",
+  },
+  {
+    name: "Structural Support",
+    description:
+      "Collagen peptides for connective tissue, skin, and joint support that complement clinical protocols.",
+    match: (a) => a.path === "/collagen-peptides/",
+  },
+];
+
+const categorizedGroups = (() => {
+  const assigned = new Set<string>();
+  const groups = CATEGORY_GROUPS.map((group) => {
+    const items = peptideArticles.filter((a) => group.match(a));
+    items.forEach((a) => assigned.add(a.path));
+    return { name: group.name, description: group.description, items };
+  }).filter((g) => g.items.length > 0);
+
+  const unassigned = peptideArticles.filter((a) => !assigned.has(a.path));
+  if (unassigned.length > 0) {
+    groups.push({
+      name: "More Peptide Guides",
+      description:
+        "Additional physician-reviewed peptide therapy guides from the Strong Health library.",
+      items: unassigned,
+    });
+  }
+  return groups;
+})();
+
+const FAQS = [
+  {
+    question: "What are peptides used for in clinical practice?",
+    answer:
+      "Therapeutic peptides are short chains of amino acids that act as signaling molecules in the body. Under physician supervision, they are used to support tissue healing (BPC-157, TB-500), body composition (Ipamorelin, CJC-1295, Tesamorelin), sleep architecture (DSIP), sexual health (PT-141), and structural connective tissue (collagen peptides). Each peptide targets specific receptors or pathways, which is why protocols are individualized based on goals and lab work.",
+  },
+  {
+    question: "Are peptides legal in Florida?",
+    answer:
+      "Yes, when prescribed by a licensed physician and dispensed through a licensed pharmacy. Several peptides used in clinical protocols are compounded by 503A or 503B pharmacies under physician orders. Strong Health does not work with gray-market or research-only peptides. Every protocol uses pharmacy-grade product with physician oversight and ongoing monitoring.",
+  },
+  {
+    question: "How are peptides different from steroids or HGH?",
+    answer:
+      "Anabolic steroids introduce synthetic androgens that override the body's hormonal system. Direct HGH bypasses the pituitary and creates artificially elevated growth hormone levels. GH-secretagogue peptides instead stimulate the pituitary to release more of your body's own growth hormone in its natural pulsatile pattern, which is generally safer and better tolerated. Healing peptides like BPC-157 and TB-500 work through entirely different pathways than steroids and have no androgenic effect.",
+  },
+  {
+    question: "How long does it take to see results from peptide therapy?",
+    answer:
+      "Timing depends on the peptide and the goal. Sleep and recovery improvements are often noticeable within 2–4 weeks. Body composition changes typically appear at 8–12 weeks with visible lean mass and fat-distribution shifts at 3–6 months. Tendon and joint healing protocols generally run 4–12 weeks depending on tissue involved. All Strong Health peptide protocols include scheduled labs and reassessments.",
+  },
+  {
+    question: "Do peptides require physician supervision?",
+    answer:
+      "Yes. Even peptides with favorable safety profiles require evaluation for contraindications (active malignancy, certain endocrine disorders, pregnancy), dose titration based on individual response, and monitoring of relevant labs (IGF-1, glucose, hormones). Self-sourced or research-grade peptides carry purity, dosing, and contamination risks that physician-supervised protocols are designed to eliminate.",
+  },
+  {
+    question: "Can peptide therapy be combined with TRT or weight loss programs?",
+    answer:
+      "Yes, and many Strong Health patients do exactly that. GH-secretagogue peptides combine well with testosterone replacement for body composition and recovery. Healing peptides are often added during musculoskeletal injury recovery alongside other therapies. GLP-1 weight loss programs can be paired with peptides that protect lean mass during caloric deficit. All combinations are designed and monitored by the prescribing physician.",
+  },
+  {
+    question: "Where can I get peptide therapy in South Florida?",
+    answer:
+      "Strong Health offers physician-supervised peptide therapy at all 9 of our South Florida clinics across Miami-Dade, Broward, and Palm Beach counties. Initial visits include an in-person physician evaluation, lab work, and protocol design. Follow-ups can be in-person or via telehealth depending on the protocol.",
+  },
+];
+
+const steps = [
+  {
+    title: "Initial physician evaluation",
+    desc: "In-person visit at any of our 9 South Florida clinics. Health history, exam, and discussion of goals and prior treatment.",
+  },
+  {
+    title: "Comprehensive lab panel",
+    desc: "Hormones (testosterone, estradiol, IGF-1), metabolic markers, and any peptide-specific labs needed for your protocol.",
+  },
+  {
+    title: "Individualized protocol",
+    desc: "Your physician selects peptides, dosing, and timing based on your labs, goals, and any contraindications. Compounded by a licensed pharmacy.",
+  },
+  {
+    title: "Ongoing monitoring",
+    desc: "Follow-up labs and check-ins at 8–12 weeks. Protocols adjusted based on response, side effects, and progress toward your goals.",
+  },
+];
+
+const collectionItems = peptideArticles.map((a) => ({ name: a.title, url: a.path }));
+---
+
+<BaseLayout
+  title="Peptide Therapy Guides"
+  description="Evidence-based peptide therapy guides for healing, body composition, sleep, sexual health, and recovery. Physician-supervised in South Florida."
+  path="/peptides/"
+>
+  <PageShell>
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: "Peptide Therapy Guides — Physician-Supervised Protocols",
+        description:
+          "Hub page covering peptides used in clinical practice: BPC-157, TB-500, Ipamorelin, CJC-1295, Tesamorelin, PT-141, DSIP, and collagen peptides.",
+        url: "/peptides/",
+        lastReviewed: "2026-04-15",
+        reviewedBy: {
+          name: "Dr. Angel Rivera, M.D.",
+          credentials: "Board-Certified",
+          role: "Medical Director — Strong Health",
+        },
+      })}
+    />
+    <JsonLd
+      schema={collectionPageSchema({
+        name: "Strong Health Peptide Therapy Guides",
+        description:
+          "Physician-reviewed guides to peptide therapy protocols offered at Strong Health",
+        url: "/peptides/",
+        items: collectionItems,
+      })}
+    />
+    <JsonLd schema={faqPageSchema(FAQS)} />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          <li class="flex items-center gap-1.5">
+            <a href="/" class="hover:text-gold transition-colors">Home</a>
+          </li>
+          <li class="flex items-center gap-1.5">
+            <Icon name="chevron-right" size={12} class="text-text-subtle" />
+            <span class="text-gold font-semibold">Peptides</span>
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <section class="relative px-8 pt-12 pb-16 overflow-hidden border-b border-white/5">
+      <div class="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#818CF8]/15 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <FadeIn>
+          <Tag>Peptide Therapy Library</Tag>
+        </FadeIn>
+        <FadeIn delay={150}>
+          <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[760px] tracking-[-1.5px]">
+            Physician-supervised <span class="text-gold">peptide therapy</span> guides.
+          </h1>
+        </FadeIn>
+        <FadeIn delay={250}>
+          <p class="text-[17px] text-muted leading-relaxed max-w-[640px] mb-8">
+            Evidence-based explainers covering the peptides Strong Health physicians prescribe most:
+            BPC-157, TB-500, Ipamorelin, CJC-1295, Tesamorelin, PT-141, DSIP, and clinical-grade
+            collagen. Each guide is written for patients and reviewed by our medical director.
+          </p>
+        </FadeIn>
+        <FadeIn delay={350}>
+          <Btn trackLead>Book a Peptide Consultation →</Btn>
+          <div class="mt-4 text-xs text-muted">
+            In-person physician visit · Lab-based protocol design · No subscriptions
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-12">
+          <Tag>Browse by Goal</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Peptide guides, organized by what you're <span class="text-gold">trying to fix</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[600px] mx-auto">
+            Eight in-depth, physician-reviewed articles covering the peptides most commonly used in
+            South Florida men's-health practice.
+          </p>
+        </FadeIn>
+
+        <div class="flex flex-col gap-12">
+          {
+            categorizedGroups.map((cat) => (
+              <FadeIn>
+                <div>
+                  <div class="mb-5">
+                    <h3 class="text-[22px] font-extrabold text-cream mb-1.5">{cat.name}</h3>
+                    <p class="text-[14px] text-muted leading-relaxed max-w-[680px]">
+                      {cat.description}
+                    </p>
+                  </div>
+                  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {cat.items.map((article) => (
+                      <a
+                        href={article.path}
+                        class="group bg-surface-card rounded-2xl p-6 border border-white/10 hover:border-gold/40 hover:bg-surface-raised transition-all flex flex-col h-full"
+                      >
+                        <div class="flex items-center gap-2 mb-3">
+                          <span
+                            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-[0.05em]"
+                            style="background-color:#818CF815;color:#818CF8"
+                          >
+                            <Icon name="flask-conical" size={11} />
+                            Peptide Therapy
+                          </span>
+                          <span class="flex items-center gap-1 text-[11px] text-muted">
+                            <Icon name="clock" size={11} />
+                            {article.readTime}
+                          </span>
+                        </div>
+                        <h3 class="text-[17px] font-bold text-cream leading-snug mb-2 group-hover:text-gold transition-colors">
+                          {article.title}
+                        </h3>
+                        <p class="text-[13px] text-muted leading-relaxed flex-grow mb-4">
+                          {article.subtitle}
+                        </p>
+                        <span class="text-[12px] font-semibold text-gold group-hover:underline">
+                          Read the guide →
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>How Peptide Therapy Works at Strong Health</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Real medicine. <span class="text-gold">Pharmacy-grade peptides.</span>
+          </h2>
+        </FadeIn>
+        <div class="grid md:grid-cols-2 gap-5">
+          {
+            steps.map((s, i) => (
+              <FadeIn delay={i * 80}>
+                <div class="bg-surface-card rounded-2xl p-6 border border-white/10 h-full">
+                  <div class="text-[12px] font-bold text-gold mb-2">STEP {i + 1}</div>
+                  <h3 class="text-lg font-bold text-cream mb-2">{s.title}</h3>
+                  <p class="text-[14px] text-muted leading-relaxed">{s.desc}</p>
+                </div>
+              </FadeIn>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Common Questions</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            About <span class="text-gold">peptide therapy</span>
+          </h2>
+        </FadeIn>
+        <div class="flex flex-col gap-4">
+          {
+            FAQS.map((faq, i) => (
+              <FadeIn delay={i * 40}>
+                <details class="bg-surface-card rounded-xl border border-white/10 group">
+                  <summary class="cursor-pointer p-5 list-none flex items-start justify-between gap-4 [&::-webkit-details-marker]:hidden">
+                    <h3 class="text-[15px] font-bold text-cream pr-2">{faq.question}</h3>
+                    <Icon
+                      name="chevron-right"
+                      size={18}
+                      class="text-gold flex-shrink-0 transition-transform group-open:rotate-90 mt-0.5"
+                    />
+                  </summary>
+                  <div class="px-5 pb-5 text-[14px] text-muted leading-[1.7]">{faq.answer}</div>
+                </details>
+              </FadeIn>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="mb-10">
+          <div class="bg-gradient-to-br from-[#818CF8]/[0.10] to-[#0D0F12] rounded-2xl p-8 border border-[#818CF8]/20">
+            <div class="text-center mb-7">
+              <Tag>South Florida Peptide Therapy Clinics</Tag>
+              <h3 class="text-[26px] font-extrabold text-cream mt-3 mb-3 leading-tight">
+                Physician-supervised peptide therapy across <span class="text-gold">South Florida</span>
+              </h3>
+              <p class="text-[14px] text-muted leading-relaxed max-w-[600px] mx-auto">
+                Pharmacy-grade BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, DSIP, and more —
+                dispensed under physician orders at any of our nine clinic locations.
+              </p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+              {
+                ALL_CITIES.map((city) => (
+                  <a
+                    href={`/fl/${city.slug}/peptide-therapy/`}
+                    class="bg-surface-raised rounded-lg px-4 py-3 border border-white/10 text-center hover:border-gold/30 hover:bg-surface-raised/80 transition-colors group"
+                  >
+                    <span class="text-[13px] font-semibold text-cream-muted group-hover:text-gold transition-colors">
+                      {city.name}, FL
+                    </span>
+                    <div class="text-[10px] text-muted mt-0.5">Peptide Therapy →</div>
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </FadeIn>
+        <ArticleLocationsSection />
+      </div>
+    </section>
+
+    <section class="px-8 py-24 bg-gradient-to-br from-[#818CF8]/[0.08] to-[#0D0F12] border-b border-white/5">
+      <div class="max-w-[700px] mx-auto text-center">
+        <FadeIn>
+          <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
+            Ready to talk to a physician about peptide therapy?
+          </h2>
+          <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
+            Book a free assessment at any of our 9 South Florida clinics. We'll review your goals,
+            run the right labs, and design a protocol if peptides are the right fit.
+          </p>
+          <Btn trackLead>Book Your Free Assessment →</Btn>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

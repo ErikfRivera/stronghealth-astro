@@ -1,0 +1,465 @@
+---
+// /careers/ — port of src/pages/Careers.tsx (includes JobPosting JSON-LD per opening).
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageShell from "../components/shared/PageShell.astro";
+import FadeIn from "../components/shared/FadeIn.astro";
+import CTABlock from "../components/shared/CTABlock.astro";
+import Icon from "../components/shared/Icon.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import { breadcrumbSchema, jobPostingSchema } from "../components/seo/schemas";
+import {
+  MIAMI_BRICKELL_CLINIC,
+  STRONG_HEALTH_ORG_ID,
+} from "../data/miamiClinic";
+
+const SITE_URL = "https://www.stronghealth.com";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Careers at Strong Health",
+  description:
+    "Join the Strong Health team. We're building the future of physician-supervised hormone therapy and men's health in Miami, FL.",
+  url: `${SITE_URL}/careers/`,
+  publisher: { "@id": STRONG_HEALTH_ORG_ID },
+};
+
+const benefits = [
+  {
+    icon: "heart",
+    title: "Health & Wellness",
+    description:
+      "Comprehensive medical, dental, and vision insurance. Plus access to Strong Health services for you and your family.",
+  },
+  {
+    icon: "trending-up",
+    title: "Growth & Development",
+    description:
+      "Continuing education stipends, conference attendance, and clear career advancement paths in a growing organization.",
+  },
+  {
+    icon: "graduation-cap",
+    title: "Learning Culture",
+    description:
+      "Work alongside board-certified physicians and medical professionals. Learn from experts in hormone therapy and men's health.",
+  },
+  {
+    icon: "clock",
+    title: "Work-Life Balance",
+    description:
+      "Competitive PTO, flexible scheduling, and no overnight shifts. We believe well-rested teams deliver better patient care.",
+  },
+  {
+    icon: "users",
+    title: "Collaborative Team",
+    description:
+      "Small, tight-knit team where your contributions matter. Direct access to leadership and input on clinical operations.",
+  },
+  {
+    icon: "shield",
+    title: "Meaningful Work",
+    description:
+      "Help men reclaim their vitality through evidence-based medicine. Every role at Strong Health directly impacts patient outcomes.",
+  },
+];
+
+interface JobOpening {
+  id: string;
+  title: string;
+  location: string;
+  employmentType: string;
+  /** schema.org employment type token. */
+  schemaEmploymentType: string;
+  workArrangement: string;
+  salaryDisplay: string;
+  salaryMin: number;
+  salaryMax: number;
+  datePosted: string;
+  validThrough: string;
+  summary: string;
+  responsibilities: string[];
+  requirements: string[];
+}
+
+const openings: JobOpening[] = [
+  {
+    id: "SH-CXL-001",
+    title: "Customer Experience Lead",
+    location: "Brickell, Miami, FL",
+    employmentType: "Full-time",
+    schemaEmploymentType: "FULL_TIME",
+    workArrangement: "On-site",
+    salaryDisplay: "$60,000 – $75,000 / year",
+    salaryMin: 60000,
+    salaryMax: 75000,
+    datePosted: "2026-06-06",
+    validThrough: "2026-09-06",
+    summary:
+      "We're hiring a Customer Experience Lead to own the patient journey at our Brickell clinic — from the first phone call through every follow-up. You'll be the warm, organized first point of contact who makes Strong Health feel different from the moment someone reaches out.",
+    responsibilities: [
+      "Greet and check in patients, manage the front desk, and set the tone for an exceptional in-clinic experience.",
+      "Field inbound calls, emails, and messages; answer questions and schedule consultations and lab visits.",
+      "Coordinate appointment scheduling, reminders, and follow-ups across the clinical team.",
+      "Manage patient records and intake paperwork accurately and in full compliance with HIPAA.",
+      "Collect feedback, resolve concerns, and proactively improve the patient experience.",
+    ],
+    requirements: [
+      "2+ years in a patient-facing, hospitality, or customer-experience role (healthcare a plus).",
+      "Exceptional communication skills and genuine empathy for patients.",
+      "Highly organized with strong attention to detail and comfort using scheduling/EMR software.",
+      "Discretion and professionalism handling sensitive health information.",
+      "Available to work on-site full-time at our Brickell, Miami clinic.",
+    ],
+  },
+];
+
+const CAREERS_EMAIL = "careers@stronghealth.com";
+
+/** Build a Google-compliant HTML description string for the JobPosting schema. */
+function buildJobDescriptionHtml(job: JobOpening): string {
+  const responsibilities = job.responsibilities
+    .map((r) => `<li>${r}</li>`)
+    .join("");
+  const requirements = job.requirements.map((r) => `<li>${r}</li>`).join("");
+  return [
+    `<p>${job.summary}</p>`,
+    `<p><strong>What you'll do</strong></p>`,
+    `<ul>${responsibilities}</ul>`,
+    `<p><strong>What we're looking for</strong></p>`,
+    `<ul>${requirements}</ul>`,
+  ].join("");
+}
+
+const cultureValues = [
+  {
+    title: "Patients First",
+    description:
+      "Every decision — from hiring to protocol design — starts with what's best for the patient. We don't cut corners on care.",
+  },
+  {
+    title: "Evidence Over Hype",
+    description:
+      "We follow peer-reviewed research and clinical guidelines. Our team values scientific rigor over marketing claims.",
+  },
+  {
+    title: "Radical Transparency",
+    description:
+      "Honest communication with patients, honest communication with each other. No hidden agendas, no corporate doublespeak.",
+  },
+  {
+    title: "Continuous Improvement",
+    description:
+      "We review outcomes, update protocols, and seek feedback constantly. Good enough today isn't good enough tomorrow.",
+  },
+];
+
+const applicationSteps = [
+  {
+    step: "01",
+    title: "Submit Your Application",
+    desc: "Send your resume and a brief cover letter to careers@stronghealth.com. Tell us why you're interested in Strong Health and what role you're looking for.",
+  },
+  {
+    step: "02",
+    title: "Initial Conversation",
+    desc: "If there's a fit, we'll schedule a 30-minute phone call to discuss your background, interests, and what you're looking for in your next role.",
+  },
+  {
+    step: "03",
+    title: "In-Person Interview",
+    desc: "Visit our Miami clinic, meet the team, and see our operations firsthand. For clinical roles, this may include a working interview.",
+  },
+  {
+    step: "04",
+    title: "Offer & Onboarding",
+    desc: "Competitive offer with clear expectations. Our onboarding includes HIPAA training, clinical protocol review, and shadowing with experienced team members.",
+  },
+];
+---
+
+<BaseLayout
+  title="Careers"
+  description="Join Strong Health in Miami, FL. We're hiring physicians, medical assistants, and health professionals passionate about evidence-based men's health care."
+  path="/careers/"
+>
+  <JsonLd slot="head" schema={structuredData} />
+  <PageShell>
+    <JsonLd
+      schema={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Careers", path: "/careers/" },
+      ])}
+    />
+    {
+      openings.map((job) => (
+        <JsonLd
+          schema={jobPostingSchema({
+            title: job.title,
+            description: buildJobDescriptionHtml(job),
+            datePosted: job.datePosted,
+            validThrough: job.validThrough,
+            employmentType: job.schemaEmploymentType,
+            identifier: job.id,
+            baseSalary: {
+              min: job.salaryMin,
+              max: job.salaryMax,
+              currency: "USD",
+              unitText: "YEAR",
+            },
+            jobLocation: {
+              streetAddress: MIAMI_BRICKELL_CLINIC.streetAddress,
+              addressLocality: MIAMI_BRICKELL_CLINIC.city,
+              addressRegion: MIAMI_BRICKELL_CLINIC.state,
+              postalCode: MIAMI_BRICKELL_CLINIC.postalCode,
+            },
+          })}
+        />
+      ))
+    }
+
+    {/* Hero */}
+    <section class="pt-20 pb-16 px-8">
+      <div class="max-w-[1000px] mx-auto text-center">
+        <FadeIn>
+          <div class="w-12 h-0.5 bg-gold mx-auto mb-6"></div>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-cream tracking-tight mb-5">
+            Careers at <span class="text-gold">Strong Health</span>
+          </h1>
+          <p class="text-sm md:text-base text-muted leading-relaxed max-w-[540px] mx-auto">
+            Strong Health is growing. We're looking for physicians, medical
+            professionals, and support staff who believe that men's hormone
+            therapy should be physician-supervised, evidence-based, and
+            patient-centered.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Why Strong Health */}
+    <section class="py-16 px-8 border-t border-white/5">
+      <div class="max-w-[720px] mx-auto">
+        <FadeIn>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">
+            Why Strong Health
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-5">
+            A clinic built on doing it right
+          </h2>
+          <p class="text-sm text-muted leading-[1.8] mb-4">
+            The men's health space is full of shortcuts — online-only clinics
+            that prescribe without proper exams, supplement companies making
+            unsubstantiated claims, and telemedicine mills that prioritize
+            volume over care. Strong Health was founded to be different.
+          </p>
+          <p class="text-sm text-muted leading-[1.8]">
+            We perform in-person physician exams, run comprehensive 40+
+            biomarker lab panels, and build individualized treatment plans. Our
+            physicians don't just approve prescriptions — they lead care. If
+            that's the kind of medicine you want to practice or support,
+            we want to hear from you.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Culture Values */}
+    <section class="py-16 px-8 bg-surface-dark">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4 text-center">
+            Our Culture
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-10 text-center">
+            What We Value
+          </h2>
+        </FadeIn>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {
+            cultureValues.map((v, i) => (
+              <FadeIn delay={i * 100}>
+                <div class="p-6 rounded-xl border border-white/5 bg-surface-card">
+                  <h3 class="text-base font-bold text-cream mb-2">{v.title}</h3>
+                  <p class="text-sm text-muted leading-relaxed">{v.description}</p>
+                </div>
+              </FadeIn>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    {/* Benefits */}
+    <section class="py-16 px-8 border-t border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4 text-center">
+            Benefits & Perks
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-10 text-center">
+            What We Offer Our Team
+          </h2>
+        </FadeIn>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {
+            benefits.map((b, i) => (
+              <FadeIn delay={i * 80}>
+                <div class="p-6 rounded-xl border border-white/5 bg-surface-card">
+                  <Icon name={b.icon} class="w-6 h-6 text-gold mb-4" />
+                  <h3 class="text-base font-bold text-cream mb-2">{b.title}</h3>
+                  <p class="text-sm text-muted leading-relaxed">{b.description}</p>
+                </div>
+              </FadeIn>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    {/* Open Positions */}
+    <section class="py-16 px-8 bg-surface-dark">
+      <div class="max-w-[720px] mx-auto">
+        <FadeIn>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">
+            Open Positions
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-6">
+            Current Openings
+          </h2>
+          {
+            openings.length > 0 ? (
+              <div class="space-y-6">
+                {openings.map((job) => {
+                  const applyHref = `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent(
+                    `Application: ${job.title} (${job.id})`,
+                  )}`;
+                  return (
+                    <div class="p-8 rounded-xl border border-white/5 bg-surface-card">
+                      <h3 class="text-lg font-bold text-cream mb-3">{job.title}</h3>
+                      <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-cream/90 bg-white/5 border border-white/10 rounded-full px-3 py-1">
+                          <Icon name="map-pin" class="w-3.5 h-3.5 text-gold" />
+                          {job.location}
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-cream/90 bg-white/5 border border-white/10 rounded-full px-3 py-1">
+                          <Icon name="briefcase" class="w-3.5 h-3.5 text-gold" />
+                          {job.employmentType} · {job.workArrangement}
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-cream/90 bg-white/5 border border-white/10 rounded-full px-3 py-1">
+                          <Icon name="dollar-sign" class="w-3.5 h-3.5 text-gold" />
+                          {job.salaryDisplay}
+                        </span>
+                      </div>
+                      <p class="text-sm text-muted leading-[1.8] mb-6">{job.summary}</p>
+                      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-7">
+                        <div>
+                          <h4 class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-3">
+                            What you'll do
+                          </h4>
+                          <ul class="space-y-2">
+                            {job.responsibilities.map((r) => (
+                              <li class="flex gap-2.5">
+                                <Icon name="check" class="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                                <span class="text-sm text-muted leading-relaxed">{r}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-3">
+                            What we're looking for
+                          </h4>
+                          <ul class="space-y-2">
+                            {job.requirements.map((r) => (
+                              <li class="flex gap-2.5">
+                                <Icon name="check" class="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                                <span class="text-sm text-muted leading-relaxed">{r}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                      <a
+                        href={applyHref}
+                        class="inline-flex items-center gap-2 text-sm font-semibold text-charcoal bg-gold hover:bg-gold-hover transition-colors rounded-lg px-5 py-2.5"
+                      >
+                        <Icon name="send" class="w-4 h-4" />
+                        Apply
+                      </a>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div class="p-8 rounded-xl border border-white/5 bg-surface-card text-center">
+                <Icon name="users" class="w-8 h-8 text-muted mx-auto mb-4" />
+                <p class="text-sm text-muted leading-relaxed mb-4">
+                  We don't have any open positions at this time, but we're always
+                  interested in hearing from talented people. If you're passionate
+                  about evidence-based men's health, send us your resume.
+                </p>
+                <a
+                  href={`mailto:${CAREERS_EMAIL}`}
+                  class="inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-gold-hover transition-colors"
+                >
+                  <Icon name="send" class="w-4 h-4" />
+                  {CAREERS_EMAIL}
+                </a>
+              </div>
+            )
+          }
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* How to Apply */}
+    <section class="py-16 px-8 border-t border-white/5">
+      <div class="max-w-[720px] mx-auto">
+        <FadeIn>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">
+            How to Apply
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-6">
+            Application Process
+          </h2>
+          <div class="space-y-6">
+            {
+              applicationSteps.map((s) => (
+                <div class="flex gap-5">
+                  <div class="text-2xl font-extrabold text-gold/30 shrink-0 w-10">{s.step}</div>
+                  <div>
+                    <h3 class="text-sm font-bold text-cream mb-1">{s.title}</h3>
+                    <p class="text-sm text-muted leading-relaxed">{s.desc}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Location */}
+    <section class="py-16 px-8 bg-surface-dark">
+      <div class="max-w-[720px] mx-auto text-center">
+        <FadeIn>
+          <Icon name="map-pin" class="w-6 h-6 text-gold mx-auto mb-4" />
+          <h2 class="text-xl font-bold text-cream mb-3">
+            Based in Miami, FL
+          </h2>
+          <p class="text-sm text-muted leading-relaxed max-w-[400px] mx-auto">
+            Our clinic is located in the Brickell area of Miami. Most roles
+            are on-site, with telehealth flexibility for follow-up
+            appointments.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* CTA */}
+    <section class="py-16 px-8">
+      <div class="max-w-[720px] mx-auto">
+        <CTABlock variant="consultation" />
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

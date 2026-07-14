@@ -1,0 +1,373 @@
+---
+// /about/ — port of src/pages/About.tsx.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageShell from "../components/shared/PageShell.astro";
+import FadeIn from "../components/shared/FadeIn.astro";
+import CTABlock from "../components/shared/CTABlock.astro";
+import Icon from "../components/shared/Icon.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import { breadcrumbSchema } from "../components/seo/schemas";
+import {
+  MIAMI_BRICKELL_CLINIC,
+  STRONG_HEALTH_ORG_ID,
+  STRONG_HEALTH_PHONE_DISPLAY,
+  STRONG_HEALTH_PHONE_HREF,
+} from "../data/miamiClinic";
+
+const SITE_URL = "https://www.stronghealth.com";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Strong Health",
+  description:
+    "Learn about Strong Health, a physician-supervised testosterone replacement therapy clinic in Miami, FL offering in-person exams, 40+ biomarker labs, and telehealth follow-ups.",
+  url: `${SITE_URL}/about/`,
+  mainEntity: { "@id": STRONG_HEALTH_ORG_ID },
+};
+
+const values = [
+  {
+    icon: "stethoscope",
+    title: "Physician-Supervised",
+    description:
+      "Every patient is evaluated by a board-certified physician. No nurse practitioners making prescribing decisions — your care is led by a doctor.",
+  },
+  {
+    icon: "flask-conical",
+    title: "Evidence-Based",
+    description:
+      "Treatment protocols grounded in peer-reviewed research and clinical guidelines. We follow the Endocrine Society's standards for TRT management.",
+  },
+  {
+    icon: "shield-check",
+    title: "Transparent & Honest",
+    description:
+      "No misleading claims. No guaranteed results. We give you honest assessments based on your labs, symptoms, and medical history.",
+  },
+  {
+    icon: "activity",
+    title: "Data-Driven",
+    description:
+      "40+ biomarker lab panels at your first visit. We don't guess — we measure testosterone, free T, SHBG, estradiol, PSA, metabolic markers, and more.",
+  },
+];
+
+const stats = [
+  { value: "4.9", label: "Average Rating", suffix: "/5" },
+  { value: "2,500", label: "Verified Patient Reviews", suffix: "+" },
+  { value: "40", label: "Biomarkers Tested", suffix: "+" },
+  { value: "15", label: "Years Clinical Experience", suffix: "+" },
+];
+
+const servicesSummary = [
+  {
+    icon: "stethoscope",
+    name: "Testosterone Replacement Therapy",
+    desc: "Physician-supervised TRT with ongoing lab monitoring and dosage optimization.",
+  },
+  {
+    icon: "flask-conical",
+    name: "Comprehensive Lab Testing",
+    desc: "40+ biomarker panel including testosterone, free T, SHBG, estradiol, PSA, CBC, metabolic panel.",
+  },
+  {
+    icon: "activity",
+    name: "Peptide Therapy",
+    desc: "Physician-supervised peptide protocols for recovery, performance, and wellness.",
+  },
+  {
+    icon: "users",
+    name: "Sexual Health",
+    desc: "Evidence-based treatment for erectile dysfunction and related conditions.",
+  },
+  {
+    icon: "star",
+    name: "DEXA Scan",
+    desc: "Gold-standard body composition analysis to track lean mass, fat distribution, and bone density.",
+  },
+  {
+    icon: "shield-check",
+    name: "Ongoing Monitoring",
+    desc: "Regular follow-up labs and telehealth check-ins to ensure safe, effective treatment.",
+  },
+];
+---
+
+<BaseLayout
+  title="About Us"
+  description="Strong Health is a physician-supervised TRT clinic in Miami, FL. Board-certified physicians, 40+ biomarker labs, in-person exams, and telehealth follow-ups."
+  path="/about/"
+>
+  <JsonLd slot="head" schema={structuredData} />
+  <PageShell>
+    <JsonLd
+      schema={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "About Us", path: "/about/" },
+      ])}
+    />
+
+    {/* Hero */}
+    <section class="pt-20 pb-16 px-8">
+      <div class="max-w-[1000px] mx-auto text-center">
+        <FadeIn>
+          <div class="w-12 h-0.5 bg-gold mx-auto mb-6"></div>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-cream tracking-tight mb-5">
+            About <span class="text-gold">Strong Health</span>
+          </h1>
+          <p class="text-sm md:text-base text-muted leading-relaxed max-w-[560px] mx-auto">
+            Strong Health exists because men deserve better than
+            supplement-mill clinics and online questionnaire prescribers. We
+            combine in-person physician exams with comprehensive lab testing to
+            deliver testosterone therapy that is safe, monitored, and
+            effective.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Mission */}
+    <section class="py-16 px-8 border-t border-white/5">
+      <div class="max-w-[720px] mx-auto">
+        <FadeIn>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">
+            Our Mission
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-5">
+            Restore vitality through physician-led, evidence-based hormone
+            therapy
+          </h2>
+          <p class="text-sm text-muted leading-[1.8] mb-4">
+            Too many men suffer from low testosterone symptoms — fatigue,
+            reduced libido, brain fog, loss of muscle mass — without knowing
+            that safe, physician-supervised treatment exists. And too many
+            clinics cut corners: online-only assessments, cookie-cutter
+            dosing, no follow-up labs.
+          </p>
+          <p class="text-sm text-muted leading-[1.8]">
+            Strong Health was founded to do it right. Every patient gets an
+            in-person physician exam, a 40+ biomarker lab panel drawn on-site
+            at their first visit, and ongoing monitoring to optimize outcomes
+            and minimize risks. Our physicians don't just prescribe — they
+            partner with you on a treatment plan built around your biology.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Values Grid */}
+    <section class="py-16 px-8 bg-surface-dark">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4 text-center">
+            Our Approach
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-10 text-center">
+            What Sets Strong Health Apart
+          </h2>
+        </FadeIn>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {
+            values.map((v, i) => (
+              <FadeIn delay={i * 100}>
+                <div class="p-6 rounded-xl border border-white/5 bg-surface-card">
+                  <Icon name={v.icon} class="w-6 h-6 text-gold mb-4" />
+                  <h3 class="text-base font-bold text-cream mb-2">{v.title}</h3>
+                  <p class="text-sm text-muted leading-relaxed">{v.description}</p>
+                </div>
+              </FadeIn>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    {/* Stats */}
+    <section class="py-16 px-8 border-t border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {
+              stats.map((s) => (
+                <div>
+                  <div class="text-3xl md:text-4xl font-extrabold text-gold mb-1">
+                    {s.value}<span class="text-xl">{s.suffix}</span>
+                  </div>
+                  <div class="text-xs text-muted tracking-wide uppercase">{s.label}</div>
+                </div>
+              ))
+            }
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Team */}
+    <section class="py-16 px-8 bg-surface-dark">
+      <div class="max-w-[720px] mx-auto">
+        <FadeIn>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">
+            Our Team
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-8">
+            Meet Our Physicians
+          </h2>
+        </FadeIn>
+        <FadeIn delay={100}>
+          <a
+            href="/author/dr-angel-rivera/"
+            class="block p-6 rounded-xl border border-white/5 bg-surface-card hover:border-gold/30 transition-colors group"
+          >
+            <div class="flex items-start gap-5">
+              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#C9A84C] to-[#A88832] flex items-center justify-center shrink-0">
+                <Icon name="award" class="w-6 h-6 text-surface" />
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-cream group-hover:text-gold transition-colors mb-1">
+                  Angel Rivera, M.D.
+                </h3>
+                <p class="text-xs text-gold mb-3">
+                  Staff Psychiatrist
+                </p>
+                <p class="text-sm text-muted leading-relaxed mb-3">
+                  Board-eligible psychiatrist with over 15 years of clinical
+                  experience spanning forensic psychiatry, geriatric
+                  psychiatry, correctional medicine, crisis intervention, and
+                  telepsychiatry. Graduate of SUNY Downstate College of
+                  Medicine.
+                </p>
+                <span class="text-xs text-gold font-medium group-hover:underline">
+                  View Full Profile
+                </span>
+              </div>
+            </div>
+          </a>
+        </FadeIn>
+
+        <FadeIn delay={150}>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mt-12 mb-4">
+            Editorial &amp; Writing Team
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-8">
+            Meet Our Writers
+          </h2>
+        </FadeIn>
+        <FadeIn delay={200}>
+          <a
+            href="/author/mahadev-mukherjee/"
+            class="block p-6 rounded-xl border border-white/5 bg-surface-card hover:border-gold/30 transition-colors group"
+          >
+            <div class="flex items-start gap-5">
+              <img
+                src="/authors/mahadev-mukherjee.jpg"
+                alt="Mahadev Mukherjee"
+                width={56}
+                height={56}
+                loading="lazy"
+                class="w-14 h-14 rounded-full object-cover border border-gold/20 shrink-0 bg-gradient-to-br from-[#C9A84C] to-[#A88832]"
+              />
+              <div>
+                <h3 class="text-base font-bold text-cream group-hover:text-gold transition-colors mb-1">
+                  Mahadev Mukherjee
+                </h3>
+                <p class="text-xs text-gold mb-3">
+                  Scientific Content Writer
+                </p>
+                <p class="text-sm text-muted leading-relaxed mb-3">
+                  Scientific content writer with 17+ years in pharmaceutical
+                  sales, marketing, product management, and clinical data
+                  management. Specializes in peptide research, metabolic
+                  therapeutics, obesity pharmacology, and GLP-1/GIP/GCGR
+                  pathway mechanisms.
+                </p>
+                <span class="text-xs text-gold font-medium group-hover:underline">
+                  View Full Profile
+                </span>
+              </div>
+            </div>
+          </a>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Clinic Info */}
+    <section class="py-16 px-8 border-t border-white/5">
+      <div class="max-w-[720px] mx-auto">
+        <FadeIn>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">
+            Our Clinic
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-8">
+            Visit Us in Miami
+          </h2>
+        </FadeIn>
+        <FadeIn delay={100}>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-5 rounded-xl border border-white/5 bg-surface-card">
+              <Icon name="map-pin" class="w-5 h-5 text-gold mb-3" />
+              <div class="text-xs text-muted uppercase tracking-wide mb-2">
+                Address
+              </div>
+              <p class="text-sm text-cream leading-relaxed">
+                {MIAMI_BRICKELL_CLINIC.streetAddress}<br />Miami, FL 33131
+              </p>
+            </div>
+            <div class="p-5 rounded-xl border border-white/5 bg-surface-card">
+              <Icon name="clock" class="w-5 h-5 text-gold mb-3" />
+              <div class="text-xs text-muted uppercase tracking-wide mb-2">
+                Hours
+              </div>
+              <p class="text-sm text-cream leading-relaxed">
+                Mon–Fri: 8:00 AM – 6:00 PM<br />Sat: 9:00 AM – 1:00 PM
+              </p>
+            </div>
+            <div class="p-5 rounded-xl border border-white/5 bg-surface-card">
+              <Icon name="phone" class="w-5 h-5 text-gold mb-3" />
+              <div class="text-xs text-muted uppercase tracking-wide mb-2">
+                Contact
+              </div>
+              <p class="text-sm text-cream leading-relaxed">
+                <a href={STRONG_HEALTH_PHONE_HREF} class="hover:text-gold transition-colors">{STRONG_HEALTH_PHONE_DISPLAY}</a><br />info@stronghealth.com
+              </p>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Services Summary */}
+    <section class="py-16 px-8 bg-surface-dark">
+      <div class="max-w-[720px] mx-auto">
+        <FadeIn>
+          <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">
+            What We Offer
+          </div>
+          <h2 class="text-2xl font-bold text-cream mb-6">
+            Our Services
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {
+              servicesSummary.map((svc) => (
+                <div class="flex items-start gap-3 p-4 rounded-lg border border-white/5 bg-surface-card">
+                  <Icon name={svc.icon} class="w-5 h-5 text-gold mt-0.5 shrink-0" />
+                  <div>
+                    <h3 class="text-sm font-semibold text-cream mb-1">{svc.name}</h3>
+                    <p class="text-xs text-muted leading-relaxed">{svc.desc}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* CTA */}
+    <section class="py-16 px-8">
+      <div class="max-w-[720px] mx-auto">
+        <CTABlock variant="assessment" />
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

@@ -1,0 +1,428 @@
+---
+// Port of src/pages/TermsOfUse.tsx from the old repo.
+import PolicyPageLayout, { type PolicyTOCItem } from "../layouts/PolicyPageLayout.astro";
+import {
+  MIAMI_BRICKELL_CLINIC,
+  STRONG_HEALTH_PHONE_DISPLAY,
+  STRONG_HEALTH_PHONE_HREF,
+} from "../data/miamiClinic";
+
+const tocItems: PolicyTOCItem[] = [
+  { id: "acceptance", title: "Acceptance of Terms" },
+  { id: "services", title: "Description of Services" },
+  { id: "eligibility", title: "Eligibility" },
+  { id: "user-accounts", title: "User Accounts & Responsibilities" },
+  { id: "medical-disclaimer", title: "Medical Disclaimer" },
+  { id: "telehealth", title: "Telehealth Consent" },
+  { id: "intellectual-property", title: "Intellectual Property" },
+  { id: "prohibited-conduct", title: "Prohibited Conduct" },
+  { id: "liability", title: "Limitation of Liability" },
+  { id: "indemnification", title: "Indemnification" },
+  { id: "governing-law", title: "Governing Law" },
+  { id: "changes", title: "Changes to Terms" },
+  { id: "contact", title: "Contact Information" },
+];
+
+const seoDescription =
+  "Terms of Use for Strong Health. Review the terms and conditions governing your use of our physician-supervised TRT services and website.";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Terms of Use",
+  description: seoDescription,
+  url: "https://www.stronghealth.com/terms-of-use/",
+  lastReviewed: "2026-03-15",
+  publisher: {
+    "@type": "Organization",
+    name: "Strong Health",
+    url: "https://www.stronghealth.com",
+  },
+};
+---
+
+<PolicyPageLayout
+  title="Terms of Use"
+  subtitle="Terms and conditions governing your use of Strong Health services and website"
+  seoDescription={seoDescription}
+  path="/terms-of-use/"
+  effectiveDate="January 1, 2026"
+  lastUpdated="March 15, 2026"
+  tocItems={tocItems}
+  structuredData={structuredData}
+>
+  {/* 1. Acceptance of Terms */}
+  <h2 id="acceptance">Acceptance of Terms</h2>
+  <p>
+    By accessing, browsing, or using the Strong Health website
+    (stronghealth.com) or any of our services, you acknowledge that you
+    have read, understood, and agree to be bound by these Terms of Use and
+    our <a href="/privacy-policy/">Privacy Policy</a>. If you do not
+    agree to these terms, you must not access or use our website or
+    services.
+  </p>
+  <p>
+    These Terms of Use constitute a legally binding agreement between you
+    and Strong Health TRT, LLC ("Strong Health," "we," "us," or "our"),
+    a physician-supervised testosterone replacement therapy and medical
+    wellness clinic headquartered in Miami, Florida.
+  </p>
+
+  {/* 2. Description of Services */}
+  <h2 id="services">Description of Services</h2>
+  <p>
+    Strong Health provides physician-supervised medical services
+    including, but not limited to:
+  </p>
+  <ul>
+    <li>
+      Testosterone Replacement Therapy (TRT) with ongoing lab monitoring
+      and dosage optimization
+    </li>
+    <li>
+      Comprehensive laboratory testing, including 40+ biomarker panels
+      (testosterone, free T, SHBG, estradiol, PSA, CBC, metabolic
+      panels, and more)
+    </li>
+    <li>
+      Peptide therapy protocols for recovery, performance, and wellness
+    </li>
+    <li>
+      DEXA body composition scans for tracking lean mass, fat
+      distribution, and bone density
+    </li>
+    <li>
+      Sexual health services, including evidence-based treatment for
+      erectile dysfunction
+    </li>
+    <li>Weight management programs</li>
+    <li>
+      Telehealth follow-up appointments for established patients
+    </li>
+  </ul>
+  <p>
+    All medical services are provided under the supervision of
+    board-certified physicians. Treatment availability, protocols, and
+    pricing are subject to change without notice.
+  </p>
+
+  {/* 3. Eligibility */}
+  <h2 id="eligibility">Eligibility</h2>
+  <p>
+    To use Strong Health's services, you must meet the following
+    eligibility requirements:
+  </p>
+  <ul>
+    <li>
+      You must be at least 18 years of age. Strong Health does not
+      provide medical services to individuals under 18.
+    </li>
+    <li>You must be a legal resident of the United States.</li>
+    <li>
+      You must reside in a state where Strong Health is authorized to
+      provide services. Our services are currently available in Florida
+      and may not be available in all states.
+    </li>
+    <li>
+      You must provide accurate, current, and complete personal and
+      medical information as required for evaluation and treatment.
+    </li>
+  </ul>
+  <p>
+    Strong Health reserves the right to refuse or discontinue services to
+    any individual who does not meet these requirements or who provides
+    false or misleading information.
+  </p>
+
+  {/* 4. User Accounts & Responsibilities */}
+  <h2 id="user-accounts">User Accounts &amp; Responsibilities</h2>
+  <p>
+    When you create an account with Strong Health, you agree to the
+    following responsibilities:
+  </p>
+  <ul>
+    <li>
+      <strong>Account security:</strong> You are responsible for
+      maintaining the confidentiality of your account credentials. You
+      must not share your login information with any other person.
+    </li>
+    <li>
+      <strong>Accurate information:</strong> You agree to provide
+      truthful, accurate, and complete information during registration and
+      throughout your care. This includes medical history, current
+      medications, allergies, and other health-related information that
+      may affect your treatment.
+    </li>
+    <li>
+      <strong>Unauthorized use:</strong> You are responsible for all
+      activity that occurs under your account. You must notify Strong
+      Health immediately if you suspect unauthorized access to your
+      account.
+    </li>
+    <li>
+      <strong>Updates:</strong> You agree to promptly update your account
+      information if any of your personal or medical details change.
+    </li>
+  </ul>
+
+  {/* 5. Medical Disclaimer */}
+  <h2 id="medical-disclaimer">Medical Disclaimer</h2>
+  <p>
+    The content provided on the Strong Health website, including articles,
+    guides, blog posts, and educational resources, is intended for
+    informational and educational purposes only. This content does not
+    constitute medical advice, diagnosis, or treatment recommendations.
+  </p>
+  <p>
+    Accessing our website or reading our content does not establish a
+    physician-patient relationship. A physician-patient relationship is
+    created only through a formal in-person consultation with one of our
+    licensed physicians, which includes a physical examination and review
+    of your laboratory results.
+  </p>
+  <p>
+    You should always consult with a qualified healthcare provider before
+    making any decisions about your health, starting or stopping any
+    medication, or beginning any treatment program. Never disregard
+    professional medical advice or delay seeking it because of something
+    you have read on our website.
+  </p>
+  <p>
+    For more information about how we handle your personal information,
+    please review our <a href="/privacy-policy/">Privacy Policy</a>{" "}
+    and <a href="/hipaa-policy/">HIPAA Notice of Privacy Practices</a>.
+  </p>
+
+  {/* 6. Telehealth Consent */}
+  <h2 id="telehealth">Telehealth Consent</h2>
+  <p>
+    Strong Health offers telehealth services for follow-up appointments
+    with established patients. By using our telehealth services, you
+    acknowledge and agree to the following:
+  </p>
+  <ul>
+    <li>
+      <strong>Initial visit requirement:</strong> Your first visit must
+      be conducted in person at our clinic for a physical examination and
+      on-site lab work. Telehealth is available only for subsequent
+      follow-up appointments.
+    </li>
+    <li>
+      <strong>Informed consent:</strong> You understand that telehealth
+      involves the use of electronic communications to enable healthcare
+      providers to evaluate, diagnose, and treat patients at a distance.
+      You consent to receiving care via telehealth as part of your
+      treatment plan.
+    </li>
+    <li>
+      <strong>Technology requirements:</strong> You are responsible for
+      having the necessary technology (internet connection, device with
+      camera and microphone) to participate in telehealth appointments.
+    </li>
+    <li>
+      <strong>Limitations:</strong> You understand that telehealth has
+      limitations and is not a substitute for in-person examinations when
+      clinically indicated. Your physician may require an in-person visit
+      at any time.
+    </li>
+    <li>
+      <strong>Privacy:</strong> You are responsible for ensuring that you
+      are in a private, secure location during your telehealth
+      appointment. Strong Health uses HIPAA-compliant telehealth platforms
+      to protect your health information.
+    </li>
+  </ul>
+
+  {/* 7. Intellectual Property */}
+  <h2 id="intellectual-property">Intellectual Property</h2>
+  <p>
+    All content, materials, and features available on the Strong Health
+    website — including but not limited to text, articles, graphics,
+    logos, trademarks, images, videos, page layouts, and software — are
+    the property of Strong Health TRT, LLC or its licensors and are
+    protected by United States and international copyright, trademark,
+    and intellectual property laws.
+  </p>
+  <p>
+    You are granted a limited, non-exclusive, non-transferable,
+    revocable license to access and use the website for personal,
+    non-commercial purposes. This license does not include the right to:
+  </p>
+  <ul>
+    <li>
+      Reproduce, distribute, or publicly display any content from our
+      website without prior written permission
+    </li>
+    <li>
+      Use our trademarks, logos, or brand elements in any manner that
+      suggests affiliation with or endorsement by Strong Health
+    </li>
+    <li>
+      Create derivative works based on our content or materials
+    </li>
+    <li>
+      Use our content for commercial purposes, including resale or
+      republication
+    </li>
+  </ul>
+
+  {/* 8. Prohibited Conduct */}
+  <h2 id="prohibited-conduct">Prohibited Conduct</h2>
+  <p>
+    When using the Strong Health website or services, you agree not to:
+  </p>
+  <ul>
+    <li>
+      Attempt to gain unauthorized access to any part of the website,
+      other user accounts, or our computer systems or networks
+    </li>
+    <li>
+      Use automated tools, bots, scrapers, or other means to extract
+      data or content from the website without written permission
+    </li>
+    <li>
+      Interfere with or disrupt the website's functionality, servers, or
+      networks connected to the website
+    </li>
+    <li>
+      Impersonate any person or entity, or falsely state or
+      misrepresent your identity or affiliation
+    </li>
+    <li>
+      Provide false, inaccurate, or misleading personal or medical
+      information
+    </li>
+    <li>
+      Use the website or services for any illegal, fraudulent, or
+      unauthorized purpose
+    </li>
+    <li>
+      Upload or transmit viruses, malware, or other harmful code
+    </li>
+    <li>
+      Violate any applicable federal, state, or local law or regulation
+    </li>
+  </ul>
+  <p>
+    Strong Health reserves the right to suspend or terminate your access
+    to the website and services if you engage in any prohibited conduct.
+  </p>
+
+  {/* 9. Limitation of Liability */}
+  <h2 id="liability">Limitation of Liability</h2>
+  <p>
+    To the maximum extent permitted by applicable law, Strong Health, its
+    officers, directors, employees, agents, and affiliates shall not be
+    liable for any indirect, incidental, special, consequential, or
+    punitive damages, including but not limited to loss of profits, data,
+    use, goodwill, or other intangible losses, arising out of or related
+    to:
+  </p>
+  <ul>
+    <li>Your access to, use of, or inability to use the website</li>
+    <li>
+      Any conduct or content of any third party on or connected to the
+      website
+    </li>
+    <li>
+      Unauthorized access, use, or alteration of your transmissions or
+      content
+    </li>
+    <li>
+      Any errors, inaccuracies, or omissions in website content
+    </li>
+  </ul>
+  <p>
+    In no event shall Strong Health's total liability to you for all
+    claims arising out of or related to the use of the website exceed
+    the amount you have paid to Strong Health for services during the
+    twelve (12) months preceding the claim.
+  </p>
+  <p>
+    Nothing in these Terms of Use limits or excludes liability for gross
+    negligence, intentional misconduct, or any liability that cannot be
+    excluded or limited by applicable law, including liability for
+    medical malpractice.
+  </p>
+
+  {/* 10. Indemnification */}
+  <h2 id="indemnification">Indemnification</h2>
+  <p>
+    You agree to defend, indemnify, and hold harmless Strong Health, its
+    officers, directors, employees, agents, and affiliates from and
+    against any claims, damages, obligations, losses, liabilities, costs,
+    or expenses (including reasonable attorneys' fees) arising from:
+  </p>
+  <ul>
+    <li>Your violation of these Terms of Use</li>
+    <li>
+      Your violation of any third-party right, including any
+      intellectual property or privacy right
+    </li>
+    <li>
+      Your misuse of the website or services
+    </li>
+    <li>
+      Any content or information you provide that is false, inaccurate,
+      or misleading
+    </li>
+  </ul>
+
+  {/* 11. Governing Law */}
+  <h2 id="governing-law">Governing Law</h2>
+  <p>
+    These Terms of Use shall be governed by and construed in accordance
+    with the laws of the State of Florida, without regard to its
+    conflict of laws provisions. Any legal action or proceeding arising
+    out of or related to these Terms of Use or your use of the website
+    shall be brought exclusively in the state or federal courts located
+    in Miami-Dade County, Florida, and you consent to the personal
+    jurisdiction of such courts.
+  </p>
+
+  {/* 12. Changes to Terms */}
+  <h2 id="changes">Changes to Terms</h2>
+  <p>
+    Strong Health reserves the right to modify, update, or revise these
+    Terms of Use at any time at our sole discretion. When we make
+    material changes, we will:
+  </p>
+  <ul>
+    <li>Update the "Last Updated" date at the top of this page</li>
+    <li>
+      Provide at least 30 days' advance notice of material changes by
+      posting a notice on our website or sending an email to registered
+      users
+    </li>
+  </ul>
+  <p>
+    Your continued use of the website or services after any changes to
+    these Terms of Use constitutes your acceptance of the revised terms.
+    If you do not agree to the updated terms, you must discontinue use of
+    the website and services.
+  </p>
+
+  {/* 13. Contact Information */}
+  <h2 id="contact">Contact Information</h2>
+  <p>
+    If you have questions or concerns about these Terms of Use, please
+    contact us:
+  </p>
+  <ul>
+    <li>
+      <strong>Strong Health TRT, LLC</strong>
+      <br />
+      {MIAMI_BRICKELL_CLINIC.streetAddress}
+      <br />
+      {MIAMI_BRICKELL_CLINIC.city}, {MIAMI_BRICKELL_CLINIC.state} {MIAMI_BRICKELL_CLINIC.postalCode}
+    </li>
+    <li>
+      <strong>Email:</strong>{" "}
+      <a href="mailto:legal@stronghealth.com">legal@stronghealth.com</a>
+    </li>
+    <li>
+      <strong>Phone:</strong>{" "}
+      <a href={STRONG_HEALTH_PHONE_HREF}>{STRONG_HEALTH_PHONE_DISPLAY}</a>
+    </li>
+  </ul>
+</PolicyPageLayout>

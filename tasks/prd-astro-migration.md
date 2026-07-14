@@ -174,10 +174,10 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a visitor, I want all remaining pages migrated.
 
 **Acceptance Criteria:**
-- [ ] `/blog/` lists articles from a single `articles.ts`-equivalent data source
-- [ ] `/services/` 11-card hub; `/about/` with MedicalBusiness schema; authors pages with byline linkage
-- [ ] 4 legal pages via PolicyPageLayout
-- [ ] All pass the CI SEO length checks
+- [x] `/blog/` lists articles from a single `articles.ts`-equivalent data source
+- [x] `/services/` 11-card hub; `/about/` with MedicalBusiness schema; authors pages with byline linkage
+- [x] 4 legal pages via PolicyPageLayout
+- [x] All pass the CI SEO length checks
 
 ### Phase 2 — SEO infrastructure
 

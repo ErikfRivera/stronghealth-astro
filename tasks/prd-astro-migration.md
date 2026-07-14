@@ -111,12 +111,12 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a developer, I want Nav, Footer, AnnouncementBar, Btn, Tag, FadeIn, CTABlock, FAQSection, CitationList, MedicalDisclaimer, TableOfContents, AuthorByline ported as zero-JS Astro components.
 
 **Acceptance Criteria:**
-- [ ] All listed components render identically to production (visual spot-check)
-- [ ] FAQ accordion and accordion food lists use native `<details>/<summary>` (no JS) — FAQ answers present in initial HTML for SEO
-- [ ] FadeIn uses a single small IntersectionObserver script (`<script>` in Astro, loaded once) or CSS-only animation; no framework hydration
-- [ ] Mobile nav toggle implemented with a ≤ 1 KB inline script or checkbox pattern
-- [ ] CTA buttons fire `generate_lead` GA4 event (port `gtag.ts` → small shared script)
-- [ ] Zero React/`client:*` directives in these components
+- [x] All listed components render identically to production (visual spot-check)
+- [x] FAQ accordion and accordion food lists use native `<details>/<summary>` (no JS) — FAQ answers present in initial HTML for SEO
+- [x] FadeIn uses a single small IntersectionObserver script (`<script>` in Astro, loaded once) or CSS-only animation; no framework hydration
+- [x] Mobile nav toggle implemented with a ≤ 1 KB inline script or checkbox pattern
+- [x] CTA buttons fire `generate_lead` GA4 event (port `gtag.ts` → small shared script)
+- [x] Zero React/`client:*` directives in these components
 
 ### Phase 1 — Page migration (content parity)
 

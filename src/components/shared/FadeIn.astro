@@ -1,0 +1,56 @@
+---
+/**
+ * Scroll fade-in wrapper (port of shared/FadeIn.tsx). Progressive enhancement:
+ * server HTML ships fully visible; a single shared IntersectionObserver script
+ * (below, deduped by Astro across all instances) hides below-the-fold
+ * elements and fades them in on intersect. No-JS and reduced-motion users see
+ * everything immediately.
+ */
+interface Props {
+  delay?: number;
+  class?: string;
+}
+
+const { delay = 0, class: className = "" } = Astro.props;
+---
+
+<div
+  class={`sh-fade opacity-100 md:translate-y-0 ${className}`}
+  data-fade-delay={delay || undefined}
+>
+  <slot />
+</div>
+
+<script>
+  const prefersReducedMotion =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReducedMotion) {
+    const els = document.querySelectorAll<HTMLElement>(".sh-fade");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            el.classList.remove("opacity-0", "md:translate-y-8");
+            el.classList.add("opacity-100", "md:translate-y-0");
+            observer.unobserve(el);
+          }
+        }
+      },
+      { threshold: 0.1 },
+    );
+    for (const el of els) {
+      const rect = el.getBoundingClientRect();
+      const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inViewport) continue;
+      el.classList.add("transition-all", "duration-1000", "ease-out");
+      const delay = el.dataset.fadeDelay;
+      if (delay) el.style.transitionDelay = `${delay}ms`;
+      el.classList.remove("opacity-100", "md:translate-y-0");
+      el.classList.add("opacity-0", "md:translate-y-8");
+      observer.observe(el);
+    }
+  }
+</script>

@@ -1,0 +1,12 @@
+---
+import AnnouncementBar from "./AnnouncementBar.astro";
+import Nav from "./Nav.astro";
+import Footer from "./Footer.astro";
+---
+
+<div class="min-h-screen bg-surface font-['DM_Sans',sans-serif] selection:bg-gold selection:text-surface text-cream overflow-x-hidden">
+  <AnnouncementBar />
+  <Nav />
+  <main><slot /></main>
+  <Footer />
+</div>

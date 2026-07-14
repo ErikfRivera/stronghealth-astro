@@ -65,6 +65,20 @@ const { title, description, path, ogImage, ogType, noindex } = Astro.props;
   <body>
     <slot />
     <script is:inline>
+      // GA4 lead tracking (port of src/lib/gtag.ts trackLeadEvent): every CTA
+      // carrying data-track-lead fires generate_lead on click via delegation.
+      document.addEventListener("click", function (e) {
+        var t = e.target;
+        var el = t && t.closest ? t.closest("[data-track-lead]") : null;
+        if (el && typeof window.gtag === "function") {
+          window.gtag("event", "generate_lead", {
+            event_category: "cta",
+            event_label: "book_free_assessment",
+          });
+        }
+      });
+    </script>
+    <script is:inline>
       // Chat widget loader (port of src/lib/loadChatWidget.ts): inject the
       // LeadConnector bubble once the user scrolls past the hero (300px) or
       // after 8s, whichever comes first.

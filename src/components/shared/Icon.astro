@@ -1,0 +1,36 @@
+---
+/**
+ * Lucide icon renderer. Emits the exact same SVG markup lucide-react produced
+ * in the old build (attributes + inner paths) so visual output is identical,
+ * with zero client JS.
+ */
+import { LUCIDE_ICONS } from "./lucideIcons";
+
+interface Props {
+  name: string;
+  class?: string;
+  size?: number;
+}
+
+const { name, class: className = "", size = 24 } = Astro.props;
+const inner = LUCIDE_ICONS[name];
+if (!inner) {
+  throw new Error(`Icon: unknown lucide icon "${name}"`);
+}
+const cls = `lucide lucide-${name}${className ? ` ${className}` : ""}`;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={cls}
+  aria-hidden="true"
+  set:html={inner}
+/>

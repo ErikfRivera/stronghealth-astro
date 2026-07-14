@@ -1,0 +1,51 @@
+---
+import FadeIn from "./FadeIn.astro";
+
+export interface Citation {
+  id: number;
+  authors: string;
+  title: string;
+  journal: string;
+  year: number;
+  url?: string;
+}
+
+interface Props {
+  citations: Citation[];
+}
+
+const { citations } = Astro.props;
+---
+
+{
+  citations.length > 0 && (
+    <section class="py-12 border-t border-white/10">
+      <FadeIn>
+        <h2 class="text-lg font-bold text-cream mb-6">References &amp; Sources</h2>
+        <ol class="flex flex-col gap-3 list-none">
+          {citations.map((c) => (
+            <li id={`ref-${c.id}`} class="flex gap-3 text-xs text-muted leading-relaxed">
+              <span class="text-gold font-bold shrink-0">[{c.id}]</span>
+              <span>
+                {c.authors}. "{c.title}." <em>{c.journal}</em>, {c.year}.
+                {c.url && (
+                  <>
+                    {" "}
+                    <a
+                      href={c.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-gold hover:underline"
+                    >
+                      Link →
+                    </a>
+                  </>
+                )}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </FadeIn>
+    </section>
+  )
+}

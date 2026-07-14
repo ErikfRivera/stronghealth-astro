@@ -1,0 +1,52 @@
+---
+import Btn from "./Btn.astro";
+import FadeIn from "./FadeIn.astro";
+import Icon from "./Icon.astro";
+
+type CTAVariant = "consultation" | "assessment" | "testing";
+
+interface Props {
+  variant?: CTAVariant;
+}
+
+const variantConfig: Record<
+  CTAVariant,
+  { icon: string; heading: string; description: string; buttonText: string }
+> = {
+  consultation: {
+    icon: "phone",
+    heading: "Ready to Take Control of Your Health?",
+    description:
+      "Book a free consultation with one of our board-certified physicians. No commitment, no pressure — just honest answers about your options.",
+    buttonText: "Book Free Consultation",
+  },
+  assessment: {
+    icon: "clipboard-check",
+    heading: "Get Your Free Assessment",
+    description:
+      "Take our 5-minute assessment to see if testosterone therapy may be right for you. Reviewed by a licensed physician within 24 hours.",
+    buttonText: "Start Free Assessment",
+  },
+  testing: {
+    icon: "microscope",
+    heading: "Know Your Numbers",
+    description:
+      "Comprehensive lab testing to measure your testosterone, free T, SHBG, and 20+ biomarkers. Results in 48 hours.",
+    buttonText: "Get Tested",
+  },
+};
+
+const { variant = "assessment" } = Astro.props;
+const config = variantConfig[variant];
+---
+
+<FadeIn>
+  <div class="my-10 p-8 rounded-xl border border-gold/20 bg-gradient-to-br from-[#C9A84C]/10 to-transparent text-center">
+    <Icon name={config.icon} class="w-8 h-8 text-gold mx-auto mb-4" />
+    <h3 class="text-xl font-bold text-cream mb-3">{config.heading}</h3>
+    <p class="text-sm text-muted max-w-md mx-auto mb-6 leading-relaxed">
+      {config.description}
+    </p>
+    <Btn variant="primary" trackLead>{config.buttonText}</Btn>
+  </div>
+</FadeIn>

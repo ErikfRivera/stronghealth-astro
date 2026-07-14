@@ -1,0 +1,35 @@
+---
+export interface TOCItem {
+  id: string;
+  title: string;
+}
+
+interface Props {
+  items: TOCItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <nav class="my-8 p-5 rounded-lg border border-white/10 bg-white/[0.02]">
+      <div class="text-[10px] font-bold text-gold uppercase tracking-wider mb-3">
+        Table of Contents
+      </div>
+      <ol class="flex flex-col gap-2 list-none">
+        {items.map((item, i) => (
+          <li>
+            <a
+              href={`#${item.id}`}
+              class="text-sm text-muted hover:text-cream transition-colors flex items-baseline gap-2"
+            >
+              <span class="text-gold text-xs font-mono">{i + 1}.</span>
+              {item.title}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}

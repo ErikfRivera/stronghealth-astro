@@ -1,0 +1,43 @@
+---
+/**
+ * Port of shared/Btn.tsx. Always renders a real element:
+ *  - lead CTAs (trackLead) default to the site-wide booking SMS href and get
+ *    `data-track-lead`, which the site-wide delegation script (BaseLayout)
+ *    turns into a GA4 `generate_lead` event on click.
+ *  - explicit `href` renders an anchor; otherwise a plain button.
+ */
+import { BOOKING_SMS_HREF } from "../../lib/booking";
+
+interface Props {
+  variant?: "primary" | "outline" | "ghost";
+  class?: string;
+  href?: string;
+  trackLead?: boolean;
+}
+
+const { variant = "primary", class: className = "", href, trackLead = false } = Astro.props;
+
+const base =
+  "inline-flex items-center justify-center px-7 py-3.5 rounded-lg cursor-pointer uppercase tracking-[1.2px] transition-all duration-200 text-sm";
+const variants = {
+  primary: "bg-gold text-surface font-bold hover:bg-gold-hover",
+  outline:
+    "bg-transparent text-cream border-[1.5px] border-white/25 font-semibold hover:bg-white/5",
+  ghost:
+    "bg-white/5 text-cream-muted border border-white/10 font-semibold hover:bg-white/10 text-[13px]",
+};
+const classes = `${base} ${variants[variant]} ${className}`;
+const resolvedHref = href ?? (trackLead ? BOOKING_SMS_HREF : undefined);
+---
+
+{
+  resolvedHref ? (
+    <a href={resolvedHref} class={classes} data-track-lead={trackLead ? "" : undefined}>
+      <slot />
+    </a>
+  ) : (
+    <button class={classes} data-track-lead={trackLead ? "" : undefined}>
+      <slot />
+    </button>
+  )
+}

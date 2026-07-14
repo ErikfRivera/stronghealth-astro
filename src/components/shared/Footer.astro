@@ -1,0 +1,160 @@
+---
+/**
+ * Port of shared/Footer.tsx — link columns are generated from the same data
+ * modules the nav and sitemap use (reviews.ts, articles.ts, city configs) so
+ * they can never drift.
+ */
+import { reviews } from "../../data/reviews";
+import { articles } from "../../data/articles";
+import { ALL_CITIES } from "../../data/local/cityTrtConfig";
+import { ALL_WEIGHT_LOSS_CITIES } from "../../data/local/cityWeightLossConfig";
+import { ALL_PEPTIDE_CITIES } from "../../data/local/cityPeptideConfig";
+
+type FooterLinkItem = { label: string; to: string };
+
+const serviceLinks: FooterLinkItem[] = [
+  { label: "TRT Therapy", to: "/services/" },
+  { label: "Lab Testing", to: "/services/" },
+  { label: "Monitoring", to: "/services/" },
+  { label: "Sexual Health", to: "/services/" },
+  { label: "Weight Management", to: "/services/" },
+  { label: "Dexascans", to: "https://www.dexascans.com/" },
+];
+
+const companyLinks: FooterLinkItem[] = [
+  { label: "About Us", to: "/about/" },
+  { label: "Our Team", to: "/about/" },
+  { label: "Blog", to: "/blog/" },
+  { label: "Careers", to: "/careers/" },
+  { label: "Thrive Talk", to: "https://www.thrivetalk.com" },
+];
+
+const reviewLinks: FooterLinkItem[] = [
+  { label: "All Reviews", to: "/reviews/" },
+  ...reviews.slice(0, 5).map((r) => ({ label: r.shortTitle, to: r.path })),
+];
+
+const legalLinks: FooterLinkItem[] = [
+  { label: "Privacy Policy", to: "/privacy-policy/" },
+  { label: "HIPAA", to: "/hipaa-policy/" },
+  { label: "Editorial Standards", to: "/editorial-guidelines/" },
+  { label: "Terms of Use", to: "/terms-of-use/" },
+];
+
+const columns = [
+  { title: "Services", links: serviceLinks },
+  { title: "Company", links: companyLinks },
+  { title: "Reviews", links: reviewLinks },
+  { title: "Legal", links: legalLinks },
+];
+
+const weightLossSlugs = new Set(ALL_WEIGHT_LOSS_CITIES.map((c) => c.slug));
+const peptideSlugs = new Set(ALL_PEPTIDE_CITIES.map((c) => c.slug));
+
+const locationLinks: FooterLinkItem[] = [
+  { label: "All Florida Locations", to: "/fl/" },
+  ...ALL_CITIES.flatMap((c) => {
+    const links: FooterLinkItem[] = [
+      { label: `${c.name} TRT Therapy`, to: `/fl/${c.slug}/trt-therapy/` },
+    ];
+    if (weightLossSlugs.has(c.slug)) {
+      links.push({ label: `${c.name} Weight Loss`, to: `/fl/${c.slug}/weight-loss-clinic/` });
+    }
+    if (peptideSlugs.has(c.slug)) {
+      links.push({ label: `${c.name} Peptide Therapy`, to: `/fl/${c.slug}/peptide-therapy/` });
+    }
+    return links;
+  }),
+  { label: "DEXA Scan Miami", to: "/fl/miami/dexascan/" },
+];
+
+const peptideLinks: FooterLinkItem[] = [
+  { label: "Peptides Hub", to: "/peptides/" },
+  ...articles
+    .filter((a) => a.category === "Peptide Therapy")
+    .map((a) => ({ label: a.title.split(":")[0]!, to: a.path })),
+];
+
+const wideColumns = [
+  { title: "Florida Locations", links: locationLinks },
+  { title: "Peptide Therapy", links: peptideLinks },
+];
+
+const linkClass = "text-xs text-muted hover:text-cream transition-colors w-fit";
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-surface-dark px-8 pt-16 pb-8 border-t border-white/5">
+  <div class="max-w-[1000px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-10 mb-12">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C9A84C] to-[#A88832] flex items-center justify-center">
+            <span class="text-surface font-black text-base">S</span>
+          </div>
+          <span class="font-extrabold text-base text-cream">STRONG HEALTH</span>
+        </div>
+        <p class="text-xs text-muted leading-[1.7] max-w-[240px]">
+          Physician-supervised testosterone therapy. In-person exams. Telehealth
+          convenience. Honest answers.
+        </p>
+      </div>
+
+      {
+        columns.map((col) => (
+          <div>
+            <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">
+              {col.title}
+            </div>
+            <div class="flex flex-col gap-2.5">
+              {col.links.map((link) =>
+                link.to.startsWith("http") ? (
+                  <a href={link.to} target="_blank" rel="noopener noreferrer" class={linkClass}>
+                    {link.label}
+                  </a>
+                ) : (
+                  <a href={link.to} class={linkClass}>
+                    {link.label}
+                  </a>
+                ),
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12 pt-10 border-t border-white/5">
+      {
+        wideColumns.map((col) => (
+          <div>
+            <div class="text-[11px] font-bold text-gold tracking-[1.2px] uppercase mb-4">
+              {col.title}
+            </div>
+            <div class="grid grid-cols-2 gap-x-6 gap-y-2.5">
+              {col.links.map((link) =>
+                link.to.startsWith("http") ? (
+                  <a href={link.to} target="_blank" rel="noopener noreferrer" class={linkClass}>
+                    {link.label}
+                  </a>
+                ) : (
+                  <a href={link.to} class={linkClass}>
+                    {link.label}
+                  </a>
+                ),
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-text-subtle">
+      <div>© {year} Strong Health TRT. All rights reserved.</div>
+      <div class="flex gap-4">
+        <span>Not available in all states.</span>
+        <span>Prescriptions subject to physician approval.</span>
+      </div>
+    </div>
+  </div>
+</footer>

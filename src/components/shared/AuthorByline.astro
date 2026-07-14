@@ -1,0 +1,90 @@
+---
+import type { Author } from "../../data/articleAuthors";
+
+interface Props {
+  author: Author;
+  reviewer?: Author;
+  publishDate: string;
+  updatedDate?: string;
+  editorialGuidelinesUrl?: string;
+}
+
+const {
+  author,
+  reviewer,
+  publishDate,
+  updatedDate,
+  editorialGuidelinesUrl = "/editorial-guidelines/",
+} = Astro.props;
+
+const formatDisplayDate = (value: string): string => {
+  if (/^\d{4}-\d{2}-\d{2}/.test(value)) {
+    const d = new Date(`${value}T00:00:00Z`);
+    if (!Number.isNaN(d.getTime())) {
+      return d.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        timeZone: "UTC",
+      });
+    }
+  }
+  return value;
+};
+
+const credentialSummary = (a: Author): string => `${a.credentials} · ${a.role}`;
+
+const cards = [
+  { label: "Written by", author },
+  ...(reviewer ? [{ label: "Medically reviewed by", author: reviewer }] : []),
+];
+---
+
+<div class="flex flex-col gap-4 py-5 border-y border-white/10">
+  <div class="flex flex-wrap gap-6">
+    {
+      cards.map(({ label, author: a }) => (
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 shrink-0 rounded-full bg-gradient-to-br from-[#C9A84C]/30 to-[#C9A84C]/10 flex items-center justify-center text-sm font-bold text-gold">
+            {a.avatarUrl ? (
+              <img
+                src={a.avatarUrl}
+                alt={a.name}
+                loading="lazy"
+                width={40}
+                height={40}
+                class="w-full h-full rounded-full object-cover"
+              />
+            ) : (
+              a.name.charAt(0)
+            )}
+          </div>
+          <div>
+            <div class="text-[10px] text-muted uppercase tracking-wider">{label}</div>
+            <div class="text-sm font-semibold text-cream">
+              {a.profileUrl ? (
+                <a href={a.profileUrl} class="hover:text-gold transition-colors">
+                  {a.name}
+                </a>
+              ) : (
+                a.name
+              )}
+            </div>
+            <div class="text-[11px] text-gold leading-snug">{credentialSummary(a)}</div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
+    <span>Published: {formatDisplayDate(publishDate)}</span>
+    {updatedDate && <span>Updated: {formatDisplayDate(updatedDate)}</span>}
+    <span class="text-text-subtle">·</span>
+    <a
+      href={editorialGuidelinesUrl}
+      class="text-gold hover:text-gold-hover underline underline-offset-2 transition-colors"
+    >
+      Editorial Standards
+    </a>
+  </div>
+</div>

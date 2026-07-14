@@ -1,0 +1,47 @@
+---
+/**
+ * FAQ accordion (port of shared/FAQSection.tsx) using native
+ * <details>/<summary> — zero JS, and every answer is present in the initial
+ * HTML for SEO. The FAQPage JSON-LD on each page is generated from the same
+ * items array the caller passes here (FR-4).
+ */
+import FadeIn from "./FadeIn.astro";
+import Icon from "./Icon.astro";
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FAQItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <section class="py-12">
+      <FadeIn>
+        <h2 class="text-2xl font-bold text-cream mb-8">Frequently Asked Questions</h2>
+      </FadeIn>
+      <div class="flex flex-col gap-3">
+        {items.map((item, i) => (
+          <FadeIn delay={i * 60}>
+            <details class="border border-white/10 rounded-lg overflow-hidden group">
+              <summary class="w-full flex items-center justify-between px-5 py-4 text-left text-sm font-semibold text-cream hover:bg-white/5 transition-colors cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <span>{item.question}</span>
+                <Icon
+                  name="chevron-down"
+                  class="w-4 h-4 text-gold transition-transform duration-300 shrink-0 ml-4 group-open:rotate-180"
+                />
+              </summary>
+              <div class="px-5 pb-4 text-sm text-muted leading-relaxed">{item.answer}</div>
+            </details>
+          </FadeIn>
+        ))}
+      </div>
+    </section>
+  )
+}

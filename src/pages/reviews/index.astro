@@ -1,0 +1,121 @@
+---
+// /reviews/ hub — port of src/pages/reviews/index.tsx. Cards, footer, and
+// sitemap all read the same src/data/reviews.ts module so they cannot drift.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageShell from "../../components/shared/PageShell.astro";
+import FadeIn from "../../components/shared/FadeIn.astro";
+import Icon from "../../components/shared/Icon.astro";
+import JsonLd from "../../components/seo/JsonLd.astro";
+import { collectionPageSchema } from "../../components/seo/schemas";
+import { reviews } from "../../data/reviews";
+import { BOOKING_SMS_HREF } from "../../lib/booking";
+
+const sortedReviews = [...reviews].sort(
+  (a, b) => new Date(b.dateModified).getTime() - new Date(a.dateModified).getTime(),
+);
+
+function formatReviewDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+---
+
+<BaseLayout
+  title="Supplement & TRT Clinic Reviews"
+  description="Physician-reviewed analyses of popular testosterone supplements, hormone products, and TRT clinics. Honest, evidence-based comparisons."
+  path="/reviews/"
+>
+  <PageShell>
+    <JsonLd
+      schema={collectionPageSchema({
+        name: "Strong Health Reviews",
+        description:
+          "Physician-reviewed analyses of popular testosterone supplements, hormone-related products, and TRT clinics.",
+        url: "/reviews/",
+        items: reviews.map((r) => ({ name: r.title, url: r.path })),
+      })}
+    />
+    <header class="relative px-8 pt-16 pb-12 overflow-hidden border-b border-white/5">
+      <div class="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-navy/15 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[400px] h-[400px] bg-gold/8 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <FadeIn>
+          <span class="text-[11px] font-bold uppercase tracking-[0.15em] text-gold mb-3 block">
+            Evidence-Based Reviews
+          </span>
+          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-4">
+            Supplement, Product &amp; Clinic Reviews
+          </h1>
+          <p class="text-[16px] text-muted leading-[1.7] max-w-[600px]">
+            Honest, physician-reviewed analyses of popular testosterone supplements, hormone-related products, and competing TRT clinics.
+          </p>
+        </FadeIn>
+      </div>
+    </header>
+
+    <div class="max-w-[1000px] mx-auto px-8 py-10">
+      <p class="text-[13px] text-muted mb-6">
+        {sortedReviews.length} {sortedReviews.length === 1 ? "review" : "reviews"}
+      </p>
+      <FadeIn>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {
+            sortedReviews.map((review) => (
+              <a
+                href={review.path}
+                class="group block bg-surface-card rounded-xl border border-white/5 hover:border-gold/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A84C] transition-all duration-300 overflow-hidden"
+                aria-label={`Read: ${review.title}`}
+              >
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full text-gold bg-gold/10">
+                      {review.badge}
+                    </span>
+                  </div>
+                  <h2 class="text-[17px] font-bold text-cream leading-[1.4] mb-2.5 group-hover:text-gold transition-colors">
+                    {review.title}
+                  </h2>
+                  <p class="text-[13px] text-muted leading-[1.7] mb-4">{review.blurb}</p>
+                  <div class="flex items-center gap-2 text-[12px] text-muted mb-4">
+                    <time datetime={review.dateModified}>
+                      Updated {formatReviewDate(review.dateModified)}
+                    </time>
+                    <span aria-hidden="true">•</span>
+                    <span>{review.readTime}</span>
+                  </div>
+                  <span
+                    class="text-[12px] font-semibold text-gold flex items-center gap-1 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity"
+                    aria-hidden="true"
+                  >
+                    Read review <Icon name="arrow-right" size={13} />
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </FadeIn>
+    </div>
+
+    <section class="px-8 py-16 border-t border-white/5">
+      <div class="max-w-[600px] mx-auto text-center">
+        <h2 class="text-2xl font-bold mb-3">Skip the Supplement Guesswork</h2>
+        <p class="text-[14px] text-muted leading-[1.7] mb-6">
+          Talk to a board-certified Strong Health physician about evidence-based hormone optimization tailored to your labs and goals.
+        </p>
+        <a
+          href={BOOKING_SMS_HREF}
+          data-track-lead
+          class="inline-flex items-center gap-2 bg-gold text-surface font-bold text-[13px] px-7 py-3.5 rounded-lg hover:bg-[#D4B85C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A84C] transition-colors"
+        >
+          Book Your Free Assessment
+          <Icon name="arrow-right" size={15} />
+        </a>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

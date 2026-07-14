@@ -1,0 +1,49 @@
+---
+// /reviews/andro-400/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-reviews.py. Metadata comes from src/data/reviews.ts;
+// the faqs array below feeds BOTH the visible FAQ section and the FAQPage
+// JSON-LD emitted by the layout.
+import ReviewArticleLayout from "../../layouts/ReviewArticleLayout.astro";
+import ReviewFAQSection from "../../components/review/ReviewFAQSection.astro";
+import { getReview } from "../../data/reviews";
+import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../data/articleAuthors";
+import body0 from "../../content/fragments/reviews-andro-400.0.html?raw";
+import body1 from "../../content/fragments/reviews-andro-400.1.html?raw";
+
+const review = getReview("/reviews/andro-400/");
+
+const faqs = [{"question": "Does Andro 400 actually work to increase testosterone?", "answer": "Andro 400 contains eurycoma longifolia (tongkat ali), which has shown modest testosterone-supporting effects in some clinical studies, particularly in stressed or older male populations. However, the evidence is limited and the effects are generally small compared to pharmaceutical testosterone replacement therapy. For men with clinically diagnosed low testosterone, OTC supplements like Andro 400 are unlikely to produce meaningful, sustained increases."}, {"question": "What are the side effects of Andro 400?", "answer": "Andro 400 is generally considered safe for most adults when used as directed. Reported side effects of eurycoma longifolia are uncommon but may include restlessness, insomnia, and irritability. Because Andro 400 is a dietary supplement, it is not evaluated by the FDA for safety or efficacy, and long-term studies are limited."}, {"question": "Is Andro 400 better than prescription TRT?", "answer": "They serve different purposes. Andro 400 is an OTC supplement that may provide modest support for men with borderline testosterone levels. Prescription TRT is a medically supervised treatment that delivers clinically significant testosterone increases for men diagnosed with hypogonadism. If your testosterone levels are genuinely low and causing symptoms, prescription TRT under physician supervision is the evidence-based approach."}, {"question": "How long does it take for Andro 400 to work?", "answer": "According to the manufacturer, Andro 400 may take 2 to 4 weeks to show effects. However, clinical studies on eurycoma longifolia typically measure outcomes over 4 to 12 weeks, and results are highly variable between individuals. Many users report no noticeable changes."}, {"question": "Can I take Andro 400 with prescription medications?", "answer": "You should consult your physician before combining Andro 400 with any prescription medications, particularly hormone therapies, blood pressure medications, or blood thinners. Eurycoma longifolia may interact with certain medications, and a physician can assess whether it is safe for your specific situation."}, {"question": "What is the difference between tongkat ali and prescription testosterone?", "answer": "Tongkat ali (eurycoma longifolia) is a plant extract that may indirectly support the body's own testosterone production through stress reduction and modulation of cortisol levels. Prescription testosterone is bioidentical testosterone that directly raises testosterone levels to a clinically targeted range. The difference in potency and reliability is substantial."}];
+
+const relatedLinks = [{"url": "/reviews/nugenix-ultimate-testosterone/", "label": "Nugenix Ultimate Testosterone Review: Hype vs. Evidence"}, {"url": "/reviews/low-t-center/", "label": "Low T Center vs. Strong Health: An Honest Comparison"}, {"url": "/reviews/elysium-basis-review/", "label": "Elysium Basis Review: Can NAD+ Replace Hormone Therapy?"}, {"url": "/reviews/revita/", "label": "Revita Pro Review: Testosterone Booster Analysis"}];
+
+const structuredData = {
+  type: "product" as const,
+  title: review.title,
+  description: review.blurb,
+  datePublished: review.datePublished,
+  dateModified: review.dateModified,
+  faqs,
+  productName: "Andro 400",
+  productRating: 2.5,
+  productReviewCount: 1840,
+};
+---
+
+<ReviewArticleLayout
+  title={review.title}
+  seoTitle={review.seoTitle}
+  subtitle={review.blurb}
+  badge={review.badge}
+  datePublished={review.datePublished}
+  dateModified={review.dateModified}
+  readTime={review.readTime}
+  structuredData={structuredData}
+  path={review.path}
+  author={MAHADEV_MUKHERJEE}
+  reviewer={DR_ANGEL_RIVERA}
+  relatedLinks={relatedLinks}
+>
+  <Fragment set:html={body0} />
+  <ReviewFAQSection faqs={faqs} />
+  <Fragment set:html={body1} />
+</ReviewArticleLayout>

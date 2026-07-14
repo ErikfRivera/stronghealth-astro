@@ -1,0 +1,43 @@
+---
+// /reviews/low-t-center/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-reviews.py. Metadata comes from src/data/reviews.ts;
+// the faqs array below feeds BOTH the visible FAQ section and the FAQPage
+// JSON-LD emitted by the layout.
+import ReviewArticleLayout from "../../layouts/ReviewArticleLayout.astro";
+import ReviewFAQSection from "../../components/review/ReviewFAQSection.astro";
+import { getReview } from "../../data/reviews";
+import body0 from "../../content/fragments/reviews-low-t-center.0.html?raw";
+import body1 from "../../content/fragments/reviews-low-t-center.1.html?raw";
+
+const review = getReview("/reviews/low-t-center/");
+
+const faqs = [{"question": "Is Low T Center legitimate?", "answer": "Yes, Low T Center is a legitimate medical franchise that provides testosterone replacement therapy. They operate over 50 locations across the United States. However, being a franchise model means the quality of care can vary significantly between locations, as each is independently owned and operated."}, {"question": "How much does Low T Center cost per month?", "answer": "Low T Center typically charges a monthly membership fee that ranges from $150 to $400+ depending on the location, treatment plan, and any additional services. Costs can vary significantly between franchise locations. It is important to request a complete cost breakdown before committing, as initial lab work and startup costs may be separate."}, {"question": "What is the difference between Low T Center and an independent TRT clinic?", "answer": "The primary difference is the business model. Low T Center operates as a franchise with standardized protocols across locations, while an independent TRT clinic like Strong Health offers physician-directed, individualized treatment plans. Independent clinics typically maintain smaller patient panels, allowing for more personalized attention and flexible treatment adjustments."}, {"question": "Does Low T Center accept insurance?", "answer": "Some Low T Center locations accept certain insurance plans, but coverage varies by location and plan. Many patients end up paying out-of-pocket for some or all of their treatment. It is best to contact your specific location and insurance provider to verify coverage before starting treatment."}, {"question": "Can I switch from Low T Center to another TRT provider?", "answer": "Yes, you can switch TRT providers at any time. Your new provider will typically want to review your medical history, previous lab results, and current protocol. At Strong Health, we offer a smooth transition process that includes a thorough reassessment to ensure your treatment plan is fully optimized."}, {"question": "How does physician oversight compare between franchise and independent clinics?", "answer": "In franchise models like Low T Center, physician oversight is structured around standardized protocols, and the treating physician may rotate between locations. Independent clinics like Strong Health typically offer direct, consistent physician oversight where the same doctor follows your progress from initial assessment through ongoing treatment adjustments."}];
+
+const relatedLinks = [{"url": "/reviews/nugenix-ultimate-testosterone/", "label": "Nugenix Ultimate Testosterone Review: Hype vs. Evidence"}, {"url": "/reviews/andro-400/", "label": "Andro 400 Review: Does This Testosterone Booster Work?"}, {"url": "/reviews/elysium-basis-review/", "label": "Elysium Basis Review: Can NAD+ Replace Hormone Therapy?"}, {"url": "/reviews/revita/", "label": "Revita Pro Review: Testosterone Booster Analysis"}, {"url": "/dexa-scan/", "label": "DEXA Scan: The Gold Standard for Body Composition"}];
+
+const structuredData = {
+  type: "competitor" as const,
+  title: review.title,
+  description: review.blurb,
+  datePublished: review.datePublished,
+  dateModified: review.dateModified,
+  faqs,
+};
+---
+
+<ReviewArticleLayout
+  title={review.title}
+  seoTitle={review.seoTitle}
+  subtitle={review.blurb}
+  badge={review.badge}
+  datePublished={review.datePublished}
+  dateModified={review.dateModified}
+  readTime={review.readTime}
+  structuredData={structuredData}
+  path={review.path}
+  relatedLinks={relatedLinks}
+>
+  <Fragment set:html={body0} />
+  <ReviewFAQSection faqs={faqs} />
+  <Fragment set:html={body1} />
+</ReviewArticleLayout>

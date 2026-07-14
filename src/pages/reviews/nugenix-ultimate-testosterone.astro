@@ -1,0 +1,46 @@
+---
+// /reviews/nugenix-ultimate-testosterone/ — generated from rendered production HTML (source commit 9398453)
+// by scripts/extract-reviews.py. Metadata comes from src/data/reviews.ts;
+// the faqs array below feeds BOTH the visible FAQ section and the FAQPage
+// JSON-LD emitted by the layout.
+import ReviewArticleLayout from "../../layouts/ReviewArticleLayout.astro";
+import ReviewFAQSection from "../../components/review/ReviewFAQSection.astro";
+import { getReview } from "../../data/reviews";
+import body0 from "../../content/fragments/reviews-nugenix-ultimate-testosterone.0.html?raw";
+import body1 from "../../content/fragments/reviews-nugenix-ultimate-testosterone.1.html?raw";
+
+const review = getReview("/reviews/nugenix-ultimate-testosterone/");
+
+const faqs = [{"question": "Does Nugenix Ultimate Testosterone actually increase testosterone?", "answer": "Nugenix Ultimate contains Testofen, a patented fenugreek extract that has shown some ability to support free testosterone levels in clinical studies. However, the effects are modest and primarily relate to free testosterone rather than total testosterone production. For men with clinically low testosterone, Nugenix is unlikely to produce the significant increases needed to resolve symptoms."}, {"question": "Is Nugenix Ultimate Testosterone safe?", "answer": "Nugenix Ultimate is generally considered safe for most healthy adults. The primary ingredients (fenugreek extract, vitamins, and amino acids) have established safety profiles. However, as a dietary supplement, it is not evaluated by the FDA for safety or efficacy. Men taking medications or with pre-existing health conditions should consult their physician before use."}, {"question": "How much does Nugenix Ultimate Testosterone cost?", "answer": "Nugenix Ultimate Testosterone typically retails for $50 to $70 per month for a single bottle. The brand also offers bundles and subscription options at various price points, some exceeding $150 per month when combined with their other products. Over a year, this adds up to $600 to $1,800+ without any lab monitoring or physician oversight included."}, {"question": "What is Testofen and does it work?", "answer": "Testofen is a patented, standardized extract of fenugreek (Trigonella foenum-graecum) containing specific saponins (furostanolic saponins). Some clinical trials have shown it may support free testosterone levels and improve certain aspects of vitality and body composition. However, the clinical significance of these effects for men with genuine testosterone deficiency is limited."}, {"question": "Can I take Nugenix and TRT together?", "answer": "You should not combine Nugenix or any testosterone-supporting supplement with prescription TRT without physician approval. Your TRT physician will advise which supplements, if any, complement your treatment protocol. At Strong Health, we provide individualized supplement guidance as part of your treatment plan."}, {"question": "Why do so many celebrities endorse Nugenix?", "answer": "Nugenix invests heavily in celebrity endorsements and advertising. These endorsements are paid marketing partnerships and do not reflect clinical evidence. Celebrity endorsement does not change the underlying science. When evaluating any testosterone product, focus on peer-reviewed research and clinical evidence rather than endorsements."}];
+
+const relatedLinks = [{"url": "/reviews/andro-400/", "label": "Andro 400 Review: Does This Testosterone Booster Actually Work?"}, {"url": "/reviews/low-t-center/", "label": "Low T Center vs. Strong Health: An Honest Comparison"}, {"url": "/reviews/elysium-basis-review/", "label": "Elysium Basis Review: Can NAD+ Replace Hormone Therapy?"}, {"url": "/reviews/revita/", "label": "Revita Pro Review: Testosterone Booster Analysis"}, {"url": "/dexa-scan/", "label": "DEXA Scan: The Gold Standard for Body Composition"}];
+
+const structuredData = {
+  type: "product" as const,
+  title: review.title,
+  description: review.blurb,
+  datePublished: review.datePublished,
+  dateModified: review.dateModified,
+  faqs,
+  productName: "Nugenix Ultimate Testosterone",
+  productRating: 2.5,
+  productReviewCount: 4250,
+};
+---
+
+<ReviewArticleLayout
+  title={review.title}
+  seoTitle={review.seoTitle}
+  subtitle={review.blurb}
+  badge={review.badge}
+  datePublished={review.datePublished}
+  dateModified={review.dateModified}
+  readTime={review.readTime}
+  structuredData={structuredData}
+  path={review.path}
+  relatedLinks={relatedLinks}
+>
+  <Fragment set:html={body0} />
+  <ReviewFAQSection faqs={faqs} />
+  <Fragment set:html={body1} />
+</ReviewArticleLayout>

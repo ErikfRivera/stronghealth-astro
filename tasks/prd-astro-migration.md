@@ -159,8 +159,8 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As a reader, I want the reviews cluster with verdicts, comparison tables, and Product schema intact.
 
 **Acceptance Criteria:**
-- [ ] `/reviews/` hub lists reviews from the same shared data module pattern (`src/data/reviews.ts`) so hub, footer, and sitemap can't drift
-- [ ] 5 review pages with Product/Article/FAQPage schema parity
+- [x] `/reviews/` hub lists reviews from the same shared data module pattern (`src/data/reviews.ts`) so hub, footer, and sitemap can't drift
+- [x] 5 review pages with Product/Article/FAQPage schema parity
 
 ### US-009: Migrate local SEO pages (`/fl/` + Miami ×4 + Delray ×3)
 **Description:** As a local searcher, I want city landing pages preserved (hero, symptoms, USPs, map, physicians, testimonials, neighborhoods, FAQ) with MedicalClinic schema.

@@ -203,11 +203,11 @@ Derived from `scripts/prerender.mjs` `routes` array plus per-review routes from 
 **Description:** As the site owner, I want the SEO_AUDIT.md failures fixed in the new build, not carried over.
 
 **Acceptance Criteria:**
-- [ ] No double-brand titles anywhere (Seo.astro makes it structurally impossible)
-- [ ] All final titles ≤ 60 chars; all descriptions 120–160 (CI-enforced)
-- [ ] `JobPosting` schema on `/careers/` (if roles are listed); `MedicalWebPage` added to flagged articles
-- [ ] All canonicals trailing-slash
-- [ ] Title changes logged in a `CHANGES-FROM-PRODUCTION.md` so ranking shifts can be traced
+- [x] No double-brand titles anywhere (Seo.astro makes it structurally impossible)
+- [x] All final titles ≤ 60 chars; all descriptions 120–160 (CI-enforced)
+- [x] `JobPosting` schema on `/careers/` (if roles are listed); `MedicalWebPage` added to flagged articles
+- [x] All canonicals trailing-slash
+- [x] Title changes logged in a `CHANGES-FROM-PRODUCTION.md` so ranking shifts can be traced
 
 ### Phase 3 — Verification & cutover
 

@@ -8,7 +8,7 @@
 //     soft-404 is intentionally not preserved)
 import { test, expect } from "@playwright/test";
 
-const BOOKING_SMS_PREFIX = "sms:+19546635563";
+const BOOKING_SMS_PREFIX = "sms:+17542636026";
 
 test.describe("desktop nav dropdown", () => {
   test.skip(({ isMobile }) => isMobile, "desktop-only interaction");

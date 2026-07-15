@@ -19,43 +19,43 @@ Add a New York City peptide-therapy landing page mirroring the config-driven Mia
 **Description:** As a developer, I want city configs to carry their state so URLs, breadcrumbs, and cross-links stop hardcoding `/fl/`.
 
 **Acceptance Criteria:**
-- [ ] `CityPeptideConfig` gains `statePrefix: "fl" | "ny"` (default `"fl"`) and `stateName` (e.g. "New York"); existing FL configs unchanged in output
-- [ ] `CityPeptidePage.astro` derives path `/{statePrefix}/{slug}/peptide-therapy/`, breadcrumb trail (state crumb has NO link when no state hub page exists — schema.org ListItem without `item`, pattern already supported by `breadcrumbSchema`), and NearbyPeptideCities links from config
-- [ ] `defaultRelatedInternalLinks` (cityLocalProof.ts) only emits TRT/weight-loss sibling links for cities that exist in those configs; NYC gets peptides-hub + `/peptides/`-cluster links instead
-- [ ] All 47 existing pages byte-identical: `pnpm build && pnpm run test:parity:build` → 606/606
-- [ ] `pnpm check` passes
+- [x] `CityPeptideConfig` gains `statePrefix: "fl" | "ny"` (default `"fl"`) and `stateName` (e.g. "New York"); existing FL configs unchanged in output
+- [x] `CityPeptidePage.astro` derives path `/{statePrefix}/{slug}/peptide-therapy/`, breadcrumb trail (state crumb has NO link when no state hub page exists — schema.org ListItem without `item`, pattern already supported by `breadcrumbSchema`), and NearbyPeptideCities links from config
+- [x] `defaultRelatedInternalLinks` (cityLocalProof.ts) only emits TRT/weight-loss sibling links for cities that exist in those configs; NYC gets peptides-hub + `/peptides/`-cluster links instead
+- [x] All 47 existing pages byte-identical: `pnpm build && pnpm run test:parity:build` → 606/606
+- [x] `pnpm check` passes
 
 ### US-N2: NYC config + page
 **Description:** As a NYC visitor, I want a peptide-therapy page with local relevance so I can start telehealth care.
 
 **Acceptance Criteria:**
-- [ ] `NEW_YORK_PEPTIDE_CONFIG` in `cityPeptideConfig.ts`: telehealth service-area (`physicalClinic: false`), copy adapted from Delray with NYC boroughs (Manhattan, Brooklyn, Queens, Bronx, Staten Island) + neighborhoods served, NY physician-licensing language, FAQs adapted (no Brickell references; labs via local draw sites/telehealth)
-- [ ] `src/pages/ny/new-york/peptide-therapy.astro` wrapper passes the config (mirrors Delray wrapper)
-- [ ] SEO: title raw ≤44 chars (final ≤60 incl. " | Strong Health"), description 120–160, canonical `https://www.stronghealth.com/ny/new-york/peptide-therapy/`
-- [ ] JSON-LD: MedicalWebPage + FAQPage + BreadcrumbList only (NO MedicalClinic — service-area, per Delray precedent); FAQs shared between visible accordion and schema
-- [ ] No `/ny/` hub page is created; no internal link may point to `/ny/` (link gate enforces)
-- [ ] `pnpm build` clean (check-seo + generate-sitemap pass); typecheck passes
-- [ ] Verify in browser using dev-browser skill (desktop 1440 + mobile 375)
+- [x] `NEW_YORK_PEPTIDE_CONFIG` in `cityPeptideConfig.ts`: telehealth service-area (`physicalClinic: false`), copy adapted from Delray with NYC boroughs (Manhattan, Brooklyn, Queens, Bronx, Staten Island) + neighborhoods served, NY physician-licensing language, FAQs adapted (no Brickell references; labs via local draw sites/telehealth)
+- [x] `src/pages/ny/new-york/peptide-therapy.astro` wrapper passes the config (mirrors Delray wrapper)
+- [x] SEO: title raw ≤44 chars (final ≤60 incl. " | Strong Health"), description 120–160, canonical `https://www.stronghealth.com/ny/new-york/peptide-therapy/`
+- [x] JSON-LD: MedicalWebPage + FAQPage + BreadcrumbList only (NO MedicalClinic — service-area, per Delray precedent); FAQs shared between visible accordion and schema
+- [x] No `/ny/` hub page is created; no internal link may point to `/ny/` (link gate enforces)
+- [x] `pnpm build` clean (check-seo + generate-sitemap pass); typecheck passes
+- [x] Verify in browser using dev-browser skill (desktop 1440 + mobile 375)
 
 ### US-N3: Linkage (nav + footer + peptides hub)
 **Description:** As a user, I want to find the NYC page from site navigation.
 
 **Acceptance Criteria:**
-- [ ] Nav Locations dropdown + mobile drawer: "New York" group with single "New York Peptide Therapy" link (no TRT/WL links — gated exactly like the existing weightLossSlugs/peptideSlugs pattern)
-- [ ] Footer "Florida Locations" column renamed "Locations"; NYC peptide link added
-- [ ] `/peptides/` hub city grid includes "New York, NY" card linking to the new page
-- [ ] `/fl/` hub remains Florida-only
-- [ ] LocationsGridSection (homepage/blog) unchanged (physical clinics only)
+- [x] Nav Locations dropdown + mobile drawer: "New York" group with single "New York Peptide Therapy" link (no TRT/WL links — gated exactly like the existing weightLossSlugs/peptideSlugs pattern)
+- [x] Footer "Florida Locations" column renamed "Locations"; NYC peptide link added
+- [x] `/peptides/` hub city grid includes "New York, NY" card linking to the new page
+- [x] `/fl/` hub remains Florida-only
+- [x] LocationsGridSection (homepage/blog) unchanged (physical clinics only)
 
 ### US-N4: Sitemap, gates, and test-harness extension
 **Description:** As a search engine and CI, I want the new route registered everywhere the 47 routes are.
 
 **Acceptance Criteria:**
-- [ ] `generate-sitemap.mjs`: HISTORICAL_LASTMOD entry for the route = launch date (2026-07-14); priority 0.8/monthly (default rule)
-- [ ] Parity fixture extended: new route added with expected status/title/description/canonical/robots/h1/sitemap meta via the fixture generator's overrides mechanism (reason: "post-cutover addition, no production counterpart"); route-count assertions become 48
-- [ ] E2E route list + one desktop/mobile screenshot baseline added
-- [ ] Full harness green: parity build suite, e2e, visual
-- [ ] check-redirects manifest untouched (no NYC redirects exist)
+- [x] `generate-sitemap.mjs`: HISTORICAL_LASTMOD entry for the route = launch date (2026-07-14); priority 0.8/monthly (default rule)
+- [x] Parity fixture extended: new route added with expected status/title/description/canonical/robots/h1/sitemap meta via the fixture generator's overrides mechanism (reason: "post-cutover addition, no production counterpart"); route-count assertions become 48
+- [x] E2E route list + one desktop/mobile screenshot baseline added
+- [x] Full harness green: parity build suite, e2e, visual
+- [x] check-redirects manifest untouched (no NYC redirects exist)
 
 ## 4. Functional Requirements
 
@@ -90,3 +90,24 @@ Add a New York City peptide-therapy landing page mirroring the config-driven Mia
 
 - ~~URL / clinic model / linkage / copy source~~ — resolved by owner (all recommended options)
 - Draw-site lab partner name for NYC copy? (Using generic "local lab draw sites" until provided)
+
+## NYC page — implementation record (2026-07-14)
+
+Implemented in 4 commits: US-N1 `feat: state-aware local page system`, US-N2 `feat: NYC peptide therapy page`, US-N3 `feat: link NYC page from nav/footer/peptides hub`, US-N4 `test: extend gates and fixtures to 48 routes`.
+
+Commands run + results:
+
+- `pnpm check` — 0 errors, 0 warnings (after every story).
+- `pnpm build` — 48 pages; `generate-sitemap: 48 URLs, 18 distinct lastmod dates ✓`; `check-seo: 49 page(s) + sitemap clean ✓`.
+- Byte-identity (US-N1/US-N2): `find dist -name '*.html' | xargs shasum` diffed against the pre-change baseline — **zero diffs** for all 47 existing pages (US-N1 exact; US-N2 adds only `dist/ny/new-york/peptide-therapy/index.html`). US-N3 diffs on existing pages verified to be exactly the nav "New York" group (desktop dropdown + mobile drawer), the footer "Florida Locations"→"Locations" rename + NYC link, and the /peptides/ hub "New York, NY" card.
+- `pnpm run test:parity:build` — **617/617 pass** (was 606; fixture now 48 routes via the `post-cutover-nyc-peptide-therapy` override: "post-cutover addition, no production counterpart").
+- `pnpm run test:e2e` — **108 passed**, 2 skipped (route list follows the fixture → NYC included).
+- `playwright test --grep @visual --update-snapshots` then `pnpm run test:visual` — **57/57 pass**. New NYC desktop+mobile baselines added; 6 mobile baselines rewritten (footer additions exceeded mobile tolerance); desktop baselines unchanged (footer delta within the 0.25% gate, same keep-passing-baselines policy as remediation Phase 8). Samples eyeballed: home mobile, /fl/ mobile, NYC desktop.
+- Browser verification (US-N2): Playwright vs `astro preview` — HTTP 200, h1 `Peptide Therapy in New York, NY.`, 9 FAQ accordions, hero/final CTAs `sms:+19546635563` with `data-track-lead`, local-proof "Serving New York by appointment" section, five boroughs rendered. Screenshots: `docs/waivers/nyc-launch/nyc-peptide-desktop-1440x1000.png`, `docs/waivers/nyc-launch/nyc-peptide-mobile-375x812.png`.
+
+Built page facts: title `Peptide Therapy in New York, NY — Telehealth | Strong Health` (60 chars final / 44 raw); description 151 chars; canonical `https://www.stronghealth.com/ny/new-york/peptide-therapy/`; JSON-LD = MedicalWebPage + FAQPage + BreadcrumbList only (no MedicalClinic); breadcrumb "New York" crumb has no `item` URL and renders as plain text; no internal link to `/ny/` or `/ny/new-york/` anywhere in dist; 0 "Brickell" occurrences on the page.
+
+Deviations from the PRD story split (with rationale):
+1. The `HISTORICAL_LASTMOD` registry entry (a US-N4 acceptance item) landed in the **US-N2 commit** — `generate-sitemap.mjs` hard-fails any route without a registry entry or JSON-LD `dateModified`, so US-N2's own "pnpm build clean" criterion is unsatisfiable without it.
+2. US-N1 added optional layout-string overrides (`howItWorksTag`, `howItWorksHeadingIntro/Gold`, `physiciansSubtitleSuffix`, `relatedServicesHeadingIntro`) beyond the PRD-named `statePrefix`/`stateName`. Defaults reproduce the previous hardcoded strings byte-for-byte; NYC uses them to avoid "our New York clinic" storefront phrasing (PRD §6 NY legal nuance) without forking the layout.
+3. `tests/parity/live.test.mjs`: post-cutover fixture pages skip only the reference-origin cross-check (production has no NYC page to compare against until the next deploy); all candidate assertions still run.

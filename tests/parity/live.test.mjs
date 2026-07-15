@@ -61,25 +61,31 @@ for (const [path, entry] of Object.entries(fixture.pages)) {
     });
 
     // Cross-check core SEO surface directly against the live reference.
-    await t.test(`${path} candidate matches live reference`, async () => {
-      const ref = await fetchPage(REFERENCE, path);
-      assert.equal(cand.status, ref.status, "status differs from reference");
-      assert.equal(
-        normalizeWs(extractTitle(cand.html) ?? ""),
-        normalizeWs(extractTitle(ref.html) ?? ""),
-        "title differs from reference",
-      );
-      assert.equal(
-        normalizeWs(extractDescription(cand.html) ?? ""),
-        normalizeWs(extractDescription(ref.html) ?? ""),
-        "description differs from reference",
-      );
-      assert.deepEqual(
-        extractH1s(cand.html),
-        extractH1s(ref.html),
-        "h1s differ from reference",
-      );
-    });
+    // Post-cutover routes (fixture override "post-cutover-nyc-peptide-therapy")
+    // have no counterpart on the reference origin — skip only that cross-check.
+    await t.test(
+      `${path} candidate matches live reference`,
+      { skip: entry.post_cutover ? "post-cutover route: no reference counterpart" : false },
+      async () => {
+        const ref = await fetchPage(REFERENCE, path);
+        assert.equal(cand.status, ref.status, "status differs from reference");
+        assert.equal(
+          normalizeWs(extractTitle(cand.html) ?? ""),
+          normalizeWs(extractTitle(ref.html) ?? ""),
+          "title differs from reference",
+        );
+        assert.equal(
+          normalizeWs(extractDescription(cand.html) ?? ""),
+          normalizeWs(extractDescription(ref.html) ?? ""),
+          "description differs from reference",
+        );
+        assert.deepEqual(
+          extractH1s(cand.html),
+          extractH1s(ref.html),
+          "h1s differ from reference",
+        );
+      },
+    );
   });
 }
 

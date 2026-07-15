@@ -1,4 +1,5 @@
-// Smoke checks for all 47 production routes against the local preview server,
+// Smoke checks for all 48 fixture routes (47 production + the post-cutover
+// NYC page) against the local preview server,
 // in both desktop and mobile projects: page loads, no horizontal overflow, no
 // broken image, no missing alt, zero console errors (narrow 3rd-party
 // allowlist below).

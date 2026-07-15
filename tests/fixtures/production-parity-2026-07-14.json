@@ -24,6 +24,11 @@
       "reason": "The QA artifacts record only match booleans for changefreq/priority (all 47 matched production), not the raw values. Values are therefore derived from the verbatim production rule table (getSitemapMeta), guarded here by asserting every artifact row reported changefreq_match && priority_match."
     },
     {
+      "id": "post-cutover-nyc-peptide-therapy",
+      "rule": "/ny/new-york/peptide-therapy/ expectations are authored in POST_CUTOVER_PAGES below, not derived from the QA capture; live-suite reference cross-checks skip post_cutover pages.",
+      "reason": "post-cutover addition, no production counterpart — the NYC telehealth peptide page launched 2026-07-14 (after the production capture), so its expected values come from the approved PRD (tasks/prd-nyc-peptide-therapy.md), with sitemap lastmod = the launch-date HISTORICAL_LASTMOD registry entry."
+    },
+    {
       "id": "jsonld-resolution-by-type",
       "rule": "JSON-LD expectations are resolved by target object @type, never by script index.",
       "reason": "The $[N] indices in jsonld-differences.json reflect live production's post-hydration DOM order (react-helmet reordering) and do not match this repo's static script order. Each index is resolved against the QA production capture to record the target @type; tests locate the object semantically. priceRange expected '$' comes naturally from the prod side of the capture."
@@ -702,6 +707,22 @@
       },
       "status": 200,
       "title": "NADH vs NAD+: Benefits, Energy & Cognition | Strong Health"
+    },
+    "/ny/new-york/peptide-therapy/": {
+      "canonical_path": "/ny/new-york/peptide-therapy/",
+      "description": "Physician-supervised peptide therapy for New York patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "h1": "Peptide Therapy in New York, NY.",
+      "jsonld": {},
+      "lang": "en",
+      "post_cutover": true,
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-14",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptide Therapy in New York, NY — Telehealth | Strong Health"
     },
     "/peptides-for-arthritis/": {
       "canonical_path": "/peptides-for-arthritis/",

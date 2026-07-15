@@ -76,6 +76,16 @@ const OVERRIDES = [
       "reported changefreq_match && priority_match.",
   },
   {
+    id: "post-cutover-nyc-peptide-therapy",
+    rule:
+      "/ny/new-york/peptide-therapy/ expectations are authored in POST_CUTOVER_PAGES below, not derived from the QA capture; live-suite reference cross-checks skip post_cutover pages.",
+    reason:
+      "post-cutover addition, no production counterpart — the NYC telehealth peptide page " +
+      "launched 2026-07-14 (after the production capture), so its expected values come from " +
+      "the approved PRD (tasks/prd-nyc-peptide-therapy.md), with sitemap lastmod = the " +
+      "launch-date HISTORICAL_LASTMOD registry entry.",
+  },
+  {
     id: "jsonld-resolution-by-type",
     rule: "JSON-LD expectations are resolved by target object @type, never by script index.",
     reason:
@@ -243,7 +253,37 @@ for (const row of pageParity.rows) {
 }
 
 if (Object.keys(pages).length !== 47) {
-  throw new Error(`expected 47 pages, got ${Object.keys(pages).length}`);
+  throw new Error(`expected 47 captured pages, got ${Object.keys(pages).length}`);
+}
+
+// ---------------------------------------------------------------------------
+// Post-cutover routes (override "post-cutover-nyc-peptide-therapy"): pages
+// launched after the 2026-07-14 production capture. Expectations are authored
+// here (they have no production counterpart); `post_cutover: true` makes the
+// live suite skip the reference-origin cross-check for them.
+// ---------------------------------------------------------------------------
+const POST_CUTOVER_PAGES = {
+  "/ny/new-york/peptide-therapy/": {
+    canonical_path: "/ny/new-york/peptide-therapy/",
+    description:
+      "Physician-supervised peptide therapy for New York patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+    h1: "Peptide Therapy in New York, NY.",
+    jsonld: {},
+    lang: "en",
+    post_cutover: true,
+    robots: "index, follow, max-image-preview:large",
+    sitemap: { changefreq: "monthly", lastmod: "2026-07-14", priority: "0.8" },
+    status: 200,
+    title: "Peptide Therapy in New York, NY — Telehealth | Strong Health",
+  },
+};
+for (const [path, entry] of Object.entries(POST_CUTOVER_PAGES)) {
+  if (pages[path]) throw new Error(`post-cutover route ${path} already captured`);
+  pages[path] = entry;
+}
+
+if (Object.keys(pages).length !== 48) {
+  throw new Error(`expected 48 total pages, got ${Object.keys(pages).length}`);
 }
 
 // Every jsonld-differences path must belong to a known page.
@@ -281,6 +321,7 @@ const fixture = {
 mkdirSync(dirname(OUT_PATH), { recursive: true });
 writeFileSync(OUT_PATH, JSON.stringify(fixture, null, 2) + "\n", "utf-8");
 console.log(
-  `generate-parity-fixture: wrote ${OUT_PATH} — ${Object.keys(pages).length} pages, ` +
+  `generate-parity-fixture: wrote ${OUT_PATH} — ${Object.keys(pages).length} pages ` +
+    `(47 captured + ${Object.keys(POST_CUTOVER_PAGES).length} post-cutover), ` +
     `${jsonldDiffs.diffs.length} JSON-LD field expectations across ${jsonldByPath.size} pages`,
 );

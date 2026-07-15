@@ -133,7 +133,7 @@ export async function runSitemapAssertions(t, { xml, fixture, origin }) {
     .map((e) => (e.loc ?? "").replace(origin, ""))
     .sort();
 
-  await t.test("sitemap contains exactly the 47 fixture paths, no duplicates", () => {
+  await t.test(`sitemap contains exactly the ${expectedPaths.length} fixture paths, no duplicates`, () => {
     assert.equal(
       new Set(actualPaths).size,
       actualPaths.length,

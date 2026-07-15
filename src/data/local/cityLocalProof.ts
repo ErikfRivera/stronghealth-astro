@@ -1,5 +1,9 @@
 // Ported from src/pages/local/cityLocalProof.tsx (data + helpers only;
 // LocalProofSection / ReferencesSection are Astro components in src/components/local/).
+import { ALL_CITIES } from "./cityTrtConfig";
+import { ALL_WEIGHT_LOSS_CITIES } from "./cityWeightLossConfig";
+import { ALL_PEPTIDE_CITIES } from "./cityPeptideConfig";
+
 export interface ReviewLink {
   label: string;
   url: string;
@@ -37,6 +41,10 @@ export interface LocalProofData {
   neighborhoodsServed: string[];
   reviewLinks: ReviewLink[];
   relatedInternalLinks: RelatedInternalLink[];
+  /** Full state name for service-area copy (US-N1). Defaults to "Florida". */
+  stateName?: string;
+  /** State abbreviation for service-area copy (US-N1). Defaults to "FL". */
+  stateAbbr?: string;
 }
 
 export const DEFAULT_APPOINTMENT_EXPECTATIONS =
@@ -77,22 +85,36 @@ const SERVICE_PATHS: Record<Service, string> = {
   "weight-loss": "weight-loss-clinic",
 };
 
+// Per-service city membership (US-N1): a sibling-service link is only emitted
+// when the city actually has a page in that service's config.
+const SERVICE_SLUGS: Record<Service, Set<string>> = {
+  trt: new Set(ALL_CITIES.map((c) => c.slug)),
+  peptide: new Set(ALL_PEPTIDE_CITIES.map((c) => c.slug)),
+  "weight-loss": new Set(ALL_WEIGHT_LOSS_CITIES.map((c) => c.slug)),
+};
+
 /**
- * Build 4 page-specific internal links: the two sibling services in the same
- * city, the citywide hub, and the Florida hub.
+ * Build page-specific internal links: the sibling services that exist in the
+ * same city, service-specific extras, the state hub (Florida only), and the
+ * site hub. Cities with no sibling pages (e.g. New York, peptide-only
+ * telehealth service area) get peptides-hub + /peptides/-cluster links
+ * instead (US-N1).
  */
 export function defaultRelatedInternalLinks(
   slug: string,
   cityName: string,
   current: Service,
+  statePrefix: string = "fl",
 ): RelatedInternalLink[] {
   const others: Service[] = (Object.keys(SERVICE_LABELS) as Service[]).filter(
     (s) => s !== current,
   );
-  const siblings = others.map((s) => ({
-    label: `${SERVICE_LABELS[s]} ${cityName}`,
-    href: `/fl/${slug}/${SERVICE_PATHS[s]}/`,
-  }));
+  const siblings = others
+    .filter((s) => SERVICE_SLUGS[s].has(slug))
+    .map((s) => ({
+      label: `${SERVICE_LABELS[s]} ${cityName}`,
+      href: `/${statePrefix}/${slug}/${SERVICE_PATHS[s]}/`,
+    }));
   const extras: RelatedInternalLink[] = [];
   if (slug === "miami") {
     extras.push({
@@ -127,13 +149,33 @@ export function defaultRelatedInternalLinks(
       label: "Peptides Hub: All Peptide Therapies",
       href: "/peptides/",
     });
+    if (siblings.length === 0) {
+      // Peptide-only service area (no TRT/weight-loss city pages, e.g. New
+      // York): cross-link the /peptides/ content cluster instead (US-N1).
+      extras.push(
+        {
+          label: "Peptides for Healing & Recovery (BPC-157)",
+          href: "/peptides-for-healing/",
+        },
+        {
+          label: "Peptides for Muscle Growth",
+          href: "/peptides-for-muscle-growth/",
+        },
+        {
+          label: "Peptides for Belly Fat (Tesamorelin)",
+          href: "/peptides-for-belly-fat/",
+        },
+      );
+    }
   }
-  return [
-    ...siblings,
-    ...extras,
-    { label: "All Strong Health Florida clinics", href: "/fl/" },
-    { label: "Strong Health services hub", href: "/" },
-  ];
+  const hubs: RelatedInternalLink[] =
+    statePrefix === "fl"
+      ? [
+          { label: "All Strong Health Florida clinics", href: "/fl/" },
+          { label: "Strong Health services hub", href: "/" },
+        ]
+      : [{ label: "Strong Health services hub", href: "/" }];
+  return [...siblings, ...extras, ...hubs];
 }
 
 export function defaultPhysicianAvailability(physicianName?: string): string {

@@ -1,8 +1,9 @@
 ---
 /**
  * Port of src/pages/local/CityPeptidePage.tsx — config-driven local peptide
- * therapy page (Miami, Delray Beach, …). Wrapper pages under
- * src/pages/fl/{slug}/peptide-therapy.astro pass a CityPeptideConfig.
+ * therapy page (Miami, Delray Beach, New York, …). Wrapper pages under
+ * src/pages/{statePrefix}/{slug}/peptide-therapy.astro pass a CityPeptideConfig;
+ * statePrefix defaults to "fl" (US-N1).
  */
 import BaseLayout from "../BaseLayout.astro";
 import JsonLd from "../../components/seo/JsonLd.astro";
@@ -105,12 +106,38 @@ function parseHeading(html: string): { text: string; gold: boolean }[] {
 const introHeadingParts = parseHeading(config.introHeadingHtml);
 const whyHeadingParts = parseHeading(config.whyHeadingHtml);
 
-const pagePath = `/fl/${config.slug}/peptide-therapy/`;
+// State-aware routing (US-N1). Florida remains the default; a state without a
+// hub page (e.g. /ny/ — intentionally 404) yields a breadcrumb crumb with NO
+// path: breadcrumbSchema emits a ListItem without `item`, and the visible
+// trail renders plain text.
+const statePrefix = config.statePrefix ?? "fl";
+const stateName = config.stateName ?? "Florida";
+const stateAbbr = statePrefix.toUpperCase();
+const stateHubPath = statePrefix === "fl" ? "/fl/" : undefined;
+const pagePath = `/${statePrefix}/${config.slug}/peptide-therapy/`;
 const breadcrumbs = [
   { name: "Home", path: "/" },
-  { name: "Florida", path: "/fl/" },
+  { name: stateName, path: stateHubPath },
   { name: "Peptide Therapy", path: pagePath },
 ];
+
+// Layout-string overrides (US-N1) — defaults reproduce the pre-N1 literals.
+// The heading/subtitle fragments render via set:html with the exact whitespace
+// the static template used to emit (Astro collapses whitespace differently
+// around expressions), keeping existing FL pages byte-identical.
+const escapeHtml = (s: string) =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const howItWorksTag =
+  config.howItWorksTag ?? `How Peptide Therapy Works at Our ${config.cityName} Clinic`;
+const howItWorksHeadingIntro = config.howItWorksHeadingIntro ?? "One in-person visit. Then";
+const howItWorksHeadingGold = config.howItWorksHeadingGold ?? "monitored care.";
+const howItWorksHeadingHtml = `\n${escapeHtml(howItWorksHeadingIntro)} <span class="text-gold">${escapeHtml(howItWorksHeadingGold)}</span> `;
+const physiciansSubtitleSuffix =
+  config.physiciansSubtitleSuffix ?? `at our ${config.clinicArea} clinic.`;
+const physiciansSubtitleHtml = `\nNo anonymous "providers." You'll know exactly who's designing and monitoring your\n            peptide protocol ${escapeHtml(physiciansSubtitleSuffix)}\n`;
+const relatedServicesHeadingIntro =
+  config.relatedServicesHeadingIntro ?? `Same ${config.clinicArea} clinic.`;
+const relatedServicesHeadingHtml = `\n${escapeHtml(relatedServicesHeadingIntro)} <span class="text-gold">Same physicians.</span> `;
 
 const isPhysicalClinic = config.physicalClinic ?? true;
 const tel = config.clinic.phone.replace(/[^\d+]/g, "");
@@ -138,12 +165,19 @@ const localProof: LocalProofData = {
   reviewLinks: config.reviewLinks ?? defaultReviewLinks(config.cityName, config.clinic.name),
   relatedInternalLinks:
     config.relatedInternalLinks ??
-    defaultRelatedInternalLinks(config.slug, config.cityName, "peptide"),
+    defaultRelatedInternalLinks(config.slug, config.cityName, "peptide", statePrefix),
+  stateName,
+  stateAbbr,
 };
 
 const citations = config.outboundCitations ?? DEFAULT_PEPTIDE_CITATIONS;
 
-const otherCities = ALL_PEPTIDE_CITIES.filter((c) => c.slug !== config.slug);
+// Nearby-city cross-links stay within the page's own state (US-N1): FL pages
+// keep their Florida-only list, and a state with a single city renders no
+// nearby-cities section at all.
+const otherCities = ALL_PEPTIDE_CITIES.filter(
+  (c) => c.slug !== config.slug && (c.statePrefix ?? "fl") === statePrefix,
+);
 
 // Port of the inline MedicalClinicJsonLd component (identical emitted JSON).
 const fullAddress = `${config.clinic.streetAddress}, ${config.clinic.city}, ${config.clinic.state} ${config.clinic.postalCode}`;
@@ -300,7 +334,7 @@ const medicalClinicSchema = {
         </div>
         <Tag>{config.heroTag}</Tag>
         <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[820px] tracking-[-1.5px]">
-          {"Peptide Therapy in "}<span class="text-gold">{`${config.cityName}, FL.`}</span>
+          {"Peptide Therapy in "}<span class="text-gold">{`${config.cityName}, ${stateAbbr}.`}</span>
         </h1>
         <p class="text-[18px] text-cream-muted leading-relaxed max-w-[680px] mb-3">
           {config.heroDescription1}
@@ -438,10 +472,8 @@ const medicalClinicSchema = {
     <section class="px-8 py-20 bg-surface-card border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
         <FadeIn class="text-center mb-10">
-          <Tag>How Peptide Therapy Works at Our {config.cityName} Clinic</Tag>
-          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            One in-person visit. Then <span class="text-gold">monitored care.</span>
-          </h2>
+          <Tag>{howItWorksTag}</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3" set:html={howItWorksHeadingHtml} />
         </FadeIn>
         <div class="grid md:grid-cols-2 gap-5">
           {
@@ -467,10 +499,7 @@ const medicalClinicSchema = {
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
             Named doctors. <span class="text-gold">Real credentials.</span>
           </h2>
-          <p class="text-[15px] text-muted max-w-[520px] mx-auto">
-            No anonymous "providers." You'll know exactly who's designing and monitoring your
-            peptide protocol at our {config.clinicArea} clinic.
-          </p>
+          <p class="text-[15px] text-muted max-w-[520px] mx-auto" set:html={physiciansSubtitleHtml} />
         </FadeIn>
         <div class="grid md:grid-cols-3 gap-5">
           {
@@ -566,9 +595,7 @@ const medicalClinicSchema = {
       <div class="max-w-[1000px] mx-auto">
         <FadeIn class="text-center mb-10">
           <Tag>Other Strong Health {config.cityName} Services</Tag>
-          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Same {config.clinicArea} clinic. <span class="text-gold">Same physicians.</span>
-          </h2>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3" set:html={relatedServicesHeadingHtml} />
           <p class="text-[15px] text-muted max-w-[560px] mx-auto">
             {config.relatedServicesSubtitle}
           </p>
@@ -597,15 +624,15 @@ const medicalClinicSchema = {
         <section class="px-8 py-16 bg-surface border-b border-white/5">
           <div class="max-w-[1000px] mx-auto">
             <FadeIn class="text-center mb-8">
-              <Tag>Strong Health Peptide Clinics Across Florida</Tag>
+              <Tag>Strong Health Peptide Clinics Across {stateName}</Tag>
               <h2 class="text-[28px] font-extrabold text-cream mt-4 mb-3">
-                Peptide therapy in <span class="text-gold">other Florida cities</span>
+                Peptide therapy in <span class="text-gold">other {stateName} cities</span>
               </h2>
             </FadeIn>
             <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
               {otherCities.map((c) => (
                 <a
-                  href={`/fl/${c.slug}/peptide-therapy/`}
+                  href={`/${statePrefix}/${c.slug}/peptide-therapy/`}
                   class="bg-surface-card rounded-xl p-4 border border-white/10 hover:border-gold/40 transition-colors flex items-center justify-between"
                 >
                   <span class="text-[14px] font-semibold text-cream">

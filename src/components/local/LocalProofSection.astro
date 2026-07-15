@@ -12,6 +12,9 @@ interface Props {
 const { data } = Astro.props;
 const fullAddress = `${data.clinic.streetAddress}, ${data.clinic.city}, ${data.clinic.state} ${data.clinic.postalCode}`;
 const tel = data.clinic.phone.replace(/[^\d+]/g, "");
+// State-aware service-area copy (US-N1); defaults keep FL pages byte-identical.
+const stateName = data.stateName ?? "Florida";
+const stateAbbr = data.stateAbbr ?? "FL";
 ---
 
 <section class="px-8 py-20 bg-surface border-b border-white/5">
@@ -35,7 +38,7 @@ const tel = data.clinic.phone.replace(/[^\d+]/g, "");
         {
           data.physicalClinic
             ? `What to expect when you visit Strong Health for ${data.serviceName.toLowerCase()} in ${data.cityName}.`
-            : `Strong Health ${data.serviceName.toLowerCase()} care for ${data.cityName} patients is delivered by appointment, including telehealth follow-ups across Florida.`
+            : `Strong Health ${data.serviceName.toLowerCase()} care for ${data.cityName} patients is delivered by appointment, including telehealth follow-ups across ${stateName}.`
         }
       </p>
     </FadeIn>
@@ -54,7 +57,7 @@ const tel = data.clinic.phone.replace(/[^\d+]/g, "");
                 {
                   data.physicalClinic
                     ? fullAddress
-                    : `Serving ${data.cityName}, FL and surrounding ${data.clinic.state} communities by appointment.`
+                    : `Serving ${data.cityName}, ${stateAbbr} and surrounding ${data.clinic.state} communities by appointment.`
                 }
               </div>
             </div>

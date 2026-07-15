@@ -38,8 +38,31 @@ export interface CityPeptideRelatedService {
 }
 
 export interface CityPeptideConfig {
+  /**
+   * URL state prefix (US-N1). Drives the route (`/{statePrefix}/{slug}/peptide-therapy/`),
+   * the hero state abbreviation, breadcrumbs, and same-state nearby-city links.
+   * Defaults to "fl" so existing Florida configs are untouched.
+   */
+  statePrefix?: "fl" | "ny";
+  /** Full state name for breadcrumbs/copy, e.g. "New York". Defaults to "Florida". */
+  stateName?: string;
   /** Whether this page corresponds to a real walk-in clinic. Defaults to true. When false, MedicalClinic JSON-LD is suppressed and copy treats the page as a service area. */
   physicalClinic?: boolean;
+  /**
+   * Layout-string overrides (US-N1) for service-area pages that must not imply
+   * a local storefront. Every default reproduces the pre-N1 hardcoded string,
+   * so omitting them keeps existing pages byte-identical.
+   */
+  /** <Tag> above the "How it works" section. Default: `How Peptide Therapy Works at Our ${cityName} Clinic`. */
+  howItWorksTag?: string;
+  /** Plain-text intro of the "How it works" h2 (before the gold span). Default: "One in-person visit. Then". */
+  howItWorksHeadingIntro?: string;
+  /** Gold tail of the "How it works" h2. Default: "monitored care.". */
+  howItWorksHeadingGold?: string;
+  /** Trailing phrase of the physicians subtitle. Default: `at our ${clinicArea} clinic.`. */
+  physiciansSubtitleSuffix?: string;
+  /** Plain-text intro of the related-services h2 (before the gold span). Default: `Same ${clinicArea} clinic.`. */
+  relatedServicesHeadingIntro?: string;
   /** Override for the "Parking & transit" line in the local-proof block. */
   parkingTransit?: string;
   /** Override for "Physician availability" in the local-proof block. */
@@ -563,11 +586,13 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
  * Master list of cities offering peptide therapy.
  *
  * To launch a new peptide city:
- *   1. Add a `CityPeptideConfig` constant above (mirroring `MIAMI_PEPTIDE_CONFIG`).
+ *   1. Add a `CityPeptideConfig` constant above (mirroring `MIAMI_PEPTIDE_CONFIG`,
+ *      or `DELRAY_BEACH_PEPTIDE_CONFIG` / `NEW_YORK_PEPTIDE_CONFIG` for
+ *      telehealth service areas). Non-Florida cities set `statePrefix`/`stateName`.
  *   2. Append it to this array.
- *   3. Register the route in `src/App.tsx` and `src/entry-server.tsx` —
- *      `<Route path="/fl/{slug}/peptide-therapy" element={<CityPeptidePage config={CITY_PEPTIDE_BY_SLUG[{slug}]!} />} />`
- *      (or wrap it in a thin per-city page like `MiamiPeptideTherapy.tsx`).
+ *   3. Add the wrapper page at
+ *      `src/pages/{statePrefix}/{slug}/peptide-therapy.astro` passing the config
+ *      to `CityPeptidePage.astro`.
  */
 export const ALL_PEPTIDE_CITIES: CityPeptideConfig[] = [
   MIAMI_PEPTIDE_CONFIG,

@@ -66,3 +66,13 @@ Baseline commands (pre-change): `pnpm check` ✅ 0 errors · `pnpm build` ✅ 48
 - DEXA SMS normalized to sms:+19546635563 (D4 deviation-with-rationale: CTA exists in production as JS button; not removed).
 - read-read: staging correction kept (D2); harness bans regressions.
 - Verify: built /reviews/ shows the five production dates; dist dexascan sms links = ["sms:+19546635563"].
+
+### Phase 7 — article-template visual parity (commit: see git)
+- Diagnosis (Playwright, prod vs local preview, 1440×1000, fonts.ready + settle): **typography and font loading are already aligned** — no shared-cause style defect exists.
+  - `@font-face` rules identical (10 declarations, same weight ranges incl. the 501-750→700 / 751-900→900 mapping); all 10 woff2 files **byte-identical to production** (sha256); same two font preloads with `crossorigin`.
+  - Computed styles identical on h1 / article h2 / p / li / a / byline / CTA (font-family, size, weight, line-height, letter-spacing, -webkit-font-smoothing, text-rendering, width, color).
+  - Layout identical at rest: offset-based positions and scrollWidth×scrollHeight equal on all six sampled article routes (healing 10584, arthritis 8630, collagen 9197, nac 7326, sleep 7550, semaglutide-diet 14818).
+- Root cause of QA's 2.38 %: capture-time artifact. Production's React FadeIn animates in-viewport elements on mount (1000 ms translate/opacity); mid-transition capture shifts the whole article column 1–5 px → text-edge pixel diffs. The Astro port reveals in-viewport content instantly (below-fold reveal unchanged).
+- Measured settled diff /peptides-for-healing/ desktop: **0.0072 % pixels >30/255** (was 2.38 % in QA; acceptance ≤0.25 %) — residual = the intentional D2 `read read` correction + sub-pixel noise on the published line. Three more article routes: 0.0077–0.0092 %. **No waiver required**; evidence in `docs/waivers/phase7-article-visual/`.
+- Files changed: docs only (evidence + this log). No product change → visual baselines remain valid (verified: full @visual suite passes unchanged).
+- Commands: pnpm build ✓; test:parity:build 606/606 ✓; test:e2e 106 ✓; test:visual 55 ✓.

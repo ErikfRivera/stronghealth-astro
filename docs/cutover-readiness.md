@@ -24,3 +24,6 @@
 
 ## Rollback
 Re-point www DNS back to Replit (kept warm 14 days, unchanged). No data migration involved; rollback is DNS-only. Do not fix forward if canonicals/routing are wrong — revert DNS first.
+
+## CUTOVER EXECUTED — 2026-07-14
+DNS moved to Vercel by owner; www.stronghealth.com + apex attached to project (apex 308→www, TLS valid). Post-cutover smoke: 47/47 routes 200 with correct canonicals; GA4/AdSense/Ahrefs tags present; ads.txt+robots.txt 200; unknown URL → 404; 22 redirects + 3 404 cases valid live; no X-Robots-Tag on www. Note: staging.stronghealth.com currently 301s to www (Vercel domain config) — the staging noindex header rule is now inert but harmless. Remaining owner items: resubmit sitemap in GSC, watch GA4 realtime/GSC coverage, verify DEXA SMS CTA on iOS+Android, keep Replit warm 14 days, AdSense 403 hardening (D8).

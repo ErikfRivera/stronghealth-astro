@@ -1,0 +1,10 @@
+---
+// Austin peptide-therapy service-area page. Mirrors the New York wrapper:
+// the shared CityPeptidePage layout renders everything from
+// AUSTIN_PEPTIDE_CONFIG (statePrefix "tx"). There is intentionally NO /tx/
+// or /tx/austin/ hub page — both 404 by design.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { AUSTIN_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={AUSTIN_PEPTIDE_CONFIG} />

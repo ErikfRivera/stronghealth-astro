@@ -1,0 +1,10 @@
+---
+// Tampa peptide-therapy service-area page. Tampa is a Florida telehealth
+// service area (physicalClinic: false), so it keeps statePrefix "fl" and rolls
+// up under the existing /fl/ hub, but has no in-person storefront. The shared
+// CityPeptidePage layout renders everything from TAMPA_PEPTIDE_CONFIG.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { TAMPA_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={TAMPA_PEPTIDE_CONFIG} />

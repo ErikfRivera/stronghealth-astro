@@ -1,0 +1,10 @@
+---
+// Atlanta peptide-therapy service-area page. Mirrors the New York wrapper:
+// the shared CityPeptidePage layout renders everything from
+// ATLANTA_PEPTIDE_CONFIG (statePrefix "ga"). There is intentionally NO /ga/
+// or /ga/atlanta/ hub page — both 404 by design.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { ATLANTA_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={ATLANTA_PEPTIDE_CONFIG} />

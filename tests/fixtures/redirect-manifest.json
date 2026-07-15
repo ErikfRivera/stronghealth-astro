@@ -1,0 +1,36 @@
+{
+  "$comment": "Known legacy redirect manifest (remediation Phase 5 / D1). Sources: old App.tsx client-side wildcard routes at monorepo commit 9398453 (the only legacy routing layer that ever existed). Unknown URLs intentionally return HTTP 404 — no catch-all. Vercel serves permanent redirects as 308.",
+  "redirects": [
+    { "source": "/about/anything-example/", "target": "/about/", "status": 308, "reason": "App.tsx /about/* wildcard", "owner": "erik" },
+    { "source": "/services/anything-example/", "target": "/services/", "status": 308, "reason": "App.tsx /services/* wildcard", "owner": "erik" },
+    { "source": "/peptides/anything-example/", "target": "/peptides/", "status": 308, "reason": "App.tsx /peptides/* wildcard rendered hub at any subpath", "owner": "erik" },
+    { "source": "/peptides-for-tendon-repair/x/", "target": "/peptides-for-tendon-repair/", "status": 308, "reason": "App.tsx wildcard", "owner": "erik" },
+    { "source": "/peptides-for-libido/x/", "target": "/peptides-for-libido/", "status": 308, "reason": "App.tsx wildcard", "owner": "erik" },
+    { "source": "/peptides-for-sleep/x/", "target": "/peptides-for-sleep/", "status": 308, "reason": "App.tsx wildcard", "owner": "erik" },
+    { "source": "/peptides-for-belly-fat/x/", "target": "/peptides-for-belly-fat/", "status": 308, "reason": "App.tsx wildcard", "owner": "erik" },
+    { "source": "/peptides-for-muscle-growth/x/", "target": "/peptides-for-muscle-growth/", "status": 308, "reason": "App.tsx wildcard", "owner": "erik" },
+    { "source": "/peptides-for-arthritis/x/", "target": "/peptides-for-arthritis/", "status": 308, "reason": "App.tsx wildcard", "owner": "erik" },
+    { "source": "/peptides-for-healing/x/", "target": "/peptides-for-healing/", "status": 308, "reason": "App.tsx wildcard", "owner": "erik" },
+    { "source": "/collagen-peptides/x/", "target": "/collagen-peptides/", "status": 308, "reason": "App.tsx wildcard", "owner": "erik" },
+    { "source": "/semaglutide-diet/x/", "target": "/semaglutide-diet/", "status": 308, "reason": "App.tsx wildcard", "owner": "erik" },
+    { "source": "/stillman-diet/x/", "target": "/stillman-diet/", "status": 308, "reason": "App.tsx wildcard", "owner": "erik" },
+    { "source": "/fl/boca-raton/trt-therapy/", "target": "/", "status": 308, "reason": "App.tsx unbuilt-city wildcard -> home", "owner": "erik" },
+    { "source": "/fl/hollywood/", "target": "/", "status": 308, "reason": "App.tsx unbuilt-city wildcard -> home", "owner": "erik" },
+    { "source": "/fl/homestead/", "target": "/", "status": 308, "reason": "App.tsx unbuilt-city wildcard -> home", "owner": "erik" },
+    { "source": "/fl/hialeah/", "target": "/", "status": 308, "reason": "App.tsx unbuilt-city wildcard -> home", "owner": "erik" },
+    { "source": "/fl/pembroke-pines/", "target": "/", "status": 308, "reason": "App.tsx unbuilt-city wildcard -> home", "owner": "erik" },
+    { "source": "/fl/fort-lauderdale/", "target": "/", "status": 308, "reason": "App.tsx unbuilt-city wildcard -> home", "owner": "erik" },
+    { "source": "/fl/coral-gables/weight-loss-clinic/", "target": "/", "status": 308, "reason": "App.tsx unbuilt-city wildcard -> home", "owner": "erik" },
+    { "source": "/dexascans/", "target": "https://www.dexascans.com/", "status": 308, "reason": "App.tsx external redirect to sister site", "owner": "erik" },
+    { "source": "/dexascans/pricing/", "target": "https://www.dexascans.com/", "status": 308, "reason": "App.tsx external redirect to sister site", "owner": "erik" }
+  ],
+  "normalization": [
+    { "source": "/blog", "target": "/blog/", "status": 308, "reason": "trailing-slash normalization, single hop" },
+    { "source": "/peptides-for-healing", "target": "/peptides-for-healing/", "status": 308, "reason": "trailing-slash normalization, single hop" }
+  ],
+  "notFound": [
+    { "source": "/this-does-not-exist/", "status": 404 },
+    { "source": "/fl/unknown-city/trt-therapy/deep/path/", "status": 404, "$comment": "unknown city NOT in the legacy list" },
+    { "source": "/blog/some-unknown-post/", "status": 404 }
+  ]
+}

@@ -16,3 +16,7 @@ dist/
 .vscode/
 .vercel
 reports/lighthouse/
+
+# parity harness (Phase 1)
+test-results/
+playwright-report/

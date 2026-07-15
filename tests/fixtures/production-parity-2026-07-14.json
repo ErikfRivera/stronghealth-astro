@@ -1,0 +1,1258 @@
+{
+  "_generated_by": "scripts/generate-parity-fixture.mjs",
+  "_source": "stronghealth-migration-qa-2026-07-14 (captured from live production 2026-07-14)",
+  "forbidden_url_substrings": [
+    "staging.stronghealth.com",
+    "localhost",
+    "replit"
+  ],
+  "origin_placeholder": "{origin}",
+  "overrides": [
+    {
+      "id": "reading-time-single-read",
+      "rule": "No page's visible text may contain the standalone text 'read read'.",
+      "reason": "Production renders a duplicated reading-time suffix (e.g. '6 min read read') on some pages — a known production bug. Approved correction: the rebuilt site must render a single 'read'. Consequently prod visible_text is NOT carried as an expectation; the only visible-text assertion is the 'read read' ban."
+    },
+    {
+      "id": "unknown-route-real-404",
+      "rule": "Unknown URLs must return a real HTTP 404 status and render the 'Page not found' page.",
+      "reason": "Production serves a soft-404 (HTTP 200) for unknown routes. Approved correction: the rebuilt site returns a genuine 404. The fixture encodes the corrected behavior, not production's."
+    },
+    {
+      "id": "sitemap-meta-rules-derived",
+      "rule": "sitemap <changefreq>/<priority> expectations are derived from the route-class rule table below.",
+      "reason": "The QA artifacts record only match booleans for changefreq/priority (all 47 matched production), not the raw values. Values are therefore derived from the verbatim production rule table (getSitemapMeta), guarded here by asserting every artifact row reported changefreq_match && priority_match."
+    },
+    {
+      "id": "jsonld-resolution-by-type",
+      "rule": "JSON-LD expectations are resolved by target object @type, never by script index.",
+      "reason": "The $[N] indices in jsonld-differences.json reflect live production's post-hydration DOM order (react-helmet reordering) and do not match this repo's static script order. Each index is resolved against the QA production capture to record the target @type; tests locate the object semantically. priceRange expected '$' comes naturally from the prod side of the capture."
+    }
+  ],
+  "pages": {
+    "/": {
+      "canonical_path": "/",
+      "description": "Physician-supervised testosterone replacement therapy in South Florida. In-person exams, 40+ biomarker labs, telehealth follow-ups. Book your free assessment.",
+      "h1": "Testosterone Replacement Therapy. Not supplements. Not guesswork.",
+      "jsonld": {
+        "$[0].priceRange": {
+          "expected": "$",
+          "script_type": "MedicalBusiness",
+          "tail": "priceRange",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "weekly",
+        "lastmod": "2026-06-11",
+        "priority": "1.0"
+      },
+      "status": 200,
+      "title": "Testosterone Therapy in South Florida | Strong Health"
+    },
+    "/about/": {
+      "canonical_path": "/about/",
+      "description": "Strong Health is a physician-supervised TRT clinic in Miami, FL. Board-certified physicians, 40+ biomarker labs, in-person exams, and telehealth follow-ups.",
+      "h1": "About Strong Health",
+      "jsonld": {
+        "$[0].url": {
+          "expected": "{origin}/about",
+          "script_type": "AboutPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "About Us | Strong Health"
+    },
+    "/author/dr-angel-rivera/": {
+      "canonical_path": "/author/dr-angel-rivera/",
+      "description": "Bilingual (EN/ES) psychiatrist with 15+ years in forensic, geriatric, correctional, and telepsychiatry. SUNY Downstate M.D., Mount Sinai trained.",
+      "h1": "Dr. Angel Rivera, M.D.",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.7"
+      },
+      "status": 200,
+      "title": "Dr. Angel Rivera, M.D. — Psychiatrist | Strong Health"
+    },
+    "/author/mahadev-mukherjee/": {
+      "canonical_path": "/author/mahadev-mukherjee/",
+      "description": "Scientific content writer with 17 years in pharma sales, marketing, product management, and clinical data — focused on peptides, GLP-1/GIP/GCGR, and obesity Rx.",
+      "h1": "Mahadev Mukherjee",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.7"
+      },
+      "status": 200,
+      "title": "Mahadev Mukherjee, Scientific Writer | Strong Health"
+    },
+    "/baking-soda-for-ed/": {
+      "canonical_path": "/baking-soda-for-ed/",
+      "description": "Can baking soda treat erectile dysfunction? We review the science behind this popular claim and explain what ED treatments are actually proven to work.",
+      "h1": "Baking Soda for Erectile Dysfunction: What the Science Actually Says",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/baking-soda-for-ed",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/baking-soda-for-ed",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/baking-soda-for-ed",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-10",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Baking Soda for ED: Does It Work? | Strong Health"
+    },
+    "/blog/": {
+      "canonical_path": "/blog/",
+      "description": "Physician-reviewed articles on testosterone, sexual health, peptide therapy, nutrition, and men's health optimization from Strong Health.",
+      "h1": "Evidence-Based Men's Health Articles",
+      "jsonld": {
+        "$[0].url": {
+          "expected": "{origin}/blog",
+          "script_type": "CollectionPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "weekly",
+        "lastmod": "2026-06-22",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Evidence-Based Men's Health Blog | Strong Health"
+    },
+    "/careers/": {
+      "canonical_path": "/careers/",
+      "description": "Join Strong Health in Miami, FL. We're hiring physicians, medical assistants, and health professionals passionate about evidence-based men's health care.",
+      "h1": "Careers at Strong Health",
+      "jsonld": {
+        "$[2].url": {
+          "expected": "{origin}/careers",
+          "script_type": "WebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-06-06",
+        "priority": "0.5"
+      },
+      "status": 200,
+      "title": "Careers | Strong Health"
+    },
+    "/collagen-peptides/": {
+      "canonical_path": "/collagen-peptides/",
+      "description": "Compare supplement-grade vs clinical-grade collagen peptides. Learn which collagen types work for joints, skin, and gut health based on clinical evidence.",
+      "h1": "Collagen Peptides: Supplement vs. Clinical-Grade: What Actually Works",
+      "jsonld": {
+        "$[1].mainEntityOfPage.@id": {
+          "expected": "{origin}/collagen-peptides",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[2].itemListElement[2].item": {
+          "expected": "{origin}/collagen-peptides",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/collagen-peptides",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Collagen Peptides: Supplement vs. Clinical | Strong Health"
+    },
+    "/dexa-scan/": {
+      "canonical_path": "/dexa-scan/",
+      "description": "How DEXA scans measure body fat, muscle mass, and bone density with clinical precision. Compare DEXA to other methods and its role in TRT monitoring.",
+      "h1": "DEXA Scan: The Gold Standard for Body Composition Analysis",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/dexa-scan",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/dexa-scan",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/dexa-scan",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2025-03-28",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "DEXA Scan: Body Composition Analysis | Strong Health"
+    },
+    "/editorial-guidelines/": {
+      "canonical_path": "/editorial-guidelines/",
+      "description": "Strong Health's editorial guidelines outline our commitment to physician-reviewed, evidence-based health content on TRT, peptide therapy, and men's wellness.",
+      "h1": "Editorial Guidelines",
+      "jsonld": {
+        "$[0].itemListElement[1].item": {
+          "expected": "{origin}/editorial-guidelines",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[1].item",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "yearly",
+        "lastmod": "2026-05-27",
+        "priority": "0.4"
+      },
+      "status": 200,
+      "title": "Editorial Guidelines | Strong Health"
+    },
+    "/fl/": {
+      "canonical_path": "/fl/",
+      "description": "Physician-supervised testosterone therapy at Strong Health's Miami (Brickell) and Delray Beach (Atlantic Avenue) clinics.",
+      "h1": "Strong Health clinics in Miami and Delray Beach.",
+      "jsonld": {
+        "$[3].url": {
+          "expected": "{origin}/fl",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-06-22",
+        "priority": "0.9"
+      },
+      "status": 200,
+      "title": "South Florida TRT & Men's Health Clinics | Strong Health"
+    },
+    "/fl/delray-beach/peptide-therapy/": {
+      "canonical_path": "/fl/delray-beach/peptide-therapy/",
+      "description": "Physician-supervised peptide therapy for Delray Beach, FL patients. Telehealth visits with in-person evaluation at our Miami Brickell clinic. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141.",
+      "h1": "Peptide Therapy in Delray Beach, FL.",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptide Therapy in Delray Beach, FL | Strong Health"
+    },
+    "/fl/delray-beach/trt-therapy/": {
+      "canonical_path": "/fl/delray-beach/trt-therapy/",
+      "description": "Physician-supervised testosterone therapy for Delray Beach, FL patients. Telehealth visits with on-site labs at Strong Health Miami's Brickell clinic. Board-certified.",
+      "h1": "Testosterone Therapy in Delray Beach, FL. Physician-supervised. Evidence-based.",
+      "jsonld": {
+        "$[2].description": {
+          "expected": "Physician-supervised testosterone therapy for Delray Beach, FL patients. Telehealth visits with on-site labs at Strong Health Miami's Brickell clinic. Board-certified.",
+          "script_type": "MedicalWebPage",
+          "tail": "description",
+          "type_occurrence": 0
+        },
+        "$[2].name": {
+          "expected": "Delray Beach, FL TRT — Telehealth + Miami Clinic",
+          "script_type": "MedicalWebPage",
+          "tail": "name",
+          "type_occurrence": 0
+        },
+        "$[2].url": {
+          "expected": "{origin}/fl/delray-beach/trt-therapy",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Delray Beach, FL TRT — Telehealth + Miami Clinic | Strong Health"
+    },
+    "/fl/delray-beach/weight-loss-clinic/": {
+      "canonical_path": "/fl/delray-beach/weight-loss-clinic/",
+      "description": "Delray Beach physician-supervised GLP-1 weight loss with semaglutide and tirzepatide. Telehealth visits, with in-person evaluation at our Miami Brickell clinic. Snowbird-friendly. Book today.",
+      "h1": "Weight Loss Clinic in Delray Beach. Physician-supervised. FDA-backed.",
+      "jsonld": {
+        "$[2].description": {
+          "expected": "Delray Beach physician-supervised GLP-1 weight loss with semaglutide and tirzepatide. Telehealth visits, with in-person evaluation at our Miami Brickell clinic. Snowbird-friendly. Book today.",
+          "script_type": "MedicalWebPage",
+          "tail": "description",
+          "type_occurrence": 0
+        },
+        "$[2].url": {
+          "expected": "{origin}/fl/delray-beach/weight-loss-clinic",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Weight Loss Clinic in Delray Beach, FL | Strong Health"
+    },
+    "/fl/miami/dexascan/": {
+      "canonical_path": "/fl/miami/dexascan/",
+      "description": "Clinical DEXA scan in Miami at our Brickell clinic. Precise body composition, lean mass, body fat %, visceral fat & bone density. Walk-ins welcome.",
+      "h1": "DEXA Scan in Miami. Gold-standard body composition, in 15 minutes.",
+      "jsonld": {
+        "$[0].priceRange": {
+          "expected": "$",
+          "script_type": "MedicalBusiness",
+          "tail": "priceRange",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-06-22",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "DEXA Scan Miami — Body Composition | Strong Health"
+    },
+    "/fl/miami/peptide-therapy/": {
+      "canonical_path": "/fl/miami/peptide-therapy/",
+      "description": "Physician-supervised peptide therapy in Miami, FL. Brickell clinic prescribing BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141. Book a free assessment.",
+      "h1": "Peptide Therapy in Miami, FL.",
+      "jsonld": {
+        "$[0].priceRange": {
+          "expected": "$",
+          "script_type": "MedicalClinic",
+          "tail": "priceRange",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptide Therapy in Miami, FL | Strong Health"
+    },
+    "/fl/miami/trt-therapy/": {
+      "canonical_path": "/fl/miami/trt-therapy/",
+      "description": "Physician-supervised testosterone therapy in Miami, FL. Brickell clinic, 50+ biomarker labs, telehealth follow-ups. Board-certified. Free assessment.",
+      "h1": "Testosterone Therapy in Miami, FL. Physician-supervised. Evidence-based.",
+      "jsonld": {
+        "$[0].priceRange": {
+          "expected": "$",
+          "script_type": "MedicalClinic",
+          "tail": "priceRange",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/fl/miami/trt-therapy",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Miami, FL TRT Clinic — Testosterone Therapy | Strong Health"
+    },
+    "/fl/miami/weight-loss-clinic/": {
+      "canonical_path": "/fl/miami/weight-loss-clinic/",
+      "description": "Miami weight loss clinic offering physician-supervised GLP-1 programs with semaglutide and tirzepatide. Transparent pricing, no contracts. Book today.",
+      "h1": "Weight Loss Clinic in Miami. Physician-supervised. FDA-backed.",
+      "jsonld": {
+        "$[0].priceRange": {
+          "expected": "$",
+          "script_type": "MedicalClinic",
+          "tail": "priceRange",
+          "type_occurrence": 0
+        },
+        "$[0].url": {
+          "expected": "{origin}/fl/miami/weight-loss-clinic",
+          "script_type": "MedicalClinic",
+          "tail": "url",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/fl/miami/weight-loss-clinic",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Weight Loss Clinic in Miami, FL | Strong Health"
+    },
+    "/foods-that-lower-testosterone/": {
+      "canonical_path": "/foods-that-lower-testosterone/",
+      "description": "Do soy, flaxseed, mint, or alcohol actually lower testosterone? We review the clinical evidence on foods linked to reduced T levels and separate myth from fact.",
+      "h1": "Foods That Lower Testosterone: Separating Myth from Evidence",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/foods-that-lower-testosterone",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/foods-that-lower-testosterone",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/foods-that-lower-testosterone",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-28",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Foods That Lower Testosterone: Myth vs Fact | Strong Health"
+    },
+    "/garlic-and-honey-for-erectile-dysfunction/": {
+      "canonical_path": "/garlic-and-honey-for-erectile-dysfunction/",
+      "description": "Does garlic and honey help with erectile dysfunction? We examine the folk remedy claims, review the evidence, and explain proven ED treatments that work.",
+      "h1": "Garlic and Honey for Erectile Dysfunction: Fact vs. Fiction",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/garlic-and-honey-for-erectile-dysfunction",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/garlic-and-honey-for-erectile-dysfunction",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/garlic-and-honey-for-erectile-dysfunction",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-12",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Garlic and Honey for ED: Fact vs. Fiction | Strong Health"
+    },
+    "/hipaa-policy/": {
+      "canonical_path": "/hipaa-policy/",
+      "description": "Strong Health's HIPAA Notice of Privacy Practices. Learn how we protect your health information, your patient rights, and how to file a complaint.",
+      "h1": "HIPAA Notice of Privacy Practices",
+      "jsonld": {
+        "$[0].itemListElement[1].item": {
+          "expected": "{origin}/hipaa-policy",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[1].item",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "yearly",
+        "lastmod": "2026-05-27",
+        "priority": "0.4"
+      },
+      "status": 200,
+      "title": "HIPAA Notice of Privacy Practices | Strong Health"
+    },
+    "/home-remedies-for-premature-ejaculation/": {
+      "canonical_path": "/home-remedies-for-premature-ejaculation/",
+      "description": "Discover proven home remedies for premature ejaculation, including behavioral techniques, topical treatments, pelvic floor exercises, and lifestyle changes.",
+      "h1": "Home Remedies for Premature Ejaculation: What Actually Works",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/home-remedies-for-premature-ejaculation",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/home-remedies-for-premature-ejaculation",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/home-remedies-for-premature-ejaculation",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-18",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Home Remedies for PE: What Actually Works | Strong Health"
+    },
+    "/lysine-benefit-men-health/": {
+      "canonical_path": "/lysine-benefit-men-health/",
+      "description": "Explore lysine benefits for men: collagen synthesis, calcium absorption, immune support, and indirect testosterone support. Dosing and food sources inside.",
+      "h1": "Lysine Benefits for Men's Health: Collagen, Calcium, Immunity & Testosterone Support",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/lysine-benefit-men-health",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/lysine-benefit-men-health",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/lysine-benefit-men-health",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-28",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Lysine Benefits for Men: Evidence Guide | Strong Health"
+    },
+    "/nac-benefits-men/": {
+      "canonical_path": "/nac-benefits-men/",
+      "description": "How NAC (N-acetylcysteine) benefits men: glutathione production, liver support, fertility, respiratory health. Dosing and safety reviewed.",
+      "h1": "NAC Benefits for Men: Glutathione, Liver Health, Fertility & What You Need to Know",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/nac-benefits-men",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/nac-benefits-men",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/nac-benefits-men",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-28",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "NAC Benefits for Men: The Complete Guide | Strong Health"
+    },
+    "/nadh-benefits/": {
+      "canonical_path": "/nadh-benefits/",
+      "description": "Understand NADH benefits for cellular energy, cognition, and aging. Learn how NADH differs from NAD+ and which supplement strategy fits your goals.",
+      "h1": "NADH Benefits: Cellular Energy, Cognition & the NAD+/NADH Distinction Explained",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/nadh-benefits",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/nadh-benefits",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/nadh-benefits",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-28",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "NADH vs NAD+: Benefits, Energy & Cognition | Strong Health"
+    },
+    "/peptides-for-arthritis/": {
+      "canonical_path": "/peptides-for-arthritis/",
+      "description": "How BPC-157, TB-500, and GHK-Cu peptides help manage arthritis pain and inflammation. Clinical evidence and physician-supervised treatment approaches.",
+      "h1": "Peptides for Arthritis: Managing Joint Pain and Inflammation With BPC-157 and TB-500",
+      "jsonld": {
+        "$[1].mainEntityOfPage.@id": {
+          "expected": "{origin}/peptides-for-arthritis",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[2].itemListElement[2].item": {
+          "expected": "{origin}/peptides-for-arthritis",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/peptides-for-arthritis",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptides for Arthritis: BPC-157 & TB-500 | Strong Health"
+    },
+    "/peptides-for-belly-fat/": {
+      "canonical_path": "/peptides-for-belly-fat/",
+      "description": "How GH secretagogue peptides like Ipamorelin, CJC-1295, and Tesamorelin target stubborn visceral belly fat. Clinical evidence and protocols inside.",
+      "h1": "Peptides for Belly Fat: How GH Secretagogues Target Visceral Fat",
+      "jsonld": {
+        "$[1].mainEntityOfPage.@id": {
+          "expected": "{origin}/peptides-for-belly-fat",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[2].itemListElement[2].item": {
+          "expected": "{origin}/peptides-for-belly-fat",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/peptides-for-belly-fat",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptides for Belly Fat: Visceral Fat Guide | Strong Health"
+    },
+    "/peptides-for-healing/": {
+      "canonical_path": "/peptides-for-healing/",
+      "description": "Explore BPC-157, TB-500, and GHK-Cu healing peptides. Learn how they work, what conditions they treat, and what clinical evidence supports their use.",
+      "h1": "Peptides for Healing: Your Complete Guide to BPC-157, TB-500, and GHK-Cu",
+      "jsonld": {
+        "$[1].mainEntityOfPage.@id": {
+          "expected": "{origin}/peptides-for-healing",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[2].itemListElement[2].item": {
+          "expected": "{origin}/peptides-for-healing",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/peptides-for-healing",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Healing Peptides: BPC-157, TB-500 & GHK-Cu | Strong Health"
+    },
+    "/peptides-for-libido/": {
+      "canonical_path": "/peptides-for-libido/",
+      "description": "How PT-141 (bremelanotide) treats low libido via the central nervous system. PT-141 vs Viagra/Cialis, clinical evidence, and protocols.",
+      "h1": "Peptides for Libido: How PT-141 Addresses Sexual Desire at the Neurological Level",
+      "jsonld": {
+        "$[1].mainEntityOfPage.@id": {
+          "expected": "{origin}/peptides-for-libido",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[2].itemListElement[2].item": {
+          "expected": "{origin}/peptides-for-libido",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/peptides-for-libido",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptides for Libido: PT-141 Explained | Strong Health"
+    },
+    "/peptides-for-muscle-growth/": {
+      "canonical_path": "/peptides-for-muscle-growth/",
+      "description": "How GH secretagogue peptides like Ipamorelin and CJC-1295 support lean muscle growth safely. Peptides vs steroids, protocols, and evidence.",
+      "h1": "Peptides for Muscle Growth: How GH Secretagogues Support Lean Mass Safely",
+      "jsonld": {
+        "$[1].mainEntityOfPage.@id": {
+          "expected": "{origin}/peptides-for-muscle-growth",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[2].itemListElement[2].item": {
+          "expected": "{origin}/peptides-for-muscle-growth",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/peptides-for-muscle-growth",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptides for Muscle Growth: A Safer Path | Strong Health"
+    },
+    "/peptides-for-sleep/": {
+      "canonical_path": "/peptides-for-sleep/",
+      "description": "Learn how DSIP (Delta Sleep-Inducing Peptide) improves deep sleep architecture without sedation. Review clinical evidence, protocols, and safety considerations.",
+      "h1": "Peptides for Sleep: How DSIP Supports Deep, Restorative Sleep Architecture",
+      "jsonld": {
+        "$[1].mainEntityOfPage.@id": {
+          "expected": "{origin}/peptides-for-sleep",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[2].itemListElement[2].item": {
+          "expected": "{origin}/peptides-for-sleep",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/peptides-for-sleep",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptides for Sleep: DSIP and Deep Sleep | Strong Health"
+    },
+    "/peptides-for-tendon-repair/": {
+      "canonical_path": "/peptides-for-tendon-repair/",
+      "description": "Learn how BPC-157 and TB-500 peptides accelerate tendon healing. Review clinical evidence, treatment protocols, and safety under physician supervision.",
+      "h1": "Peptides for Tendon Repair: How BPC-157 and TB-500 Accelerate Healing",
+      "jsonld": {
+        "$[1].mainEntityOfPage.@id": {
+          "expected": "{origin}/peptides-for-tendon-repair",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[2].itemListElement[2].item": {
+          "expected": "{origin}/peptides-for-tendon-repair",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/peptides-for-tendon-repair",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptides for Tendon Repair: BPC-157 & TB-500 | Strong Health"
+    },
+    "/peptides/": {
+      "canonical_path": "/peptides/",
+      "description": "Evidence-based peptide therapy guides for healing, body composition, sleep, sexual health, and recovery. Physician-supervised in South Florida.",
+      "h1": "Physician-supervised peptide therapy guides.",
+      "jsonld": {
+        "$[3].url": {
+          "expected": "{origin}/peptides",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-04-22",
+        "priority": "0.9"
+      },
+      "status": 200,
+      "title": "Peptide Therapy Guides | Strong Health"
+    },
+    "/porn-induced-erectile-dysfunction/": {
+      "canonical_path": "/porn-induced-erectile-dysfunction/",
+      "description": "Understand how porn-induced erectile dysfunction (PIED) develops, recognize the signs, and explore evidence-based recovery strategies and treatment options.",
+      "h1": "Porn-Induced Erectile Dysfunction (PIED): Understanding, Recovery & Treatment",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/porn-induced-erectile-dysfunction",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/porn-induced-erectile-dysfunction",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/porn-induced-erectile-dysfunction",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Porn-Induced ED (PIED): Recovery & Treatment | Strong Health"
+    },
+    "/premature-ejaculation-exercises/": {
+      "canonical_path": "/premature-ejaculation-exercises/",
+      "description": "Follow this 12-week Kegel and reverse Kegel exercise program to improve ejaculatory control. Step-by-step pelvic floor training reviewed by clinicians.",
+      "h1": "Premature Ejaculation Exercises: Step-by-Step Kegel & Reverse Kegel Guide",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/premature-ejaculation-exercises",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/premature-ejaculation-exercises",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/premature-ejaculation-exercises",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-20",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Premature Ejaculation Exercises: Kegel Guide | Strong Health"
+    },
+    "/privacy-policy/": {
+      "canonical_path": "/privacy-policy/",
+      "description": "Learn how Strong Health collects, uses, and protects your personal and health information. Review our privacy practices, HIPAA compliance, and your data rights.",
+      "h1": "Privacy Policy",
+      "jsonld": {
+        "$[0].itemListElement[1].item": {
+          "expected": "{origin}/privacy-policy",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[1].item",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "yearly",
+        "lastmod": "2026-05-27",
+        "priority": "0.4"
+      },
+      "status": 200,
+      "title": "Privacy Policy | Strong Health"
+    },
+    "/resveratrol-side-effects/": {
+      "canonical_path": "/resveratrol-side-effects/",
+      "description": "Resveratrol side effects: GI issues, blood thinning risks, estrogenic activity, and drug interactions. Essential safety info for men before supplementing.",
+      "h1": "Resveratrol Side Effects: GI Issues, Blood Thinning & Estrogenic Concerns for Men",
+      "jsonld": {
+        "$[0].mainEntityOfPage.@id": {
+          "expected": "{origin}/resveratrol-side-effects",
+          "script_type": "Article",
+          "tail": "mainEntityOfPage.@id",
+          "type_occurrence": 0
+        },
+        "$[1].itemListElement[2].item": {
+          "expected": "{origin}/resveratrol-side-effects",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[2].item",
+          "type_occurrence": 0
+        },
+        "$[3].url": {
+          "expected": "{origin}/resveratrol-side-effects",
+          "script_type": "MedicalWebPage",
+          "tail": "url",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-28",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Resveratrol Side Effects: Men's Safety Guide | Strong Health"
+    },
+    "/reviews/": {
+      "canonical_path": "/reviews/",
+      "description": "Physician-reviewed analyses of popular testosterone supplements, hormone products, and TRT clinics. Honest, evidence-based comparisons.",
+      "h1": "Supplement, Product & Clinic Reviews",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-06-22",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Supplement & TRT Clinic Reviews | Strong Health"
+    },
+    "/reviews/andro-400/": {
+      "canonical_path": "/reviews/andro-400/",
+      "description": "An evidence-based review of Andro 400's eurycoma longifolia formula: what the science says, what it can't do, and when physician TRT is the smarter path.",
+      "h1": "Andro 400 Review: Does This Testosterone Booster Actually Work?",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-10",
+        "priority": "0.7"
+      },
+      "status": 200,
+      "title": "Andro 400 Review: Evidence, Risks & Cost | Strong Health"
+    },
+    "/reviews/elysium-basis-review/": {
+      "canonical_path": "/reviews/elysium-basis-review/",
+      "description": "An honest look at Elysium Basis: the science behind NAD+ and Nicotinamide Riboside, what it can and can't do for men, and where hormone therapy fits in.",
+      "h1": "Elysium Basis Review: Can an NAD+ Supplement Replace Hormone Therapy?",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-08",
+        "priority": "0.7"
+      },
+      "status": 200,
+      "title": "Elysium Basis Review: NAD+ vs. Hormones | Strong Health"
+    },
+    "/reviews/low-t-center/": {
+      "canonical_path": "/reviews/low-t-center/",
+      "description": "A fair, evidence-based comparison of the Low T Center franchise model and Strong Health's physician-supervised approach to testosterone replacement therapy.",
+      "h1": "Low T Center vs. Strong Health: An Honest Comparison of TRT Providers",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.7"
+      },
+      "status": 200,
+      "title": "Low T Center vs. Strong Health: TRT Review | Strong Health"
+    },
+    "/reviews/nugenix-ultimate-testosterone/": {
+      "canonical_path": "/reviews/nugenix-ultimate-testosterone/",
+      "description": "A critical review of Nugenix Ultimate Testosterone's Testofen formula: what the studies show, the real cost, and how it compares to physician-led TRT.",
+      "h1": "Nugenix Ultimate Testosterone Review: Hype vs. Evidence",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-12",
+        "priority": "0.7"
+      },
+      "status": 200,
+      "title": "Nugenix Ultimate Review: Evidence & Risks | Strong Health"
+    },
+    "/reviews/revita/": {
+      "canonical_path": "/reviews/revita/",
+      "description": "Evidence-based review of DS Laboratories Revita: what its ingredients do for thinning hair, why hormones are the missing piece, and the smarter path for men.",
+      "h1": "Revita Hair Loss Shampoo Review: The Hormone-Hair Connection Most Products Ignore",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-05",
+        "priority": "0.7"
+      },
+      "status": 200,
+      "title": "Revita Shampoo Review: The Hormone-Hair Link | Strong Health"
+    },
+    "/semaglutide-diet/": {
+      "canonical_path": "/semaglutide-diet/",
+      "description": "Evidence-based semaglutide diet guide: foods, meal plans, macro targets, and STEP trial data. How to eat for maximum results on Wegovy or Ozempic.",
+      "h1": "Semaglutide Diet: Complete Guide for Weight Loss (2026)",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-04-01",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Semaglutide Diet: Complete Weight Loss Guide | Strong Health"
+    },
+    "/services/": {
+      "canonical_path": "/services/",
+      "description": "Testosterone therapy, comprehensive lab testing, sexual health, weight management, peptide therapy, and more. All physician-supervised, all under one roof.",
+      "h1": "Men's Health Services. One clinic. One team.",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-04-20",
+        "priority": "0.9"
+      },
+      "status": 200,
+      "title": "Men's Health Services | Strong Health"
+    },
+    "/stillman-diet/": {
+      "canonical_path": "/stillman-diet/",
+      "description": "Complete guide to the Stillman Diet: 1967 high-protein origins, extreme restrictions, documented health risks, and how it compares to modern weight loss.",
+      "h1": "The Stillman Diet: History, Risks, and Why Modern Medicine Moved On (2026)",
+      "jsonld": {},
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-04-04",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "The Stillman Diet: History, Risks & Verdict | Strong Health"
+    },
+    "/terms-of-use/": {
+      "canonical_path": "/terms-of-use/",
+      "description": "Terms of Use for Strong Health. Review the terms and conditions governing your use of our physician-supervised TRT services and website.",
+      "h1": "Terms of Use",
+      "jsonld": {
+        "$[0].itemListElement[1].item": {
+          "expected": "{origin}/terms-of-use",
+          "script_type": "BreadcrumbList",
+          "tail": "itemListElement[1].item",
+          "type_occurrence": 0
+        }
+      },
+      "lang": "en",
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "yearly",
+        "lastmod": "2026-05-27",
+        "priority": "0.4"
+      },
+      "status": 200,
+      "title": "Terms of Use | Strong Health"
+    }
+  },
+  "production_origin": "https://www.stronghealth.com",
+  "unknown_route": {
+    "expected_status": 404,
+    "expected_text": "Page not found",
+    "override": "unknown-route-real-404",
+    "path": "/zzz-does-not-exist/"
+  },
+  "visible_text_bans": [
+    "read read"
+  ]
+}

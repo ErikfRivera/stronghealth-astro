@@ -31,3 +31,60 @@ jobs:
 
       - name: Build (includes SEO + link checks)
         run: pnpm build
+
+      - name: Parity regression vs production fixture
+        run: pnpm run test:parity:build
+
+      - name: Upload test artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-test-results
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history so sitemap <lastmod> git-fallback works (US-011).
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Build
+        run: pnpm build
+
+      # Screenshot (@visual) tests are excluded by test:e2e — visual baselines
+      # run locally/nightly, not per-PR (rendering differs across machines).
+      - name: E2E (pages + interactions, no visual)
+        run: pnpm run test:e2e
+        continue-on-error: false
+
+      - name: Upload Playwright artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-artifacts
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 14

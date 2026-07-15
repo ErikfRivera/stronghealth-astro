@@ -12,13 +12,19 @@
     "postbuild": "node scripts/generate-sitemap.mjs && node scripts/check-seo.mjs",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "test:parity:fixture": "node scripts/generate-parity-fixture.mjs",
+    "test:parity:build": "node --test tests/parity/build.test.mjs",
+    "test:parity:live": "node --test tests/parity/live.test.mjs",
+    "test:e2e": "playwright test --grep-invert @visual",
+    "test:visual": "playwright test --grep @visual"
   },
   "dependencies": {
     "astro": "^5.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@playwright/test": "^1.61.1",
     "@tailwindcss/vite": "^4.0.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0"

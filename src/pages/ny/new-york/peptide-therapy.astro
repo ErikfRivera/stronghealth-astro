@@ -1,0 +1,10 @@
+---
+// New York City peptide-therapy service-area page (US-N2). Mirrors the
+// Delray Beach wrapper: the shared CityPeptidePage layout renders everything
+// from NEW_YORK_PEPTIDE_CONFIG (statePrefix "ny"). There is intentionally NO
+// /ny/ or /ny/new-york/ hub page — both 404 by design (PRD FR-7).
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { NEW_YORK_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={NEW_YORK_PEPTIDE_CONFIG} />

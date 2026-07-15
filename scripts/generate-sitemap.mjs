@@ -179,6 +179,8 @@ const HISTORICAL_LASTMOD = {
   "/fl/miami/trt-therapy/": "2026-05-27",
   "/fl/miami/weight-loss-clinic/": "2026-05-27",
   "/hipaa-policy/": "2026-05-27",
+  // Post-cutover addition (US-N2/US-N4): NYC peptide-therapy launch date.
+  "/ny/new-york/peptide-therapy/": "2026-07-14",
   "/peptides/": "2026-04-22",
   "/privacy-policy/": "2026-05-27",
   "/reviews/": "2026-06-22",

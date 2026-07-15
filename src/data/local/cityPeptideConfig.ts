@@ -583,6 +583,225 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
 };
 
 /**
+ * New York City (US-N2) — telehealth service-area page modeled on Delray
+ * Beach: no physical clinic, no MedicalClinic JSON-LD/NAP, and copy that says
+ * physician-supervised telehealth "for New York patients" without implying an
+ * NYC storefront. Labs are referenced generically as "local lab draw sites"
+ * (partner name pending, PRD §8).
+ */
+export const NEW_YORK_PEPTIDE_CONFIG: CityPeptideConfig = {
+  statePrefix: "ny",
+  stateName: "New York",
+  slug: "new-york",
+  cityName: "New York",
+  county: "New York City",
+  clinicArea: "New York service area",
+
+  clinic: {
+    name: "Strong Health New York",
+    streetAddress: "",
+    city: "New York",
+    state: "NY",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hoursWeekday: "Mon–Fri 8:00 AM – 6:00 PM",
+    hoursSaturday: "Sat 9:00 AM – 1:00 PM",
+    hoursWeekdayHours: { opens: "08:00", closes: "18:00" },
+    hoursSaturdayHours: { opens: "09:00", closes: "13:00" },
+    lat: 40.7128,
+    lng: -74.006,
+  },
+
+  seoTitle: "Peptide Therapy in New York, NY — Telehealth",
+  seoDescription:
+    "Physician-supervised peptide therapy for New York patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+  lastReviewed: "2026-07-14",
+  jsonLdPageName: "Peptide Therapy in New York, NY — Strong Health (Telehealth)",
+  jsonLdPageDescription:
+    "Physician-supervised peptide therapy for New York patients, delivered via telehealth with labs at local lab draw sites. Pharmacy-grade BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and collagen peptide protocols.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+
+  heroTag: "New York Peptide Therapy · Telehealth for NY Patients",
+  reviewRating: "4.9",
+  reviewCount: "from 1,000+ Strong Health patient reviews",
+  aggregateReviewCount: 1000,
+  heroDescription1:
+    "Physician-supervised peptide protocols for New York patients — BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and more. Telehealth visits with labs at local lab draw sites. Pharmacy-grade compounds. Real labs. Ongoing monitoring.",
+  heroDescription2:
+    "We design individualized peptide therapy protocols for healing, body composition, sleep, sexual health, and longevity — built around your bloodwork, not a generic stack. Telehealth evaluations with physicians licensed in New York, with baseline and monitoring labs drawn at local lab draw sites across the five boroughs.",
+  heroCtaMeta:
+    "Telehealth physician visits · Local lab draw sites · No subscriptions",
+
+  introHeadingHtml:
+    "Why New York men are switching to <gold>physician-supervised peptide therapy</gold>",
+  introParagraphs: [
+    "New York is full of places willing to sell you peptides — IV-drip lounges in Midtown, boutique med spas with no physician on staff, online stores shipping research-grade vials to your door. Peptide therapy done right is physician-led medicine. It starts with bloodwork, not a sales script.",
+    "Strong Health designs peptide protocols for New York patients around individual labs and goals. Whether you're recovering from a marathon-training injury, dropping visceral belly fat that won't budge with diet alone, sleeping through the night again, restoring desire and arousal, or maintaining the body composition you work hard for, we use specific peptides for specific clinical reasons — and we monitor the relevant labs throughout the protocol.",
+    "Strong Health is a real medical practice with board-certified physicians and pharmacy-compounded medications dispensed under physician orders. New York patients are served via telehealth by physicians licensed in New York, with baseline and monitoring labs drawn at local lab draw sites across the five boroughs. We don't sell supplement subscriptions. We don't push gray-market compounds. Every protocol is reviewed at scheduled intervals and adjusted based on how your body actually responds.",
+  ],
+
+  whyHeadingHtml:
+    "Peptide therapy in New York, the way it should be <gold>prescribed and monitored</gold>",
+  whyParagraphs: [
+    "From Manhattan wellness clinics to Brooklyn recovery studios, New York has no shortage of places offering peptides — but very few that combine board-certified physician oversight with real lab monitoring and pharmacy-grade compounds from licensed compounders. Most New York patients we see have already tried at least one place that handed them a vial after a 10-minute video call.",
+    "We built Strong Health's New York telehealth program around the principle that peptide therapy is real medicine: contraindications need to be screened, doses need to be titrated, and labs need to be monitored — wherever in the five boroughs you happen to live. That's the standard.",
+  ],
+  whyStandardBullets: [
+    "Board-certified physicians licensed in New York",
+    "Physician evaluation before any peptide is prescribed",
+    "Baseline and monitoring labs at local lab draw sites near you",
+    "Pharmacy-grade peptides from licensed 503A/503B compounders",
+    "Individualized protocols designed around your bloodwork",
+    "Scheduled lab monitoring throughout the protocol",
+    "Telehealth follow-ups that fit a New York schedule",
+    "Saturday morning appointments for working professionals",
+    "Month-to-month treatment. No long-term contracts",
+  ],
+
+  steps: [
+    {
+      title: "Start with a telehealth consult with a New York–licensed physician",
+      desc: "Your first visit is a video consult with a Strong Health physician licensed in New York. You'll review your history, goals, prior treatments, and any musculoskeletal or hormonal concerns.",
+    },
+    {
+      title: "Baseline labs at a local draw site",
+      desc: "We order a baseline panel — hormones (testosterone, estradiol, IGF-1), metabolic markers, and any peptide-specific labs your protocol needs — to a local lab draw site near you in any of the five boroughs.",
+    },
+    {
+      title: "Individualized protocol design",
+      desc: "Your physician selects the right peptide(s), dose, and timing based on your labs and goals. Compounded by a licensed 503A or 503B pharmacy under physician orders. Pharmacy-grade only.",
+    },
+    {
+      title: "Ongoing monitoring & telehealth follow-ups",
+      desc: "Follow-up labs and check-ins at 4–12 weeks depending on the peptide. Dose adjustments via telehealth, with repeat labs ordered to the same local draw site whenever monitoring is clinically needed.",
+    },
+  ],
+
+  physicians: [
+    {
+      name: "Strong Health Medical Team",
+      title: "Attending Physicians, New York",
+      credentials:
+        "Board-Certified Physicians · Licensed in New York · Peptide & Hormone Therapy Specialists",
+      focus:
+        "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for New York patients, with telehealth visits and labs at local lab draw sites.",
+    },
+    {
+      name: "Strong Health Sports Medicine Team",
+      title: "Consulting Specialists, New York",
+      credentials:
+        "Sports Medicine · Tendon & Soft-Tissue Injury Care · Recovery Optimization",
+      focus:
+        "Peptide-supported tendon, joint, and soft-tissue healing protocols for runners, cyclists, and gym athletes across Manhattan, Brooklyn, and Queens.",
+    },
+  ],
+
+  neighborhoods: [
+    "Manhattan", "Brooklyn", "Queens", "Bronx",
+    "Staten Island", "Upper East Side", "Upper West Side", "Midtown",
+    "Chelsea", "Tribeca", "SoHo", "Financial District",
+    "Harlem", "Williamsburg", "Park Slope", "Astoria",
+    "Long Island City", "Forest Hills", "Riverdale", "Greenwich Village",
+  ],
+  neighborhoodAreaName: "the five boroughs",
+  neighborhoodsSubtitle:
+    "Strong Health serves peptide therapy patients across Manhattan, Brooklyn, Queens, the Bronx, and Staten Island via telehealth, with lab draws at local lab draw sites near you.",
+
+  relatedServices: [
+    {
+      name: "Peptides for Healing & Recovery",
+      desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",
+      href: "/peptides-for-healing/",
+      cta: "BPC-157 healing guide →",
+    },
+    {
+      name: "Peptides for Body Composition",
+      desc: "Tesamorelin and GH-secretagogue protocols targeting visceral (belly) fat and lean-mass preservation, designed around your labs.",
+      href: "/peptides-for-belly-fat/",
+      cta: "Peptides for belly fat →",
+    },
+    {
+      name: "All Strong Health Services",
+      desc: "Lab panels, men's health consultations, sexual health, and more — physician-designed and monitored via telehealth.",
+      href: "/services/",
+      cta: "Browse services →",
+    },
+  ],
+  relatedServicesSubtitle:
+    "Many peptide patients combine therapy with hormone panels or body-composition programs — all designed and monitored by the same physician team.",
+
+  faqs: [
+    {
+      question: "Where can I get peptide therapy in New York City?",
+      answer:
+        "Strong Health serves New York City peptide-therapy patients by appointment via telehealth. Physician consultations happen by video with doctors licensed in New York, and baseline and monitoring labs are drawn at local lab draw sites across Manhattan, Brooklyn, Queens, the Bronx, and Staten Island. Call (754) 263-6026 to book a free assessment.",
+    },
+    {
+      question: "What peptides does Strong Health prescribe for New York patients?",
+      answer:
+        "Our physicians prescribe pharmacy-grade peptides selected for the patient's specific goals and labs. The most commonly used protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat reduction; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin support. Every protocol is individualized — we don't use one-size-fits-all stacks.",
+    },
+    {
+      question: "Are peptides legal in New York?",
+      answer:
+        "Yes, when prescribed by a physician licensed in New York and dispensed through a licensed compounding pharmacy. Strong Health works only with 503A and 503B pharmacies under physician orders. We do not work with research-only or gray-market peptides. Every protocol uses pharmacy-grade product with full physician oversight, ongoing monitoring, and standard medical-record documentation.",
+    },
+    {
+      question: "How much does peptide therapy cost for New York patients?",
+      answer:
+        "Your initial telehealth consult is free. Peptide protocols are month-to-month with transparent pricing — costs vary by peptide, dose, and duration. Most protocols include physician visits, monitoring labs, and pharmacy-compounded medication. We'll review the full cost of your specific protocol before you commit. We do not bill insurance directly, but we provide itemized superbills that many New York patients submit to plans like UnitedHealthcare, Aetna, Cigna, and Empire BlueCross BlueShield for partial reimbursement.",
+    },
+    {
+      question: "How is peptide therapy different from TRT or GLP-1 weight loss medications?",
+      answer:
+        "Peptides are short chains of amino acids that act as targeted signaling molecules — they're distinct from steroid hormones like testosterone and from GLP-1 agonists like semaglutide and tirzepatide. Healing peptides (BPC-157, TB-500) work on tissue repair pathways with no androgenic effect. GH-secretagogue peptides (CJC-1295, Ipamorelin, Tesamorelin) prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern. Peptide therapy can be combined with TRT or GLP-1 weight-loss programs, and many Strong Health patients run integrated protocols designed and monitored by the same physician.",
+    },
+    {
+      question: "How long does it take to see results from peptide therapy?",
+      answer:
+        "Timing depends on the peptide and the goal. Sleep and recovery improvements (DSIP, Ipamorelin) are often noticeable within 2–4 weeks. Body-composition changes from CJC-1295/Ipamorelin or Tesamorelin typically appear at 8–12 weeks with more visible lean mass and fat-distribution shifts at 3–6 months. Tendon and joint healing protocols using BPC-157 or TB-500 generally run 4–12 weeks depending on tissue. PT-141 for sexual health works on demand, typically within 30–90 minutes of dosing. Every Strong Health protocol includes scheduled lab reassessments to confirm progress and adjust doses.",
+    },
+    {
+      question: "Can I start peptide therapy entirely by telehealth in New York?",
+      answer:
+        "Yes. New York patients start with a telehealth evaluation by a Strong Health physician licensed in New York, including a full medical history and a detailed discussion of goals. Baseline labs are ordered to a local lab draw site near you before any peptide is prescribed, and follow-ups — dose adjustments, lab reviews, and renewal authorizations — are conducted via telehealth with repeat labs at the same draw site.",
+    },
+    {
+      question: "Can peptide therapy be combined with TRT for New York patients?",
+      answer:
+        "Yes. Strong Health physicians frequently design combined protocols pairing testosterone replacement therapy with GH-secretagogue peptides like CJC-1295/Ipamorelin for body composition and recovery, or with BPC-157 for active patients managing sports-related soft-tissue injuries. Because both therapies are designed and monitored by the same physician using the same lab panels, dose interactions and overall response are tracked together rather than in silos.",
+    },
+    {
+      question: "Which New York boroughs and neighborhoods do you serve?",
+      answer:
+        "All five boroughs — Manhattan, Brooklyn, Queens, the Bronx, and Staten Island — plus the surrounding New York metro area. Because care is delivered via telehealth with labs at local lab draw sites, you can start and stay on a protocol whether you're in the Financial District, Williamsburg, Astoria, Riverdale, or St. George.",
+    },
+  ],
+
+  finalCtaHeading: "Ready to talk to a physician about peptide therapy in New York?",
+  finalCtaCopy:
+    "Book a free assessment. Telehealth visits for New York patients with physician-designed protocols, real labs at local draw sites, and ongoing monitoring.",
+  physicalClinic: false,
+  parkingTransit:
+    "No New York storefront. Care is delivered via telehealth to New York patients, with baseline and monitoring labs drawn at local lab draw sites across the five boroughs.",
+  physicianAvailability:
+    "Strong Health physicians licensed in New York see patients by appointment via telehealth, with lab orders sent to a local lab draw site near you.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes by video. We review history, goals, and current medications/supplements; baseline biomarker draws are ordered to a local lab draw site near you. Most patients are seen within 5 business days of booking.",
+  howItWorksTag: "How Peptide Therapy Works for New York Patients",
+  howItWorksHeadingIntro: "Telehealth visits. Local labs. Then",
+  howItWorksHeadingGold: "monitored care.",
+  physiciansSubtitleSuffix: "for New York patients.",
+  relatedServicesHeadingIntro: "One medical team.",
+  outboundCitations: [
+    { label: "BPC-157 in tendon and soft-tissue healing (review)", url: "https://pubmed.ncbi.nlm.nih.gov/30915550/" },
+    { label: "Thymosin beta-4 (TB-500) and tissue repair", url: "https://pubmed.ncbi.nlm.nih.gov/22894631/" },
+    { label: "Ipamorelin / CJC-1295 stimulation of GH release", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
+  ],
+};
+
+/**
  * Master list of cities offering peptide therapy.
  *
  * To launch a new peptide city:
@@ -597,6 +816,7 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
 export const ALL_PEPTIDE_CITIES: CityPeptideConfig[] = [
   MIAMI_PEPTIDE_CONFIG,
   DELRAY_BEACH_PEPTIDE_CONFIG,
+  NEW_YORK_PEPTIDE_CONFIG,
 ];
 
 /** Lookup peptide city config by slug. */

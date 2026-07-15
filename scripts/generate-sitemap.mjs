@@ -178,9 +178,16 @@ const HISTORICAL_LASTMOD = {
   "/fl/miami/peptide-therapy/": "2026-05-27",
   "/fl/miami/trt-therapy/": "2026-05-27",
   "/fl/miami/weight-loss-clinic/": "2026-05-27",
+  // Tampa telehealth service-area peptide launch (physicalClinic: false).
+  "/fl/tampa/peptide-therapy/": "2026-07-15",
   "/hipaa-policy/": "2026-05-27",
   // Post-cutover addition (US-N2/US-N4): NYC peptide-therapy launch date.
   "/ny/new-york/peptide-therapy/": "2026-07-14",
+  // Out-of-state telehealth peptide service-area launches.
+  "/ca/san-diego/peptide-therapy/": "2026-07-15",
+  "/nv/las-vegas/peptide-therapy/": "2026-07-15",
+  "/ga/atlanta/peptide-therapy/": "2026-07-15",
+  "/tx/austin/peptide-therapy/": "2026-07-15",
   "/peptides/": "2026-04-22",
   "/privacy-policy/": "2026-05-27",
   "/reviews/": "2026-06-22",

@@ -276,14 +276,79 @@ const POST_CUTOVER_PAGES = {
     status: 200,
     title: "Peptide Therapy in New York, NY — Telehealth | Strong Health",
   },
+  "/ca/san-diego/peptide-therapy/": {
+    canonical_path: "/ca/san-diego/peptide-therapy/",
+    description:
+      "Physician-supervised peptide therapy for San Diego patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+    h1: "Peptide Therapy in San Diego, CA.",
+    jsonld: {},
+    lang: "en",
+    post_cutover: true,
+    robots: "index, follow, max-image-preview:large",
+    sitemap: { changefreq: "monthly", lastmod: "2026-07-15", priority: "0.8" },
+    status: 200,
+    title: "San Diego Peptide Therapy, CA — Telehealth | Strong Health",
+  },
+  "/nv/las-vegas/peptide-therapy/": {
+    canonical_path: "/nv/las-vegas/peptide-therapy/",
+    description:
+      "Physician-supervised peptide therapy for Las Vegas patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+    h1: "Peptide Therapy in Las Vegas, NV.",
+    jsonld: {},
+    lang: "en",
+    post_cutover: true,
+    robots: "index, follow, max-image-preview:large",
+    sitemap: { changefreq: "monthly", lastmod: "2026-07-15", priority: "0.8" },
+    status: 200,
+    title: "Las Vegas Peptide Therapy, NV — Telehealth | Strong Health",
+  },
+  "/ga/atlanta/peptide-therapy/": {
+    canonical_path: "/ga/atlanta/peptide-therapy/",
+    description:
+      "Physician-supervised peptide therapy for Atlanta patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+    h1: "Peptide Therapy in Atlanta, GA.",
+    jsonld: {},
+    lang: "en",
+    post_cutover: true,
+    robots: "index, follow, max-image-preview:large",
+    sitemap: { changefreq: "monthly", lastmod: "2026-07-15", priority: "0.8" },
+    status: 200,
+    title: "Peptide Therapy in Atlanta, GA — Telehealth | Strong Health",
+  },
+  "/tx/austin/peptide-therapy/": {
+    canonical_path: "/tx/austin/peptide-therapy/",
+    description:
+      "Physician-supervised peptide therapy for Austin patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+    h1: "Peptide Therapy in Austin, TX.",
+    jsonld: {},
+    lang: "en",
+    post_cutover: true,
+    robots: "index, follow, max-image-preview:large",
+    sitemap: { changefreq: "monthly", lastmod: "2026-07-15", priority: "0.8" },
+    status: 200,
+    title: "Peptide Therapy in Austin, TX — Telehealth | Strong Health",
+  },
+  "/fl/tampa/peptide-therapy/": {
+    canonical_path: "/fl/tampa/peptide-therapy/",
+    description:
+      "Physician-supervised peptide therapy for Tampa patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+    h1: "Peptide Therapy in Tampa, FL.",
+    jsonld: {},
+    lang: "en",
+    post_cutover: true,
+    robots: "index, follow, max-image-preview:large",
+    sitemap: { changefreq: "monthly", lastmod: "2026-07-15", priority: "0.8" },
+    status: 200,
+    title: "Peptide Therapy in Tampa, FL — Telehealth | Strong Health",
+  },
 };
 for (const [path, entry] of Object.entries(POST_CUTOVER_PAGES)) {
   if (pages[path]) throw new Error(`post-cutover route ${path} already captured`);
   pages[path] = entry;
 }
 
-if (Object.keys(pages).length !== 48) {
-  throw new Error(`expected 48 total pages, got ${Object.keys(pages).length}`);
+if (Object.keys(pages).length !== 53) {
+  throw new Error(`expected 53 total pages, got ${Object.keys(pages).length}`);
 }
 
 // Every jsonld-differences path must belong to a known page.

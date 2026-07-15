@@ -1,0 +1,10 @@
+---
+// Las Vegas peptide-therapy service-area page. Mirrors the New York wrapper:
+// the shared CityPeptidePage layout renders everything from
+// LAS_VEGAS_PEPTIDE_CONFIG (statePrefix "nv"). There is intentionally NO /nv/
+// or /nv/las-vegas/ hub page — both 404 by design.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { LAS_VEGAS_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={LAS_VEGAS_PEPTIDE_CONFIG} />

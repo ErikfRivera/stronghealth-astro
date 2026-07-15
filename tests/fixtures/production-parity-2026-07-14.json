@@ -165,6 +165,22 @@
       "status": 200,
       "title": "Evidence-Based Men's Health Blog | Strong Health"
     },
+    "/ca/san-diego/peptide-therapy/": {
+      "canonical_path": "/ca/san-diego/peptide-therapy/",
+      "description": "Physician-supervised peptide therapy for San Diego patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "h1": "Peptide Therapy in San Diego, CA.",
+      "jsonld": {},
+      "lang": "en",
+      "post_cutover": true,
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "San Diego Peptide Therapy, CA — Telehealth | Strong Health"
+    },
     "/careers/": {
       "canonical_path": "/careers/",
       "description": "Join Strong Health in Miami, FL. We're hiring physicians, medical assistants, and health professionals passionate about evidence-based men's health care.",
@@ -482,6 +498,22 @@
       "status": 200,
       "title": "Weight Loss Clinic in Miami, FL | Strong Health"
     },
+    "/fl/tampa/peptide-therapy/": {
+      "canonical_path": "/fl/tampa/peptide-therapy/",
+      "description": "Physician-supervised peptide therapy for Tampa patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "h1": "Peptide Therapy in Tampa, FL.",
+      "jsonld": {},
+      "lang": "en",
+      "post_cutover": true,
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptide Therapy in Tampa, FL — Telehealth | Strong Health"
+    },
     "/foods-that-lower-testosterone/": {
       "canonical_path": "/foods-that-lower-testosterone/",
       "description": "Do soy, flaxseed, mint, or alcohol actually lower testosterone? We review the clinical evidence on foods linked to reduced T levels and separate myth from fact.",
@@ -515,6 +547,22 @@
       },
       "status": 200,
       "title": "Foods That Lower Testosterone: Myth vs Fact | Strong Health"
+    },
+    "/ga/atlanta/peptide-therapy/": {
+      "canonical_path": "/ga/atlanta/peptide-therapy/",
+      "description": "Physician-supervised peptide therapy for Atlanta patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "h1": "Peptide Therapy in Atlanta, GA.",
+      "jsonld": {},
+      "lang": "en",
+      "post_cutover": true,
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptide Therapy in Atlanta, GA — Telehealth | Strong Health"
     },
     "/garlic-and-honey-for-erectile-dysfunction/": {
       "canonical_path": "/garlic-and-honey-for-erectile-dysfunction/",
@@ -707,6 +755,22 @@
       },
       "status": 200,
       "title": "NADH vs NAD+: Benefits, Energy & Cognition | Strong Health"
+    },
+    "/nv/las-vegas/peptide-therapy/": {
+      "canonical_path": "/nv/las-vegas/peptide-therapy/",
+      "description": "Physician-supervised peptide therapy for Las Vegas patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "h1": "Peptide Therapy in Las Vegas, NV.",
+      "jsonld": {},
+      "lang": "en",
+      "post_cutover": true,
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Las Vegas Peptide Therapy, NV — Telehealth | Strong Health"
     },
     "/ny/new-york/peptide-therapy/": {
       "canonical_path": "/ny/new-york/peptide-therapy/",
@@ -1264,6 +1328,22 @@
       },
       "status": 200,
       "title": "Terms of Use | Strong Health"
+    },
+    "/tx/austin/peptide-therapy/": {
+      "canonical_path": "/tx/austin/peptide-therapy/",
+      "description": "Physician-supervised peptide therapy for Austin patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "h1": "Peptide Therapy in Austin, TX.",
+      "jsonld": {},
+      "lang": "en",
+      "post_cutover": true,
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-15",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Peptide Therapy in Austin, TX — Telehealth | Strong Health"
     }
   },
   "production_origin": "https://www.stronghealth.com",

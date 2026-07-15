@@ -179,7 +179,7 @@ const btnBase =
   ogType="article"
 >
   <div class="min-h-screen bg-surface font-['DM_Sans',sans-serif] selection:bg-gold selection:text-surface text-cream overflow-x-hidden">
-    <JsonLd schema={breadcrumbSchema(breadcrumbItems)} />
+    <JsonLd schema={breadcrumbSchema(breadcrumbItems, { parityLastItem: true })} />
     {
       showSharedByline && author && (
         <JsonLd

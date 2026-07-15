@@ -41,10 +41,13 @@ const {
 <BaseLayout title={title} description={seoDescription} path={path}>
   <PageShell>
     <JsonLd
-      schema={breadcrumbSchema([
-        { name: "Home", path: "/" },
-        { name: title, path },
-      ])}
+      schema={breadcrumbSchema(
+        [
+          { name: "Home", path: "/" },
+          { name: title, path },
+        ],
+        { parityLastItem: true },
+      )}
     />
     {structuredData && <JsonLd schema={structuredData} />}
 

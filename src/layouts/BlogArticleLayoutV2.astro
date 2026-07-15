@@ -81,11 +81,14 @@ const metaDescription = seoDescription || subtitle || title;
 >
   <PageShell>
     <JsonLd
-      schema={breadcrumbSchema([
-        { name: "Home", path: "/" },
-        { name: "Blog", path: "/blog/" },
-        { name: title, path },
-      ])}
+      schema={breadcrumbSchema(
+        [
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog/" },
+          { name: title, path },
+        ],
+        { parityLastItem: true },
+      )}
     />
     <JsonLd
       schema={articleSchema({

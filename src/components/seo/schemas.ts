@@ -15,6 +15,36 @@ const ORG_ID = STRONG_HEALTH_ORG_ID;
 
 const absUrl = (url: string) => (url.startsWith("http") ? url : `${SITE_URL}${url}`);
 
+/**
+ * Production-parity URL formatting (remediation D5). Live production emits
+ * SLASHLESS self-URL schema fields (MedicalWebPage.url, Article
+ * mainEntityOfPage.@id, CollectionPage.url, final breadcrumb item) on exactly
+ * these routes — the pages whose old `path` prop was slashless. Derived from
+ * the 2026-07-14 QA fixture (jsonld-differences.json). Other routes (reviews,
+ * diet, authors, home, miami peptide-therapy) emitted trailing-slash and are
+ * left untouched. Canonicals are unaffected — always trailing-slash.
+ */
+const PROD_SLASHLESS_PATHS = new Set([
+  "/about/", "/baking-soda-for-ed/", "/blog/", "/careers/",
+  "/collagen-peptides/", "/dexa-scan/", "/editorial-guidelines/", "/fl/",
+  "/fl/delray-beach/trt-therapy/", "/fl/delray-beach/weight-loss-clinic/",
+  "/fl/miami/trt-therapy/", "/fl/miami/weight-loss-clinic/",
+  "/foods-that-lower-testosterone/", "/garlic-and-honey-for-erectile-dysfunction/",
+  "/hipaa-policy/", "/home-remedies-for-premature-ejaculation/",
+  "/lysine-benefit-men-health/", "/nac-benefits-men/", "/nadh-benefits/",
+  "/peptides-for-arthritis/", "/peptides-for-belly-fat/", "/peptides-for-healing/",
+  "/peptides-for-libido/", "/peptides-for-muscle-growth/", "/peptides-for-sleep/",
+  "/peptides-for-tendon-repair/", "/peptides/", "/porn-induced-erectile-dysfunction/",
+  "/premature-ejaculation-exercises/", "/privacy-policy/", "/resveratrol-side-effects/",
+  "/terms-of-use/",
+]);
+
+export function parityUrl(url: string): string {
+  const abs = absUrl(url);
+  const path = abs.replace(SITE_URL, "");
+  return PROD_SLASHLESS_PATHS.has(path) ? SITE_URL + path.slice(0, -1) : abs;
+}
+
 function personRef(author: Author): Record<string, unknown> {
   return {
     "@type": "Person",
@@ -54,7 +84,7 @@ export function articleSchema({
     author: personRef(author),
     publisher: { "@id": ORG_ID },
     datePublished: publishDate,
-    mainEntityOfPage: { "@type": "WebPage", "@id": absUrl(url) },
+    mainEntityOfPage: { "@type": "WebPage", "@id": parityUrl(url) },
   };
   if (updatedDate) schema.dateModified = updatedDate;
   if (imageUrl) schema.image = imageUrl;
@@ -82,7 +112,7 @@ export function medicalWebPageSchema({
     "@type": "MedicalWebPage",
     name,
     description,
-    url: absUrl(url),
+    url: parityUrl(url),
     isPartOf: { "@type": "WebSite", name: "Strong Health", url: SITE_URL },
   };
   if (lastReviewed) schema.lastReviewed = lastReviewed;
@@ -167,7 +197,7 @@ export function organizationSchema() {
         closes: "18:00",
       },
     ],
-    priceRange: "$$",
+    priceRange: "$",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Medical Services",
@@ -219,7 +249,10 @@ export interface BreadcrumbItem {
   path?: string;
 }
 
-export function breadcrumbSchema(items: BreadcrumbItem[]) {
+export function breadcrumbSchema(
+  items: BreadcrumbItem[],
+  opts?: { parityLastItem?: boolean },
+) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -227,7 +260,14 @@ export function breadcrumbSchema(items: BreadcrumbItem[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      ...(item.path ? { item: `${SITE_URL}${item.path}` } : {}),
+      ...(item.path
+        ? {
+            item:
+              opts?.parityLastItem && index === items.length - 1
+                ? parityUrl(item.path)
+                : `${SITE_URL}${item.path}`,
+          }
+        : {}),
     })),
   };
 }
@@ -434,7 +474,7 @@ export function collectionPageSchema({
     "@type": "CollectionPage",
     name,
     description,
-    url: absUrl(url),
+    url: parityUrl(url),
     mainEntity: {
       "@type": "ItemList",
       itemListElement: items.map((item, i) => ({

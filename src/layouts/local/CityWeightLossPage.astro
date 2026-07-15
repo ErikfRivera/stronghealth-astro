@@ -17,6 +17,7 @@ import {
   breadcrumbSchema,
   faqPageSchema,
   medicalWebPageSchema,
+  parityUrl,
 } from "../../components/seo/schemas";
 import LocalProofSection from "../../components/local/LocalProofSection.astro";
 import {
@@ -233,7 +234,7 @@ function medicalClinicSchema(): Record<string, unknown> {
     "@id": `https://www.stronghealth.com/#strong-health-${config.slug}`,
     name: config.clinic.name,
     ...(config.clinicImage ? { image: config.clinicImage } : {}),
-    url: `https://www.stronghealth.com${path}`,
+    url: parityUrl(path),
     telephone: config.clinic.phone,
     address: {
       "@type": "PostalAddress",
@@ -313,7 +314,7 @@ function medicalClinicSchema(): Record<string, unknown> {
       ratingValue: config.reviewRating,
       reviewCount: String(config.aggregateReviewCount),
     },
-    priceRange: "$$",
+    priceRange: "$",
     ...(config.schemaSameAs && config.schemaSameAs.length > 0
       ? { sameAs: config.schemaSameAs }
       : {}),

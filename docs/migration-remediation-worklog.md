@@ -44,3 +44,25 @@ Baseline commands (pre-change): `pnpm check` ✅ 0 errors · `pnpm build` ✅ 48
 - Files changed: this work log.
 - Evidence: repo map above; live-prod confirmations (priceRange `$`, Delray title 64 chars live, DEXA buttons JS-driven in prod).
 - Commit: (this commit)
+
+### Phase 2 — SEO metadata (commit: see git)
+- Restored Delray title + 3 descriptions verbatim from live production (§10.1); check-seo gains documented PARITY_WAIVERS (3 pages), budgets enforced everywhere else.
+- Verify: pnpm build ✓ 48 pages clean; delray title = production 64-char string.
+
+### Phase 3 — structured data (commit: see git)
+- priceRange "$" ×5; Delray MedicalWebPage name/description from restored config; parityUrl() layer (PROD_SLASHLESS_PATHS, 32 routes) applied to Article.mainEntityOfPage / MedicalWebPage.url / CollectionPage.url / last breadcrumb item in article+policy layouts; about/careers inline schema urls reverted to slashless; Miami WL MedicalClinic url via parityUrl.
+- Verify: semantic validator vs jsonld-differences.json — **79/79 prod fields match**. Caveat recorded: fixture $[N] indices are production post-hydration DOM order; assertions must resolve by @type (harness updated accordingly).
+
+### Phase 4 — sitemap dates (commit: see git)
+- HISTORICAL_LASTMOD registry (21 routes, §10.3); build-date fallback removed (hard failure); all-same-date guard (≥40 identical → fail); hub aggregation skipped for registry routes.
+- Verify: generate-sitemap "47 URLs, 17 distinct lastmod dates ✓"; spot-check vs §10.3 OK; other 26 dates unchanged (JSON-LD dateModified).
+
+### Phase 5 — redirects/404 (commit: see git)
+- tests/fixtures/redirect-manifest.json (22 legacy redirects + normalization + 3 404 cases, sourced from App.tsx @9398453 — the only legacy routing layer; no other legacy URL inventory exists per D1) + scripts/check-redirects.mjs (static: manifest↔vercel.json↔dist, chain/loop/missing-target detection; live: status+Location).
+- Verify: static ✓ and live vs staging ✓ (22 redirects, 3 404s). Slashless legacy URLs take a documented 2-hop path (normalize → redirect).
+
+### Phase 6 — content/CTA (commit: see git)
+- Review-card dates rendered in America/New_York → March 14/11/9/7/4 (matches production display; no editorial dates invented).
+- DEXA SMS normalized to sms:+19546635563 (D4 deviation-with-rationale: CTA exists in production as JS button; not removed).
+- read-read: staging correction kept (D2); harness bans regressions.
+- Verify: built /reviews/ shows the five production dates; dist dexascan sms links = ["sms:+19546635563"].

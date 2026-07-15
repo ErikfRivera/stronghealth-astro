@@ -21,9 +21,10 @@ meaning; the US-014 parity audit flags everything else as a defect.
 4. **Internal links normalized to trailing-slash** (e.g. `/services` →
    `/services/`), removing a 308 redirect hop per click. Canonicals were always
    trailing-slash; only in-page hrefs changed.
-5. **Schema URL fields (`mainEntityOfPage`, breadcrumb tail items,
-   `MedicalWebPage.url`) now use the trailing-slash canonical URL** instead of
-   the slashless variant some pages emitted (SEO_AUDIT finding #9).
+5. ~~Schema URL trailing-slash normalization~~ **REVERTED by the 2026-07-14
+   remediation (D5)**: schema self-URL fields match live production formatting
+   exactly (slashless on 32 routes, per `PROD_SLASHLESS_PATHS` in
+   `src/components/seo/schemas.ts`). Canonicals remain trailing-slash.
 6. **JSON-LD placement:** unchanged (body), same types per page.
 
 ## Per-page
@@ -40,7 +41,9 @@ meaning; the US-014 parity audit flags everything else as a defect.
 
 9. **City-page FAQ answers ship in the initial HTML** (same details/summary
    conversion as site-wide change #1).
-10. **Delray Beach SEO trims** (production strings exceeded budget; SEO_AUDIT
+10. ~~Delray Beach SEO trims~~ **REVERTED by the 2026-07-14 remediation
+    (D5)**: live production strings restored verbatim; check-seo carries
+    documented per-page waivers. Original trim record: (production strings exceeded budget; SEO_AUDIT
     finding #4/#5 — the only title/description text changes in the migration):
     - `/fl/delray-beach/trt-therapy/` title: "Delray Beach, FL TRT — Telehealth
       + Miami Clinic" → "Delray Beach TRT — Telehealth + Miami Clinic"
@@ -51,7 +54,9 @@ meaning; the US-014 parity audit flags everything else as a defect.
     - `/fl/delray-beach/peptide-therapy/` description 193 → 156 chars
       (tightened clinic phrasing, dropped "Tesamorelin" from the list).
 
-11. **Sitemap `<lastmod>` one-time bump on 21 URLs** (home, hubs, local pages,
+11. ~~Sitemap lastmod bump~~ **RESOLVED by the 2026-07-14 remediation (D6)**:
+    the 21 URLs now carry their historical production dates from an explicit
+    registry in `scripts/generate-sitemap.mjs`. Original note: (home, hubs, local pages,
     legal, authors, careers, services): production derived these from the old
     repo's git history; the new repo's history starts at the migration, and
     these pages did materially change (see #1–#3). All 26 URLs with hand-

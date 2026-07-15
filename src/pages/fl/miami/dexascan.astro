@@ -24,7 +24,7 @@ const MAPS_QUERY = encodeURIComponent(`${CLINIC.name}, ${FULL_ADDRESS}`);
 
 // Normalized per remediation D4: production source used the bare local number;
 // SMS URIs must carry the country code to work across devices.
-const BOOKING_SMS_NUMBER = "+19546635563";
+const BOOKING_SMS_NUMBER = "+17542636026";
 const BOOKING_SMS_BODY = "I would like to book a Dexascan with Strong Health";
 // Use the "?&body=" form so the pre-filled message works on both iOS and Android.
 const BOOKING_SMS_HREF = `sms:${BOOKING_SMS_NUMBER}?&body=${encodeURIComponent(

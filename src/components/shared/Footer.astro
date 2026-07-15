@@ -66,6 +66,11 @@ const locationLinks: FooterLinkItem[] = [
     return links;
   }),
   { label: "DEXA Scan Miami", to: "/fl/miami/dexascan/" },
+  // Non-Florida peptide service areas (US-N3).
+  ...ALL_PEPTIDE_CITIES.filter((c) => (c.statePrefix ?? "fl") !== "fl").map((c) => ({
+    label: `${c.cityName} Peptide Therapy`,
+    to: `/${c.statePrefix}/${c.slug}/peptide-therapy/`,
+  })),
 ];
 
 const peptideLinks: FooterLinkItem[] = [
@@ -76,7 +81,7 @@ const peptideLinks: FooterLinkItem[] = [
 ];
 
 const wideColumns = [
-  { title: "Florida Locations", links: locationLinks },
+  { title: "Locations", links: locationLinks },
   { title: "Peptide Therapy", links: peptideLinks },
 ];
 

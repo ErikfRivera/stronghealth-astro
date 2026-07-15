@@ -17,6 +17,13 @@ import {
 } from "../components/seo/schemas";
 import { articles, type ArticleMeta } from "../data/articles";
 import { ALL_CITIES } from "../data/local/cityTrtConfig";
+import { ALL_PEPTIDE_CITIES } from "../data/local/cityPeptideConfig";
+
+// Non-Florida peptide service areas (US-N3): rendered as extra cards in the
+// city grid after the Florida clinics.
+const nonFlPeptideCities = ALL_PEPTIDE_CITIES.filter(
+  (c) => (c.statePrefix ?? "fl") !== "fl",
+);
 
 const breadcrumbs = [
   { name: "Home", path: "/" },
@@ -364,6 +371,19 @@ const collectionItems = peptideArticles.map((a) => ({ name: a.title, url: a.path
                   >
                     <span class="text-[13px] font-semibold text-cream-muted group-hover:text-gold transition-colors">
                       {city.name}, FL
+                    </span>
+                    <div class="text-[10px] text-muted mt-0.5">Peptide Therapy →</div>
+                  </a>
+                ))
+              }
+              {
+                nonFlPeptideCities.map((c) => (
+                  <a
+                    href={`/${c.statePrefix}/${c.slug}/peptide-therapy/`}
+                    class="bg-surface-raised rounded-lg px-4 py-3 border border-white/10 text-center hover:border-gold/30 hover:bg-surface-raised/80 transition-colors group"
+                  >
+                    <span class="text-[13px] font-semibold text-cream-muted group-hover:text-gold transition-colors">
+                      {c.cityName}, {(c.statePrefix ?? "fl").toUpperCase()}
                     </span>
                     <div class="text-[10px] text-muted mt-0.5">Peptide Therapy →</div>
                   </a>

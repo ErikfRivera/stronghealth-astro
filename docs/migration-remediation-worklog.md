@@ -85,3 +85,11 @@ Baseline commands (pre-change): `pnpm check` ✅ 0 errors · `pnpm build` ✅ 48
 - Files: src/components/shared/Nav.astro, src/components/shared/FadeIn.astro, src/layouts/BaseLayout.astro, src/styles/global.css, src/scripts/site-runtime.ts (new), astro.config.mjs, docs/payload-report.md.
 - Verify after change: pnpm build ✓ (48 pages, SEO gates clean); test:parity:build **606/606** ✓; test:e2e 106 ✓; test:visual **55/55 against the pre-change baselines** (no visual delta → baselines not regenerated, by design).
 - Residual risk: site-runtime is a deferred module (was parse-blocking inline) — lead-click listener/chat timer attach at module eval instead of parse; both are load-event-bounded, no user-visible change observed. 22 routes individually exceed the median figure due to genuine content (see report) — budget is a median target, met.
+
+### Phase 9 — console / third-party (commit: see git)
+- Unfiltered console audit across all 47 routes (desktop + mobile): **zero first-party errors / page exceptions**. Only recurring error = AdSense ad-request 403 from `googleads.g.doubleclick.net` — byte-for-byte the same publisher ID/path/status on live production (D8: inherited; owner hardening item). Full classification: `docs/console-report.md`.
+- (a) e2e allowlist tightened: substring matches (`"googleads"`, `"adsbygoogle"`, …) → exact-hostname set, applied **only** to `Failed to load resource:` messages; third-party script runtime errors and all first-party errors now fail the suite.
+- (b) Preload credentials-mode warning: absent on all 47 routes (production shows it on every page for its CSS preload; our font preloads carry `crossorigin`, no CSS preload emitted). New explicit assertion keeps it that way.
+- (c) Confirmed prod's per-page `Minified React error #418` hydration pageerror does not exist in this build.
+- Files: tests/e2e/pages.spec.mjs, docs/console-report.md.
+- Verify: pnpm run test:e2e with tightened gate → 106 passed / 0 failed.

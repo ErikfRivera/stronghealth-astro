@@ -158,6 +158,34 @@ function walkRoutes(dir) {
   return routes;
 }
 
+// Historical lastmod registry (remediation D6/PRD §10.3): live production
+// derived these from the old repo's git history, which this repo does not
+// have. Values are authoritative content dates and must never regress to a
+// build date. The other 26 routes carry a JSON-LD dateModified.
+const HISTORICAL_LASTMOD = {
+  "/": "2026-06-11",
+  "/about/": "2026-05-27",
+  "/author/dr-angel-rivera/": "2026-05-27",
+  "/author/mahadev-mukherjee/": "2026-05-27",
+  "/blog/": "2026-06-22",
+  "/careers/": "2026-06-06",
+  "/editorial-guidelines/": "2026-05-27",
+  "/fl/": "2026-06-22",
+  "/fl/delray-beach/peptide-therapy/": "2026-05-27",
+  "/fl/delray-beach/trt-therapy/": "2026-05-27",
+  "/fl/delray-beach/weight-loss-clinic/": "2026-05-27",
+  "/fl/miami/dexascan/": "2026-06-22",
+  "/fl/miami/peptide-therapy/": "2026-05-27",
+  "/fl/miami/trt-therapy/": "2026-05-27",
+  "/fl/miami/weight-loss-clinic/": "2026-05-27",
+  "/hipaa-policy/": "2026-05-27",
+  "/peptides/": "2026-04-22",
+  "/privacy-policy/": "2026-05-27",
+  "/reviews/": "2026-06-22",
+  "/services/": "2026-04-20",
+  "/terms-of-use/": "2026-05-27",
+};
+
 const routes = walkRoutes(dist).sort();
 
 const lastmodByRoute = new Map();
@@ -165,19 +193,23 @@ for (const route of routes) {
   const htmlPath =
     route === "/" ? join(dist, "index.html") : join(dist, route.slice(1), "index.html");
   const html = readFileSync(htmlPath, "utf-8");
+  // Resolution order: historical registry -> JSON-LD dateModified -> hard
+  // failure. The build date is never an acceptable lastmod (false freshness).
+  const registry = HISTORICAL_LASTMOD[route];
   const explicit = extractDateModifiedFromHtml(html);
-  let chosen = explicit;
+  const chosen = registry || explicit;
   if (!chosen) {
-    const isos = routeSourceFiles(route)
-      .map((f) => gitMtimeIso(f))
-      .filter(Boolean);
-    if (isos.length) chosen = isos.reduce((a, b) => (a > b ? a : b)).slice(0, 10);
+    console.error(
+      `generate-sitemap: ✗ ${route} has no HISTORICAL_LASTMOD entry and no JSON-LD dateModified — refusing to stamp the build date.`,
+    );
+    process.exit(1);
   }
-  lastmodByRoute.set(route, chosen || BUILD_DATE_YMD);
+  lastmodByRoute.set(route, chosen);
 }
 
 // Hub aggregation pass.
 for (const hub of ["/blog/", "/reviews/", "/peptides/", "/fl/"]) {
+  if (HISTORICAL_LASTMOD[hub]) continue; // registry value is authoritative
   if (!lastmodByRoute.has(hub)) continue;
   const dates = [
     lastmodByRoute.get(hub),
@@ -208,9 +240,17 @@ if (!gitAvailable) {
     "generate-sitemap: ⚠ git history unavailable — lastmod fell back to build date where no JSON-LD dateModified existed.",
   );
 }
-const fallbacks = routes.filter(
-  (r) => lastmodByRoute.get(r) === BUILD_DATE_YMD,
-);
-console.log(
-  `generate-sitemap: ${routes.length} URLs (${fallbacks.length} on build-date fallback${fallbacks.length ? ": " + fallbacks.join(", ") : ""})`,
-);
+// Guard: if nearly every URL shares one date, something reset lastmods.
+const dateCounts = new Map();
+for (const r of routes) {
+  const d = lastmodByRoute.get(r);
+  dateCounts.set(d, (dateCounts.get(d) || 0) + 1);
+}
+const maxSame = Math.max(...dateCounts.values());
+if (maxSame >= 40) {
+  console.error(
+    `generate-sitemap: ✗ ${maxSame}/${routes.length} URLs share one lastmod — looks like a build-date reset.`,
+  );
+  process.exit(1);
+}
+console.log(`generate-sitemap: ${routes.length} URLs, ${dateCounts.size} distinct lastmod dates ✓`);

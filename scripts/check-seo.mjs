@@ -73,6 +73,25 @@ function extract(html, re) {
   return m ? decodeEntities(m[1]) : null;
 }
 
+// Production-parity waivers (remediation D5): live production ships these
+// exact over-budget strings; the migration must not change SEO copy. The
+// budget gates stay in force for every other page.
+const PARITY_WAIVERS = {
+  "fl/delray-beach/trt-therapy/index.html": {
+    titleMax: 64,
+    descMax: 167,
+    reason: "live production values restored per remediation PRD §10.1",
+  },
+  "fl/delray-beach/weight-loss-clinic/index.html": {
+    descMax: 191,
+    reason: "live production values restored per remediation PRD §10.1",
+  },
+  "fl/delray-beach/peptide-therapy/index.html": {
+    descMax: 193,
+    reason: "live production values restored per remediation PRD §10.1",
+  },
+};
+
 const errors = [];
 
 for (const file of htmlFiles) {
@@ -89,10 +108,11 @@ for (const file of htmlFiles) {
   const canonical = extract(html, /<link\s+rel="canonical"\s+href="([^"]*)"/);
   const robots = extract(html, /<meta\s+name="robots"\s+content="([^"]*)"/);
 
+  const waiver = PARITY_WAIVERS[rel] || {};
   if (!title) {
     errors.push(`${rel}: missing <title>`);
   } else {
-    if (title.length > TITLE_MAX) {
+    if (title.length > (waiver.titleMax ?? TITLE_MAX)) {
       errors.push(`${rel}: title ${title.length} chars (max ${TITLE_MAX}): "${title}"`);
     }
     if (title.split(BRAND).length > 2) {
@@ -102,7 +122,7 @@ for (const file of htmlFiles) {
 
   if (!description) {
     errors.push(`${rel}: missing meta description`);
-  } else if (description.length < DESC_MIN || description.length > DESC_MAX) {
+  } else if (description.length < DESC_MIN || description.length > (waiver.descMax ?? DESC_MAX)) {
     errors.push(
       `${rel}: description ${description.length} chars (must be ${DESC_MIN}–${DESC_MAX})`,
     );

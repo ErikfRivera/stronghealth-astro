@@ -106,10 +106,14 @@ function parseHeading(html: string): { text: string; gold: boolean }[] {
 const introHeadingParts = parseHeading(config.introHeadingHtml);
 const whyHeadingParts = parseHeading(config.whyHeadingHtml);
 
-// State-aware routing (US-N1). Florida remains the default; a state without a
-// hub page (e.g. /ny/ — intentionally 404) yields a breadcrumb crumb with NO
-// path: breadcrumbSchema emits a ListItem without `item`, and the visible
-// trail renders plain text.
+// State-aware routing (US-N1). Florida remains the default. A state without a
+// hub page (e.g. /ny/ — intentionally 404) has no destination for its crumb,
+// so the state level is omitted from the breadcrumb trail rather than emitted
+// as an unlinked crumb. Every BreadcrumbList ListItem must include an `item`
+// URL for valid structured data (Google Search Console flagged the unlinked
+// state entry as a "Missing field 'item'" error, since only the final item may
+// omit `item`), so the trail is Home → [Florida →] Peptide Therapy. Matches the
+// convention already established in CityTRTPage / CityWeightLossPage.
 const statePrefix = config.statePrefix ?? "fl";
 const stateName = config.stateName ?? "Florida";
 const stateAbbr = statePrefix.toUpperCase();
@@ -117,7 +121,7 @@ const stateHubPath = statePrefix === "fl" ? "/fl/" : undefined;
 const pagePath = `/${statePrefix}/${config.slug}/peptide-therapy/`;
 const breadcrumbs = [
   { name: "Home", path: "/" },
-  { name: stateName, path: stateHubPath },
+  ...(stateHubPath ? [{ name: stateName, path: stateHubPath }] : []),
   { name: "Peptide Therapy", path: pagePath },
 ];
 

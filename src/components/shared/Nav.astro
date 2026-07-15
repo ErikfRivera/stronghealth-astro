@@ -3,9 +3,9 @@
  * Primary navigation (port of shared/Nav.tsx).
  *
  * Desktop dropdowns are CSS-only (group-hover + focus-within) — no JS, still
- * keyboard-accessible. The mobile drawer uses one tiny inline script (~0.5 KB)
- * to toggle visibility, lock body scroll, and close on Escape/backdrop —
- * replacing the React portal implementation.
+ * keyboard-accessible. The mobile drawer is toggled by the shared
+ * site runtime (src/scripts/site-runtime.ts) — visibility, body scroll lock,
+ * Escape/backdrop close — replacing the React portal implementation.
  */
 import { BOOKING_SMS_HREF } from "../../lib/booking";
 import { articles } from "../../data/articles";
@@ -18,8 +18,7 @@ const peptideArticles = articles.filter((a) => a.category === "Peptide Therapy")
 const weightLossSlugs = new Set(ALL_WEIGHT_LOSS_CITIES.map((c) => c.slug));
 const peptideSlugs = new Set(ALL_PEPTIDE_CITIES.map((c) => c.slug));
 
-const dropdownPanelClass =
-  "absolute top-full right-0 mt-2 bg-surface-card border border-white/10 rounded-xl shadow-2xl z-50 opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto";
+const dropdownPanelClass = "nav-drop"; // shared rule in global.css (Phase 8)
 const triggerClass = "inline-flex items-center gap-1 hover:text-cream transition-colors";
 const chevronClass = "transition-transform group-hover:rotate-180";
 ---
@@ -45,7 +44,7 @@ const chevronClass = "transition-transform group-hover:rotate-180";
           <div class="p-4 w-[320px]">
             <a
               href="/peptides/"
-              class="block mb-2 px-3 py-2 rounded-md text-[13px] font-bold text-gold hover:bg-white/5 transition-colors"
+              class="nav-drop-hub"
             >
               Peptides Hub →
             </a>
@@ -55,7 +54,7 @@ const chevronClass = "transition-transform group-hover:rotate-180";
                 peptideArticles.map((a) => (
                   <a
                     href={a.path}
-                    class="block px-3 py-2 rounded-md text-[13px] text-cream hover:bg-white/5 hover:text-gold transition-colors leading-snug"
+                    class="nav-drop-a leading-snug"
                   >
                     {a.title.split(":")[0]}
                   </a>
@@ -75,7 +74,7 @@ const chevronClass = "transition-transform group-hover:rotate-180";
           <div class="p-4 w-[640px]">
             <a
               href="/fl/"
-              class="block mb-2 px-3 py-2 rounded-md text-[13px] font-bold text-gold hover:bg-white/5 transition-colors"
+              class="nav-drop-hub"
             >
               Florida Locations Hub →
             </a>
@@ -89,14 +88,14 @@ const chevronClass = "transition-transform group-hover:rotate-180";
                     </div>
                     <a
                       href={`/fl/${c.slug}/trt-therapy/`}
-                      class="block px-3 py-1 rounded-md text-[12px] text-muted hover:bg-white/5 hover:text-gold transition-colors"
+                      class="nav-drop-city-a"
                     >
                       {c.name} TRT Therapy
                     </a>
                     {weightLossSlugs.has(c.slug) && (
                       <a
                         href={`/fl/${c.slug}/weight-loss-clinic/`}
-                        class="block px-3 py-1 rounded-md text-[12px] text-muted hover:bg-white/5 hover:text-gold transition-colors"
+                        class="nav-drop-city-a"
                       >
                         {c.name} Weight Loss Clinics
                       </a>
@@ -104,7 +103,7 @@ const chevronClass = "transition-transform group-hover:rotate-180";
                     {peptideSlugs.has(c.slug) && (
                       <a
                         href={`/fl/${c.slug}/peptide-therapy/`}
-                        class="block px-3 py-1 rounded-md text-[12px] text-muted hover:bg-white/5 hover:text-gold transition-colors"
+                        class="nav-drop-city-a"
                       >
                         {c.name} Peptide Therapy
                       </a>
@@ -126,14 +125,14 @@ const chevronClass = "transition-transform group-hover:rotate-180";
           <div class="p-4 w-[220px]">
             <a
               href="/blog/"
-              class="block mb-2 px-3 py-2 rounded-md text-[13px] font-bold text-gold hover:bg-white/5 transition-colors"
+              class="nav-drop-hub"
             >
               Blog →
             </a>
             <div class="border-t border-white/5 my-2"></div>
             <a
               href="/reviews/"
-              class="block px-3 py-2 rounded-md text-[13px] text-cream hover:bg-white/5 hover:text-gold transition-colors"
+              class="nav-drop-a"
             >
               Reviews
             </a>
@@ -152,14 +151,14 @@ const chevronClass = "transition-transform group-hover:rotate-180";
               href="https://www.Dexascans.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="block mb-2 px-3 py-2 rounded-md text-[13px] font-bold text-gold hover:bg-white/5 transition-colors"
+              class="nav-drop-hub"
             >
               Dexa Scan
             </a>
             <div class="border-t border-white/5 my-2"></div>
             <a
               href="/fl/miami/dexascan/"
-              class="block px-3 py-2 rounded-md text-[13px] text-cream hover:bg-white/5 hover:text-gold transition-colors"
+              class="nav-drop-a"
             >
               DEXA Scan Miami
             </a>
@@ -206,19 +205,19 @@ const chevronClass = "transition-transform group-hover:rotate-180";
 >
   <div class="flex flex-col h-full overflow-y-auto px-6 py-6">
     <details class="border-b border-white/5 group">
-      <summary class="w-full min-h-[44px] flex items-center justify-between py-3 text-[15px] font-medium text-cream hover:text-gold transition-colors cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+      <summary class="mnav-sum">
         Peptides
         <Icon name="chevron-down" size={16} class="transition-transform group-open:rotate-180" />
       </summary>
       <div class="pb-3 pl-2 flex flex-col">
-        <a href="/peptides/" class="min-h-[44px] flex items-center py-3 text-[13px] font-bold text-gold hover:underline">
+        <a href="/peptides/" class="mnav-hub">
           Peptides Hub →
         </a>
         {
           peptideArticles.map((a) => (
             <a
               href={a.path}
-              class="min-h-[44px] flex items-center py-3 text-[13px] text-cream hover:text-gold transition-colors leading-snug"
+              class="mnav-a leading-snug"
             >
               {a.title.split(":")[0]}
             </a>
@@ -228,32 +227,32 @@ const chevronClass = "transition-transform group-hover:rotate-180";
     </details>
 
     <details class="border-b border-white/5 group">
-      <summary class="w-full min-h-[44px] flex items-center justify-between py-3 text-[15px] font-medium text-cream hover:text-gold transition-colors cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+      <summary class="mnav-sum">
         Locations
         <Icon name="chevron-down" size={16} class="transition-transform group-open:rotate-180" />
       </summary>
       <div class="pb-3 pl-2 flex flex-col">
-        <a href="/fl/" class="min-h-[44px] flex items-center py-3 text-[13px] font-bold text-gold hover:underline">
+        <a href="/fl/" class="mnav-hub">
           Florida Locations Hub →
         </a>
         {
           ALL_CITIES.map((c) => (
             <details class="group/city">
-              <summary class="w-full min-h-[44px] flex items-center justify-between py-2.5 text-[13px] font-semibold uppercase tracking-[1.2px] text-cream hover:text-gold transition-colors cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <summary class="mnav-city-sum">
                 {c.name}
                 <Icon name="chevron-down" size={14} class="transition-transform group-open/city:rotate-180" />
               </summary>
               <div class="pb-2 pl-3 flex flex-col">
                 <a
                   href={`/fl/${c.slug}/trt-therapy/`}
-                  class="min-h-[44px] flex items-center py-3 text-[13px] text-muted hover:text-gold transition-colors"
+                  class="mnav-city-a"
                 >
                   {c.name} TRT Therapy
                 </a>
                 {weightLossSlugs.has(c.slug) && (
                   <a
                     href={`/fl/${c.slug}/weight-loss-clinic/`}
-                    class="min-h-[44px] flex items-center py-3 text-[13px] text-muted hover:text-gold transition-colors"
+                    class="mnav-city-a"
                   >
                     {c.name} Weight Loss Clinics
                   </a>
@@ -261,7 +260,7 @@ const chevronClass = "transition-transform group-hover:rotate-180";
                 {peptideSlugs.has(c.slug) && (
                   <a
                     href={`/fl/${c.slug}/peptide-therapy/`}
-                    class="min-h-[44px] flex items-center py-3 text-[13px] text-muted hover:text-gold transition-colors"
+                    class="mnav-city-a"
                   >
                     {c.name} Peptide Therapy
                   </a>
@@ -274,22 +273,22 @@ const chevronClass = "transition-transform group-hover:rotate-180";
     </details>
 
     <details class="border-b border-white/5 group">
-      <summary class="w-full min-h-[44px] flex items-center justify-between py-3 text-[15px] font-medium text-cream hover:text-gold transition-colors cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+      <summary class="mnav-sum">
         Blog
         <Icon name="chevron-down" size={16} class="transition-transform group-open:rotate-180" />
       </summary>
       <div class="pb-3 pl-2 flex flex-col">
-        <a href="/blog/" class="min-h-[44px] flex items-center py-3 text-[13px] font-bold text-gold hover:underline">
+        <a href="/blog/" class="mnav-hub">
           Blog →
         </a>
-        <a href="/reviews/" class="min-h-[44px] flex items-center py-3 text-[13px] text-cream hover:text-gold transition-colors">
+        <a href="/reviews/" class="mnav-a">
           Reviews
         </a>
       </div>
     </details>
 
     <details class="border-b border-white/5 group">
-      <summary class="w-full min-h-[44px] flex items-center justify-between py-3 text-[15px] font-medium text-cream hover:text-gold transition-colors cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+      <summary class="mnav-sum">
         Dexascans
         <Icon name="chevron-down" size={16} class="transition-transform group-open:rotate-180" />
       </summary>
@@ -298,11 +297,11 @@ const chevronClass = "transition-transform group-hover:rotate-180";
           href="https://www.Dexascans.com"
           target="_blank"
           rel="noopener noreferrer"
-          class="min-h-[44px] flex items-center py-3 text-[13px] font-bold text-gold hover:underline"
+          class="mnav-hub"
         >
           Dexa Scan
         </a>
-        <a href="/fl/miami/dexascan/" class="min-h-[44px] flex items-center py-3 text-[13px] text-cream hover:text-gold transition-colors">
+        <a href="/fl/miami/dexascan/" class="mnav-a">
           DEXA Scan Miami
         </a>
       </div>
@@ -317,31 +316,3 @@ const chevronClass = "transition-transform group-hover:rotate-180";
     </a>
   </div>
 </div>
-
-<script>
-  const toggle = document.getElementById("mobile-nav-toggle")!;
-  const drawer = document.getElementById("mobile-nav-drawer")!;
-  const backdrop = document.getElementById("mobile-nav-backdrop")!;
-  const iconMenu = toggle.querySelector(".nav-icon-menu")!;
-  const iconClose = toggle.querySelector(".nav-icon-close")!;
-  let open = false;
-
-  function setOpen(next: boolean) {
-    open = next;
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    drawer.setAttribute("aria-hidden", String(!open));
-    drawer.classList.toggle("translate-x-full", !open);
-    drawer.classList.toggle("translate-x-0", open);
-    backdrop.classList.toggle("hidden", !open);
-    iconMenu.classList.toggle("hidden", open);
-    iconClose.classList.toggle("hidden", !open);
-    document.body.style.overflow = open ? "hidden" : "";
-  }
-
-  toggle.addEventListener("click", () => setOpen(!open));
-  backdrop.addEventListener("click", () => setOpen(false));
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && open) setOpen(false);
-  });
-</script>

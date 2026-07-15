@@ -135,6 +135,164 @@
 }
 
 @layer components {
+  /* --- Primary nav (desktop dropdown + mobile drawer) ---
+     These replace long per-link Tailwind utility strings that Astro repeated
+     on every one of the ~30 nav links on all 47 pages (Phase 8 payload
+     reduction). Each rule mirrors the exact utilities it replaced — see
+     src/components/shared/Nav.astro. */
+
+  /* was: absolute top-full right-0 mt-2 bg-surface-card border border-white/10
+     rounded-xl shadow-2xl z-50 opacity-0 invisible pointer-events-none
+     group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto
+     group-focus-within:opacity-100 group-focus-within:visible
+     group-focus-within:pointer-events-auto */
+  .nav-drop {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background-color: var(--color-surface-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .group:focus-within .nav-drop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  @media (hover: hover) {
+    .group:hover .nav-drop {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+
+  /* was: block mb-2 px-3 py-2 rounded-md text-[13px] font-bold text-gold
+     hover:bg-white/5 transition-colors */
+  .nav-drop-hub {
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-gold);
+    transition:
+      color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  /* was: block px-3 py-2 rounded-md text-[13px] text-cream hover:bg-white/5
+     hover:text-gold transition-colors (leading-snug stays a utility) */
+  .nav-drop-a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 13px;
+    color: var(--color-cream);
+    transition:
+      color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  /* was: block px-3 py-1 rounded-md text-[12px] text-muted hover:bg-white/5
+     hover:text-gold transition-colors */
+  .nav-drop-city-a {
+    display: block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 12px;
+    color: var(--color-muted);
+    transition:
+      color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @media (hover: hover) {
+    .nav-drop-hub:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    .nav-drop-a:hover,
+    .nav-drop-city-a:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--color-gold);
+    }
+  }
+
+  /* was: w-full min-h-[44px] flex items-center justify-between py-3
+     text-[15px] font-medium text-cream hover:text-gold transition-colors
+     cursor-pointer list-none [&::-webkit-details-marker]:hidden */
+  .mnav-sum,
+  .mnav-city-sum {
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-cream);
+    transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    list-style: none;
+  }
+  .mnav-sum::-webkit-details-marker,
+  .mnav-city-sum::-webkit-details-marker {
+    display: none;
+  }
+  /* was: … py-2.5 text-[13px] font-semibold uppercase tracking-[1.2px] … */
+  .mnav-city-sum {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+
+  /* was: min-h-[44px] flex items-center py-3 text-[13px] + color variants:
+     -hub  → font-bold text-gold hover:underline
+     -a    → text-cream hover:text-gold transition-colors
+     -city → text-muted hover:text-gold transition-colors */
+  .mnav-hub,
+  .mnav-a,
+  .mnav-city-a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-size: 13px;
+  }
+  .mnav-hub {
+    font-weight: 700;
+    color: var(--color-gold);
+  }
+  .mnav-a {
+    color: var(--color-cream);
+    transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .mnav-city-a {
+    color: var(--color-muted);
+    transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @media (hover: hover) {
+    .mnav-sum:hover,
+    .mnav-city-sum:hover,
+    .mnav-a:hover,
+    .mnav-city-a:hover {
+      color: var(--color-gold);
+    }
+    .mnav-hub:hover {
+      text-decoration-line: underline;
+    }
+  }
+
   .prose-strong-health h2 {
     font-size: 1.5rem;
     line-height: 2rem;

@@ -8,7 +8,8 @@
  *  - Ahrefs analytics (mUsqdURGMvgEYUov5WFjXw)
  *  - GA4 (G-ESG16019L2)
  * plus the LeadConnector chat widget, injected on scroll ≥ 300px or after
- * 8s (port of src/lib/loadChatWidget.ts).
+ * 8s (port of src/lib/loadChatWidget.ts — now in src/scripts/site-runtime.ts,
+ * loaded once at the end of <body> as a shared external module).
  */
 import "../styles/global.css";
 import Seo from "../components/seo/Seo.astro";
@@ -64,50 +65,9 @@ const { title, description, path, ogImage, ogType, noindex } = Astro.props;
   </head>
   <body>
     <slot />
-    <script is:inline>
-      // GA4 lead tracking (port of src/lib/gtag.ts trackLeadEvent): every CTA
-      // carrying data-track-lead fires generate_lead on click via delegation.
-      document.addEventListener("click", function (e) {
-        var t = e.target;
-        var el = t && t.closest ? t.closest("[data-track-lead]") : null;
-        if (el && typeof window.gtag === "function") {
-          window.gtag("event", "generate_lead", {
-            event_category: "cta",
-            event_label: "book_free_assessment",
-          });
-        }
-      });
-    </script>
-    <script is:inline>
-      // Chat widget loader (port of src/lib/loadChatWidget.ts): inject the
-      // LeadConnector bubble once the user scrolls past the hero (300px) or
-      // after 8s, whichever comes first.
-      (function () {
-        var SRC = "https://widgets.leadconnectorhq.com/loader.js";
-        var injected = false;
-        function inject() {
-          if (injected || document.querySelector('script[src="' + SRC + '"]')) return;
-          injected = true;
-          var s = document.createElement("script");
-          s.async = true;
-          s.src = SRC;
-          s.setAttribute("data-resources-url", "https://widgets.leadconnectorhq.com/chat-widget/loader.js");
-          s.setAttribute("data-widget-id", "69fcc800d663de762a50e94d");
-          s.setAttribute("data-source", "WEB_USER");
-          document.body.appendChild(s);
-        }
-        var timer;
-        function cleanup() {
-          window.removeEventListener("scroll", onScroll);
-          if (timer !== undefined) window.clearTimeout(timer);
-        }
-        function onScroll() {
-          if (window.scrollY >= 300) { cleanup(); inject(); }
-        }
-        if (window.scrollY >= 300) { inject(); return; }
-        window.addEventListener("scroll", onScroll, { passive: true });
-        timer = window.setTimeout(function () { cleanup(); inject(); }, 8000);
-      })();
-    </script>
+    <!-- Shared client runtime (mobile nav, fade-ins, GA4 lead tracking, chat
+         widget loader) as one hashed, cacheable module — see
+         src/scripts/site-runtime.ts (Phase 8). -->
+    <script src="../scripts/site-runtime.ts"></script>
   </body>
 </html>

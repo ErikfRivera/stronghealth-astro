@@ -76,3 +76,12 @@ Baseline commands (pre-change): `pnpm check` ✅ 0 errors · `pnpm build` ✅ 48
 - Measured settled diff /peptides-for-healing/ desktop: **0.0072 % pixels >30/255** (was 2.38 % in QA; acceptance ≤0.25 %) — residual = the intentional D2 `read read` correction + sub-pixel noise on the published line. Three more article routes: 0.0077–0.0092 %. **No waiver required**; evidence in `docs/waivers/phase7-article-visual/`.
 - Files changed: docs only (evidence + this log). No product change → visual baselines remain valid (verified: full @visual suite passes unchanged).
 - Commands: pnpm build ✓; test:parity:build 606/606 ✓; test:e2e 106 ✓; test:visual 55 ✓.
+
+### Phase 8 — HTML payload (commit: see git)
+- Median uncompressed HTML 68,218 B → **59,319 B** (budget ≤ 60,635 ✓; −8.9 KB/page avg, −415.5 KB across dist). Full before/after table: `docs/payload-report.md`.
+- (1) Nav utility-string duplication: desktop dropdown + mobile drawer link/summary classes → shared `nav-drop*` / `mnav-*` component rules in global.css (exact-equivalent CSS, documented inline). Drawer kept fully server-rendered with unchanged DOM/aria; open-drawer and expanded-groups screenshots pixel-identical (max channel delta 0).
+- (2) Four identical per-page inline scripts (nav toggle, FadeIn, GA4 lead, chat loader) → `src/scripts/site-runtime.ts`, one shared hashed module (2,497 B) via `assetsInlineLimit: 0`; gtag bootstrap (172 B) intentionally left inline in head. `/blog/` filter script now also external (same mechanism).
+- (3) JSON-LD/style-attribute audit: zero duplicated JSON-LD blocks; only 2×8 tiny chip styles — no action.
+- Files: src/components/shared/Nav.astro, src/components/shared/FadeIn.astro, src/layouts/BaseLayout.astro, src/styles/global.css, src/scripts/site-runtime.ts (new), astro.config.mjs, docs/payload-report.md.
+- Verify after change: pnpm build ✓ (48 pages, SEO gates clean); test:parity:build **606/606** ✓; test:e2e 106 ✓; test:visual **55/55 against the pre-change baselines** (no visual delta → baselines not regenerated, by design).
+- Residual risk: site-runtime is a deferred module (was parse-blocking inline) — lead-click listener/chat timer attach at module eval instead of parse; both are load-event-bounded, no user-visible change observed. 22 routes individually exceed the median figure due to genuine content (see report) — budget is a median target, met.

@@ -10,6 +10,8 @@
  *  3. GA4 lead tracking         (was inline in BaseLayout; port of lib/gtag.ts)
  *  4. LeadConnector chat loader (was inline in BaseLayout; port of
  *     lib/loadChatWidget.ts — inject on scroll ≥ 300px or after 8s)
+ *  5. Mobile sticky CTA reveal (pop up the bottom "Get Peptides" bar once
+ *     the visitor scrolls past the hero; see shared/MobileStickyCta.astro)
  */
 
 /* 1 — Mobile nav drawer (toggle visibility, lock body scroll, close on
@@ -132,4 +134,18 @@ document.addEventListener("click", (e) => {
     cleanup();
     inject();
   }, 8000);
+})();
+
+/* 5 — Mobile sticky CTA: reveal the bottom "Get Peptides" bar once the
+       visitor scrolls past the hero (300px, matching the chat widget), and
+       hide it again if they scroll back to the top. */
+(function stickyCta() {
+  const cta = document.getElementById("mobile-sticky-cta");
+  if (!cta) return;
+  const THRESHOLD = 300;
+  function update() {
+    cta!.classList.toggle("is-visible", window.scrollY >= THRESHOLD);
+  }
+  update();
+  window.addEventListener("scroll", update, { passive: true });
 })();

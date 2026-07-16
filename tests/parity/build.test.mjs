@@ -16,7 +16,6 @@ import {
   runSitemapAssertions,
 } from "./lib/page-assertions.mjs";
 import {
-  extractH1s,
   extractRobots,
   extractRootRelativeHrefs,
   visibleText,
@@ -53,22 +52,30 @@ for (const [path, entry] of Object.entries(fixture.pages)) {
 }
 
 // ---------------------------------------------------------------------------
-// 404 page — approved correction "unknown-route-real-404": the build must
-// ship a real 404 page (Vercel serves dist/404.html with HTTP 404).
+// 404 page — the build must ship dist/404.html (Vercel serves it with a real
+// HTTP 404 for any unmatched URL). Per request, that page redirects every
+// unknown URL to /peptides/: the response keeps its honest 404 status for
+// crawlers while browsers are bounced client-side to the Peptide Therapy hub.
 // ---------------------------------------------------------------------------
-test("404 page", async (t) => {
+test("404 page redirects to /peptides/", async (t) => {
   const file = join(dist, "404.html");
   assert.ok(existsSync(file), "dist/404.html missing");
   const html = readFileSync(file, "utf-8");
 
-  await t.test("shows 'Page not found'", () => {
-    assert.match(visibleText(html), /Page not found/);
+  await t.test("meta-refreshes to /peptides/", () => {
+    assert.match(
+      html,
+      /<meta[^>]+http-equiv="refresh"[^>]+content="0;\s*url=\/peptides\/"/i,
+    );
+  });
+  await t.test("scripts a client redirect to /peptides/", () => {
+    assert.match(html, /location\.replace\(\s*["']\/peptides\/["']\s*\)/);
+  });
+  await t.test("keeps a no-JS fallback link to /peptides/", () => {
+    assert.match(html, /href="\/peptides\/"/);
   });
   await t.test("is noindex", () => {
     assert.match(extractRobots(html) ?? "", /noindex/);
-  });
-  await t.test("has exactly one h1", () => {
-    assert.equal(extractH1s(html).length, 1);
   });
   await t.test("visible text bans apply to 404 too", () => {
     for (const ban of fixture.visible_text_bans) {

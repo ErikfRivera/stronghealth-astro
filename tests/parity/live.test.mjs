@@ -21,7 +21,6 @@ import {
   extractH1s,
   extractTitle,
   normalizeWs,
-  visibleText,
 } from "./lib/html.mjs";
 import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -97,10 +96,13 @@ test("live sitemap.xml", { skip }, async (t) => {
 });
 
 // Approved correction "unknown-route-real-404": candidate must return a real
-// HTTP 404 (production's soft-404 behavior is intentionally NOT encoded).
-test("live unknown route returns real 404", { skip }, async () => {
-  const { path, expected_status, expected_text } = fixture.unknown_route;
+// HTTP 404 (production's soft-404 behavior is intentionally NOT encoded), and
+// the 404 document must redirect the browser to /peptides/. The redirect is
+// client-side (meta-refresh + JS), so a manual fetch sees the 404 status and
+// the redirect target embedded in the body rather than a Location header.
+test("live unknown route returns real 404 that redirects to /peptides/", { skip }, async () => {
+  const { path, expected_status, expected_redirect } = fixture.unknown_route;
   const res = await fetch(CANDIDATE + path, { redirect: "manual" });
   assert.equal(res.status, expected_status);
-  assert.match(visibleText(await res.text()), new RegExp(expected_text));
+  assert.match(await res.text(), new RegExp(`url=${expected_redirect}`));
 });

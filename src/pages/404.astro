@@ -1,100 +1,44 @@
 ---
-// 404 page — port of src/pages/NotFoundPage.tsx. Astro builds this as
-// dist/404.html, which Vercel serves with a real HTTP 404 status for any
-// unknown URL. noindex,follow; excluded from the sitemap (generate-sitemap
-// only walks index.html files); never internally linked (check-seo enforces).
-import BaseLayout from "../layouts/BaseLayout.astro";
-import PageShell from "../components/shared/PageShell.astro";
-import { articles, type ArticleMeta } from "../data/articles";
-import { ALL_CITIES } from "../data/local/cityTrtConfig";
-import { ALL_WEIGHT_LOSS_CITIES } from "../data/local/cityWeightLossConfig";
-
-const peptideArticles: ArticleMeta[] = articles.filter(
-  (a) => a.category === "Peptide Therapy",
-);
-
-type GridLink = { to: string; title: string };
-
-const peptideLinks: GridLink[] = [
-  { to: "/peptides/", title: "Peptide Therapy Hub" },
-  ...peptideArticles.map((a) => ({ to: a.path, title: a.title })),
-];
-
-const clinicLinks: GridLink[] = [
-  { to: "/fl/", title: "Florida Clinics Hub" },
-  ...ALL_CITIES.map((c) => ({
-    to: `/fl/${c.slug}/trt-therapy/`,
-    title: `${c.name} TRT Therapy`,
-  })),
-  ...ALL_WEIGHT_LOSS_CITIES.map((c) => ({
-    to: `/fl/${c.slug}/weight-loss-clinic/`,
-    title: `${c.name} Weight Loss Clinic`,
-  })),
-];
+// 404 handler. Astro emits this as dist/404.html, which Vercel serves (with a
+// real HTTP 404) for any URL that matches neither a static route nor a
+// vercel.json redirect rule. Per request, every unmatched URL is sent to the
+// Peptide Therapy hub (/peptides/).
+//
+// Why the redirect lives here and not in vercel.json: Vercel's static output
+// has no way to issue a server-side 301/308 for *arbitrary* unknown paths —
+// redirect rules in vercel.json are evaluated before the filesystem, so a
+// catch-all `/(.*)` there would also hijack every real page (and loop on
+// /peptides/ itself). Instead the redirect is performed from the 404 document:
+// the HTTP response keeps its honest 404 status for crawlers, while browsers
+// are bounced immediately to /peptides/ via meta-refresh + a JS replace, with a
+// plain link as the no-JS / no-meta fallback.
+const DEST = "/peptides/";
+const CANONICAL = "https://www.stronghealth.com/404/";
+const DESCRIPTION =
+  "The page you requested could not be found and has moved. Redirecting you to the Strong Health peptide therapy hub for guides, protocols, and clinics.";
 ---
 
-<BaseLayout
-  title="Page Not Found (404)"
-  description="The page you're looking for couldn't be found. Browse Strong Health peptide therapy guides and South Florida TRT and weight loss clinic locations."
-  path="/404/"
-  noindex
->
-  <PageShell>
-    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
-      <div class="max-w-[1000px] mx-auto">
-        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
-          <li>
-            <a href="/" class="hover:text-gold transition-colors">Home</a>
-          </li>
-          <li class="text-text-subtle">/</li>
-          <li class="text-gold font-semibold">Page not found</li>
-        </ol>
-      </div>
-    </nav>
-    <section class="px-8 pt-10 pb-16">
-      <div class="max-w-[1000px] mx-auto">
-        <h1 class="text-[32px] md:text-[40px] font-black text-cream tracking-[-1px] mb-3">
-          Page not found
-        </h1>
-        <p class="text-[15px] text-muted mb-4">
-          The page you're looking for doesn't exist or has moved.
-        </p>
-        <a href="/" class="inline-block text-[14px] font-semibold text-gold hover:underline mb-12">
-          ← Back to homepage
-        </a>
-
-        <h2 class="text-[20px] font-extrabold text-cream mb-4">Peptide guides</h2>
-        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {
-            peptideLinks.map((link) => (
-              <li>
-                <a
-                  href={link.to}
-                  class="block bg-surface-card rounded-lg p-4 border border-white/10 text-[14px] text-cream hover:border-gold/40 hover:text-gold transition-colors"
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-
-        <h2 class="text-[20px] font-extrabold text-cream mt-12 mb-4">Clinic locations</h2>
-        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {
-            clinicLinks.map((link) => (
-              <li>
-                <a
-                  href={link.to}
-                  class="block bg-surface-card rounded-lg p-4 border border-white/10 text-[14px] text-cream hover:border-gold/40 hover:text-gold transition-colors"
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </section>
-  </PageShell>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0; url=${DEST}`} />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href={CANONICAL} />
+    <title>Redirecting… | Strong Health</title>
+    <meta name="description" content={DESCRIPTION} />
+    <script is:inline>
+      window.location.replace("/peptides/");
+    </script>
+  </head>
+  <body>
+    <main style="font-family: system-ui, sans-serif; max-width: 40rem; margin: 4rem auto; padding: 0 1.5rem;">
+      <h1>Page moved</h1>
+      <p>
+        The page you were looking for doesn't exist. If you're not redirected
+        automatically, <a href={DEST}>continue to Strong Health peptide therapy →</a>.
+      </p>
+    </main>
+  </body>
+</html>

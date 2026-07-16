@@ -1,0 +1,96 @@
+---
+// /peptides-for-weight-loss/ — content-gap page from the internal-linking audit
+// (Phase 6). Body copy is a DRAFT scaffolded from citations already vetted
+// elsewhere in the repo; a Strong Health physician must review before publish.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-weight-loss.html?raw";
+
+const path = "/peptides-for-weight-loss/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [
+  {
+    question: "Which peptides help with weight loss?",
+    answer:
+      "Two categories are used clinically. GLP-1 receptor agonists — semaglutide and tirzepatide — are peptide-based medications that reduce appetite and food intake. GH-secretagogue peptides such as Tesamorelin influence fat metabolism and body composition. The right choice depends on your goals, labs, and physician evaluation.",
+  },
+  {
+    question: "Are GLP-1 medications like semaglutide actually peptides?",
+    answer:
+      "Yes. Semaglutide and tirzepatide are peptide-based medications that mimic naturally occurring gut hormones to regulate appetite and satiety through GLP-1 signaling pathways. That is different from GH-secretagogue peptides, which act on the growth-hormone axis.",
+  },
+  {
+    question: "Will I lose muscle on a peptide weight-loss protocol?",
+    answer:
+      "Any rapid weight loss can cost lean mass along with fat, which is why body composition — not just scale weight — is tracked with a DEXA scan. GH-secretagogue peptides are sometimes paired with GLP-1 programs specifically to support lean mass during a caloric deficit, under physician supervision.",
+  },
+  {
+    question: "How is this different from the peptides-for-belly-fat page?",
+    answer:
+      "This guide covers overall medical weight loss, including GLP-1 medications for appetite and total weight. The belly-fat guide focuses more narrowly on visceral (abdominal) fat and the GH-secretagogue peptides, like Tesamorelin, used to target it. Many patients read both.",
+  },
+  {
+    question: "Do I have to stay on weight-loss peptides forever?",
+    answer:
+      "That is a clinical decision made with your physician. Some patients taper once goals and sustainable habits are established; others continue maintenance therapy. Protocols are individualized, monitored on a schedule, and adjusted over time rather than set once.",
+  },
+];
+
+const citations = [
+  { id: 1, text: "Wilding JPH, et al. Once-weekly semaglutide in adults with overweight or obesity (STEP 1). N Engl J Med. 2021;384(11):989-1002.", url: "https://pubmed.ncbi.nlm.nih.gov/33567185/" },
+  { id: 2, text: "Jastreboff AM, et al. Tirzepatide once weekly for the treatment of obesity (SURMOUNT-1). N Engl J Med. 2022;387(3):205-216.", url: "https://pubmed.ncbi.nlm.nih.gov/35658024/" },
+  { id: 3, text: "Drucker DJ. Mechanisms of action and therapeutic application of glucagon-like peptide-1. Cell Metab. 2018;27(4):740-756.", url: "https://pubmed.ncbi.nlm.nih.gov/29617641/" },
+  { id: 4, text: "Falutz J, et al. Effects of tesamorelin (TH9507), a growth hormone-releasing factor analog, in HIV-infected patients with excess abdominal fat. N Engl J Med. 2007;357(23):2359-2370.", url: "https://pubmed.ncbi.nlm.nih.gov/18167644/" },
+  { id: 5, text: "Johannsson G, et al. Growth hormone treatment of abdominally obese men reduces abdominal fat mass. J Clin Endocrinol Metab. 1997;82(3):727-734.", url: "https://pubmed.ncbi.nlm.nih.gov/9062473/" },
+  { id: 6, text: "Nass R, et al. Effects of an oral ghrelin mimetic on body composition and clinical outcomes in healthy older adults. Ann Intern Med. 2008;149(9):601-611.", url: "https://pubmed.ncbi.nlm.nih.gov/18981485/" },
+  { id: 7, text: "Lincoff AM, et al. Semaglutide and cardiovascular outcomes in obesity without diabetes (SELECT). N Engl J Med. 2023;389(24):2221-2232.", url: "https://pubmed.ncbi.nlm.nih.gov/37952131/" },
+];
+
+const tocItems = [
+  { id: "weight-loss-landscape", title: "The Medical Weight-Loss Landscape" },
+  { id: "glp1", title: "GLP-1 Agonists: Semaglutide and Tirzepatide" },
+  { id: "gh-secretagogues", title: "GH Secretagogues and Fat Metabolism" },
+  { id: "lean-mass", title: "Protecting Lean Mass During Weight Loss" },
+  { id: "protocols", title: "How Weight-Loss Protocols Are Designed" },
+  { id: "safety", title: "Safety and Side Effects" },
+  { id: "faq", title: "FAQ" },
+];
+
+const relatedLinks = [
+  { url: "/peptides/", label: "Peptides Hub: All Peptide Therapies" },
+  { url: "/peptides-for-belly-fat/", label: "Peptides for Belly Fat: Tesamorelin and AOD-9604" },
+  { url: "/semaglutide-diet/", label: "Semaglutide Diet: Complete Guide for Weight Loss" },
+  { url: "/fl/miami/weight-loss-clinic/", label: "Medical Weight Loss Clinic in Miami, FL" },
+  { url: "/dexa-scan/", label: "DEXA Scan: Gold Standard for Body Composition" },
+  { url: "/peptides-for-muscle-growth/", label: "Peptides for Muscle Growth: GH Secretagogues for Lean Mass" },
+];
+
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Weight Loss: GLP-1, GH Secretagogues, and Fat-Loss Protocols"
+  seoTitle="Peptides for Weight Loss: A Clinical Guide"
+  subtitle="From GLP-1 medications like semaglutide to GH-secretagogue peptides for fat metabolism, here's how physician-supervised peptide protocols support medical weight loss — and how they protect lean mass along the way."
+  seoDescription="How peptides support medical weight loss: GLP-1 agonists (semaglutide, tirzepatide), GH secretagogues for fat metabolism, lean-mass preservation, and safety."
+  path={path}
+  breadcrumb="Peptides for Weight Loss"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-16"
+  dateModifiedISO="2026-07-16"
+  readTime="10 min read"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Want a Physician-Supervised Weight-Loss Plan?"
+  ctaText="Our physicians evaluate your metabolic profile and design an individualized program — GLP-1 therapy, peptide pairing, and body-composition tracking, all monitored by the same physician."
+  ctaButtonText="Book a Weight-Loss Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

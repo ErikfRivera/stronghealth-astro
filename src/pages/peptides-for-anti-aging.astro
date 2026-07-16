@@ -1,0 +1,96 @@
+---
+// /peptides-for-anti-aging/ — content-gap page from the internal-linking audit
+// (Phase 6). Body copy is a DRAFT scaffolded from citations already vetted
+// elsewhere in the repo; a Strong Health physician must review before publish.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-anti-aging.html?raw";
+
+const path = "/peptides-for-anti-aging/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [
+  {
+    question: "Can peptides reverse aging?",
+    answer:
+      "No. No peptide reverses aging or extends human lifespan, and any claim to that effect is not supported by clinical evidence. What physician-supervised peptide protocols can realistically support are the measurable downstream effects of age-related growth-hormone and NAD+ decline — body composition, recovery capacity, and energy — confirmed with objective lab work rather than by feel alone.",
+  },
+  {
+    question: "What peptides are used in an anti-aging context?",
+    answer:
+      "The most commonly discussed are GH-secretagogue peptides such as CJC-1295, Ipamorelin, and Sermorelin, which prompt the pituitary to release more of the body's own growth hormone in its natural pulsatile pattern. These are frequently discussed alongside NAD+ precursor support, though NAD+ precursors are not themselves peptides.",
+  },
+  {
+    question: "Is NAD+ therapy the same as peptide therapy?",
+    answer:
+      "No. NAD+ precursors and therapeutic peptides act on different pathways. NAD+ supports mitochondrial energy metabolism and sirtuin activity, while GH-secretagogue peptides influence the growth-hormone axis. They are sometimes used together under physician supervision, but they are not interchangeable.",
+  },
+  {
+    question: "How is this different from testosterone therapy?",
+    answer:
+      "Testosterone replacement therapy addresses low testosterone directly. GH-secretagogue peptides work on the growth-hormone axis instead. The two target different systems and are sometimes combined in an integrated protocol designed and monitored by the same physician, based on the patient's labs and goals.",
+  },
+  {
+    question: "Are anti-aging peptides safe?",
+    answer:
+      "Under physician supervision with appropriate labs and monitoring, GH-secretagogue peptides are generally well tolerated. The most common side effects are mild and protocol-specific. Contraindications include active malignancy and certain endocrine disorders, and IGF-1 is monitored on an ongoing basis. Screening at intake is essential.",
+  },
+];
+
+const citations = [
+  { id: 1, text: "Junnila RK, et al. The GH/IGF-1 axis in ageing and longevity. Nat Rev Endocrinol. 2013;9(6):366-376.", url: "https://pubmed.ncbi.nlm.nih.gov/23591370/" },
+  { id: 2, text: "Nass R, et al. Effects of an oral ghrelin mimetic on body composition and clinical outcomes in healthy older adults. Ann Intern Med. 2008;149(9):601-611.", url: "https://pubmed.ncbi.nlm.nih.gov/18981485/" },
+  { id: 3, text: "Raun K, et al. Ipamorelin, the first selective growth hormone secretagogue. Eur J Endocrinol. 1998;139(5):552-561.", url: "https://pubmed.ncbi.nlm.nih.gov/9849822/" },
+  { id: 4, text: "Braidy N, et al. Age related changes in NAD+ metabolism, oxidative stress and Sirt1 activity in Wistar rats. PLoS One. 2011;6(4):e19194.", url: "https://pubmed.ncbi.nlm.nih.gov/21541336/" },
+  { id: 5, text: "Imai S, Guarente L. NAD+ and sirtuins in aging and disease. Trends Cell Biol. 2014;24(8):464-471.", url: "https://pubmed.ncbi.nlm.nih.gov/24786309/" },
+  { id: 6, text: "Verdin E. NAD+ in aging, metabolism, and neurodegeneration. Science. 2015;350(6265):1208-1213.", url: "https://pubmed.ncbi.nlm.nih.gov/26785480/" },
+  { id: 7, text: "Gehm BD, et al. Resveratrol, a polyphenolic compound found in grapes and wine, is an agonist for the estrogen receptor. Proc Natl Acad Sci USA. 1997;94(25):14138-14143.", url: "https://pubmed.ncbi.nlm.nih.gov/9391166/" },
+];
+
+const tocItems = [
+  { id: "aging-axis", title: "How Aging Shifts the GH and NAD+ Axes" },
+  { id: "gh-secretagogues", title: "GH Secretagogues and Age-Related Decline" },
+  { id: "nad-longevity", title: "NAD+, Sirtuins, and Cellular Aging" },
+  { id: "realistic-expectations", title: "What Peptides Can and Can't Do for Aging" },
+  { id: "protocols", title: "How Anti-Aging Protocols Are Designed" },
+  { id: "safety", title: "Safety, Monitoring, and Contraindications" },
+  { id: "faq", title: "FAQ" },
+];
+
+const relatedLinks = [
+  { url: "/peptides/", label: "Peptides Hub: All Peptide Therapies" },
+  { url: "/peptides-for-muscle-growth/", label: "Peptides for Muscle Growth: GH Secretagogues for Lean Mass" },
+  { url: "/peptides-for-healing/", label: "Peptides for Healing: BPC-157 and TB-500" },
+  { url: "/nadh-benefits/", label: "NADH Benefits: Cellular Energy & Cognition" },
+  { url: "/resveratrol-side-effects/", label: "Resveratrol Side Effects for Men" },
+  { url: "/dexa-scan/", label: "DEXA Scan: Gold Standard for Body Composition" },
+];
+
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Anti-Aging: GH Secretagogues, NAD+, and the Longevity Axis"
+  seoTitle="Peptides for Anti-Aging: The Evidence"
+  subtitle="Aging isn't one process — it's the measurable decline of specific systems like the growth-hormone axis and NAD+ metabolism. Here's what physician-supervised peptide therapy can and can't realistically do about it."
+  seoDescription="An evidence-based look at peptides in an anti-aging context: GH secretagogues, NAD+ and sirtuins, realistic expectations, and physician-supervised safety."
+  path={path}
+  breadcrumb="Peptides for Anti-Aging"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-16"
+  dateModifiedISO="2026-07-16"
+  readTime="9 min read"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Interested in a Physician-Supervised Longevity Protocol?"
+  ctaText="Our physicians evaluate your hormonal and metabolic profile and design an individualized, lab-anchored plan — with realistic goals and ongoing monitoring."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

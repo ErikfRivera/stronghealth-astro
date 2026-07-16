@@ -55,7 +55,15 @@ const CATEGORY_GROUPS: CategoryGroup[] = [
     description:
       "GH secretagogues and targeted peptides that support fat loss and lean muscle growth.",
     match: (a) =>
-      a.path === "/peptides-for-belly-fat/" || a.path === "/peptides-for-muscle-growth/",
+      a.path === "/peptides-for-belly-fat/" ||
+      a.path === "/peptides-for-muscle-growth/" ||
+      a.path === "/peptides-for-weight-loss/",
+  },
+  {
+    name: "Longevity & Anti-Aging",
+    description:
+      "GH secretagogues and NAD+ support studied in the context of age-related decline and body composition.",
+    match: (a) => a.path === "/peptides-for-anti-aging/",
   },
   {
     name: "Sexual Health",

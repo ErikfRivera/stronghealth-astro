@@ -361,6 +361,9 @@ export const MIAMI_PEPTIDE_CONFIG: CityPeptideConfig = {
       { label: "Testosterone Therapy in Miami", href: "/fl/miami/trt-therapy/" },
       { label: "Medical Weight Loss in Miami", href: "/fl/miami/weight-loss-clinic/" },
       { label: "DEXA Scan in Miami", href: "/fl/miami/dexascan/" },
+      { label: "Peptides for recovery & healing", href: "/peptides-for-healing/" },
+      { label: "Peptides for visceral belly fat", href: "/peptides-for-belly-fat/" },
+      { label: "Peptides for libido & sexual health", href: "/peptides-for-libido/" },
       { label: "All Florida locations", href: "/fl/" },
       { label: "Strong Health services hub", href: "/" },
     ],
@@ -572,6 +575,8 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
     relatedInternalLinks: [
       { label: "Testosterone Therapy in Delray Beach", href: "/fl/delray-beach/trt-therapy/" },
       { label: "Medical Weight Loss in Delray Beach", href: "/fl/delray-beach/weight-loss-clinic/" },
+      { label: "Peptides for tissue repair & recovery", href: "/peptides-for-healing/" },
+      { label: "Collagen peptides guide", href: "/collagen-peptides/" },
       { label: "All Florida locations", href: "/fl/" },
       { label: "Strong Health services hub", href: "/" },
     ],

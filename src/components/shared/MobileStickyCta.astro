@@ -1,0 +1,86 @@
+---
+/**
+ * Mobile-only sticky call-to-action pinned to the bottom of the viewport.
+ * It stays hidden until the visitor scrolls past the hero, then pops up
+ * (show/pop logic lives in src/scripts/site-runtime.ts, section 5). The bar
+ * stops short of the right edge so it never covers the LeadConnector chat
+ * bubble that floats bottom-right. Rendered on every page via BaseLayout.
+ */
+const HREF = "https://certified-pep.com/?ref=tieckcln";
+---
+
+<a
+  id="mobile-sticky-cta"
+  href={HREF}
+  target="_blank"
+  rel="noopener sponsored"
+  aria-label="Get Peptides"
+  class="mobile-sticky-cta"
+>
+  <span class="mobile-sticky-cta-emoji" aria-hidden="true">👉</span>
+  <span>Get Peptides</span>
+</a>
+
+<style>
+  .mobile-sticky-cta {
+    position: fixed;
+    /* Sit above the iOS home-indicator safe area. */
+    bottom: calc(0.9rem + env(safe-area-inset-bottom, 0px));
+    left: 0.9rem;
+    /* Leave clearance on the right for the floating chat bubble. */
+    right: 5.25rem;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.9rem 1.25rem;
+    border-radius: 9999px;
+    background-color: #c9a84c; /* --color-gold */
+    color: #0d0f12; /* --color-surface */
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.55);
+    /* Hidden until revealed on scroll. */
+    opacity: 0;
+    transform: translateY(140%);
+    pointer-events: none;
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.35s ease;
+  }
+
+  .mobile-sticky-cta.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Mobile only — hide from Tailwind's `md` breakpoint (768px) up. Scoped
+     here (rather than a `md:hidden` utility) so it beats this component's own
+     higher-specificity scoped rules on desktop. */
+  @media (min-width: 768px) {
+    .mobile-sticky-cta {
+      display: none;
+    }
+  }
+
+  .mobile-sticky-cta:active {
+    background-color: #d4b96a; /* --color-gold-hover */
+  }
+
+  .mobile-sticky-cta-emoji {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-sticky-cta {
+      transition: opacity 0.2s ease;
+      transform: translateY(0);
+    }
+  }
+</style>

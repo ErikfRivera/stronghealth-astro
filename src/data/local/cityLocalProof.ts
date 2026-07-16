@@ -100,6 +100,49 @@ const SERVICE_SLUGS: Record<Service, Set<string>> = {
  * telehealth service area) get peptides-hub + /peptides/-cluster links
  * instead (US-N1).
  */
+// Peptide-only service areas cross-link into the "peptides for [outcome]"
+// cluster instead of sibling service pages. Vary the spokes per city so inbound
+// equity spreads across the full use-case set rather than concentrating on two
+// pages (internal-linking audit, Phase 2).
+const DEFAULT_PEPTIDE_USE_CASE_LINKS: RelatedInternalLink[] = [
+  { label: "Peptides for Healing & Recovery (BPC-157)", href: "/peptides-for-healing/" },
+  { label: "Peptides for Muscle Growth", href: "/peptides-for-muscle-growth/" },
+  { label: "Peptides for Belly Fat (Tesamorelin)", href: "/peptides-for-belly-fat/" },
+];
+
+const PEPTIDE_USE_CASE_LINKS_BY_SLUG: Record<string, RelatedInternalLink[]> = {
+  "new-york": [
+    { label: "Peptides for tendon & ligament repair", href: "/peptides-for-tendon-repair/" },
+    { label: "Peptides for sleep & overnight recovery", href: "/peptides-for-sleep/" },
+    { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
+  ],
+  "san-diego": [
+    { label: "Peptides for sleep & recovery", href: "/peptides-for-sleep/" },
+    { label: "GH peptides for lean muscle", href: "/peptides-for-muscle-growth/" },
+    { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
+  ],
+  "las-vegas": [
+    { label: "Peptides for muscle growth", href: "/peptides-for-muscle-growth/" },
+    { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
+    { label: "Peptides for belly fat (Tesamorelin)", href: "/peptides-for-belly-fat/" },
+  ],
+  "atlanta": [
+    { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
+    { label: "Peptides for arthritis & joint pain", href: "/peptides-for-arthritis/" },
+    { label: "GH peptides for lean muscle", href: "/peptides-for-muscle-growth/" },
+  ],
+  "austin": [
+    { label: "Peptides for belly fat (Tesamorelin)", href: "/peptides-for-belly-fat/" },
+    { label: "Peptides for muscle growth", href: "/peptides-for-muscle-growth/" },
+    { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
+  ],
+  "tampa": [
+    { label: "Peptides for arthritis & joint pain", href: "/peptides-for-arthritis/" },
+    { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
+    { label: "Collagen peptides guide", href: "/collagen-peptides/" },
+  ],
+};
+
 export function defaultRelatedInternalLinks(
   slug: string,
   cityName: string,
@@ -153,18 +196,7 @@ export function defaultRelatedInternalLinks(
       // Peptide-only service area (no TRT/weight-loss city pages, e.g. New
       // York): cross-link the /peptides/ content cluster instead (US-N1).
       extras.push(
-        {
-          label: "Peptides for Healing & Recovery (BPC-157)",
-          href: "/peptides-for-healing/",
-        },
-        {
-          label: "Peptides for Muscle Growth",
-          href: "/peptides-for-muscle-growth/",
-        },
-        {
-          label: "Peptides for Belly Fat (Tesamorelin)",
-          href: "/peptides-for-belly-fat/",
-        },
+        ...(PEPTIDE_USE_CASE_LINKS_BY_SLUG[slug] ?? DEFAULT_PEPTIDE_USE_CASE_LINKS),
       );
     }
   }

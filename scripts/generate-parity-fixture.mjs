@@ -60,11 +60,11 @@ const OVERRIDES = [
   },
   {
     id: "unknown-route-real-404",
-    rule: "Unknown URLs must return a real HTTP 404 status and render the 'Page not found' page.",
+    rule: "Unknown URLs must return a real HTTP 404 status; the 404 document then redirects the browser to /peptides/.",
     reason:
       "Production serves a soft-404 (HTTP 200) for unknown routes. Approved correction: " +
-      "the rebuilt site returns a genuine 404. The fixture encodes the corrected behavior, " +
-      "not production's.",
+      "the rebuilt site returns a genuine 404 for crawlers while redirecting visitors to " +
+      "the /peptides/ hub. The fixture encodes the corrected behavior, not production's.",
   },
   {
     id: "sitemap-meta-rules-derived",
@@ -375,8 +375,8 @@ const fixture = {
   pages: sortObject(pages),
   production_origin: pageParity.production_origin,
   unknown_route: {
+    expected_redirect: "/peptides/",
     expected_status: 404,
-    expected_text: "Page not found",
     override: "unknown-route-real-404",
     path: "/zzz-does-not-exist/",
   },

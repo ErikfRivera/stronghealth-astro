@@ -102,11 +102,13 @@ test.describe("sms booking CTAs", () => {
 });
 
 test.describe("unknown route", () => {
-  test("returns real 404 and shows 'Page not found'", async ({ page }) => {
+  test("returns a real 404 then redirects to /peptides/", async ({ page }) => {
+    // The unknown URL is served by dist/404.html with a genuine HTTP 404
+    // status (the first navigation response), which then redirects the browser
+    // to /peptides/ via meta-refresh + a JS location.replace.
     const response = await page.goto("/zzz-does-not-exist/");
     expect(response.status()).toBe(404);
-    await expect(
-      page.getByRole("heading", { level: 1, name: /Page not found/i }),
-    ).toBeVisible();
+    await page.waitForURL(/\/peptides\/$/);
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   });
 });

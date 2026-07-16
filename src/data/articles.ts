@@ -20,6 +20,22 @@ export interface ArticleMeta {
 
 export const articles: ArticleMeta[] = [
   {
+    title: "Peptides for Anti-Aging: GH Secretagogues, NAD+, and the Longevity Axis",
+    subtitle: "An evidence-based look at what physician-supervised peptide therapy can and can't do about age-related decline in the growth-hormone and NAD+ systems.",
+    path: "/peptides-for-anti-aging/",
+    category: "Peptide Therapy",
+    readTime: "9 min read",
+    datePublished: "2026-07-16",
+  },
+  {
+    title: "Peptides for Weight Loss: GLP-1, GH Secretagogues, and Fat-Loss Protocols",
+    subtitle: "How GLP-1 medications and GH-secretagogue peptides support medical weight loss — and how they protect lean mass along the way.",
+    path: "/peptides-for-weight-loss/",
+    category: "Peptide Therapy",
+    readTime: "10 min read",
+    datePublished: "2026-07-16",
+  },
+  {
     title: "The Stillman Diet: History, Risks, and Why Modern Medicine Moved On",
     subtitle: "A 1967 crash diet that sold 5 million copies, raised cholesterol in every study participant, and pioneered ideas that still influence how we think about protein and weight loss.",
     path: "/stillman-diet/",

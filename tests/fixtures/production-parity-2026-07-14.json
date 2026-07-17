@@ -436,6 +436,22 @@
       "status": 200,
       "title": "Peptide Therapy in Miami, FL | Strong Health"
     },
+    "/fl/miami/prp-therapy/": {
+      "canonical_path": "/fl/miami/prp-therapy/",
+      "description": "Physician-led PRP in Miami, FL: platelet-rich plasma for hair restoration, PRP facials, microneedling, and joint & sports-injury recovery. Brickell clinic.",
+      "h1": "PRP Therapy in Miami, FL.",
+      "jsonld": {},
+      "lang": "en",
+      "post_cutover": true,
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-17",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "PRP Therapy in Miami, FL | Strong Health"
+    },
     "/fl/miami/trt-therapy/": {
       "canonical_path": "/fl/miami/trt-therapy/",
       "description": "Physician-supervised testosterone therapy in Miami, FL. Brickell clinic, 50+ biomarker labs, telehealth follow-ups. Board-certified. Free assessment.",

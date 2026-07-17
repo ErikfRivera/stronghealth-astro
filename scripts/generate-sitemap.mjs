@@ -110,6 +110,7 @@ function routeSourceFiles(route) {
     push("src/data/local/cityTrtConfig.ts");
     if (route.includes("weight-loss")) push("src/data/local/cityWeightLossConfig.ts");
     if (route.includes("peptide-therapy")) push("src/data/local/cityPeptideConfig.ts");
+    if (route.includes("prp-therapy")) push("src/data/local/cityPrpConfig.ts");
   }
   return files;
 }
@@ -176,6 +177,8 @@ const HISTORICAL_LASTMOD = {
   "/fl/delray-beach/weight-loss-clinic/": "2026-05-27",
   "/fl/miami/dexascan/": "2026-06-22",
   "/fl/miami/peptide-therapy/": "2026-05-27",
+  // Post-cutover Miami PRP (platelet-rich plasma) therapy launch.
+  "/fl/miami/prp-therapy/": "2026-07-17",
   "/fl/miami/trt-therapy/": "2026-05-27",
   "/fl/miami/weight-loss-clinic/": "2026-05-27",
   // Tampa telehealth service-area peptide launch (physicalClinic: false).

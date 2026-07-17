@@ -57,6 +57,12 @@ const services = [
     cta: "Learn about peptide therapy →",
   },
   {
+    name: "PRP Therapy (Platelet-Rich Plasma)",
+    desc: "Physician-performed PRP for hair restoration, facial and skin rejuvenation, under-eye treatment, and joint & sports-injury recovery at our Brickell clinic.",
+    href: "/fl/miami/prp-therapy/",
+    cta: "PRP therapy in Miami →",
+  },
+  {
     name: "DEXA Scan (Body Composition)",
     desc: "Clinical DEXA scan body composition and bone density analysis at our Brickell clinic. Lean mass, body fat %, visceral fat, and bone density with a 1–2% margin of error.",
     href: "/fl/miami/dexascan/",
@@ -260,6 +266,14 @@ const cityItems = ALL_CITIES.flatMap((c) => [
                           >
                             Peptide Therapy →
                           </a>
+                          {slug === "miami" && (
+                            <a
+                              href={`/fl/${slug}/prp-therapy/`}
+                              class="text-[12px] text-gold font-semibold hover:underline"
+                            >
+                              PRP Therapy →
+                            </a>
+                          )}
                         </div>
                       </div>
                     );

@@ -19,11 +19,26 @@ interface Props {
   description: string;
   path: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageType?: string;
   ogType?: string;
   noindex?: boolean;
 }
 
-const { title, description, path, ogImage, ogType, noindex } = Astro.props;
+const {
+  title,
+  description,
+  path,
+  ogImage,
+  ogImageAlt,
+  ogImageWidth,
+  ogImageHeight,
+  ogImageType,
+  ogType,
+  noindex,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -40,6 +55,10 @@ const { title, description, path, ogImage, ogType, noindex } = Astro.props;
       description={description}
       path={path}
       ogImage={ogImage}
+      ogImageAlt={ogImageAlt}
+      ogImageWidth={ogImageWidth}
+      ogImageHeight={ogImageHeight}
+      ogImageType={ogImageType}
       ogType={ogType}
       noindex={noindex}
     />

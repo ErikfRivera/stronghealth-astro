@@ -1,0 +1,927 @@
+---
+// /fl/miami/stem-cell-therapy/ — highly localized Miami stem cell & regenerative
+// medicine page. Self-contained (like the Miami DEXA page): reuses the shared
+// component system + JsonLd schema builders. Targets the "stem cell therapy
+// miami" keyword cluster (arthritis, knees, joints, regenerative, specialist,
+// exosome therapy) with physician-supervised, responsibly framed copy.
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageShell from "../../../components/shared/PageShell.astro";
+import JsonLd from "../../../components/seo/JsonLd.astro";
+import {
+  articleSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+  medicalWebPageSchema,
+} from "../../../components/seo/schemas";
+import FadeIn from "../../../components/shared/FadeIn.astro";
+import Btn from "../../../components/shared/Btn.astro";
+import Tag from "../../../components/shared/Tag.astro";
+import Icon from "../../../components/shared/Icon.astro";
+import AuthorByline from "../../../components/shared/AuthorByline.astro";
+import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../../data/articleAuthors";
+import { MIAMI_BRICKELL_CLINIC, MIAMI_BRICKELL_FULL_ADDRESS } from "../../../data/miamiClinic";
+
+const CLINIC = MIAMI_BRICKELL_CLINIC;
+const FULL_ADDRESS = MIAMI_BRICKELL_FULL_ADDRESS;
+const PUBLISH_DATE = "2026-07-17";
+const MAPS_QUERY = encodeURIComponent(`${CLINIC.name}, ${FULL_ADDRESS}`);
+
+const BOOKING_SMS_NUMBER = "+17542636026";
+const BOOKING_SMS_BODY =
+  "I would like to book a free stem cell / regenerative medicine assessment with Strong Health Miami";
+const BOOKING_SMS_HREF = `sms:${BOOKING_SMS_NUMBER}?&body=${encodeURIComponent(
+  BOOKING_SMS_BODY,
+)}`;
+
+const TEL_HREF = `tel:${CLINIC.phone.replace(/[^\d+]/g, "")}`;
+const PAGE_PATH = "/fl/miami/stem-cell-therapy/";
+const SITE_URL = "https://www.stronghealth.com";
+
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Florida", path: "/fl/" },
+  { name: "Stem Cell Therapy Miami", path: PAGE_PATH },
+];
+
+// Conditions — targets "stem cell therapy for arthritis in miami", "stem cell
+// therapy for knees miami", "stem cell injections for joint pain in miami",
+// "stem cell therapy for heel pain north miami beach", "stem cell hair
+// restoration miami".
+const conditions = [
+  {
+    icon: "bone",
+    title: "Knee & Hip Osteoarthritis",
+    desc: "Regenerative injections for degenerative knee and hip arthritis — a leading reason Miami patients look for an alternative to repeat cortisone or joint replacement.",
+  },
+  {
+    icon: "activity",
+    title: "Shoulder & Rotator Cuff",
+    desc: "Partial rotator cuff tears, labral irritation, and chronic shoulder pain that hasn't settled with physical therapy or NSAIDs alone.",
+  },
+  {
+    icon: "syringe",
+    title: "Joint Pain & Cartilage Wear",
+    desc: "Physician-guided stem cell injections for joint pain in Miami — knees, shoulders, hips, and ankles evaluated case by case on imaging.",
+  },
+  {
+    icon: "heart-pulse",
+    title: "Tendon & Ligament Injuries",
+    desc: "Chronic tennis/golfer's elbow, Achilles and patellar tendinopathy, and slow-healing ligament strains in active South Florida patients.",
+  },
+  {
+    icon: "zap",
+    title: "Heel & Plantar Foot Pain",
+    desc: "Plantar fasciitis and stubborn heel pain — the same regenerative approach patients search for as “stem cell therapy for heel pain” near North Miami Beach.",
+  },
+  {
+    icon: "dumbbell",
+    title: "Sports & Overuse Injuries",
+    desc: "Recovery-focused protocols for Miami athletes, weekend warriors, and tradespeople managing repetitive-strain and post-injury joint pain.",
+  },
+  {
+    icon: "shield-check",
+    title: "Back & Spine-Related Pain",
+    desc: "Facet-joint and soft-tissue back pain assessed for whether a regenerative, non-surgical option is clinically appropriate for you.",
+  },
+  {
+    icon: "sparkles",
+    title: "Hair & Skin Rejuvenation",
+    desc: "Exosome-based hair restoration and facial skin treatments — the aesthetic side of regenerative medicine offered under physician oversight.",
+  },
+];
+
+// Therapies / modalities — targets "regenerative stem cell therapy miami",
+// "exosome therapy miami", "exosomes miami", "stem cell injections miami".
+const therapies = [
+  {
+    icon: "flask-conical",
+    name: "Stem Cell–Based Regenerative Therapy",
+    tag: "Mesenchymal signaling cells",
+    desc: "Physician-administered regenerative injections that use the body's own repair signaling to target worn joints and slow-healing soft tissue. Candidacy is determined by exam and imaging — not sold as a one-size-fits-all package.",
+  },
+  {
+    icon: "droplets",
+    name: "Platelet-Rich Plasma (PRP)",
+    tag: "Autologous, drawn on-site",
+    desc: "Your own concentrated platelets, prepared from an in-office blood draw and injected under guidance. Frequently the first-line regenerative option for tendon and mild-to-moderate joint conditions.",
+  },
+  {
+    icon: "microscope",
+    name: "Exosome Therapy",
+    tag: "Cell-signaling messengers",
+    desc: "Exosome therapy in Miami for orthopedic recovery and aesthetic (hair/skin) use, offered under physician supervision with a frank discussion of the current evidence and what to realistically expect.",
+  },
+  {
+    icon: "syringe",
+    name: "Regenerative Peptide Adjuncts",
+    tag: "BPC-157, collagen support",
+    desc: "When appropriate, healing-focused peptide protocols support the same recovery goals — designed and monitored by the same physician who oversees your regenerative plan.",
+  },
+];
+
+// How it works
+const steps = [
+  {
+    num: "01",
+    title: "Free Miami Assessment",
+    desc: "Meet a physician at our Brickell clinic. We review your history, symptoms, prior imaging, and goals — and tell you honestly whether regenerative medicine is a reasonable option for you.",
+    color: "#C9A84C",
+  },
+  {
+    num: "02",
+    title: "Exam, Imaging & Labs",
+    desc: "On-site evaluation with any imaging or bloodwork needed to confirm candidacy. Not everyone is a candidate, and we say so when a joint is too far along.",
+    color: "#5DADE2",
+  },
+  {
+    num: "03",
+    title: "Individualized Protocol",
+    desc: "Your physician selects the modality — PRP, stem cell–based, exosome, or a combination — with realistic expectations, timelines, and transparent pricing before anything is scheduled.",
+    color: "#34D399",
+  },
+  {
+    num: "04",
+    title: "Treatment & Follow-Up",
+    desc: "In-office, image-guided injection followed by a structured recovery plan and scheduled reassessment. Telehealth check-ins between in-person visits.",
+    color: "#D4B96A",
+  },
+];
+
+// Specialist / physician team — targets "stem cell therapy specialist in miami".
+const specialists = [
+  {
+    name: "Dr. Angel Rivera, M.D.",
+    title: "Medical Director, Miami",
+    credentials:
+      "Board-Certified · University of Medicine & Health Sciences · Medical Director, Strong Health",
+    focus:
+      "Regenerative and men's health medicine with 12+ years of clinical experience in South Florida. Oversees candidacy and protocol design for every Miami regenerative patient. Bilingual (English/Spanish).",
+  },
+  {
+    name: "Strong Health Regenerative Team",
+    title: "Regenerative Medicine Specialists, Miami",
+    credentials:
+      "Physician-Led Regenerative Care · PRP, Stem Cell–Based & Exosome Protocols · On-Site Imaging & Labs",
+    focus:
+      "Image-guided regenerative injections for arthritis, joint, tendon, and soft-tissue conditions — individualized to your diagnosis rather than a fixed package.",
+  },
+  {
+    name: "Strong Health Sports Medicine Team",
+    title: "Consulting Specialists, Miami",
+    credentials:
+      "Sports Medicine · Tendon, Cartilage & Soft-Tissue Injury Care · Recovery Optimization",
+    focus:
+      "Recovery protocols for active patients and athletes across Brickell, Coral Gables, Miami Beach, and greater Miami-Dade.",
+  },
+];
+
+// Standards
+const standards = [
+  "Board-certified physician evaluates candidacy before anything is offered",
+  "In-person exam and imaging review — not a phone-sales package",
+  "Autologous PRP drawn and prepared on-site at the Brickell clinic",
+  "Honest expectations: we tell you when you are not a candidate",
+  "Transparent, itemized pricing reviewed before you commit",
+  "Image-guided injections for precise joint and soft-tissue targeting",
+  "Bilingual care (English & Spanish)",
+  "Saturday morning appointments for working professionals",
+  "Month-to-month care. No memberships, no long-term contracts",
+];
+
+// Neighborhoods — local intent ("stem cell miami", "miami stem cell", plus the
+// Miami-Dade / Miami Beach modifiers in the keyword set).
+const hoods = [
+  "Brickell", "Wynwood", "Coral Gables", "Coconut Grove",
+  "Little Havana", "Doral", "Kendall", "Miami Beach",
+  "Key Biscayne", "Edgewater", "Midtown", "Design District",
+  "Aventura", "North Miami Beach", "Pinecrest", "South Miami",
+  "Hialeah", "Sunny Isles",
+];
+
+// Related Miami services
+const related = [
+  {
+    title: "Peptide Therapy in Miami",
+    desc: "BPC-157 and healing-focused peptide protocols that frequently complement a regenerative injection plan.",
+    href: "/fl/miami/peptide-therapy/",
+    cta: "Miami peptide therapy →",
+  },
+  {
+    title: "TRT in Miami",
+    desc: "Physician-supervised testosterone replacement therapy for recovery, energy, and body composition.",
+    href: "/fl/miami/trt-therapy/",
+    cta: "Miami TRT clinic →",
+  },
+  {
+    title: "DEXA Scan in Miami",
+    desc: "Gold-standard body composition and bone density imaging — useful for tracking recovery and joint-loading risk.",
+    href: "/fl/miami/dexascan/",
+    cta: "Miami DEXA scan →",
+  },
+  {
+    title: "Peptides for Arthritis & Joints",
+    desc: "The evidence review on peptides used alongside regenerative care for arthritis and joint pain.",
+    href: "/peptides-for-arthritis/",
+    cta: "Read the guide →",
+  },
+];
+
+const FAQS = [
+  {
+    question: "Where can I get stem cell therapy in Miami?",
+    answer:
+      "Strong Health Miami offers physician-supervised stem cell and regenerative medicine at our Brickell clinic, located at 1000 Brickell Plaza, Miami, FL 33131. Every plan starts with an in-person physician evaluation to confirm whether you are a candidate — we don't sell treatment before an exam. Call (754) 263-6026 to book a free assessment.",
+  },
+  {
+    question: "Is stem cell therapy good for arthritis in Miami?",
+    answer:
+      "For many patients with mild-to-moderate knee, hip, or shoulder osteoarthritis, regenerative injections (PRP or stem cell–based) can be a reasonable, non-surgical option to reduce pain and improve function when physical therapy and anti-inflammatories haven't been enough. Results vary by joint, severity, and individual, and advanced 'bone-on-bone' arthritis usually responds poorly — which is exactly why our Miami physicians evaluate imaging and set honest expectations before recommending treatment.",
+  },
+  {
+    question: "Do you offer stem cell injections for knees and joint pain?",
+    answer:
+      "Yes. Knees are one of the most common joints we treat, along with hips, shoulders, and ankles. After a physical exam and review of your imaging, your physician performs image-guided regenerative injections (PRP, stem cell–based, or exosome, depending on your case) targeted precisely to the affected joint or soft tissue.",
+  },
+  {
+    question: "What is exosome therapy, and do you offer it in Miami?",
+    answer:
+      "Exosomes are tiny cell-signaling messengers studied for their role in tissue repair and inflammation. Strong Health Miami offers exosome therapy for orthopedic recovery and for aesthetic uses such as hair restoration and skin rejuvenation, always under physician supervision. Because exosome research is still evolving, we discuss the current state of the evidence with you honestly rather than overpromising.",
+  },
+  {
+    question: "How much does stem cell therapy cost in Miami?",
+    answer:
+      "Your initial assessment at the Brickell clinic is free. Regenerative treatment cost depends on the modality (PRP is typically the most affordable, with stem cell–based and exosome protocols higher), the number of joints or sites treated, and whether imaging is needed. We review transparent, itemized pricing with you before anything is scheduled. Regenerative injections are generally not covered by insurance, so we keep pricing direct-pay and clear.",
+  },
+  {
+    question: "Is stem cell therapy legal and FDA-approved?",
+    answer:
+      "Regenerative treatments like PRP and physician-administered autologous therapies are offered by licensed medical clinics across the U.S. It's important to understand that most stem cell products are not FDA-approved for orthopedic conditions and are considered investigational — reputable clinics do not claim otherwise. Strong Health Miami operates within these guidelines, uses physician oversight for every procedure, and gives you an honest, evidence-based picture rather than marketing hype.",
+  },
+  {
+    question: "Do you offer stem cell hair restoration in Miami?",
+    answer:
+      "Yes. Regenerative hair restoration — including PRP and exosome-based scalp treatments — is available at our Miami clinic for appropriate candidates experiencing thinning or early pattern hair loss. As with our orthopedic care, a physician assesses whether you're likely to benefit before recommending a course of treatment.",
+  },
+  {
+    question: "Am I a candidate for regenerative medicine?",
+    answer:
+      "The best candidates typically have mild-to-moderate joint, tendon, or soft-tissue conditions, still have some cartilage or tissue to work with, and want to explore non-surgical options before considering a joint replacement or surgery. Patients with certain infections, active cancers, or very advanced joint degeneration are usually not candidates. The only way to know is a physician evaluation — which is exactly what your free Miami assessment is for.",
+  },
+  {
+    question: "How soon will I see results, and how many sessions are needed?",
+    answer:
+      "Regenerative treatments work with your body's own repair timeline, so improvement is typically gradual over 4–12 weeks rather than immediate. Some patients notice change sooner, some need a second treatment, and some don't respond — which we're upfront about. Your physician sets a realistic timeline and a follow-up reassessment as part of your plan.",
+  },
+  {
+    question: "Does Strong Health Miami offer Spanish-speaking consultations?",
+    answer:
+      "Yes. Our Brickell clinic provides bilingual care in English and Spanish. Dr. Rivera and several team members are fluent in Spanish, reflecting the Miami-Dade communities we serve. Assessments, treatment discussions, and follow-ups can all be conducted in Spanish.",
+  },
+];
+
+// Credible outbound citations (E-E-A-T). NIH/peer-reviewed + FDA consumer guidance.
+const citations = [
+  {
+    label:
+      "FDA — Consumer alert on regenerative medicine products, including stem cells and exosomes",
+    url: "https://www.fda.gov/vaccines-blood-biologics/consumers-biologics/consumer-alert-regenerative-medicine-products-including-stem-cells-and-exosomes",
+  },
+  {
+    label:
+      "Bennell KL, et al. — Effect of intra-articular PRP vs placebo on knee osteoarthritis (JAMA)",
+    url: "https://pubmed.ncbi.nlm.nih.gov/34812863/",
+  },
+  {
+    label:
+      "NIH/NIAMS — Osteoarthritis: overview, symptoms, and treatment options",
+    url: "https://www.niams.nih.gov/health-topics/osteoarthritis",
+  },
+];
+
+// ---- JSON-LD: MedicalClinic (regenerative medicine) ----
+const medicalClinicSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "@id": `${SITE_URL}${PAGE_PATH}#clinic`,
+  name: `${CLINIC.name} — Stem Cell & Regenerative Medicine`,
+  url: `${SITE_URL}${PAGE_PATH}`,
+  telephone: CLINIC.phoneTel,
+  image: `${SITE_URL}/opengraph.jpg`,
+  parentOrganization: { "@id": `${SITE_URL}/#organization` },
+  branchOf: { "@id": CLINIC.schemaId },
+  sameAs: [
+    "https://www.trustpilot.com/review/stronghealth.com",
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      `${CLINIC.name}, ${CLINIC.streetAddress}, ${CLINIC.city}, ${CLINIC.state} ${CLINIC.postalCode}`,
+    )}`,
+  ],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: CLINIC.streetAddress,
+    addressLocality: CLINIC.city,
+    addressRegion: CLINIC.state,
+    postalCode: CLINIC.postalCode,
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: CLINIC.lat,
+    longitude: CLINIC.lng,
+  },
+  areaServed: [
+    { "@type": "City", name: "Miami" },
+    { "@type": "AdministrativeArea", name: "Miami-Dade County" },
+  ],
+  medicalSpecialty: ["PhysicalMedicine", "Rheumatologic"],
+  availableService: [
+    {
+      "@type": "MedicalTherapy",
+      name: "Stem Cell–Based Regenerative Therapy",
+      description:
+        "Physician-administered regenerative injections for arthritis, joint, tendon, and soft-tissue conditions, with candidacy determined by exam and imaging.",
+    },
+    {
+      "@type": "MedicalTherapy",
+      name: "Platelet-Rich Plasma (PRP) Therapy",
+      description:
+        "Autologous platelet-rich plasma injections prepared on-site for knee, shoulder, hip, and tendon conditions.",
+    },
+    {
+      "@type": "MedicalTherapy",
+      name: "Exosome Therapy",
+      description:
+        "Physician-supervised exosome therapy for orthopedic recovery and aesthetic hair/skin applications.",
+    },
+    {
+      "@type": "MedicalTherapy",
+      name: "Regenerative Care for Knee & Joint Arthritis",
+      description:
+        "Non-surgical regenerative options for mild-to-moderate osteoarthritis of the knee, hip, and shoulder.",
+    },
+  ],
+  hasMap: `https://maps.google.com/maps?q=${MAPS_QUERY}`,
+  isAcceptingNewPatients: true,
+  currenciesAccepted: "USD",
+  paymentAccepted: "Cash, Credit Card, Debit Card",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: CLINIC.hoursWeekday.opens,
+      closes: CLINIC.hoursWeekday.closes,
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: CLINIC.hoursSaturday.opens,
+      closes: CLINIC.hoursSaturday.closes,
+    },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "850",
+  },
+  priceRange: "$$",
+};
+---
+
+<BaseLayout
+  title="Stem Cell Therapy in Miami, FL"
+  description="Physician-supervised stem cell & regenerative therapy in Miami, FL. Brickell clinic treating arthritis, knee, joint & tendon pain plus exosomes."
+  path={PAGE_PATH}
+>
+  <PageShell>
+    <JsonLd schema={medicalClinicSchema} />
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: "Stem Cell Therapy in Miami, FL — Strong Health Brickell Clinic",
+        description:
+          "Physician-supervised stem cell, PRP, and exosome regenerative therapy at Strong Health Miami's Brickell clinic for arthritis, knee, joint, tendon, and soft-tissue conditions.",
+        url: PAGE_PATH,
+        lastReviewed: PUBLISH_DATE,
+        reviewedBy: DR_ANGEL_RIVERA,
+      })}
+    />
+    <JsonLd
+      schema={articleSchema({
+        headline: "Stem Cell Therapy in Miami — Regenerative Medicine for Arthritis & Joint Pain",
+        description:
+          "How physician-supervised stem cell, PRP, and exosome therapy works at Strong Health Miami's Brickell clinic, and who is a candidate for regenerative care.",
+        author: MAHADEV_MUKHERJEE,
+        reviewer: DR_ANGEL_RIVERA,
+        publishDate: PUBLISH_DATE,
+        updatedDate: PUBLISH_DATE,
+        url: PAGE_PATH,
+      })}
+    />
+    <JsonLd schema={faqPageSchema(FAQS)} />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+
+    {/* Breadcrumbs */}
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          {breadcrumbs.map((crumb, i) => {
+            const isLast = i === breadcrumbs.length - 1;
+            return (
+              <li class="flex items-center gap-1.5">
+                {i > 0 && <Icon name="chevron-right" size={12} class="text-text-subtle" />}
+                {isLast ? (
+                  <span class="text-gold font-semibold">{crumb.name}</span>
+                ) : (
+                  <a href={crumb.path} class="hover:text-gold transition-colors">
+                    {crumb.name}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </nav>
+
+    {/* Hero */}
+    <section class="relative px-8 pt-12 pb-24 overflow-hidden border-b border-white/5">
+      <div aria-hidden="true" class="hidden md:block absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#5DADE2]/15 rounded-full blur-[100px] pointer-events-none"></div>
+      <div aria-hidden="true" class="hidden md:block absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="flex gap-0.5">
+            {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={16} class="fill-[#C9A84C] text-gold" />)}
+          </div>
+          <span class="text-sm font-bold text-gold">4.9</span>
+          <span class="text-[13px] text-muted">from 850+ Miami patient reviews</span>
+        </div>
+
+        <Tag>Miami Stem Cell &amp; Regenerative Medicine · Brickell Clinic</Tag>
+
+        <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[820px] tracking-[-1.5px]">
+          Stem Cell Therapy in <span class="text-gold">Miami, FL.</span>
+        </h1>
+
+        <p class="text-[18px] text-cream-muted leading-relaxed max-w-[680px] mb-3">
+          Physician-supervised regenerative medicine at our Brickell clinic — stem cell–based
+          injections, PRP, and exosome therapy for arthritis, knee, joint, tendon, and
+          soft-tissue pain. Every plan starts with a real exam, not a sales pitch.
+        </p>
+        <p class="text-[15px] text-muted leading-relaxed max-w-[640px] mb-8">
+          Miami is full of "stem cell" storefronts. We do it the way it should be done: a
+          board-certified physician reviews your imaging, confirms whether you're actually a
+          candidate, and sets honest expectations before anything is scheduled.
+        </p>
+
+        <Btn trackLead href={BOOKING_SMS_HREF}>Book Your Free Miami Assessment →</Btn>
+        <div class="mt-4 text-xs text-muted">
+          In-person physician visit · On-site imaging &amp; labs · Bilingual (English/Spanish) · No memberships
+        </div>
+      </div>
+    </section>
+
+    {/* Byline (E-E-A-T) */}
+    <section class="px-8 pt-2 pb-6 bg-surface">
+      <div class="max-w-[800px] mx-auto">
+        <AuthorByline
+          author={MAHADEV_MUKHERJEE}
+          reviewer={DR_ANGEL_RIVERA}
+          publishDate={PUBLISH_DATE}
+        />
+      </div>
+    </section>
+
+    {/* Intro */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[820px] mx-auto">
+        <FadeIn>
+          <Tag>Real Medicine. Honest Expectations.</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-6 leading-[1.15]">
+            Regenerative medicine in Miami, done as <span class="text-gold">actual medicine</span>
+          </h2>
+        </FadeIn>
+        <FadeIn delay={100}>
+          <div class="text-[16px] text-muted leading-[1.8] flex flex-col gap-4">
+            <p>
+              Search "stem cell Miami" and you'll find med spas, IV lounges, and pop-up clinics
+              selling regenerative injections like a retail product — often with big promises and
+              no physician in the room. Regenerative medicine done right is different. It starts
+              with a diagnosis, not a package price.
+            </p>
+            <p>
+              At Strong Health Miami, a board-certified physician evaluates whether stem cell–based
+              therapy, platelet-rich plasma (PRP), or exosome therapy is a reasonable option for
+              your specific joint or soft-tissue problem. We treat knee and hip arthritis, shoulder
+              and rotator-cuff pain, chronic tendon and ligament injuries, heel and foot pain, and
+              sports injuries — and we also offer exosome-based hair and skin rejuvenation.
+            </p>
+            <p>
+              Just as important: we'll tell you when you're <em>not</em> a candidate. Advanced
+              bone-on-bone arthritis, certain medical conditions, and unrealistic goals are all
+              reasons we may recommend against treatment. That honesty is the whole point of seeing
+              a physician instead of a sales desk.
+            </p>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Conditions we treat */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>What We Treat in Miami</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Conditions we evaluate for <span class="text-gold">regenerative care</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[620px] mx-auto">
+            The joint, tendon, and soft-tissue problems Miami patients most often ask us about.
+            Every condition is assessed individually — candidacy depends on your exam and imaging.
+          </p>
+        </FadeIn>
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+          {conditions.map((c, i) => (
+            <FadeIn delay={i * 60}>
+              <div class="bg-surface-card rounded-xl p-6 border border-white/10 h-full hover:border-gold/30 transition-colors">
+                <div class="text-gold mb-4 p-3 rounded-xl bg-surface-raised border border-white/5 w-fit">
+                  <Icon name={c.icon} size={26} />
+                </div>
+                <h3 class="text-[15px] font-bold text-cream mb-2">{c.title}</h3>
+                <p class="text-[13px] text-muted leading-relaxed">{c.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Therapies */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Regenerative Options</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            The regenerative treatments we offer in <span class="text-gold">Miami</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[600px] mx-auto">
+            Your physician selects the right modality for your diagnosis — often starting with the
+            least invasive, most evidence-supported option first.
+          </p>
+        </FadeIn>
+        <div class="grid md:grid-cols-2 gap-5">
+          {therapies.map((t, i) => (
+            <FadeIn delay={i * 70}>
+              <div class="bg-surface-raised rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 rounded-lg bg-[#5DADE2]/15 flex items-center justify-center flex-shrink-0">
+                    <Icon name={t.icon} size={18} class="text-[#5DADE2]" />
+                  </div>
+                  <div>
+                    <h3 class="text-[17px] font-bold text-cream leading-tight">{t.name}</h3>
+                    <div class="text-[12px] font-semibold text-gold mt-0.5">{t.tag}</div>
+                  </div>
+                </div>
+                <p class="text-[14px] text-muted leading-relaxed flex-grow">{t.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+        <FadeIn delay={300}>
+          <p class="text-[13px] text-muted text-center mt-8 max-w-[640px] mx-auto leading-relaxed">
+            A note on the science: most stem cell and exosome therapies for orthopedic conditions
+            are still considered investigational and are not FDA-approved. We discuss the current
+            evidence with you honestly — see the <a href="#references" class="text-gold hover:underline">references</a> below.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Clinic details + map */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Our Miami Clinic</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Visit us in <span class="text-gold">{CLINIC.area}</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            Centrally located in Miami's Brickell financial district with easy access from I-95,
+            the Metrorail, and validated parking. Regenerative consultations by appointment.
+          </p>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <FadeIn>
+            <div class="bg-surface-card rounded-2xl border border-white/10 overflow-hidden h-full">
+              <iframe
+                src={`https://maps.google.com/maps?q=${MAPS_QUERY}&output=embed`}
+                class="w-full h-[240px] border-0"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title={`${CLINIC.name} - ${CLINIC.streetAddress}`}
+              ></iframe>
+              <div class="p-6 flex flex-col gap-4">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div>
+                    <div class="text-sm font-bold text-cream">{CLINIC.name}</div>
+                    <div class="text-sm text-cream-muted mt-0.5">{FULL_ADDRESS}</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="phone" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <a href={TEL_HREF} class="text-sm text-cream-muted hover:text-gold transition-colors">
+                    {CLINIC.phone}
+                  </a>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="clock" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-sm text-cream-muted">{CLINIC.hours}</div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="navigation" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-xs text-muted leading-relaxed">{CLINIC.directions}</div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="bg-surface-card rounded-2xl border border-white/10 p-7 h-full flex flex-col">
+              <h3 class="text-lg font-bold text-cream mb-4">What to expect at your Miami assessment</h3>
+              <div class="flex flex-col gap-4 text-[14px] text-cream-muted leading-[1.7]">
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">1</div>
+                  <span>Free physician consultation at our Brickell clinic — history, symptoms, and goals.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">2</div>
+                  <span>Physical exam plus review of any imaging (or on-site imaging/labs if needed) to confirm candidacy.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">3</div>
+                  <span>A clear recommendation — including "you're not a candidate" when that's the honest answer — with transparent pricing.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">4</div>
+                  <span>If appropriate, image-guided treatment and a structured recovery and follow-up plan.</span>
+                </div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-white/5 text-[12px] text-muted">
+                Most patients are seen within 5 business days of booking. Saturday morning
+                appointments (9 AM – 1 PM) available at our Brickell clinic.
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* How it works */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>How It Works</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Four steps. <span class="text-gold">Honest guidance.</span>
+          </h2>
+        </FadeIn>
+        <div class="grid md:grid-cols-4 gap-4">
+          {steps.map((s, i) => (
+            <FadeIn delay={i * 100}>
+              <div
+                class="bg-surface rounded-[14px] p-6 border border-white/10 h-full hover:border-white/20 transition-colors"
+                style={`border-top:3px solid ${s.color}`}
+              >
+                <div class="text-[28px] font-black mb-3" style={`color:${s.color}`}>{s.num}</div>
+                <h3 class="text-base font-bold text-cream mb-3">{s.title}</h3>
+                <p class="text-[13px] text-muted leading-relaxed">{s.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Specialists */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Your Miami Stem Cell Specialists</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Named doctors. <span class="text-gold">Real credentials.</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            A regenerative medicine specialist in Miami who evaluates your candidacy — not an
+            anonymous "provider" behind a package price.
+          </p>
+        </FadeIn>
+        <div class="grid md:grid-cols-3 gap-5">
+          {specialists.map((doc, i) => (
+            <FadeIn delay={i * 150}>
+              <div class="bg-surface-card rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#C9A84C]/20 to-[#1A1F2A] border border-white/10 flex items-center justify-center mb-4">
+                  <Icon name="user-check" size={28} class="text-gold" />
+                </div>
+                <h3 class="text-lg font-bold text-cream mb-1">{doc.name}</h3>
+                <div class="text-[11px] font-bold text-gold tracking-wider uppercase mb-3">
+                  {doc.title}
+                </div>
+                <p class="text-[12px] text-muted leading-relaxed mb-3 border-b border-white/5 pb-3">
+                  {doc.credentials}
+                </p>
+                <p class="text-[13px] text-cream-muted leading-relaxed flex-grow">{doc.focus}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Standards */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <FadeIn>
+            <Tag>Why Strong Health Miami</Tag>
+            <h2 class="text-[32px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+              Regenerative care that respects <span class="text-gold">the evidence</span>
+            </h2>
+            <div class="text-[15px] text-muted leading-[1.8] flex flex-col gap-4">
+              <p>
+                Brickell has no shortage of clinics selling stem cell injections. Very few pair
+                board-certified physician oversight with real diagnostics and honest expectations
+                about what regenerative medicine can and can't do.
+              </p>
+              <p>
+                We built Strong Health Miami around a simple standard: a physician decides whether
+                you're a candidate, the least invasive reasonable option comes first, and you always
+                know the evidence and the price before you commit.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn delay={200}>
+            <div class="bg-surface-raised rounded-2xl p-8 border border-white/10">
+              <h3 class="text-lg font-bold text-cream mb-5 flex items-center gap-2">
+                <Icon name="shield-check" size={18} class="text-gold" />
+                The Strong Health Miami standard
+              </h3>
+              <div class="text-[14px] text-cream-muted leading-[1.7] flex flex-col gap-3">
+                {standards.map((item) => (
+                  <div class="flex items-start gap-3">
+                    <span class="text-gold font-bold">·</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* Neighborhoods */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-8">
+          <Tag>Serving Miami-Dade</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Regenerative medicine patients from <span class="text-gold">across Miami</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            Our Brickell clinic is centrally located for stem cell and regenerative patients across
+            the greater Miami area, from Miami Beach to North Miami Beach, Coral Gables, and Doral.
+          </p>
+        </FadeIn>
+        <FadeIn delay={150}>
+          <div class="flex flex-wrap gap-2 justify-center max-w-[820px] mx-auto">
+            {hoods.map((n) => (
+              <span class="text-[12px] text-cream-muted bg-surface-raised border border-white/10 rounded-full px-3.5 py-1.5">
+                {n}
+              </span>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Related services */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Other Strong Health Miami Services</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Same Brickell clinic. <span class="text-gold">Same physicians.</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            Many regenerative patients also work with us on recovery-focused peptides, hormone
+            health, and body-composition tracking — all under the same physician.
+          </p>
+        </FadeIn>
+        <div class="grid md:grid-cols-2 gap-5">
+          {related.map((s, i) => (
+            <FadeIn delay={i * 80}>
+              <div class="bg-surface-raised rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <h3 class="text-lg font-bold text-cream mb-3">{s.title}</h3>
+                <p class="text-[14px] text-muted leading-relaxed flex-grow mb-4">{s.desc}</p>
+                <a href={s.href} class="text-[13px] font-semibold text-gold hover:underline">
+                  {s.cta}
+                </a>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+        <FadeIn delay={300}>
+          <div class="mt-8 text-center">
+            <a href="/fl/" class="text-[13px] font-semibold text-gold hover:underline">
+              Browse all Strong Health Florida clinics →
+            </a>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Miami Stem Cell FAQs</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Common questions about <span class="text-gold">stem cell therapy in Miami</span>
+          </h2>
+        </FadeIn>
+        <div class="flex flex-col gap-4">
+          {FAQS.map((faq, i) => (
+            <FadeIn delay={i * 30}>
+              <details class="bg-surface-card rounded-xl border border-white/10 group">
+                <summary class="cursor-pointer p-5 list-none flex items-start justify-between gap-4">
+                  <h3 class="text-[15px] font-bold text-cream pr-2">{faq.question}</h3>
+                  <Icon
+                    name="chevron-right"
+                    size={18}
+                    class="text-gold flex-shrink-0 transition-transform group-open:rotate-90 mt-0.5"
+                  />
+                </summary>
+                <div class="px-5 pb-5 text-[14px] text-muted leading-[1.7]">{faq.answer}</div>
+              </details>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* References */}
+    <section id="references" class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[820px] mx-auto">
+        <FadeIn>
+          <Tag>References</Tag>
+          <h2 class="text-[26px] font-extrabold text-cream mt-3 mb-4">
+            Sources cited on this stem cell therapy page
+          </h2>
+          <ol class="flex flex-col gap-3 list-decimal list-inside">
+            {citations.map((c) => (
+              <li class="text-[13px] text-cream-muted leading-relaxed">
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-gold hover:underline inline-flex items-center gap-1"
+                >
+                  <span>{c.label}</span>
+                  <Icon name="external-link" size={11} />
+                </a>
+              </li>
+            ))}
+          </ol>
+          <p class="text-[12px] text-muted mt-6 leading-relaxed">
+            This page is for general education and does not constitute medical advice or a
+            guarantee of results. Regenerative therapies are provided only after a physician
+            determines you are an appropriate candidate.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Final CTA */}
+    <section class="px-8 py-24 bg-gradient-to-br from-[#5DADE2]/[0.08] to-[#0D0F12] border-b border-white/5">
+      <div class="max-w-[700px] mx-auto text-center">
+        <FadeIn>
+          <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
+            Talk to a Miami regenerative medicine physician
+          </h2>
+          <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
+            Book a free assessment at our Brickell clinic. A real exam, an honest answer on whether
+            you're a candidate, and a clear plan if regenerative therapy is right for you.
+          </p>
+          <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
+            <Icon name="phone" size={14} class="text-gold" />
+            <a href={TEL_HREF} class="hover:text-gold transition-colors">
+              Or call {CLINIC.phone}
+            </a>
+          </div>
+          <Btn trackLead href={BOOKING_SMS_HREF}>Book Your Free Assessment →</Btn>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

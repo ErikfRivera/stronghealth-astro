@@ -8,17 +8,17 @@
 const OFFER_URL = "https://certified-pep.com/?ref=discount";
 ---
 
-<div class="h-16" aria-hidden="true"></div>
+<div class="h-[72px]" aria-hidden="true"></div>
 <div class="fixed bottom-0 inset-x-0 z-40 bg-surface-dark/95 backdrop-blur border-t border-gold/30 px-4 py-3">
-  <div class="max-w-[760px] mx-auto flex items-center justify-center">
+  <div class="max-w-[760px] mx-auto flex items-center justify-center gap-3">
+    <span class="text-2xl" aria-hidden="true">👉</span>
     <a
       href={OFFER_URL}
       target="_blank"
       rel="sponsored noopener"
-      class="inline-flex items-center gap-2.5 text-[15px] font-bold uppercase tracking-[1.2px] text-gold hover:text-gold-hover transition-colors"
+      class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-gold text-surface text-[13px] md:text-[14px] font-bold uppercase tracking-[1.2px] hover:bg-gold-hover transition-all duration-200 shadow-[0_2px_12px_rgba(201,168,76,0.35)]"
     >
-      <span class="text-xl" aria-hidden="true">👉</span>
-      <span>See Peptides</span>
+      See Peptides — Get Discount →
     </a>
   </div>
 </div>

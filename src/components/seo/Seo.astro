@@ -16,12 +16,24 @@
  */
 const SITE_NAME = "Strong Health";
 const DEFAULT_OG_IMAGE = "https://www.stronghealth.com/opengraph.jpg";
+// Intrinsic size / format of DEFAULT_OG_IMAGE (public/opengraph.jpg). Any page
+// that overrides `ogImage` MUST also pass matching `ogImageWidth`/`ogImageHeight`
+// (and `ogImageType` if not JPEG), or the dimension tags below would misdescribe
+// the real asset. The build guard further down enforces that.
+const DEFAULT_OG_IMAGE_WIDTH = 1280;
+const DEFAULT_OG_IMAGE_HEIGHT = 720;
+const DEFAULT_OG_IMAGE_ALT =
+  "Strong Health — physician-supervised men's health and TRT clinic in South Florida";
 
 interface Props {
   title: string;
   description: string;
   path: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageType?: string;
   ogType?: string;
   noindex?: boolean;
 }
@@ -31,6 +43,10 @@ const {
   description,
   path,
   ogImage = DEFAULT_OG_IMAGE,
+  ogImageAlt = DEFAULT_OG_IMAGE_ALT,
+  ogImageWidth = DEFAULT_OG_IMAGE_WIDTH,
+  ogImageHeight = DEFAULT_OG_IMAGE_HEIGHT,
+  ogImageType = "image/jpeg",
   ogType = "website",
   noindex = false,
 } = Astro.props;
@@ -46,6 +62,17 @@ if (!path.startsWith("/")) {
 if (path !== "/" && title.includes(`| ${SITE_NAME}`)) {
   throw new Error(
     `Seo: title "${title}" already contains "| ${SITE_NAME}" — the suffix is appended automatically (double-brand guard).`,
+  );
+}
+// A custom og:image must carry its own dimensions, or the width/height tags
+// would inherit the default banner's 1280×720 and misreport the real asset.
+if (
+  ogImage !== DEFAULT_OG_IMAGE &&
+  (ogImageWidth === DEFAULT_OG_IMAGE_WIDTH ||
+    ogImageHeight === DEFAULT_OG_IMAGE_HEIGHT)
+) {
+  throw new Error(
+    `Seo: custom ogImage "${ogImage}" must pass its own ogImageWidth/ogImageHeight (got ${ogImageWidth}×${ogImageHeight}, the default banner size).`,
   );
 }
 
@@ -64,9 +91,14 @@ const robots = noindex
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content={String(ogImageWidth)} />
+<meta property="og:image:height" content={String(ogImageHeight)} />
+<meta property="og:image:type" content={ogImageType} />
+<meta property="og:image:alt" content={ogImageAlt} />
 <meta property="og:type" content={ogType} />
 <meta property="og:site_name" content={SITE_NAME} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={ogImageAlt} />

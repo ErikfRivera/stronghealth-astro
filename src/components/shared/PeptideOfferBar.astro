@@ -1,0 +1,24 @@
+---
+/**
+ * Sticky bottom bar shown on peptide pages, replacing the LeadConnector chat
+ * bubble there (pair with BaseLayout's `hideChatWidget`). Links out to the
+ * certified-pep.com affiliate offer. The spacer keeps the fixed bar from
+ * covering the page footer when scrolled to the bottom.
+ */
+const OFFER_URL = "https://certified-pep.com/?ref=discount";
+---
+
+<div class="h-16" aria-hidden="true"></div>
+<div class="fixed bottom-0 inset-x-0 z-40 bg-surface-dark/95 backdrop-blur border-t border-gold/30 px-4 py-3">
+  <div class="max-w-[760px] mx-auto flex items-center justify-center">
+    <a
+      href={OFFER_URL}
+      target="_blank"
+      rel="sponsored noopener"
+      class="inline-flex items-center gap-2.5 text-[15px] font-bold uppercase tracking-[1.2px] text-gold hover:text-gold-hover transition-colors"
+    >
+      <span class="text-xl" aria-hidden="true">👉</span>
+      <span>See Peptides</span>
+    </a>
+  </div>
+</div>

@@ -96,6 +96,9 @@ document.addEventListener("click", (e) => {
 /* 4 — Chat widget loader: inject the LeadConnector bubble once the user
        scrolls past the hero (300px) or after 8s, whichever comes first. */
 (function chatWidget() {
+  // Peptide pages opt out via BaseLayout's hideChatWidget prop — they show
+  // the sticky certified-pep offer bar instead of the chat bubble.
+  if (document.body.hasAttribute("data-hide-chat-widget")) return;
   const SRC = "https://widgets.leadconnectorhq.com/loader.js";
   let injected = false;
   function inject() {

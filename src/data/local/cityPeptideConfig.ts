@@ -361,6 +361,7 @@ export const MIAMI_PEPTIDE_CONFIG: CityPeptideConfig = {
       { label: "Testosterone Therapy in Miami", href: "/fl/miami/trt-therapy/" },
       { label: "Medical Weight Loss in Miami", href: "/fl/miami/weight-loss-clinic/" },
       { label: "DEXA Scan in Miami", href: "/fl/miami/dexascan/" },
+      { label: "Stem Cell & Regenerative Medicine in Miami", href: "/fl/miami/stem-cell-therapy/" },
       { label: "Peptides for recovery & healing", href: "/peptides-for-healing/" },
       { label: "Peptides for visceral belly fat", href: "/peptides-for-belly-fat/" },
       { label: "Peptides for libido & sexual health", href: "/peptides-for-libido/" },

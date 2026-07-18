@@ -144,9 +144,9 @@ export function defaultRelatedInternalLinks(
   // Molecule-layer cross-links (US-007): every location page links the
   // commonly-prescribed molecules so location → molecule equity flows.
   links.push(
-    { label: "BPC-157 for healing & recovery", href: "/molecules/bpc-157/" },
-    { label: "CJC-1295 / Ipamorelin for body composition", href: "/molecules/cjc-1295/" },
-    { label: "Tesamorelin for visceral fat", href: "/molecules/tesamorelin/" },
+    { label: "BPC-157 for healing & recovery", href: "/peptides/bpc-157/" },
+    { label: "CJC-1295 / Ipamorelin for body composition", href: "/peptides/cjc-1295/" },
+    { label: "Tesamorelin for visceral fat", href: "/peptides/tesamorelin/" },
     { label: "Browse the full molecule library", href: "/molecules/" },
   );
   const hubs: RelatedInternalLink[] =

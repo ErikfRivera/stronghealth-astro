@@ -16,10 +16,122 @@
       "owner": "erik"
     },
     {
-      "source": "/peptides/anything-example/",
-      "target": "/peptides/",
+      "source": "/molecules/bpc-157/",
+      "target": "/peptides/bpc-157/",
       "status": 308,
-      "reason": "App.tsx /peptides/* wildcard rendered hub at any subpath",
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/tb-500/",
+      "target": "/peptides/tb-500/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/cjc-1295/",
+      "target": "/peptides/cjc-1295/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/ipamorelin/",
+      "target": "/peptides/ipamorelin/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/sermorelin/",
+      "target": "/peptides/sermorelin/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/tesamorelin/",
+      "target": "/peptides/tesamorelin/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/pt-141/",
+      "target": "/peptides/pt-141/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/dsip/",
+      "target": "/peptides/dsip/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/aod-9604/",
+      "target": "/peptides/aod-9604/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/ghk-cu/",
+      "target": "/peptides/ghk-cu/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/mots-c/",
+      "target": "/peptides/mots-c/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/semaglutide/",
+      "target": "/peptides/semaglutide/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/tirzepatide/",
+      "target": "/peptides/tirzepatide/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/ll-37/",
+      "target": "/peptides/ll-37/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/epithalon/",
+      "target": "/peptides/epithalon/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/kisspeptin/",
+      "target": "/peptides/kisspeptin/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
+      "owner": "erik"
+    },
+    {
+      "source": "/molecules/selank/",
+      "target": "/peptides/selank/",
+      "status": 308,
+      "reason": "peptides subfolder migration: molecule pages moved from /molecules/[slug]/ to /peptides/[slug]/",
       "owner": "erik"
     },
     {
@@ -218,6 +330,11 @@
     {
       "source": "/blog/some-unknown-post/",
       "status": 404
+    },
+    {
+      "source": "/peptides/some-unknown-peptide/",
+      "status": 404,
+      "$comment": "the old /peptides/(.+) -> /peptides/ catch-all was removed for the /peptides/[slug]/ molecule pages; unknown subpaths now 404"
     }
   ]
 }

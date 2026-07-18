@@ -376,244 +376,6 @@
         "priority": "0.8"
       }
     },
-    "/molecules/aod-9604/": {
-      "title": "AOD-9604 Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "AOD-9604 is a growth-hormone fragment studied for fat metabolism without GH's growth effects. See the mechanism, mixed human evidence, and how we prescribe it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/aod-9604/",
-      "h1": "AOD-9604",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/bpc-157/": {
-      "title": "BPC-157 Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "BPC-157 is a healing peptide studied for tendon, ligament, and gut repair. Review the mechanism, evidence, dosing context, and how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/bpc-157/",
-      "h1": "BPC-157",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/cjc-1295/": {
-      "title": "CJC-1295 Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "CJC-1295 is a GHRH analog studied to raise natural growth hormone and IGF-1 for body composition, recovery, and sleep. See how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/cjc-1295/",
-      "h1": "CJC-1295",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/dsip/": {
-      "title": "DSIP Peptide: Sleep Uses & Evidence | Strong Health",
-      "description": "DSIP is a nonapeptide studied for deepening slow-wave sleep without sedation. Review its mechanism, the human evidence, and how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/dsip/",
-      "h1": "DSIP",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/epithalon/": {
-      "title": "Epithalon Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "Epithalon is a synthetic tetrapeptide studied for telomerase activation and pineal-melatonin regulation. See the evidence, safety, and how we prescribe it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/epithalon/",
-      "h1": "Epithalon",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/ghk-cu/": {
-      "title": "GHK-Cu Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "GHK-Cu is a copper-binding peptide studied for collagen synthesis, skin repair, and anti-aging. Review evidence, safety, and how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/ghk-cu/",
-      "h1": "GHK-Cu",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/ipamorelin/": {
-      "title": "Ipamorelin Peptide: Uses & Safety | Strong Health",
-      "description": "Ipamorelin is a selective GH-releasing peptide studied for lean mass, recovery, and sleep. Review its mechanism, evidence, and how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/ipamorelin/",
-      "h1": "Ipamorelin",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/kisspeptin/": {
-      "title": "Kisspeptin Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "Kisspeptin is an investigational peptide studied for its role in reproductive hormones and libido. Review its mechanism, emerging human evidence, and safety.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/kisspeptin/",
-      "h1": "Kisspeptin",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/ll-37/": {
-      "title": "LL-37 Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "LL-37 is the human cathelicidin host-defense peptide studied for antimicrobial action and wound healing. Review its mechanism, evidence, and how we use it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/ll-37/",
-      "h1": "LL-37",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/mots-c/": {
-      "title": "MOTS-c Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "MOTS-c is a mitochondrial-derived peptide studied for AMPK activation, metabolic health, and insulin sensitivity, mostly in animals. Review the evidence here.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/mots-c/",
-      "h1": "MOTS-c",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/pt-141/": {
-      "title": "PT-141 Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "PT-141 (bremelanotide) works on brain melanocortin pathways to raise sexual desire. FDA-approved as Vyleesi for premenopausal HSDD — see mechanism and safety.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/pt-141/",
-      "h1": "PT-141",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/selank/": {
-      "title": "Selank Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "Selank is a synthetic anxiolytic peptide studied for anxiety, calm, and cognition. Review its mechanism, evidence, and how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/selank/",
-      "h1": "Selank",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/semaglutide/": {
-      "title": "Semaglutide: Weight Loss Uses & Evidence | Strong Health",
-      "description": "Semaglutide (Wegovy, Ozempic) is a GLP-1 medication for weight loss. Review the mechanism, STEP-trial evidence, safety, and how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/semaglutide/",
-      "h1": "Semaglutide",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/sermorelin/": {
-      "title": "Sermorelin: GHRH Peptide, Uses & Safety | Strong Health",
-      "description": "Sermorelin is a GHRH analog that prompts your pituitary to release growth hormone. Review its mechanism, evidence, safety, and how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/sermorelin/",
-      "h1": "Sermorelin",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/tb-500/": {
-      "title": "TB-500 Peptide: Uses, Evidence & Safety | Strong Health",
-      "description": "TB-500 is a healing peptide studied for tendon, muscle, and tissue repair. Review its mechanism, evidence, dosing context, and how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/tb-500/",
-      "h1": "TB-500",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/tesamorelin/": {
-      "title": "Tesamorelin: Visceral Fat Uses & Evidence | Strong Health",
-      "description": "Tesamorelin (Egrifta) is an FDA-approved GHRH analog that targets visceral belly fat. Review its evidence, safety, and how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/tesamorelin/",
-      "h1": "Tesamorelin",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
-    "/molecules/tirzepatide/": {
-      "title": "Tirzepatide: Weight Loss Uses & Evidence | Strong Health",
-      "description": "Tirzepatide (Mounjaro, Zepbound) is a dual GIP/GLP-1 medication for weight loss. Review the mechanism, SURMOUNT evidence, and how Strong Health prescribes it.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/tirzepatide/",
-      "h1": "Tirzepatide",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
     "/nac-benefits-men/": {
       "title": "NAC Benefits for Men: The Complete Guide | Strong Health",
       "description": "How NAC (N-acetylcysteine) benefits men: glutathione production, liver support, fertility, respiratory health. Dosing and safety reviewed.",
@@ -808,6 +570,244 @@
         "changefreq": "monthly",
         "lastmod": "2026-04-22",
         "priority": "0.9"
+      }
+    },
+    "/peptides/aod-9604/": {
+      "title": "AOD-9604 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "AOD-9604 is a growth-hormone fragment studied for fat metabolism without GH's growth effects. See the mechanism, mixed human evidence, and how we prescribe it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/aod-9604/",
+      "h1": "AOD-9604",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/bpc-157/": {
+      "title": "BPC-157 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "BPC-157 is a healing peptide studied for tendon, ligament, and gut repair. Review the mechanism, evidence, dosing context, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/bpc-157/",
+      "h1": "BPC-157",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/cjc-1295/": {
+      "title": "CJC-1295 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "CJC-1295 is a GHRH analog studied to raise natural growth hormone and IGF-1 for body composition, recovery, and sleep. See how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/cjc-1295/",
+      "h1": "CJC-1295",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/dsip/": {
+      "title": "DSIP Peptide: Sleep Uses & Evidence | Strong Health",
+      "description": "DSIP is a nonapeptide studied for deepening slow-wave sleep without sedation. Review its mechanism, the human evidence, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/dsip/",
+      "h1": "DSIP",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/epithalon/": {
+      "title": "Epithalon Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "Epithalon is a synthetic tetrapeptide studied for telomerase activation and pineal-melatonin regulation. See the evidence, safety, and how we prescribe it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/epithalon/",
+      "h1": "Epithalon",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/ghk-cu/": {
+      "title": "GHK-Cu Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "GHK-Cu is a copper-binding peptide studied for collagen synthesis, skin repair, and anti-aging. Review evidence, safety, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/ghk-cu/",
+      "h1": "GHK-Cu",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/ipamorelin/": {
+      "title": "Ipamorelin Peptide: Uses & Safety | Strong Health",
+      "description": "Ipamorelin is a selective GH-releasing peptide studied for lean mass, recovery, and sleep. Review its mechanism, evidence, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/ipamorelin/",
+      "h1": "Ipamorelin",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/kisspeptin/": {
+      "title": "Kisspeptin Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "Kisspeptin is an investigational peptide studied for its role in reproductive hormones and libido. Review its mechanism, emerging human evidence, and safety.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/kisspeptin/",
+      "h1": "Kisspeptin",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/ll-37/": {
+      "title": "LL-37 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "LL-37 is the human cathelicidin host-defense peptide studied for antimicrobial action and wound healing. Review its mechanism, evidence, and how we use it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/ll-37/",
+      "h1": "LL-37",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/mots-c/": {
+      "title": "MOTS-c Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "MOTS-c is a mitochondrial-derived peptide studied for AMPK activation, metabolic health, and insulin sensitivity, mostly in animals. Review the evidence here.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/mots-c/",
+      "h1": "MOTS-c",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/pt-141/": {
+      "title": "PT-141 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "PT-141 (bremelanotide) works on brain melanocortin pathways to raise sexual desire. FDA-approved as Vyleesi for premenopausal HSDD — see mechanism and safety.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/pt-141/",
+      "h1": "PT-141",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/selank/": {
+      "title": "Selank Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "Selank is a synthetic anxiolytic peptide studied for anxiety, calm, and cognition. Review its mechanism, evidence, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/selank/",
+      "h1": "Selank",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/semaglutide/": {
+      "title": "Semaglutide: Weight Loss Uses & Evidence | Strong Health",
+      "description": "Semaglutide (Wegovy, Ozempic) is a GLP-1 medication for weight loss. Review the mechanism, STEP-trial evidence, safety, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/semaglutide/",
+      "h1": "Semaglutide",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/sermorelin/": {
+      "title": "Sermorelin: GHRH Peptide, Uses & Safety | Strong Health",
+      "description": "Sermorelin is a GHRH analog that prompts your pituitary to release growth hormone. Review its mechanism, evidence, safety, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/sermorelin/",
+      "h1": "Sermorelin",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/tb-500/": {
+      "title": "TB-500 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "TB-500 is a healing peptide studied for tendon, muscle, and tissue repair. Review its mechanism, evidence, dosing context, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/tb-500/",
+      "h1": "TB-500",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/tesamorelin/": {
+      "title": "Tesamorelin: Visceral Fat Uses & Evidence | Strong Health",
+      "description": "Tesamorelin (Egrifta) is an FDA-approved GHRH analog that targets visceral belly fat. Review its evidence, safety, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/tesamorelin/",
+      "h1": "Tesamorelin",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/tirzepatide/": {
+      "title": "Tirzepatide: Weight Loss Uses & Evidence | Strong Health",
+      "description": "Tirzepatide (Mounjaro, Zepbound) is a dual GIP/GLP-1 medication for weight loss. Review the mechanism, SURMOUNT evidence, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/tirzepatide/",
+      "h1": "Tirzepatide",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
       }
     },
     "/pollotarianism/": {

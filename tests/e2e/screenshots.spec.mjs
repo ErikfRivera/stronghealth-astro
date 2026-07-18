@@ -25,7 +25,7 @@ const MOBILE_ROUTES = [
   "/peptides-for-healing/",
   "/reviews/",
   "/reviews/andro-400/",
-  "/molecules/bpc-157/",
+  "/peptides/bpc-157/",
   "/privacy-policy/",
   "/fl/",
   "/ny/new-york/peptide-therapy/", // US-N4: post-cutover NYC page

@@ -1,7 +1,7 @@
 // Molecule library types (peptide repositioning, US-004/US-005).
 //
 // Every molecule page renders from one MoleculeConfig via
-// src/layouts/MoleculePage.astro + src/pages/molecules/[slug].astro. The
+// src/layouts/MoleculePage.astro + src/pages/peptides/[slug].astro. The
 // `goals` array is the single source of truth for goal↔molecule cross-links:
 // the molecule page links each goal spoke, and the goal spokes render their
 // "molecules in this guide" module from the same data (US-006) — so the

@@ -493,6 +493,12 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
+      name: "DEXA Scan in Delray Beach",
+      desc: "Physician-ordered DEXA body-composition scans at partner imaging centers near you — the objective way to track what your protocol is doing.",
+      href: "/fl/delray-beach/dexascan/",
+      cta: "Delray Beach DEXA scan →",
+    },
+    {
       name: "Peptides for Arthritis & Joint Pain",
       desc: "BPC-157 and TB-500 protocols for joint inflammation and connective-tissue support — a frequent starting point for Delray Beach patients.",
       href: "/peptides-for-arthritis/",
@@ -715,6 +721,12 @@ export const NEW_YORK_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
+      name: "DEXA Scan in New York",
+      desc: "Physician-ordered DEXA body-composition scans at partner imaging centers near you — the objective way to track what your protocol is doing.",
+      href: "/ny/new-york/dexascan/",
+      cta: "New York DEXA scan →",
+    },
+    {
       name: "Peptides for Healing & Recovery",
       desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",
       href: "/peptides-for-healing/",
@@ -926,6 +938,12 @@ export const SAN_DIEGO_PEPTIDE_CONFIG: CityPeptideConfig = {
     "Strong Health serves peptide therapy patients across San Diego County — from La Jolla and the coast to Chula Vista, El Cajon, and North County — via telehealth, with lab draws at local lab draw sites near you.",
 
   relatedServices: [
+    {
+      name: "DEXA Scan in San Diego",
+      desc: "Physician-ordered DEXA body-composition scans at partner imaging centers near you — the objective way to track what your protocol is doing.",
+      href: "/ca/san-diego/dexascan/",
+      cta: "San Diego DEXA scan →",
+    },
     {
       name: "Peptides for Healing & Recovery",
       desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, surfing, and lifting injuries.",
@@ -1139,6 +1157,12 @@ export const LAS_VEGAS_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
+      name: "DEXA Scan in Las Vegas",
+      desc: "Physician-ordered DEXA body-composition scans at partner imaging centers near you — the objective way to track what your protocol is doing.",
+      href: "/nv/las-vegas/dexascan/",
+      cta: "Las Vegas DEXA scan →",
+    },
+    {
       name: "Peptides for Healing & Recovery",
       desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",
       href: "/peptides-for-healing/",
@@ -1350,6 +1374,12 @@ export const ATLANTA_PEPTIDE_CONFIG: CityPeptideConfig = {
     "Strong Health serves peptide therapy patients across metro Atlanta — from Midtown and Buckhead to Decatur, Sandy Springs, Alpharetta, and Marietta — via telehealth, with lab draws at local lab draw sites near you.",
 
   relatedServices: [
+    {
+      name: "DEXA Scan in Atlanta",
+      desc: "Physician-ordered DEXA body-composition scans at partner imaging centers near you — the objective way to track what your protocol is doing.",
+      href: "/ga/atlanta/dexascan/",
+      cta: "Atlanta DEXA scan →",
+    },
     {
       name: "Peptides for Healing & Recovery",
       desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",
@@ -1563,6 +1593,12 @@ export const AUSTIN_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
+      name: "DEXA Scan in Austin",
+      desc: "Physician-ordered DEXA body-composition scans at partner imaging centers near you — the objective way to track what your protocol is doing.",
+      href: "/tx/austin/dexascan/",
+      cta: "Austin DEXA scan →",
+    },
+    {
       name: "Peptides for Healing & Recovery",
       desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",
       href: "/peptides-for-healing/",
@@ -1774,6 +1810,12 @@ export const TAMPA_PEPTIDE_CONFIG: CityPeptideConfig = {
     "Strong Health serves peptide therapy patients across the Tampa Bay area — from Hyde Park, South Tampa, and Westshore to Brandon, Wesley Chapel, St. Petersburg, and Clearwater — via telehealth, with lab draws at local lab draw sites near you.",
 
   relatedServices: [
+    {
+      name: "DEXA Scan in Tampa",
+      desc: "Physician-ordered DEXA body-composition scans at partner imaging centers near you — the objective way to track what your protocol is doing.",
+      href: "/fl/tampa/dexascan/",
+      cta: "Tampa DEXA scan →",
+    },
     {
       name: "Peptides for Healing & Recovery",
       desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",

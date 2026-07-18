@@ -1,0 +1,8 @@
+---
+// New York DEXA scan service-area page. The shared CityDexaPage layout renders
+// everything from the city facts in NEW_YORK_PEPTIDE_CONFIG.
+import CityDexaPage from "../../../layouts/local/CityDexaPage.astro";
+import { NEW_YORK_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityDexaPage config={NEW_YORK_PEPTIDE_CONFIG} />

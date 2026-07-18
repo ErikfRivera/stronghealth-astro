@@ -96,6 +96,20 @@
         "priority": "0.8"
       }
     },
+    "/ca/san-diego/dexascan/": {
+      "title": "DEXA Scan San Diego — Body Composition | Strong Health",
+      "description": "Physician-ordered DEXA scans for San Diego, CA patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/ca/san-diego/dexascan/",
+      "h1": "DEXA Scan in San Diego. Gold-standard body composition, in 15 minutes.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
     "/ca/san-diego/peptide-therapy/": {
       "title": "San Diego Peptide Therapy, CA — Telehealth | Strong Health",
       "description": "Physician-supervised peptide therapy for San Diego patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
@@ -194,6 +208,20 @@
         "priority": "0.9"
       }
     },
+    "/fl/delray-beach/dexascan/": {
+      "title": "DEXA Scan Delray Beach — Body Composition | Strong Health",
+      "description": "Physician-ordered DEXA scans for Delray Beach, FL patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/delray-beach/dexascan/",
+      "h1": "DEXA Scan in Delray Beach. Gold-standard body composition, in 15 minutes.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
     "/fl/delray-beach/peptide-therapy/": {
       "title": "Peptide Therapy in Delray Beach, FL | Strong Health",
       "description": "Physician-supervised peptide therapy for Delray Beach, FL patients. Telehealth visits with in-person evaluation at our Miami Brickell clinic. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141.",
@@ -264,6 +292,20 @@
         "priority": "0.8"
       }
     },
+    "/fl/tampa/dexascan/": {
+      "title": "DEXA Scan Tampa — Body Composition | Strong Health",
+      "description": "Physician-ordered DEXA scans for Tampa, FL patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/tampa/dexascan/",
+      "h1": "DEXA Scan in Tampa. Gold-standard body composition, in 15 minutes.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
     "/fl/tampa/peptide-therapy/": {
       "title": "Peptide Therapy in Tampa, FL — Telehealth | Strong Health",
       "description": "Physician-supervised peptide therapy for Tampa patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
@@ -289,6 +331,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-03-28",
+        "priority": "0.8"
+      }
+    },
+    "/ga/atlanta/dexascan/": {
+      "title": "DEXA Scan Atlanta — Body Composition | Strong Health",
+      "description": "Physician-ordered DEXA scans for Atlanta, GA patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/ga/atlanta/dexascan/",
+      "h1": "DEXA Scan in Atlanta. Gold-standard body composition, in 15 minutes.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
         "priority": "0.8"
       }
     },
@@ -404,6 +460,20 @@
         "priority": "0.8"
       }
     },
+    "/nv/las-vegas/dexascan/": {
+      "title": "DEXA Scan Las Vegas — Body Composition | Strong Health",
+      "description": "Physician-ordered DEXA scans for Las Vegas, NV patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/nv/las-vegas/dexascan/",
+      "h1": "DEXA Scan in Las Vegas. Gold-standard body composition, in 15 minutes.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
     "/nv/las-vegas/peptide-therapy/": {
       "title": "Las Vegas Peptide Therapy, NV — Telehealth | Strong Health",
       "description": "Physician-supervised peptide therapy for Las Vegas patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
@@ -415,6 +485,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-07-15",
+        "priority": "0.8"
+      }
+    },
+    "/ny/new-york/dexascan/": {
+      "title": "DEXA Scan New York — Body Composition | Strong Health",
+      "description": "Physician-ordered DEXA scans for New York, NY patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/ny/new-york/dexascan/",
+      "h1": "DEXA Scan in New York. Gold-standard body composition, in 15 minutes.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
         "priority": "0.8"
       }
     },
@@ -1004,6 +1088,20 @@
         "changefreq": "yearly",
         "lastmod": "2026-05-27",
         "priority": "0.4"
+      }
+    },
+    "/tx/austin/dexascan/": {
+      "title": "DEXA Scan Austin — Body Composition | Strong Health",
+      "description": "Physician-ordered DEXA scans for Austin, TX patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/tx/austin/dexascan/",
+      "h1": "DEXA Scan in Austin. Gold-standard body composition, in 15 minutes.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
       }
     },
     "/tx/austin/peptide-therapy/": {

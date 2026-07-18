@@ -1,0 +1,470 @@
+---
+/**
+ * Config-driven DEXA scan page for telehealth service-area cities
+ * (`/{statePrefix}/{slug}/dexascan/`). Mirrors the section flow of the
+ * hand-written Miami page (/fl/miami/dexascan/) but with service-area copy:
+ * a Strong Health physician orders the scan at a partner imaging center near
+ * the patient and reviews the results via telehealth — no local storefront is
+ * implied, so MedicalBusiness JSON-LD is deliberately omitted (matching the
+ * physicalClinic:false convention in CityPeptidePage). City facts (name,
+ * state, neighborhoods, phone) come from the already-maintained
+ * CityPeptideConfig so the two pages can never drift.
+ */
+import BaseLayout from "../BaseLayout.astro";
+import PageShell from "../../components/shared/PageShell.astro";
+import JsonLd from "../../components/seo/JsonLd.astro";
+import {
+  articleSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+  medicalWebPageSchema,
+} from "../../components/seo/schemas";
+import FadeIn from "../../components/shared/FadeIn.astro";
+import Btn from "../../components/shared/Btn.astro";
+import Tag from "../../components/shared/Tag.astro";
+import Icon from "../../components/shared/Icon.astro";
+import AuthorByline from "../../components/shared/AuthorByline.astro";
+import FAQSection from "../../components/shared/FAQSection.astro";
+import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../data/articleAuthors";
+import type { CityPeptideConfig } from "../../data/local/cityPeptideConfig";
+
+interface Props {
+  config: CityPeptideConfig;
+}
+
+const { config } = Astro.props;
+
+const PUBLISH_DATE = "2026-07-18";
+
+const statePrefix = config.statePrefix ?? "fl";
+const stateName = config.stateName ?? "Florida";
+const stateAbbr = statePrefix.toUpperCase();
+const stateHubPath = statePrefix === "fl" ? "/fl/" : undefined;
+const pagePath = `/${statePrefix}/${config.slug}/dexascan/`;
+const city = config.cityName;
+const metro = config.neighborhoodAreaName;
+const phone = config.clinic.phone;
+const TEL_HREF = `tel:${phone.replace(/[^\d+]/g, "")}`;
+
+// Same SMS form as the Miami DEXA page: "?&body=" pre-fills on iOS and Android.
+const BOOKING_SMS_NUMBER = "+17542636026";
+const BOOKING_SMS_BODY = "I would like to book a Dexascan with Strong Health";
+const BOOKING_SMS_HREF = `sms:${BOOKING_SMS_NUMBER}?&body=${encodeURIComponent(
+  BOOKING_SMS_BODY,
+)}`;
+
+const seoTitle = `DEXA Scan ${city} — Body Composition`;
+const seoDescription = `Physician-ordered DEXA scans for ${city}, ${stateAbbr} patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.`;
+const jsonLdDescription = `Physician-ordered DEXA scan body composition analysis for ${city}, ${stateAbbr} patients at partner imaging centers, with results reviewed by a Strong Health physician. Lean mass, body fat percentage, visceral fat, and bone density.`;
+
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  ...(stateHubPath ? [{ name: stateName, path: stateHubPath }] : []),
+  { name: `DEXA Scan ${city}`, path: pagePath },
+];
+
+const FAQS = [
+  {
+    question: `Where can I get a DEXA scan in ${city}?`,
+    answer:
+      `Strong Health coordinates DEXA scans for ${city} patients at partner imaging centers across ${metro}. A Strong Health physician orders your scan, you get scanned at a partner location near you, and your results are reviewed with you via telehealth. Call ${phone} to book.` +
+      (statePrefix === "fl"
+        ? " Prefer a walk-in scan? Our Miami Brickell clinic at 1000 Brickell Plaza offers on-site DEXA scans with same-week appointments."
+        : ""),
+  },
+  {
+    question: `How much does a DEXA scan cost in ${city}?`,
+    answer:
+      `DEXA scans booked through Strong Health use transparent direct-pay pricing with no hidden fees. Most body-composition scans in the ${city} area run under $200 per scan depending on the imaging partner, and bundled pricing is available if you plan to track progress with multiple scans over the year. Bone density DEXA scans (for osteoporosis screening) may be covered by insurance for eligible patients.`,
+  },
+  {
+    question: "What does a DEXA scan measure?",
+    answer:
+      "A DEXA (Dual-Energy X-ray Absorptiometry) scan precisely measures three things across your entire body: lean muscle mass (in pounds, broken down by limb and trunk), fat mass (total and visceral), and bone mineral density. It's the clinical gold standard for body composition with a margin of error of roughly 1–2%, far more accurate than BIA scales or skinfold calipers.",
+  },
+  {
+    question: "How long does a DEXA scan take?",
+    answer:
+      "The actual scan takes 10–15 minutes. Plan for about 30 minutes total at the imaging center, including check-in and the scan itself. There are no injections, no enclosed spaces, and the radiation dose is roughly 1/10th of a standard chest X-ray. Your Strong Health physician reviews the results with you afterward via telehealth.",
+  },
+  {
+    question: `Do I need a doctor's referral for a DEXA scan in ${city}?`,
+    answer:
+      `You don't need to bring your own referral — the physician order is part of the service. A Strong Health physician orders your body composition DEXA scan at a partner imaging center near you in ${metro}. If you're already a Strong Health patient on a TRT, peptide, or weight loss protocol, the scan is folded into your treatment plan and your physician reviews the results with you at your next telehealth visit.`,
+  },
+  {
+    question: "How should I prepare for my DEXA scan?",
+    answer:
+      "Wear comfortable clothing without metal (no zippers, underwire bras, or metal buttons). Avoid eating a large meal within 2 hours of the scan, hydrate normally, skip calcium supplements for 24 hours, and avoid intense exercise the night before. Consistency between scans matters more than perfect prep — try to repeat the same conditions for follow-up scans.",
+  },
+  {
+    question: "How often should I get a DEXA scan?",
+    answer:
+      "For active body recomposition (TRT, peptides, weight loss program), every 3–6 months is ideal. For general health monitoring, once per year is sufficient. Scanning more frequently than every 90 days rarely shows meaningful changes and wastes resources. We recommend repeating follow-up scans at the same imaging partner, as the same scanner produces the most reliable trend data.",
+  },
+  {
+    question: "Can a DEXA scan track results from TRT or GLP-1 weight loss?",
+    answer:
+      `Yes. DEXA is the most accurate way to verify that testosterone therapy is producing real lean mass gains and that GLP-1 weight loss (semaglutide, tirzepatide) is preserving muscle while reducing fat. The scale only tells you total weight; DEXA tells you exactly where it's coming from. Many of our ${city} TRT and weight loss patients use DEXA scans every 3–6 months to track progress objectively.`,
+  },
+  {
+    question: "Is the DEXA scan safe?",
+    answer:
+      "Yes. A DEXA scan uses an extremely low dose of ionizing radiation — roughly 1/10th of a standard chest X-ray and less than a single day of natural background exposure. It's FDA-approved for repeated use and considered one of the safest medical imaging technologies available.",
+  },
+];
+
+const whyDexaPoints = [
+  { icon: "chart-line", text: "1–2% margin of error vs. 5–8% for BIA scales" },
+  { icon: "activity", text: "Region-by-region breakdown (arms, legs, trunk)" },
+  { icon: "bone", text: "Bone density scoring (T-score, Z-score)" },
+  { icon: "scale", text: "Visceral fat measurement, not just total body fat" },
+  { icon: "heart-pulse", text: "FDA-approved, low-dose, repeatable for trend data" },
+];
+
+const whatYouGetItems = [
+  { icon: "microscope", title: "Total & Regional Body Fat %", desc: "Body fat broken down by arms, legs, trunk, and android/gynoid regions. Track exactly where you're losing fat." },
+  { icon: "activity", title: "Lean Muscle Mass", desc: "Pound-precise lean mass for each limb. Verify TRT, peptide, or training programs are actually building muscle." },
+  { icon: "scale", title: "Visceral Adipose Tissue", desc: "The dangerous fat around your organs, separated from subcutaneous. The single best metric for metabolic risk." },
+  { icon: "bone", title: "Bone Mineral Density", desc: "T-score and Z-score for hip and spine. Catch early osteopenia before it becomes osteoporosis." },
+  { icon: "shield-check", title: "Symmetry Analysis", desc: "Left vs. right comparisons by limb. Spot muscle imbalances from old injuries or training asymmetries." },
+  { icon: "clipboard-check", title: "Trend Tracking", desc: "Side-by-side comparison reports across every scan, so you can see real change over months and years." },
+];
+
+const useCases = [
+  {
+    title: "Muscle-growth protocols",
+    desc: "Verify that a GH-secretagogue protocol is producing real lean mass gains and reducing fat — not just moving the scale.",
+    href: "/peptides-for-muscle-growth/",
+    cta: "Peptides for muscle growth →",
+  },
+  {
+    title: "GLP-1 weight loss",
+    desc: "Make sure semaglutide or tirzepatide is preserving muscle while you lose fat. Critical for long-term metabolic health.",
+    href: "/peptides-for-weight-loss/",
+    cta: "Peptides for weight loss →",
+  },
+  {
+    title: "Peptide therapy",
+    desc: "Quantify body composition changes from peptides like CJC-1295/ipamorelin, BPC-157, or growth hormone secretagogues.",
+    href: `/${statePrefix}/${config.slug}/peptide-therapy/`,
+    cta: `${city} peptide therapy →`,
+  },
+  {
+    title: "Athletes & lifters",
+    desc: "Get the same body composition data professional sports nutritionists use. Track muscle gain by limb, identify imbalances.",
+    href: "/dexa-scan/",
+    cta: "Read the full DEXA guide →",
+  },
+];
+
+const steps = [
+  {
+    num: "01",
+    title: `Book Your ${city} Scan`,
+    desc: `Text or call ${phone}. We schedule your scan at a partner imaging center near you in ${metro} — same-week appointments are typically available.`,
+    color: "#C9A84C",
+  },
+  {
+    num: "02",
+    title: "10–15 Minute Scan",
+    desc: "Lie flat on an open table while the scanner arm passes over you. No injections, no enclosed space, ultra-low radiation.",
+    color: "#5DADE2",
+  },
+  {
+    num: "03",
+    title: "Get Your Detailed Report",
+    desc: "Full PDF report: lean mass, body fat % by region, visceral fat, bone density, symmetry analysis.",
+    color: "#34D399",
+  },
+  {
+    num: "04",
+    title: "Physician Review & Tracking",
+    desc: "A Strong Health physician walks through your results via telehealth. Re-scan every 3–6 months on active protocols to see what's actually changing.",
+    color: "#D4B96A",
+  },
+];
+---
+
+<BaseLayout title={seoTitle} description={seoDescription} path={pagePath}>
+  <PageShell>
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: seoTitle,
+        description: jsonLdDescription,
+        url: pagePath,
+        lastReviewed: PUBLISH_DATE,
+        reviewedBy: DR_ANGEL_RIVERA,
+      })}
+    />
+    <JsonLd
+      schema={articleSchema({
+        headline: `DEXA Scan ${city} — Body Composition & Bone Density`,
+        description: jsonLdDescription,
+        author: MAHADEV_MUKHERJEE,
+        reviewer: DR_ANGEL_RIVERA,
+        publishDate: PUBLISH_DATE,
+        url: pagePath,
+      })}
+    />
+    <JsonLd schema={faqPageSchema(FAQS)} />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+
+    {/* Breadcrumbs */}
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          {breadcrumbs.map((crumb, i) => {
+            const isLast = i === breadcrumbs.length - 1;
+            return (
+              <li class="flex items-center gap-1.5">
+                {i > 0 && <Icon name="chevron-right" size={12} class="text-text-subtle" />}
+                {isLast ? (
+                  <span class="text-gold font-semibold">{crumb.name}</span>
+                ) : (
+                  <a href={crumb.path} class="hover:text-gold transition-colors">
+                    {crumb.name}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </nav>
+
+    {/* Hero */}
+    <section class="relative px-8 pt-12 pb-24 overflow-hidden border-b border-white/5">
+      <div aria-hidden="true" class="hidden md:block absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div aria-hidden="true" class="hidden md:block absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="flex gap-0.5">
+            {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={16} class="fill-[#C9A84C] text-gold" />)}
+          </div>
+          <span class="text-sm font-bold text-gold">{config.reviewRating}</span>
+          <span class="text-[13px] text-muted">{config.reviewCount}</span>
+        </div>
+
+        <Tag>{city} DEXA Scan · Partner Imaging Centers · Physician Reviewed</Tag>
+
+        <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[760px] tracking-[-1.5px]">
+          DEXA Scan in {city}. <span class="text-gold">Gold-standard body composition, in 15 minutes.</span>
+        </h1>
+
+        <p class="text-[17px] text-muted leading-relaxed max-w-[600px] mb-8">
+          Book a precise, physician-ordered DEXA scan at a partner imaging center near you in
+          {" " + metro}. See exactly how much lean muscle, body fat, visceral fat, and bone
+          density you carry — broken down region by region — with your results reviewed by a
+          Strong Health physician.
+        </p>
+
+        <Btn trackLead href={BOOKING_SMS_HREF}>Book Your DEXA Scan in {city} →</Btn>
+        <div class="mt-4 text-xs text-muted">
+          15–20 min visit · Physician-ordered · No referral needed
+        </div>
+        {statePrefix === "fl" && (
+          <div class="mt-3 text-[13px] text-muted">
+            Prefer a walk-in scan? Visit our{" "}
+            <a href="/fl/miami/dexascan/" class="text-gold hover:underline">Miami Brickell DEXA clinic</a>.
+          </div>
+        )}
+      </div>
+    </section>
+
+    {/* Byline */}
+    <section class="px-8 pt-2 pb-6 bg-surface">
+      <div class="max-w-[800px] mx-auto">
+        <AuthorByline
+          author={MAHADEV_MUKHERJEE}
+          reviewer={DR_ANGEL_RIVERA}
+          publishDate={PUBLISH_DATE}
+        />
+      </div>
+    </section>
+
+    {/* WhyDexa */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <FadeIn>
+            <Tag>Why DEXA in {city}</Tag>
+            <h2 class="text-[32px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+              The scale lies. <span class="text-gold">DEXA tells the truth.</span>
+            </h2>
+            <p class="text-[15px] text-muted leading-[1.7] mb-4">
+              {city} is full of body composition gimmicks — InBody scales at the gym, calipers
+              at "longevity" clinics, smart scales at home. None of them come close to the
+              precision of a clinical DEXA scan.
+            </p>
+            <p class="text-[15px] text-muted leading-[1.7]">
+              Through Strong Health, you get the same scan technology used in clinical
+              research, performed at a partner imaging center near you, with results you can
+              use to track real progress on TRT, GLP-1 weight loss, peptide therapy, or your
+              own training.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="flex flex-col gap-3.5">
+              {whyDexaPoints.map((s) => (
+                <div class="flex items-center gap-3 bg-surface-raised rounded-xl p-4 border border-white/5">
+                  <div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center shrink-0 border border-white/5">
+                    <Icon name={s.icon} size={18} class="text-gold" />
+                  </div>
+                  <span class="text-sm text-cream-muted">{s.text}</span>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* WhatYouGet */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Your Report</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            What you get from a <span class="text-gold">Strong Health DEXA scan</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            Your DEXA report goes far beyond a body fat percentage. Here's everything included
+            with every scan we coordinate for {city} patients.
+          </p>
+        </FadeIn>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {whatYouGetItems.map((u, i) => (
+            <FadeIn delay={i * 80}>
+              <div class="bg-surface-card rounded-xl p-6 border border-white/10 h-full hover:bg-surface-raised transition-colors">
+                <div class="text-gold mb-4 p-3 rounded-xl bg-surface-raised border border-white/5 w-fit"><Icon name={u.icon} size={28} /></div>
+                <h3 class="text-[15px] font-bold text-cream mb-2">{u.title}</h3>
+                <p class="text-[13px] text-muted leading-relaxed">{u.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* UseCases */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Who Books DEXA in {city}</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Built for {city} men and women on <span class="text-gold">real protocols</span>
+          </h2>
+        </FadeIn>
+        <div class="grid md:grid-cols-2 gap-5">
+          {useCases.map((c, i) => (
+            <FadeIn delay={i * 80}>
+              <div class="bg-surface-raised rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <h3 class="text-lg font-bold text-cream mb-3">{c.title}</h3>
+                <p class="text-[14px] text-muted leading-relaxed flex-grow mb-4">{c.desc}</p>
+                <a href={c.href} class="text-[13px] font-semibold text-gold hover:underline">
+                  {c.cta}
+                </a>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* HowItWorks */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>How It Works</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Four steps. <span class="text-gold">Real data.</span>
+          </h2>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-4 gap-4">
+          {steps.map((s) => (
+            <FadeIn>
+              <div
+                class="bg-surface-card rounded-[14px] p-6 border border-white/10 h-full hover:border-white/20 transition-colors"
+                style={`border-top:3px solid ${s.color}`}
+              >
+                <div class="text-[28px] font-black mb-3" style={`color:${s.color}`}>{s.num}</div>
+                <h3 class="text-base font-bold text-cream mb-3">{s.title}</h3>
+                <p class="text-[13px] text-muted leading-relaxed">{s.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Neighborhoods */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-8">
+          <Tag>Serving {metro}</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            DEXA scan patients from <span class="text-gold">across {metro}</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[540px] mx-auto">
+            Strong Health coordinates DEXA scans at partner imaging centers convenient to
+            patients across {metro}.
+          </p>
+        </FadeIn>
+        <FadeIn delay={150}>
+          <div class="flex flex-wrap gap-2 justify-center max-w-[820px] mx-auto">
+            {config.neighborhoods.map((n) => (
+              <span class="text-[12px] text-cream-muted bg-surface-raised border border-white/10 rounded-full px-3.5 py-1.5">
+                {n}
+              </span>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn class="text-center mb-4">
+          <Tag>{city} DEXA FAQs</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Common questions about <span class="text-gold">DEXA scans in {city}</span>
+          </h2>
+        </FadeIn>
+        <FAQSection items={FAQS} />
+        <FadeIn delay={300}>
+          <p class="text-[13px] text-muted text-center mt-4">
+            Want a deeper dive on the science? Read our full <a href="/dexa-scan/" class="text-gold hover:underline">guide to DEXA scans</a>.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* FinalCTA */}
+    <section class="px-8 py-24 bg-gradient-to-br from-[#C9A84C]/[0.08] to-[#0D0F12] border-b border-white/5">
+      <div class="max-w-[700px] mx-auto text-center">
+        <FadeIn>
+          <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
+            Book your DEXA scan in {city}
+          </h2>
+          <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
+            The most accurate body composition test available, at a partner imaging center
+            near you. 15 minutes. No referral needed. Results reviewed by a physician.
+          </p>
+          <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
+            <Icon name="phone" size={14} class="text-gold" />
+            <a href={TEL_HREF} class="hover:text-gold transition-colors">
+              {phone}
+            </a>
+          </div>
+          <Btn trackLead href={BOOKING_SMS_HREF}>Book Your DEXA Scan →</Btn>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

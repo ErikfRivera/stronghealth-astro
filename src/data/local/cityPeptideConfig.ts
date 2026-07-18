@@ -715,16 +715,16 @@ export const NEW_YORK_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
-      name: "Peptides for Healing & Recovery",
-      desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",
-      href: "/peptides-for-healing/",
-      cta: "BPC-157 healing guide →",
+      name: "Peptides for Tendon & Ligament Repair",
+      desc: "BPC-157 and TB-500 protocols for tendon, ligament, and soft-tissue repair — common in running, lifting, and court-sport injuries across the five boroughs.",
+      href: "/peptides-for-tendon-repair/",
+      cta: "Tendon repair guide →",
     },
     {
-      name: "Peptides for Body Composition",
-      desc: "Tesamorelin and GH-secretagogue protocols targeting visceral (belly) fat and lean-mass preservation, designed around your labs.",
-      href: "/peptides-for-belly-fat/",
-      cta: "Peptides for belly fat →",
+      name: "Peptides for Muscle Growth",
+      desc: "CJC-1295, Ipamorelin, and BPC-157 protocols that support lean mass and recovery, designed around your labs.",
+      href: "/peptides-for-muscle-growth/",
+      cta: "Peptides for muscle growth →",
     },
     {
       name: "All Peptide Therapies",
@@ -927,16 +927,16 @@ export const SAN_DIEGO_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
-      name: "Peptides for Healing & Recovery",
-      desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, surfing, and lifting injuries.",
-      href: "/peptides-for-healing/",
-      cta: "BPC-157 healing guide →",
+      name: "Peptides for Sleep & Recovery",
+      desc: "DSIP and related protocols that support deep-sleep architecture and overnight recovery, designed around your labs.",
+      href: "/peptides-for-sleep/",
+      cta: "Peptides for sleep →",
     },
     {
-      name: "Peptides for Body Composition",
-      desc: "Tesamorelin and GH-secretagogue protocols targeting visceral (belly) fat and lean-mass preservation, designed around your labs.",
-      href: "/peptides-for-belly-fat/",
-      cta: "Peptides for belly fat →",
+      name: "Peptides for Tendon & Ligament Repair",
+      desc: "BPC-157 and TB-500 protocols for tendon, ligament, and soft-tissue repair — common in running, surfing, and lifting injuries.",
+      href: "/peptides-for-tendon-repair/",
+      cta: "Tendon repair guide →",
     },
     {
       name: "All Peptide Therapies",
@@ -1139,13 +1139,13 @@ export const LAS_VEGAS_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
-      name: "Peptides for Healing & Recovery",
-      desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",
-      href: "/peptides-for-healing/",
-      cta: "BPC-157 healing guide →",
+      name: "Peptides for Weight Loss",
+      desc: "GLP-1 medications and GH-secretagogue protocols for medical weight loss that protect lean mass through a caloric deficit.",
+      href: "/peptides-for-weight-loss/",
+      cta: "Peptides for weight loss →",
     },
     {
-      name: "Peptides for Body Composition",
+      name: "Peptides for Belly Fat",
       desc: "Tesamorelin and GH-secretagogue protocols targeting visceral (belly) fat and lean-mass preservation, designed around your labs.",
       href: "/peptides-for-belly-fat/",
       cta: "Peptides for belly fat →",
@@ -1351,16 +1351,16 @@ export const ATLANTA_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
-      name: "Peptides for Healing & Recovery",
-      desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",
-      href: "/peptides-for-healing/",
-      cta: "BPC-157 healing guide →",
+      name: "Peptides for Muscle Growth",
+      desc: "CJC-1295, Ipamorelin, and BPC-157 protocols that support lean mass and recovery, designed around your labs.",
+      href: "/peptides-for-muscle-growth/",
+      cta: "Peptides for muscle growth →",
     },
     {
-      name: "Peptides for Body Composition",
-      desc: "Tesamorelin and GH-secretagogue protocols targeting visceral (belly) fat and lean-mass preservation, designed around your labs.",
-      href: "/peptides-for-belly-fat/",
-      cta: "Peptides for belly fat →",
+      name: "Peptides for Weight Loss",
+      desc: "GLP-1 medications and GH-secretagogue protocols for medical weight loss that protect lean mass through a caloric deficit.",
+      href: "/peptides-for-weight-loss/",
+      cta: "Peptides for weight loss →",
     },
     {
       name: "All Peptide Therapies",
@@ -1563,16 +1563,16 @@ export const AUSTIN_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
+      name: "Collagen Peptides",
+      desc: "Clinical-grade collagen peptides for connective tissue, skin, and joint support that complement physician-supervised protocols.",
+      href: "/collagen-peptides/",
+      cta: "Collagen peptides guide →",
+    },
+    {
       name: "Peptides for Healing & Recovery",
       desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",
       href: "/peptides-for-healing/",
       cta: "BPC-157 healing guide →",
-    },
-    {
-      name: "Peptides for Body Composition",
-      desc: "Tesamorelin and GH-secretagogue protocols targeting visceral (belly) fat and lean-mass preservation, designed around your labs.",
-      href: "/peptides-for-belly-fat/",
-      cta: "Peptides for belly fat →",
     },
     {
       name: "All Peptide Therapies",
@@ -1775,16 +1775,16 @@ export const TAMPA_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
-      name: "Peptides for Healing & Recovery",
-      desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in running, cycling, and lifting injuries.",
-      href: "/peptides-for-healing/",
-      cta: "BPC-157 healing guide →",
+      name: "Peptides for Arthritis & Joint Pain",
+      desc: "BPC-157 and TB-500 protocols for joint inflammation and connective-tissue support, designed around your labs.",
+      href: "/peptides-for-arthritis/",
+      cta: "Peptides for arthritis →",
     },
     {
-      name: "Peptides for Body Composition",
-      desc: "Tesamorelin and GH-secretagogue protocols targeting visceral (belly) fat and lean-mass preservation, designed around your labs.",
-      href: "/peptides-for-belly-fat/",
-      cta: "Peptides for belly fat →",
+      name: "Peptides for Sleep & Recovery",
+      desc: "DSIP and related protocols that support deep-sleep architecture and overnight recovery, designed around your labs.",
+      href: "/peptides-for-sleep/",
+      cta: "Peptides for sleep →",
     },
     {
       name: "All Peptide Therapies",

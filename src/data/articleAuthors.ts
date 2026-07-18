@@ -35,6 +35,7 @@ export const ARTICLE_AUTHORSHIP: Record<
   "/resveratrol-side-effects/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/semaglutide-diet/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/stillman-diet/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
+  "/pollotarianism/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-healing/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-tendon-repair/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-sleep/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },

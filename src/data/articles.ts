@@ -36,6 +36,14 @@ export const articles: ArticleMeta[] = [
     datePublished: "2026-07-16",
   },
   {
+    title: "Pollotarianism: The Complete Guide to the Pollotarian Diet",
+    subtitle: "Poultry stays, every other meat goes. What the research shows about swapping red meat for chicken — heart health, cancer risk, weight, and how to do it right.",
+    path: "/pollotarianism/",
+    category: "Diet & Nutrition",
+    readTime: "15 min read",
+    datePublished: "2026-07-18",
+  },
+  {
     title: "The Stillman Diet: History, Risks, and Why Modern Medicine Moved On",
     subtitle: "A 1967 crash diet that sold 5 million copies, raised cholesterol in every study participant, and pioneered ideas that still influence how we think about protein and weight loss.",
     path: "/stillman-diet/",

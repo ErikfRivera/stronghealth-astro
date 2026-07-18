@@ -1,5 +1,7 @@
 ---
-// Homepage — port of src/components/HomePage.tsx (source commit 9398453).
+// Homepage — peptide-therapy retheme of the original TRT homepage
+// (port of src/components/HomePage.tsx, source commit 9398453).
+// Structure and design system are unchanged; copy and data are peptide-led.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import JsonLd from "../components/seo/JsonLd.astro";
 import { organizationSchema } from "../components/seo/schemas";
@@ -12,44 +14,71 @@ import Nav from "../components/shared/Nav.astro";
 import Footer from "../components/shared/Footer.astro";
 import BlogArticlesSection from "../components/BlogArticlesSection.astro";
 import LocationsGridSection from "../components/shared/LocationsGridSection.astro";
+import PeptideLocationsSection from "../components/shared/PeptideLocationsSection.astro";
 import { STRONG_HEALTH_PHONE_DISPLAY } from "../data/miamiClinic";
 
-// --- DeclineSection data ---
-const yMin = 300;
-const yMax = 700;
-const yRange = yMax - yMin;
-const yTicks = [300, 400, 500, 600, 700];
-const declineData = [
-  { year: "1980", ngValue: 600, ng: "~600" },
-  { year: "1990", ngValue: 540, ng: "~540" },
-  { year: "2000", ngValue: 480, ng: "~480" },
-  { year: "2010", ngValue: 420, ng: "~420" },
-  { year: "2020", ngValue: 370, ng: "~370" },
-];
-const symptoms = [
-  { icon: "zap", text: "Persistent fatigue that sleep doesn't fix" },
-  { icon: "brain", text: "Loss of focus, motivation, mental sharpness" },
-  { icon: "trending-down", text: "Decreased libido and sexual performance" },
-  { icon: "dumbbell", text: "Losing muscle, gaining fat — despite effort" },
-  { icon: "frown", text: "Mood swings, irritability, brain fog" },
+// --- GoalsSection data ---
+const goals = [
+  {
+    icon: "bone",
+    title: "Healing & Recovery",
+    peptides: "BPC-157 · TB-500",
+    desc: "Tendon, ligament, joint, and soft-tissue injuries that won't resolve with rest alone.",
+    href: "/peptides-for-healing/",
+  },
+  {
+    icon: "scale",
+    title: "Visceral Belly Fat",
+    peptides: "Tesamorelin",
+    desc: "Deep abdominal fat that ignores diet and cardio — targeted at the hormonal level.",
+    href: "/peptides-for-belly-fat/",
+  },
+  {
+    icon: "moon",
+    title: "Sleep Quality",
+    peptides: "DSIP · Ipamorelin",
+    desc: "Broken sleep architecture — falling asleep, staying asleep, and waking up rested.",
+    href: "/peptides-for-sleep/",
+  },
+  {
+    icon: "heart-pulse",
+    title: "Libido & Sexual Health",
+    peptides: "PT-141",
+    desc: "Desire and arousal — PT-141 works on the nervous system, not just blood flow.",
+    href: "/peptides-for-libido/",
+  },
+  {
+    icon: "dumbbell",
+    title: "Muscle & Body Composition",
+    peptides: "CJC-1295 · Ipamorelin",
+    desc: "Lean mass, recovery, and the growth-hormone output that declines with age.",
+    href: "/peptides-for-muscle-growth/",
+  },
+  {
+    icon: "sparkles",
+    title: "Aging & Longevity",
+    peptides: "GH Secretagogues · Collagen",
+    desc: "Skin, connective tissue, and healthy GH pulsatility — supported, not overridden.",
+    href: "/peptides-for-anti-aging/",
+  },
 ];
 
 // --- SolutionSection data ---
 const solutionCards = [
   {
     icon: "hospital",
-    title: "Real Exams, Not Video Calls",
-    desc: "Your first visit is in-person — a physical exam, face-to-face consultation, and on-site labs. Not a 20-second video call and a prescription.",
+    title: "Bloodwork First, Not a Sales Script",
+    desc: "Your protocol starts with a physician evaluation and a baseline lab panel — hormones, IGF-1, metabolic markers. No peptide is prescribed until we've seen your labs.",
   },
   {
-    icon: "microscope",
-    title: "40+ Biomarkers, Not Just Total T",
-    desc: "Your PCP checks 1–2 numbers. We run testosterone (total & free), estradiol, SHBG, thyroid, metabolic, CBC, lipids, PSA — and explain every result.",
+    icon: "flask-conical",
+    title: "Pharmacy-Grade, Not Research-Grade",
+    desc: "Every compound comes from a licensed 503A/503B compounding pharmacy under physician orders. No gray-market vials. No \"research use only\" product.",
   },
   {
     icon: "smartphone",
-    title: "Thorough Start, Convenient After",
-    desc: "After your in-person assessment, ongoing optimization happens via telehealth — dosing adjustments, lab reviews, check-ins from home. In-person anytime.",
+    title: "Monitored Start to Finish",
+    desc: "Scheduled lab reviews at 4–12 weeks, physician-titrated dosing, and telehealth follow-ups from home. In-person reassessment anytime you want.",
   },
 ];
 
@@ -60,42 +89,42 @@ const phases = [
     title: "Assessment & Baseline",
     color: "#C9A84C",
     items: [
-      "In-person physical exam with your physician",
-      "40+ biomarker lab panel drawn on-site",
-      "Full health history and symptom review",
-      "Custom treatment protocol designed",
+      "Physician evaluation and full history",
+      "Baseline labs — IGF-1, hormones, metabolic",
+      "Contraindication screening",
+      "Individualized protocol designed",
     ],
   },
   {
-    period: "Week 3–6",
+    period: "Week 2–4",
     title: "Early Response",
     color: "#5DADE2",
     items: [
-      "Energy levels begin improving",
-      "Mental clarity starts returning",
-      "Sleep quality improvements",
-      "First follow-up labs and dosing review",
+      "Sleep depth and recovery improve first",
+      "Injection timing and dosing dialed in",
+      "First physician check-in",
+      "Side-effect review and adjustments",
     ],
   },
   {
-    period: "Month 2–3",
-    title: "Optimization",
+    period: "Week 4–12",
+    title: "Measurable Progress",
     color: "#34D399",
     items: [
-      "Body composition changes visible",
-      "Libido and sexual function improving",
-      "Mood stabilization and motivation",
-      "Lab-driven dosing adjustments",
+      "Tendon and soft-tissue protocols complete",
+      "Body-composition changes become visible",
+      "Follow-up labs — IGF-1, glucose, hormones",
+      "Lab-driven dose adjustments",
     ],
   },
   {
-    period: "Month 3+",
-    title: "Sustained Results",
+    period: "Month 3–6",
+    title: "Full Protocol Results",
     color: "#D4B96A",
     items: [
-      "Full treatment benefits realized",
+      "Visceral fat and lean-mass shifts on repeat labs",
+      "Maintain, taper, or cycle off — planned, not guessed",
       "Ongoing telehealth optimization",
-      "Quarterly comprehensive labs",
       "In-person visits available anytime",
     ],
   },
@@ -103,35 +132,35 @@ const phases = [
 
 // --- BiomarkerGrid data ---
 const markers = [
-  { name: "Total & Free Testosterone", desc: "Primary hormone levels — the foundation of your protocol", icon: "syringe" },
-  { name: "Estradiol (E2)", desc: "Estrogen balance — critical for mood, joints, cardiovascular health", icon: "scale" },
-  { name: "SHBG", desc: "Sex hormone binding globulin — determines bioavailable testosterone", icon: "link" },
-  { name: "Complete Thyroid Panel", desc: "TSH, Free T3, Free T4 — thyroid dysfunction mimics low T symptoms", icon: "activity" },
-  { name: "CBC + Hematocrit", desc: "Red blood cell monitoring — essential safety marker during TRT", icon: "droplets" },
-  { name: "Comprehensive Metabolic Panel", desc: "Liver, kidney, glucose, electrolytes — whole-body health baseline", icon: "activity" },
+  { name: "IGF-1", desc: "The key growth-hormone-axis marker — tracked before and during any secretagogue protocol", icon: "activity" },
+  { name: "Total & Free Testosterone", desc: "Hormonal baseline — peptide and TRT protocols are monitored together, not in silos", icon: "syringe" },
+  { name: "Estradiol (E2)", desc: "Estrogen balance — affects mood, joints, and body composition", icon: "scale" },
+  { name: "Glucose & HbA1c", desc: "GH secretagogues can shift glucose — we measure it, we don't guess", icon: "droplets" },
+  { name: "Complete Thyroid Panel", desc: "TSH, Free T3, Free T4 — thyroid dysfunction mimics low energy and slow recovery", icon: "activity" },
+  { name: "Comprehensive Metabolic Panel", desc: "Liver, kidney, electrolytes — whole-body baseline before any protocol", icon: "flask-conical" },
   { name: "Lipid Panel", desc: "Cholesterol, triglycerides — cardiovascular risk monitoring", icon: "heart-pulse" },
-  { name: "PSA", desc: "Prostate-specific antigen — proactive screening during hormone therapy", icon: "shield" },
+  { name: "CBC", desc: "Complete blood count — a standard safety marker throughout treatment", icon: "test-tubes" },
 ];
-const labBadges = ["CLIA-Certified Labs", "Results in 48–72 hrs", "Same-Visit Draw", "Physician-Reviewed", "Full Panel Included"];
+const labBadges = ["CLIA-Certified Labs", "Results in 48–72 hrs", "Same-Visit Draw", "Physician-Reviewed", "Repeated Every 4–12 Weeks"];
 
 // --- ComparisonSection data ---
 const comparisonRows = [
-  { label: "Initial Exam", sh: "In-person physical exam", online: "Video call (or none)", supp: "N/A" },
-  { label: "Lab Testing", sh: "40+ biomarkers on-site", online: "Mail-in kit (limited)", supp: "None" },
-  { label: "Physician", sh: "Board-certified, named", online: 'Anonymous "provider"', supp: "None" },
-  { label: "Treatment", sh: "Rx testosterone (FDA)", online: "Rx testosterone", supp: "Herbal blends" },
-  { label: "Monitoring", sh: "Regular labs + check-ins", online: "Minimal follow-up", supp: "None" },
-  { label: "Fertility Options", sh: "HCG / enclomiphene protocols", online: "Rarely offered", supp: "N/A" },
-  { label: "Convenience", sh: "Hybrid: in-person + telehealth", online: "Telehealth only", supp: "Order online" },
-  { label: "Clinical Evidence", sh: "Decades of published data", online: "Same treatment, less oversight", supp: "Limited / no clinical data" },
+  { label: "Physician", sh: "Board-certified, named", online: "Often none on-site", supp: "None" },
+  { label: "Bloodwork", sh: "Baseline + monitoring labs", online: "Rarely required", supp: "None" },
+  { label: "Product Source", sh: "Licensed 503A/503B pharmacy", online: "Varies — often unverified", supp: '"Research use only" vials' },
+  { label: "Protocol Design", sh: "Individualized to your labs", online: "One-size-fits-all stacks", supp: "You're on your own" },
+  { label: "Dosing", sh: "Physician-titrated", online: "Set menu", supp: "Internet forums" },
+  { label: "Monitoring", sh: "Scheduled lab reviews", online: "None", supp: "None" },
+  { label: "Screening", sh: "Contraindications screened", online: "Minimal intake form", supp: "None" },
+  { label: "Documentation", sh: "Prescribed & medically documented", online: "Gray area", supp: "Not for human use" },
 ];
 
 // --- CommitmentSection data ---
 const commitments = [
-  { icon: "microscope", title: "Comprehensive labs — always", desc: "40+ biomarkers at baseline and every follow-up. No cutting corners." },
+  { icon: "microscope", title: "Comprehensive labs — always", desc: "Baseline and monitoring labs with every protocol. No peptide is prescribed without bloodwork." },
   { icon: "user-check", title: "Named physicians — always", desc: "You'll know your doctor's name, credentials, and training. No anonymous providers." },
-  { icon: "activity", title: "Full transparency — always", desc: "Your labs, your data, your access. We share everything we find." },
-  { icon: "shield", title: "Honest answers — even uncomfortable ones", desc: "If your levels are normal, we'll say so. If TRT isn't indicated, we won't prescribe it." },
+  { icon: "shield-check", title: "Pharmacy-grade — always", desc: "Licensed 503A/503B compounding pharmacies under physician orders. Never research-grade product." },
+  { icon: "shield", title: "Honest answers — even uncomfortable ones", desc: "If a peptide isn't indicated for your goals, we won't prescribe it. If the evidence is early, we'll say so." },
 ];
 
 // --- TrustSection data ---
@@ -147,25 +176,44 @@ const trustBadges = ["LegitScript Certified", "HIPAA Compliant", "FSA/HSA Accept
 
 // --- Pricing data ---
 const plans = [
-  { name: "Essential", price: "$149", features: ["Initial in-person assessment", "Comprehensive lab panel", "Treatment protocol", "Quarterly check-ins", "Telehealth follow-ups"], featured: false },
-  { name: "Optimized", price: "$199", features: ["Everything in Essential", "Monthly physician check-ins", "Full biomarker monitoring", "Priority scheduling", "Patient portal access"], featured: true },
-  { name: "Complete", price: "$299", features: ["Everything in Optimized", "Unlimited telehealth visits", "Advanced panels (thyroid, metabolic)", "Sexual health protocols", "Dedicated care coordinator"], featured: false },
+  {
+    name: "Initial Assessment",
+    price: "$0",
+    priceNote: "free",
+    features: ["Physician evaluation & goal review", "Full health history and symptom review", "Baseline lab panel ordered", "No commitment, no pressure"],
+    featured: false,
+  },
+  {
+    name: "Peptide Protocols",
+    price: "Month-to-Month",
+    priceNote: "no contracts",
+    features: ["Priced per peptide, dose, and duration", "Full cost quoted before you start", "Cancel anytime — no long-term contracts", "Itemized superbills for reimbursement"],
+    featured: true,
+  },
+  {
+    name: "Every Protocol Includes",
+    price: "All-In",
+    priceNote: "no add-ons",
+    features: ["Physician visits & dose titration", "Scheduled monitoring labs", "Pharmacy-compounded medication", "Telehealth follow-ups"],
+    featured: false,
+  },
 ];
 
 // --- FAQ data ---
 const faqs = [
-  { q: "What is testosterone replacement therapy?", a: "Testosterone Replacement Therapy (TRT) is a medically supervised treatment designed to restore healthy testosterone levels in men with clinically diagnosed deficiencies. It involves customized protocols using bioidentical testosterone." },
-  { q: "How do I know if I need TRT?", a: "Symptoms like persistent fatigue, reduced muscle mass, low libido, and brain fog are common indicators. However, the only way to know definitively is through comprehensive blood work and a thorough physician evaluation." },
-  { q: "What does the initial assessment include?", a: "Your first visit includes a comprehensive physical exam, an in-depth review of your health history and symptoms, and a 40+ biomarker blood panel drawn on-site. You'll meet face-to-face with a board-certified physician." },
-  { q: "Will TRT affect my fertility?", a: "Standard TRT can reduce sperm count. However, for men concerned about fertility, we offer specialized protocols incorporating HCG or enclomiphene to maintain natural testicular function and fertility while treating low T." },
-  { q: "What's the difference between your clinic and an online TRT service?", a: "We provide the clinical rigor of a physical medical practice—including real in-person exams and extensive lab work—combined with the ongoing convenience of telehealth for follow-ups and management." },
-  { q: "Are there side effects of TRT?", a: "When properly monitored by a physician, TRT is safe and effective. Potential side effects can include elevated red blood cell count or changes in estradiol. This is exactly why we run comprehensive labs regularly to proactively manage your health." },
+  { q: "What is peptide therapy?", a: "Peptides are short chains of amino acids that act as targeted signaling molecules in the body. Physician-supervised peptide therapy uses pharmacy-compounded peptides — prescribed after bloodwork and a medical evaluation — to target specific goals like tissue healing, visceral fat reduction, sleep quality, sexual health, and body composition." },
+  { q: "What peptides does Strong Health prescribe?", a: "Our physicians prescribe pharmacy-grade peptides selected for your specific goals and labs. The most common protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin. Every protocol is individualized — we don't use one-size-fits-all stacks." },
+  { q: "Are peptides legal and safe?", a: "Yes — when prescribed by a licensed physician and dispensed through a licensed 503A or 503B compounding pharmacy, which is the only way we work. We never use research-only or gray-market product. Side effects are generally mild and protocol-specific (injection-site irritation, transient water retention or hunger with GH secretagogues, brief flushing with PT-141), and we screen for contraindications and monitor relevant labs throughout treatment." },
+  { q: "How is peptide therapy different from TRT or GLP-1 weight loss medications?", a: "Peptides are targeted signaling molecules — distinct from steroid hormones like testosterone and from GLP-1 agonists like semaglutide. Healing peptides work on tissue-repair pathways with no androgenic effect. GH-secretagogue peptides prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern, rather than introducing exogenous hormone. Peptide therapy can also be combined with TRT or a GLP-1 program, monitored by the same physician." },
+  { q: "How long does it take to see results?", a: "It depends on the peptide and the goal. Sleep and recovery improvements (DSIP, Ipamorelin) are often noticeable within 2–4 weeks. Body-composition changes from CJC-1295/Ipamorelin or Tesamorelin typically appear at 8–12 weeks, with fuller shifts at 3–6 months. Tendon and joint healing protocols generally run 4–12 weeks. PT-141 works on demand, typically within 30–90 minutes. Every protocol includes scheduled lab reassessments to confirm progress." },
+  { q: "Do I need an in-person visit, or can I start by telehealth?", a: "It depends on your state. Florida patients complete an in-person baseline — physical exam and on-site labs — at our Miami Brickell clinic, with telehealth follow-ups after. In our telehealth states (New York, California, Nevada, Georgia, Texas), the physician evaluation happens by video with baseline and monitoring labs drawn at local lab sites near you." },
+  { q: "Can peptide therapy be combined with TRT?", a: "Yes — many of our patients run combined protocols, pairing TRT with GH-secretagogue peptides for body composition and recovery, or with BPC-157 during soft-tissue injury rehab. Because both therapies are designed and monitored by the same physician using the same lab panels, interactions and overall response are tracked together rather than in silos." },
 ];
 ---
 
 <BaseLayout
-  title="Testosterone Therapy in South Florida | Strong Health"
-  description="Physician-supervised testosterone replacement therapy in South Florida. In-person exams, 40+ biomarker labs, telehealth follow-ups. Book your free assessment."
+  title="Physician-Supervised Peptide Therapy | Strong Health"
+  description="Physician-supervised peptide therapy — BPC-157, CJC-1295, Tesamorelin, PT-141. Pharmacy-grade compounds, real labs, ongoing monitoring. Book a free assessment."
   path="/"
 >
   <JsonLd slot="head" schema={organizationSchema()} />
@@ -187,24 +235,25 @@ const faqs = [
             <span class="text-[13px] text-muted">from 2,500+ verified patient reviews</span>
           </div>
 
-          <Tag>Physician-Supervised TRT · In-Person + Telehealth</Tag>
+          <Tag>Physician-Supervised Peptide Therapy · In-Person + Telehealth</Tag>
 
           <h1 class="text-[36px] md:text-[56px] font-black text-cream leading-[1.08] mt-4 md:mt-6 mb-5 max-w-[700px] tracking-[-1.5px]">
-            Testosterone Replacement Therapy.<br />
-            <span class="text-gold">Not supplements.<br />Not guesswork.</span>
+            Peptide Therapy.<br />
+            <span class="text-gold">Not gray-market vials.<br />Not guesswork.</span>
           </h1>
 
           <p class="text-[17px] text-muted leading-relaxed max-w-[540px] mb-8">
-            In-person physician exams. 40+ biomarker labs drawn on-site. Real treatment protocols
-            supervised by board-certified doctors — with telehealth convenience after.
+            Physician-designed peptide protocols — BPC-157, CJC-1295/Ipamorelin, Tesamorelin,
+            PT-141, DSIP — built around your bloodwork, not a generic stack. Pharmacy-grade
+            compounds, real labs, ongoing monitoring.
           </p>
 
           <div class="flex flex-col gap-3.5 mb-9">
             {
               [
-                "Board-certified physicians — named, credentialed, verifiable",
-                "40+ biomarker lab panel drawn on-site at your first visit",
-                "Telehealth follow-ups after — in-person visits anytime you want",
+                "Bloodwork first — no peptide is prescribed without baseline labs",
+                "Pharmacy-grade compounds from licensed 503A/503B compounders",
+                "Telehealth follow-ups and dose adjustments after your baseline visit",
               ].map((item) => (
                 <div class="flex items-start gap-3">
                   <div class="w-[22px] h-[22px] rounded-full bg-[#34D399]/10 flex items-center justify-center shrink-0 mt-0.5">
@@ -220,75 +269,49 @@ const faqs = [
             <Btn trackLead>Book Your Free Assessment →</Btn>
           </div>
           <div class="mt-4 text-xs text-muted">
-            No commitment · No insurance needed · 15–20 min in-person visit
+            No commitment · No insurance needed · Free 30–45 min assessment
           </div>
         </div>
       </section>
 
-      <!-- Decline -->
+      <!-- Goals -->
       <section class="px-8 py-20 bg-surface-card border-b border-white/5">
         <div class="max-w-[1000px] mx-auto">
-          <div class="grid md:grid-cols-2 gap-12 items-center">
-            <FadeIn>
-              <div class="bg-surface-raised rounded-2xl p-8 pb-16 border border-white/10 relative min-h-[360px]">
-                <div class="text-[11px] font-bold tracking-[1.5px] text-gold uppercase mb-4">
-                  Average Male Testosterone · ng/dL
-                </div>
-                <div class="flex items-end h-[220px] pt-5">
-                  <div class="flex flex-col justify-between h-full pr-2 shrink-0" style="width:44px">
-                    {[...yTicks].reverse().map((tick) => (
-                      <span class="text-[10px] text-muted font-semibold text-right leading-none">{tick}</span>
-                    ))}
-                  </div>
-                  <div class="flex-1 flex items-end gap-2 h-full border-l border-b border-[#7A8599]/30 relative">
-                    {yTicks.slice(0, -1).map((tick) => (
-                      <div
-                        class="absolute left-0 right-0 border-t border-dashed border-[#7A8599]/15"
-                        style={`bottom:${((tick - yMin) / yRange) * 100}%`}
-                      ></div>
-                    ))}
-                    {declineData.map((d, i) => (
-                      <div class="flex-1 flex flex-col items-center gap-1.5 group h-full justify-end">
-                        <span class="text-[10px] text-muted font-semibold transition-colors group-hover:text-white">{d.ng}</span>
-                        <div
-                          class="w-full rounded-t-md transition-all duration-700 ease-out"
-                          style={`height:${((d.ngValue - yMin) / yRange) * 100}%;background:linear-gradient(180deg, ${i === 4 ? "#EF4444" : "#C9A84C"} 0%, ${i === 4 ? "rgba(239,68,68,0.2)" : "rgba(201,168,76,0.2)"} 100%);min-height:8px`}
-                        ></div>
-                        <span class="text-[10px] text-muted font-semibold">{d.year}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div class="absolute bottom-4 left-8 right-8 text-[11px] text-[#EF4444] font-semibold text-center py-2 px-3 bg-[#EF4444]/10 rounded-md">
-                  ↓ 1% decline per year since 1980s — <a href="https://pubmed.ncbi.nlm.nih.gov/17062768/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white transition-colors">Travison et al., J Clin Endocrinol Metab, 2007</a>
-                </div>
-              </div>
-            </FadeIn>
+          <FadeIn class="text-center mb-10">
+            <h2 class="text-[34px] font-extrabold text-cream leading-[1.15] mb-3">
+              Not recovering like you used to?<br />
+              <span class="text-gold">There's a specific peptide for that.</span>
+            </h2>
+            <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+              Peptide therapy isn't one treatment — it's targeted signaling molecules matched
+              to specific clinical goals. Pick yours.
+            </p>
+          </FadeIn>
 
-            <FadeIn delay={200}>
-              <h2 class="text-[32px] font-extrabold text-cream leading-[1.15] mb-4">
-                This isn't about aging.<br />
-                <span class="text-gold">It's a clinical trend.</span>
-              </h2>
-              <p class="text-[15px] text-muted leading-[1.7] mb-5">
-                Men's average testosterone levels have dropped every decade for 40+ years.
-                Your symptoms aren't weakness — they're biology. And biology responds to medicine, not willpower.
-              </p>
-              <div class="flex flex-col gap-3">
-                {symptoms.map((s) => (
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-surface-raised flex items-center justify-center shrink-0 border border-white/5">
-                      <Icon name={s.icon} size={18} class="text-gold" />
-                    </div>
-                    <span class="text-sm text-cream-muted">{s.text}</span>
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {goals.map((g, i) => (
+              <FadeIn delay={i * 100}>
+                <a
+                  href={g.href}
+                  class="flex flex-col h-full bg-surface-raised rounded-2xl p-6 border border-white/10 hover:border-gold/50 focus-visible:border-gold/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 hover:-translate-y-1 transition-all duration-300 group"
+                >
+                  <div class="w-11 h-11 rounded-full bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors">
+                    <Icon name={g.icon} size={22} class="text-gold" />
                   </div>
-                ))}
-              </div>
-              <div class="mt-8">
-                <Btn trackLead>Book Your Free Assessment →</Btn>
-              </div>
-            </FadeIn>
+                  <h3 class="text-base font-bold text-cream mb-1">{g.title}</h3>
+                  <div class="text-[10px] font-bold tracking-[1.5px] uppercase text-gold mb-2.5">{g.peptides}</div>
+                  <p class="text-[13px] text-muted leading-relaxed flex-grow mb-4">{g.desc}</p>
+                  <span class="text-xs font-semibold text-gold flex items-center gap-1">
+                    Read the guide <span class="group-hover:translate-x-1 transition-transform">→</span>
+                  </span>
+                </a>
+              </FadeIn>
+            ))}
           </div>
+
+          <FadeIn delay={600} class="text-center mt-8">
+            <Btn trackLead>Book Your Free Assessment →</Btn>
+          </FadeIn>
         </div>
       </section>
 
@@ -300,8 +323,8 @@ const faqs = [
               The solution? <span class="text-gold">Actual medicine.</span>
             </h2>
             <p class="text-[15px] text-muted max-w-[560px] mx-auto">
-              Supplements can't fix clinically low testosterone. TRT can. Here's what physician-supervised
-              treatment actually looks like.
+              A vial without labs is a gamble. Here's what physician-supervised peptide
+              therapy actually looks like.
             </p>
           </FadeIn>
 
@@ -362,7 +385,7 @@ const faqs = [
           </div>
 
           <FadeIn delay={400} class="text-center mt-6 text-xs text-muted italic">
-            Individual results vary. Timeline based on published clinical literature for physician-supervised TRT.
+            Individual results vary. Timeline based on published clinical literature for physician-supervised peptide protocols.
           </FadeIn>
         </div>
       </section>
@@ -372,11 +395,11 @@ const faqs = [
         <div class="max-w-[1000px] mx-auto">
           <FadeIn class="text-center mb-10">
             <h2 class="text-[34px] font-extrabold text-cream mb-3">
-              40+ Biomarkers. <span class="text-gold">Not Just "Total T."</span>
+              Labs Before Any Peptide. <span class="text-gold">Always.</span>
             </h2>
             <p class="text-[15px] text-muted max-w-[540px] mx-auto">
-              Your PCP runs 1–2 markers and calls it a day. We run a comprehensive panel and explain
-              every single result.
+              Med spas hand you a vial after an intake form. We draw a comprehensive baseline
+              panel first — and repeat the relevant markers throughout your protocol.
             </p>
           </FadeIn>
 
@@ -410,7 +433,7 @@ const faqs = [
         <div class="max-w-[1000px] mx-auto">
           <FadeIn class="text-center mb-10">
             <h2 class="text-[34px] font-extrabold text-cream mb-3">Us vs. Them</h2>
-            <p class="text-[15px] text-muted">Not all testosterone treatment is created equal.</p>
+            <p class="text-[15px] text-muted">Not everyone selling peptides is practicing medicine.</p>
           </FadeIn>
 
           <FadeIn delay={200}>
@@ -420,15 +443,15 @@ const faqs = [
                 <div class="p-3 md:p-4 text-center border-l border-r border-white/5 bg-gold/10 relative">
                   <div class="absolute top-0 left-0 w-full h-[3px] bg-gold"></div>
                   <div class="text-[13px] md:text-sm font-extrabold text-gold tracking-wide">Strong Health</div>
-                  <div class="hidden md:block text-[10px] text-muted mt-0.5">Hybrid TRT Clinic</div>
+                  <div class="hidden md:block text-[10px] text-muted mt-0.5">Physician Peptide Clinic</div>
                 </div>
                 <div class="p-3 md:p-4 text-center border-r border-white/5">
-                  <div class="text-[12px] md:text-[13px] font-bold text-muted">Online-Only TRT</div>
-                  <div class="hidden md:block text-[10px] text-muted/60 mt-0.5">Telehealth clinics</div>
+                  <div class="text-[12px] md:text-[13px] font-bold text-muted">Med Spas & IV Lounges</div>
+                  <div class="hidden md:block text-[10px] text-muted/60 mt-0.5">Wellness boutiques</div>
                 </div>
                 <div class="p-3 md:p-4 text-center">
-                  <div class="text-[12px] md:text-[13px] font-bold text-muted">T-Supplements</div>
-                  <div class="hidden md:block text-[10px] text-muted/60 mt-0.5">OTC products</div>
+                  <div class="text-[12px] md:text-[13px] font-bold text-muted">Online "Research" Vials</div>
+                  <div class="hidden md:block text-[10px] text-muted/60 mt-0.5">Gray-market sites</div>
                 </div>
               </div>
 
@@ -467,7 +490,7 @@ const faqs = [
               <p class="text-[15px] text-muted leading-[1.7] mb-6">
                 We don't guarantee results — that's not how medicine works.
                 What we guarantee is thoroughness, transparency, and honesty.
-                If TRT isn't right for you, we'll tell you.
+                If peptide therapy isn't right for you, we'll tell you.
               </p>
               <Btn trackLead>Book Your Free Assessment →</Btn>
             </FadeIn>
@@ -578,8 +601,9 @@ const faqs = [
         <div class="max-w-[1000px] mx-auto">
           <FadeIn class="text-center mb-10">
             <h2 class="text-[34px] font-extrabold text-cream mb-3">Transparent Pricing</h2>
-            <p class="text-[15px] text-muted">
-              We publish our pricing because you deserve to know before you walk in.
+            <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+              Protocols are priced per peptide, dose, and duration — and you'll know the full
+              cost of yours before you commit to anything.
             </p>
           </FadeIn>
 
@@ -589,13 +613,13 @@ const faqs = [
                 <div class={`bg-surface-card rounded-2xl p-7 relative h-full flex flex-col ${p.featured ? "border-2 border-gold shadow-[0_0_30px_rgba(201,168,76,0.1)]" : "border border-white/10"}`}>
                   {p.featured && (
                     <div class="absolute -top-[2px] left-1/2 -translate-x-1/2 bg-gold text-surface text-[9px] font-extrabold px-3.5 py-1 rounded-b-md tracking-[1.2px] uppercase">
-                      Recommended
+                      How It Works
                     </div>
                   )}
                   <div class="text-[15px] font-bold text-cream mb-2">{p.name}</div>
-                  <div class="flex items-baseline gap-1 mb-6">
-                    <span class="text-4xl font-black text-gold">{p.price}</span>
-                    <span class="text-[13px] text-muted">/month</span>
+                  <div class="flex items-baseline gap-1.5 mb-6">
+                    <span class="text-[28px] leading-none font-black text-gold">{p.price}</span>
+                    <span class="text-[13px] text-muted">{p.priceNote}</span>
                   </div>
                   <div class="flex flex-col gap-3 flex-grow mb-7">
                     {p.features.map((f) => (
@@ -662,7 +686,8 @@ const faqs = [
               Ready to Find Out What's Possible?
             </h2>
             <p class="text-[17px] text-muted mb-10 max-w-[500px] mx-auto">
-              Book your free in-person assessment. No commitment. No pressure. Just answers.
+              Book your free assessment. Real exam, real labs, and a real protocol —
+              if peptide therapy is the right fit for your goals.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Btn trackLead class="!text-[15px] !px-9 !py-4 w-full sm:w-auto">Book Your Free Assessment →</Btn>
@@ -675,6 +700,7 @@ const faqs = [
         </div>
       </section>
 
+      <PeptideLocationsSection />
       <LocationsGridSection />
       <BlogArticlesSection />
     </main>

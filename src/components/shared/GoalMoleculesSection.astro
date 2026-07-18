@@ -1,0 +1,51 @@
+---
+// "Molecules used in this guide" module for goal spokes (US-006). Rendered
+// from the reverse goal→molecule mapping so goal↔molecule cross-links stay in
+// sync with each molecule's `goals` array — no hand-authored link drift.
+import Icon from "./Icon.astro";
+import type { GoalSlug } from "../../data/molecules/types";
+import { moleculePath, moleculesForGoal } from "../../data/molecules";
+
+interface Props {
+  goal: GoalSlug;
+}
+
+const { goal } = Astro.props;
+const molecules = moleculesForGoal(goal);
+---
+
+{
+  molecules.length > 0 && (
+    <section class="mt-12 pt-8 border-t border-white/10">
+      <div class="flex items-center justify-between flex-wrap gap-3 mb-2">
+        <h3 class="text-lg font-bold text-cream">Molecules in this guide</h3>
+        <a
+          href="/molecules/"
+          class="text-[12px] font-semibold text-gold hover:text-gold-hover transition-colors"
+        >
+          Browse the molecule library →
+        </a>
+      </div>
+      <p class="text-[13px] text-muted leading-relaxed mb-5">
+        Each peptide below has a physician-reviewed page covering what it is, the evidence, and
+        how Strong Health prescribes it.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {molecules.map((m) => (
+          <a
+            href={moleculePath(m.slug)}
+            class="flex items-start gap-3 rounded-lg border border-white/10 bg-surface-card/60 p-4 hover:border-gold/30 transition-colors group"
+          >
+            <Icon name="pill" size={16} class="text-gold shrink-0 mt-0.5" />
+            <span>
+              <span class="text-[14px] font-bold text-cream group-hover:text-gold transition-colors block">
+                {m.name}
+              </span>
+              <span class="text-[12px] text-muted">{m.primaryUse}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}

@@ -3,7 +3,7 @@ import { reviews } from "./reviews";
 export type Category =
   | "All"
   | "Sexual Health"
-  | "Men's Health Nutrients"
+  | "Nutrients & Supplements"
   | "Peptide Therapy"
   | "Supplement Reviews"
   | "Services"
@@ -71,7 +71,7 @@ export const articles: ArticleMeta[] = [
     title: "Foods That Lower Testosterone: Separating Myth from Evidence",
     subtitle: "The internet is full of lists claiming certain foods destroy your testosterone. But what does the clinical evidence actually say?",
     path: "/foods-that-lower-testosterone/",
-    category: "Men's Health Nutrients",
+    category: "Nutrients & Supplements",
     readTime: "11 min read",
     datePublished: "2026-03-28",
   },
@@ -79,7 +79,7 @@ export const articles: ArticleMeta[] = [
     title: "Resveratrol Side Effects: GI Issues, Blood Thinning & Estrogenic Concerns for Men",
     subtitle: "Resveratrol is widely promoted for anti-aging and cardiovascular benefits, but it carries real side effects and drug interactions that men should understand.",
     path: "/resveratrol-side-effects/",
-    category: "Men's Health Nutrients",
+    category: "Nutrients & Supplements",
     readTime: "8 min read",
     datePublished: "2026-03-28",
   },
@@ -87,7 +87,7 @@ export const articles: ArticleMeta[] = [
     title: "NADH Benefits: Cellular Energy, Cognition & the NAD+/NADH Distinction Explained",
     subtitle: "NADH is the reduced form of NAD+ and the primary electron carrier that drives mitochondrial ATP production.",
     path: "/nadh-benefits/",
-    category: "Men's Health Nutrients",
+    category: "Nutrients & Supplements",
     readTime: "10 min read",
     datePublished: "2026-03-28",
   },
@@ -95,7 +95,7 @@ export const articles: ArticleMeta[] = [
     title: "Lysine Benefits for Men's Health: Collagen, Calcium, Immunity & Testosterone Support",
     subtitle: "This essential amino acid does more than fight cold sores. Lysine supports connective tissue integrity, bone density, immune defense, and may indirectly support testosterone production.",
     path: "/lysine-benefit-men-health/",
-    category: "Men's Health Nutrients",
+    category: "Nutrients & Supplements",
     readTime: "9 min read",
     datePublished: "2026-03-28",
   },
@@ -103,7 +103,7 @@ export const articles: ArticleMeta[] = [
     title: "NAC Benefits for Men: Liver Detox, Testosterone Support & Antioxidant Defense",
     subtitle: "N-Acetyl Cysteine is one of the most versatile supplements available, supporting liver function, fertility, and hormonal health in men.",
     path: "/nac-benefits-men/",
-    category: "Men's Health Nutrients",
+    category: "Nutrients & Supplements",
     readTime: "9 min read",
     datePublished: "2026-03-28",
   },
@@ -234,7 +234,7 @@ export const articles: ArticleMeta[] = [
 export const categoryColors: Record<Category, string> = {
   "All": "#C9A84C",
   "Sexual Health": "#EF4444",
-  "Men's Health Nutrients": "#34D399",
+  "Nutrients & Supplements": "#34D399",
   "Peptide Therapy": "#818CF8",
   "Supplement Reviews": "#F59E0B",
   "Services": "#38BDF8",

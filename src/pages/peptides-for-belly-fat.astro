@@ -16,7 +16,7 @@ const citations = [{"id": 1, "text": "Johannsson G, et al. Growth hormone treatm
 
 const tocItems = [{"id": "visceral-fat", "title": "Why Belly Fat Is Different"}, {"id": "gh-secretagogues", "title": "Growth Hormone Secretagogues Explained"}, {"id": "ipamorelin", "title": "Ipamorelin for Body Composition"}, {"id": "cjc-1295", "title": "CJC-1295: Extended GH Release"}, {"id": "tesamorelin", "title": "Tesamorelin: FDA-Approved for Visceral Fat"}, {"id": "how-gh-burns-fat", "title": "How Growth Hormone Reduces Belly Fat"}, {"id": "clinical-evidence", "title": "Clinical Evidence"}, {"id": "treatment-protocols", "title": "Treatment Protocols"}, {"id": "safety", "title": "Safety and Side Effects"}, {"id": "faq", "title": "FAQ"}];
 
-const relatedLinks = [{"url": "/peptides/", "label": "Peptides Hub: All Peptide Therapies"}, {"url": "/peptides-for-weight-loss/", "label": "Peptides for Weight Loss: GLP-1 and GH Secretagogues"}, {"url": "/semaglutide-diet/", "label": "Semaglutide Diet: Complete Guide for Weight Loss"}, {"url": "/dexa-scan/", "label": "DEXA Scan: Gold Standard for Body Composition"}, {"url": "/peptides-for-muscle-growth/", "label": "Peptides for Muscle Growth"}, {"url": "/fl/miami/weight-loss-clinic/", "label": "Weight Loss Clinic in Miami, FL"}];
+const relatedLinks = [{"url": "/peptides/", "label": "Peptides Hub: All Peptide Therapies"}, {"url": "/peptides-for-weight-loss/", "label": "Peptides for Weight Loss: GLP-1 and GH Secretagogues"}, {"url": "/semaglutide-diet/", "label": "Semaglutide Diet: Complete Guide for Weight Loss"}, {"url": "/dexa-scan/", "label": "DEXA Scan: Gold Standard for Body Composition"}, {"url": "/peptides-for-muscle-growth/", "label": "Peptides for Muscle Growth"}, {"url": "/fl/miami/peptide-therapy/", "label": "Peptide Therapy in Miami, FL"}];
 
 // Production wrapped this page's FAQPage schema in an @graph envelope.
 const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
@@ -29,6 +29,7 @@ const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] 
   subtitle="Stubborn belly fat isn't just a cosmetic concern: visceral fat is metabolically active tissue linked to insulin resistance, cardiovascular disease, and chronic inflammation. GH secretagogue peptides offer a physician-supervised approach to body composition optimization."
   seoDescription="How GH secretagogue peptides like Ipamorelin, CJC-1295, and Tesamorelin target stubborn visceral belly fat. Clinical evidence and protocols inside."
   path={path}
+  moleculeGoal="belly-fat"
   breadcrumb="Peptides for Belly Fat"
   author={author}
   reviewer={reviewer}

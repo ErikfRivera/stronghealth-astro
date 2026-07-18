@@ -16,7 +16,7 @@ const citations = [{"id": 1, "text": "Kingsberg SA, et al. Bremelanotide for the
 
 const tocItems = [{"id": "understanding-pt141", "title": "Understanding PT-141 (Bremelanotide)"}, {"id": "how-pt141-works", "title": "How PT-141 Works"}, {"id": "fda-status", "title": "FDA Approval Status"}, {"id": "vs-pde5", "title": "PT-141 vs. PDE5 Inhibitors (Viagra, Cialis)"}, {"id": "clinical-evidence", "title": "Clinical Evidence"}, {"id": "treatment-protocols", "title": "Treatment Protocols"}, {"id": "safety", "title": "Safety and Side Effects"}, {"id": "who-benefits", "title": "Who Benefits Most?"}, {"id": "faq", "title": "FAQ"}];
 
-const relatedLinks = [{"url": "/peptides/", "label": "Peptides Hub: All Peptide Therapies"}, {"url": "/porn-induced-erectile-dysfunction/", "label": "Porn-Induced ED: Causes & Recovery"}, {"url": "/baking-soda-for-ed/", "label": "Baking Soda for ED: What the Evidence Says"}, {"url": "/fl/miami/trt-therapy/", "label": "TRT Therapy in Miami, FL"}, {"url": "/foods-that-lower-testosterone/", "label": "Foods That Lower Testosterone"}];
+const relatedLinks = [{"url": "/peptides/", "label": "Peptides Hub: All Peptide Therapies"}, {"url": "/porn-induced-erectile-dysfunction/", "label": "Porn-Induced ED: Causes & Recovery"}, {"url": "/baking-soda-for-ed/", "label": "Baking Soda for ED: What the Evidence Says"}, {"url": "/fl/miami/peptide-therapy/", "label": "Peptide Therapy in Miami, FL"}, {"url": "/foods-that-lower-testosterone/", "label": "Foods That Lower Testosterone"}];
 
 // Production wrapped this page's FAQPage schema in an @graph envelope.
 const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
@@ -29,6 +29,7 @@ const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] 
   subtitle="Sexual desire is a complex interplay of hormones, neurotransmitters, and psychology. PT-141 (bremelanotide) represents a fundamentally different approach to treating low libido: one that works through the brain rather than blood flow."
   seoDescription="How PT-141 (bremelanotide) treats low libido via the central nervous system. PT-141 vs Viagra/Cialis, clinical evidence, and protocols."
   path={path}
+  moleculeGoal="libido"
   breadcrumb="Peptides for Libido"
   author={author}
   reviewer={reviewer}

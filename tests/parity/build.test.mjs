@@ -25,8 +25,14 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const dist = join(root, "dist");
 const ORIGIN = process.env.SITE_ORIGIN || "https://www.stronghealth.com";
 
+// Re-baselined 2026-07-18 by the peptide repositioning (US-011): the suite now
+// regresses against a self-snapshot of the current build
+// (tests/fixtures/build-baseline.json, regenerated via
+// `scripts/generate-parity-baseline.mjs`), not the retired frozen 2026-07-14
+// production capture — that byte-parity spec no longer applies once the site
+// was intentionally rethemed. See CHANGES-FROM-PRODUCTION.md.
 const fixture = JSON.parse(
-  readFileSync(join(root, "tests/fixtures/production-parity-2026-07-14.json"), "utf-8"),
+  readFileSync(join(root, "tests/fixtures/build-baseline.json"), "utf-8"),
 );
 
 function distHtmlPath(path) {

@@ -35,7 +35,6 @@ const AUTHOR_ROUTES = new Set(["/author/dr-angel-rivera/", "/author/mahadev-mukh
 function getSitemapMeta(route) {
   if (route === "/") return { priority: "1.0", changefreq: "weekly" };
   if (route === "/blog/") return { priority: "0.8", changefreq: "weekly" };
-  if (route === "/services/") return { priority: "0.9", changefreq: "monthly" };
   if (route === "/peptides/" || route === "/fl/") {
     return { priority: "0.9", changefreq: "monthly" };
   }
@@ -107,8 +106,7 @@ function routeSourceFiles(route) {
   if (route === "/blog/" || route === "/reviews/") push("src/data/articles.ts");
   if (route.startsWith("/reviews/")) push("src/data/reviews.ts");
   if (route.startsWith("/fl/")) {
-    push("src/data/local/cityTrtConfig.ts");
-    if (route.includes("weight-loss")) push("src/data/local/cityWeightLossConfig.ts");
+    push("src/data/local/clinics.ts");
     if (route.includes("peptide-therapy")) push("src/data/local/cityPeptideConfig.ts");
     if (route.includes("prp-therapy")) push("src/data/local/cityPrpConfig.ts");
   }
@@ -173,14 +171,10 @@ const HISTORICAL_LASTMOD = {
   "/editorial-guidelines/": "2026-05-27",
   "/fl/": "2026-06-22",
   "/fl/delray-beach/peptide-therapy/": "2026-05-27",
-  "/fl/delray-beach/trt-therapy/": "2026-05-27",
-  "/fl/delray-beach/weight-loss-clinic/": "2026-05-27",
   "/fl/miami/dexascan/": "2026-06-22",
   "/fl/miami/peptide-therapy/": "2026-05-27",
   // Post-cutover Miami PRP (platelet-rich plasma) therapy launch.
   "/fl/miami/prp-therapy/": "2026-07-17",
-  "/fl/miami/trt-therapy/": "2026-05-27",
-  "/fl/miami/weight-loss-clinic/": "2026-05-27",
   // Tampa telehealth service-area peptide launch (physicalClinic: false).
   "/fl/tampa/peptide-therapy/": "2026-07-15",
   "/hipaa-policy/": "2026-05-27",
@@ -191,10 +185,28 @@ const HISTORICAL_LASTMOD = {
   "/nv/las-vegas/peptide-therapy/": "2026-07-15",
   "/ga/atlanta/peptide-therapy/": "2026-07-15",
   "/tx/austin/peptide-therapy/": "2026-07-15",
+  // Peptide molecule library launch (peptide repositioning).
+  "/molecules/": "2026-07-18",
+  "/molecules/bpc-157/": "2026-07-18",
+  "/molecules/tb-500/": "2026-07-18",
+  "/molecules/cjc-1295/": "2026-07-18",
+  "/molecules/ipamorelin/": "2026-07-18",
+  "/molecules/sermorelin/": "2026-07-18",
+  "/molecules/tesamorelin/": "2026-07-18",
+  "/molecules/pt-141/": "2026-07-18",
+  "/molecules/dsip/": "2026-07-18",
+  "/molecules/aod-9604/": "2026-07-18",
+  "/molecules/ghk-cu/": "2026-07-18",
+  "/molecules/mots-c/": "2026-07-18",
+  "/molecules/semaglutide/": "2026-07-18",
+  "/molecules/tirzepatide/": "2026-07-18",
+  "/molecules/ll-37/": "2026-07-18",
+  "/molecules/epithalon/": "2026-07-18",
+  "/molecules/kisspeptin/": "2026-07-18",
+  "/molecules/selank/": "2026-07-18",
   "/peptides/": "2026-04-22",
   "/privacy-policy/": "2026-05-27",
   "/reviews/": "2026-06-22",
-  "/services/": "2026-04-20",
   "/terms-of-use/": "2026-05-27",
 };
 

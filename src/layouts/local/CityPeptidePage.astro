@@ -391,6 +391,19 @@ const medicalClinicSchema = {
                   </div>
                 </div>
               </div>
+              <div class="mt-6 rounded-2xl overflow-hidden border border-white/10">
+                <iframe
+                  title={`Map to ${config.clinic.name}`}
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                    `${config.clinic.name}, ${config.clinic.streetAddress}, ${config.clinic.city}, ${config.clinic.state} ${config.clinic.postalCode}`,
+                  )}&output=embed`}
+                  width="100%"
+                  height="320"
+                  style="border:0;"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
             </FadeIn>
           </div>
         </section>

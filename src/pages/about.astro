@@ -21,7 +21,7 @@ const structuredData = {
   "@type": "AboutPage",
   name: "About Strong Health",
   description:
-    "Learn about Strong Health, a physician-supervised testosterone replacement therapy clinic in Miami, FL offering in-person exams, 40+ biomarker labs, and telehealth follow-ups.",
+    "Learn about Strong Health, a physician-supervised peptide therapy clinic in Miami, FL offering in-person exams, comprehensive biomarker labs, and telehealth follow-ups.",
   url: `${SITE_URL}/about`,
   mainEntity: { "@id": STRONG_HEALTH_ORG_ID },
 };
@@ -37,7 +37,7 @@ const values = [
     icon: "flask-conical",
     title: "Evidence-Based",
     description:
-      "Treatment protocols grounded in peer-reviewed research and clinical guidelines. We follow the Endocrine Society's standards for TRT management.",
+      "Treatment protocols grounded in peer-reviewed research and primary sources. Every peptide protocol is physician-designed and monitored with follow-up labs.",
   },
   {
     icon: "shield-check",
@@ -49,7 +49,7 @@ const values = [
     icon: "activity",
     title: "Data-Driven",
     description:
-      "40+ biomarker lab panels at your first visit. We don't guess — we measure testosterone, free T, SHBG, estradiol, PSA, metabolic markers, and more.",
+      "Comprehensive biomarker lab panels at your first visit. We don't guess — we measure hormones, IGF-1, glucose, metabolic markers, and more.",
   },
 ];
 
@@ -62,24 +62,24 @@ const stats = [
 
 const servicesSummary = [
   {
-    icon: "stethoscope",
-    name: "Testosterone Replacement Therapy",
-    desc: "Physician-supervised TRT with ongoing lab monitoring and dosage optimization.",
+    icon: "activity",
+    name: "Peptide Therapy",
+    desc: "Physician-supervised peptide protocols for healing, body composition, sleep, libido, and longevity — compounded under 503A/503B standards.",
   },
   {
     icon: "flask-conical",
     name: "Comprehensive Lab Testing",
-    desc: "40+ biomarker panel including testosterone, free T, SHBG, estradiol, PSA, CBC, metabolic panel.",
+    desc: "Full biomarker panels including hormones, IGF-1, glucose, and metabolic markers — the basis of every protocol.",
   },
   {
-    icon: "activity",
-    name: "Peptide Therapy",
-    desc: "Physician-supervised peptide protocols for recovery, performance, and wellness.",
+    icon: "pill",
+    name: "Molecule Library",
+    desc: "Physician-reviewed pages on every peptide we prescribe — BPC-157, CJC-1295, Tesamorelin, PT-141, semaglutide, and more.",
   },
   {
     icon: "users",
-    name: "Sexual Health",
-    desc: "Evidence-based treatment for erectile dysfunction and related conditions.",
+    name: "Peptide Therapy Locations",
+    desc: "In-person care at our Miami (Brickell) clinic and telehealth across eight metros nationwide.",
   },
   {
     icon: "star",
@@ -96,7 +96,7 @@ const servicesSummary = [
 
 <BaseLayout
   title="About Us"
-  description="Strong Health is a physician-supervised TRT clinic in Miami, FL. Board-certified physicians, 40+ biomarker labs, in-person exams, and telehealth follow-ups."
+  description="Strong Health is a physician-supervised peptide therapy clinic in Miami, FL — board-certified physicians, comprehensive labs, in-person exams, and telehealth."
   path="/about/"
 >
   <JsonLd slot="head" schema={structuredData} />
@@ -117,10 +117,10 @@ const servicesSummary = [
             About <span class="text-gold">Strong Health</span>
           </h1>
           <p class="text-sm md:text-base text-muted leading-relaxed max-w-[560px] mx-auto">
-            Strong Health exists because men deserve better than
+            Strong Health exists because patients deserve better than
             supplement-mill clinics and online questionnaire prescribers. We
             combine in-person physician exams with comprehensive lab testing to
-            deliver testosterone therapy that is safe, monitored, and
+            deliver peptide therapy that is safe, monitored, and
             effective.
           </p>
         </FadeIn>
@@ -135,22 +135,21 @@ const servicesSummary = [
             Our Mission
           </div>
           <h2 class="text-2xl font-bold text-cream mb-5">
-            Restore vitality through physician-led, evidence-based hormone
+            Restore vitality through physician-led, evidence-based peptide
             therapy
           </h2>
           <p class="text-sm text-muted leading-[1.8] mb-4">
-            Too many men suffer from low testosterone symptoms — fatigue,
-            reduced libido, brain fog, loss of muscle mass — without knowing
-            that safe, physician-supervised treatment exists. And too many
-            clinics cut corners: online-only assessments, cookie-cutter
-            dosing, no follow-up labs.
+            Too many people struggle with recovery, body composition, sleep,
+            and low energy — without knowing that safe, physician-supervised
+            peptide therapy exists. And too many clinics cut corners:
+            online-only assessments, gray-market vials, no follow-up labs.
           </p>
           <p class="text-sm text-muted leading-[1.8]">
             Strong Health was founded to do it right. Every patient gets an
-            in-person physician exam, a 40+ biomarker lab panel drawn on-site
-            at their first visit, and ongoing monitoring to optimize outcomes
-            and minimize risks. Our physicians don't just prescribe — they
-            partner with you on a treatment plan built around your biology.
+            in-person physician exam, a comprehensive biomarker lab panel drawn
+            on-site at their first visit, and ongoing monitoring to optimize
+            outcomes and minimize risks. Our physicians don't just prescribe —
+            they partner with you on a protocol built around your biology.
           </p>
         </FadeIn>
       </div>
@@ -287,6 +286,13 @@ const servicesSummary = [
               </div>
             </div>
           </a>
+        </FadeIn>
+        <FadeIn delay={250}>
+          <p class="text-sm text-muted leading-relaxed mt-8">
+            Our editorial team also publishes independent
+            <a href="/reviews/" class="text-gold hover:underline">supplement and clinic reviews</a>
+            — evidence-based evaluations of products our patients ask about.
+          </p>
         </FadeIn>
       </div>
     </section>

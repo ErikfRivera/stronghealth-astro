@@ -87,3 +87,78 @@ meaning; the US-014 parity audit flags everything else as a defect.
 _All other title/description texts are unchanged from production (production
 had already been trimmed to budget after the April SEO audit; the build now
 enforces the budgets: title ≤ 60 chars incl. brand, description 120–160)._
+
+---
+
+## 2026-07-18 — Full peptide repositioning (PRD: prd-peptide-repositioning.md)
+
+This release completes the pivot the homepage retheme started: Strong Health
+is now a single-theme **physician-supervised peptide therapy** site. The
+changes below are deliberate and sitewide, so the frozen 2026-07-14 production
+byte-parity capture is no longer the spec (see "Parity suite re-baseline").
+
+### Removed pages (301, single-hop → nearest peptide equivalent)
+- `/services/` → `/peptides/`
+- `/fl/miami/trt-therapy/`, `/fl/delray-beach/trt-therapy/` → each city's `/peptide-therapy/`
+- `/fl/miami/weight-loss-clinic/`, `/fl/delray-beach/weight-loss-clinic/` → each city's `/peptide-therapy/`
+- Layouts `CityTRTPage.astro` / `CityWeightLossPage.astro` and data modules
+  `cityTrtConfig.ts` / `cityWeightLossConfig.ts` deleted; `LocationsGridSection.astro`
+  removed (duplicated `PeptideLocationsSection`).
+- Redirects added to `vercel.json`; `tests/fixtures/redirect-manifest.json` updated;
+  `check-redirects` passes single-hop/no-loop.
+- PRP, stem-cell, and Miami DEXA pages KEPT (owner decision) but de-emphasized.
+
+### TRT brand residue removed
+- Footer (shared + article/review mini-footers): tagline, "Strong Health TRT"
+  copyright → "Strong Health", TRT-led Services column → peptide services.
+- `Seo.astro` `DEFAULT_OG_IMAGE_ALT` (sitewide default) → peptide-primary.
+- `organizationSchema()` description + OfferCatalog → peptide-primary; TRT and
+  Sexual Health service offers dropped.
+- `Nav.astro`: Locations dropdown leads with peptide-therapy; Peptides menu now
+  exposes "Browse by Goal" (`/peptides/`) and "Browse by Molecule" (`/molecules/`);
+  Dexascans and Reviews dropdowns removed.
+- `/fl/` hub retitled/rewritten peptide-primary; `/about/`, `/careers/`, `/blog/`,
+  author bio rethemed. "Men's Health Nutrients" article category → "Nutrients & Supplements".
+- KEPT deliberately: "Strong Health TRT, LLC" in `/terms-of-use/` (registered
+  legal entity, OQ-6); contextual "combined with TRT" mentions in guide/review copy.
+
+### Reviews isolated (US-003)
+- `/reviews/*` removed from global footer and nav; reachable only via a single
+  link from `/about/`. Review pages keep their own structured data, self-interlink,
+  and stay indexable. No peptide-theme page links into a review page.
+
+### Molecule layer added (US-004/US-005)
+- New `/molecules/` hub + 17 molecule spokes (`/molecules/[slug]/`), driven by
+  `src/data/molecules/` (config-per-molecule + shared `MoleculePage.astro`).
+- Each molecule's `goals[]` field generates bidirectional goal↔molecule links:
+  molecule pages link their goal spokes; goal spokes render a "Molecules in this
+  guide" module (`GoalMoleculesSection.astro`) from the reverse mapping.
+- Each molecule page: MedicalWebPage + FAQPage + Physician + BreadcrumbList schema,
+  PubMed/DailyMed citations, YMYL-safe dosing context, physician-reviewer byline.
+- New schema builders `physicianSchema` / `medicalClinicSchema` in `schemas.ts`.
+
+### Location deepening (US-007)
+- Non-Miami metros now name Dr. Angel Rivera as supervising physician (OQ-3),
+  replacing the anonymous "Strong Health Medical Team" primary entry.
+- Location pages cross-link molecule spokes; physical Miami clinic gains a visible
+  Google Maps embed (MedicalClinic schema with NAP+geo already emitted, gated to
+  physical clinics — Delray is telehealth per OQ-1).
+- "9 clinics" / "nine clinic locations" copy corrected sitewide to the real
+  footprint: 1 physical clinic (Miami Brickell) + telehealth across 8 metros.
+
+### Trust signals (US-008)
+- AggregateRating (4.9 / 2,500) added to the homepage MedicalBusiness schema,
+  backing the on-page claim (OQ-4: keep + add schema).
+
+### Parity suite re-baseline (US-011)
+- The build parity suite (`tests/parity/build.test.mjs`) and live suite now
+  regress against `tests/fixtures/build-baseline.json` — a self-snapshot of the
+  current build produced by `scripts/generate-parity-baseline.mjs`
+  (`pnpm test:parity:baseline`) — instead of the retired 2026-07-14 production
+  capture, whose byte-parity spec no longer applies after an intentional retheme.
+  The snapshot preserves the valuable regressions (title/description/canonical/H1,
+  every-JSON-LD-parses, forbidden-host, "read read" ban, sitemap path-set/lastmod,
+  internal-link integrity) but drops the production-DOM-order JSON-LD field
+  assertions tied to the old capture. Regenerate after any intentional sitewide
+  change. A pre-existing "N min read read" duplication on the anti-aging and
+  weight-loss spokes was fixed (readTime prop double-suffix).

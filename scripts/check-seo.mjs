@@ -77,15 +77,6 @@ function extract(html, re) {
 // exact over-budget strings; the migration must not change SEO copy. The
 // budget gates stay in force for every other page.
 const PARITY_WAIVERS = {
-  "fl/delray-beach/trt-therapy/index.html": {
-    titleMax: 64,
-    descMax: 167,
-    reason: "live production values restored per remediation PRD §10.1",
-  },
-  "fl/delray-beach/weight-loss-clinic/index.html": {
-    descMax: 191,
-    reason: "live production values restored per remediation PRD §10.1",
-  },
   "fl/delray-beach/peptide-therapy/index.html": {
     descMax: 193,
     reason: "live production values restored per remediation PRD §10.1",

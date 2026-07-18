@@ -15,7 +15,7 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const fixture = JSON.parse(
-  readFileSync(join(root, "tests/fixtures/production-parity-2026-07-14.json"), "utf-8"),
+  readFileSync(join(root, "tests/fixtures/build-baseline.json"), "utf-8"),
 );
 
 const ALL_ROUTES = Object.keys(fixture.pages);
@@ -25,7 +25,7 @@ const MOBILE_ROUTES = [
   "/peptides-for-healing/",
   "/reviews/",
   "/reviews/andro-400/",
-  "/fl/miami/trt-therapy/",
+  "/molecules/bpc-157/",
   "/privacy-policy/",
   "/fl/",
   "/ny/new-york/peptide-therapy/", // US-N4: post-cutover NYC page

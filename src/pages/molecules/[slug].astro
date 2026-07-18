@@ -1,0 +1,15 @@
+---
+import MoleculePage from "../../layouts/MoleculePage.astro";
+import { MOLECULES } from "../../data/molecules";
+
+export function getStaticPaths() {
+  return MOLECULES.map((molecule) => ({
+    params: { slug: molecule.slug },
+    props: { molecule },
+  }));
+}
+
+const { molecule } = Astro.props;
+---
+
+<MoleculePage molecule={molecule} />

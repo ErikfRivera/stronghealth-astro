@@ -1,5 +1,8 @@
 ---
-// /fl/ — port of src/pages/local/FloridaHub.tsx (source monorepo).
+// /fl/ — Florida peptide-therapy hub. Peptides are the sole service theme:
+// in-person care at the Miami (Brickell) clinic, telehealth service areas for
+// the other Florida metros. Legacy Brickell-clinic services (PRP, DEXA, stem
+// cell) remain reachable here but are deliberately de-emphasized.
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageShell from "../../components/shared/PageShell.astro";
 import JsonLd from "../../components/seo/JsonLd.astro";
@@ -13,64 +16,63 @@ import FadeIn from "../../components/shared/FadeIn.astro";
 import Btn from "../../components/shared/Btn.astro";
 import Tag from "../../components/shared/Tag.astro";
 import Icon from "../../components/shared/Icon.astro";
-import { ALL_CITIES } from "../../data/local/cityTrtConfig";
+import { ALL_PEPTIDE_CITIES } from "../../data/local/cityPeptideConfig";
 
 const breadcrumbs = [
   { name: "Home", path: "/" },
   { name: "Florida", path: "/fl/" },
 ];
 
-const REGIONS = [
-  {
-    name: "Miami-Dade County",
-    cities: ["miami"],
-  },
-  {
-    name: "Palm Beach County",
-    cities: ["delray-beach"],
-  },
-];
+const flCities = ALL_PEPTIDE_CITIES.filter((c) => (c.statePrefix ?? "fl") === "fl").map(
+  (c) => ({
+    slug: c.slug,
+    cityName: c.cityName,
+    clinicArea: c.clinicArea,
+    inPerson: c.physicalClinic !== false,
+    href: `/fl/${c.slug}/peptide-therapy/`,
+  }),
+);
 
 const services = [
   {
-    name: "Testosterone Replacement Therapy",
-    desc: "Physician-supervised TRT with in-person exams, 50+ biomarker labs, and FDA-approved medications. Available at our Miami and Delray Beach clinics.",
-    href: "/fl/miami/trt-therapy/",
-    cta: "Learn about TRT in Miami →",
+    name: "Peptide Therapy",
+    desc: "Physician-supervised peptide protocols for healing, body composition, sleep, libido, and longevity — pharmacy-compounded under 503A/503B standards with labs and ongoing monitoring.",
+    href: "/peptides/",
+    cta: "Browse peptide therapies by goal →",
   },
   {
-    name: "Medical Weight Loss (GLP-1)",
-    desc: "Physician-supervised semaglutide and tirzepatide programs with full metabolic workups and ongoing monitoring.",
-    href: "/fl/miami/weight-loss-clinic/",
-    cta: "Learn about weight loss in Miami →",
+    name: "Healing & Recovery Protocols",
+    desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue recovery, designed around your labs and injury history.",
+    href: "/peptides-for-healing/",
+    cta: "Peptides for healing →",
+  },
+  {
+    name: "Body Composition & Metabolic",
+    desc: "Tesamorelin, GH-secretagogue, and GLP-1 protocols targeting visceral fat and lean-mass preservation, with full metabolic workups.",
+    href: "/peptides-for-belly-fat/",
+    cta: "Peptides for belly fat →",
   },
   {
     name: "Comprehensive Lab Testing",
-    desc: "50+ biomarker hormone panels, including total and free testosterone, SHBG, estradiol, thyroid, and metabolic markers.",
-    href: "/services/",
-    cta: "All services →",
-  },
-  {
-    name: "Peptide Therapy",
-    desc: "Evidence-based peptide protocols for healing, recovery, sleep, and longevity, with physician oversight. Available at our Miami and Delray Beach clinics.",
-    href: "/fl/miami/peptide-therapy/",
-    cta: "Learn about peptide therapy →",
+    desc: "Full biomarker panels — hormones, IGF-1, glucose, and metabolic markers — drawn on-site in Brickell and monitored at every protocol review.",
+    href: "/about/",
+    cta: "How our clinical model works →",
   },
   {
     name: "PRP Therapy (Platelet-Rich Plasma)",
-    desc: "Physician-performed PRP for hair restoration, facial and skin rejuvenation, under-eye treatment, and joint & sports-injury recovery at our Brickell clinic.",
+    desc: "Physician-performed PRP for hair restoration, skin rejuvenation, and joint & sports-injury recovery at our Brickell clinic.",
     href: "/fl/miami/prp-therapy/",
     cta: "PRP therapy in Miami →",
   },
   {
     name: "DEXA Scan (Body Composition)",
-    desc: "Clinical DEXA scan body composition and bone density analysis at our Brickell clinic. Lean mass, body fat %, visceral fat, and bone density with a 1–2% margin of error.",
+    desc: "Clinical DEXA body-composition and bone-density analysis at our Brickell clinic — the gold standard for tracking peptide protocol results.",
     href: "/fl/miami/dexascan/",
     cta: "DEXA Scan in Miami →",
   },
   {
     name: "Stem Cell & Regenerative Medicine",
-    desc: "Physician-supervised stem cell–based therapy, PRP, and exosome treatments for arthritis, knee, joint, and tendon pain at our Miami (Brickell) clinic.",
+    desc: "Physician-supervised regenerative treatments for arthritis, knee, joint, and tendon pain at our Miami (Brickell) clinic.",
     href: "/fl/miami/stem-cell-therapy/",
     cta: "Stem Cell Therapy in Miami →",
   },
@@ -78,72 +80,61 @@ const services = [
 
 const STATEWIDE_FAQS = [
   {
-    question: "Where are Strong Health's Florida clinics located?",
+    question: "Where is Strong Health's Florida clinic located?",
     answer:
-      "Strong Health operates two clinics in South Florida: Miami (Brickell, at 1000 Brickell Plaza) and Delray Beach (Atlantic Avenue). Coverage spans Miami-Dade and Palm Beach counties. Telehealth follow-ups are available statewide after an in-person baseline visit at either clinic.",
+      "Strong Health's physical clinic is in Miami's Brickell neighborhood at 1000 Brickell Plaza, Miami, FL 33131. Patients across Florida — including Delray Beach and Tampa — are served via telehealth, with the in-person baseline evaluation and on-site lab draw completed at the Brickell clinic.",
   },
   {
-    question: "Do both Strong Health Florida clinics offer the same services?",
+    question: "How does peptide therapy work for Florida patients outside Miami?",
     answer:
-      "Yes. Both Strong Health clinics offer the same core services: physician-supervised testosterone replacement therapy (TRT), comprehensive 50+ biomarker hormone lab panels (drawn on-site), medical weight loss programs, peptide therapy, and ongoing telehealth follow-ups. Both clinics are staffed by board-certified physicians and follow the same evidence-based clinical protocols. DEXA scan body-composition imaging is offered at the Miami (Brickell) clinic.",
+      "Florida law and our clinical standards require an in-person physician evaluation before starting peptide therapy. That baseline visit — physical exam, medical history, and on-site labs — happens at the Miami (Brickell) clinic. After the baseline, follow-ups, dose adjustments, lab reviews, and renewals are handled via telehealth statewide, with periodic in-person check-ins.",
   },
   {
-    question: "Can I do my initial visit at one Florida clinic and follow-ups at the other?",
+    question: "Is peptide therapy legal in Florida?",
     answer:
-      "Yes. Once you've completed your initial in-person assessment and labs at either Strong Health clinic, you can do follow-up labs and in-person visits at the other location. Telehealth follow-ups travel with you regardless of which clinic you originally visited.",
+      "Yes, when prescribed by a licensed Florida physician and dispensed through a licensed compounding pharmacy. Strong Health works only with 503A and 503B pharmacies under physician orders — no research-only or gray-market peptides. Every protocol includes physician oversight, ongoing monitoring, and standard Florida medical-record documentation.",
   },
   {
-    question: "Are Strong Health Florida clinics bilingual?",
+    question: "Is Strong Health's Florida care bilingual?",
     answer:
-      "Yes. Both Strong Health clinics offer bilingual care in English and Spanish, reflecting the communities we serve across South Florida. Our Miami (Brickell) clinic has multiple Spanish-speaking team members including the Medical Director.",
+      "Yes. Our Miami (Brickell) clinic offers bilingual care in English and Spanish, with multiple Spanish-speaking team members including the Medical Director.",
   },
   {
-    question: "Does Strong Health accept insurance at its Florida clinics?",
+    question: "Does Strong Health accept insurance in Florida?",
     answer:
-      "Strong Health operates on a transparent direct-pay model at both Florida clinics. We do not bill insurance directly, but we provide itemized superbills that many patients submit for partial reimbursement under plans common in Florida, including Florida Blue, Aetna, UnitedHealthcare, and Cigna. The direct-pay model keeps care affordable and free from insurance-driven restrictions on lab work and treatment options.",
+      "Strong Health operates on a transparent direct-pay model. We do not bill insurance directly, but we provide itemized superbills that many patients submit for partial reimbursement under plans common in Florida, including Florida Blue, Aetna, UnitedHealthcare, and Cigna. The direct-pay model keeps care affordable and free from insurance-driven restrictions on lab work and treatment options.",
   },
   {
-    question: "Are Saturday appointments available at Strong Health Florida clinics?",
+    question: "Are Saturday appointments available?",
     answer:
-      "Yes. Both Strong Health Florida clinics offer Saturday morning appointments from 9:00 AM to 1:00 PM, in addition to weekday hours from 8:00 AM to 6:00 PM. Saturday hours are designed for working professionals, tradespeople, and shift workers who can't easily make weekday appointments.",
+      "Yes. The Miami (Brickell) clinic offers Saturday morning appointments from 9:00 AM to 1:00 PM, in addition to weekday hours from 8:00 AM to 6:00 PM. Saturday hours are designed for working professionals, tradespeople, and shift workers who can't easily make weekday appointments.",
   },
   {
-    question: "Is testosterone replacement therapy legal in Florida?",
+    question: "Is Strong Health open to seasonal residents and snowbirds?",
     answer:
-      "Yes, when prescribed and supervised by a licensed physician. In Florida, testosterone is a Schedule III controlled substance, which means it requires physician oversight, a documented medical need based on lab work and symptoms, and ongoing monitoring. Strong Health follows all Florida regulations and works only with FDA-approved medications dispensed through licensed pharmacies.",
-  },
-  {
-    question: "Are Strong Health Florida clinics open to seasonal residents and snowbirds?",
-    answer:
-      "Yes. Strong Health serves a large population of seasonal residents who split time between Florida and other states or countries, particularly around the Delray Beach and Aventura/North Miami markets. Telehealth follow-ups travel with you, and we coordinate refills with pharmacies near wherever you happen to be. Initial in-person visits and quarterly labs can be scheduled around your time in Florida.",
+      "Yes. Strong Health serves a large population of seasonal residents who split time between Florida and other states or countries. Telehealth follow-ups travel with you, and we coordinate refills with pharmacies near wherever you happen to be. Initial in-person visits and periodic labs can be scheduled around your time in Florida.",
   },
 ];
 
-const cityItems = ALL_CITIES.flatMap((c) => [
-  {
-    name: `Strong Health ${c.name} — TRT Therapy`,
-    url: `/fl/${c.slug}/trt-therapy/`,
-  },
-  {
-    name: `Strong Health ${c.name} — Weight Loss Clinic`,
-    url: `/fl/${c.slug}/weight-loss-clinic/`,
-  },
-]);
+const cityItems = flCities.map((c) => ({
+  name: `Strong Health ${c.cityName} — Peptide Therapy`,
+  url: c.href,
+}));
 ---
 
 <BaseLayout
-  title="South Florida TRT & Men's Health Clinics"
-  description="Physician-supervised testosterone therapy at Strong Health's Miami (Brickell) and Delray Beach (Atlantic Avenue) clinics."
+  title="Florida Peptide Therapy Clinic & Telehealth"
+  description="Physician-supervised peptide therapy across Florida — in-person at our Miami (Brickell) clinic, telehealth for Delray Beach, Tampa, and statewide follow-ups."
   path="/fl/"
 >
   <PageShell>
     <JsonLd
       schema={medicalWebPageSchema({
-        name: "Strong Health Florida — TRT & Men's Health Clinics in Miami and Delray Beach",
+        name: "Strong Health Florida — Peptide Therapy in Miami, Delray Beach, and Tampa",
         description:
-          "Physician-supervised testosterone therapy at Strong Health clinics in Miami (Brickell) and Delray Beach (Atlantic Avenue). Coverage across Miami-Dade and Palm Beach counties.",
+          "Physician-supervised peptide therapy at Strong Health's Miami (Brickell) clinic, with telehealth service areas in Delray Beach and Tampa and statewide follow-ups.",
         url: "/fl/",
-        lastReviewed: "2026-04-01",
+        lastReviewed: "2026-07-18",
         reviewedBy: {
           name: "Dr. Angel Rivera, M.D.",
           credentials: "Board-Certified",
@@ -154,7 +145,7 @@ const cityItems = ALL_CITIES.flatMap((c) => [
     <JsonLd
       schema={collectionPageSchema({
         name: "Strong Health Florida Locations",
-        description: "Strong Health TRT clinics across South Florida",
+        description: "Strong Health peptide therapy locations across Florida",
         url: "/fl/",
         items: cityItems,
       })}
@@ -194,90 +185,74 @@ const cityItems = ALL_CITIES.flatMap((c) => [
           <span class="text-sm font-bold text-gold">4.9</span>
           <span class="text-[13px] text-muted">from 1,000+ Florida patient reviews</span>
         </div>
-        <Tag>Strong Health Florida · Miami & Delray Beach Clinics</Tag>
+        <Tag>Strong Health Florida · Peptide Therapy</Tag>
         <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[760px] tracking-[-1.5px]">
-          Strong Health clinics in <span class="text-gold">Miami and Delray Beach.</span>
+          Peptide therapy in Florida, <span class="text-gold">done like real medicine.</span>
         </h1>
         <p class="text-[17px] text-muted leading-relaxed max-w-[600px] mb-8">
-          Physician-supervised testosterone replacement therapy and men's hormone health, with
-          in-person clinics in Miami-Dade and Palm Beach counties. Find the location nearest you.
+          Physician-supervised peptide protocols from our Miami (Brickell) clinic, with
+          telehealth care for Delray Beach, Tampa, and follow-ups statewide. Labs first,
+          protocols second — never the other way around.
         </p>
         <Btn trackLead>Book Your Free Assessment →</Btn>
         <div class="mt-4 text-xs text-muted">
-          No commitment · No insurance needed · 15–20 min in-person visit
+          No commitment · No insurance needed · Free first assessment
         </div>
       </div>
     </section>
 
-    {/* LocationsByRegion */}
+    {/* Locations */}
     <section class="px-8 py-20 bg-surface-card border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
         <FadeIn class="text-center mb-10">
-          <Tag>Find Your Clinic</Tag>
+          <Tag>Find Your Location</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Strong Health locations across <span class="text-gold">South Florida</span>
+            Peptide therapy across <span class="text-gold">Florida</span>
           </h2>
           <p class="text-[15px] text-muted max-w-[560px] mx-auto">
-            Each clinic offers in-person physician visits, on-site lab draws, and ongoing
-            telehealth follow-ups. Pick the location closest to you to get started.
+            In-person physician visits and on-site labs in Brickell; telehealth visits with
+            physician oversight everywhere else. Pick the location closest to you.
           </p>
         </FadeIn>
 
-        <div class="flex flex-col gap-10">
-          {REGIONS.map((region) => (
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+          {flCities.map((city) => (
             <FadeIn>
-              <div>
-                <h3 class="text-[20px] font-bold text-cream mb-4 flex items-center gap-2">
-                  <Icon name="map-pin" size={18} class="text-gold" />
-                  {region.name}
-                </h3>
-                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-                  {region.cities.map((slug) => {
-                    const city = ALL_CITIES.find((c) => c.slug === slug)!;
-                    return (
-                      <div class="bg-surface-raised rounded-xl p-5 border border-white/10 flex flex-col gap-1.5">
-                        <div class="text-[15px] font-bold text-cream">
-                          {city.clinicName}
-                        </div>
-                        <div class="flex items-center gap-1.5 text-[12px] text-cream-muted">
-                          <Icon name="map-pin" size={11} class="text-gold flex-shrink-0" />
-                          <span>{city.area}, {city.name}, FL</span>
-                        </div>
-                        <div class="flex items-center gap-1.5 text-[12px] text-cream-muted">
-                          <Icon name="phone" size={11} class="text-gold flex-shrink-0" />
-                          <span>{city.phone}</span>
-                        </div>
-                        <div class="flex flex-col gap-1.5 mt-2 pt-2 border-t border-white/5">
-                          <a
-                            href={`/fl/${slug}/trt-therapy/`}
-                            class="text-[12px] text-gold font-semibold hover:underline"
-                          >
-                            TRT Therapy →
-                          </a>
-                          <a
-                            href={`/fl/${slug}/weight-loss-clinic/`}
-                            class="text-[12px] text-gold font-semibold hover:underline"
-                          >
-                            Weight Loss Clinic →
-                          </a>
-                          <a
-                            href={`/fl/${slug}/peptide-therapy/`}
-                            class="text-[12px] text-gold font-semibold hover:underline"
-                          >
-                            Peptide Therapy →
-                          </a>
-                          {slug === "miami" && (
-                            <a
-                              href={`/fl/${slug}/prp-therapy/`}
-                              class="text-[12px] text-gold font-semibold hover:underline"
-                            >
-                              PRP Therapy →
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
+              <div class="bg-surface-raised rounded-xl p-5 border border-white/10 flex flex-col gap-1.5 h-full">
+                <div class="text-[15px] font-bold text-cream">
+                  {city.cityName}, FL
+                </div>
+                <div class="flex items-center gap-1.5 text-[12px] text-cream-muted">
+                  <Icon name="map-pin" size={11} class="text-gold flex-shrink-0" />
+                  <span>
+                    {city.inPerson
+                      ? `In-person clinic · ${city.clinicArea}`
+                      : "Telehealth service area"}
+                  </span>
+                </div>
+                <div class="flex flex-col gap-1.5 mt-2 pt-2 border-t border-white/5">
+                  <a
+                    href={city.href}
+                    class="text-[12px] text-gold font-semibold hover:underline"
+                  >
+                    {city.cityName} Peptide Therapy →
+                  </a>
+                  {city.slug === "miami" && (
+                    <>
+                      <a
+                        href="/fl/miami/dexascan/"
+                        class="text-[12px] text-gold font-semibold hover:underline"
+                      >
+                        DEXA Scan →
+                      </a>
+                      <a
+                        href="/fl/miami/prp-therapy/"
+                        class="text-[12px] text-gold font-semibold hover:underline"
+                      >
+                        PRP Therapy →
+                      </a>
+                    </>
+                  )}
                 </div>
               </div>
             </FadeIn>
@@ -290,9 +265,9 @@ const cityItems = ALL_CITIES.flatMap((c) => [
     <section class="px-8 py-20 bg-surface border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
         <FadeIn class="text-center mb-10">
-          <Tag>Services Across All Florida Locations</Tag>
+          <Tag>Physician-Supervised Care</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Real medicine. <span class="text-gold">Same standard, every clinic.</span>
+            Real medicine. <span class="text-gold">One standard of care.</span>
           </h2>
         </FadeIn>
         <div class="grid md:grid-cols-2 gap-5">
@@ -316,50 +291,50 @@ const cityItems = ALL_CITIES.flatMap((c) => [
       <div class="max-w-[1000px] mx-auto">
         <div class="grid md:grid-cols-2 gap-12 items-start">
           <FadeIn>
-            <Tag>Built for South Florida</Tag>
+            <Tag>Built for Florida</Tag>
             <h2 class="text-[32px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
               Why we built Strong Health <span class="text-gold">in South Florida</span>
             </h2>
             <div class="text-[15px] text-muted leading-[1.8] flex flex-col gap-4">
               <p>
-                South Florida has no shortage of clinics offering testosterone. What it lacked was
-                a physician-led practice that treats hormone health as real medicine:
-                comprehensive diagnostics, board-certified physicians, and ongoing monitoring, on
-                a transparent direct-pay model that doesn't require an annual concierge membership
-                or a recurring supplement subscription.
+                Florida has no shortage of med spas and IV lounges willing to sell peptides.
+                What it lacked was a physician-led practice that treats peptide therapy as
+                real medicine: comprehensive diagnostics, board-certified physicians, and
+                ongoing monitoring, on a transparent direct-pay model with no concierge
+                membership and no supplement subscription.
               </p>
               <p>
-                We started in Miami's Brickell neighborhood and expanded north to Delray Beach to
-                serve Palm Beach County patients who were driving down for visits. Both clinics
-                share the same staff training, the same clinical protocols, and the same Saturday
-                hours for working professionals.
+                We built our clinic in Miami's Brickell neighborhood and extended care
+                across the state via telehealth, so Delray Beach and Tampa patients get the
+                same physician, the same labs, and the same pharmacy-grade compounds without
+                driving to Miami for every visit.
               </p>
               <p>
-                Whether you work in Brickell or live near Atlantic Avenue in Delray, your closest
-                clinic is in-person and physician-staffed.
+                Every protocol starts with bloodwork and a physical exam — not a sales
+                script.
               </p>
             </div>
           </FadeIn>
 
           <FadeIn delay={200}>
             <div class="bg-surface-raised rounded-2xl p-8 border border-white/10">
-              <h3 class="text-lg font-bold text-cream mb-5">The same standard, both clinics</h3>
+              <h3 class="text-lg font-bold text-cream mb-5">The Strong Health standard</h3>
               <div class="text-[14px] text-cream-muted leading-[1.7] flex flex-col gap-3">
                 <div class="flex items-start gap-3">
                   <span class="text-gold font-bold">·</span>
-                  <span>Board-certified physicians at both locations</span>
+                  <span>Board-certified physicians on every protocol</span>
                 </div>
                 <div class="flex items-start gap-3">
                   <span class="text-gold font-bold">·</span>
-                  <span>50+ biomarker lab panel drawn on-site</span>
+                  <span>Full biomarker lab panel drawn on-site in Brickell</span>
                 </div>
                 <div class="flex items-start gap-3">
                   <span class="text-gold font-bold">·</span>
-                  <span>Real physical exam on day one</span>
+                  <span>Real physical exam before any prescription</span>
                 </div>
                 <div class="flex items-start gap-3">
                   <span class="text-gold font-bold">·</span>
-                  <span>FDA-approved medications. No supplements, no gray-market compounds</span>
+                  <span>503A/503B pharmacy-compounded peptides. No gray-market vials</span>
                 </div>
                 <div class="flex items-start gap-3">
                   <span class="text-gold font-bold">·</span>
@@ -414,15 +389,15 @@ const cityItems = ALL_CITIES.flatMap((c) => [
       <div class="max-w-[700px] mx-auto text-center">
         <FadeIn>
           <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
-            Find your closest Strong Health clinic
+            Talk to a Florida physician about peptide therapy
           </h2>
           <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
-            Two locations across Miami-Dade and Palm Beach counties. Pick the one nearest you and
-            book a free assessment with a board-certified physician.
+            In-person in Brickell or via telehealth from anywhere in Florida. Book a free
+            assessment with a board-certified physician.
           </p>
           <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
             <Icon name="phone" size={14} class="text-gold" />
-            <span>Or call either clinic directly</span>
+            <span>Or call the clinic directly</span>
           </div>
           <Btn trackLead>Book Your Free Assessment →</Btn>
         </FadeIn>

@@ -1,0 +1,140 @@
+---
+// /detox-diet/ — Diet & Nutrition cluster page targeting "detox diet"
+// (5,100/mo US, KD 51, informational). Angle and structure per
+// docs/briefs/detox-diet.md. Body copy is a DRAFT scaffolded from public
+// health-authority guidance and the peer-reviewed citations below; a Strong
+// Health physician must review before publish.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import AccordionFoodList from "../components/diet/AccordionFoodList.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body0 from "../content/fragments/detox-diet.0.html?raw";
+import body1 from "../content/fragments/detox-diet.1.html?raw";
+import body2 from "../content/fragments/detox-diet.2.html?raw";
+
+const path = "/detox-diet/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [
+  {
+    question: "Do detox diets actually remove toxins from your body?",
+    answer:
+      "No. There's no compelling clinical evidence that commercial detox diets, cleanses, juices, or teas remove toxins from the body. Your liver, kidneys, gut, lungs, and skin already clear metabolic waste and other compounds continuously, whether or not you're on a detox plan. Detox marketing almost never even names which toxin it removes or how.",
+  },
+  {
+    question: "What is the best way to detox your body naturally?",
+    answer:
+      "Support the organs that already do the job rather than trying to \"flush\" them. That means eating plenty of vegetables, fruit, and fiber, staying well hydrated with plain water, limiting alcohol and added sugar, avoiding ultra-processed food, sleeping 7-9 hours, and moving daily. That's the entire legitimate core of a \"natural detox\" — and you can keep it permanently.",
+  },
+  {
+    question: "How can I detox my body in 3 days or a week?",
+    answer:
+      "You can do a short whole-food reset, but skip the juice fasts and laxative teas. For 3-7 days, cut alcohol, added sugar, and ultra-processed food; build meals around vegetables, protein, and whole grains or legumes; hit 30g+ of fiber a day; drink water; and protect sleep. This lightens the load on your organs and builds habits — it doesn't \"flush\" anything, and it shouldn't involve fasting.",
+  },
+  {
+    question: "Are detox cleanses and juice cleanses safe?",
+    answer:
+      "Often not. Juice cleanses strip out fiber, spike blood sugar, and can be high in oxalates — high-volume green-juice cleanses have been linked to acute kidney injury. Many \"detox teas\" rely on stimulant laxatives that can cause dependence and electrolyte problems, and some detox supplements have caused liver injury. Anyone with diabetes, kidney disease, an eating-disorder history, or who is pregnant should avoid them entirely.",
+  },
+  {
+    question: "Does a detox diet help you lose weight?",
+    answer:
+      "Only briefly, and not the way it looks. The fast drop on the scale during a detox is water and glycogen, not fat, and it returns once you eat normally. Any lasting benefit comes from what you stopped eating — alcohol, sugar, processed food — not from the cleanse itself. Durable weight loss comes from a sustained calorie balance, adequate protein, fiber, sleep, and movement, or, when warranted, physician-supervised care.",
+  },
+  {
+    question: "What foods support your liver and kidneys?",
+    answer:
+      "No single food detoxes you, but whole foods supply the fiber, water, and antioxidants your organs use. Cruciferous vegetables (broccoli, cauliflower, Brussels sprouts), leafy greens, garlic and onions, berries and citrus, beans and whole grains for fiber, plus plenty of plain water all genuinely support the systems that clear waste. The best thing you can do for your liver is drink less alcohol.",
+  },
+  {
+    question: "Is a sugar detox a real thing?",
+    answer:
+      "Cutting added sugar is a genuinely worthwhile change — federal dietary guidance recommends keeping added sugars under 10% of daily calories — but framing it as a \"detox\" is marketing. You're not detoxifying; you're removing a food that's easy to over-consume. Expect a day or two of cravings and lower energy as you adjust, then real improvements in how you feel.",
+  },
+];
+
+const citations = [
+  { id: 1, text: "National Center for Complementary and Integrative Health (NIH). \"Detoxes\" and \"Cleanses\": What You Need To Know.", url: "https://www.nccih.nih.gov/health/detoxes-and-cleanses-what-you-need-to-know" },
+  { id: 2, text: "Klein AV, Kiat H. Detoxification diets for toxin elimination and weight management: a critical review of the evidence. J Hum Nutr Diet. 2015;28(6):675-686.", url: "https://pubmed.ncbi.nlm.nih.gov/25522674/" },
+  { id: 3, text: "Obert J, Pearlman M, Obert L, Chapin S. Popular Weight Loss Strategies: a Review of Four Weight Loss Techniques. Curr Gastroenterol Rep. 2017;19(12):61.", url: "https://pubmed.ncbi.nlm.nih.gov/29124370/" },
+  { id: 4, text: "Almazroo OA, Miah MK, Venkataramanan R. Drug Metabolism in the Liver. Clin Liver Dis. 2017;21(1):1-20.", url: "https://pubmed.ncbi.nlm.nih.gov/27842765/" },
+  { id: 5, text: "Getting JE, Gregoire JR, Phul A, Kasten MJ. Oxalate nephropathy due to 'juicing': case report and review. Am J Med. 2013;126(9):768-772.", url: "https://pubmed.ncbi.nlm.nih.gov/23830537/" },
+  { id: 6, text: "Reynolds A, et al. Carbohydrate quality and human health: a series of systematic reviews and meta-analyses. Lancet. 2019;393(10170):434-445.", url: "https://pubmed.ncbi.nlm.nih.gov/30638909/" },
+  { id: 7, text: "Ronis MJJ, Pedersen KB, Watt J. Adverse Effects of Nutraceuticals and Dietary Supplements. Annu Rev Pharmacol Toxicol. 2018;58:583-601.", url: "https://pubmed.ncbi.nlm.nih.gov/28992429/" },
+  { id: 8, text: "Wilding JPH, et al. Once-Weekly Semaglutide in Adults with Overweight or Obesity (STEP 1). N Engl J Med. 2021;384(11):989-1002.", url: "https://pubmed.ncbi.nlm.nih.gov/33567185/" },
+  { id: 9, text: "U.S. Department of Agriculture and U.S. Department of Health and Human Services. Dietary Guidelines for Americans, 2020-2025.", url: "https://www.dietaryguidelines.gov/" },
+];
+
+const foodsToEat = [
+  { category: "Cruciferous Vegetables", emoji: "🥦", items: ["Broccoli, cauliflower, Brussels sprouts, cabbage", "Contain compounds that support the liver's Phase II enzyme pathways", "Best lightly steamed or roasted to keep nutrients intact", "A daily serving is a genuinely useful habit — no cleanse required"] },
+  { category: "Leafy Greens & Herbs", emoji: "🥬", items: ["Spinach, kale, arugula, cilantro, parsley", "Fiber, folate, and antioxidants for gut and overall health", "Eat them whole rather than juiced so you keep the fiber", "Note: some greens are oxalate-rich — variety matters, not mega-doses"] },
+  { category: "High-Fiber Foods", emoji: "🌾", items: ["Beans, lentils, oats, whole grains, chia and flax seeds", "Fiber speeds gut transit and feeds beneficial bacteria", "Aim for 30g+ of fiber per day from food, not powders", "The single most underrated \"detox\" nutrient"] },
+  { category: "Berries & Citrus", emoji: "🫐", items: ["Blueberries, strawberries, raspberries, oranges, lemons", "Vitamin C and polyphenols with low added sugar", "Whole fruit over fruit juice every time", "Lemon in water is fine hydration — not a toxin flush"] },
+  { category: "Alliums", emoji: "🧄", items: ["Garlic, onions, leeks, shallots", "Sulfur compounds that support liver enzyme activity", "Easy to add to nearly any savory meal", "Cooking mellows them without erasing the benefit"] },
+  { category: "Water & Unsweetened Fluids", emoji: "💧", items: ["Plain water is the foundation — let thirst and pale urine guide you", "Green tea and herbal teas count toward fluids", "Helps your kidneys filter and excrete waste efficiently", "You don't need a special \"detox water\" — plain water does the job"] },
+];
+
+const foodsToAvoid = [
+  { category: "Alcohol", emoji: "🍷", items: ["The single biggest favor you can do your liver is to drink less", "Your liver prioritizes clearing alcohol over other work", "Cutting it for a week is the most real \"detox\" effect people feel", "No supplement offsets heavy drinking"] },
+  { category: "Added Sugar & Sugary Drinks", emoji: "🥤", items: ["Soda, sweetened juice, energy drinks, candy, most desserts", "Federal guidance: keep added sugars under 10% of daily calories", "Ironically, many \"detox\" juices and teas are sugar-heavy", "Expect a day or two of cravings when you cut it, then improvement"] },
+  { category: "Ultra-Processed Foods", emoji: "🍟", items: ["Packaged snacks, fast food, processed meats, refined baked goods", "High in sodium, refined starch, and additives, low in fiber", "Removing these is most of what makes any reset \"work\"", "Cook simple whole-food meals instead"] },
+  { category: "Detox Teas, Kits & Laxatives", emoji: "🚫", items: ["Stimulant-laxative \"detox teas\" (often senna-based)", "\"Full body detox,\" colon-cleanse, and liver-flush kits", "Diuretic or laxative-driven products of any kind", "These carry real risks and no proven benefit — skip them"] },
+];
+
+const tocItems = [
+  { id: "tldr", title: "TL;DR" },
+  { id: "what-is", title: "What Is a Detox Diet?" },
+  { id: "how-body-detoxes", title: "How Your Body Actually Detoxifies" },
+  { id: "do-they-work", title: "Do Detox Diets Work?" },
+  { id: "scorecard", title: "Detox Diet Scorecard" },
+  { id: "foods-that-help", title: "Foods That Support Your Detox Organs" },
+  { id: "foods-to-cut", title: "What to Cut, Not What to Add" },
+  { id: "reset-plan", title: "A Realistic 7-Day Reset" },
+  { id: "drinks-cleanses", title: "Detox Drinks, Teas & Cleanses" },
+  { id: "risks", title: "Risks & Red Flags" },
+  { id: "weight-loss", title: "Detox and Weight Loss" },
+  { id: "faq", title: "FAQ" },
+  { id: "bottom-line", title: "The Bottom Line" },
+  { id: "references", title: "References" },
+];
+
+const relatedLinks = [
+  { url: "/semaglutide-diet/", label: "Semaglutide Diet: Complete Guide for Weight Loss" },
+  { url: "/stillman-diet/", label: "The Stillman Diet: History, Risks, and the Verdict" },
+  { url: "/peptides-for-weight-loss/", label: "Peptides for Weight Loss: GLP-1 and Fat-Loss Protocols" },
+  { url: "/peptides-for-belly-fat/", label: "Peptides for Belly Fat: How GH Secretagogues Target Visceral Fat" },
+  { url: "/foods-that-lower-testosterone/", label: "Foods That Lower Testosterone: Separating Myth from Evidence" },
+  { url: "/fl/miami/weight-loss-clinic/", label: "Weight Loss Clinic in Miami, FL" },
+];
+
+// Production wraps single-schema FAQ pages in an @graph envelope; match that.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Detox Diets: What the Evidence Actually Says About Cleansing Your Body"
+  seoTitle="Detox Diet: What Works, What Doesn't"
+  subtitle="Your liver, kidneys, and gut already detoxify you around the clock. Here's what a detox diet can and can't do — and the honest version worth keeping."
+  seoDescription="Do detox diets actually remove toxins? A physician-reviewed look at how your body really detoxifies, which foods help, and what the evidence shows works."
+  path={path}
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-18"
+  dateModifiedISO="2026-07-18"
+  readTime="12 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Want a Reset That Actually Lasts?"
+  ctaText="Cleanses end in a rebound. Our physicians build evidence-based, physician-supervised nutrition and weight-loss plans around your body, your labs, and your goals."
+  ctaButtonText="Book Your Free Assessment →"
+>
+  <Fragment set:html={body0} />
+  <AccordionFoodList groups={foodsToEat} variant="eat" />
+  <Fragment set:html={body1} />
+  <AccordionFoodList groups={foodsToAvoid} variant="avoid" />
+  <Fragment set:html={body2} />
+</BlogArticleLayout>

@@ -129,7 +129,7 @@ function extractDateModifiedFromHtml(html) {
 function hubChildren(route, allRoutes) {
   if (route === "/blog/") {
     return allRoutes.filter((r) =>
-      /^\/(dexa-scan|porn-induced-erectile-dysfunction|baking-soda-for-ed|garlic-and-honey-for-erectile-dysfunction|home-remedies-for-premature-ejaculation|premature-ejaculation-exercises|lysine-benefit-men-health|nac-benefits-men|nadh-benefits|resveratrol-side-effects|foods-that-lower-testosterone|peptides-for-[a-z-]+|collagen-peptides|semaglutide-diet|stillman-diet)\/$/.test(r),
+      /^\/(dexa-scan|porn-induced-erectile-dysfunction|baking-soda-for-ed|garlic-and-honey-for-erectile-dysfunction|home-remedies-for-premature-ejaculation|premature-ejaculation-exercises|lysine-benefit-men-health|nac-benefits-men|nadh-benefits|resveratrol-side-effects|foods-that-lower-testosterone|peptides-for-[a-z-]+|collagen-peptides|semaglutide-diet|stillman-diet|detox-diet)\/$/.test(r),
     );
   }
   if (route === "/reviews/") return allRoutes.filter((r) => REVIEW_ROUTE_RE.test(r));

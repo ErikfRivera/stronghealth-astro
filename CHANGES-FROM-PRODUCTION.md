@@ -166,3 +166,17 @@ byte-parity capture is no longer the spec (see "Parity suite re-baseline").
   assertions tied to the old capture. Regenerate after any intentional sitewide
   change. A pre-existing "N min read read" duplication on the anti-aging and
   weight-loss spokes was fixed (readTime prop double-suffix).
+
+### DEXA scan pages for every service-area city
+- New config-driven `CityDexaPage.astro` layout renders a DEXA scan page at
+  `/{state}/{city}/dexascan/` for each telehealth metro (Delray Beach, Tampa,
+  New York, San Diego, Las Vegas, Atlanta, Austin), reusing the city facts
+  already maintained in `cityPeptideConfig.ts`. Copy follows the service-area
+  convention: physician-ordered scans at partner imaging centers with
+  telehealth results review — no local storefront implied, so MedicalBusiness
+  JSON-LD is omitted (Miami keeps its bespoke in-clinic page at
+  `/fl/miami/dexascan/`; the FL service-area pages cross-link to it).
+- Each city's peptide-therapy page now lists "DEXA Scan in {City}" first in
+  its related-services cards, linking the new route.
+- The seven routes are registered in the sitemap `HISTORICAL_LASTMOD` launch
+  registry (2026-07-18) and the parity baseline was regenerated.

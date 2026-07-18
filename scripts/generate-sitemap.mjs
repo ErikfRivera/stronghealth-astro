@@ -185,6 +185,14 @@ const HISTORICAL_LASTMOD = {
   "/nv/las-vegas/peptide-therapy/": "2026-07-15",
   "/ga/atlanta/peptide-therapy/": "2026-07-15",
   "/tx/austin/peptide-therapy/": "2026-07-15",
+  // DEXA scan service-area launches (partner imaging centers + physician review).
+  "/fl/delray-beach/dexascan/": "2026-07-18",
+  "/fl/tampa/dexascan/": "2026-07-18",
+  "/ny/new-york/dexascan/": "2026-07-18",
+  "/ca/san-diego/dexascan/": "2026-07-18",
+  "/nv/las-vegas/dexascan/": "2026-07-18",
+  "/ga/atlanta/dexascan/": "2026-07-18",
+  "/tx/austin/dexascan/": "2026-07-18",
   // Peptide molecule library launch (peptide repositioning).
   "/molecules/": "2026-07-18",
   "/peptides/bpc-157/": "2026-07-18",

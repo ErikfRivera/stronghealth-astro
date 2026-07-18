@@ -37,8 +37,8 @@
   "pages": {
     "/": {
       "canonical_path": "/",
-      "description": "Physician-supervised testosterone replacement therapy in South Florida. In-person exams, 40+ biomarker labs, telehealth follow-ups. Book your free assessment.",
-      "h1": "Testosterone Replacement Therapy. Not supplements. Not guesswork.",
+      "description": "Physician-supervised peptide therapy — BPC-157, CJC-1295, Tesamorelin, PT-141. Pharmacy-grade compounds, real labs, ongoing monitoring. Book a free assessment.",
+      "h1": "Peptide Therapy. Not gray-market vials. Not guesswork.",
       "jsonld": {
         "$[0].priceRange": {
           "expected": "$",
@@ -55,7 +55,7 @@
         "priority": "1.0"
       },
       "status": 200,
-      "title": "Testosterone Therapy in South Florida | Strong Health"
+      "title": "Physician-Supervised Peptide Therapy | Strong Health"
     },
     "/about/": {
       "canonical_path": "/about/",

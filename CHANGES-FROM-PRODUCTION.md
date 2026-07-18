@@ -63,6 +63,27 @@ meaning; the US-014 parity audit flags everything else as a defect.
     curated JSON-LD `dateModified` keep their exact production lastmod;
     priority/changefreq match production 47/47.
 
+12. **Homepage rethemed from TRT to peptide therapy (2026-07-18).** The
+    homepage now leads with physician-supervised peptide therapy instead of
+    TRT. Same section structure and design system; new copy and data:
+    - Title: "Testosterone Therapy in South Florida | Strong Health" →
+      "Physician-Supervised Peptide Therapy | Strong Health"; description
+      rewritten to match (both within the SEO budgets).
+    - H1: "Testosterone Replacement Therapy. Not supplements. Not guesswork."
+      → "Peptide Therapy. Not gray-market vials. Not guesswork."
+    - The testosterone-decline chart section was replaced by a six-card
+      goal grid linking the `/peptides-for-*` guide pages.
+    - Comparison table recast as Strong Health vs. med spas/IV lounges vs.
+      online "research" vials; biomarker grid recast around peptide-relevant
+      labs (IGF-1, glucose/HbA1c, hormones); FAQ replaced with peptide FAQs.
+    - Pricing tiers ($149/$199/$299 TRT plans) replaced with a
+      protocol-pricing explainer (free assessment, month-to-month, all-in).
+    - New "Peptide Therapy Locations" section links all 8 city
+      peptide-therapy pages (driven by `cityPeptideConfig.ts`).
+    The parity fixture's `/` entry was updated to the new strings. TRT still
+    appears in the org JSON-LD service catalog and everywhere else on the
+    site; only the homepage's focus changed.
+
 _All other title/description texts are unchanged from production (production
 had already been trimmed to budget after the April SEO audit; the build now
 enforces the budgets: title ≤ 60 chars incl. brand, description 120–160)._

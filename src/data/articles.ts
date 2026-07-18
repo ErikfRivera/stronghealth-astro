@@ -44,6 +44,14 @@ export const articles: ArticleMeta[] = [
     datePublished: "2026-07-18",
   },
   {
+    title: "Detox Diets: What the Evidence Actually Says About Cleansing Your Body",
+    subtitle: "Your liver, kidneys, and gut already detoxify you around the clock. Here's what a detox diet can and can't do — and the honest, evidence-based version worth keeping.",
+    path: "/detox-diet/",
+    category: "Diet & Nutrition",
+    readTime: "12 min read",
+    datePublished: "2026-07-18",
+  },
+  {
     title: "The Stillman Diet: History, Risks, and Why Modern Medicine Moved On",
     subtitle: "A 1967 crash diet that sold 5 million copies, raised cholesterol in every study participant, and pioneered ideas that still influence how we think about protein and weight loss.",
     path: "/stillman-diet/",

@@ -15,6 +15,7 @@
     { "source": "/collagen-peptides/(.+)", "destination": "/collagen-peptides/", "permanent": true },
     { "source": "/semaglutide-diet/(.+)", "destination": "/semaglutide-diet/", "permanent": true },
     { "source": "/stillman-diet/(.+)", "destination": "/stillman-diet/", "permanent": true },
+    { "source": "/detox-diet/(.+)", "destination": "/detox-diet/", "permanent": true },
     { "source": "/fl/boca-raton/(.*)", "destination": "/", "permanent": true },
     { "source": "/fl/hollywood/(.*)", "destination": "/", "permanent": true },
     { "source": "/fl/homestead/(.*)", "destination": "/", "permanent": true },

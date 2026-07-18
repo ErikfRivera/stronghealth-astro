@@ -237,6 +237,22 @@
       "status": 200,
       "title": "Collagen Peptides: Supplement vs. Clinical | Strong Health"
     },
+    "/detox-diet/": {
+      "canonical_path": "/detox-diet/",
+      "description": "Do detox diets actually remove toxins? A physician-reviewed look at how your body really detoxifies, which foods help, and what the evidence shows works.",
+      "h1": "Detox Diets: What the Evidence Actually Says About Cleansing Your Body",
+      "jsonld": {},
+      "lang": "en",
+      "post_cutover": true,
+      "robots": "index, follow, max-image-preview:large",
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      },
+      "status": 200,
+      "title": "Detox Diet: What Works, What Doesn't | Strong Health"
+    },
     "/dexa-scan/": {
       "canonical_path": "/dexa-scan/",
       "description": "How DEXA scans measure body fat, muscle mass, and bone density with clinical precision. Compare DEXA to other methods and its role in TRT monitoring.",

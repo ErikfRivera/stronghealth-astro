@@ -128,8 +128,12 @@ byte-parity capture is no longer the spec (see "Parity suite re-baseline").
   and stay indexable. No peptide-theme page links into a review page.
 
 ### Molecule layer added (US-004/US-005)
-- New `/molecules/` hub + 17 molecule spokes (`/molecules/[slug]/`), driven by
+- New `/molecules/` hub + 17 molecule spokes (`/peptides/[slug]/`), driven by
   `src/data/molecules/` (config-per-molecule + shared `MoleculePage.astro`).
+  Molecule spokes originally shipped at `/molecules/[slug]/` and were moved
+  under `/peptides/[slug]/` (peptides subfolder migration); `vercel.json`
+  301s `/molecules/(.+)` → `/peptides/$1`, and the old `/peptides/(.+)` →
+  `/peptides/` catch-all was removed to make room for the new routes.
 - Each molecule's `goals[]` field generates bidirectional goal↔molecule links:
   molecule pages link their goal spokes; goal spokes render a "Molecules in this
   guide" module (`GoalMoleculesSection.astro`) from the reverse mapping.

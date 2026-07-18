@@ -56,7 +56,7 @@ export function getMolecule(slug: string): MoleculeConfig | undefined {
 }
 
 export function moleculePath(slug: string): string {
-  return `/molecules/${slug}/`;
+  return `/peptides/${slug}/`;
 }
 
 /** Molecules grouped by their `group`, in hub display order. */

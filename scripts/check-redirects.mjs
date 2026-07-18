@@ -38,6 +38,13 @@ function matchRule(path) {
   return rules.find((r) => r.re.test(path));
 }
 
+// Resolve a rule's destination for a concrete path, substituting $1/$2
+// capture references (e.g. /molecules/(.+) -> /peptides/$1).
+function resolveDest(rule, path) {
+  const m = path.match(rule.re);
+  return rule.destination.replace(/\$(\d+)/g, (_, i) => (m && m[Number(i)]) || "");
+}
+
 const distRoute = (p) =>
   p === "/" || existsSync(join(root, "dist", p.slice(1), "index.html"));
 
@@ -48,7 +55,7 @@ for (const r of manifest.redirects) {
     continue;
   }
   // Destination expectations
-  const dest = rule.destination;
+  const dest = resolveDest(rule, r.source);
   if (dest.startsWith("http")) {
     if (r.target !== dest) errors.push(`${r.source}: external target ${dest} != manifest ${r.target}`);
   } else {

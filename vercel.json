@@ -13,7 +13,7 @@
     { "source": "/fl/miami/weight-loss-clinic/(.+)", "destination": "/fl/miami/peptide-therapy/", "permanent": true },
     { "source": "/fl/delray-beach/weight-loss-clinic/", "destination": "/fl/delray-beach/peptide-therapy/", "permanent": true },
     { "source": "/fl/delray-beach/weight-loss-clinic/(.+)", "destination": "/fl/delray-beach/peptide-therapy/", "permanent": true },
-    { "source": "/peptides/(.+)", "destination": "/peptides/", "permanent": true },
+    { "source": "/molecules/(.+)", "destination": "/peptides/$1", "permanent": true },
     { "source": "/peptides-for-tendon-repair/(.+)", "destination": "/peptides-for-tendon-repair/", "permanent": true },
     { "source": "/peptides-for-libido/(.+)", "destination": "/peptides-for-libido/", "permanent": true },
     { "source": "/peptides-for-sleep/(.+)", "destination": "/peptides-for-sleep/", "permanent": true },

@@ -1,6 +1,6 @@
 ---
 /**
- * Shared template for every /molecules/[slug]/ page (US-005). One layout,
+ * Shared template for every /peptides/[slug]/ molecule page (US-005). One layout,
  * one config per molecule (src/data/molecules/*). Emits MedicalWebPage +
  * FAQPage + Physician + BreadcrumbList schema, and generates the
  * molecule→goal and molecule→sibling cross-links from the config so the
@@ -36,7 +36,7 @@ const siblings = siblingMolecules(m.slug, 3);
 
 const breadcrumbs = [
   { name: "Home", path: "/" },
-  { name: "Molecules", path: "/molecules/" },
+  { name: "Peptides", path: "/peptides/" },
   { name: m.name, path },
 ];
 

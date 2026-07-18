@@ -173,6 +173,20 @@
     }
   }
 
+  /* Peptides mega menu variant. Its .group wrapper is intentionally NOT
+     `relative`, so the panel's containing block is the sticky <nav> — letting
+     it center under the bar and span wider than the trigger. Flush against
+     the nav (no gap) so hover never drops while crossing into the panel. */
+  .nav-drop-mega {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    width: min(760px, calc(100vw - 2rem));
+    max-height: calc(100vh - 5rem);
+    overflow-y: auto;
+  }
+
   /* was: block mb-2 px-3 py-2 rounded-md text-[13px] font-bold text-gold
      hover:bg-white/5 transition-colors */
   .nav-drop-hub {

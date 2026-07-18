@@ -7,16 +7,26 @@
  * site runtime (src/scripts/site-runtime.ts) — visibility, body scroll lock,
  * Escape/backdrop close — replacing the React portal implementation.
  *
- * The Peptides menu exposes both taxonomies: browse by goal (/peptides/ +
- * goal guides) and browse by molecule (/molecules/). Locations lists every
+ * The Peptides menu is a mega menu exposing both taxonomies with direct
+ * links to every page: outcomes (/peptides/ hub + all goal spokes from
+ * GOAL_PAGES) and molecules (/molecules/ hub + every molecule page from the
+ * MOLECULES registry, grouped by MoleculeGroup). Locations lists every
  * peptide-therapy metro from cityPeptideConfig — the sole service theme.
  */
 import { BOOKING_SMS_HREF } from "../../lib/booking";
-import { articles } from "../../data/articles";
+import { GOAL_PAGES } from "../../data/molecules/goals";
+import { moleculesByGroup, moleculePath } from "../../data/molecules";
 import { ALL_PEPTIDE_CITIES } from "../../data/local/cityPeptideConfig";
 import Icon from "./Icon.astro";
 
-const peptideArticles = articles.filter((a) => a.category === "Peptide Therapy");
+const goalLinks = Object.values(GOAL_PAGES).map((g) => ({
+  label: g.label,
+  href: g.path,
+}));
+const moleculeGroups = moleculesByGroup().map(({ group, items }) => ({
+  group,
+  items: items.map((m) => ({ label: m.name, href: moleculePath(m.slug) })),
+}));
 const peptideCities = ALL_PEPTIDE_CITIES.map((c) => ({
   label: `${c.cityName} Peptide Therapy`,
   href: `/${c.statePrefix ?? "fl"}/${c.slug}/peptide-therapy/`,
@@ -39,37 +49,50 @@ const chevronClass = "transition-transform group-hover:rotate-180";
       <span class="font-extrabold text-lg text-cream tracking-tight">STRONG HEALTH</span>
     </a>
     <div class="hidden md:flex gap-7 items-center text-[13px] font-medium text-muted">
-      <div class="relative group">
+      {/* No `relative` here: the mega panel positions against the sticky
+          <nav> so it can span wider than the trigger (see .nav-drop-mega).
+          h-16 keeps the hover zone continuous from trigger to panel. */}
+      <div class="group h-16 flex items-center">
         <button type="button" aria-haspopup="menu" class={triggerClass}>
           Peptides
           <Icon name="chevron-down" size={14} class={chevronClass} />
         </button>
-        <div role="menu" class={dropdownPanelClass}>
-          <div class="p-4 w-[320px]">
-            <a
-              href="/peptides/"
-              class="nav-drop-hub"
-            >
-              Browse by Goal →
-            </a>
-            <a
-              href="/molecules/"
-              class="nav-drop-hub"
-            >
-              Browse by Molecule →
-            </a>
-            <div class="border-t border-white/5 my-2"></div>
-            <div class="flex flex-col">
-              {
-                peptideArticles.map((a) => (
-                  <a
-                    href={a.path}
-                    class="nav-drop-a leading-snug"
-                  >
-                    {a.title.split(":")[0]}
-                  </a>
-                ))
-              }
+        <div role="menu" class={`${dropdownPanelClass} nav-drop-mega`}>
+          <div class="p-5 grid grid-cols-[220px_1fr] gap-6">
+            <div>
+              <a href="/peptides/" class="nav-drop-hub">
+                Peptides by Goal →
+              </a>
+              <div class="flex flex-col">
+                {
+                  goalLinks.map((g) => (
+                    <a href={g.href} class="nav-drop-a">
+                      {g.label}
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+            <div class="border-l border-white/5 pl-6">
+              <a href="/molecules/" class="nav-drop-hub">
+                Peptides by Molecule →
+              </a>
+              <div class="columns-2 gap-4">
+                {
+                  moleculeGroups.map(({ group, items }) => (
+                    <div class="break-inside-avoid mb-2">
+                      <div class="px-3 pt-1.5 pb-0.5 text-[10px] font-semibold uppercase tracking-[1.2px] text-muted">
+                        {group}
+                      </div>
+                      {items.map((m) => (
+                        <a href={m.href} class="nav-drop-a">
+                          {m.label}
+                        </a>
+                      ))}
+                    </div>
+                  ))
+                }
+              </div>
             </div>
           </div>
         </div>
@@ -152,19 +175,30 @@ const chevronClass = "transition-transform group-hover:rotate-180";
       </summary>
       <div class="pb-3 pl-2 flex flex-col">
         <a href="/peptides/" class="mnav-hub">
-          Browse by Goal →
-        </a>
-        <a href="/molecules/" class="mnav-hub">
-          Browse by Molecule →
+          Peptides by Goal →
         </a>
         {
-          peptideArticles.map((a) => (
-            <a
-              href={a.path}
-              class="mnav-a leading-snug"
-            >
-              {a.title.split(":")[0]}
+          goalLinks.map((g) => (
+            <a href={g.href} class="mnav-a">
+              {g.label}
             </a>
+          ))
+        }
+        <a href="/molecules/" class="mnav-hub mt-2 border-t border-white/5">
+          Peptides by Molecule →
+        </a>
+        {
+          moleculeGroups.map(({ group, items }) => (
+            <div class="flex flex-col">
+              <div class="pt-2 pb-1 text-[10px] font-semibold uppercase tracking-[1.2px] text-muted">
+                {group}
+              </div>
+              {items.map((m) => (
+                <a href={m.href} class="mnav-a">
+                  {m.label}
+                </a>
+              ))}
+            </div>
           ))
         }
       </div>

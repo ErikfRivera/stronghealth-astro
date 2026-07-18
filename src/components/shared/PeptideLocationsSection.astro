@@ -28,16 +28,21 @@ const configs: CityPeptideConfig[] = [
   AUSTIN_PEPTIDE_CONFIG,
 ];
 
-const locations = configs.map((c) => ({
-  cityName: c.cityName,
-  state: c.clinic.state,
-  href: `/${c.statePrefix ?? "fl"}/${c.slug}/peptide-therapy/`,
-  inPerson: c.physicalClinic !== false,
-  detail:
-    c.physicalClinic !== false
+const locations = configs.map((c) => {
+  const inPerson = c.physicalClinic !== false;
+  const inFlorida = (c.statePrefix ?? "fl") === "fl";
+  return {
+    cityName: c.cityName,
+    state: c.clinic.state,
+    href: `/${c.statePrefix ?? "fl"}/${c.slug}/peptide-therapy/`,
+    inPerson,
+    detail: inPerson
       ? `In-person visits & on-site labs · ${c.clinicArea}`
-      : "Telehealth visits with local lab draws",
-}));
+      : inFlorida
+        ? "Telehealth visits · labs at our Miami clinic"
+        : "Telehealth visits with local lab draws",
+  };
+});
 ---
 
 <section class="relative px-8 py-16 border-t border-white/5 bg-surface-card">

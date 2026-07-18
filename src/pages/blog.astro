@@ -6,7 +6,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageShell from "../components/shared/PageShell.astro";
 import FadeIn from "../components/shared/FadeIn.astro";
 import Icon from "../components/shared/Icon.astro";
-import LocationsGridSection from "../components/shared/LocationsGridSection.astro";
+import ArticleLocationsSection from "../components/shared/ArticleLocationsSection.astro";
 import JsonLd from "../components/seo/JsonLd.astro";
 import { collectionPageSchema } from "../components/seo/schemas";
 import { articles, categoryColors, type Category } from "../data/articles";
@@ -16,7 +16,7 @@ const categories: Category[] = [
   "All",
   "Diet & Nutrition",
   "Sexual Health",
-  "Men's Health Nutrients",
+  "Nutrients & Supplements",
   "Peptide Therapy",
   "Supplement Reviews",
   "Services",
@@ -45,8 +45,8 @@ const categoryCounts = Object.fromEntries(
 ---
 
 <BaseLayout
-  title="Evidence-Based Men's Health Blog"
-  description="Physician-reviewed articles on testosterone, sexual health, peptide therapy, nutrition, and men's health optimization from Strong Health."
+  title="Evidence-Based Peptide Therapy Blog"
+  description="Physician-reviewed articles on peptide therapy, recovery, metabolic health, nutrition, and longevity from Strong Health."
   path="/blog/"
 >
   <PageShell>
@@ -54,7 +54,7 @@ const categoryCounts = Object.fromEntries(
       schema={collectionPageSchema({
         name: "Strong Health Blog",
         description:
-          "Physician-reviewed articles on testosterone, sexual health, peptide therapy, nutrition, and men's health optimization.",
+          "Physician-reviewed articles on peptide therapy, recovery, metabolic health, nutrition, and longevity.",
         url: "/blog/",
         items: articles.map((a) => ({ name: a.title, url: a.path })),
       })}
@@ -68,10 +68,10 @@ const categoryCounts = Object.fromEntries(
             Evidence-Based Resources
           </span>
           <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-4">
-            Evidence-Based Men's Health Articles
+            Evidence-Based Peptide Therapy Articles
           </h1>
           <p class="text-[16px] text-muted leading-[1.7] max-w-[600px]">
-            Physician-reviewed articles on testosterone, sexual health, peptide therapy, nutrition, and men's health optimization.
+            Physician-reviewed articles on peptide therapy, recovery, metabolic health, nutrition, and longevity.
           </p>
         </FadeIn>
       </div>
@@ -102,7 +102,7 @@ const categoryCounts = Object.fromEntries(
         {sorted.length} {sorted.length === 1 ? "article" : "articles"}
       </p>
       <FadeIn>
-        <LocationsGridSection variant="inline" />
+        <ArticleLocationsSection />
       </FadeIn>
       <FadeIn>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="blog-grid">

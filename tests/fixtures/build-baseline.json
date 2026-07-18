@@ -1,0 +1,1024 @@
+{
+  "_generated_by": "scripts/generate-parity-baseline.mjs",
+  "_source": "self-snapshot of dist/ after the peptide repositioning; regenerate with `pnpm build && node scripts/generate-parity-baseline.mjs`",
+  "origin_placeholder": "{origin}",
+  "production_origin": "https://www.stronghealth.com",
+  "forbidden_url_substrings": [
+    "staging.stronghealth.com",
+    "localhost",
+    "replit"
+  ],
+  "visible_text_bans": [
+    "read read"
+  ],
+  "pages": {
+    "/": {
+      "title": "Physician-Supervised Peptide Therapy | Strong Health",
+      "description": "Physician-supervised peptide therapy — BPC-157, CJC-1295, Tesamorelin, PT-141. Pharmacy-grade compounds, real labs, ongoing monitoring. Book a free assessment.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/",
+      "h1": "Peptide Therapy. Not gray-market vials. Not guesswork.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "weekly",
+        "lastmod": "2026-06-11",
+        "priority": "1.0"
+      }
+    },
+    "/about/": {
+      "title": "About Us | Strong Health",
+      "description": "Strong Health is a physician-supervised peptide therapy clinic in Miami, FL — board-certified physicians, comprehensive labs, in-person exams, and telehealth.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/about/",
+      "h1": "About Strong Health",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.8"
+      }
+    },
+    "/author/dr-angel-rivera/": {
+      "title": "Dr. Angel Rivera, M.D. — Psychiatrist | Strong Health",
+      "description": "Bilingual (EN/ES) psychiatrist with 15+ years in forensic, geriatric, correctional, and telepsychiatry. SUNY Downstate M.D., Mount Sinai trained.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/author/dr-angel-rivera/",
+      "h1": "Dr. Angel Rivera, M.D.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.7"
+      }
+    },
+    "/author/mahadev-mukherjee/": {
+      "title": "Mahadev Mukherjee, Scientific Writer | Strong Health",
+      "description": "Scientific content writer with 17 years in pharma sales, marketing, product management, and clinical data — focused on peptides, GLP-1/GIP/GCGR, and obesity Rx.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/author/mahadev-mukherjee/",
+      "h1": "Mahadev Mukherjee",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.7"
+      }
+    },
+    "/baking-soda-for-ed/": {
+      "title": "Baking Soda for ED: Does It Work? | Strong Health",
+      "description": "Can baking soda treat erectile dysfunction? We review the science behind this popular claim and explain what ED treatments are actually proven to work.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/baking-soda-for-ed/",
+      "h1": "Baking Soda for Erectile Dysfunction: What the Science Actually Says",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-10",
+        "priority": "0.8"
+      }
+    },
+    "/blog/": {
+      "title": "Evidence-Based Peptide Therapy Blog | Strong Health",
+      "description": "Physician-reviewed articles on peptide therapy, recovery, metabolic health, nutrition, and longevity from Strong Health.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/blog/",
+      "h1": "Evidence-Based Peptide Therapy Articles",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "weekly",
+        "lastmod": "2026-06-22",
+        "priority": "0.8"
+      }
+    },
+    "/ca/san-diego/peptide-therapy/": {
+      "title": "San Diego Peptide Therapy, CA — Telehealth | Strong Health",
+      "description": "Physician-supervised peptide therapy for San Diego patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/ca/san-diego/peptide-therapy/",
+      "h1": "Peptide Therapy in San Diego, CA.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-15",
+        "priority": "0.8"
+      }
+    },
+    "/careers/": {
+      "title": "Careers | Strong Health",
+      "description": "Join Strong Health in Miami, FL. We're hiring physicians, medical assistants, and health professionals passionate about evidence-based peptide therapy.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/careers/",
+      "h1": "Careers at Strong Health",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-06-06",
+        "priority": "0.5"
+      }
+    },
+    "/collagen-peptides/": {
+      "title": "Collagen Peptides: Supplement vs. Clinical | Strong Health",
+      "description": "Compare supplement-grade vs clinical-grade collagen peptides. Learn which collagen types work for joints, skin, and gut health based on clinical evidence.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/collagen-peptides/",
+      "h1": "Collagen Peptides: Supplement vs. Clinical-Grade: What Actually Works",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/detox-diet/": {
+      "title": "Detox Diet: What Works, What Doesn't | Strong Health",
+      "description": "Do detox diets actually remove toxins? A physician-reviewed look at how your body really detoxifies, which foods help, and what the evidence shows works.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/detox-diet/",
+      "h1": "Detox Diets: What the Evidence Actually Says About Cleansing Your Body",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/dexa-scan/": {
+      "title": "DEXA Scan: Body Composition Analysis | Strong Health",
+      "description": "How DEXA scans measure body fat, muscle mass, and bone density with clinical precision. Compare DEXA to other methods and its role in TRT monitoring.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/dexa-scan/",
+      "h1": "DEXA Scan: The Gold Standard for Body Composition Analysis",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2025-03-28",
+        "priority": "0.8"
+      }
+    },
+    "/editorial-guidelines/": {
+      "title": "Editorial Guidelines | Strong Health",
+      "description": "Strong Health's editorial guidelines outline our commitment to physician-reviewed, evidence-based health content on TRT, peptide therapy, and men's wellness.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/editorial-guidelines/",
+      "h1": "Editorial Guidelines",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "yearly",
+        "lastmod": "2026-05-27",
+        "priority": "0.4"
+      }
+    },
+    "/fl/": {
+      "title": "Florida Peptide Therapy Clinic & Telehealth | Strong Health",
+      "description": "Physician-supervised peptide therapy across Florida — in-person at our Miami (Brickell) clinic, telehealth for Delray Beach, Tampa, and statewide follow-ups.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/",
+      "h1": "Peptide therapy in Florida, done like real medicine.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-06-22",
+        "priority": "0.9"
+      }
+    },
+    "/fl/delray-beach/peptide-therapy/": {
+      "title": "Peptide Therapy in Delray Beach, FL | Strong Health",
+      "description": "Physician-supervised peptide therapy for Delray Beach, FL patients. Telehealth visits with in-person evaluation at our Miami Brickell clinic. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/delray-beach/peptide-therapy/",
+      "h1": "Peptide Therapy in Delray Beach, FL.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/": {
+      "title": "DEXA Scan Miami — Body Composition | Strong Health",
+      "description": "Clinical DEXA scan in Miami at our Brickell clinic. Precise body composition, lean mass, body fat %, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/",
+      "h1": "DEXA Scan in Miami. Gold-standard body composition, in 15 minutes.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-06-22",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/peptide-therapy/": {
+      "title": "Peptide Therapy in Miami, FL | Strong Health",
+      "description": "Physician-supervised peptide therapy in Miami, FL. Brickell clinic prescribing BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141. Book a free assessment.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/peptide-therapy/",
+      "h1": "Peptide Therapy in Miami, FL.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-05-27",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/prp-therapy/": {
+      "title": "PRP Therapy in Miami, FL | Strong Health",
+      "description": "Physician-led PRP in Miami, FL: platelet-rich plasma for hair restoration, PRP facials, microneedling, and joint & sports-injury recovery. Brickell clinic.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/prp-therapy/",
+      "h1": "PRP Therapy in Miami, FL.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-17",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/stem-cell-therapy/": {
+      "title": "Stem Cell Therapy in Miami, FL | Strong Health",
+      "description": "Physician-supervised stem cell & regenerative therapy in Miami, FL. Brickell clinic treating arthritis, knee, joint & tendon pain plus exosomes.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/stem-cell-therapy/",
+      "h1": "Stem Cell Therapy in Miami, FL.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-17",
+        "priority": "0.8"
+      }
+    },
+    "/fl/tampa/peptide-therapy/": {
+      "title": "Peptide Therapy in Tampa, FL — Telehealth | Strong Health",
+      "description": "Physician-supervised peptide therapy for Tampa patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/tampa/peptide-therapy/",
+      "h1": "Peptide Therapy in Tampa, FL.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-15",
+        "priority": "0.8"
+      }
+    },
+    "/foods-that-lower-testosterone/": {
+      "title": "Foods That Lower Testosterone: Myth vs Fact | Strong Health",
+      "description": "Do soy, flaxseed, mint, or alcohol actually lower testosterone? We review the clinical evidence on foods linked to reduced T levels and separate myth from fact.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/foods-that-lower-testosterone/",
+      "h1": "Foods That Lower Testosterone: Separating Myth from Evidence",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-28",
+        "priority": "0.8"
+      }
+    },
+    "/ga/atlanta/peptide-therapy/": {
+      "title": "Peptide Therapy in Atlanta, GA — Telehealth | Strong Health",
+      "description": "Physician-supervised peptide therapy for Atlanta patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/ga/atlanta/peptide-therapy/",
+      "h1": "Peptide Therapy in Atlanta, GA.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-15",
+        "priority": "0.8"
+      }
+    },
+    "/garlic-and-honey-for-erectile-dysfunction/": {
+      "title": "Garlic and Honey for ED: Fact vs. Fiction | Strong Health",
+      "description": "Does garlic and honey help with erectile dysfunction? We examine the folk remedy claims, review the evidence, and explain proven ED treatments that work.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/garlic-and-honey-for-erectile-dysfunction/",
+      "h1": "Garlic and Honey for Erectile Dysfunction: Fact vs. Fiction",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-12",
+        "priority": "0.8"
+      }
+    },
+    "/hipaa-policy/": {
+      "title": "HIPAA Notice of Privacy Practices | Strong Health",
+      "description": "Strong Health's HIPAA Notice of Privacy Practices. Learn how we protect your health information, your patient rights, and how to file a complaint.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/hipaa-policy/",
+      "h1": "HIPAA Notice of Privacy Practices",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "yearly",
+        "lastmod": "2026-05-27",
+        "priority": "0.4"
+      }
+    },
+    "/home-remedies-for-premature-ejaculation/": {
+      "title": "Home Remedies for PE: What Actually Works | Strong Health",
+      "description": "Discover proven home remedies for premature ejaculation, including behavioral techniques, topical treatments, pelvic floor exercises, and lifestyle changes.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/home-remedies-for-premature-ejaculation/",
+      "h1": "Home Remedies for Premature Ejaculation: What Actually Works",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-18",
+        "priority": "0.8"
+      }
+    },
+    "/lysine-benefit-men-health/": {
+      "title": "Lysine Benefits for Men: Evidence Guide | Strong Health",
+      "description": "Explore lysine benefits for men: collagen synthesis, calcium absorption, immune support, and indirect testosterone support. Dosing and food sources inside.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/lysine-benefit-men-health/",
+      "h1": "Lysine Benefits for Men's Health: Collagen, Calcium, Immunity & Testosterone Support",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-28",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/": {
+      "title": "Peptide Molecule Library | Strong Health",
+      "description": "Browse every peptide Strong Health prescribes by molecule — BPC-157, CJC-1295, Tesamorelin, PT-141, semaglutide, and more. Physician-reviewed, evidence-based.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/",
+      "h1": "The Strong Health peptide molecule library.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/aod-9604/": {
+      "title": "AOD-9604 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "AOD-9604 is a growth-hormone fragment studied for fat metabolism without GH's growth effects. See the mechanism, mixed human evidence, and how we prescribe it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/aod-9604/",
+      "h1": "AOD-9604",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/bpc-157/": {
+      "title": "BPC-157 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "BPC-157 is a healing peptide studied for tendon, ligament, and gut repair. Review the mechanism, evidence, dosing context, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/bpc-157/",
+      "h1": "BPC-157",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/cjc-1295/": {
+      "title": "CJC-1295 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "CJC-1295 is a GHRH analog studied to raise natural growth hormone and IGF-1 for body composition, recovery, and sleep. See how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/cjc-1295/",
+      "h1": "CJC-1295",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/dsip/": {
+      "title": "DSIP Peptide: Sleep Uses & Evidence | Strong Health",
+      "description": "DSIP is a nonapeptide studied for deepening slow-wave sleep without sedation. Review its mechanism, the human evidence, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/dsip/",
+      "h1": "DSIP",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/epithalon/": {
+      "title": "Epithalon Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "Epithalon is a synthetic tetrapeptide studied for telomerase activation and pineal-melatonin regulation. See the evidence, safety, and how we prescribe it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/epithalon/",
+      "h1": "Epithalon",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/ghk-cu/": {
+      "title": "GHK-Cu Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "GHK-Cu is a copper-binding peptide studied for collagen synthesis, skin repair, and anti-aging. Review evidence, safety, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/ghk-cu/",
+      "h1": "GHK-Cu",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/ipamorelin/": {
+      "title": "Ipamorelin Peptide: Uses & Safety | Strong Health",
+      "description": "Ipamorelin is a selective GH-releasing peptide studied for lean mass, recovery, and sleep. Review its mechanism, evidence, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/ipamorelin/",
+      "h1": "Ipamorelin",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/kisspeptin/": {
+      "title": "Kisspeptin Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "Kisspeptin is an investigational peptide studied for its role in reproductive hormones and libido. Review its mechanism, emerging human evidence, and safety.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/kisspeptin/",
+      "h1": "Kisspeptin",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/ll-37/": {
+      "title": "LL-37 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "LL-37 is the human cathelicidin host-defense peptide studied for antimicrobial action and wound healing. Review its mechanism, evidence, and how we use it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/ll-37/",
+      "h1": "LL-37",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/mots-c/": {
+      "title": "MOTS-c Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "MOTS-c is a mitochondrial-derived peptide studied for AMPK activation, metabolic health, and insulin sensitivity, mostly in animals. Review the evidence here.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/mots-c/",
+      "h1": "MOTS-c",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/pt-141/": {
+      "title": "PT-141 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "PT-141 (bremelanotide) works on brain melanocortin pathways to raise sexual desire. FDA-approved as Vyleesi for premenopausal HSDD — see mechanism and safety.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/pt-141/",
+      "h1": "PT-141",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/selank/": {
+      "title": "Selank Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "Selank is a synthetic anxiolytic peptide studied for anxiety, calm, and cognition. Review its mechanism, evidence, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/selank/",
+      "h1": "Selank",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/semaglutide/": {
+      "title": "Semaglutide: Weight Loss Uses & Evidence | Strong Health",
+      "description": "Semaglutide (Wegovy, Ozempic) is a GLP-1 medication for weight loss. Review the mechanism, STEP-trial evidence, safety, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/semaglutide/",
+      "h1": "Semaglutide",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/sermorelin/": {
+      "title": "Sermorelin: GHRH Peptide, Uses & Safety | Strong Health",
+      "description": "Sermorelin is a GHRH analog that prompts your pituitary to release growth hormone. Review its mechanism, evidence, safety, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/sermorelin/",
+      "h1": "Sermorelin",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/tb-500/": {
+      "title": "TB-500 Peptide: Uses, Evidence & Safety | Strong Health",
+      "description": "TB-500 is a healing peptide studied for tendon, muscle, and tissue repair. Review its mechanism, evidence, dosing context, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/tb-500/",
+      "h1": "TB-500",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/tesamorelin/": {
+      "title": "Tesamorelin: Visceral Fat Uses & Evidence | Strong Health",
+      "description": "Tesamorelin (Egrifta) is an FDA-approved GHRH analog that targets visceral belly fat. Review its evidence, safety, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/tesamorelin/",
+      "h1": "Tesamorelin",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/molecules/tirzepatide/": {
+      "title": "Tirzepatide: Weight Loss Uses & Evidence | Strong Health",
+      "description": "Tirzepatide (Mounjaro, Zepbound) is a dual GIP/GLP-1 medication for weight loss. Review the mechanism, SURMOUNT evidence, and how Strong Health prescribes it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/molecules/tirzepatide/",
+      "h1": "Tirzepatide",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/nac-benefits-men/": {
+      "title": "NAC Benefits for Men: The Complete Guide | Strong Health",
+      "description": "How NAC (N-acetylcysteine) benefits men: glutathione production, liver support, fertility, respiratory health. Dosing and safety reviewed.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/nac-benefits-men/",
+      "h1": "NAC Benefits for Men: Glutathione, Liver Health, Fertility & What You Need to Know",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-28",
+        "priority": "0.8"
+      }
+    },
+    "/nadh-benefits/": {
+      "title": "NADH vs NAD+: Benefits, Energy & Cognition | Strong Health",
+      "description": "Understand NADH benefits for cellular energy, cognition, and aging. Learn how NADH differs from NAD+ and which supplement strategy fits your goals.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/nadh-benefits/",
+      "h1": "NADH Benefits: Cellular Energy, Cognition & the NAD+/NADH Distinction Explained",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-28",
+        "priority": "0.8"
+      }
+    },
+    "/nv/las-vegas/peptide-therapy/": {
+      "title": "Las Vegas Peptide Therapy, NV — Telehealth | Strong Health",
+      "description": "Physician-supervised peptide therapy for Las Vegas patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/nv/las-vegas/peptide-therapy/",
+      "h1": "Peptide Therapy in Las Vegas, NV.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-15",
+        "priority": "0.8"
+      }
+    },
+    "/ny/new-york/peptide-therapy/": {
+      "title": "Peptide Therapy in New York, NY — Telehealth | Strong Health",
+      "description": "Physician-supervised peptide therapy for New York patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/ny/new-york/peptide-therapy/",
+      "h1": "Peptide Therapy in New York, NY.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-14",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-anti-aging/": {
+      "title": "Peptides for Anti-Aging: The Evidence | Strong Health",
+      "description": "An evidence-based look at peptides in an anti-aging context: GH secretagogues, NAD+ and sirtuins, realistic expectations, and physician-supervised safety.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-anti-aging/",
+      "h1": "Peptides for Anti-Aging: GH Secretagogues, NAD+, and the Longevity Axis",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-16",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-arthritis/": {
+      "title": "Peptides for Arthritis: BPC-157 & TB-500 | Strong Health",
+      "description": "How BPC-157, TB-500, and GHK-Cu peptides help manage arthritis pain and inflammation. Clinical evidence and physician-supervised treatment approaches.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-arthritis/",
+      "h1": "Peptides for Arthritis: Managing Joint Pain and Inflammation With BPC-157 and TB-500",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-belly-fat/": {
+      "title": "Peptides for Belly Fat: Visceral Fat Guide | Strong Health",
+      "description": "How GH secretagogue peptides like Ipamorelin, CJC-1295, and Tesamorelin target stubborn visceral belly fat. Clinical evidence and protocols inside.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-belly-fat/",
+      "h1": "Peptides for Belly Fat: How GH Secretagogues Target Visceral Fat",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-healing/": {
+      "title": "Healing Peptides: BPC-157, TB-500 & GHK-Cu | Strong Health",
+      "description": "Explore BPC-157, TB-500, and GHK-Cu healing peptides. Learn how they work, what conditions they treat, and what clinical evidence supports their use.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-healing/",
+      "h1": "Peptides for Healing: Your Complete Guide to BPC-157, TB-500, and GHK-Cu",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-libido/": {
+      "title": "Peptides for Libido: PT-141 Explained | Strong Health",
+      "description": "How PT-141 (bremelanotide) treats low libido via the central nervous system. PT-141 vs Viagra/Cialis, clinical evidence, and protocols.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-libido/",
+      "h1": "Peptides for Libido: How PT-141 Addresses Sexual Desire at the Neurological Level",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-muscle-growth/": {
+      "title": "Peptides for Muscle Growth: A Safer Path | Strong Health",
+      "description": "How GH secretagogue peptides like Ipamorelin and CJC-1295 support lean muscle growth safely. Peptides vs steroids, protocols, and evidence.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-muscle-growth/",
+      "h1": "Peptides for Muscle Growth: How GH Secretagogues Support Lean Mass Safely",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-sleep/": {
+      "title": "Peptides for Sleep: DSIP and Deep Sleep | Strong Health",
+      "description": "Learn how DSIP (Delta Sleep-Inducing Peptide) improves deep sleep architecture without sedation. Review clinical evidence, protocols, and safety considerations.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-sleep/",
+      "h1": "Peptides for Sleep: How DSIP Supports Deep, Restorative Sleep Architecture",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-tendon-repair/": {
+      "title": "Peptides for Tendon Repair: BPC-157 & TB-500 | Strong Health",
+      "description": "Learn how BPC-157 and TB-500 peptides accelerate tendon healing. Review clinical evidence, treatment protocols, and safety under physician supervision.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-tendon-repair/",
+      "h1": "Peptides for Tendon Repair: How BPC-157 and TB-500 Accelerate Healing",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-weight-loss/": {
+      "title": "Peptides for Weight Loss: A Clinical Guide | Strong Health",
+      "description": "How peptides support medical weight loss: GLP-1 agonists (semaglutide, tirzepatide), GH secretagogues for fat metabolism, lean-mass preservation, and safety.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-weight-loss/",
+      "h1": "Peptides for Weight Loss: GLP-1, GH Secretagogues, and Fat-Loss Protocols",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-16",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/": {
+      "title": "Peptide Therapy Guides | Strong Health",
+      "description": "Evidence-based peptide therapy guides for healing, body composition, sleep, sexual health, and recovery. Physician-supervised in South Florida.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/",
+      "h1": "Physician-supervised peptide therapy guides.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-04-22",
+        "priority": "0.9"
+      }
+    },
+    "/pollotarianism/": {
+      "title": "Pollotarian Diet: Benefits, Foods & Plan | Strong Health",
+      "description": "Pollotarianism explained: what pollotarians eat, evidence-based benefits of a poultry-only meat diet, full food list, sample meal plan, and comparisons.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/pollotarianism/",
+      "h1": "Pollotarianism: The Complete Guide to the Pollotarian Diet (2026)",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/porn-induced-erectile-dysfunction/": {
+      "title": "Porn-Induced ED (PIED): Recovery & Treatment | Strong Health",
+      "description": "Understand how porn-induced erectile dysfunction (PIED) develops, recognize the signs, and explore evidence-based recovery strategies and treatment options.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/porn-induced-erectile-dysfunction/",
+      "h1": "Porn-Induced Erectile Dysfunction (PIED): Understanding, Recovery & Treatment",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/premature-ejaculation-exercises/": {
+      "title": "Premature Ejaculation Exercises: Kegel Guide | Strong Health",
+      "description": "Follow this 12-week Kegel and reverse Kegel exercise program to improve ejaculatory control. Step-by-step pelvic floor training reviewed by clinicians.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/premature-ejaculation-exercises/",
+      "h1": "Premature Ejaculation Exercises: Step-by-Step Kegel & Reverse Kegel Guide",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-20",
+        "priority": "0.8"
+      }
+    },
+    "/privacy-policy/": {
+      "title": "Privacy Policy | Strong Health",
+      "description": "Learn how Strong Health collects, uses, and protects your personal and health information. Review our privacy practices, HIPAA compliance, and your data rights.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/privacy-policy/",
+      "h1": "Privacy Policy",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "yearly",
+        "lastmod": "2026-05-27",
+        "priority": "0.4"
+      }
+    },
+    "/resveratrol-side-effects/": {
+      "title": "Resveratrol Side Effects: Men's Safety Guide | Strong Health",
+      "description": "Resveratrol side effects: GI issues, blood thinning risks, estrogenic activity, and drug interactions. Essential safety info for men before supplementing.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/resveratrol-side-effects/",
+      "h1": "Resveratrol Side Effects: GI Issues, Blood Thinning & Estrogenic Concerns for Men",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-28",
+        "priority": "0.8"
+      }
+    },
+    "/reviews/": {
+      "title": "Supplement & TRT Clinic Reviews | Strong Health",
+      "description": "Physician-reviewed analyses of popular testosterone supplements, hormone products, and TRT clinics. Honest, evidence-based comparisons.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/reviews/",
+      "h1": "Supplement, Product & Clinic Reviews",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-06-22",
+        "priority": "0.8"
+      }
+    },
+    "/reviews/andro-400/": {
+      "title": "Andro 400 Review: Evidence, Risks & Cost | Strong Health",
+      "description": "An evidence-based review of Andro 400's eurycoma longifolia formula: what the science says, what it can't do, and when physician TRT is the smarter path.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/reviews/andro-400/",
+      "h1": "Andro 400 Review: Does This Testosterone Booster Actually Work?",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-10",
+        "priority": "0.7"
+      }
+    },
+    "/reviews/elysium-basis-review/": {
+      "title": "Elysium Basis Review: NAD+ vs. Hormones | Strong Health",
+      "description": "An honest look at Elysium Basis: the science behind NAD+ and Nicotinamide Riboside, what it can and can't do for men, and where hormone therapy fits in.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/reviews/elysium-basis-review/",
+      "h1": "Elysium Basis Review: Can an NAD+ Supplement Replace Hormone Therapy?",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-08",
+        "priority": "0.7"
+      }
+    },
+    "/reviews/low-t-center/": {
+      "title": "Low T Center vs. Strong Health: TRT Review | Strong Health",
+      "description": "A fair, evidence-based comparison of the Low T Center franchise model and Strong Health's physician-supervised approach to testosterone replacement therapy.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/reviews/low-t-center/",
+      "h1": "Low T Center vs. Strong Health: An Honest Comparison of TRT Providers",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-15",
+        "priority": "0.7"
+      }
+    },
+    "/reviews/nugenix-ultimate-testosterone/": {
+      "title": "Nugenix Ultimate Review: Evidence & Risks | Strong Health",
+      "description": "A critical review of Nugenix Ultimate Testosterone's Testofen formula: what the studies show, the real cost, and how it compares to physician-led TRT.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/reviews/nugenix-ultimate-testosterone/",
+      "h1": "Nugenix Ultimate Testosterone Review: Hype vs. Evidence",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-12",
+        "priority": "0.7"
+      }
+    },
+    "/reviews/revita/": {
+      "title": "Revita Shampoo Review: The Hormone-Hair Link | Strong Health",
+      "description": "Evidence-based review of DS Laboratories Revita: what its ingredients do for thinning hair, why hormones are the missing piece, and the smarter path for men.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/reviews/revita/",
+      "h1": "Revita Hair Loss Shampoo Review: The Hormone-Hair Connection Most Products Ignore",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-03-05",
+        "priority": "0.7"
+      }
+    },
+    "/semaglutide-diet/": {
+      "title": "Semaglutide Diet: Complete Weight Loss Guide | Strong Health",
+      "description": "Evidence-based semaglutide diet guide: foods, meal plans, macro targets, and STEP trial data. How to eat for maximum results on Wegovy or Ozempic.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/semaglutide-diet/",
+      "h1": "Semaglutide Diet: Complete Guide for Weight Loss (2026)",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-04-01",
+        "priority": "0.8"
+      }
+    },
+    "/stillman-diet/": {
+      "title": "The Stillman Diet: History, Risks & Verdict | Strong Health",
+      "description": "Complete guide to the Stillman Diet: 1967 high-protein origins, extreme restrictions, documented health risks, and how it compares to modern weight loss.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/stillman-diet/",
+      "h1": "The Stillman Diet: History, Risks, and Why Modern Medicine Moved On (2026)",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-04-04",
+        "priority": "0.8"
+      }
+    },
+    "/terms-of-use/": {
+      "title": "Terms of Use | Strong Health",
+      "description": "Terms of Use for Strong Health. Review the terms and conditions governing your use of our physician-supervised TRT services and website.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/terms-of-use/",
+      "h1": "Terms of Use",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "yearly",
+        "lastmod": "2026-05-27",
+        "priority": "0.4"
+      }
+    },
+    "/tx/austin/peptide-therapy/": {
+      "title": "Peptide Therapy in Austin, TX — Telehealth | Strong Health",
+      "description": "Physician-supervised peptide therapy for Austin patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/tx/austin/peptide-therapy/",
+      "h1": "Peptide Therapy in Austin, TX.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-15",
+        "priority": "0.8"
+      }
+    }
+  }
+}

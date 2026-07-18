@@ -1,0 +1,294 @@
+---
+/**
+ * Shared template for every /molecules/[slug]/ page (US-005). One layout,
+ * one config per molecule (src/data/molecules/*). Emits MedicalWebPage +
+ * FAQPage + Physician + BreadcrumbList schema, and generates the
+ * molecule→goal and molecule→sibling cross-links from the config so the
+ * bidirectional linking with goal spokes can never drift.
+ */
+import BaseLayout from "./BaseLayout.astro";
+import PageShell from "../components/shared/PageShell.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import FadeIn from "../components/shared/FadeIn.astro";
+import Icon from "../components/shared/Icon.astro";
+import Tag from "../components/shared/Tag.astro";
+import AuthorByline from "../components/shared/AuthorByline.astro";
+import { BOOKING_SMS_HREF } from "../lib/booking";
+import { DR_ANGEL_RIVERA } from "../data/articleAuthors";
+import {
+  breadcrumbSchema,
+  faqPageSchema,
+  medicalWebPageSchema,
+  physicianSchema,
+} from "../components/seo/schemas";
+import type { MoleculeConfig } from "../data/molecules/types";
+import { GOAL_PAGES } from "../data/molecules/goals";
+import { moleculePath, siblingMolecules } from "../data/molecules";
+
+interface Props {
+  molecule: MoleculeConfig;
+}
+
+const { molecule: m } = Astro.props;
+const path = moleculePath(m.slug);
+const goalLinks = m.goals.map((g) => GOAL_PAGES[g]);
+const siblings = siblingMolecules(m.slug, 3);
+
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Molecules", path: "/molecules/" },
+  { name: m.name, path },
+];
+
+const sections = [
+  { id: "what-it-is", title: "What it is" },
+  { id: "mechanism", title: "Mechanism" },
+  { id: "used-for", title: "What it's used for" },
+  { id: "evidence", title: "Evidence" },
+  { id: "dosing", title: "Dosing & administration" },
+  { id: "safety", title: "Safety & side effects" },
+  { id: "how-we-prescribe", title: "How Strong Health prescribes it" },
+  { id: "faq", title: "FAQ" },
+];
+
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(m.faqs) as Record<string, unknown>;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    faqNoCtx,
+    (() => {
+      const { ["@context"]: _c, ...s } = physicianSchema() as Record<string, unknown>;
+      return s;
+    })(),
+  ],
+};
+---
+
+<BaseLayout
+  title={m.seoTitle}
+  description={m.metaDescription}
+  path={path}
+  ogType="article"
+>
+  <PageShell>
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: `${m.name}: Uses, Evidence & How It's Prescribed`,
+        description: m.metaDescription,
+        url: path,
+        lastReviewed: m.dateModifiedISO,
+        reviewedBy: {
+          name: DR_ANGEL_RIVERA.name,
+          credentials: DR_ANGEL_RIVERA.credentials,
+          role: DR_ANGEL_RIVERA.role,
+        },
+      })}
+    />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+    <JsonLd schema={structuredData} />
+
+    {/* Breadcrumbs */}
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[820px] mx-auto">
+        <ol class="flex items-center flex-wrap gap-1.5 text-[12px] text-muted">
+          {breadcrumbs.map((crumb, i) => (
+            <li class="flex items-center gap-1.5">
+              {i > 0 && <Icon name="chevron-right" size={12} class="text-text-subtle" />}
+              {i < breadcrumbs.length - 1 ? (
+                <a href={crumb.path} class="hover:text-gold transition-colors">
+                  {crumb.name}
+                </a>
+              ) : (
+                <span class="text-gold font-semibold">{crumb.name}</span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </nav>
+
+    <article class="px-8 py-10">
+      <div class="max-w-[820px] mx-auto">
+        {/* Header */}
+        <FadeIn>
+          <Tag>{m.group}</Tag>
+          <h1 class="text-4xl md:text-[46px] font-black text-cream leading-[1.08] mt-5 mb-4 tracking-[-1px]">
+            {m.name}
+          </h1>
+          {m.aliases.length > 0 && (
+            <p class="text-[13px] text-text-subtle mb-4">
+              Also known as: {m.aliases.join(", ")}
+            </p>
+          )}
+          <p class="text-[17px] text-muted leading-relaxed mb-6">{m.tagline}</p>
+        </FadeIn>
+
+        <AuthorByline
+          author={DR_ANGEL_RIVERA}
+          reviewer={DR_ANGEL_RIVERA}
+          publishDate={m.datePublishedISO}
+          updatedDate={m.dateModifiedISO}
+        />
+
+        {/* On-this-page */}
+        <nav aria-label="On this page" class="mt-8 mb-4 rounded-xl border border-white/10 bg-surface-card p-5">
+          <div class="text-[11px] font-bold text-gold uppercase tracking-[1.2px] mb-3">On this page</div>
+          <ol class="grid sm:grid-cols-2 gap-x-6 gap-y-1.5 text-[13px] text-muted list-none">
+            {sections.map((s) => (
+              <li>
+                <a href={`#${s.id}`} class="hover:text-gold transition-colors">{s.title}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        <div class="prose-molecule flex flex-col gap-10 mt-8">
+          <section id="what-it-is">
+            <h2 class="text-2xl font-bold text-cream mb-4">What is {m.name}?</h2>
+            {m.whatItIs.map((p) => <p class="text-[15px] text-muted leading-[1.8] mb-4">{p}</p>)}
+          </section>
+
+          <section id="mechanism">
+            <h2 class="text-2xl font-bold text-cream mb-4">How {m.name} works</h2>
+            {m.mechanism.map((p) => <p class="text-[15px] text-muted leading-[1.8] mb-4">{p}</p>)}
+          </section>
+
+          <section id="used-for">
+            <h2 class="text-2xl font-bold text-cream mb-4">What {m.name} is used for</h2>
+            <div class="grid sm:grid-cols-2 gap-3">
+              {m.usedFor.map((u) => (
+                <div class="rounded-xl border border-white/10 bg-surface-card p-5">
+                  <h3 class="text-[15px] font-bold text-cream mb-1.5">{u.heading}</h3>
+                  <p class="text-[13px] text-muted leading-relaxed">{u.desc}</p>
+                </div>
+              ))}
+            </div>
+            {goalLinks.length > 0 && (
+              <div class="mt-6 rounded-xl border border-gold/20 bg-gold/[0.05] p-5">
+                <div class="text-[11px] font-bold text-gold uppercase tracking-[1.2px] mb-3">
+                  Goals {m.name} supports
+                </div>
+                <ul class="flex flex-col gap-2 list-none">
+                  {goalLinks.map((g) => (
+                    <li>
+                      <a href={g.path} class="text-[14px] font-semibold text-gold hover:underline">
+                        {g.anchor} →
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </section>
+
+          <section id="evidence">
+            <h2 class="text-2xl font-bold text-cream mb-4">What the evidence shows</h2>
+            {m.evidence.map((p) => <p class="text-[15px] text-muted leading-[1.8] mb-4" set:html={p} />)}
+          </section>
+
+          <section id="dosing">
+            <h2 class="text-2xl font-bold text-cream mb-4">Dosing & administration context</h2>
+            {m.dosingContext.map((p) => <p class="text-[15px] text-muted leading-[1.8] mb-4">{p}</p>)}
+            {m.regulatoryNote && (
+              <p class="text-[13px] text-text-subtle italic border-l-2 border-gold/40 pl-4 mt-2">
+                {m.regulatoryNote}
+              </p>
+            )}
+          </section>
+
+          <section id="safety">
+            <h2 class="text-2xl font-bold text-cream mb-4">Safety & side effects</h2>
+            {m.safety.map((p) => <p class="text-[15px] text-muted leading-[1.8] mb-4">{p}</p>)}
+            <div class="grid sm:grid-cols-2 gap-4 mt-4">
+              <div class="rounded-xl border border-white/10 bg-surface-card p-5">
+                <h3 class="text-[14px] font-bold text-cream mb-3">Common side effects</h3>
+                <ul class="flex flex-col gap-1.5 text-[13px] text-muted list-none">
+                  {m.commonSideEffects.map((s) => (
+                    <li class="flex gap-2"><span class="text-gold">·</span>{s}</li>
+                  ))}
+                </ul>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-surface-card p-5">
+                <h3 class="text-[14px] font-bold text-cream mb-3">Who should not use it</h3>
+                <ul class="flex flex-col gap-1.5 text-[13px] text-muted list-none">
+                  {m.contraindications.map((s) => (
+                    <li class="flex gap-2"><span class="text-gold">·</span>{s}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="how-we-prescribe">
+            <h2 class="text-2xl font-bold text-cream mb-4">How Strong Health prescribes {m.name}</h2>
+            {m.howWePrescribe.map((p) => <p class="text-[15px] text-muted leading-[1.8] mb-4">{p}</p>)}
+            <a
+              href={BOOKING_SMS_HREF}
+              data-track-lead
+              class="inline-flex items-center justify-center bg-gold text-surface font-bold hover:bg-gold-hover transition-colors rounded-lg uppercase tracking-[1.2px] px-6 py-3 text-[12px] mt-2"
+            >
+              Get {m.name} under physician supervision →
+            </a>
+            <p class="text-[13px] text-muted mt-3">
+              Available in person at our <a href="/fl/miami/peptide-therapy/" class="text-gold hover:underline">Miami (Brickell) clinic</a>
+              and via telehealth across our <a href="/fl/" class="text-gold hover:underline">service areas</a>.
+            </p>
+          </section>
+
+          <section id="faq">
+            <h2 class="text-2xl font-bold text-cream mb-6">Frequently asked questions</h2>
+            <div class="flex flex-col gap-3">
+              {m.faqs.map((faq) => (
+                <details class="rounded-xl border border-white/10 bg-surface-card group">
+                  <summary class="cursor-pointer p-5 list-none flex items-start justify-between gap-4">
+                    <h3 class="text-[15px] font-bold text-cream pr-2">{faq.question}</h3>
+                    <Icon name="chevron-right" size={18} class="text-gold flex-shrink-0 transition-transform group-open:rotate-90 mt-0.5" />
+                  </summary>
+                  <div class="px-5 pb-5 text-[14px] text-muted leading-[1.7]">{faq.answer}</div>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          {/* References */}
+          <section id="references" class="border-t border-white/10 pt-8">
+            <h2 class="text-lg font-bold text-cream mb-6">References & sources</h2>
+            <ol class="flex flex-col gap-3 list-none">
+              {m.citations.map((c) => (
+                <li id={`ref-${c.id}`} class="flex gap-3 text-xs text-muted leading-relaxed">
+                  <span class="text-gold font-bold shrink-0">[{c.id}]</span>
+                  <span>
+                    {c.text}{" "}
+                    {c.url && (
+                      <a href={c.url} target="_blank" rel="noopener noreferrer" class="text-gold hover:underline">
+                        View source →
+                      </a>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          {/* Sibling molecules + hub */}
+          <section class="border-t border-white/10 pt-8">
+            <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+              <h2 class="text-lg font-bold text-cream">Related molecules</h2>
+              <a href="/molecules/" class="text-[12px] font-semibold text-gold hover:text-gold-hover transition-colors">
+                Browse all molecules →
+              </a>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-3">
+              {siblings.map((s) => (
+                <a href={moleculePath(s.slug)} class="rounded-xl border border-white/10 bg-surface-card p-4 hover:border-gold/30 transition-colors">
+                  <div class="text-[14px] font-bold text-cream">{s.name}</div>
+                  <div class="text-[12px] text-muted mt-1">{s.primaryUse}</div>
+                </a>
+              ))}
+            </div>
+          </section>
+        </div>
+      </div>
+    </article>
+  </PageShell>
+</BaseLayout>

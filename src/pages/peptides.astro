@@ -17,14 +17,7 @@ import {
   medicalWebPageSchema,
 } from "../components/seo/schemas";
 import { articles, type ArticleMeta } from "../data/articles";
-import { ALL_CITIES } from "../data/local/cityTrtConfig";
 import { ALL_PEPTIDE_CITIES } from "../data/local/cityPeptideConfig";
-
-// Non-Florida peptide service areas (US-N3): rendered as extra cards in the
-// city grid after the Florida clinics.
-const nonFlPeptideCities = ALL_PEPTIDE_CITIES.filter(
-  (c) => (c.statePrefix ?? "fl") !== "fl",
-);
 
 const breadcrumbs = [
   { name: "Home", path: "/" },
@@ -140,14 +133,14 @@ const FAQS = [
   {
     question: "Where can I get peptide therapy in South Florida?",
     answer:
-      "Strong Health offers physician-supervised peptide therapy at all 9 of our South Florida clinics across Miami-Dade, Broward, and Palm Beach counties. Initial visits include an in-person physician evaluation, lab work, and protocol design. Follow-ups can be in-person or via telehealth depending on the protocol.",
+      "Strong Health offers physician-supervised peptide therapy from our Miami (Brickell) clinic and via telehealth across eight metros — Miami, Delray Beach, Tampa, New York, San Diego, Las Vegas, Atlanta, and Austin. Initial visits include a physician evaluation, lab work, and protocol design. Follow-ups can be in-person or via telehealth depending on the protocol.",
   },
 ];
 
 const steps = [
   {
     title: "Initial physician evaluation",
-    desc: "In-person visit at any of our 9 South Florida clinics. Health history, exam, and discussion of goals and prior treatment.",
+    desc: "In-person visit at our Miami (Brickell) clinic, or a telehealth consult in our other metros. Health history, exam, and discussion of goals and prior treatment.",
   },
   {
     title: "Comprehensive lab panel",
@@ -363,33 +356,20 @@ const collectionItems = peptideArticles.map((a) => ({ name: a.title, url: a.path
         <FadeIn class="mb-10">
           <div class="bg-gradient-to-br from-[#818CF8]/[0.10] to-[#0D0F12] rounded-2xl p-8 border border-[#818CF8]/20">
             <div class="text-center mb-7">
-              <Tag>South Florida Peptide Therapy Clinics</Tag>
+              <Tag>Peptide Therapy Locations</Tag>
               <h3 class="text-[26px] font-extrabold text-cream mt-3 mb-3 leading-tight">
-                Physician-supervised peptide therapy across <span class="text-gold">South Florida</span>
+                Physician-supervised peptide therapy <span class="text-gold">across the country</span>
               </h3>
               <p class="text-[14px] text-muted leading-relaxed max-w-[600px] mx-auto">
                 Pharmacy-grade BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, DSIP, and more —
-                dispensed under physician orders at any of our nine clinic locations.
+                dispensed under physician orders at our Miami clinic and via telehealth in eight metros.
               </p>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
               {
-                ALL_CITIES.map((city) => (
+                ALL_PEPTIDE_CITIES.map((c) => (
                   <a
-                    href={`/fl/${city.slug}/peptide-therapy/`}
-                    class="bg-surface-raised rounded-lg px-4 py-3 border border-white/10 text-center hover:border-gold/30 hover:bg-surface-raised/80 transition-colors group"
-                  >
-                    <span class="text-[13px] font-semibold text-cream-muted group-hover:text-gold transition-colors">
-                      {city.name}, FL
-                    </span>
-                    <div class="text-[10px] text-muted mt-0.5">Peptide Therapy →</div>
-                  </a>
-                ))
-              }
-              {
-                nonFlPeptideCities.map((c) => (
-                  <a
-                    href={`/${c.statePrefix}/${c.slug}/peptide-therapy/`}
+                    href={`/${c.statePrefix ?? "fl"}/${c.slug}/peptide-therapy/`}
                     class="bg-surface-raised rounded-lg px-4 py-3 border border-white/10 text-center hover:border-gold/30 hover:bg-surface-raised/80 transition-colors group"
                   >
                     <span class="text-[13px] font-semibold text-cream-muted group-hover:text-gold transition-colors">
@@ -413,8 +393,8 @@ const collectionItems = peptideArticles.map((a) => ({ name: a.title, url: a.path
             Ready to talk to a physician about peptide therapy?
           </h2>
           <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
-            Book a free assessment at any of our 9 South Florida clinics. We'll review your goals,
-            run the right labs, and design a protocol if peptides are the right fit.
+            Book a free assessment — in person in Miami (Brickell) or via telehealth in your metro.
+            We'll review your goals, run the right labs, and design a protocol if peptides are the right fit.
           </p>
           <Btn trackLead>Book Your Free Assessment →</Btn>
         </FadeIn>

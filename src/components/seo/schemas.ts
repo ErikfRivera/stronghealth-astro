@@ -27,8 +27,6 @@ const absUrl = (url: string) => (url.startsWith("http") ? url : `${SITE_URL}${ur
 const PROD_SLASHLESS_PATHS = new Set([
   "/about/", "/baking-soda-for-ed/", "/blog/", "/careers/",
   "/collagen-peptides/", "/dexa-scan/", "/editorial-guidelines/", "/fl/",
-  "/fl/delray-beach/trt-therapy/", "/fl/delray-beach/weight-loss-clinic/",
-  "/fl/miami/trt-therapy/", "/fl/miami/weight-loss-clinic/",
   "/foods-that-lower-testosterone/", "/garlic-and-honey-for-erectile-dysfunction/",
   "/hipaa-policy/", "/home-remedies-for-premature-ejaculation/",
   "/lysine-benefit-men-health/", "/nac-benefits-men/", "/nadh-benefits/",
@@ -53,6 +51,106 @@ function personRef(author: Author): Record<string, unknown> {
     ...(author.profileUrl ? { url: absUrl(author.profileUrl) } : {}),
     worksFor: { "@id": ORG_ID },
   };
+}
+
+/**
+ * Physician schema for a medically-reviewed page (US-008). Dr. Angel Rivera is
+ * the default reviewer of record; `worksFor` links the org entity so the
+ * physician, page, and clinic form one connected graph.
+ */
+export function physicianSchema(opts?: {
+  name?: string;
+  medicalSpecialty?: string;
+  profileUrl?: string;
+}) {
+  const name = opts?.name ?? "Dr. Angel Rivera, M.D.";
+  const profileUrl = opts?.profileUrl ?? "/author/dr-angel-rivera/";
+  return {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    name,
+    url: absUrl(profileUrl),
+    medicalSpecialty: opts?.medicalSpecialty ?? "Preventive Medicine",
+    worksFor: { "@id": ORG_ID },
+  };
+}
+
+export interface MedicalClinicSchemaProps {
+  name: string;
+  description: string;
+  url: string;
+  telephone: string;
+  streetAddress: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  lat: number;
+  lng: number;
+  physicianName?: string;
+  mapUrl?: string;
+}
+
+/**
+ * MedicalClinic (LocalBusiness) schema for a physical clinic with NAP + geo
+ * (US-007). Only physical locations emit this; telehealth service areas use
+ * MedicalWebPage per the NYC precedent (no clinic → no MedicalClinic).
+ */
+export function medicalClinicSchema({
+  name,
+  description,
+  url,
+  telephone,
+  streetAddress,
+  city,
+  state,
+  postalCode,
+  lat,
+  lng,
+  physicianName,
+  mapUrl,
+}: MedicalClinicSchemaProps) {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    name,
+    description,
+    url: absUrl(url),
+    telephone,
+    medicalSpecialty: "Preventive Medicine",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress,
+      addressLocality: city,
+      addressRegion: state,
+      postalCode,
+      addressCountry: "US",
+    },
+    geo: { "@type": "GeoCoordinates", latitude: lat, longitude: lng },
+    parentOrganization: { "@id": ORG_ID },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "09:00",
+        closes: "13:00",
+      },
+    ],
+  };
+  if (physicianName) {
+    schema.employee = {
+      "@type": "Physician",
+      name: physicianName,
+      url: absUrl("/author/dr-angel-rivera/"),
+    };
+  }
+  if (mapUrl) schema.hasMap = mapUrl;
+  return schema;
 }
 
 export interface ArticleSchemaProps {
@@ -172,9 +270,20 @@ export function organizationSchema() {
     url: SITE_URL,
     logo: `${SITE_URL}/favicon.svg`,
     description:
-      "Physician-supervised testosterone replacement therapy in South Florida. In-person exams, 40+ biomarker labs, telehealth follow-ups.",
+      "Physician-supervised peptide therapy from our Miami (Brickell) clinic. In-person exams, comprehensive biomarker labs, pharmacy-grade compounds, telehealth follow-ups.",
     telephone: MIAMI_BRICKELL_CLINIC.phoneTel,
     sameAs: STRONG_HEALTH_SAME_AS,
+    // Backs the homepage "4.9 from 2,500+ verified patient reviews" trust claim
+    // (US-008). Keep these values in sync with the on-page figures in
+    // src/pages/index.astro; adjust or remove if the underlying review data
+    // changes (YMYL: the schema must not overstate the on-page claim).
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "2500",
+      bestRating: "5",
+      worstRating: "1",
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: MIAMI_BRICKELL_CLINIC.streetAddress,
@@ -206,9 +315,9 @@ export function organizationSchema() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Testosterone Replacement Therapy (TRT)",
+            name: "Peptide Therapy",
             description:
-              "Physician-supervised TRT with in-person exams and 40+ biomarker lab testing.",
+              "Physician-supervised peptide protocols for healing, body composition, sleep, libido, and longevity — compounded by licensed 503A/503B pharmacies.",
           },
         },
         {
@@ -217,25 +326,7 @@ export function organizationSchema() {
             "@type": "Service",
             name: "Comprehensive Lab Testing",
             description:
-              "40+ biomarker panels including hormone levels, metabolic markers, and more.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Peptide Therapy",
-            description:
-              "Physician-supervised peptide therapy for healing, performance, and wellness.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Sexual Health",
-            description:
-              "Evidence-based treatment for erectile dysfunction and related conditions.",
+              "Full biomarker panels including hormone levels, IGF-1, glucose, and metabolic markers, drawn on-site.",
           },
         },
       ],

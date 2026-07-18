@@ -1,24 +1,21 @@
 ---
 /**
  * Port of shared/Footer.tsx — link columns are generated from the same data
- * modules the nav and sitemap use (reviews.ts, articles.ts, city configs) so
- * they can never drift.
+ * modules the nav and sitemap use (articles.ts, city configs) so they can
+ * never drift. Reviews are intentionally absent from the footer: the review
+ * section is isolated from the peptide theme and is reachable from /about/
+ * (internal-link rebuild, US-003).
  */
-import { reviews } from "../../data/reviews";
 import { articles } from "../../data/articles";
-import { ALL_CITIES } from "../../data/local/cityTrtConfig";
-import { ALL_WEIGHT_LOSS_CITIES } from "../../data/local/cityWeightLossConfig";
 import { ALL_PEPTIDE_CITIES } from "../../data/local/cityPeptideConfig";
 
 type FooterLinkItem = { label: string; to: string };
 
 const serviceLinks: FooterLinkItem[] = [
-  { label: "TRT Therapy", to: "/services/" },
-  { label: "Lab Testing", to: "/services/" },
-  { label: "Monitoring", to: "/services/" },
-  { label: "Sexual Health", to: "/services/" },
-  { label: "Weight Management", to: "/services/" },
-  { label: "Dexascans", to: "https://www.dexascans.com/" },
+  { label: "Peptides by Goal", to: "/peptides/" },
+  { label: "Peptides by Molecule", to: "/molecules/" },
+  { label: "Peptide Therapy Locations", to: "/fl/" },
+  { label: "Lab Testing & Monitoring", to: "/about/" },
 ];
 
 const companyLinks: FooterLinkItem[] = [
@@ -29,11 +26,6 @@ const companyLinks: FooterLinkItem[] = [
   { label: "Thrive Talk", to: "https://www.thrivetalk.com" },
 ];
 
-const reviewLinks: FooterLinkItem[] = [
-  { label: "All Reviews", to: "/reviews/" },
-  ...reviews.slice(0, 5).map((r) => ({ label: r.shortTitle, to: r.path })),
-];
-
 const legalLinks: FooterLinkItem[] = [
   { label: "Privacy Policy", to: "/privacy-policy/" },
   { label: "HIPAA", to: "/hipaa-policy/" },
@@ -42,34 +34,16 @@ const legalLinks: FooterLinkItem[] = [
 ];
 
 const columns = [
-  { title: "Services", links: serviceLinks },
+  { title: "Peptide Therapy", links: serviceLinks },
   { title: "Company", links: companyLinks },
-  { title: "Reviews", links: reviewLinks },
   { title: "Legal", links: legalLinks },
 ];
 
-const weightLossSlugs = new Set(ALL_WEIGHT_LOSS_CITIES.map((c) => c.slug));
-const peptideSlugs = new Set(ALL_PEPTIDE_CITIES.map((c) => c.slug));
-
 const locationLinks: FooterLinkItem[] = [
   { label: "All Florida Locations", to: "/fl/" },
-  ...ALL_CITIES.flatMap((c) => {
-    const links: FooterLinkItem[] = [
-      { label: `${c.name} TRT Therapy`, to: `/fl/${c.slug}/trt-therapy/` },
-    ];
-    if (weightLossSlugs.has(c.slug)) {
-      links.push({ label: `${c.name} Weight Loss`, to: `/fl/${c.slug}/weight-loss-clinic/` });
-    }
-    if (peptideSlugs.has(c.slug)) {
-      links.push({ label: `${c.name} Peptide Therapy`, to: `/fl/${c.slug}/peptide-therapy/` });
-    }
-    return links;
-  }),
-  { label: "DEXA Scan Miami", to: "/fl/miami/dexascan/" },
-  // Non-Florida peptide service areas (US-N3).
-  ...ALL_PEPTIDE_CITIES.filter((c) => (c.statePrefix ?? "fl") !== "fl").map((c) => ({
+  ...ALL_PEPTIDE_CITIES.map((c) => ({
     label: `${c.cityName} Peptide Therapy`,
-    to: `/${c.statePrefix}/${c.slug}/peptide-therapy/`,
+    to: `/${c.statePrefix ?? "fl"}/${c.slug}/peptide-therapy/`,
   })),
 ];
 
@@ -82,7 +56,7 @@ const peptideLinks: FooterLinkItem[] = [
 
 const wideColumns = [
   { title: "Locations", links: locationLinks },
-  { title: "Peptide Therapy", links: peptideLinks },
+  { title: "Peptide Guides", links: peptideLinks },
 ];
 
 const linkClass = "text-xs text-muted hover:text-cream transition-colors w-fit";
@@ -91,7 +65,7 @@ const year = new Date().getFullYear();
 
 <footer class="bg-surface-dark px-8 pt-16 pb-8 border-t border-white/5">
   <div class="max-w-[1000px] mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-10 mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 mb-12">
       <div>
         <div class="flex items-center gap-2.5 mb-4">
           <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C9A84C] to-[#A88832] flex items-center justify-center">
@@ -100,8 +74,8 @@ const year = new Date().getFullYear();
           <span class="font-extrabold text-base text-cream">STRONG HEALTH</span>
         </div>
         <p class="text-xs text-muted leading-[1.7] max-w-[240px]">
-          Physician-supervised testosterone therapy. In-person exams. Telehealth
-          convenience. Honest answers.
+          Physician-supervised peptide therapy. Pharmacy-grade compounds. Real
+          labs, real monitoring. Honest answers.
         </p>
       </div>
 
@@ -155,7 +129,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-text-subtle">
-      <div>© {year} Strong Health TRT. All rights reserved.</div>
+      <div>© {year} Strong Health. All rights reserved.</div>
       <div class="flex gap-4">
         <span>Not available in all states.</span>
         <span>Prescriptions subject to physician approval.</span>

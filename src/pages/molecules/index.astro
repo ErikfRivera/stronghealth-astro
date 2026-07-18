@@ -1,0 +1,164 @@
+---
+// /molecules/ — molecule hub (US-004). Lists every molecule grouped by
+// category, rendered from the molecules registry so new molecules appear
+// automatically. Cross-links the /peptides/ goal hub bidirectionally.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageShell from "../../components/shared/PageShell.astro";
+import JsonLd from "../../components/seo/JsonLd.astro";
+import FadeIn from "../../components/shared/FadeIn.astro";
+import Tag from "../../components/shared/Tag.astro";
+import Icon from "../../components/shared/Icon.astro";
+import Btn from "../../components/shared/Btn.astro";
+import {
+  breadcrumbSchema,
+  collectionPageSchema,
+  medicalWebPageSchema,
+} from "../../components/seo/schemas";
+import { MOLECULES, moleculePath, moleculesByGroup } from "../../data/molecules";
+
+const path = "/molecules/";
+const groups = moleculesByGroup();
+
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Molecules", path },
+];
+
+const collectionItems = MOLECULES.map((m) => ({
+  name: m.name,
+  url: moleculePath(m.slug),
+}));
+
+const groupBlurbs: Record<string, string> = {
+  "Healing & Repair": "Tissue-repair peptides for tendon, ligament, joint, and soft-tissue recovery.",
+  "GH Secretagogues": "Peptides that prompt your pituitary to release more of your own growth hormone.",
+  "Metabolic & GLP-1": "GLP-1 medications and metabolic peptides for weight loss and body composition.",
+  "Sexual Health": "Peptides that act on the neurological pathways behind desire and arousal.",
+  "Sleep": "Peptides studied for deep-sleep architecture and overnight recovery.",
+  "Longevity": "Peptides studied for cellular aging, mitochondrial function, and healthspan.",
+  "Cosmetic & Other": "Peptides for skin, hair, connective tissue, and cognition.",
+};
+---
+
+<BaseLayout
+  title="Peptide Molecule Library"
+  description="Browse every peptide Strong Health prescribes by molecule — BPC-157, CJC-1295, Tesamorelin, PT-141, semaglutide, and more. Physician-reviewed, evidence-based."
+  path={path}
+>
+  <PageShell>
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: "Peptide Molecule Library — Strong Health",
+        description:
+          "A physician-reviewed library of the peptides Strong Health prescribes, organized by molecule: what each is, how it works, the evidence, and how it's prescribed.",
+        url: path,
+        lastReviewed: "2026-07-18",
+        reviewedBy: {
+          name: "Dr. Angel Rivera, M.D.",
+          credentials: "Board-Certified",
+          role: "Medical Director — Strong Health",
+        },
+      })}
+    />
+    <JsonLd
+      schema={collectionPageSchema({
+        name: "Peptide Molecule Library",
+        description: "Every peptide Strong Health prescribes, by molecule.",
+        url: path,
+        items: collectionItems,
+      })}
+    />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+
+    {/* Breadcrumbs */}
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          {breadcrumbs.map((crumb, i) => (
+            <li class="flex items-center gap-1.5">
+              {i > 0 && <Icon name="chevron-right" size={12} class="text-text-subtle" />}
+              {i < breadcrumbs.length - 1 ? (
+                <a href={crumb.path} class="hover:text-gold transition-colors">{crumb.name}</a>
+              ) : (
+                <span class="text-gold font-semibold">{crumb.name}</span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </nav>
+
+    {/* Hero */}
+    <section class="relative px-8 pt-12 pb-16 overflow-hidden border-b border-white/5">
+      <div aria-hidden="true" class="hidden md:block absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <Tag>Browse by Molecule</Tag>
+        <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[760px] tracking-[-1.5px]">
+          The Strong Health <span class="text-gold">peptide molecule library.</span>
+        </h1>
+        <p class="text-[17px] text-muted leading-relaxed max-w-[620px] mb-6">
+          Every peptide we prescribe, explained one molecule at a time — what it is, how it
+          works, what the evidence actually shows, and how our physicians prescribe it. Prefer
+          to start from a goal? <a href="/peptides/" class="text-gold hover:underline">Browse peptides by goal →</a>
+        </p>
+        <Btn trackLead>Book Your Free Assessment →</Btn>
+      </div>
+    </section>
+
+    {/* Groups */}
+    <section class="px-8 py-16 bg-surface">
+      <div class="max-w-[1000px] mx-auto flex flex-col gap-12">
+        {groups.map((grp) => (
+          <FadeIn>
+            <div>
+              <div class="mb-5">
+                <h2 class="text-[24px] font-extrabold text-cream flex items-center gap-2">
+                  <Icon name="pill" size={18} class="text-gold" />
+                  {grp.group}
+                </h2>
+                {groupBlurbs[grp.group] && (
+                  <p class="text-[14px] text-muted mt-1.5 max-w-[640px]">{groupBlurbs[grp.group]}</p>
+                )}
+              </div>
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {grp.items.map((m) => (
+                  <a
+                    href={moleculePath(m.slug)}
+                    class="flex flex-col h-full rounded-xl border border-white/10 bg-surface-card p-5 hover:border-gold/30 transition-colors group"
+                  >
+                    <div class="text-[16px] font-bold text-cream group-hover:text-gold transition-colors">{m.name}</div>
+                    {m.aliases.length > 0 && (
+                      <div class="text-[11px] text-text-subtle mt-0.5">{m.aliases[0]}</div>
+                    )}
+                    <div class="text-[13px] text-muted leading-relaxed mt-2 flex-grow">{m.primaryUse}</div>
+                    <span class="text-[12px] font-semibold text-gold mt-3">Read about {m.name} →</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    </section>
+
+    {/* Cross-link to goal hub */}
+    <section class="px-8 py-16 bg-surface-card border-t border-white/5">
+      <div class="max-w-[720px] mx-auto text-center">
+        <FadeIn>
+          <Tag>Two ways to explore</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream mt-4 mb-3">
+            Rather start from a <span class="text-gold">goal?</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-relaxed mb-6 max-w-[520px] mx-auto">
+            The molecule library answers "what is this peptide?" Our goal guides answer "which
+            peptides help with belly fat, sleep, healing, or libido?" Both link to the same
+            physician-designed protocols.
+          </p>
+          <a href="/peptides/" class="inline-flex items-center justify-center bg-gold text-surface font-bold hover:bg-gold-hover transition-colors rounded-lg uppercase tracking-[1.2px] px-6 py-3 text-[12px]">
+            Browse peptides by goal →
+          </a>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

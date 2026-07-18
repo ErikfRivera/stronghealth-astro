@@ -6,22 +6,21 @@
  * keyboard-accessible. The mobile drawer is toggled by the shared
  * site runtime (src/scripts/site-runtime.ts) — visibility, body scroll lock,
  * Escape/backdrop close — replacing the React portal implementation.
+ *
+ * The Peptides menu exposes both taxonomies: browse by goal (/peptides/ +
+ * goal guides) and browse by molecule (/molecules/). Locations lists every
+ * peptide-therapy metro from cityPeptideConfig — the sole service theme.
  */
 import { BOOKING_SMS_HREF } from "../../lib/booking";
 import { articles } from "../../data/articles";
-import { ALL_CITIES } from "../../data/local/cityTrtConfig";
-import { ALL_WEIGHT_LOSS_CITIES } from "../../data/local/cityWeightLossConfig";
 import { ALL_PEPTIDE_CITIES } from "../../data/local/cityPeptideConfig";
 import Icon from "./Icon.astro";
 
 const peptideArticles = articles.filter((a) => a.category === "Peptide Therapy");
-const weightLossSlugs = new Set(ALL_WEIGHT_LOSS_CITIES.map((c) => c.slug));
-const peptideSlugs = new Set(ALL_PEPTIDE_CITIES.map((c) => c.slug));
-// Non-Florida peptide service areas (US-N3): each gets its own city group with
-// a single peptide-therapy link (no TRT/weight-loss pages exist for them).
-const nonFlPeptideCities = ALL_PEPTIDE_CITIES.filter(
-  (c) => (c.statePrefix ?? "fl") !== "fl",
-);
+const peptideCities = ALL_PEPTIDE_CITIES.map((c) => ({
+  label: `${c.cityName} Peptide Therapy`,
+  href: `/${c.statePrefix ?? "fl"}/${c.slug}/peptide-therapy/`,
+}));
 
 const dropdownPanelClass = "nav-drop"; // shared rule in global.css (Phase 8)
 const triggerClass = "inline-flex items-center gap-1 hover:text-cream transition-colors";
@@ -51,7 +50,13 @@ const chevronClass = "transition-transform group-hover:rotate-180";
               href="/peptides/"
               class="nav-drop-hub"
             >
-              Peptides Hub →
+              Browse by Goal →
+            </a>
+            <a
+              href="/molecules/"
+              class="nav-drop-hub"
+            >
+              Browse by Molecule →
             </a>
             <div class="border-t border-white/5 my-2"></div>
             <div class="flex flex-col">
@@ -76,59 +81,23 @@ const chevronClass = "transition-transform group-hover:rotate-180";
           <Icon name="chevron-down" size={14} class={chevronClass} />
         </button>
         <div role="menu" class={dropdownPanelClass}>
-          <div class="p-4 w-[640px]">
+          <div class="p-4 w-[320px]">
             <a
               href="/fl/"
               class="nav-drop-hub"
             >
-              Florida Locations Hub →
+              All Locations →
             </a>
             <div class="border-t border-white/5 my-2"></div>
-            <div class="grid grid-cols-3 gap-x-4 gap-y-3">
+            <div class="flex flex-col">
               {
-                ALL_CITIES.map((c) => (
-                  <div>
-                    <div class="px-3 py-1 text-[11px] font-bold uppercase tracking-[1.2px] text-cream">
-                      {c.name}
-                    </div>
-                    <a
-                      href={`/fl/${c.slug}/trt-therapy/`}
-                      class="nav-drop-city-a"
-                    >
-                      {c.name} TRT Therapy
-                    </a>
-                    {weightLossSlugs.has(c.slug) && (
-                      <a
-                        href={`/fl/${c.slug}/weight-loss-clinic/`}
-                        class="nav-drop-city-a"
-                      >
-                        {c.name} Weight Loss Clinics
-                      </a>
-                    )}
-                    {peptideSlugs.has(c.slug) && (
-                      <a
-                        href={`/fl/${c.slug}/peptide-therapy/`}
-                        class="nav-drop-city-a"
-                      >
-                        {c.name} Peptide Therapy
-                      </a>
-                    )}
-                  </div>
-                ))
-              }
-              {
-                nonFlPeptideCities.map((c) => (
-                  <div>
-                    <div class="px-3 py-1 text-[11px] font-bold uppercase tracking-[1.2px] text-cream">
-                      {c.cityName}
-                    </div>
-                    <a
-                      href={`/${c.statePrefix}/${c.slug}/peptide-therapy/`}
-                      class="nav-drop-city-a"
-                    >
-                      {c.cityName} Peptide Therapy
-                    </a>
-                  </div>
+                peptideCities.map((c) => (
+                  <a
+                    href={c.href}
+                    class="nav-drop-a"
+                  >
+                    {c.label}
+                  </a>
                 ))
               }
             </div>
@@ -136,55 +105,7 @@ const chevronClass = "transition-transform group-hover:rotate-180";
         </div>
       </div>
 
-      <div class="relative group">
-        <button type="button" aria-haspopup="menu" class={triggerClass}>
-          Blog
-          <Icon name="chevron-down" size={14} class={chevronClass} />
-        </button>
-        <div role="menu" class={dropdownPanelClass}>
-          <div class="p-4 w-[220px]">
-            <a
-              href="/blog/"
-              class="nav-drop-hub"
-            >
-              Blog →
-            </a>
-            <div class="border-t border-white/5 my-2"></div>
-            <a
-              href="/reviews/"
-              class="nav-drop-a"
-            >
-              Reviews
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="relative group">
-        <button type="button" aria-haspopup="menu" class={triggerClass}>
-          Dexascans
-          <Icon name="chevron-down" size={14} class={chevronClass} />
-        </button>
-        <div role="menu" class={dropdownPanelClass}>
-          <div class="p-4 w-[260px]">
-            <a
-              href="https://www.Dexascans.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="nav-drop-hub"
-            >
-              Dexa Scan
-            </a>
-            <div class="border-t border-white/5 my-2"></div>
-            <a
-              href="/fl/miami/dexascan/"
-              class="nav-drop-a"
-            >
-              DEXA Scan Miami
-            </a>
-          </div>
-        </div>
-      </div>
+      <a href="/blog/" class={triggerClass}>Blog</a>
 
       <a
         href={BOOKING_SMS_HREF}
@@ -231,7 +152,10 @@ const chevronClass = "transition-transform group-hover:rotate-180";
       </summary>
       <div class="pb-3 pl-2 flex flex-col">
         <a href="/peptides/" class="mnav-hub">
-          Peptides Hub →
+          Browse by Goal →
+        </a>
+        <a href="/molecules/" class="mnav-hub">
+          Browse by Molecule →
         </a>
         {
           peptideArticles.map((a) => (
@@ -253,97 +177,19 @@ const chevronClass = "transition-transform group-hover:rotate-180";
       </summary>
       <div class="pb-3 pl-2 flex flex-col">
         <a href="/fl/" class="mnav-hub">
-          Florida Locations Hub →
+          All Locations →
         </a>
         {
-          ALL_CITIES.map((c) => (
-            <details class="group/city">
-              <summary class="mnav-city-sum">
-                {c.name}
-                <Icon name="chevron-down" size={14} class="transition-transform group-open/city:rotate-180" />
-              </summary>
-              <div class="pb-2 pl-3 flex flex-col">
-                <a
-                  href={`/fl/${c.slug}/trt-therapy/`}
-                  class="mnav-city-a"
-                >
-                  {c.name} TRT Therapy
-                </a>
-                {weightLossSlugs.has(c.slug) && (
-                  <a
-                    href={`/fl/${c.slug}/weight-loss-clinic/`}
-                    class="mnav-city-a"
-                  >
-                    {c.name} Weight Loss Clinics
-                  </a>
-                )}
-                {peptideSlugs.has(c.slug) && (
-                  <a
-                    href={`/fl/${c.slug}/peptide-therapy/`}
-                    class="mnav-city-a"
-                  >
-                    {c.name} Peptide Therapy
-                  </a>
-                )}
-              </div>
-            </details>
-          ))
-        }
-        {
-          nonFlPeptideCities.map((c) => (
-            <details class="group/city">
-              <summary class="mnav-city-sum">
-                {c.cityName}
-                <Icon name="chevron-down" size={14} class="transition-transform group-open/city:rotate-180" />
-              </summary>
-              <div class="pb-2 pl-3 flex flex-col">
-                <a
-                  href={`/${c.statePrefix}/${c.slug}/peptide-therapy/`}
-                  class="mnav-city-a"
-                >
-                  {c.cityName} Peptide Therapy
-                </a>
-              </div>
-            </details>
+          peptideCities.map((c) => (
+            <a href={c.href} class="mnav-a">
+              {c.label}
+            </a>
           ))
         }
       </div>
     </details>
 
-    <details class="border-b border-white/5 group">
-      <summary class="mnav-sum">
-        Blog
-        <Icon name="chevron-down" size={16} class="transition-transform group-open:rotate-180" />
-      </summary>
-      <div class="pb-3 pl-2 flex flex-col">
-        <a href="/blog/" class="mnav-hub">
-          Blog →
-        </a>
-        <a href="/reviews/" class="mnav-a">
-          Reviews
-        </a>
-      </div>
-    </details>
-
-    <details class="border-b border-white/5 group">
-      <summary class="mnav-sum">
-        Dexascans
-        <Icon name="chevron-down" size={16} class="transition-transform group-open:rotate-180" />
-      </summary>
-      <div class="pb-3 pl-2 flex flex-col">
-        <a
-          href="https://www.Dexascans.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mnav-hub"
-        >
-          Dexa Scan
-        </a>
-        <a href="/fl/miami/dexascan/" class="mnav-a">
-          DEXA Scan Miami
-        </a>
-      </div>
-    </details>
+    <a href="/blog/" class="mnav-sum border-b border-white/5">Blog</a>
 
     <a
       href={BOOKING_SMS_HREF}

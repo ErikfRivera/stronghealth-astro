@@ -1,8 +1,5 @@
 // Ported from src/pages/local/cityLocalProof.tsx (data + helpers only;
 // LocalProofSection / ReferencesSection are Astro components in src/components/local/).
-import { ALL_CITIES } from "./cityTrtConfig";
-import { ALL_WEIGHT_LOSS_CITIES } from "./cityWeightLossConfig";
-import { ALL_PEPTIDE_CITIES } from "./cityPeptideConfig";
 
 export interface ReviewLink {
   label: string;
@@ -71,39 +68,12 @@ export function defaultReviewLinks(cityName: string, clinicName: string): Review
   ];
 }
 
-type Service = "trt" | "peptide" | "weight-loss";
-
-const SERVICE_LABELS: Record<Service, string> = {
-  trt: "TRT in",
-  peptide: "Peptide therapy in",
-  "weight-loss": "Weight loss clinic in",
-};
-
-const SERVICE_PATHS: Record<Service, string> = {
-  trt: "trt-therapy",
-  peptide: "peptide-therapy",
-  "weight-loss": "weight-loss-clinic",
-};
-
-// Per-service city membership (US-N1): a sibling-service link is only emitted
-// when the city actually has a page in that service's config.
-const SERVICE_SLUGS: Record<Service, Set<string>> = {
-  trt: new Set(ALL_CITIES.map((c) => c.slug)),
-  peptide: new Set(ALL_PEPTIDE_CITIES.map((c) => c.slug)),
-  "weight-loss": new Set(ALL_WEIGHT_LOSS_CITIES.map((c) => c.slug)),
-};
-
 /**
- * Build page-specific internal links: the sibling services that exist in the
- * same city, service-specific extras, the state hub (Florida only), and the
- * site hub. Cities with no sibling pages (e.g. New York, peptide-only
- * telehealth service area) get peptides-hub + /peptides/-cluster links
- * instead (US-N1).
+ * Peptide use-case cross-links per city. Peptides are the sole service theme,
+ * so every city page cross-links the "peptides for [outcome]" cluster. Vary
+ * the spokes per city so inbound equity spreads across the full use-case set
+ * rather than concentrating on two pages (internal-linking audit, Phase 2).
  */
-// Peptide-only service areas cross-link into the "peptides for [outcome]"
-// cluster instead of sibling service pages. Vary the spokes per city so inbound
-// equity spreads across the full use-case set rather than concentrating on two
-// pages (internal-linking audit, Phase 2).
 const DEFAULT_PEPTIDE_USE_CASE_LINKS: RelatedInternalLink[] = [
   { label: "Peptides for Healing & Recovery (BPC-157)", href: "/peptides-for-healing/" },
   { label: "Peptides for Muscle Growth", href: "/peptides-for-muscle-growth/" },
@@ -111,6 +81,16 @@ const DEFAULT_PEPTIDE_USE_CASE_LINKS: RelatedInternalLink[] = [
 ];
 
 const PEPTIDE_USE_CASE_LINKS_BY_SLUG: Record<string, RelatedInternalLink[]> = {
+  miami: [
+    { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
+    { label: "Peptides for muscle growth", href: "/peptides-for-muscle-growth/" },
+    { label: "Peptides for libido & sexual health", href: "/peptides-for-libido/" },
+  ],
+  "delray-beach": [
+    { label: "Peptides for arthritis & joint pain", href: "/peptides-for-arthritis/" },
+    { label: "Peptides for anti-aging & longevity", href: "/peptides-for-anti-aging/" },
+    { label: "Peptides for sleep & overnight recovery", href: "/peptides-for-sleep/" },
+  ],
   "new-york": [
     { label: "Peptides for tendon & ligament repair", href: "/peptides-for-tendon-repair/" },
     { label: "Peptides for sleep & overnight recovery", href: "/peptides-for-sleep/" },
@@ -126,88 +106,57 @@ const PEPTIDE_USE_CASE_LINKS_BY_SLUG: Record<string, RelatedInternalLink[]> = {
     { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
     { label: "Peptides for belly fat (Tesamorelin)", href: "/peptides-for-belly-fat/" },
   ],
-  "atlanta": [
+  atlanta: [
     { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
     { label: "Peptides for arthritis & joint pain", href: "/peptides-for-arthritis/" },
     { label: "GH peptides for lean muscle", href: "/peptides-for-muscle-growth/" },
   ],
-  "austin": [
+  austin: [
     { label: "Peptides for belly fat (Tesamorelin)", href: "/peptides-for-belly-fat/" },
     { label: "Peptides for muscle growth", href: "/peptides-for-muscle-growth/" },
     { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
   ],
-  "tampa": [
+  tampa: [
     { label: "Peptides for arthritis & joint pain", href: "/peptides-for-arthritis/" },
     { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
     { label: "Collagen peptides guide", href: "/collagen-peptides/" },
   ],
 };
 
+/**
+ * Build page-specific internal links for a city peptide page: the peptides
+ * hub, a city-varied slice of the "peptides for [outcome]" cluster, Miami's
+ * on-site body-composition extras, and the state/site hubs.
+ */
 export function defaultRelatedInternalLinks(
   slug: string,
-  cityName: string,
-  current: Service,
+  _cityName: string,
+  _current: "peptide" = "peptide",
   statePrefix: string = "fl",
 ): RelatedInternalLink[] {
-  const others: Service[] = (Object.keys(SERVICE_LABELS) as Service[]).filter(
-    (s) => s !== current,
-  );
-  const siblings = others
-    .filter((s) => SERVICE_SLUGS[s].has(slug))
-    .map((s) => ({
-      label: `${SERVICE_LABELS[s]} ${cityName}`,
-      href: `/${statePrefix}/${slug}/${SERVICE_PATHS[s]}/`,
-    }));
-  const extras: RelatedInternalLink[] = [];
+  const links: RelatedInternalLink[] = [
+    { label: "Peptides Hub: All Peptide Therapies", href: "/peptides/" },
+    ...(PEPTIDE_USE_CASE_LINKS_BY_SLUG[slug] ?? DEFAULT_PEPTIDE_USE_CASE_LINKS),
+  ];
   if (slug === "miami") {
-    extras.push({
-      label: `DEXA Scan ${cityName} clinic`,
-      href: "/fl/miami/dexascan/",
-    });
+    links.push({ label: "DEXA Scan Miami clinic", href: "/fl/miami/dexascan/" });
   }
-  if (current === "trt") {
-    extras.push(
-      {
-        label: "Foods That Lower Testosterone (evidence review)",
-        href: "/foods-that-lower-testosterone/",
-      },
-      {
-        label: "Porn-Induced Erectile Dysfunction: Causes & Recovery",
-        href: "/porn-induced-erectile-dysfunction/",
-      },
-    );
-  } else if (current === "weight-loss") {
-    extras.push(
-      {
-        label: "Semaglutide Diet: Complete Guide for Weight Loss",
-        href: "/semaglutide-diet/",
-      },
-      {
-        label: "DEXA Scan: Gold Standard for Body Composition",
-        href: "/dexa-scan/",
-      },
-    );
-  } else if (current === "peptide") {
-    extras.push({
-      label: "Peptides Hub: All Peptide Therapies",
-      href: "/peptides/",
-    });
-    if (siblings.length === 0) {
-      // Peptide-only service area (no TRT/weight-loss city pages, e.g. New
-      // York): cross-link the /peptides/ content cluster instead (US-N1).
-      extras.push(
-        ...(PEPTIDE_USE_CASE_LINKS_BY_SLUG[slug] ?? DEFAULT_PEPTIDE_USE_CASE_LINKS),
-      );
-    }
-  }
+  // Molecule-layer cross-links (US-007): every location page links the
+  // commonly-prescribed molecules so location → molecule equity flows.
+  links.push(
+    { label: "BPC-157 for healing & recovery", href: "/molecules/bpc-157/" },
+    { label: "CJC-1295 / Ipamorelin for body composition", href: "/molecules/cjc-1295/" },
+    { label: "Tesamorelin for visceral fat", href: "/molecules/tesamorelin/" },
+    { label: "Browse the full molecule library", href: "/molecules/" },
+  );
   const hubs: RelatedInternalLink[] =
     statePrefix === "fl"
       ? [
-          { label: "All Strong Health Florida clinics", href: "/fl/" },
-          { label: "Strong Health services hub", href: "/" },
+          { label: "All Strong Health Florida locations", href: "/fl/" },
+          { label: "Strong Health peptide therapy hub", href: "/" },
         ]
-      : [{ label: "Strong Health services hub", href: "/" }];
-  return [...siblings, ...extras, ...hubs];
+      : [{ label: "Strong Health peptide therapy hub", href: "/" }];
+  return [...links, ...hubs];
 }
 
 export function defaultPhysicianAvailability(physicianName?: string): string {

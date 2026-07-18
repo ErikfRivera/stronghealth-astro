@@ -258,26 +258,26 @@ export const MIAMI_PRP_CONFIG: CityPRPConfig = {
 
   relatedServices: [
     {
-      name: "TRT in Miami",
-      desc: "Physician-supervised testosterone replacement therapy. Men addressing hair thinning and low energy often pair PRP hair restoration with a full hormone workup.",
-      href: "/fl/miami/trt-therapy/",
-      cta: "Miami TRT clinic →",
-    },
-    {
       name: "Peptide Therapy in Miami",
       desc: "BPC-157, CJC-1295/Ipamorelin, and tissue-repair peptides — frequently combined with PRP joint and tendon injections to support recovery.",
       href: "/fl/miami/peptide-therapy/",
       cta: "Miami peptide therapy →",
     },
     {
-      name: "Weight Loss Clinic in Miami",
-      desc: "Semaglutide and tirzepatide programs with full metabolic workups, at the same Brickell clinic.",
-      href: "/fl/miami/weight-loss-clinic/",
-      cta: "Miami weight loss →",
+      name: "Peptides for Healing & Recovery",
+      desc: "How healing peptides work on tendon, ligament, and soft-tissue repair pathways — the clinical companion to a PRP injection plan.",
+      href: "/peptides-for-healing/",
+      cta: "Peptides for healing →",
+    },
+    {
+      name: "DEXA Scan in Miami",
+      desc: "Gold-standard body-composition and bone-density imaging at the same Brickell clinic.",
+      href: "/fl/miami/dexascan/",
+      cta: "Miami DEXA scan →",
     },
   ],
   relatedServicesSubtitle:
-    "Many Miami PRP patients also see us for hormone optimization, peptide-supported recovery, or body-composition programs — all at the same Brickell clinic, designed by the same physicians.",
+    "Many Miami PRP patients also see us for peptide-supported recovery or body-composition tracking — all at the same Brickell clinic, designed by the same physicians.",
 
   pricingHeadingHtml:
     "What does PRP <gold>cost in Miami?</gold>",
@@ -384,9 +384,8 @@ export const MIAMI_PRP_CONFIG: CityPRPConfig = {
     },
   ],
   relatedInternalLinks: [
-    { label: "Testosterone Therapy in Miami", href: "/fl/miami/trt-therapy/" },
     { label: "Peptide Therapy in Miami", href: "/fl/miami/peptide-therapy/" },
-    { label: "Medical Weight Loss in Miami", href: "/fl/miami/weight-loss-clinic/" },
+    { label: "Peptides Hub: All Peptide Therapies", href: "/peptides/" },
     { label: "DEXA Scan in Miami", href: "/fl/miami/dexascan/" },
     { label: "Peptides for tissue repair & healing", href: "/peptides-for-healing/" },
     { label: "Peptides for tendon & ligament repair", href: "/peptides-for-tendon-repair/" },

@@ -1,77 +1,51 @@
 ---
+// Article-footer locations block: links every peptide-therapy metro from the
+// same configs that render the city pages, so the list can never drift.
 import Icon from "./Icon.astro";
-import { ALL_CITIES, type CityListing } from "../../data/local/cityTrtConfig";
+import { ALL_PEPTIDE_CITIES } from "../../data/local/cityPeptideConfig";
 
-const COUNTY_DISPLAY_ORDER = [
-  "Miami-Dade County",
-  "Broward County",
-  "Palm Beach County",
-];
-
-function groupCitiesByCounty(): { name: string; cities: CityListing[] }[] {
-  const groups = new Map<string, CityListing[]>();
-  for (const city of ALL_CITIES) {
-    const list = groups.get(city.county) ?? [];
-    list.push(city);
-    groups.set(city.county, list);
-  }
-  const knownOrder = COUNTY_DISPLAY_ORDER.filter((c) => groups.has(c));
-  const extras = [...groups.keys()].filter((c) => !COUNTY_DISPLAY_ORDER.includes(c));
-  return [...knownOrder, ...extras].map((name) => ({
-    name,
-    cities: groups.get(name)!,
-  }));
-}
-
-const REGIONS = groupCitiesByCounty();
+const locations = ALL_PEPTIDE_CITIES.map((c) => {
+  const inPerson = c.physicalClinic !== false;
+  return {
+    cityName: c.cityName,
+    state: c.clinic.state,
+    href: `/${c.statePrefix ?? "fl"}/${c.slug}/peptide-therapy/`,
+    detail: inPerson
+      ? `In-person visits & on-site labs · ${c.clinicArea}`
+      : "Telehealth visits with physician oversight",
+  };
+});
 ---
 
 <section class="mt-12 pt-8 border-t border-white/10">
   <div class="flex items-center justify-between flex-wrap gap-3 mb-2">
-    <h3 class="text-lg font-bold text-cream">Find a Strong Health clinic near you</h3>
+    <h3 class="text-lg font-bold text-cream">Peptide therapy near you</h3>
     <a href="/fl/" class="text-[12px] font-semibold text-gold hover:text-gold-hover transition-colors">
-      View all Florida locations →
+      View all locations →
     </a>
   </div>
   <p class="text-[13px] text-muted leading-relaxed mb-6">
-    Physician-supervised TRT and medical weight loss across {ALL_CITIES.length} South Florida
-    cities. Pick the location nearest you.
+    Physician-supervised peptide therapy from our Miami (Brickell) clinic and via
+    telehealth across {ALL_PEPTIDE_CITIES.length} metros. Pick the location nearest you.
   </p>
 
-  <div class="flex flex-col gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
     {
-      REGIONS.map((region) => (
-        <div>
-          <div class="flex items-center gap-2 mb-3">
-            <Icon name="map-pin" size={14} class="text-gold" />
-            <h4 class="text-[13px] font-bold text-cream-muted uppercase tracking-[0.06em]">
-              {region.name}
-            </h4>
+      locations.map((loc) => (
+        <div class="rounded-lg border border-white/10 bg-surface-card/60 p-4">
+          <div class="flex items-center gap-1.5">
+            <Icon name="map-pin" size={13} class="text-gold shrink-0" />
+            <span class="text-[13px] font-bold text-cream leading-tight">
+              {loc.cityName}, {loc.state}
+            </span>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {region.cities.map((city) => (
-              <div class="rounded-lg border border-white/10 bg-surface-card/60 p-4">
-                <div class="text-[13px] font-bold text-cream leading-tight">{city.clinicName}</div>
-                <div class="text-[11px] text-muted mt-0.5">
-                  {city.area}, {city.name}, FL
-                </div>
-                <div class="flex flex-wrap gap-x-4 gap-y-1.5 mt-3">
-                  <a
-                    href={`/fl/${city.slug}/trt-therapy/`}
-                    class="text-[12px] font-semibold text-gold hover:text-gold-hover transition-colors"
-                  >
-                    TRT Therapy →
-                  </a>
-                  <a
-                    href={`/fl/${city.slug}/weight-loss-clinic/`}
-                    class="text-[12px] font-semibold text-gold hover:text-gold-hover transition-colors"
-                  >
-                    Weight Loss Clinic →
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+          <div class="text-[11px] text-muted mt-0.5">{loc.detail}</div>
+          <a
+            href={loc.href}
+            class="inline-block mt-2 text-[12px] font-semibold text-gold hover:text-gold-hover transition-colors"
+          >
+            {loc.cityName} Peptide Therapy →
+          </a>
         </div>
       ))
     }

@@ -239,10 +239,10 @@ export const MIAMI_PEPTIDE_CONFIG: CityPeptideConfig = {
         "Peptide therapy, men's hormonal health, and metabolic optimization. 12+ years of clinical experience in South Florida. Bilingual (English/Spanish).",
     },
     {
-      name: "Strong Health Medical Team",
+      name: "Strong Health Attending Physician Team",
       title: "Attending Physicians, Miami",
       credentials:
-        "Board-Certified Physicians · Peptide & Hormone Therapy Specialists · Full-Spectrum Men's Health Care",
+        "Board-Certified Physicians · Peptide Therapy Specialists · Physician-Supervised Compounded Protocols",
       focus:
         "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols with on-site labs and ongoing monitoring at the Brickell clinic.",
     },
@@ -269,26 +269,26 @@ export const MIAMI_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
-      name: "TRT in Miami",
-      desc: "Physician-supervised testosterone replacement therapy at our Brickell clinic. Frequently paired with GH-secretagogue peptide protocols.",
-      href: "/fl/miami/trt-therapy/",
-      cta: "Miami TRT clinic →",
+      name: "DEXA Scan in Miami",
+      desc: "Gold-standard body-composition and bone-density imaging at the Brickell clinic — the objective way to track what your peptide protocol is doing.",
+      href: "/fl/miami/dexascan/",
+      cta: "Miami DEXA scan →",
     },
     {
-      name: "Weight Loss Clinic in Miami",
-      desc: "Semaglutide and tirzepatide programs with full metabolic workups. Often combined with peptides that protect lean mass during caloric deficit.",
-      href: "/fl/miami/weight-loss-clinic/",
-      cta: "Miami weight loss →",
+      name: "PRP Therapy in Miami",
+      desc: "Physician-performed platelet-rich plasma for joint, tendon, and aesthetic indications — frequently paired with healing-peptide protocols.",
+      href: "/fl/miami/prp-therapy/",
+      cta: "Miami PRP therapy →",
     },
     {
-      name: "All Miami Services",
-      desc: "Lab panels, men's health consultations, sexual health, and more — all available at the Brickell clinic.",
-      href: "/services/",
-      cta: "Browse services →",
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
     },
   ],
   relatedServicesSubtitle:
-    "Many peptide patients combine therapy with TRT, weight-loss programs, or comprehensive hormone panels — all designed and monitored by the same physician.",
+    "Many peptide patients pair their protocol with body-composition tracking or comprehensive lab panels — all designed and monitored by the same physician.",
 
   faqs: [
     {
@@ -358,9 +358,8 @@ export const MIAMI_PEPTIDE_CONFIG: CityPeptideConfig = {
       { label: "Google Business Profile reviews", url: "https://www.google.com/maps/search/?api=1&query=Strong%20Health%20Miami%2C%201000%20Brickell%20Plaza%2C%20Miami%2C%20FL%2033131" },
     ],
     relatedInternalLinks: [
-      { label: "Testosterone Therapy in Miami", href: "/fl/miami/trt-therapy/" },
-      { label: "Medical Weight Loss in Miami", href: "/fl/miami/weight-loss-clinic/" },
       { label: "DEXA Scan in Miami", href: "/fl/miami/dexascan/" },
+      { label: "Peptides for muscle growth", href: "/peptides-for-muscle-growth/" },
       { label: "Stem Cell & Regenerative Medicine in Miami", href: "/fl/miami/stem-cell-therapy/" },
       { label: "Peptides for recovery & healing", href: "/peptides-for-healing/" },
       { label: "Peptides for visceral belly fat", href: "/peptides-for-belly-fat/" },
@@ -464,10 +463,10 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   physicians: [
     {
-      name: "Strong Health Medical Team",
-      title: "Attending Physicians, Delray Beach",
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
       credentials:
-        "Board-Certified Physicians · Peptide & Hormone Therapy Specialists · Full-Spectrum Men's Health Care",
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Delray Beach patients",
       focus:
         "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols with on-site labs at our Miami Brickell clinic and ongoing telehealth monitoring.",
     },
@@ -494,26 +493,26 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   relatedServices: [
     {
-      name: "TRT in Delray Beach",
-      desc: "Physician-supervised testosterone replacement therapy for Delray Beach patients — telehealth visits with on-site labs at our Miami Brickell clinic. Frequently paired with GH-secretagogue peptide protocols.",
-      href: "/fl/delray-beach/trt-therapy/",
-      cta: "Delray Beach TRT clinic →",
+      name: "Peptides for Arthritis & Joint Pain",
+      desc: "BPC-157 and TB-500 protocols for joint inflammation and connective-tissue support — a frequent starting point for Delray Beach patients.",
+      href: "/peptides-for-arthritis/",
+      cta: "Peptides for arthritis →",
     },
     {
-      name: "Weight Loss Clinic in Delray Beach",
-      desc: "Semaglutide and tirzepatide programs with full metabolic workups. Often combined with peptides that protect lean mass during caloric deficit.",
-      href: "/fl/delray-beach/weight-loss-clinic/",
-      cta: "Delray Beach weight loss →",
+      name: "Peptides for Anti-Aging & Longevity",
+      desc: "GH-secretagogue and longevity-focused protocols designed around your labs — a natural fit for the Delray Beach wellness community.",
+      href: "/peptides-for-anti-aging/",
+      cta: "Peptides for anti-aging →",
     },
     {
-      name: "All Delray Beach Services",
-      desc: "Lab panels, men's health consultations, sexual health, and more — telehealth statewide with on-site labs at our Miami Brickell clinic.",
-      href: "/services/",
-      cta: "Browse services →",
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
     },
   ],
   relatedServicesSubtitle:
-    "Many peptide patients combine therapy with TRT, weight-loss programs, or comprehensive hormone panels — all designed and monitored by the same physician.",
+    "Many peptide patients pair their protocol with body-composition tracking or comprehensive lab panels — all designed and monitored by the same physician.",
 
   faqs: [
     {
@@ -574,8 +573,8 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
     appointmentExpectations:
       "Free first assessment, typically 30–45 minutes. Initial telehealth visit reviews history, goals, and current medications/supplements; on-site biomarker draws are scheduled at the Brickell clinic. Most patients are seen within 5 business days of booking.",
     relatedInternalLinks: [
-      { label: "Testosterone Therapy in Delray Beach", href: "/fl/delray-beach/trt-therapy/" },
-      { label: "Medical Weight Loss in Delray Beach", href: "/fl/delray-beach/weight-loss-clinic/" },
+      { label: "Peptides for arthritis & joint pain", href: "/peptides-for-arthritis/" },
+      { label: "Peptides for anti-aging & longevity", href: "/peptides-for-anti-aging/" },
       { label: "Peptides for tissue repair & recovery", href: "/peptides-for-healing/" },
       { label: "Collagen peptides guide", href: "/collagen-peptides/" },
       { label: "All Florida locations", href: "/fl/" },
@@ -686,10 +685,10 @@ export const NEW_YORK_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   physicians: [
     {
-      name: "Strong Health Medical Team",
-      title: "Attending Physicians, New York",
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
       credentials:
-        "Board-Certified Physicians · Licensed in New York · Peptide & Hormone Therapy Specialists",
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for New York patients",
       focus:
         "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for New York patients, with telehealth visits and labs at local lab draw sites.",
     },
@@ -728,10 +727,10 @@ export const NEW_YORK_PEPTIDE_CONFIG: CityPeptideConfig = {
       cta: "Peptides for belly fat →",
     },
     {
-      name: "All Strong Health Services",
-      desc: "Lab panels, men's health consultations, sexual health, and more — physician-designed and monitored via telehealth.",
-      href: "/services/",
-      cta: "Browse services →",
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
     },
   ],
   relatedServicesSubtitle:
@@ -898,10 +897,10 @@ export const SAN_DIEGO_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   physicians: [
     {
-      name: "Strong Health Medical Team",
-      title: "Attending Physicians, San Diego",
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
       credentials:
-        "Board-Certified Physicians · Licensed in California · Peptide & Hormone Therapy Specialists",
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for San Diego patients",
       focus:
         "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for San Diego patients, with telehealth visits and labs at local lab draw sites.",
     },
@@ -940,10 +939,10 @@ export const SAN_DIEGO_PEPTIDE_CONFIG: CityPeptideConfig = {
       cta: "Peptides for belly fat →",
     },
     {
-      name: "All Strong Health Services",
-      desc: "Lab panels, men's health consultations, sexual health, and more — physician-designed and monitored via telehealth.",
-      href: "/services/",
-      cta: "Browse services →",
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
     },
   ],
   relatedServicesSubtitle:
@@ -1110,10 +1109,10 @@ export const LAS_VEGAS_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   physicians: [
     {
-      name: "Strong Health Medical Team",
-      title: "Attending Physicians, Las Vegas",
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
       credentials:
-        "Board-Certified Physicians · Licensed in Nevada · Peptide & Hormone Therapy Specialists",
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Las Vegas patients",
       focus:
         "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for Las Vegas patients, with telehealth visits and labs at local lab draw sites.",
     },
@@ -1152,10 +1151,10 @@ export const LAS_VEGAS_PEPTIDE_CONFIG: CityPeptideConfig = {
       cta: "Peptides for belly fat →",
     },
     {
-      name: "All Strong Health Services",
-      desc: "Lab panels, men's health consultations, sexual health, and more — physician-designed and monitored via telehealth.",
-      href: "/services/",
-      cta: "Browse services →",
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
     },
   ],
   relatedServicesSubtitle:
@@ -1322,10 +1321,10 @@ export const ATLANTA_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   physicians: [
     {
-      name: "Strong Health Medical Team",
-      title: "Attending Physicians, Atlanta",
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
       credentials:
-        "Board-Certified Physicians · Licensed in Georgia · Peptide & Hormone Therapy Specialists",
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Atlanta patients",
       focus:
         "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for Atlanta patients, with telehealth visits and labs at local lab draw sites.",
     },
@@ -1364,10 +1363,10 @@ export const ATLANTA_PEPTIDE_CONFIG: CityPeptideConfig = {
       cta: "Peptides for belly fat →",
     },
     {
-      name: "All Strong Health Services",
-      desc: "Lab panels, men's health consultations, sexual health, and more — physician-designed and monitored via telehealth.",
-      href: "/services/",
-      cta: "Browse services →",
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
     },
   ],
   relatedServicesSubtitle:
@@ -1534,10 +1533,10 @@ export const AUSTIN_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   physicians: [
     {
-      name: "Strong Health Medical Team",
-      title: "Attending Physicians, Austin",
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
       credentials:
-        "Board-Certified Physicians · Licensed in Texas · Peptide & Hormone Therapy Specialists",
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Austin patients",
       focus:
         "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for Austin patients, with telehealth visits and labs at local lab draw sites.",
     },
@@ -1576,10 +1575,10 @@ export const AUSTIN_PEPTIDE_CONFIG: CityPeptideConfig = {
       cta: "Peptides for belly fat →",
     },
     {
-      name: "All Strong Health Services",
-      desc: "Lab panels, men's health consultations, sexual health, and more — physician-designed and monitored via telehealth.",
-      href: "/services/",
-      cta: "Browse services →",
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
     },
   ],
   relatedServicesSubtitle:
@@ -1746,10 +1745,10 @@ export const TAMPA_PEPTIDE_CONFIG: CityPeptideConfig = {
 
   physicians: [
     {
-      name: "Strong Health Medical Team",
-      title: "Attending Physicians, Tampa",
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
       credentials:
-        "Board-Certified Physicians · Licensed in Florida · Peptide & Hormone Therapy Specialists",
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Tampa patients",
       focus:
         "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for Tampa patients, with telehealth visits and labs at local lab draw sites.",
     },
@@ -1788,10 +1787,10 @@ export const TAMPA_PEPTIDE_CONFIG: CityPeptideConfig = {
       cta: "Peptides for belly fat →",
     },
     {
-      name: "All Strong Health Services",
-      desc: "Lab panels, men's health consultations, sexual health, and more — physician-designed and monitored via telehealth.",
-      href: "/services/",
-      cta: "Browse services →",
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
     },
   ],
   relatedServicesSubtitle:

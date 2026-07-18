@@ -17,6 +17,8 @@ import FadeIn from "../components/shared/FadeIn.astro";
 import Icon from "../components/shared/Icon.astro";
 import AuthorByline from "../components/shared/AuthorByline.astro";
 import ArticleLocationsSection from "../components/shared/ArticleLocationsSection.astro";
+import GoalMoleculesSection from "../components/shared/GoalMoleculesSection.astro";
+import type { GoalSlug } from "../data/molecules/types";
 import PeptideOfferBar from "../components/shared/PeptideOfferBar.astro";
 import { BOOKING_SMS_HREF } from "../lib/booking";
 import { STRONG_HEALTH_PHONE_DISPLAY } from "../data/miamiClinic";
@@ -73,6 +75,8 @@ interface Props {
   faqs: FAQItem[];
   citations: Citation[];
   relatedLinks?: RelatedLink[];
+  /** Goal slug: renders the "molecules in this guide" cross-link module (US-006). */
+  moleculeGoal?: GoalSlug;
   structuredData?: object | object[];
   schemaData?: object | object[];
   ctaHeading?: string;
@@ -103,6 +107,7 @@ const {
   faqs,
   citations,
   relatedLinks,
+  moleculeGoal,
   structuredData,
   schemaData,
   ctaHeading,
@@ -382,6 +387,8 @@ const btnBase =
           )
         }
 
+        {moleculeGoal && <GoalMoleculesSection goal={moleculeGoal} />}
+
         <ArticleLocationsSection />
 
         <section class="mt-16 px-6 py-10 bg-gradient-to-br from-[#C9A84C]/[0.12] via-[#0D0F12] to-[#1B4F72]/[0.12] border border-white/10 rounded-xl text-center">
@@ -468,7 +475,7 @@ const btnBase =
           }
         </div>
         <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-text-subtle">
-          <div>&copy; {year} Strong Health TRT. All rights reserved.</div>
+          <div>&copy; {year} Strong Health. All rights reserved.</div>
           <div class="flex gap-4">
             <span>Not available in all states.</span>
             <span>Prescriptions subject to physician approval.</span>

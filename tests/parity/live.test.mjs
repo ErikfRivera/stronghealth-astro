@@ -28,7 +28,7 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const fixture = JSON.parse(
-  readFileSync(join(root, "tests/fixtures/production-parity-2026-07-14.json"), "utf-8"),
+  readFileSync(join(root, "tests/fixtures/build-baseline.json"), "utf-8"),
 );
 
 const REFERENCE = (process.env.REFERENCE_BASE_URL || "").replace(/\/$/, "");

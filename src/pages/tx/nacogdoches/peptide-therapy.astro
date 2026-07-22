@@ -1,0 +1,10 @@
+---
+// Nacogdoches, TX peptide-therapy service-area page. Mirrors the Austin
+// wrapper: the shared CityPeptidePage layout renders everything from
+// NACOGDOCHES_PEPTIDE_CONFIG (statePrefix "tx"). There is intentionally NO
+// /tx/ or /tx/nacogdoches/ hub page — both 404 by design.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { NACOGDOCHES_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={NACOGDOCHES_PEPTIDE_CONFIG} />

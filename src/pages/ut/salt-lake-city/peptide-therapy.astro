@@ -1,0 +1,10 @@
+---
+// Salt Lake City, UT peptide-therapy service-area page. Mirrors the
+// Nacogdoches wrapper: the shared CityPeptidePage layout renders everything
+// from SALT_LAKE_CITY_PEPTIDE_CONFIG (statePrefix "ut"). There is
+// intentionally NO /ut/ or /ut/salt-lake-city/ hub page — both 404 by design.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { SALT_LAKE_CITY_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={SALT_LAKE_CITY_PEPTIDE_CONFIG} />

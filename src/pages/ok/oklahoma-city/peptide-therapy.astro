@@ -1,0 +1,10 @@
+---
+// Oklahoma City, OK peptide-therapy service-area page. Mirrors the Nacogdoches
+// wrapper: the shared CityPeptidePage layout renders everything from
+// OKLAHOMA_CITY_PEPTIDE_CONFIG (statePrefix "ok"). There is intentionally NO
+// /ok/ or /ok/oklahoma-city/ hub page — both 404 by design.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { OKLAHOMA_CITY_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={OKLAHOMA_CITY_PEPTIDE_CONFIG} />

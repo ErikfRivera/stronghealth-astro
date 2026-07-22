@@ -1,0 +1,10 @@
+---
+// Bellevue, WA peptide-therapy service-area page. Mirrors the Nacogdoches
+// wrapper: the shared CityPeptidePage layout renders everything from
+// BELLEVUE_PEPTIDE_CONFIG (statePrefix "wa"). There is intentionally NO
+// /wa/ or /wa/bellevue/ hub page — both 404 by design.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { BELLEVUE_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={BELLEVUE_PEPTIDE_CONFIG} />

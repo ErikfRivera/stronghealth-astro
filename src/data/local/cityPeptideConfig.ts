@@ -1909,6 +1909,231 @@ export const TAMPA_PEPTIDE_CONFIG: CityPeptideConfig = {
 };
 
 /**
+ * Nacogdoches, TX (Deep East Texas / Piney Woods) — telehealth service-area
+ * page modeled on Austin: no physical clinic, no MedicalClinic JSON-LD/NAP, and
+ * copy written for the "oldest town in Texas," Stephen F. Austin State
+ * University (SFA), the timber/poultry/oil-field economy, and the surrounding
+ * rural counties. Labs are referenced as local East Texas draw sites.
+ */
+export const NACOGDOCHES_PEPTIDE_CONFIG: CityPeptideConfig = {
+  statePrefix: "tx",
+  stateName: "Texas",
+  slug: "nacogdoches",
+  cityName: "Nacogdoches",
+  county: "Nacogdoches County",
+  clinicArea: "Nacogdoches service area",
+
+  clinic: {
+    name: "Strong Health Nacogdoches",
+    streetAddress: "",
+    city: "Nacogdoches",
+    state: "TX",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hoursWeekday: "Mon–Fri 8:00 AM – 6:00 PM",
+    hoursSaturday: "Sat 9:00 AM – 1:00 PM",
+    hoursWeekdayHours: { opens: "08:00", closes: "18:00" },
+    hoursSaturdayHours: { opens: "09:00", closes: "13:00" },
+    lat: 31.6035,
+    lng: -94.6555,
+  },
+
+  seoTitle: "Peptide Therapy in Nacogdoches, TX",
+  seoDescription:
+    "Physician-supervised peptide therapy for Nacogdoches, TX via telehealth — BPC-157, CJC-1295, Ipamorelin, Tesamorelin & PT-141 with local labs.",
+  lastReviewed: "2026-07-22",
+  jsonLdPageName: "Peptide Therapy in Nacogdoches, TX — Strong Health (Telehealth)",
+  jsonLdPageDescription:
+    "Physician-supervised peptide therapy for Nacogdoches and Deep East Texas patients, delivered via telehealth with labs at local draw sites. Pharmacy-grade BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and collagen peptide protocols.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+
+  heroTag: "Nacogdoches Peptide Therapy · Telehealth for East Texas",
+  reviewRating: "4.9",
+  reviewCount: "from 1,000+ Strong Health patient reviews",
+  aggregateReviewCount: 1000,
+  heroDescription1:
+    "Physician-supervised peptide protocols for Nacogdoches patients — BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and more. Telehealth visits with labs at local East Texas draw sites. Pharmacy-grade compounds. Real labs. Ongoing monitoring.",
+  heroDescription2:
+    "We design individualized peptide therapy protocols for healing, body composition, sleep, sexual health, and longevity — built around your bloodwork, not a generic stack. Telehealth evaluations with physicians licensed in Texas, with baseline and monitoring labs drawn close to home in Nacogdoches County and the surrounding Piney Woods.",
+  heroCtaMeta:
+    "Telehealth physician visits · Local East Texas lab draws · No subscriptions",
+
+  introHeadingHtml:
+    "Why Nacogdoches men are switching to <gold>physician-supervised peptide therapy</gold>",
+  introParagraphs: [
+    "In the oldest town in Texas, peptides used to mean a two-hour drive to a Houston or Dallas clinic — or ordering \"research-grade\" vials online and hoping for the best. Neither is medicine. Peptide therapy done right is physician-led care that starts with bloodwork, not a sales script.",
+    "Strong Health designs peptide protocols for Nacogdoches patients around individual labs and goals. Whether you're a timber or oil-field worker whose shoulders and knees have taken twenty years of abuse, an SFA athlete or weekend lifter rehabbing a tendon, a rancher trying to sleep through the night again, or someone finally tackling the visceral belly fat that won't budge, we use specific peptides for specific clinical reasons — and we monitor the relevant labs throughout the protocol.",
+    "Strong Health is a real medical practice with board-certified physicians and pharmacy-compounded medications dispensed under physician orders. Nacogdoches and Deep East Texas patients are served via telehealth by physicians licensed in Texas, with baseline and monitoring labs drawn at local sites close to home. We don't sell supplement subscriptions. We don't push gray-market compounds. Every protocol is reviewed at scheduled intervals and adjusted based on how your body actually responds.",
+  ],
+
+  whyHeadingHtml:
+    "Peptide therapy in Nacogdoches, the way it should be <gold>prescribed and monitored</gold>",
+  whyParagraphs: [
+    "Deep East Texas has plenty of med spas and IV-drip pop-ups happy to hand you a vial, but very few options that combine board-certified physician oversight with real lab monitoring and pharmacy-grade compounds from licensed compounders. Most Nacogdoches patients we see have already tried an online \"clinic\" that shipped a peptide after a 10-minute video call with no labs at all.",
+    "We built Strong Health's Nacogdoches telehealth program around the principle that peptide therapy is real medicine: contraindications need to be screened, doses need to be titrated, and labs need to be monitored — whether you live in town near SFA or out toward Garrison, Cushing, or Etoile. That's the standard, and you shouldn't have to leave the Piney Woods to get it.",
+  ],
+  whyStandardBullets: [
+    "Board-certified physicians licensed in Texas",
+    "Physician evaluation before any peptide is prescribed",
+    "Baseline and monitoring labs at local East Texas draw sites near you",
+    "Pharmacy-grade peptides from licensed 503A/503B compounders",
+    "Individualized protocols designed around your bloodwork",
+    "Scheduled lab monitoring throughout the protocol",
+    "Telehealth follow-ups that fit farm, mill, and shift-work schedules",
+    "Saturday morning appointments for working East Texans",
+    "Month-to-month treatment. No long-term contracts",
+  ],
+
+  steps: [
+    {
+      title: "Start with a telehealth consult with a Texas–licensed physician",
+      desc: "Your first visit is a video consult with a Strong Health physician licensed in Texas — no drive to Houston, Dallas, or Tyler. You'll review your history, goals, prior treatments, and any musculoskeletal or hormonal concerns.",
+    },
+    {
+      title: "Baseline labs close to home",
+      desc: "We order a baseline panel — hormones (testosterone, estradiol, IGF-1), metabolic markers, and any peptide-specific labs your protocol needs — to a local draw site in Nacogdoches or nearby Lufkin so you're not driving hours for bloodwork.",
+    },
+    {
+      title: "Individualized protocol design",
+      desc: "Your physician selects the right peptide(s), dose, and timing based on your labs and goals. Compounded by a licensed 503A or 503B pharmacy under physician orders and shipped to your door. Pharmacy-grade only.",
+    },
+    {
+      title: "Ongoing monitoring & telehealth follow-ups",
+      desc: "Follow-up labs and check-ins at 4–12 weeks depending on the peptide. Dose adjustments via telehealth, with repeat labs ordered to the same local draw site whenever monitoring is clinically needed.",
+    },
+  ],
+
+  physicians: [
+    {
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
+      credentials:
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Nacogdoches patients",
+      focus:
+        "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for Nacogdoches and Deep East Texas patients, with telehealth visits and labs at local draw sites.",
+    },
+    {
+      name: "Strong Health Sports Medicine Team",
+      title: "Consulting Specialists, East Texas",
+      credentials:
+        "Sports Medicine · Tendon & Soft-Tissue Injury Care · Recovery Optimization",
+      focus:
+        "Peptide-supported tendon, joint, and soft-tissue healing protocols for timber and oil-field workers, ranchers, SFA Lumberjack athletes, and weekend warriors across Nacogdoches, Lufkin, and the surrounding counties.",
+    },
+  ],
+
+  neighborhoods: [
+    "Historic Downtown", "SFA / University Area", "Austin Heights", "Fredonia Hill",
+    "North Street", "Appleby", "Douglass", "Garrison",
+    "Cushing", "Chireno", "Woden", "Martinsville",
+    "Etoile", "Sacul", "Lufkin", "Diboll",
+    "Hudson", "Huntington", "Center", "Henderson",
+  ],
+  neighborhoodAreaName: "Deep East Texas",
+  neighborhoodsSubtitle:
+    "Strong Health serves peptide therapy patients across Nacogdoches County and the surrounding Piney Woods — from Historic Downtown and the SFA campus area to Appleby, Garrison, Cushing, Chireno, and out to Lufkin, Diboll, Center, and Henderson — via telehealth, with lab draws close to home.",
+
+  relatedServices: [
+    {
+      name: "Peptides for Belly Fat",
+      desc: "Tesamorelin protocols target the visceral (belly) fat that diet and hard work alone won't budge — a frequent goal for our mid-life East Texas patients.",
+      href: "/peptides-for-belly-fat/",
+      cta: "Peptides for belly fat →",
+    },
+    {
+      name: "Peptides for Healing & Recovery",
+      desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in timber work, ranch work, and Friday-night-lights injuries.",
+      href: "/peptides-for-healing/",
+      cta: "BPC-157 healing guide →",
+    },
+    {
+      name: "Peptides for Tendon & Ligament Repair",
+      desc: "Targeted repair protocols for the rotator cuffs, knees, and elbows that hard East Texas work and sport wear down over time.",
+      href: "/peptides-for-tendon-repair/",
+      cta: "Tendon repair guide →",
+    },
+    {
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
+    },
+  ],
+  relatedServicesSubtitle:
+    "Many peptide patients combine therapy with hormone panels or body-composition programs — all designed and monitored by the same physician team, without leaving East Texas.",
+
+  faqs: [
+    {
+      question: "Where can I get peptide therapy in Nacogdoches?",
+      answer:
+        "Strong Health serves Nacogdoches peptide-therapy patients by appointment via telehealth — no drive to Houston, Dallas, or Tyler required. Physician consultations happen by video with doctors licensed in Texas, and baseline and monitoring labs are drawn at local sites in Nacogdoches or nearby Lufkin. Call (754) 263-6026 to book a free assessment.",
+    },
+    {
+      question: "What peptides does Strong Health prescribe for Nacogdoches patients?",
+      answer:
+        "Our physicians prescribe pharmacy-grade peptides selected for the patient's specific goals and labs. The most commonly used protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat reduction; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin support. Every protocol is individualized — we don't use one-size-fits-all stacks.",
+    },
+    {
+      question: "Are peptides legal in Texas?",
+      answer:
+        "Yes, when prescribed by a physician licensed in Texas and dispensed through a licensed compounding pharmacy. Strong Health works only with 503A and 503B pharmacies under physician orders. We do not work with research-only or gray-market peptides. Every protocol uses pharmacy-grade product with full physician oversight, ongoing monitoring, and standard medical-record documentation.",
+    },
+    {
+      question: "Do I have to drive to a big city for peptide therapy?",
+      answer:
+        "No. That's the whole point of our Nacogdoches telehealth program. Your physician visits happen by video, your compounded medication ships directly to your door, and your baseline and follow-up labs are ordered to a draw site in Nacogdoches or nearby Lufkin. You can start and stay on a physician-monitored protocol without ever leaving Deep East Texas.",
+    },
+    {
+      question: "How much does peptide therapy cost for Nacogdoches patients?",
+      answer:
+        "Your initial telehealth consult is free. Peptide protocols are month-to-month with transparent pricing — costs vary by peptide, dose, and duration. Most protocols include physician visits, monitoring labs, and pharmacy-compounded medication. We'll review the full cost of your specific protocol before you commit. We do not bill insurance directly, but we provide itemized superbills that many East Texas patients submit to plans like Blue Cross Blue Shield of Texas, UnitedHealthcare, Aetna, and Cigna for partial reimbursement.",
+    },
+    {
+      question: "How is peptide therapy different from TRT or GLP-1 weight loss medications?",
+      answer:
+        "Peptides are short chains of amino acids that act as targeted signaling molecules — they're distinct from steroid hormones like testosterone and from GLP-1 agonists like semaglutide and tirzepatide. Healing peptides (BPC-157, TB-500) work on tissue repair pathways with no androgenic effect. GH-secretagogue peptides (CJC-1295, Ipamorelin, Tesamorelin) prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern. Peptide therapy can be combined with TRT or GLP-1 weight-loss programs, and many Strong Health patients run integrated protocols designed and monitored by the same physician.",
+    },
+    {
+      question: "How long does it take to see results from peptide therapy?",
+      answer:
+        "Timing depends on the peptide and the goal. Sleep and recovery improvements (DSIP, Ipamorelin) are often noticeable within 2–4 weeks. Body-composition changes from CJC-1295/Ipamorelin or Tesamorelin typically appear at 8–12 weeks with more visible lean mass and fat-distribution shifts at 3–6 months. Tendon and joint healing protocols using BPC-157 or TB-500 generally run 4–12 weeks depending on tissue. PT-141 for sexual health works on demand, typically within 30–90 minutes of dosing. Every Strong Health protocol includes scheduled lab reassessments to confirm progress and adjust doses.",
+    },
+    {
+      question: "Can peptide therapy help with timber, oil-field, or ranch-work injuries?",
+      answer:
+        "It's one of the most common reasons East Texas patients come to us. Years of hard physical work take a toll on rotator cuffs, knees, elbows, and lower backs. BPC-157 and TB-500 protocols are designed to support tendon, ligament, and soft-tissue healing, and they're frequently paired with GH-secretagogue peptides for recovery and sleep. Every protocol is built around your labs and screened for contraindications first — it isn't a shortcut around proper orthopedic care, but a physician-monitored tool alongside it.",
+    },
+    {
+      question: "Which East Texas towns and counties do you serve?",
+      answer:
+        "All of Nacogdoches County and the surrounding Piney Woods — in-town areas near SFA, Historic Downtown, Austin Heights, and North Street, plus Appleby, Douglass, Garrison, Cushing, Chireno, Woden, Martinsville, Etoile, and Sacul, and neighboring communities including Lufkin, Diboll, Hudson, Huntington, Center, and Henderson. Because care is delivered via telehealth with labs at local draw sites, you can start and stay on a protocol wherever in Deep East Texas you live.",
+    },
+  ],
+
+  finalCtaHeading: "Ready to talk to a physician about peptide therapy in Nacogdoches?",
+  finalCtaCopy:
+    "Book a free assessment. Telehealth visits for Nacogdoches and Deep East Texas patients with physician-designed protocols, real labs close to home, and ongoing monitoring.",
+  physicalClinic: false,
+  parkingTransit:
+    "No Nacogdoches storefront. Care is delivered via telehealth to Nacogdoches and Deep East Texas patients, with baseline and monitoring labs drawn at local sites in Nacogdoches and nearby Lufkin.",
+  physicianAvailability:
+    "Strong Health physicians licensed in Texas see patients by appointment via telehealth, with lab orders sent to a local draw site near you in East Texas.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes by video. We review history, goals, and current medications/supplements; baseline biomarker draws are ordered to a local site in Nacogdoches or Lufkin. Most patients are seen within 5 business days of booking.",
+  howItWorksTag: "How Peptide Therapy Works for Nacogdoches Patients",
+  howItWorksHeadingIntro: "Telehealth visits. Local labs. Then",
+  howItWorksHeadingGold: "monitored care.",
+  physiciansSubtitleSuffix: "for Nacogdoches patients.",
+  relatedServicesHeadingIntro: "One medical team.",
+  outboundCitations: [
+    { label: "BPC-157 in tendon and soft-tissue healing (review)", url: "https://pubmed.ncbi.nlm.nih.gov/30915550/" },
+    { label: "Thymosin beta-4 (TB-500) and tissue repair", url: "https://pubmed.ncbi.nlm.nih.gov/22894631/" },
+    { label: "Ipamorelin / CJC-1295 stimulation of GH release", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
+  ],
+};
+
+/**
  * Master list of cities offering peptide therapy.
  *
  * To launch a new peptide city:
@@ -1929,6 +2154,7 @@ export const ALL_PEPTIDE_CITIES: CityPeptideConfig[] = [
   LAS_VEGAS_PEPTIDE_CONFIG,
   ATLANTA_PEPTIDE_CONFIG,
   AUSTIN_PEPTIDE_CONFIG,
+  NACOGDOCHES_PEPTIDE_CONFIG,
 ];
 
 /** Lookup peptide city config by slug. */

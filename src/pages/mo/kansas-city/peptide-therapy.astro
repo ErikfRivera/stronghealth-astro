@@ -1,0 +1,10 @@
+---
+// Kansas City, MO peptide-therapy service-area page. Mirrors the Nacogdoches
+// wrapper: the shared CityPeptidePage layout renders everything from
+// KANSAS_CITY_PEPTIDE_CONFIG (statePrefix "mo"). There is intentionally NO
+// /mo/ or /mo/kansas-city/ hub page — both 404 by design.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { KANSAS_CITY_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={KANSAS_CITY_PEPTIDE_CONFIG} />

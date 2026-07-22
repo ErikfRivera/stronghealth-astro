@@ -43,7 +43,7 @@ export interface CityPeptideConfig {
    * the hero state abbreviation, breadcrumbs, and same-state nearby-city links.
    * Defaults to "fl" so existing Florida configs are untouched.
    */
-  statePrefix?: "fl" | "ny" | "ca" | "nv" | "ga" | "tx";
+  statePrefix?: "fl" | "ny" | "ca" | "nv" | "ga" | "tx" | "nc" | "ok" | "wa" | "ut" | "mo";
   /** Full state name for breadcrumbs/copy, e.g. "New York". Defaults to "Florida". */
   stateName?: string;
   /** Whether this page corresponds to a real walk-in clinic. Defaults to true. When false, MedicalClinic JSON-LD is suppressed and copy treats the page as a service area. */
@@ -2133,6 +2133,1314 @@ export const NACOGDOCHES_PEPTIDE_CONFIG: CityPeptideConfig = {
   ],
 };
 
+export const LOS_ANGELES_PEPTIDE_CONFIG: CityPeptideConfig = {
+  statePrefix: "ca",
+  stateName: "California",
+  slug: "los-angeles",
+  cityName: "Los Angeles",
+  county: "Los Angeles County",
+  clinicArea: "Los Angeles service area",
+
+  clinic: {
+    name: "Strong Health Los Angeles",
+    streetAddress: "",
+    city: "Los Angeles",
+    state: "CA",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hoursWeekday: "Mon–Fri 8:00 AM – 6:00 PM",
+    hoursSaturday: "Sat 9:00 AM – 1:00 PM",
+    hoursWeekdayHours: { opens: "08:00", closes: "18:00" },
+    hoursSaturdayHours: { opens: "09:00", closes: "13:00" },
+    lat: 34.0522,
+    lng: -118.2437,
+  },
+
+  seoTitle: "Peptide Therapy in Los Angeles, CA",
+  seoDescription:
+    "Physician-supervised peptide therapy for Los Angeles patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+  lastReviewed: "2026-07-22",
+  jsonLdPageName: "Peptide Therapy in Los Angeles, CA — Strong Health (Telehealth)",
+  jsonLdPageDescription:
+    "Physician-supervised peptide therapy for Los Angeles patients, delivered via telehealth with labs at local lab draw sites. Pharmacy-grade BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and collagen peptide protocols.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+
+  heroTag: "Los Angeles Peptide Therapy · Telehealth for CA Patients",
+  reviewRating: "4.9",
+  reviewCount: "from 1,000+ Strong Health patient reviews",
+  aggregateReviewCount: 1000,
+  heroDescription1:
+    "Physician-supervised peptide protocols for Los Angeles patients — BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and more. Telehealth visits with labs at local lab draw sites. Pharmacy-grade compounds. Real labs. Ongoing monitoring.",
+  heroDescription2:
+    "We design individualized peptide therapy protocols for healing, body composition, sleep, sexual health, and longevity — built around your bloodwork, not a generic stack. Telehealth evaluations with physicians licensed in California, with baseline and monitoring labs drawn at local lab draw sites from the Westside to the Valley — no crawl down the 405 required.",
+  heroCtaMeta:
+    "Telehealth physician visits · Local lab draw sites · No subscriptions",
+
+  introHeadingHtml:
+    "Why Los Angeles men are switching to <gold>physician-supervised peptide therapy</gold>",
+  introParagraphs: [
+    "Los Angeles may be the peptide capital of America — longevity clinics in Beverly Hills, biohacking studios in Venice, IV-drip lounges on Melrose, and med spas on every block of West Hollywood, many with no physician meaningfully involved. Peptide therapy done right is physician-led medicine. It starts with bloodwork, not a sales script.",
+    "Strong Health designs peptide protocols for Los Angeles patients around individual labs and goals. Whether you're rehabbing a climbing or jiu-jitsu injury, dropping visceral belly fat that won't budge before a shoot, fixing sleep wrecked by production schedules, restoring desire and arousal, or maintaining the body composition you work hard for at the gym, we use specific peptides for specific clinical reasons — and we monitor the relevant labs throughout the protocol.",
+    "Strong Health is a real medical practice with board-certified physicians and pharmacy-compounded medications dispensed under physician orders. Los Angeles patients are served via telehealth by physicians licensed in California, with baseline and monitoring labs drawn at local lab draw sites across LA County. We don't sell supplement subscriptions. We don't push gray-market compounds. Every protocol is reviewed at scheduled intervals and adjusted based on how your body actually responds.",
+  ],
+
+  whyHeadingHtml:
+    "Peptide therapy in Los Angeles, the way it should be <gold>prescribed and monitored</gold>",
+  whyParagraphs: [
+    "From Beverly Hills longevity concierges to Venice biohacking studios, LA has more places selling peptides than anywhere in the country — but very few that combine board-certified physician oversight with real lab monitoring and pharmacy-grade compounds from licensed compounders. Most Los Angeles patients we see have already tried at least one place that handed them a vial after a 10-minute video call.",
+    "We built Strong Health's Los Angeles telehealth program around the principle that peptide therapy is real medicine: contraindications need to be screened, doses need to be titrated, and labs need to be monitored — whether you're in Santa Monica, Silver Lake, or Sherman Oaks. That's the standard, and it shouldn't require fighting traffic to get it.",
+  ],
+  whyStandardBullets: [
+    "Board-certified physicians licensed in California",
+    "Physician evaluation before any peptide is prescribed",
+    "Baseline and monitoring labs at local lab draw sites near you",
+    "Pharmacy-grade peptides from licensed 503A/503B compounders",
+    "Individualized protocols designed around your bloodwork",
+    "Scheduled lab monitoring throughout the protocol",
+    "Telehealth follow-ups that fit LA traffic and production schedules",
+    "Saturday morning appointments for working professionals",
+    "Month-to-month treatment. No long-term contracts",
+  ],
+
+  steps: [
+    {
+      title: "Start with a telehealth consult with a California–licensed physician",
+      desc: "Your first visit is a video consult with a Strong Health physician licensed in California — no drive across the 405 or the 101. You'll review your history, goals, prior treatments, and any musculoskeletal or hormonal concerns.",
+    },
+    {
+      title: "Baseline labs at a local draw site",
+      desc: "We order a baseline panel — hormones (testosterone, estradiol, IGF-1), metabolic markers, and any peptide-specific labs your protocol needs — to a local lab draw site near you, from the Westside and South Bay to the Valley and Pasadena.",
+    },
+    {
+      title: "Individualized protocol design",
+      desc: "Your physician selects the right peptide(s), dose, and timing based on your labs and goals. Compounded by a licensed 503A or 503B pharmacy under physician orders. Pharmacy-grade only.",
+    },
+    {
+      title: "Ongoing monitoring & telehealth follow-ups",
+      desc: "Follow-up labs and check-ins at 4–12 weeks depending on the peptide. Dose adjustments via telehealth, with repeat labs ordered to the same local draw site whenever monitoring is clinically needed.",
+    },
+  ],
+
+  physicians: [
+    {
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
+      credentials:
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Los Angeles patients",
+      focus:
+        "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for Los Angeles patients, with telehealth visits and labs at local lab draw sites.",
+    },
+    {
+      name: "Strong Health Sports Medicine Team",
+      title: "Consulting Specialists, Los Angeles",
+      credentials:
+        "Sports Medicine · Tendon & Soft-Tissue Injury Care · Recovery Optimization",
+      focus:
+        "Peptide-supported tendon, joint, and soft-tissue healing protocols for lifters, runners, climbers, surfers, and combat-sports athletes across LA County.",
+    },
+  ],
+
+  neighborhoods: [
+    "Santa Monica", "Beverly Hills", "West Hollywood", "Venice",
+    "Brentwood", "Culver City", "Downtown LA", "Hollywood",
+    "Silver Lake", "Echo Park", "Los Feliz", "Studio City",
+    "Sherman Oaks", "Encino", "Pasadena", "Glendale",
+    "Burbank", "Manhattan Beach", "Marina del Rey", "Long Beach",
+  ],
+  neighborhoodAreaName: "greater Los Angeles",
+  neighborhoodsSubtitle:
+    "Strong Health serves peptide therapy patients across LA County — from Santa Monica, Venice, and the South Bay to Hollywood, the Valley, Pasadena, and Long Beach — via telehealth, with lab draws at local lab draw sites near you.",
+
+  relatedServices: [
+    {
+      name: "Peptides for Anti-Aging & Longevity",
+      desc: "GH-secretagogue and longevity-focused protocols designed around your labs — the physician-led version of what LA's longevity clinics promise.",
+      href: "/peptides-for-anti-aging/",
+      cta: "Peptides for anti-aging →",
+    },
+    {
+      name: "Peptides for Muscle Growth",
+      desc: "CJC-1295, Ipamorelin, and BPC-157 protocols that support lean mass and recovery, designed around your labs — not a generic stack.",
+      href: "/peptides-for-muscle-growth/",
+      cta: "Peptides for muscle growth →",
+    },
+    {
+      name: "Peptides for Sleep & Recovery",
+      desc: "DSIP and related protocols that support deep-sleep architecture and overnight recovery — for sleep wrecked by long shoots and longer commutes.",
+      href: "/peptides-for-sleep/",
+      cta: "Peptides for sleep →",
+    },
+    {
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
+    },
+  ],
+  relatedServicesSubtitle:
+    "Many peptide patients combine therapy with hormone panels or body-composition programs — all designed and monitored by the same physician team.",
+
+  faqs: [
+    {
+      question: "Where can I get peptide therapy in Los Angeles?",
+      answer:
+        "Strong Health serves Los Angeles peptide-therapy patients by appointment via telehealth. Physician consultations happen by video with doctors licensed in California, and baseline and monitoring labs are drawn at local lab draw sites across LA County — from Santa Monica and the South Bay to the Valley, Pasadena, and Long Beach. Call (754) 263-6026 to book a free assessment.",
+    },
+    {
+      question: "What peptides does Strong Health prescribe for Los Angeles patients?",
+      answer:
+        "Our physicians prescribe pharmacy-grade peptides selected for the patient's specific goals and labs. The most commonly used protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat reduction; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin support. Every protocol is individualized — we don't use one-size-fits-all stacks.",
+    },
+    {
+      question: "Are peptides legal in California?",
+      answer:
+        "Yes, when prescribed by a physician licensed in California and dispensed through a licensed compounding pharmacy. Strong Health works only with 503A and 503B pharmacies under physician orders. We do not work with research-only or gray-market peptides. Every protocol uses pharmacy-grade product with full physician oversight, ongoing monitoring, and standard medical-record documentation.",
+    },
+    {
+      question: "How is Strong Health different from LA med spas and biohacking clinics selling peptides?",
+      answer:
+        "Three things: a physician evaluation before anything is prescribed, real labs before and during the protocol, and pharmacy-grade compounds from licensed 503A/503B compounders. Much of what's sold around Los Angeles is \"research-grade\" product handed out with little screening and no monitoring. Strong Health screens contraindications, titrates doses against your bloodwork, and documents everything in a standard medical record — the way prescription medicine is supposed to work.",
+    },
+    {
+      question: "How much does peptide therapy cost for Los Angeles patients?",
+      answer:
+        "Your initial telehealth consult is free. Peptide protocols are month-to-month with transparent pricing — costs vary by peptide, dose, and duration. Most protocols include physician visits, monitoring labs, and pharmacy-compounded medication. We'll review the full cost of your specific protocol before you commit. We do not bill insurance directly, but we provide itemized superbills that many Los Angeles patients submit to plans like Blue Shield of California, Anthem Blue Cross, Health Net, and Cigna for partial reimbursement.",
+    },
+    {
+      question: "How is peptide therapy different from TRT or GLP-1 weight loss medications?",
+      answer:
+        "Peptides are short chains of amino acids that act as targeted signaling molecules — they're distinct from steroid hormones like testosterone and from GLP-1 agonists like semaglutide and tirzepatide. Healing peptides (BPC-157, TB-500) work on tissue repair pathways with no androgenic effect. GH-secretagogue peptides (CJC-1295, Ipamorelin, Tesamorelin) prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern. Peptide therapy can be combined with TRT or GLP-1 weight-loss programs, and many Strong Health patients run integrated protocols designed and monitored by the same physician.",
+    },
+    {
+      question: "How long does it take to see results from peptide therapy?",
+      answer:
+        "Timing depends on the peptide and the goal. Sleep and recovery improvements (DSIP, Ipamorelin) are often noticeable within 2–4 weeks. Body-composition changes from CJC-1295/Ipamorelin or Tesamorelin typically appear at 8–12 weeks with more visible lean mass and fat-distribution shifts at 3–6 months. Tendon and joint healing protocols using BPC-157 or TB-500 generally run 4–12 weeks depending on tissue. PT-141 for sexual health works on demand, typically within 30–90 minutes of dosing. Every Strong Health protocol includes scheduled lab reassessments to confirm progress and adjust doses.",
+    },
+    {
+      question: "Can I start peptide therapy entirely by telehealth in Los Angeles?",
+      answer:
+        "Yes. Los Angeles patients start with a telehealth evaluation by a Strong Health physician licensed in California, including a full medical history and a detailed discussion of goals. Baseline labs are ordered to a local lab draw site near you before any peptide is prescribed, and follow-ups — dose adjustments, lab reviews, and renewal authorizations — are conducted via telehealth with repeat labs at the same draw site.",
+    },
+    {
+      question: "Which Los Angeles neighborhoods and cities do you serve?",
+      answer:
+        "All of LA County — the Westside (Santa Monica, Venice, Brentwood, Culver City), central LA (Hollywood, West Hollywood, Silver Lake, Los Feliz, Downtown), the Valley (Studio City, Sherman Oaks, Encino, Burbank, Glendale), Pasadena, the South Bay (Manhattan Beach, El Segundo), and Long Beach. Because care is delivered via telehealth with labs at local lab draw sites, you can start and stay on a protocol wherever in greater Los Angeles you live.",
+    },
+  ],
+
+  finalCtaHeading: "Ready to talk to a physician about peptide therapy in Los Angeles?",
+  finalCtaCopy:
+    "Book a free assessment. Telehealth visits for Los Angeles patients with physician-designed protocols, real labs at local draw sites, and ongoing monitoring.",
+  physicalClinic: false,
+  parkingTransit:
+    "No Los Angeles storefront. Care is delivered via telehealth to Los Angeles patients, with baseline and monitoring labs drawn at local lab draw sites across LA County.",
+  physicianAvailability:
+    "Strong Health physicians licensed in California see patients by appointment via telehealth, with lab orders sent to a local lab draw site near you.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes by video. We review history, goals, and current medications/supplements; baseline biomarker draws are ordered to a local lab draw site near you. Most patients are seen within 5 business days of booking.",
+  howItWorksTag: "How Peptide Therapy Works for Los Angeles Patients",
+  howItWorksHeadingIntro: "Telehealth visits. Local labs. Then",
+  howItWorksHeadingGold: "monitored care.",
+  physiciansSubtitleSuffix: "for Los Angeles patients.",
+  relatedServicesHeadingIntro: "One medical team.",
+  outboundCitations: [
+    { label: "BPC-157 in tendon and soft-tissue healing (review)", url: "https://pubmed.ncbi.nlm.nih.gov/30915550/" },
+    { label: "Thymosin beta-4 (TB-500) and tissue repair", url: "https://pubmed.ncbi.nlm.nih.gov/22894631/" },
+    { label: "Ipamorelin / CJC-1295 stimulation of GH release", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
+  ],
+};
+
+export const RALEIGH_PEPTIDE_CONFIG: CityPeptideConfig = {
+  statePrefix: "nc",
+  stateName: "North Carolina",
+  slug: "raleigh",
+  cityName: "Raleigh",
+  county: "Wake County",
+  clinicArea: "Raleigh service area",
+
+  clinic: {
+    name: "Strong Health Raleigh",
+    streetAddress: "",
+    city: "Raleigh",
+    state: "NC",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hoursWeekday: "Mon–Fri 8:00 AM – 6:00 PM",
+    hoursSaturday: "Sat 9:00 AM – 1:00 PM",
+    hoursWeekdayHours: { opens: "08:00", closes: "18:00" },
+    hoursSaturdayHours: { opens: "09:00", closes: "13:00" },
+    lat: 35.7796,
+    lng: -78.6382,
+  },
+
+  seoTitle: "Peptide Therapy in Raleigh, NC",
+  seoDescription:
+    "Physician-supervised peptide therapy for Raleigh patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local Triangle lab draws.",
+  lastReviewed: "2026-07-22",
+  jsonLdPageName: "Peptide Therapy in Raleigh, NC — Strong Health (Telehealth)",
+  jsonLdPageDescription:
+    "Physician-supervised peptide therapy for Raleigh and Research Triangle patients, delivered via telehealth with labs at local lab draw sites. Pharmacy-grade BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and collagen peptide protocols.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+
+  heroTag: "Raleigh Peptide Therapy · Telehealth for NC Patients",
+  reviewRating: "4.9",
+  reviewCount: "from 1,000+ Strong Health patient reviews",
+  aggregateReviewCount: 1000,
+  heroDescription1:
+    "Physician-supervised peptide protocols for Raleigh patients — BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and more. Telehealth visits with labs at local Triangle draw sites. Pharmacy-grade compounds. Real labs. Ongoing monitoring.",
+  heroDescription2:
+    "We design individualized peptide therapy protocols for healing, body composition, sleep, sexual health, and longevity — built around your bloodwork, not a generic stack. Telehealth evaluations with physicians licensed in North Carolina, with baseline and monitoring labs drawn at local lab draw sites across Raleigh, Cary, and the Triangle.",
+  heroCtaMeta:
+    "Telehealth physician visits · Local lab draw sites · No subscriptions",
+
+  introHeadingHtml:
+    "Why Raleigh men are switching to <gold>physician-supervised peptide therapy</gold>",
+  introParagraphs: [
+    "The Triangle is starting to fill up with places willing to sell you peptides — IV lounges in Glenwood South, wellness franchises out by Brier Creek, online stores shipping research-grade vials to your door. Peptide therapy done right is physician-led medicine. It starts with bloodwork, not a sales script.",
+    "Strong Health designs peptide protocols for Raleigh patients around individual labs and goals. Whether you're rehabbing a running injury from the Neuse River greenway, dropping the visceral belly fat that a decade at an RTP desk put on, sleeping through the night again, restoring desire and arousal, or maintaining the body composition you work hard for, we use specific peptides for specific clinical reasons — and we monitor the relevant labs throughout the protocol.",
+    "Strong Health is a real medical practice with board-certified physicians and pharmacy-compounded medications dispensed under physician orders. Raleigh patients are served via telehealth by physicians licensed in North Carolina, with baseline and monitoring labs drawn at local lab draw sites across Wake County and the Triangle. We don't sell supplement subscriptions. We don't push gray-market compounds. Every protocol is reviewed at scheduled intervals and adjusted based on how your body actually responds.",
+  ],
+
+  whyHeadingHtml:
+    "Peptide therapy in Raleigh, the way it should be <gold>prescribed and monitored</gold>",
+  whyParagraphs: [
+    "Raleigh is a research town — half our Triangle patients work in biotech, pharma, or tech and have already read the BPC-157 studies before they book. What they can't find locally is a program that combines board-certified physician oversight with real lab monitoring and pharmacy-grade compounds from licensed compounders, instead of a vial handed over after a 10-minute video call.",
+    "We built Strong Health's Raleigh telehealth program around the principle that peptide therapy is real medicine: contraindications need to be screened, doses need to be titrated, and labs need to be monitored — whether you're inside the Beltline, out in Cary or Apex, or up in Wake Forest. That's the standard.",
+  ],
+  whyStandardBullets: [
+    "Board-certified physicians licensed in North Carolina",
+    "Physician evaluation before any peptide is prescribed",
+    "Baseline and monitoring labs at local Triangle draw sites near you",
+    "Pharmacy-grade peptides from licensed 503A/503B compounders",
+    "Individualized protocols designed around your bloodwork",
+    "Scheduled lab monitoring throughout the protocol",
+    "Telehealth follow-ups that fit RTP commutes and on-call schedules",
+    "Saturday morning appointments for working professionals",
+    "Month-to-month treatment. No long-term contracts",
+  ],
+
+  steps: [
+    {
+      title: "Start with a telehealth consult with a North Carolina–licensed physician",
+      desc: "Your first visit is a video consult with a Strong Health physician licensed in North Carolina. You'll review your history, goals, prior treatments, and any musculoskeletal or hormonal concerns.",
+    },
+    {
+      title: "Baseline labs at a local Triangle draw site",
+      desc: "We order a baseline panel — hormones (testosterone, estradiol, IGF-1), metabolic markers, and any peptide-specific labs your protocol needs — to a local lab draw site near you in Raleigh, Cary, Apex, or anywhere in the Triangle.",
+    },
+    {
+      title: "Individualized protocol design",
+      desc: "Your physician selects the right peptide(s), dose, and timing based on your labs and goals. Compounded by a licensed 503A or 503B pharmacy under physician orders. Pharmacy-grade only.",
+    },
+    {
+      title: "Ongoing monitoring & telehealth follow-ups",
+      desc: "Follow-up labs and check-ins at 4–12 weeks depending on the peptide. Dose adjustments via telehealth, with repeat labs ordered to the same local draw site whenever monitoring is clinically needed.",
+    },
+  ],
+
+  physicians: [
+    {
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
+      credentials:
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Raleigh patients",
+      focus:
+        "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for Raleigh and Triangle patients, with telehealth visits and labs at local draw sites.",
+    },
+    {
+      name: "Strong Health Sports Medicine Team",
+      title: "Consulting Specialists, Raleigh",
+      credentials:
+        "Sports Medicine · Tendon & Soft-Tissue Injury Care · Recovery Optimization",
+      focus:
+        "Peptide-supported tendon, joint, and soft-tissue healing protocols for greenway runners, cyclists, CrossFitters, and weekend athletes across Raleigh, Cary, and the Triangle.",
+    },
+  ],
+
+  neighborhoods: [
+    "Downtown Raleigh", "North Hills", "Five Points", "Glenwood South",
+    "Cameron Village", "Inside the Beltline", "Brier Creek", "Midtown",
+    "Cary", "Apex", "Morrisville", "Wake Forest",
+    "Garner", "Holly Springs", "Fuquay-Varina", "Knightdale",
+    "Zebulon", "Clayton", "Durham", "Chapel Hill",
+  ],
+  neighborhoodAreaName: "the Triangle",
+  neighborhoodsSubtitle:
+    "Strong Health serves peptide therapy patients across Raleigh and the Research Triangle — from Downtown, North Hills, and Inside the Beltline to Cary, Apex, Wake Forest, Durham, and Chapel Hill — via telehealth, with lab draws at local lab draw sites near you.",
+
+  relatedServices: [
+    {
+      name: "Peptides for Tendon & Ligament Repair",
+      desc: "BPC-157 and TB-500 protocols for tendon, ligament, and soft-tissue repair — common in greenway running, cycling, and CrossFit injuries.",
+      href: "/peptides-for-tendon-repair/",
+      cta: "Tendon repair guide →",
+    },
+    {
+      name: "Peptides for Belly Fat",
+      desc: "Tesamorelin protocols target the visceral (belly) fat that years at an RTP desk put on — and diet alone won't budge.",
+      href: "/peptides-for-belly-fat/",
+      cta: "Peptides for belly fat →",
+    },
+    {
+      name: "Peptides for Sleep & Recovery",
+      desc: "DSIP and related protocols that support deep-sleep architecture and overnight recovery, designed around your labs.",
+      href: "/peptides-for-sleep/",
+      cta: "Peptides for sleep →",
+    },
+    {
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
+    },
+  ],
+  relatedServicesSubtitle:
+    "Many peptide patients combine therapy with hormone panels or body-composition programs — all designed and monitored by the same physician team.",
+
+  faqs: [
+    {
+      question: "Where can I get peptide therapy in Raleigh?",
+      answer:
+        "Strong Health serves Raleigh peptide-therapy patients by appointment via telehealth. Physician consultations happen by video with doctors licensed in North Carolina, and baseline and monitoring labs are drawn at local lab draw sites across Raleigh, Cary, and the greater Triangle. Call (754) 263-6026 to book a free assessment.",
+    },
+    {
+      question: "What peptides does Strong Health prescribe for Raleigh patients?",
+      answer:
+        "Our physicians prescribe pharmacy-grade peptides selected for the patient's specific goals and labs. The most commonly used protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat reduction; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin support. Every protocol is individualized — we don't use one-size-fits-all stacks.",
+    },
+    {
+      question: "Are peptides legal in North Carolina?",
+      answer:
+        "Yes, when prescribed by a physician licensed in North Carolina and dispensed through a licensed compounding pharmacy. Strong Health works only with 503A and 503B pharmacies under physician orders. We do not work with research-only or gray-market peptides. Every protocol uses pharmacy-grade product with full physician oversight, ongoing monitoring, and standard medical-record documentation.",
+    },
+    {
+      question: "How much does peptide therapy cost for Raleigh patients?",
+      answer:
+        "Your initial telehealth consult is free. Peptide protocols are month-to-month with transparent pricing — costs vary by peptide, dose, and duration. Most protocols include physician visits, monitoring labs, and pharmacy-compounded medication. We'll review the full cost of your specific protocol before you commit. We do not bill insurance directly, but we provide itemized superbills that many Triangle patients submit to plans like Blue Cross NC, UnitedHealthcare, Aetna, and Cigna for partial reimbursement.",
+    },
+    {
+      question: "How is peptide therapy different from TRT or GLP-1 weight loss medications?",
+      answer:
+        "Peptides are short chains of amino acids that act as targeted signaling molecules — they're distinct from steroid hormones like testosterone and from GLP-1 agonists like semaglutide and tirzepatide. Healing peptides (BPC-157, TB-500) work on tissue repair pathways with no androgenic effect. GH-secretagogue peptides (CJC-1295, Ipamorelin, Tesamorelin) prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern. Peptide therapy can be combined with TRT or GLP-1 weight-loss programs, and many Strong Health patients run integrated protocols designed and monitored by the same physician.",
+    },
+    {
+      question: "How long does it take to see results from peptide therapy?",
+      answer:
+        "Timing depends on the peptide and the goal. Sleep and recovery improvements (DSIP, Ipamorelin) are often noticeable within 2–4 weeks. Body-composition changes from CJC-1295/Ipamorelin or Tesamorelin typically appear at 8–12 weeks with more visible lean mass and fat-distribution shifts at 3–6 months. Tendon and joint healing protocols using BPC-157 or TB-500 generally run 4–12 weeks depending on tissue. PT-141 for sexual health works on demand, typically within 30–90 minutes of dosing. Every Strong Health protocol includes scheduled lab reassessments to confirm progress and adjust doses.",
+    },
+    {
+      question: "Can I start peptide therapy entirely by telehealth in Raleigh?",
+      answer:
+        "Yes. Raleigh patients start with a telehealth evaluation by a Strong Health physician licensed in North Carolina, including a full medical history and a detailed discussion of goals. Baseline labs are ordered to a local lab draw site near you before any peptide is prescribed, and follow-ups — dose adjustments, lab reviews, and renewal authorizations — are conducted via telehealth with repeat labs at the same draw site.",
+    },
+    {
+      question: "Can peptide therapy be combined with TRT for Raleigh patients?",
+      answer:
+        "Yes. Strong Health physicians frequently design combined protocols pairing testosterone replacement therapy with GH-secretagogue peptides like CJC-1295/Ipamorelin for body composition and recovery, or with BPC-157 for active patients managing sports-related soft-tissue injuries. Because both therapies are designed and monitored by the same physician using the same lab panels, dose interactions and overall response are tracked together rather than in silos.",
+    },
+    {
+      question: "Which Triangle cities and neighborhoods do you serve?",
+      answer:
+        "All of Wake County and the greater Research Triangle — Downtown Raleigh, North Hills, Five Points, Glenwood South, and Inside the Beltline, plus Cary, Apex, Morrisville, Wake Forest, Garner, Holly Springs, Fuquay-Varina, Knightdale, Zebulon, and Clayton, and neighboring Durham and Chapel Hill. Because care is delivered via telehealth with labs at local lab draw sites, you can start and stay on a protocol wherever in the Triangle you live.",
+    },
+  ],
+
+  finalCtaHeading: "Ready to talk to a physician about peptide therapy in Raleigh?",
+  finalCtaCopy:
+    "Book a free assessment. Telehealth visits for Raleigh and Triangle patients with physician-designed protocols, real labs at local draw sites, and ongoing monitoring.",
+  physicalClinic: false,
+  parkingTransit:
+    "No Raleigh storefront. Care is delivered via telehealth to Raleigh and Triangle patients, with baseline and monitoring labs drawn at local lab draw sites across Wake County.",
+  physicianAvailability:
+    "Strong Health physicians licensed in North Carolina see patients by appointment via telehealth, with lab orders sent to a local lab draw site near you in the Triangle.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes by video. We review history, goals, and current medications/supplements; baseline biomarker draws are ordered to a local lab draw site near you. Most patients are seen within 5 business days of booking.",
+  howItWorksTag: "How Peptide Therapy Works for Raleigh Patients",
+  howItWorksHeadingIntro: "Telehealth visits. Local labs. Then",
+  howItWorksHeadingGold: "monitored care.",
+  physiciansSubtitleSuffix: "for Raleigh patients.",
+  relatedServicesHeadingIntro: "One medical team.",
+  outboundCitations: [
+    { label: "BPC-157 in tendon and soft-tissue healing (review)", url: "https://pubmed.ncbi.nlm.nih.gov/30915550/" },
+    { label: "Thymosin beta-4 (TB-500) and tissue repair", url: "https://pubmed.ncbi.nlm.nih.gov/22894631/" },
+    { label: "Ipamorelin / CJC-1295 stimulation of GH release", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
+  ],
+};
+
+export const OKLAHOMA_CITY_PEPTIDE_CONFIG: CityPeptideConfig = {
+  statePrefix: "ok",
+  stateName: "Oklahoma",
+  slug: "oklahoma-city",
+  cityName: "Oklahoma City",
+  county: "Oklahoma County",
+  clinicArea: "Oklahoma City service area",
+
+  clinic: {
+    name: "Strong Health Oklahoma City",
+    streetAddress: "",
+    city: "Oklahoma City",
+    state: "OK",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hoursWeekday: "Mon–Fri 8:00 AM – 6:00 PM",
+    hoursSaturday: "Sat 9:00 AM – 1:00 PM",
+    hoursWeekdayHours: { opens: "08:00", closes: "18:00" },
+    hoursSaturdayHours: { opens: "09:00", closes: "13:00" },
+    lat: 35.4676,
+    lng: -97.5164,
+  },
+
+  seoTitle: "Peptide Therapy in Oklahoma City, OK",
+  seoDescription:
+    "Physician-supervised peptide therapy for Oklahoma City patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+  lastReviewed: "2026-07-22",
+  jsonLdPageName: "Peptide Therapy in Oklahoma City, OK — Strong Health (Telehealth)",
+  jsonLdPageDescription:
+    "Physician-supervised peptide therapy for Oklahoma City metro patients, delivered via telehealth with labs at local lab draw sites. Pharmacy-grade BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and collagen peptide protocols.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+
+  heroTag: "Oklahoma City Peptide Therapy · Telehealth for OK Patients",
+  reviewRating: "4.9",
+  reviewCount: "from 1,000+ Strong Health patient reviews",
+  aggregateReviewCount: 1000,
+  heroDescription1:
+    "Physician-supervised peptide protocols for Oklahoma City patients — BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and more. Telehealth visits with labs at local OKC draw sites. Pharmacy-grade compounds. Real labs. Ongoing monitoring.",
+  heroDescription2:
+    "We design individualized peptide therapy protocols for healing, body composition, sleep, sexual health, and longevity — built around your bloodwork, not a generic stack. Telehealth evaluations with physicians licensed in Oklahoma, with baseline and monitoring labs drawn at local lab draw sites across the OKC metro — from Edmond to Norman.",
+  heroCtaMeta:
+    "Telehealth physician visits · Local lab draw sites · No subscriptions",
+
+  introHeadingHtml:
+    "Why Oklahoma City men are switching to <gold>physician-supervised peptide therapy</gold>",
+  introParagraphs: [
+    "In Oklahoma City, getting serious about peptides used to mean flying to a coastal clinic, driving to Dallas, or ordering \"research-grade\" vials online and hoping for the best. None of that is medicine. Peptide therapy done right is physician-led care that starts with bloodwork, not a sales script.",
+    "Strong Health designs peptide protocols for Oklahoma City patients around individual labs and goals. Whether you're an energy-sector or trades worker whose shoulders and knees have taken twenty years of abuse, a Memorial Marathon runner rehabbing a tendon, a Tinker-area shift worker trying to sleep like a human again, or someone finally tackling the visceral belly fat that won't budge, we use specific peptides for specific clinical reasons — and we monitor the relevant labs throughout the protocol.",
+    "Strong Health is a real medical practice with board-certified physicians and pharmacy-compounded medications dispensed under physician orders. OKC metro patients are served via telehealth by physicians licensed in Oklahoma, with baseline and monitoring labs drawn at local lab draw sites close to home. We don't sell supplement subscriptions. We don't push gray-market compounds. Every protocol is reviewed at scheduled intervals and adjusted based on how your body actually responds.",
+  ],
+
+  whyHeadingHtml:
+    "Peptide therapy in Oklahoma City, the way it should be <gold>prescribed and monitored</gold>",
+  whyParagraphs: [
+    "The OKC metro has a growing number of med spas and IV lounges happy to hand you a vial, but very few options that combine board-certified physician oversight with real lab monitoring and pharmacy-grade compounds from licensed compounders. Most Oklahoma City patients we see have already tried an online \"clinic\" that shipped a peptide after a 10-minute video call with no labs at all.",
+    "We built Strong Health's Oklahoma City telehealth program around the principle that peptide therapy is real medicine: contraindications need to be screened, doses need to be titrated, and labs need to be monitored — whether you're in Nichols Hills, out in Edmond or Norman, or working a schedule that never matches clinic hours. That's the standard.",
+  ],
+  whyStandardBullets: [
+    "Board-certified physicians licensed in Oklahoma",
+    "Physician evaluation before any peptide is prescribed",
+    "Baseline and monitoring labs at local OKC draw sites near you",
+    "Pharmacy-grade peptides from licensed 503A/503B compounders",
+    "Individualized protocols designed around your bloodwork",
+    "Scheduled lab monitoring throughout the protocol",
+    "Telehealth follow-ups that fit oil-patch and shift-work schedules",
+    "Saturday morning appointments for working Oklahomans",
+    "Month-to-month treatment. No long-term contracts",
+  ],
+
+  steps: [
+    {
+      title: "Start with a telehealth consult with an Oklahoma–licensed physician",
+      desc: "Your first visit is a video consult with a Strong Health physician licensed in Oklahoma — no flight to a coastal clinic or drive to Dallas. You'll review your history, goals, prior treatments, and any musculoskeletal or hormonal concerns.",
+    },
+    {
+      title: "Baseline labs at a local OKC draw site",
+      desc: "We order a baseline panel — hormones (testosterone, estradiol, IGF-1), metabolic markers, and any peptide-specific labs your protocol needs — to a local lab draw site near you in OKC, Edmond, Norman, or anywhere in the metro.",
+    },
+    {
+      title: "Individualized protocol design",
+      desc: "Your physician selects the right peptide(s), dose, and timing based on your labs and goals. Compounded by a licensed 503A or 503B pharmacy under physician orders and shipped to your door. Pharmacy-grade only.",
+    },
+    {
+      title: "Ongoing monitoring & telehealth follow-ups",
+      desc: "Follow-up labs and check-ins at 4–12 weeks depending on the peptide. Dose adjustments via telehealth, with repeat labs ordered to the same local draw site whenever monitoring is clinically needed.",
+    },
+  ],
+
+  physicians: [
+    {
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
+      credentials:
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Oklahoma City patients",
+      focus:
+        "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for OKC metro patients, with telehealth visits and labs at local draw sites.",
+    },
+    {
+      name: "Strong Health Sports Medicine Team",
+      title: "Consulting Specialists, Oklahoma City",
+      credentials:
+        "Sports Medicine · Tendon & Soft-Tissue Injury Care · Recovery Optimization",
+      focus:
+        "Peptide-supported tendon, joint, and soft-tissue healing protocols for energy-sector and trades workers, Memorial Marathon runners, and weekend athletes across the OKC metro.",
+    },
+  ],
+
+  neighborhoods: [
+    "Downtown / Bricktown", "Midtown", "Plaza District", "Paseo Arts District",
+    "Automobile Alley", "Nichols Hills", "The Village", "Edmond",
+    "Deer Creek", "Yukon", "Mustang", "Bethany",
+    "Warr Acres", "Moore", "Norman", "Del City",
+    "Midwest City", "Choctaw", "Piedmont", "El Reno",
+  ],
+  neighborhoodAreaName: "the OKC metro",
+  neighborhoodsSubtitle:
+    "Strong Health serves peptide therapy patients across the Oklahoma City metro — from Downtown, Midtown, and Nichols Hills to Edmond, Yukon, Moore, Norman, and Midwest City — via telehealth, with lab draws at local lab draw sites near you.",
+
+  relatedServices: [
+    {
+      name: "Peptides for Healing & Recovery",
+      desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in oil-patch, trades, and ranch-work injuries.",
+      href: "/peptides-for-healing/",
+      cta: "BPC-157 healing guide →",
+    },
+    {
+      name: "Peptides for Belly Fat",
+      desc: "Tesamorelin protocols target the visceral (belly) fat that diet and hard work alone won't budge — a frequent goal for our mid-life OKC patients.",
+      href: "/peptides-for-belly-fat/",
+      cta: "Peptides for belly fat →",
+    },
+    {
+      name: "Peptides for Muscle Growth",
+      desc: "CJC-1295, Ipamorelin, and BPC-157 protocols that support lean mass and recovery, designed around your labs.",
+      href: "/peptides-for-muscle-growth/",
+      cta: "Peptides for muscle growth →",
+    },
+    {
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
+    },
+  ],
+  relatedServicesSubtitle:
+    "Many peptide patients combine therapy with hormone panels or body-composition programs — all designed and monitored by the same physician team.",
+
+  faqs: [
+    {
+      question: "Where can I get peptide therapy in Oklahoma City?",
+      answer:
+        "Strong Health serves Oklahoma City peptide-therapy patients by appointment via telehealth — no flight to a coastal clinic or drive to Dallas required. Physician consultations happen by video with doctors licensed in Oklahoma, and baseline and monitoring labs are drawn at local lab draw sites across the OKC metro, including Edmond, Norman, Moore, and Midwest City. Call (754) 263-6026 to book a free assessment.",
+    },
+    {
+      question: "What peptides does Strong Health prescribe for Oklahoma City patients?",
+      answer:
+        "Our physicians prescribe pharmacy-grade peptides selected for the patient's specific goals and labs. The most commonly used protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat reduction; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin support. Every protocol is individualized — we don't use one-size-fits-all stacks.",
+    },
+    {
+      question: "Are peptides legal in Oklahoma?",
+      answer:
+        "Yes, when prescribed by a physician licensed in Oklahoma and dispensed through a licensed compounding pharmacy. Strong Health works only with 503A and 503B pharmacies under physician orders. We do not work with research-only or gray-market peptides. Every protocol uses pharmacy-grade product with full physician oversight, ongoing monitoring, and standard medical-record documentation.",
+    },
+    {
+      question: "How much does peptide therapy cost for Oklahoma City patients?",
+      answer:
+        "Your initial telehealth consult is free. Peptide protocols are month-to-month with transparent pricing — costs vary by peptide, dose, and duration. Most protocols include physician visits, monitoring labs, and pharmacy-compounded medication. We'll review the full cost of your specific protocol before you commit. We do not bill insurance directly, but we provide itemized superbills that many Oklahoma patients submit to plans like Blue Cross Blue Shield of Oklahoma, HealthChoice, UnitedHealthcare, and Aetna for partial reimbursement.",
+    },
+    {
+      question: "How is peptide therapy different from TRT or GLP-1 weight loss medications?",
+      answer:
+        "Peptides are short chains of amino acids that act as targeted signaling molecules — they're distinct from steroid hormones like testosterone and from GLP-1 agonists like semaglutide and tirzepatide. Healing peptides (BPC-157, TB-500) work on tissue repair pathways with no androgenic effect. GH-secretagogue peptides (CJC-1295, Ipamorelin, Tesamorelin) prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern. Peptide therapy can be combined with TRT or GLP-1 weight-loss programs, and many Strong Health patients run integrated protocols designed and monitored by the same physician.",
+    },
+    {
+      question: "How long does it take to see results from peptide therapy?",
+      answer:
+        "Timing depends on the peptide and the goal. Sleep and recovery improvements (DSIP, Ipamorelin) are often noticeable within 2–4 weeks. Body-composition changes from CJC-1295/Ipamorelin or Tesamorelin typically appear at 8–12 weeks with more visible lean mass and fat-distribution shifts at 3–6 months. Tendon and joint healing protocols using BPC-157 or TB-500 generally run 4–12 weeks depending on tissue. PT-141 for sexual health works on demand, typically within 30–90 minutes of dosing. Every Strong Health protocol includes scheduled lab reassessments to confirm progress and adjust doses.",
+    },
+    {
+      question: "Can peptide therapy help with oil-field, trades, or ranch-work injuries?",
+      answer:
+        "It's one of the most common reasons Oklahoma patients come to us. Years of hard physical work take a toll on rotator cuffs, knees, elbows, and lower backs. BPC-157 and TB-500 protocols are designed to support tendon, ligament, and soft-tissue healing, and they're frequently paired with GH-secretagogue peptides for recovery and sleep. Every protocol is built around your labs and screened for contraindications first — it isn't a shortcut around proper orthopedic care, but a physician-monitored tool alongside it.",
+    },
+    {
+      question: "Can I start peptide therapy entirely by telehealth in Oklahoma City?",
+      answer:
+        "Yes. Oklahoma City patients start with a telehealth evaluation by a Strong Health physician licensed in Oklahoma, including a full medical history and a detailed discussion of goals. Baseline labs are ordered to a local lab draw site near you before any peptide is prescribed, and follow-ups — dose adjustments, lab reviews, and renewal authorizations — are conducted via telehealth with repeat labs at the same draw site.",
+    },
+    {
+      question: "Which OKC metro cities and neighborhoods do you serve?",
+      answer:
+        "The whole metro — Downtown and Bricktown, Midtown, the Plaza District, the Paseo, Automobile Alley, Nichols Hills, and The Village, plus Edmond, Deer Creek, Yukon, Mustang, Bethany, Warr Acres, Moore, Norman, Del City, Midwest City, Choctaw, Piedmont, and El Reno. Because care is delivered via telehealth with labs at local lab draw sites, you can start and stay on a protocol wherever in central Oklahoma you live.",
+    },
+  ],
+
+  finalCtaHeading: "Ready to talk to a physician about peptide therapy in Oklahoma City?",
+  finalCtaCopy:
+    "Book a free assessment. Telehealth visits for OKC metro patients with physician-designed protocols, real labs at local draw sites, and ongoing monitoring.",
+  physicalClinic: false,
+  parkingTransit:
+    "No Oklahoma City storefront. Care is delivered via telehealth to OKC metro patients, with baseline and monitoring labs drawn at local lab draw sites across the metro.",
+  physicianAvailability:
+    "Strong Health physicians licensed in Oklahoma see patients by appointment via telehealth, with lab orders sent to a local lab draw site near you in the OKC metro.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes by video. We review history, goals, and current medications/supplements; baseline biomarker draws are ordered to a local lab draw site near you. Most patients are seen within 5 business days of booking.",
+  howItWorksTag: "How Peptide Therapy Works for Oklahoma City Patients",
+  howItWorksHeadingIntro: "Telehealth visits. Local labs. Then",
+  howItWorksHeadingGold: "monitored care.",
+  physiciansSubtitleSuffix: "for Oklahoma City patients.",
+  relatedServicesHeadingIntro: "One medical team.",
+  outboundCitations: [
+    { label: "BPC-157 in tendon and soft-tissue healing (review)", url: "https://pubmed.ncbi.nlm.nih.gov/30915550/" },
+    { label: "Thymosin beta-4 (TB-500) and tissue repair", url: "https://pubmed.ncbi.nlm.nih.gov/22894631/" },
+    { label: "Ipamorelin / CJC-1295 stimulation of GH release", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
+  ],
+};
+
+export const BELLEVUE_PEPTIDE_CONFIG: CityPeptideConfig = {
+  statePrefix: "wa",
+  stateName: "Washington",
+  slug: "bellevue",
+  cityName: "Bellevue",
+  county: "King County",
+  clinicArea: "Bellevue service area",
+
+  clinic: {
+    name: "Strong Health Bellevue",
+    streetAddress: "",
+    city: "Bellevue",
+    state: "WA",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hoursWeekday: "Mon–Fri 8:00 AM – 6:00 PM",
+    hoursSaturday: "Sat 9:00 AM – 1:00 PM",
+    hoursWeekdayHours: { opens: "08:00", closes: "18:00" },
+    hoursSaturdayHours: { opens: "09:00", closes: "13:00" },
+    lat: 47.6101,
+    lng: -122.2015,
+  },
+
+  seoTitle: "Peptide Therapy in Bellevue, WA",
+  seoDescription:
+    "Physician-supervised peptide therapy for Bellevue patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local Eastside lab draws.",
+  lastReviewed: "2026-07-22",
+  jsonLdPageName: "Peptide Therapy in Bellevue, WA — Strong Health (Telehealth)",
+  jsonLdPageDescription:
+    "Physician-supervised peptide therapy for Bellevue and Eastside patients, delivered via telehealth with labs at local lab draw sites. Pharmacy-grade BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and collagen peptide protocols.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+
+  heroTag: "Bellevue Peptide Therapy · Telehealth for WA Patients",
+  reviewRating: "4.9",
+  reviewCount: "from 1,000+ Strong Health patient reviews",
+  aggregateReviewCount: 1000,
+  heroDescription1:
+    "Physician-supervised peptide protocols for Bellevue patients — BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and more. Telehealth visits with labs at local Eastside draw sites. Pharmacy-grade compounds. Real labs. Ongoing monitoring.",
+  heroDescription2:
+    "We design individualized peptide therapy protocols for healing, body composition, sleep, sexual health, and longevity — built around your bloodwork, not a generic stack. Telehealth evaluations with physicians licensed in Washington, with baseline and monitoring labs drawn at local lab draw sites across Bellevue and the Eastside.",
+  heroCtaMeta:
+    "Telehealth physician visits · Local lab draw sites · No subscriptions",
+
+  introHeadingHtml:
+    "Why Bellevue men are switching to <gold>physician-supervised peptide therapy</gold>",
+  introParagraphs: [
+    "The Eastside has no shortage of longevity buzz — biohacker forums at work, IV lounges in downtown Bellevue, online stores shipping \"research-grade\" vials to your door. Peptide therapy done right is physician-led medicine. It starts with bloodwork, not a sales script.",
+    "Strong Health designs peptide protocols for Bellevue patients around individual labs and goals. Whether you're rehabbing a Tiger Mountain trail injury or a ski-season knee from Snoqualmie, dropping the visceral belly fat that a decade of desk sprints put on, fixing sleep wrecked by on-call rotations, restoring desire and arousal, or maintaining the body composition you work hard for, we use specific peptides for specific clinical reasons — and we monitor the relevant labs throughout the protocol.",
+    "Strong Health is a real medical practice with board-certified physicians and pharmacy-compounded medications dispensed under physician orders. Bellevue and Eastside patients are served via telehealth by physicians licensed in Washington, with baseline and monitoring labs drawn at local lab draw sites near you. We don't sell supplement subscriptions. We don't push gray-market compounds. Every protocol is reviewed at scheduled intervals and adjusted based on how your body actually responds.",
+  ],
+
+  whyHeadingHtml:
+    "Peptide therapy in Bellevue, the way it should be <gold>prescribed and monitored</gold>",
+  whyParagraphs: [
+    "Bellevue patients tend to arrive with the spreadsheet already built — they've read the studies, compared the med spas, and noticed how few options combine board-certified physician oversight with real lab monitoring and pharmacy-grade compounds from licensed compounders. Most Eastside patients we see have already tried at least one place that handed them a vial after a 10-minute video call.",
+    "We built Strong Health's Bellevue telehealth program around the principle that peptide therapy is real medicine: contraindications need to be screened, doses need to be titrated, and labs need to be monitored — and the whole thing should fit between a morning standup and school pickup. That's the standard.",
+  ],
+  whyStandardBullets: [
+    "Board-certified physicians licensed in Washington",
+    "Physician evaluation before any peptide is prescribed",
+    "Baseline and monitoring labs at local Eastside draw sites near you",
+    "Pharmacy-grade peptides from licensed 503A/503B compounders",
+    "Individualized protocols designed around your bloodwork",
+    "Scheduled lab monitoring throughout the protocol",
+    "Telehealth follow-ups that fit back-to-back-meeting calendars",
+    "Saturday morning appointments for working professionals",
+    "Month-to-month treatment. No long-term contracts",
+  ],
+
+  steps: [
+    {
+      title: "Start with a telehealth consult with a Washington–licensed physician",
+      desc: "Your first visit is a video consult with a Strong Health physician licensed in Washington — it fits a workday calendar without a trip across 520 or I-90. You'll review your history, goals, prior treatments, and any musculoskeletal or hormonal concerns.",
+    },
+    {
+      title: "Baseline labs at a local Eastside draw site",
+      desc: "We order a baseline panel — hormones (testosterone, estradiol, IGF-1), metabolic markers, and any peptide-specific labs your protocol needs — to a local lab draw site near you in Bellevue, Redmond, Kirkland, or Issaquah.",
+    },
+    {
+      title: "Individualized protocol design",
+      desc: "Your physician selects the right peptide(s), dose, and timing based on your labs and goals. Compounded by a licensed 503A or 503B pharmacy under physician orders. Pharmacy-grade only.",
+    },
+    {
+      title: "Ongoing monitoring & telehealth follow-ups",
+      desc: "Follow-up labs and check-ins at 4–12 weeks depending on the peptide. Dose adjustments via telehealth, with repeat labs ordered to the same local draw site whenever monitoring is clinically needed.",
+    },
+  ],
+
+  physicians: [
+    {
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
+      credentials:
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Bellevue patients",
+      focus:
+        "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for Bellevue and Eastside patients, with telehealth visits and labs at local draw sites.",
+    },
+    {
+      name: "Strong Health Sports Medicine Team",
+      title: "Consulting Specialists, Bellevue",
+      credentials:
+        "Sports Medicine · Tendon & Soft-Tissue Injury Care · Recovery Optimization",
+      focus:
+        "Peptide-supported tendon, joint, and soft-tissue healing protocols for trail runners, skiers, cyclists, and gym athletes across Bellevue and the Eastside.",
+    },
+  ],
+
+  neighborhoods: [
+    "Downtown Bellevue", "West Bellevue", "Wilburton", "Bridle Trails",
+    "Crossroads", "Lake Hills", "Factoria", "Somerset",
+    "Newport Hills", "Eastgate", "Medina", "Clyde Hill",
+    "Mercer Island", "Kirkland", "Redmond", "Issaquah",
+    "Sammamish", "Newcastle", "Renton", "Woodinville",
+  ],
+  neighborhoodAreaName: "the Eastside",
+  neighborhoodsSubtitle:
+    "Strong Health serves peptide therapy patients across Bellevue and the Eastside — from Downtown, West Bellevue, and Somerset to Kirkland, Redmond, Issaquah, Sammamish, and Mercer Island — via telehealth, with lab draws at local lab draw sites near you.",
+
+  relatedServices: [
+    {
+      name: "Peptides for Sleep & Recovery",
+      desc: "DSIP and related protocols that support deep-sleep architecture and overnight recovery — for sleep wrecked by on-call rotations and late deploys.",
+      href: "/peptides-for-sleep/",
+      cta: "Peptides for sleep →",
+    },
+    {
+      name: "Peptides for Tendon & Ligament Repair",
+      desc: "BPC-157 and TB-500 protocols for tendon, ligament, and soft-tissue repair — common in trail-running, skiing, climbing, and lifting injuries.",
+      href: "/peptides-for-tendon-repair/",
+      cta: "Tendon repair guide →",
+    },
+    {
+      name: "Peptides for Anti-Aging & Longevity",
+      desc: "GH-secretagogue and longevity-focused protocols designed around your labs — the physician-led version of the longevity stack.",
+      href: "/peptides-for-anti-aging/",
+      cta: "Peptides for anti-aging →",
+    },
+    {
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
+    },
+  ],
+  relatedServicesSubtitle:
+    "Many peptide patients combine therapy with hormone panels or body-composition programs — all designed and monitored by the same physician team.",
+
+  faqs: [
+    {
+      question: "Where can I get peptide therapy in Bellevue?",
+      answer:
+        "Strong Health serves Bellevue peptide-therapy patients by appointment via telehealth. Physician consultations happen by video with doctors licensed in Washington, and baseline and monitoring labs are drawn at local lab draw sites across Bellevue and the Eastside — including Redmond, Kirkland, Issaquah, and Sammamish. Call (754) 263-6026 to book a free assessment.",
+    },
+    {
+      question: "What peptides does Strong Health prescribe for Bellevue patients?",
+      answer:
+        "Our physicians prescribe pharmacy-grade peptides selected for the patient's specific goals and labs. The most commonly used protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat reduction; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin support. Every protocol is individualized — we don't use one-size-fits-all stacks.",
+    },
+    {
+      question: "Are peptides legal in Washington?",
+      answer:
+        "Yes, when prescribed by a physician licensed in Washington and dispensed through a licensed compounding pharmacy. Strong Health works only with 503A and 503B pharmacies under physician orders. We do not work with research-only or gray-market peptides. Every protocol uses pharmacy-grade product with full physician oversight, ongoing monitoring, and standard medical-record documentation.",
+    },
+    {
+      question: "How much does peptide therapy cost for Bellevue patients?",
+      answer:
+        "Your initial telehealth consult is free. Peptide protocols are month-to-month with transparent pricing — costs vary by peptide, dose, and duration. Most protocols include physician visits, monitoring labs, and pharmacy-compounded medication. We'll review the full cost of your specific protocol before you commit. We do not bill insurance directly, but we provide itemized superbills that many Eastside patients submit to plans like Premera Blue Cross, Regence BlueShield, UnitedHealthcare, and Aetna for partial reimbursement.",
+    },
+    {
+      question: "How is peptide therapy different from TRT or GLP-1 weight loss medications?",
+      answer:
+        "Peptides are short chains of amino acids that act as targeted signaling molecules — they're distinct from steroid hormones like testosterone and from GLP-1 agonists like semaglutide and tirzepatide. Healing peptides (BPC-157, TB-500) work on tissue repair pathways with no androgenic effect. GH-secretagogue peptides (CJC-1295, Ipamorelin, Tesamorelin) prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern. Peptide therapy can be combined with TRT or GLP-1 weight-loss programs, and many Strong Health patients run integrated protocols designed and monitored by the same physician.",
+    },
+    {
+      question: "How long does it take to see results from peptide therapy?",
+      answer:
+        "Timing depends on the peptide and the goal. Sleep and recovery improvements (DSIP, Ipamorelin) are often noticeable within 2–4 weeks. Body-composition changes from CJC-1295/Ipamorelin or Tesamorelin typically appear at 8–12 weeks with more visible lean mass and fat-distribution shifts at 3–6 months. Tendon and joint healing protocols using BPC-157 or TB-500 generally run 4–12 weeks depending on tissue. PT-141 for sexual health works on demand, typically within 30–90 minutes of dosing. Every Strong Health protocol includes scheduled lab reassessments to confirm progress and adjust doses.",
+    },
+    {
+      question: "Does peptide therapy fit a tech work schedule?",
+      answer:
+        "That's exactly why our Bellevue program is telehealth-first. Physician visits happen by video and fit between meetings, lab draws are quick stops at a local Eastside draw site you choose, and compounded medication ships to your door. Follow-ups — dose adjustments, lab reviews, renewals — are handled by video too, with Saturday morning slots available when the workweek is fully booked.",
+    },
+    {
+      question: "Can I start peptide therapy entirely by telehealth in Bellevue?",
+      answer:
+        "Yes. Bellevue patients start with a telehealth evaluation by a Strong Health physician licensed in Washington, including a full medical history and a detailed discussion of goals. Baseline labs are ordered to a local lab draw site near you before any peptide is prescribed, and follow-ups — dose adjustments, lab reviews, and renewal authorizations — are conducted via telehealth with repeat labs at the same draw site.",
+    },
+    {
+      question: "Which Eastside cities and neighborhoods do you serve?",
+      answer:
+        "All of Bellevue — Downtown, West Bellevue, Wilburton, Bridle Trails, Crossroads, Lake Hills, Factoria, Somerset, Newport Hills, and Eastgate — plus Medina, Clyde Hill, Mercer Island, Kirkland, Redmond, Issaquah, Sammamish, Newcastle, Renton, and Woodinville. Because care is delivered via telehealth with labs at local lab draw sites, you can start and stay on a protocol wherever on the Eastside you live.",
+    },
+  ],
+
+  finalCtaHeading: "Ready to talk to a physician about peptide therapy in Bellevue?",
+  finalCtaCopy:
+    "Book a free assessment. Telehealth visits for Bellevue and Eastside patients with physician-designed protocols, real labs at local draw sites, and ongoing monitoring.",
+  physicalClinic: false,
+  parkingTransit:
+    "No Bellevue storefront. Care is delivered via telehealth to Bellevue and Eastside patients, with baseline and monitoring labs drawn at local lab draw sites near you.",
+  physicianAvailability:
+    "Strong Health physicians licensed in Washington see patients by appointment via telehealth, with lab orders sent to a local lab draw site near you on the Eastside.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes by video. We review history, goals, and current medications/supplements; baseline biomarker draws are ordered to a local lab draw site near you. Most patients are seen within 5 business days of booking.",
+  howItWorksTag: "How Peptide Therapy Works for Bellevue Patients",
+  howItWorksHeadingIntro: "Telehealth visits. Local labs. Then",
+  howItWorksHeadingGold: "monitored care.",
+  physiciansSubtitleSuffix: "for Bellevue patients.",
+  relatedServicesHeadingIntro: "One medical team.",
+  outboundCitations: [
+    { label: "BPC-157 in tendon and soft-tissue healing (review)", url: "https://pubmed.ncbi.nlm.nih.gov/30915550/" },
+    { label: "Thymosin beta-4 (TB-500) and tissue repair", url: "https://pubmed.ncbi.nlm.nih.gov/22894631/" },
+    { label: "Ipamorelin / CJC-1295 stimulation of GH release", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
+  ],
+};
+
+export const SALT_LAKE_CITY_PEPTIDE_CONFIG: CityPeptideConfig = {
+  statePrefix: "ut",
+  stateName: "Utah",
+  slug: "salt-lake-city",
+  cityName: "Salt Lake City",
+  county: "Salt Lake County",
+  clinicArea: "Salt Lake City service area",
+
+  clinic: {
+    name: "Strong Health Salt Lake City",
+    streetAddress: "",
+    city: "Salt Lake City",
+    state: "UT",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hoursWeekday: "Mon–Fri 8:00 AM – 6:00 PM",
+    hoursSaturday: "Sat 9:00 AM – 1:00 PM",
+    hoursWeekdayHours: { opens: "08:00", closes: "18:00" },
+    hoursSaturdayHours: { opens: "09:00", closes: "13:00" },
+    lat: 40.7608,
+    lng: -111.891,
+  },
+
+  seoTitle: "Peptide Therapy in Salt Lake City, UT",
+  seoDescription:
+    "Physician-supervised peptide therapy for Salt Lake City patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+  lastReviewed: "2026-07-22",
+  jsonLdPageName: "Peptide Therapy in Salt Lake City, UT — Strong Health (Telehealth)",
+  jsonLdPageDescription:
+    "Physician-supervised peptide therapy for Salt Lake City and Wasatch Front patients, delivered via telehealth with labs at local lab draw sites. Pharmacy-grade BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and collagen peptide protocols.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+
+  heroTag: "Salt Lake City Peptide Therapy · Telehealth for UT Patients",
+  reviewRating: "4.9",
+  reviewCount: "from 1,000+ Strong Health patient reviews",
+  aggregateReviewCount: 1000,
+  heroDescription1:
+    "Physician-supervised peptide protocols for Salt Lake City patients — BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and more. Telehealth visits with labs at local Wasatch Front draw sites. Pharmacy-grade compounds. Real labs. Ongoing monitoring.",
+  heroDescription2:
+    "We design individualized peptide therapy protocols for healing, body composition, sleep, sexual health, and longevity — built around your bloodwork, not a generic stack. Telehealth evaluations with physicians licensed in Utah, with baseline and monitoring labs drawn at local lab draw sites from Downtown and Sugar House to Sandy, Draper, and Lehi.",
+  heroCtaMeta:
+    "Telehealth physician visits · Local lab draw sites · No subscriptions",
+
+  introHeadingHtml:
+    "Why Salt Lake City men are switching to <gold>physician-supervised peptide therapy</gold>",
+  introParagraphs: [
+    "Salt Lake sits at the center of one of the most active outdoor cultures in America — and a growing gray market of IV lounges, med spas, and online stores selling \"research-grade\" peptide vials to skiers and lifters who deserve better. Peptide therapy done right is physician-led medicine. It starts with bloodwork, not a sales script.",
+    "Strong Health designs peptide protocols for Salt Lake City patients around individual labs and goals. Whether you're rehabbing a knee from a Cottonwoods ski season, nursing a climbing or trail-running tendon back to health, dropping the visceral belly fat a Silicon Slopes desk job put on, sleeping through the night again, or maintaining the body composition you work hard for, we use specific peptides for specific clinical reasons — and we monitor the relevant labs throughout the protocol.",
+    "Strong Health is a real medical practice with board-certified physicians and pharmacy-compounded medications dispensed under physician orders. Salt Lake and Wasatch Front patients are served via telehealth by physicians licensed in Utah, with baseline and monitoring labs drawn at local lab draw sites close to home. We don't sell supplement subscriptions. We don't push gray-market compounds. Every protocol is reviewed at scheduled intervals and adjusted based on how your body actually responds.",
+  ],
+
+  whyHeadingHtml:
+    "Peptide therapy in Salt Lake City, the way it should be <gold>prescribed and monitored</gold>",
+  whyParagraphs: [
+    "From ski-town wellness bars to supplement-heavy gym culture, the Wasatch Front has plenty of places selling recovery — but very few that combine board-certified physician oversight with real lab monitoring and pharmacy-grade compounds from licensed compounders. Most Salt Lake patients we see have already tried at least one place that handed them a vial after a 10-minute video call.",
+    "We built Strong Health's Salt Lake City telehealth program around the principle that peptide therapy is real medicine: contraindications need to be screened, doses need to be titrated, and labs need to be monitored — whether you're in Sugar House, up in the Avenues, or south in Sandy, Draper, or Lehi. That's the standard.",
+  ],
+  whyStandardBullets: [
+    "Board-certified physicians licensed in Utah",
+    "Physician evaluation before any peptide is prescribed",
+    "Baseline and monitoring labs at local Wasatch Front draw sites",
+    "Pharmacy-grade peptides from licensed 503A/503B compounders",
+    "Individualized protocols designed around your bloodwork",
+    "Scheduled lab monitoring throughout the protocol",
+    "Telehealth follow-ups that fit powder days and Silicon Slopes hours",
+    "Saturday morning appointments for working professionals",
+    "Month-to-month treatment. No long-term contracts",
+  ],
+
+  steps: [
+    {
+      title: "Start with a telehealth consult with a Utah–licensed physician",
+      desc: "Your first visit is a video consult with a Strong Health physician licensed in Utah. You'll review your history, goals, prior treatments, and any musculoskeletal or hormonal concerns.",
+    },
+    {
+      title: "Baseline labs at a local Wasatch Front draw site",
+      desc: "We order a baseline panel — hormones (testosterone, estradiol, IGF-1), metabolic markers, and any peptide-specific labs your protocol needs — to a local lab draw site near you, from Salt Lake proper to Sandy, Draper, and Lehi.",
+    },
+    {
+      title: "Individualized protocol design",
+      desc: "Your physician selects the right peptide(s), dose, and timing based on your labs and goals. Compounded by a licensed 503A or 503B pharmacy under physician orders. Pharmacy-grade only.",
+    },
+    {
+      title: "Ongoing monitoring & telehealth follow-ups",
+      desc: "Follow-up labs and check-ins at 4–12 weeks depending on the peptide. Dose adjustments via telehealth, with repeat labs ordered to the same local draw site whenever monitoring is clinically needed.",
+    },
+  ],
+
+  physicians: [
+    {
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
+      credentials:
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Salt Lake City patients",
+      focus:
+        "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for Salt Lake and Wasatch Front patients, with telehealth visits and labs at local draw sites.",
+    },
+    {
+      name: "Strong Health Sports Medicine Team",
+      title: "Consulting Specialists, Salt Lake City",
+      credentials:
+        "Sports Medicine · Tendon & Soft-Tissue Injury Care · Recovery Optimization",
+      focus:
+        "Peptide-supported tendon, joint, and soft-tissue healing protocols for skiers, climbers, trail runners, and mountain bikers across the Wasatch Front.",
+    },
+  ],
+
+  neighborhoods: [
+    "Downtown", "Sugar House", "The Avenues", "Capitol Hill",
+    "9th & 9th", "Liberty Wells", "Federal Heights", "Rose Park",
+    "Millcreek", "Holladay", "Cottonwood Heights", "Murray",
+    "Sandy", "Draper", "South Jordan", "West Jordan",
+    "Lehi", "Bountiful", "Park City", "Ogden",
+  ],
+  neighborhoodAreaName: "the Wasatch Front",
+  neighborhoodsSubtitle:
+    "Strong Health serves peptide therapy patients across the Wasatch Front — from Downtown, Sugar House, and the Avenues to Cottonwood Heights, Sandy, Draper, Lehi, Park City, and Ogden — via telehealth, with lab draws at local lab draw sites near you.",
+
+  relatedServices: [
+    {
+      name: "Peptides for Tendon & Ligament Repair",
+      desc: "BPC-157 and TB-500 protocols for tendon, ligament, and soft-tissue repair — common in ski, climbing, and trail-running injuries.",
+      href: "/peptides-for-tendon-repair/",
+      cta: "Tendon repair guide →",
+    },
+    {
+      name: "Peptides for Healing & Recovery",
+      desc: "Tissue-repair protocols that support recovery between ski seasons, race blocks, and climbing trips — designed around your labs.",
+      href: "/peptides-for-healing/",
+      cta: "BPC-157 healing guide →",
+    },
+    {
+      name: "Peptides for Sleep & Recovery",
+      desc: "DSIP and related protocols that support deep-sleep architecture and overnight recovery, designed around your labs.",
+      href: "/peptides-for-sleep/",
+      cta: "Peptides for sleep →",
+    },
+    {
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
+    },
+  ],
+  relatedServicesSubtitle:
+    "Many peptide patients combine therapy with hormone panels or body-composition programs — all designed and monitored by the same physician team.",
+
+  faqs: [
+    {
+      question: "Where can I get peptide therapy in Salt Lake City?",
+      answer:
+        "Strong Health serves Salt Lake City peptide-therapy patients by appointment via telehealth. Physician consultations happen by video with doctors licensed in Utah, and baseline and monitoring labs are drawn at local lab draw sites across the Wasatch Front — from Salt Lake proper to Sandy, Draper, Lehi, and Ogden. Call (754) 263-6026 to book a free assessment.",
+    },
+    {
+      question: "What peptides does Strong Health prescribe for Salt Lake City patients?",
+      answer:
+        "Our physicians prescribe pharmacy-grade peptides selected for the patient's specific goals and labs. The most commonly used protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat reduction; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin support. Every protocol is individualized — we don't use one-size-fits-all stacks.",
+    },
+    {
+      question: "Are peptides legal in Utah?",
+      answer:
+        "Yes, when prescribed by a physician licensed in Utah and dispensed through a licensed compounding pharmacy. Strong Health works only with 503A and 503B pharmacies under physician orders. We do not work with research-only or gray-market peptides. Every protocol uses pharmacy-grade product with full physician oversight, ongoing monitoring, and standard medical-record documentation.",
+    },
+    {
+      question: "How much does peptide therapy cost for Salt Lake City patients?",
+      answer:
+        "Your initial telehealth consult is free. Peptide protocols are month-to-month with transparent pricing — costs vary by peptide, dose, and duration. Most protocols include physician visits, monitoring labs, and pharmacy-compounded medication. We'll review the full cost of your specific protocol before you commit. We do not bill insurance directly, but we provide itemized superbills that many Utah patients submit to plans like SelectHealth, Regence BlueCross BlueShield of Utah, UnitedHealthcare, and Cigna for partial reimbursement.",
+    },
+    {
+      question: "How is peptide therapy different from TRT or GLP-1 weight loss medications?",
+      answer:
+        "Peptides are short chains of amino acids that act as targeted signaling molecules — they're distinct from steroid hormones like testosterone and from GLP-1 agonists like semaglutide and tirzepatide. Healing peptides (BPC-157, TB-500) work on tissue repair pathways with no androgenic effect. GH-secretagogue peptides (CJC-1295, Ipamorelin, Tesamorelin) prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern. Peptide therapy can be combined with TRT or GLP-1 weight-loss programs, and many Strong Health patients run integrated protocols designed and monitored by the same physician.",
+    },
+    {
+      question: "How long does it take to see results from peptide therapy?",
+      answer:
+        "Timing depends on the peptide and the goal. Sleep and recovery improvements (DSIP, Ipamorelin) are often noticeable within 2–4 weeks. Body-composition changes from CJC-1295/Ipamorelin or Tesamorelin typically appear at 8–12 weeks with more visible lean mass and fat-distribution shifts at 3–6 months. Tendon and joint healing protocols using BPC-157 or TB-500 generally run 4–12 weeks depending on tissue. PT-141 for sexual health works on demand, typically within 30–90 minutes of dosing. Every Strong Health protocol includes scheduled lab reassessments to confirm progress and adjust doses.",
+    },
+    {
+      question: "Can peptide therapy help me recover from ski and climbing injuries?",
+      answer:
+        "It's the most common reason Wasatch Front patients come to us. Knees, shoulders, and elbows take a beating between ski seasons, climbing trips, and trail-running blocks. BPC-157 and TB-500 protocols are designed to support tendon, ligament, and soft-tissue healing, and they're frequently paired with GH-secretagogue peptides for recovery and sleep. Every protocol is built around your labs and screened for contraindications first — it isn't a shortcut around proper orthopedic care, but a physician-monitored tool alongside it.",
+    },
+    {
+      question: "Can I start peptide therapy entirely by telehealth in Salt Lake City?",
+      answer:
+        "Yes. Salt Lake City patients start with a telehealth evaluation by a Strong Health physician licensed in Utah, including a full medical history and a detailed discussion of goals. Baseline labs are ordered to a local lab draw site near you before any peptide is prescribed, and follow-ups — dose adjustments, lab reviews, and renewal authorizations — are conducted via telehealth with repeat labs at the same draw site.",
+    },
+    {
+      question: "Which Wasatch Front cities and neighborhoods do you serve?",
+      answer:
+        "All of Salt Lake County and the broader Wasatch Front — Downtown, Sugar House, the Avenues, Capitol Hill, 9th & 9th, Liberty Wells, and Rose Park, plus Millcreek, Holladay, Cottonwood Heights, Murray, Sandy, Draper, South Jordan, and West Jordan, and out to Lehi, Bountiful, Park City, and Ogden. Because care is delivered via telehealth with labs at local lab draw sites, you can start and stay on a protocol wherever along the Wasatch you live.",
+    },
+  ],
+
+  finalCtaHeading: "Ready to talk to a physician about peptide therapy in Salt Lake City?",
+  finalCtaCopy:
+    "Book a free assessment. Telehealth visits for Salt Lake and Wasatch Front patients with physician-designed protocols, real labs at local draw sites, and ongoing monitoring.",
+  physicalClinic: false,
+  parkingTransit:
+    "No Salt Lake City storefront. Care is delivered via telehealth to Wasatch Front patients, with baseline and monitoring labs drawn at local lab draw sites close to home.",
+  physicianAvailability:
+    "Strong Health physicians licensed in Utah see patients by appointment via telehealth, with lab orders sent to a local lab draw site near you on the Wasatch Front.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes by video. We review history, goals, and current medications/supplements; baseline biomarker draws are ordered to a local lab draw site near you. Most patients are seen within 5 business days of booking.",
+  howItWorksTag: "How Peptide Therapy Works for Salt Lake City Patients",
+  howItWorksHeadingIntro: "Telehealth visits. Local labs. Then",
+  howItWorksHeadingGold: "monitored care.",
+  physiciansSubtitleSuffix: "for Salt Lake City patients.",
+  relatedServicesHeadingIntro: "One medical team.",
+  outboundCitations: [
+    { label: "BPC-157 in tendon and soft-tissue healing (review)", url: "https://pubmed.ncbi.nlm.nih.gov/30915550/" },
+    { label: "Thymosin beta-4 (TB-500) and tissue repair", url: "https://pubmed.ncbi.nlm.nih.gov/22894631/" },
+    { label: "Ipamorelin / CJC-1295 stimulation of GH release", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
+  ],
+};
+
+export const KANSAS_CITY_PEPTIDE_CONFIG: CityPeptideConfig = {
+  statePrefix: "mo",
+  stateName: "Missouri",
+  slug: "kansas-city",
+  cityName: "Kansas City",
+  county: "Jackson County",
+  clinicArea: "Kansas City service area",
+
+  clinic: {
+    name: "Strong Health Kansas City",
+    streetAddress: "",
+    city: "Kansas City",
+    state: "MO",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hoursWeekday: "Mon–Fri 8:00 AM – 6:00 PM",
+    hoursSaturday: "Sat 9:00 AM – 1:00 PM",
+    hoursWeekdayHours: { opens: "08:00", closes: "18:00" },
+    hoursSaturdayHours: { opens: "09:00", closes: "13:00" },
+    lat: 39.0997,
+    lng: -94.5786,
+  },
+
+  seoTitle: "Peptide Therapy in Kansas City, MO",
+  seoDescription:
+    "Physician-supervised peptide therapy for Kansas City patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+  lastReviewed: "2026-07-22",
+  jsonLdPageName: "Peptide Therapy in Kansas City, MO — Strong Health (Telehealth)",
+  jsonLdPageDescription:
+    "Physician-supervised peptide therapy for Kansas City metro patients, delivered via telehealth with labs at local lab draw sites. Pharmacy-grade BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and collagen peptide protocols.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+
+  heroTag: "Kansas City Peptide Therapy · Telehealth for KC Metro Patients",
+  reviewRating: "4.9",
+  reviewCount: "from 1,000+ Strong Health patient reviews",
+  aggregateReviewCount: 1000,
+  heroDescription1:
+    "Physician-supervised peptide protocols for Kansas City patients — BPC-157, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and more. Telehealth visits with labs at local KC draw sites. Pharmacy-grade compounds. Real labs. Ongoing monitoring.",
+  heroDescription2:
+    "We design individualized peptide therapy protocols for healing, body composition, sleep, sexual health, and longevity — built around your bloodwork, not a generic stack. Telehealth evaluations with physicians licensed in your state, with baseline and monitoring labs drawn at local lab draw sites on both sides of the state line.",
+  heroCtaMeta:
+    "Telehealth physician visits · Local lab draw sites · No subscriptions",
+
+  introHeadingHtml:
+    "Why Kansas City men are switching to <gold>physician-supervised peptide therapy</gold>",
+  introParagraphs: [
+    "Kansas City's peptide options have mostly been med spas on the Plaza, IV lounges in Westport, and online stores shipping \"research-grade\" vials to your door — plenty of places to buy, very few practicing actual medicine. Peptide therapy done right is physician-led care that starts with bloodwork, not a sales script.",
+    "Strong Health designs peptide protocols for Kansas City patients around individual labs and goals. Whether you're a trades or warehouse worker whose shoulders and knees have taken twenty years of abuse, a runner rehabbing a tendon after Hospital Hill, a shift worker trying to sleep like a human again, or someone finally tackling the visceral belly fat that won't budge, we use specific peptides for specific clinical reasons — and we monitor the relevant labs throughout the protocol.",
+    "Strong Health is a real medical practice with board-certified physicians and pharmacy-compounded medications dispensed under physician orders. KC metro patients are served via telehealth by physicians licensed in their state, with baseline and monitoring labs drawn at local lab draw sites on both sides of the state line. We don't sell supplement subscriptions. We don't push gray-market compounds. Every protocol is reviewed at scheduled intervals and adjusted based on how your body actually responds.",
+  ],
+
+  whyHeadingHtml:
+    "Peptide therapy in Kansas City, the way it should be <gold>prescribed and monitored</gold>",
+  whyParagraphs: [
+    "From Plaza med spas to Westport recovery lounges, the KC metro has a growing number of places offering peptides — but very few that combine board-certified physician oversight with real lab monitoring and pharmacy-grade compounds from licensed compounders. Most Kansas City patients we see have already tried at least one place that handed them a vial after a 10-minute video call.",
+    "We built Strong Health's Kansas City telehealth program around the principle that peptide therapy is real medicine: contraindications need to be screened, doses need to be titrated, and labs need to be monitored — whether you're in Brookside, out in Lee's Summit or Liberty, or across the line in Overland Park. That's the standard.",
+  ],
+  whyStandardBullets: [
+    "Board-certified physicians licensed in your state",
+    "Physician evaluation before any peptide is prescribed",
+    "Baseline and monitoring labs at local KC draw sites near you",
+    "Pharmacy-grade peptides from licensed 503A/503B compounders",
+    "Individualized protocols designed around your bloodwork",
+    "Scheduled lab monitoring throughout the protocol",
+    "Telehealth follow-ups that fit trades, hospital, and office schedules",
+    "Saturday morning appointments for working professionals",
+    "Month-to-month treatment. No long-term contracts",
+  ],
+
+  steps: [
+    {
+      title: "Start with a telehealth consult with a physician licensed in your state",
+      desc: "Your first visit is a video consult with a Strong Health physician licensed in Missouri — or in Kansas if you live on that side of the line. You'll review your history, goals, prior treatments, and any musculoskeletal or hormonal concerns.",
+    },
+    {
+      title: "Baseline labs at a local KC draw site",
+      desc: "We order a baseline panel — hormones (testosterone, estradiol, IGF-1), metabolic markers, and any peptide-specific labs your protocol needs — to a local lab draw site near you, anywhere in the metro from North Kansas City to Overland Park.",
+    },
+    {
+      title: "Individualized protocol design",
+      desc: "Your physician selects the right peptide(s), dose, and timing based on your labs and goals. Compounded by a licensed 503A or 503B pharmacy under physician orders and shipped to your door. Pharmacy-grade only.",
+    },
+    {
+      title: "Ongoing monitoring & telehealth follow-ups",
+      desc: "Follow-up labs and check-ins at 4–12 weeks depending on the peptide. Dose adjustments via telehealth, with repeat labs ordered to the same local draw site whenever monitoring is clinically needed.",
+    },
+  ],
+
+  physicians: [
+    {
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
+      credentials:
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Kansas City patients",
+      focus:
+        "Individualized BPC-157, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols for KC metro patients, with telehealth visits and labs at local draw sites.",
+    },
+    {
+      name: "Strong Health Sports Medicine Team",
+      title: "Consulting Specialists, Kansas City",
+      credentials:
+        "Sports Medicine · Tendon & Soft-Tissue Injury Care · Recovery Optimization",
+      focus:
+        "Peptide-supported tendon, joint, and soft-tissue healing protocols for trades workers, runners, lifters, and weekend athletes across the KC metro.",
+    },
+  ],
+
+  neighborhoods: [
+    "Downtown / Power & Light", "River Market", "Crossroads", "Westport",
+    "Country Club Plaza", "Brookside", "Waldo", "Midtown",
+    "North Kansas City", "Gladstone", "Liberty", "Parkville",
+    "Lee's Summit", "Independence", "Blue Springs", "Raytown",
+    "Overland Park", "Leawood", "Olathe", "Shawnee",
+  ],
+  neighborhoodAreaName: "the KC metro",
+  neighborhoodsSubtitle:
+    "Strong Health serves peptide therapy patients across the Kansas City metro — from Downtown, the Crossroads, and Brookside to the Northland, Lee's Summit, Independence, and the Johnson County side of the state line — via telehealth, with lab draws at local lab draw sites near you.",
+
+  relatedServices: [
+    {
+      name: "Peptides for Healing & Recovery",
+      desc: "BPC-157 and TB-500 protocols for tendon, ligament, joint, and soft-tissue healing — common in trades work, running, and lifting injuries.",
+      href: "/peptides-for-healing/",
+      cta: "BPC-157 healing guide →",
+    },
+    {
+      name: "Peptides for Belly Fat",
+      desc: "Tesamorelin protocols target the visceral (belly) fat that Kansas City barbecue and desk years put on — and diet alone won't budge.",
+      href: "/peptides-for-belly-fat/",
+      cta: "Peptides for belly fat →",
+    },
+    {
+      name: "Peptides for Arthritis & Joint Pain",
+      desc: "BPC-157 and collagen peptide protocols for joint inflammation and connective-tissue support, designed around your labs.",
+      href: "/peptides-for-arthritis/",
+      cta: "Peptides for arthritis →",
+    },
+    {
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
+    },
+  ],
+  relatedServicesSubtitle:
+    "Many peptide patients combine therapy with hormone panels or body-composition programs — all designed and monitored by the same physician team.",
+
+  faqs: [
+    {
+      question: "Where can I get peptide therapy in Kansas City?",
+      answer:
+        "Strong Health serves Kansas City peptide-therapy patients by appointment via telehealth. Physician consultations happen by video with doctors licensed in your state, and baseline and monitoring labs are drawn at local lab draw sites across the metro — from Downtown and Brookside to the Northland, Lee's Summit, Independence, and Johnson County. Call (754) 263-6026 to book a free assessment.",
+    },
+    {
+      question: "What peptides does Strong Health prescribe for Kansas City patients?",
+      answer:
+        "Our physicians prescribe pharmacy-grade peptides selected for the patient's specific goals and labs. The most commonly used protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat reduction; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin support. Every protocol is individualized — we don't use one-size-fits-all stacks.",
+    },
+    {
+      question: "Are peptides legal in Missouri?",
+      answer:
+        "Yes, when prescribed by a physician licensed in Missouri and dispensed through a licensed compounding pharmacy. Strong Health works only with 503A and 503B pharmacies under physician orders. We do not work with research-only or gray-market peptides. Every protocol uses pharmacy-grade product with full physician oversight, ongoing monitoring, and standard medical-record documentation.",
+    },
+    {
+      question: "I live on the Kansas side of the metro — can I still use Strong Health?",
+      answer:
+        "Yes. Telehealth care is matched to where you live: Missouri-side patients see physicians licensed in Missouri, and patients in Overland Park, Leawood, Olathe, Shawnee, and the rest of Johnson and Wyandotte counties are seen by physicians licensed in Kansas. Lab draw sites are available on both sides of the state line, so the experience is the same wherever in the metro you are.",
+    },
+    {
+      question: "How much does peptide therapy cost for Kansas City patients?",
+      answer:
+        "Your initial telehealth consult is free. Peptide protocols are month-to-month with transparent pricing — costs vary by peptide, dose, and duration. Most protocols include physician visits, monitoring labs, and pharmacy-compounded medication. We'll review the full cost of your specific protocol before you commit. We do not bill insurance directly, but we provide itemized superbills that many KC patients submit to plans like Blue KC, UnitedHealthcare, Aetna, and Cigna for partial reimbursement.",
+    },
+    {
+      question: "How is peptide therapy different from TRT or GLP-1 weight loss medications?",
+      answer:
+        "Peptides are short chains of amino acids that act as targeted signaling molecules — they're distinct from steroid hormones like testosterone and from GLP-1 agonists like semaglutide and tirzepatide. Healing peptides (BPC-157, TB-500) work on tissue repair pathways with no androgenic effect. GH-secretagogue peptides (CJC-1295, Ipamorelin, Tesamorelin) prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern. Peptide therapy can be combined with TRT or GLP-1 weight-loss programs, and many Strong Health patients run integrated protocols designed and monitored by the same physician.",
+    },
+    {
+      question: "How long does it take to see results from peptide therapy?",
+      answer:
+        "Timing depends on the peptide and the goal. Sleep and recovery improvements (DSIP, Ipamorelin) are often noticeable within 2–4 weeks. Body-composition changes from CJC-1295/Ipamorelin or Tesamorelin typically appear at 8–12 weeks with more visible lean mass and fat-distribution shifts at 3–6 months. Tendon and joint healing protocols using BPC-157 or TB-500 generally run 4–12 weeks depending on tissue. PT-141 for sexual health works on demand, typically within 30–90 minutes of dosing. Every Strong Health protocol includes scheduled lab reassessments to confirm progress and adjust doses.",
+    },
+    {
+      question: "Can I start peptide therapy entirely by telehealth in Kansas City?",
+      answer:
+        "Yes. Kansas City patients start with a telehealth evaluation by a Strong Health physician licensed in their state, including a full medical history and a detailed discussion of goals. Baseline labs are ordered to a local lab draw site near you before any peptide is prescribed, and follow-ups — dose adjustments, lab reviews, and renewal authorizations — are conducted via telehealth with repeat labs at the same draw site.",
+    },
+    {
+      question: "Which KC metro cities and neighborhoods do you serve?",
+      answer:
+        "The whole metro, both sides of the state line — Downtown and Power & Light, River Market, the Crossroads, Westport, the Plaza, Brookside, Waldo, and Midtown, plus North Kansas City, Gladstone, Liberty, and Parkville in the Northland, Lee's Summit, Independence, Blue Springs, and Raytown to the east, and Overland Park, Leawood, Olathe, and Shawnee in Johnson County. Because care is delivered via telehealth with labs at local lab draw sites, you can start and stay on a protocol wherever in the metro you live.",
+    },
+  ],
+
+  finalCtaHeading: "Ready to talk to a physician about peptide therapy in Kansas City?",
+  finalCtaCopy:
+    "Book a free assessment. Telehealth visits for KC metro patients with physician-designed protocols, real labs at local draw sites, and ongoing monitoring.",
+  physicalClinic: false,
+  parkingTransit:
+    "No Kansas City storefront. Care is delivered via telehealth to KC metro patients, with baseline and monitoring labs drawn at local lab draw sites on both sides of the state line.",
+  physicianAvailability:
+    "Strong Health physicians licensed in Missouri and Kansas see patients by appointment via telehealth, with lab orders sent to a local lab draw site near you in the metro.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes by video. We review history, goals, and current medications/supplements; baseline biomarker draws are ordered to a local lab draw site near you. Most patients are seen within 5 business days of booking.",
+  howItWorksTag: "How Peptide Therapy Works for Kansas City Patients",
+  howItWorksHeadingIntro: "Telehealth visits. Local labs. Then",
+  howItWorksHeadingGold: "monitored care.",
+  physiciansSubtitleSuffix: "for Kansas City patients.",
+  relatedServicesHeadingIntro: "One medical team.",
+  outboundCitations: [
+    { label: "BPC-157 in tendon and soft-tissue healing (review)", url: "https://pubmed.ncbi.nlm.nih.gov/30915550/" },
+    { label: "Thymosin beta-4 (TB-500) and tissue repair", url: "https://pubmed.ncbi.nlm.nih.gov/22894631/" },
+    { label: "Ipamorelin / CJC-1295 stimulation of GH release", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
+  ],
+};
+
 /**
  * Master list of cities offering peptide therapy.
  *
@@ -2155,6 +3463,12 @@ export const ALL_PEPTIDE_CITIES: CityPeptideConfig[] = [
   ATLANTA_PEPTIDE_CONFIG,
   AUSTIN_PEPTIDE_CONFIG,
   NACOGDOCHES_PEPTIDE_CONFIG,
+  LOS_ANGELES_PEPTIDE_CONFIG,
+  RALEIGH_PEPTIDE_CONFIG,
+  OKLAHOMA_CITY_PEPTIDE_CONFIG,
+  BELLEVUE_PEPTIDE_CONFIG,
+  SALT_LAKE_CITY_PEPTIDE_CONFIG,
+  KANSAS_CITY_PEPTIDE_CONFIG,
 ];
 
 /** Lookup peptide city config by slug. */

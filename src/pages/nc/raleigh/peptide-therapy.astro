@@ -1,0 +1,10 @@
+---
+// Raleigh, NC peptide-therapy service-area page. Mirrors the Nacogdoches
+// wrapper: the shared CityPeptidePage layout renders everything from
+// RALEIGH_PEPTIDE_CONFIG (statePrefix "nc"). There is intentionally NO
+// /nc/ or /nc/raleigh/ hub page — both 404 by design.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { RALEIGH_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={RALEIGH_PEPTIDE_CONFIG} />

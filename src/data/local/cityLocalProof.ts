@@ -121,6 +121,36 @@ const PEPTIDE_USE_CASE_LINKS_BY_SLUG: Record<string, RelatedInternalLink[]> = {
     { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
     { label: "Collagen peptides guide", href: "/collagen-peptides/" },
   ],
+  "los-angeles": [
+    { label: "Peptides for anti-aging & longevity", href: "/peptides-for-anti-aging/" },
+    { label: "Peptides for muscle growth", href: "/peptides-for-muscle-growth/" },
+    { label: "Peptides for sleep & overnight recovery", href: "/peptides-for-sleep/" },
+  ],
+  raleigh: [
+    { label: "Peptides for tendon & ligament repair", href: "/peptides-for-tendon-repair/" },
+    { label: "Peptides for belly fat (Tesamorelin)", href: "/peptides-for-belly-fat/" },
+    { label: "Peptides for sleep & overnight recovery", href: "/peptides-for-sleep/" },
+  ],
+  "oklahoma-city": [
+    { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
+    { label: "Peptides for belly fat (Tesamorelin)", href: "/peptides-for-belly-fat/" },
+    { label: "Peptides for muscle growth", href: "/peptides-for-muscle-growth/" },
+  ],
+  bellevue: [
+    { label: "Peptides for sleep & overnight recovery", href: "/peptides-for-sleep/" },
+    { label: "Peptides for tendon & ligament repair", href: "/peptides-for-tendon-repair/" },
+    { label: "Peptides for anti-aging & longevity", href: "/peptides-for-anti-aging/" },
+  ],
+  "salt-lake-city": [
+    { label: "Peptides for tendon & ligament repair", href: "/peptides-for-tendon-repair/" },
+    { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
+    { label: "Peptides for arthritis & joint pain", href: "/peptides-for-arthritis/" },
+  ],
+  "kansas-city": [
+    { label: "Peptides for healing & recovery (BPC-157)", href: "/peptides-for-healing/" },
+    { label: "Peptides for arthritis & joint pain", href: "/peptides-for-arthritis/" },
+    { label: "Peptides for belly fat (Tesamorelin)", href: "/peptides-for-belly-fat/" },
+  ],
 };
 
 /**

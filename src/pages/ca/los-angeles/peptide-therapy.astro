@@ -1,0 +1,10 @@
+---
+// Los Angeles, CA peptide-therapy service-area page. Mirrors the San Diego
+// wrapper: the shared CityPeptidePage layout renders everything from
+// LOS_ANGELES_PEPTIDE_CONFIG (statePrefix "ca"). There is intentionally NO
+// /ca/ or /ca/los-angeles/ hub page — both 404 by design.
+import CityPeptidePage from "../../../layouts/local/CityPeptidePage.astro";
+import { LOS_ANGELES_PEPTIDE_CONFIG } from "../../../data/local/cityPeptideConfig";
+---
+
+<CityPeptidePage config={LOS_ANGELES_PEPTIDE_CONFIG} />

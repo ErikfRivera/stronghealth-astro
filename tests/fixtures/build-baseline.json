@@ -96,6 +96,20 @@
         "priority": "0.8"
       }
     },
+    "/ca/los-angeles/peptide-therapy/": {
+      "title": "Peptide Therapy in Los Angeles, CA | Strong Health",
+      "description": "Physician-supervised peptide therapy for Los Angeles patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/ca/los-angeles/peptide-therapy/",
+      "h1": "Peptide Therapy in Los Angeles, CA.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-22",
+        "priority": "0.8"
+      }
+    },
     "/ca/san-diego/dexascan/": {
       "title": "DEXA Scan San Diego — Body Composition | Strong Health",
       "description": "Physician-ordered DEXA scans for San Diego, CA patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.",
@@ -418,6 +432,20 @@
         "priority": "0.8"
       }
     },
+    "/mo/kansas-city/peptide-therapy/": {
+      "title": "Peptide Therapy in Kansas City, MO | Strong Health",
+      "description": "Physician-supervised peptide therapy for Kansas City patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/mo/kansas-city/peptide-therapy/",
+      "h1": "Peptide Therapy in Kansas City, MO.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-22",
+        "priority": "0.8"
+      }
+    },
     "/molecules/": {
       "title": "Peptide Molecule Library | Strong Health",
       "description": "Browse every peptide Strong Health prescribes by molecule — BPC-157, CJC-1295, Tesamorelin, PT-141, semaglutide, and more. Physician-reviewed, evidence-based.",
@@ -457,6 +485,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-03-28",
+        "priority": "0.8"
+      }
+    },
+    "/nc/raleigh/peptide-therapy/": {
+      "title": "Peptide Therapy in Raleigh, NC | Strong Health",
+      "description": "Physician-supervised peptide therapy for Raleigh patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local Triangle lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/nc/raleigh/peptide-therapy/",
+      "h1": "Peptide Therapy in Raleigh, NC.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-22",
         "priority": "0.8"
       }
     },
@@ -513,6 +555,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-07-14",
+        "priority": "0.8"
+      }
+    },
+    "/ok/oklahoma-city/peptide-therapy/": {
+      "title": "Peptide Therapy in Oklahoma City, OK | Strong Health",
+      "description": "Physician-supervised peptide therapy for Oklahoma City patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/ok/oklahoma-city/peptide-therapy/",
+      "h1": "Peptide Therapy in Oklahoma City, OK.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-22",
         "priority": "0.8"
       }
     },
@@ -1115,6 +1171,48 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-07-15",
+        "priority": "0.8"
+      }
+    },
+    "/tx/nacogdoches/peptide-therapy/": {
+      "title": "Peptide Therapy in Nacogdoches, TX | Strong Health",
+      "description": "Physician-supervised peptide therapy for Nacogdoches, TX via telehealth — BPC-157, CJC-1295, Ipamorelin, Tesamorelin & PT-141 with local labs.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/tx/nacogdoches/peptide-therapy/",
+      "h1": "Peptide Therapy in Nacogdoches, TX.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-22",
+        "priority": "0.8"
+      }
+    },
+    "/ut/salt-lake-city/peptide-therapy/": {
+      "title": "Peptide Therapy in Salt Lake City, UT | Strong Health",
+      "description": "Physician-supervised peptide therapy for Salt Lake City patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/ut/salt-lake-city/peptide-therapy/",
+      "h1": "Peptide Therapy in Salt Lake City, UT.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-22",
+        "priority": "0.8"
+      }
+    },
+    "/wa/bellevue/peptide-therapy/": {
+      "title": "Peptide Therapy in Bellevue, WA | Strong Health",
+      "description": "Physician-supervised peptide therapy for Bellevue patients via telehealth. BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141 with local Eastside lab draws.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/wa/bellevue/peptide-therapy/",
+      "h1": "Peptide Therapy in Bellevue, WA.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-22",
         "priority": "0.8"
       }
     }

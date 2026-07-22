@@ -187,6 +187,13 @@ const HISTORICAL_LASTMOD = {
   "/tx/austin/peptide-therapy/": "2026-07-15",
   // Nacogdoches (Deep East Texas) telehealth peptide service-area launch.
   "/tx/nacogdoches/peptide-therapy/": "2026-07-22",
+  // Six-city telehealth peptide service-area launch (proven-volume + latent-gap markets).
+  "/ca/los-angeles/peptide-therapy/": "2026-07-22",
+  "/nc/raleigh/peptide-therapy/": "2026-07-22",
+  "/ok/oklahoma-city/peptide-therapy/": "2026-07-22",
+  "/wa/bellevue/peptide-therapy/": "2026-07-22",
+  "/ut/salt-lake-city/peptide-therapy/": "2026-07-22",
+  "/mo/kansas-city/peptide-therapy/": "2026-07-22",
   // DEXA scan service-area launches (partner imaging centers + physician review).
   "/fl/delray-beach/dexascan/": "2026-07-18",
   "/fl/tampa/dexascan/": "2026-07-18",

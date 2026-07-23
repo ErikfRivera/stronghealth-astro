@@ -25,7 +25,7 @@ test.describe("desktop nav dropdown", () => {
     await expect(hubLink).toBeVisible();
     // A representative peptide goal link is revealed too.
     await expect(
-      nav.getByRole("link", { name: "Muscle Growth", exact: true }),
+      nav.getByRole("link", { name: "Peptides for Muscle Growth", exact: true }),
     ).toBeVisible();
     await expect(hubLink).toHaveAttribute("href", "/peptides/");
   });

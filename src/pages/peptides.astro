@@ -39,11 +39,13 @@ const CATEGORY_GROUPS: CategoryGroup[] = [
   {
     name: "Recovery & Healing",
     description:
-      "Tissue repair peptides like BPC-157 and TB-500 for tendons, joints, and full-body recovery.",
+      "Tissue-repair peptides like BPC-157 and TB-500 for tendons, joints, gut lining, and full-body recovery.",
     match: (a) =>
       a.path === "/peptides-for-healing/" ||
+      a.path === "/peptides-for-recovery/" ||
       a.path === "/peptides-for-tendon-repair/" ||
-      a.path === "/peptides-for-arthritis/",
+      a.path === "/peptides-for-arthritis/" ||
+      a.path === "/peptides-for-gut-health/",
   },
   {
     name: "Body Composition",
@@ -55,16 +57,38 @@ const CATEGORY_GROUPS: CategoryGroup[] = [
       a.path === "/peptides-for-weight-loss/",
   },
   {
-    name: "Longevity & Anti-Aging",
+    name: "Longevity, Energy & Cognition",
     description:
-      "GH secretagogues and NAD+ support studied in the context of age-related decline and body composition.",
-    match: (a) => a.path === "/peptides-for-anti-aging/",
+      "GH secretagogues, NAD+, and mitochondrial peptides studied in age-related decline, fatigue, focus, and mood.",
+    match: (a) =>
+      a.path === "/peptides-for-anti-aging/" ||
+      a.path === "/peptides-for-energy/" ||
+      a.path === "/peptides-for-brain/",
   },
   {
-    name: "Sexual Health",
+    name: "Sleep & Restoration",
     description:
-      "Neurologically-targeted peptides like PT-141 for desire and arousal in men and women.",
-    match: (a) => a.path === "/peptides-for-libido/",
+      "DSIP and related peptides that improve deep-sleep architecture without sedation.",
+    match: (a) => a.path === "/peptides-for-sleep/",
+  },
+  {
+    name: "Hormones & Sexual Health",
+    description:
+      "Neurologically- and hormonally-targeted peptides like PT-141 and kisspeptin for desire, arousal, and the testosterone axis.",
+    match: (a) =>
+      a.path === "/peptides-for-libido/" ||
+      a.path === "/peptides-for-testosterone/",
+  },
+  {
+    name: "Skin, Hair & Aesthetics",
+    description:
+      "Copper peptides and collagen for skin, hair, and acne — plus an honest, cautionary look at tanning peptides.",
+    match: (a) =>
+      a.path === "/peptides-for-skin/" ||
+      a.path === "/peptides-for-hair-growth/" ||
+      a.path === "/peptides-for-acne/" ||
+      a.path === "/peptides-for-tanning/" ||
+      a.path === "/collagen-peptides/",
   },
   {
     name: "Men's Health",
@@ -77,18 +101,6 @@ const CATEGORY_GROUPS: CategoryGroup[] = [
     description:
       "What the evidence actually shows for peptides in women — by compound, life stage, and regulatory tier.",
     match: (a) => a.path === "/peptides-for-women/",
-  },
-  {
-    name: "Sleep & Restoration",
-    description:
-      "DSIP and related peptides that improve deep-sleep architecture without sedation.",
-    match: (a) => a.path === "/peptides-for-sleep/",
-  },
-  {
-    name: "Structural Support",
-    description:
-      "Collagen peptides for connective tissue, skin, and joint support that complement clinical protocols.",
-    match: (a) => a.path === "/collagen-peptides/",
   },
 ];
 
@@ -255,8 +267,8 @@ const collectionItems = peptideArticles.map((a) => ({ name: a.title, url: a.path
             Peptide guides, organized by what you're <span class="text-gold">trying to fix</span>
           </h2>
           <p class="text-[15px] text-muted max-w-[600px] mx-auto">
-            Eight in-depth, physician-reviewed articles covering the peptides most commonly used in
-            South Florida men's-health practice.
+            In-depth, physician-reviewed guides covering the peptides most commonly used in clinical
+            practice — grouped by the outcome you're working toward.
           </p>
         </FadeIn>
 

@@ -48,6 +48,7 @@ export const ARTICLE_AUTHORSHIP: Record<
   "/collagen-peptides/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-anti-aging/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-weight-loss/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
+  "/peptides-for-women/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/porn-induced-erectile-dysfunction/": { author: DR_ANGEL_RIVERA, reviewer: DR_ANGEL_RIVERA },
   "/premature-ejaculation-exercises/": { author: DR_ANGEL_RIVERA, reviewer: DR_ANGEL_RIVERA },
   "/home-remedies-for-premature-ejaculation/": { author: DR_ANGEL_RIVERA, reviewer: DR_ANGEL_RIVERA },

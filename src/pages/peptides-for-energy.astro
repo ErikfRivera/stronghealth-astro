@@ -1,0 +1,49 @@
+---
+// peptides-for-energy — physician-reviewed peptide guide (peptide repositioning expansion).
+// Body text lives in the imported fragment; FAQs/citations below feed BOTH the
+// visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-energy.html?raw";
+
+const path = "/peptides-for-energy/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Do peptides give you more energy?", "answer": "No peptide is a proven treatment for fatigue. MOTS-c activates AMPK — the cell’s energy sensor — and is studied for metabolism, but human evidence is thin. The biggest energy gains usually come from correcting sleep, hormones, iron, thyroid, and metabolic health first."}, {"question": "What does MOTS-c do?", "answer": "MOTS-c is a mitochondrial-derived peptide that activates AMPK, shifting metabolism toward burning glucose and fat more efficiently. In animal studies this improves insulin sensitivity and metabolic flexibility; in humans the effects are far less established."}, {"question": "Is MOTS-c an exercise mimetic?", "answer": "It’s often called that because it engages AMPK — the same pathway exercise activates — and its levels rise with activity. That label comes largely from animal research, and MOTS-c is not a substitute for training."}, {"question": "Why am I so tired all the time?", "answer": "Fatigue has many common, treatable causes — poor sleep, thyroid problems, low iron or B12, low testosterone, blood-sugar issues, depression, and medications among them. The right first step is a medical work-up to find and fix the cause, not a peptide."}, {"question": "Are energy peptides FDA-approved?", "answer": "No. MOTS-c is not FDA-approved; where used it’s a physician-prescribed, pharmacy-compounded preparation with early evidence. It should be considered only after treatable causes of fatigue have been addressed."}];
+
+const citations = [{"id": 1, "text": "Lee C, et al. The mitochondrial-derived peptide MOTS-c promotes metabolic homeostasis and reduces obesity and insulin resistance. Cell Metab. 2015.", "url": "https://pubmed.ncbi.nlm.nih.gov/25738459/"}, {"id": 2, "text": "Reynolds JC, et al. MOTS-c is an exercise-induced mitochondrial-encoded regulator of age-dependent physical decline and muscle homeostasis. Nat Commun. 2021.", "url": "https://pubmed.ncbi.nlm.nih.gov/33531486/"}, {"id": 3, "text": "Kim KH, et al. Mitochondrial-derived peptides in aging and age-related diseases. Geroscience. 2021.", "url": "https://pubmed.ncbi.nlm.nih.gov/33512648/"}];
+
+const tocItems = [{"id": "first", "title": "Fatigue: Find the Cause First"}, {"id": "mots-c", "title": "MOTS-c: The Mitochondrial Peptide"}, {"id": "evidence", "title": "How Strong Is the Evidence?"}, {"id": "other", "title": "Other Peptides in the Energy Conversation"}, {"id": "approach", "title": "How We Approach Energy"}, {"id": "safety", "title": "Safety & Side Effects"}];
+
+const relatedLinks = [{"url": "/peptides/mots-c/", "label": "MOTS-c: Mitochondrial & Metabolic Peptide"}, {"url": "/peptides-for-sleep/", "label": "Peptides for Sleep: How DSIP Supports Deep Sleep"}, {"url": "/peptides-for-anti-aging/", "label": "Peptides for Anti-Aging: GH Secretagogues and NAD+"}, {"url": "/peptides-for-weight-loss/", "label": "Peptides for Weight Loss: A Clinical Guide"}, {"url": "/molecules/", "label": "Browse the Full Peptide Molecule Library"}];
+
+// Production wraps the page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Energy & Fatigue: What Actually Helps"
+  seoTitle="Peptides for Energy & Fatigue"
+  subtitle="Chronic low energy has many causes — and the honest first step is finding yours, not reaching for a vial. Here’s where mitochondrial peptides like MOTS-c may fit, what the evidence really shows, and why a proper work-up comes first."
+  seoDescription="How mitochondrial peptides like MOTS-c are studied for energy and fatigue, what the evidence shows, and why finding the real cause of fatigue comes first."
+  path={path}
+  moleculeGoal="energy"
+  breadcrumb="Peptides for Energy"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="8 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Running on Empty?"
+  ctaText="Our physicians look for the real drivers of fatigue — hormones, metabolism, sleep, and more — before considering whether a peptide adds anything."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

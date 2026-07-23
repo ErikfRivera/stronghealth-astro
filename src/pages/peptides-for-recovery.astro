@@ -1,0 +1,49 @@
+---
+// peptides-for-recovery — physician-reviewed peptide guide (peptide repositioning expansion).
+// Body text lives in the imported fragment; FAQs/citations below feed BOTH the
+// visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-recovery.html?raw";
+
+const path = "/peptides-for-recovery/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "What are the best peptides for recovery?", "answer": "BPC-157 and TB-500 are the most-studied recovery peptides, often used together because their proposed mechanisms — angiogenesis and tissue protection versus cell migration and remodeling — are complementary. Both are physician-prescribed, pharmacy-compounded, and not FDA-approved."}, {"question": "Do BPC-157 and TB-500 actually work?", "answer": "Animal and cell studies consistently show accelerated tissue healing, but there are no large human randomized trials. They’re used clinically on the basis of mechanism and safety, not definitive human efficacy data, so expectations should be set conservatively."}, {"question": "Can you take BPC-157 and TB-500 together?", "answer": "Yes — they’re frequently combined in healing protocols because their mechanisms complement each other. Any combination should be designed and monitored by a physician."}, {"question": "Are recovery peptides safe?", "answer": "Preclinical studies show a wide safety margin and clinical side effects are usually mild, mainly injection-site irritation. Human safety data are limited, so screening (including for active cancer and pregnancy), pharmacy-grade sourcing, and monitoring matter."}, {"question": "Are BPC-157 and TB-500 FDA-approved?", "answer": "No. Neither is FDA-approved. In the U.S. they’re available only as pharmacy-compounded preparations prescribed under physician supervision — never legitimately as research-only or gray-market product."}];
+
+const citations = [{"id": 1, "text": "Sikiric P, et al. Stable gastric pentadecapeptide BPC 157 in the treatment of tendon, ligament and muscle healing. Curr Pharm Des. 2018.", "url": "https://pubmed.ncbi.nlm.nih.gov/29345863/"}, {"id": 2, "text": "Chang CH, et al. The promoting effect of pentadecapeptide BPC 157 on tendon healing involves tendon fibroblasts and the VEGF/VEGFR2 pathway. J Appl Physiol. 2011.", "url": "https://pubmed.ncbi.nlm.nih.gov/21030672/"}, {"id": 3, "text": "Goldstein AL, Hannappel E, Sosne G, Kleinman HK. Thymosin β4: a multi-functional regenerative peptide. Expert Opin Biol Ther. 2012.", "url": "https://pubmed.ncbi.nlm.nih.gov/22449052/"}, {"id": 4, "text": "Sosne G, Qiu P, Goldstein AL, Wheater M. Biological activities of thymosin β4 defined by active sites in short peptide sequences. FASEB J. 2010.", "url": "https://pubmed.ncbi.nlm.nih.gov/20495177/"}];
+
+const tocItems = [{"id": "what-recovery-means", "title": "What “Recovery” Really Involves"}, {"id": "the-pair", "title": "BPC-157 & TB-500: The Recovery Pair"}, {"id": "evidence", "title": "How Strong Is the Evidence?"}, {"id": "gh-recovery", "title": "GH Peptides & Recovery"}, {"id": "protocols", "title": "How Recovery Protocols Work"}, {"id": "safety", "title": "Safety & Side Effects"}];
+
+const relatedLinks = [{"url": "/peptides-for-healing/", "label": "Peptides for Healing: BPC-157 and TB-500 for Full-Body Recovery"}, {"url": "/peptides-for-tendon-repair/", "label": "Peptides for Tendon Repair: BPC-157 and TB-500"}, {"url": "/peptides-for-arthritis/", "label": "Peptides for Joint Pain & Arthritis"}, {"url": "/peptides-for-muscle-growth/", "label": "Peptides for Muscle Growth: CJC-1295, Ipamorelin & BPC-157"}, {"url": "/dexa-scan/", "label": "DEXA Scan: The Gold Standard for Body Composition"}];
+
+// Production wraps the page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Recovery: BPC-157, TB-500 & Faster Repair"
+  seoTitle="Peptides for Recovery: BPC-157 & TB-500"
+  subtitle="When soft-tissue injuries stall and training outpaces recovery, two peptides come up again and again: BPC-157 and TB-500. Here’s what they’re studied to do, how honest the evidence is, and how physician-supervised recovery protocols actually work."
+  seoDescription="How recovery peptides BPC-157 and TB-500 are used to support tendon, muscle, and soft-tissue repair — the evidence, the limits, and how they’re prescribed."
+  path={path}
+  moleculeGoal="recovery"
+  breadcrumb="Peptides for Recovery"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="9 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Recovery Not Keeping Up?"
+  ctaText="Our physicians design recovery protocols around your injury, your training, and real rehab — using pharmacy-grade peptides, never gray-market vials."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

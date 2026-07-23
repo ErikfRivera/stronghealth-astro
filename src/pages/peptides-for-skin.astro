@@ -1,0 +1,49 @@
+---
+// peptides-for-skin — physician-reviewed peptide guide (peptide repositioning expansion).
+// Body text lives in the imported fragment; FAQs/citations below feed BOTH the
+// visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-skin.html?raw";
+
+const path = "/peptides-for-skin/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "What is the best peptide for skin?", "answer": "GHK-Cu (copper tripeptide-1) has the deepest research base for skin, with evidence for collagen synthesis, firmness, and repair — strongest for topical use. Oral collagen peptides are a separate approach studied for hydration and elasticity."}, {"question": "Do copper peptides really work?", "answer": "Topical GHK-Cu has in-vitro and small human studies supporting effects on collagen and skin appearance, so it is one of the better-supported peptide ingredients. Results build gradually over months, and evidence for injectable use is much more limited."}, {"question": "Are peptide serums better than retinol?", "answer": "They work differently and can be complementary. Retinoids have large, robust evidence for photoaging; peptides like GHK-Cu support collagen and repair through a different mechanism. Neither replaces daily sun protection."}, {"question": "Are copper peptides safe?", "answer": "For most people, topical copper peptides are well tolerated, with occasional mild irritation. Avoid non-cosmetic use if you have copper sensitivity or a copper-metabolism disorder. Any compounded or injectable use should be physician-supervised."}, {"question": "How long do skin peptides take to work?", "answer": "Expect gradual change over weeks to months of consistent use, not overnight results. Peptides support the skin’s own repair processes, which take time."}];
+
+const citations = [{"id": 1, "text": "Pickart L, Margolina A. Regenerative and protective actions of the GHK-Cu peptide in the light of the new gene data. Int J Mol Sci. 2018.", "url": "https://pubmed.ncbi.nlm.nih.gov/30049948/"}, {"id": 2, "text": "Pickart L, Vasquez-Soltero JM, Margolina A. GHK peptide as a natural modulator of multiple cellular pathways in skin regeneration. Biomed Res Int. 2015.", "url": "https://pubmed.ncbi.nlm.nih.gov/26236730/"}, {"id": 3, "text": "Pickart L, Vasquez-Soltero JM, Margolina A. GHK and DNA: resetting the human genome to health. Biomed Res Int. 2014.", "url": "https://pubmed.ncbi.nlm.nih.gov/25302294/"}];
+
+const tocItems = [{"id": "overview", "title": "What Peptides Do for Skin"}, {"id": "ghk-cu", "title": "GHK-Cu: The Copper Peptide"}, {"id": "evidence", "title": "What the Evidence Shows"}, {"id": "collagen", "title": "Collagen & Other Skin Peptides"}, {"id": "approach", "title": "How We Approach Skin Peptides"}, {"id": "safety", "title": "Safety & Side Effects"}];
+
+const relatedLinks = [{"url": "/peptides/ghk-cu/", "label": "GHK-Cu: Copper Peptide for Skin & Repair"}, {"url": "/collagen-peptides/", "label": "Collagen Peptides: Benefits, Uses & Evidence"}, {"url": "/peptides-for-anti-aging/", "label": "Peptides for Anti-Aging: GH Secretagogues and NAD+"}, {"url": "/peptides-for-hair-growth/", "label": "Peptides for Hair Growth: Copper Peptides & the Evidence"}, {"url": "/peptides-for-acne/", "label": "Peptides for Acne: What Actually Helps"}];
+
+// Production wraps the page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Skin: Copper Peptides, Collagen & Anti-Aging"
+  seoTitle="Peptides for Skin & Anti-Aging"
+  subtitle="Peptides are one of the few skincare ingredients with real mechanistic backing — but the evidence is far stronger for some uses than others. Here’s what copper peptides and collagen can realistically do for your skin, and where the science runs thin."
+  seoDescription="How copper peptides like GHK-Cu support collagen, firmness, and skin repair — what the evidence shows for topical and compounded use, plus the safety facts."
+  path={path}
+  moleculeGoal="skin"
+  breadcrumb="Peptides for Skin"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="8 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Want a Skin Plan Grounded in Evidence?"
+  ctaText="Our physicians separate what actually works from marketing — and build a skin protocol around the ingredients with real support behind them."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

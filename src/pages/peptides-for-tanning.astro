@@ -1,0 +1,48 @@
+---
+// peptides-for-tanning — physician-reviewed peptide guide (peptide repositioning expansion).
+// Body text lives in the imported fragment; FAQs/citations below feed BOTH the
+// visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-tanning.html?raw";
+
+const path = "/peptides-for-tanning/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Are tanning peptides safe?", "answer": "Melanotan II, the peptide sold for cosmetic tanning, is unregulated and linked to concerning effects — including changes in moles and case reports of melanoma — along with nausea, flushing, and blood-pressure changes. Strong Health does not offer it, and we’d urge real caution."}, {"question": "Is Melanotan II FDA-approved?", "answer": "No. Melanotan II is not FDA-approved and is illegal to sell for human use in many countries. Products sold online have no guarantee of purity, sterility, or dose. The only FDA-approved melanocortin peptide, afamelanotide, treats a rare disease — not cosmetic tanning."}, {"question": "Does a peptide tan protect me from the sun?", "answer": "No. A melanocortin-induced tan does not make UV exposure safe and may encourage more sun or sunbed use. Melanin offers only limited protection, and these peptides raise their own distinct safety concerns."}, {"question": "What is afamelanotide (SCENESSE)?", "answer": "It’s an FDA-approved melanocortin medication used to increase pain-free light exposure in adults with erythropoietic protoporphyria, a rare inherited disorder. It’s a specialist treatment administered as an implant — not a cosmetic tanning product."}, {"question": "Does Strong Health offer tanning peptides?", "answer": "No. We do not provide Melanotan II or any peptide for cosmetic tanning. If your interest is skin health, we’re happy to discuss approaches with real evidence and to point you toward proper dermatology care for any concerns about moles or skin lesions."}];
+
+const citations = [{"id": 1, "text": "Langan EA, Nie Z, Rhodes LE. Melanotropic peptides: what does the future hold? A review of afamelanotide and related melanocortin agonists. British Journal of Dermatology. 2010."}, {"id": 2, "text": "U.S. Food and Drug Administration. SCENESSE (afamelanotide) — approval to increase pain-free light exposure in adults with erythropoietic protoporphyria. FDA, 2019."}, {"id": 3, "text": "Published dermatology case reports have described new and atypical melanocytic naevi, and melanoma, in users of Melanotan II; national regulators (FDA, MHRA) have issued safety warnings against these products."}];
+
+const tocItems = [{"id": "what-they-are", "title": "What Tanning Peptides Are"}, {"id": "how-it-works", "title": "How Melanocortin Peptides Work"}, {"id": "melanotan-ii", "title": "Melanotan II: The Serious Concerns"}, {"id": "afamelanotide", "title": "Afamelanotide: The Approved Exception"}, {"id": "our-stance", "title": "Our Stance"}];
+
+const relatedLinks = [{"url": "/peptides-for-skin/", "label": "Peptides for Skin: Copper Peptides, Collagen & Anti-Aging"}, {"url": "/peptides-for-anti-aging/", "label": "Peptides for Anti-Aging: GH Secretagogues and NAD+"}, {"url": "/peptides/", "label": "Explore the Peptide Therapy Hub"}, {"url": "/molecules/", "label": "Browse the Full Peptide Molecule Library"}];
+
+// Production wraps the page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Tanning: Melanotan, Risks & the Facts"
+  seoTitle="Peptides for Tanning: Melanotan Risks"
+  subtitle="Melanotan peptides promise a tan from a vial — but this is one area where we urge real caution. Here’s the honest, physician-reviewed picture: what these melanocortin peptides are, the serious safety concerns, and why Strong Health does not offer them for cosmetic tanning."
+  seoDescription="The truth about tanning peptides: FDA-approved afamelanotide versus unregulated Melanotan II, the melanoma and safety risks, and why we don’t offer them."
+  path={path}
+  breadcrumb="Peptides for Tanning"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="7 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Have Questions About Skin & Safety?"
+  ctaText="Our physicians would rather talk you through skin health and real risks than sell you something unsafe. Book a consultation to discuss your goals honestly."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

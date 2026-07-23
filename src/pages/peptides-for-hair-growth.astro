@@ -1,0 +1,49 @@
+---
+// peptides-for-hair-growth — physician-reviewed peptide guide (peptide repositioning expansion).
+// Body text lives in the imported fragment; FAQs/citations below feed BOTH the
+// visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-hair-growth.html?raw";
+
+const path = "/peptides-for-hair-growth/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Do peptides regrow hair?", "answer": "Copper peptides like GHK-Cu may support the scalp and follicular environment, but they are not a proven standalone regrowth treatment. The strongest evidence for regrowing hair belongs to established options such as minoxidil and, for appropriate candidates, finasteride."}, {"question": "Are copper peptides good for hair loss?", "answer": "They’re a plausible supporting ingredient — studied for collagen, angiogenesis, and tissue repair that may benefit the scalp — but hair-specific clinical evidence is limited. They’re best used alongside proven treatments, not instead of them."}, {"question": "Can I use peptides with minoxidil or finasteride?", "answer": "Often yes. Peptides are typically positioned to support scalp health alongside proven therapies rather than to replace them. A physician can help you combine treatments safely and set realistic expectations."}, {"question": "Are hair peptides FDA-approved?", "answer": "No. Copper peptides in hair products are cosmetic ingredients, not FDA-approved hair-loss drugs. Any compounded or injectable peptide use should be physician-supervised through a licensed pharmacy."}, {"question": "What’s the first step if my hair is thinning?", "answer": "Find out why. Pattern loss, stress-related shedding, and nutritional or thyroid causes need different approaches, and simple labs often clarify things. A diagnosis-first plan beats layering on unproven products."}];
+
+const citations = [{"id": 1, "text": "Pickart L, Margolina A. Regenerative and protective actions of the GHK-Cu peptide in the light of the new gene data. Int J Mol Sci. 2018.", "url": "https://pubmed.ncbi.nlm.nih.gov/30049948/"}, {"id": 2, "text": "Pickart L, Vasquez-Soltero JM, Margolina A. GHK peptide as a natural modulator of multiple cellular pathways in skin regeneration. Biomed Res Int. 2015.", "url": "https://pubmed.ncbi.nlm.nih.gov/26236730/"}];
+
+const tocItems = [{"id": "why-hair-thins", "title": "Why Hair Thins"}, {"id": "copper-peptides", "title": "Copper Peptides for the Scalp"}, {"id": "evidence", "title": "What the Evidence Shows"}, {"id": "proven", "title": "How Peptides Compare to Proven Treatments"}, {"id": "approach", "title": "How We Approach Hair"}, {"id": "safety", "title": "Safety & Side Effects"}];
+
+const relatedLinks = [{"url": "/peptides/ghk-cu/", "label": "GHK-Cu: Copper Peptide for Skin, Hair & Repair"}, {"url": "/peptides-for-skin/", "label": "Peptides for Skin: Copper Peptides, Collagen & Anti-Aging"}, {"url": "/collagen-peptides/", "label": "Collagen Peptides: Benefits, Uses & Evidence"}, {"url": "/peptides-for-anti-aging/", "label": "Peptides for Anti-Aging: GH Secretagogues and NAD+"}, {"url": "/molecules/", "label": "Browse the Full Peptide Molecule Library"}];
+
+// Production wraps the page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Hair Growth: Copper Peptides & the Evidence"
+  seoTitle="Peptides for Hair Growth"
+  subtitle="Copper peptides show up in a lot of hair-growth serums — but how much can they really do, and how do they stack up against treatments proven to regrow hair? A physician-reviewed, realistic look."
+  seoDescription="How copper peptides such as GHK-Cu are used for hair thinning, what the evidence actually shows, and how they compare with proven hair-loss treatments."
+  path={path}
+  moleculeGoal="hair"
+  breadcrumb="Peptides for Hair Growth"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="8 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Concerned About Thinning Hair?"
+  ctaText="Our physicians help you understand why you’re losing hair and build a plan around treatments with real evidence — peptides included where they make sense."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

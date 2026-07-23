@@ -1,0 +1,49 @@
+---
+// peptides-for-testosterone — physician-reviewed peptide guide (peptide repositioning expansion).
+// Body text lives in the imported fragment; FAQs/citations below feed BOTH the
+// visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-testosterone.html?raw";
+
+const path = "/peptides-for-testosterone/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Do peptides actually increase testosterone?", "answer": "Only peptides that act on the reproductive (HPG) axis, such as kisspeptin, can stimulate the body’s own testosterone — and that evidence is still early and investigational. Growth-hormone peptides like CJC-1295 and ipamorelin do not raise testosterone; they raise growth hormone and IGF-1."}, {"question": "Is kisspeptin better than TRT?", "answer": "They do different things. TRT is an FDA-approved treatment that supplies testosterone directly and reliably. Kisspeptin is investigational and works upstream to stimulate your own production, which may appeal to men focused on preserving fertility. Which is appropriate is a physician’s call based on your labs and goals."}, {"question": "Do CJC-1295 or ipamorelin boost testosterone?", "answer": "No. These are growth-hormone secretagogues — they increase growth hormone and IGF-1, not testosterone. If a product markets a GH peptide as a testosterone booster, treat that as a warning sign."}, {"question": "Are testosterone peptides FDA-approved?", "answer": "No. Kisspeptin is not an FDA-approved drug and remains investigational. Where used outside of research it is a physician-prescribed, pharmacy-compounded preparation. FDA-approved options for low testosterone fall under testosterone replacement therapy, not peptides."}, {"question": "Can peptides help preserve fertility on TRT?", "answer": "Axis-stimulating strategies exist specifically because external testosterone suppresses the LH and FSH signals that support fertility. Whether an axis-based approach fits your situation is a medical decision — it requires evaluation, labs, and monitoring, not self-treatment."}];
+
+const citations = [{"id": 1, "text": "Comninos AN, et al. Kisspeptin modulates sexual and emotional brain processing in humans. J Clin Invest. 2017.", "url": "https://pubmed.ncbi.nlm.nih.gov/28218627/"}, {"id": 2, "text": "Thurston L, et al. Effects of kisspeptin administration in women with hypoactive sexual desire disorder: a randomized clinical trial. JAMA Netw Open. 2022.", "url": "https://pubmed.ncbi.nlm.nih.gov/35179588/"}, {"id": 3, "text": "Abbara A, et al. Kisspeptin: a novel physiological trigger for oocyte maturation in in-vitro fertilisation treatment. Lancet. 2014.", "url": "https://pubmed.ncbi.nlm.nih.gov/25467583/"}];
+
+const tocItems = [{"id": "two-questions", "title": "Two Different Questions"}, {"id": "hpg-axis", "title": "How Your Body Makes Testosterone"}, {"id": "kisspeptin", "title": "Kisspeptin: Stimulating Your Own Production"}, {"id": "gh-peptides", "title": "Where GH Peptides Fit — and Don’t"}, {"id": "vs-trt", "title": "Peptides vs. Testosterone Replacement Therapy"}, {"id": "safety", "title": "Candidacy, Labs & Safety"}];
+
+const relatedLinks = [{"url": "/peptides/kisspeptin/", "label": "Kisspeptin: Reproductive-Axis & Libido Signaling Peptide"}, {"url": "/peptides-for-libido/", "label": "Peptides for Libido: PT-141 and Sexual Health"}, {"url": "/peptides-for-muscle-growth/", "label": "Peptides for Muscle Growth: CJC-1295, Ipamorelin & BPC-157"}, {"url": "/peptides/pt-141/", "label": "PT-141 (Bremelanotide) for Arousal"}, {"url": "/molecules/", "label": "Browse the Full Peptide Molecule Library"}];
+
+// Production wraps the page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Testosterone: What the Science Actually Says"
+  seoTitle="Peptides for Testosterone & Hormones"
+  subtitle="“Peptides for testosterone” covers two very different ideas: peptides that nudge your body to make more of its own testosterone, and growth-hormone peptides that don’t touch testosterone at all. Here’s how to tell them apart — and where the real evidence stands."
+  seoDescription="How peptides like kisspeptin act on the hormone axis behind testosterone, how they differ from TRT, and the safety facts — reviewed by a physician."
+  path={path}
+  moleculeGoal="testosterone"
+  breadcrumb="Peptides for Testosterone"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="9 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Thinking About Your Testosterone?"
+  ctaText="Our physicians run the full hormone panel and walk you through every option — from established testosterone therapy to axis-stimulating protocols — with no pressure."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

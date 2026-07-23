@@ -61,4 +61,44 @@ export const GOAL_PAGES: Record<GoalSlug, GoalPage> = {
     label: "Collagen & Connective Tissue",
     anchor: "collagen peptides",
   },
+  testosterone: {
+    path: "/peptides-for-testosterone/",
+    label: "Testosterone & Hormones",
+    anchor: "peptides for testosterone",
+  },
+  skin: {
+    path: "/peptides-for-skin/",
+    label: "Skin & Anti-Aging",
+    anchor: "peptides for skin",
+  },
+  acne: {
+    path: "/peptides-for-acne/",
+    label: "Acne & Breakouts",
+    anchor: "peptides for acne",
+  },
+  hair: {
+    path: "/peptides-for-hair-growth/",
+    label: "Hair Growth",
+    anchor: "peptides for hair growth",
+  },
+  recovery: {
+    path: "/peptides-for-recovery/",
+    label: "Recovery & Performance",
+    anchor: "peptides for recovery",
+  },
+  brain: {
+    path: "/peptides-for-brain/",
+    label: "Brain, Focus & Mood",
+    anchor: "peptides for brain, focus, and mood",
+  },
+  "gut-health": {
+    path: "/peptides-for-gut-health/",
+    label: "Gut Health",
+    anchor: "peptides for gut health",
+  },
+  energy: {
+    path: "/peptides-for-energy/",
+    label: "Energy & Fatigue",
+    anchor: "peptides for energy",
+  },
 };

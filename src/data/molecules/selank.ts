@@ -5,7 +5,7 @@ export const SELANK: MoleculeConfig = {
   name: "Selank",
   aliases: ["TP-7", "Selank heptapeptide"],
   group: "Sleep",
-  goals: ["sleep", "anti-aging"],
+  goals: ["sleep", "anti-aging", "brain"],
   seoTitle: "Selank Peptide: Uses, Evidence & Safety",
   metaDescription:
     "Selank is a synthetic anxiolytic peptide studied for anxiety, calm, and cognition. Review its mechanism, evidence, and how Strong Health prescribes it.",

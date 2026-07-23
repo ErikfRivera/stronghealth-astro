@@ -1,0 +1,49 @@
+---
+// peptides-for-gut-health — physician-reviewed peptide guide (peptide repositioning expansion).
+// Body text lives in the imported fragment; FAQs/citations below feed BOTH the
+// visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-gut-health.html?raw";
+
+const path = "/peptides-for-gut-health/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Does BPC-157 heal the gut?", "answer": "In animal studies BPC-157 has protected and supported healing of the gut lining, including against NSAID-related irritation. Human trial data are lacking, so it’s used on the basis of mechanism and safety rather than proven clinical efficacy — and it doesn’t replace a proper diagnosis."}, {"question": "Is BPC-157 good for leaky gut or IBD?", "answer": "BPC-157’s gut-protective effects in rodents have driven interest here, but there are no large human trials, and conditions like IBD have established diagnostic and treatment pathways. It should never replace gastroenterology care for a diagnosed condition."}, {"question": "How is BPC-157 taken for gut issues?", "answer": "Both oral and injectable routes have been studied. Any regimen is individualized by a prescribing physician — we present administration as clinical context, not a self-dosing guide — and it’s dispensed only through licensed compounding pharmacies."}, {"question": "Is BPC-157 safe for the gut?", "answer": "Preclinical studies show a wide safety margin and clinical side effects are usually mild. Human safety data are limited, so screening (including for active cancer and pregnancy), pharmacy-grade sourcing, and monitoring are important."}, {"question": "When should I see a doctor about gut symptoms?", "answer": "Right away for red flags like bleeding, severe or persistent pain, unexplained weight loss, or chronic diarrhea. These can signal serious, treatable conditions that need diagnosis — not a peptide bought online."}];
+
+const citations = [{"id": 1, "text": "Sikiric P, et al. Stable gastric pentadecapeptide BPC 157 in the treatment of tendon, ligament and muscle healing. Curr Pharm Des. 2018.", "url": "https://pubmed.ncbi.nlm.nih.gov/29345863/"}, {"id": 2, "text": "Seiwerth S, et al. BPC 157 and standard angiogenic growth factors: gastrointestinal tract healing and cytoprotection. Curr Pharm Des. 2018.", "url": "https://pubmed.ncbi.nlm.nih.gov/29424296/"}];
+
+const tocItems = [{"id": "gut-barrier", "title": "The Gut Lining and Why It Matters"}, {"id": "bpc-157", "title": "BPC-157: The Gut-Derived Peptide"}, {"id": "evidence", "title": "How Strong Is the Evidence?"}, {"id": "context", "title": "What Peptides Don’t Replace"}, {"id": "approach", "title": "How We Approach Gut Protocols"}, {"id": "safety", "title": "Safety & Side Effects"}];
+
+const relatedLinks = [{"url": "/peptides/bpc-157/", "label": "BPC-157: Healing & Gut-Support Peptide"}, {"url": "/peptides-for-healing/", "label": "Peptides for Healing: BPC-157 and TB-500"}, {"url": "/peptides-for-recovery/", "label": "Peptides for Recovery: BPC-157, TB-500 & Faster Repair"}, {"url": "/peptides/", "label": "Explore the Peptide Therapy Hub"}, {"url": "/molecules/", "label": "Browse the Full Peptide Molecule Library"}];
+
+// Production wraps the page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Gut Health: BPC-157 and the Gut Lining"
+  seoTitle="Peptides for Gut Health: BPC-157"
+  subtitle="BPC-157 is derived from a protein in gastric juice — so it’s no surprise it’s the peptide most associated with the gut. Here’s what it’s studied to do for the gut lining, how honest the evidence is, and where established medical care still comes first."
+  seoDescription="How BPC-157 is studied for gut-lining repair and the gut-brain axis, what the evidence really shows, and how physician-supervised use works and stays safe."
+  path={path}
+  moleculeGoal="gut-health"
+  breadcrumb="Peptides for Gut Health"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="8 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Gut Issues Wearing You Down?"
+  ctaText="Our physicians look at the whole picture — and know when a peptide fits and when you need proper gastroenterology care first."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

@@ -101,4 +101,9 @@ export const GOAL_PAGES: Record<GoalSlug, GoalPage> = {
     label: "Peptides for Energy",
     anchor: "peptides for energy",
   },
+  tanning: {
+    path: "/peptides-for-tanning/",
+    label: "Peptides for Tanning",
+    anchor: "peptides for tanning, Melanotan & the risks",
+  },
 };

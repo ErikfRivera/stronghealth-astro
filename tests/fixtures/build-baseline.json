@@ -992,6 +992,20 @@
         "priority": "0.8"
       }
     },
+    "/peptides/melanotan-ii/": {
+      "title": "Melanotan II: Risks, Facts & Safety | Strong Health",
+      "description": "Melanotan II is an unregulated tanning peptide linked to mole changes and melanoma case reports. How it works, the real safety risks, and why we don't offer it.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/melanotan-ii/",
+      "h1": "Melanotan II",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
     "/peptides/mots-c/": {
       "title": "MOTS-c Peptide: Uses, Evidence & Safety | Strong Health",
       "description": "MOTS-c is a mitochondrial-derived peptide studied for AMPK activation, metabolic health, and insulin sensitivity, mostly in animals. Review the evidence here.",

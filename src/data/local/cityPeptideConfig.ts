@@ -602,6 +602,230 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
 };
 
 /**
+ * Weston, FL (Broward County) — telehealth service-area page modeled on Delray
+ * Beach: no physical clinic, no MedicalClinic JSON-LD/NAP, copy that serves
+ * "Weston patients" via telehealth with the in-person baseline at the Miami
+ * Brickell clinic. Search demand skews toward recovery/performance and the
+ * CJC-1295/TB-500 cluster, plus a large bilingual (English/Spanish) community.
+ */
+export const WESTON_PEPTIDE_CONFIG: CityPeptideConfig = {
+  slug: "weston",
+  cityName: "Weston",
+  county: "Broward County",
+  clinicArea: "Weston service area",
+
+  clinic: {
+    name: "Strong Health Weston",
+    streetAddress: "",
+    city: "Weston",
+    state: "FL",
+    postalCode: "",
+    phone: "(754) 263-6026",
+    hoursWeekday: "Mon–Fri 8:00 AM – 6:00 PM",
+    hoursSaturday: "Sat 9:00 AM – 1:00 PM",
+    hoursWeekdayHours: { opens: "08:00", closes: "18:00" },
+    hoursSaturdayHours: { opens: "09:00", closes: "13:00" },
+    lat: 26.1004,
+    lng: -80.3998,
+  },
+
+  seoTitle: "Peptide Therapy in Weston, FL",
+  seoDescription:
+    "Physician-supervised peptide therapy for Weston, FL — telehealth with in-person labs at our Miami Brickell clinic. BPC-157, CJC-1295, PT-141. Bilingual care.",
+  lastReviewed: "2026-07-23",
+  jsonLdPageName: "Peptide Therapy for Weston, FL — Strong Health (Telehealth + Miami Brickell)",
+  jsonLdPageDescription:
+    "Physician-supervised peptide therapy for Weston patients, delivered via telehealth with the in-person baseline evaluation at our Miami Brickell clinic. Pharmacy-grade BPC-157, TB-500, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and collagen peptide protocols.",
+  reviewedByName: "Dr. Angel Rivera, M.D.",
+  reviewedByRole: "Medical Director — Strong Health",
+
+  heroTag: "Weston Peptide Therapy · Telehealth + Miami Brickell labs",
+  reviewRating: "4.9",
+  reviewCount: "from 160+ Broward County patient reviews",
+  aggregateReviewCount: 160,
+  heroDescription1:
+    "Physician-supervised peptide protocols for Weston patients — BPC-157, TB-500, CJC-1295, Ipamorelin, Tesamorelin, PT-141, DSIP, and more. Telehealth visits with the in-person baseline at our Miami Brickell clinic. Pharmacy-grade compounds. Real labs. Ongoing monitoring.",
+  heroDescription2:
+    "We design individualized peptide therapy protocols for recovery, performance, body composition, sleep, sexual health, and longevity — built around your bloodwork, not a generic stack. In-person baseline evaluation and on-site labs at our Miami Brickell clinic, followed by telehealth check-ins for dose adjustments and lab reviews. Bilingual care in English and Spanish.",
+  heroCtaMeta:
+    "In-person physician visit · On-site labs · No subscriptions · Bilingual (English/Spanish) · Saturday hours available",
+
+  introHeadingHtml:
+    "Why Weston patients are switching to <gold>physician-supervised peptide therapy</gold>",
+  introParagraphs: [
+    "Weston has no shortage of places willing to sell you peptides — wellness boutiques and med spas around the Town Center, IV-drip lounges, recovery studios catering to the area's tennis, soccer, and country-club athletes. Peptide therapy done right is physician-led medicine. It starts with bloodwork, not a sales script.",
+    "Strong Health designs peptide protocols for Weston patients around individual labs and goals. Whether you're recovering from a sports or overuse injury, chasing better performance and energy, dropping visceral belly fat, sleeping through the night again, restoring desire and arousal, or simply maintaining the body composition you work hard for, we use specific peptides for specific clinical reasons — and we monitor the relevant labs throughout the protocol.",
+    "Strong Health is a real medical practice with board-certified physicians, on-site lab draws at our Miami Brickell clinic, and pharmacy-compounded medications dispensed under physician orders. Weston patients are served via telehealth after an in-person baseline at the Brickell clinic, roughly 30–40 minutes down I-75. We don't sell supplement subscriptions. We don't push gray-market compounds. Every protocol is reviewed at scheduled intervals and adjusted based on how your body actually responds.",
+  ],
+
+  whyHeadingHtml:
+    "Peptide therapy in Weston, the way it should be <gold>prescribed and monitored</gold>",
+  whyParagraphs: [
+    "Weston and the surrounding west Broward communities have plenty of clinics offering peptides, but very few that combine board-certified physician oversight with on-site labs and pharmacy-grade compounds from licensed compounders. Most Weston patients we see have already tried at least one place that handed them a vial after a 10-minute video call.",
+    "We built Strong Health's Weston telehealth service around the principle that peptide therapy is real medicine: contraindications need to be screened, doses need to be titrated, and labs need to be monitored. Our Miami Brickell clinic offers bilingual care in English and Spanish — a fit for Weston's large Latin American community — and telehealth follow-ups keep your protocol on track between visits.",
+  ],
+  whyStandardBullets: [
+    "Board-certified physicians via telehealth + in-person at our Miami Brickell clinic",
+    "In-person physical exam before any peptide is prescribed",
+    "On-site lab draws — no separate Quest or LabCorp trip",
+    "Pharmacy-grade peptides from licensed 503A/503B compounders",
+    "Individualized protocols designed around your bloodwork",
+    "Scheduled lab monitoring throughout the protocol",
+    "Bilingual care in English and Spanish",
+    "Saturday morning appointments for working professionals",
+    "Month-to-month treatment. No long-term contracts",
+  ],
+
+  steps: [
+    {
+      title: "Start with a telehealth consult, then visit our Miami Brickell clinic for the baseline exam",
+      desc: "Your first visit is a video consult with a Strong Health physician. The in-person physical exam, on-site lab draw, and detailed history take place at our Miami Brickell clinic (1000 Brickell Plaza, Miami, FL 33131), about 30–40 minutes from Weston.",
+    },
+    {
+      title: "Comprehensive on-site lab draw",
+      desc: "We draw a baseline panel on-site — hormones (testosterone, estradiol, IGF-1), metabolic markers, and any peptide-specific labs needed for your protocol. No separate Quest or LabCorp trip.",
+    },
+    {
+      title: "Individualized protocol design",
+      desc: "Your physician selects the right peptide(s), dose, and timing based on your labs and goals. Compounded by a licensed 503A or 503B pharmacy under physician orders. Pharmacy-grade only.",
+    },
+    {
+      title: "Ongoing monitoring & telehealth follow-ups",
+      desc: "Follow-up labs and check-ins at 4–12 weeks depending on the peptide. Dose adjustments via telehealth. In-person reassessment at the Miami Brickell clinic when on-site labs or a physical re-exam are clinically needed.",
+    },
+  ],
+
+  physicians: [
+    {
+      name: "Dr. Angel Rivera, M.D.",
+      title: "Supervising Physician & Medical Director",
+      credentials:
+        "Board-Certified · Medical Director, Strong Health · Oversees peptide protocol design and monitoring for Weston patients",
+      focus:
+        "Individualized BPC-157/TB-500, CJC-1295/Ipamorelin, Tesamorelin, PT-141, and DSIP protocols with on-site labs at our Miami Brickell clinic and ongoing telehealth monitoring. Bilingual care in English and Spanish.",
+    },
+    {
+      name: "Strong Health Sports Medicine Team",
+      title: "Consulting Specialists, Weston",
+      credentials:
+        "Sports Medicine · Tendon & Soft-Tissue Injury Care · Recovery & Performance Optimization",
+      focus:
+        "Peptide-supported tendon, joint, and soft-tissue healing and performance protocols for Weston's active tennis, soccer, golf, and youth-sports families.",
+    },
+  ],
+
+  neighborhoods: [
+    "Weston Hills", "Savanna", "Bonaventure", "The Ridges", "Windmill Ranch Estates",
+    "Weston Hills Country Club", "Sector 7", "Isles at Weston", "The Falls",
+    "Southwest Ranches", "Davie", "Cooper City", "Pembroke Pines", "Miramar",
+    "Sunrise", "Plantation", "Fort Lauderdale", "Hollywood",
+  ],
+  neighborhoodAreaName: "west Broward County",
+  neighborhoodsSubtitle:
+    "Strong Health serves peptide therapy patients across Weston, Southwest Ranches, Davie, Cooper City, Pembroke Pines, and the surrounding west Broward communities via telehealth, with in-person visits at our Miami Brickell clinic.",
+
+  relatedServices: [
+    {
+      name: "Peptides for Recovery & Healing",
+      desc: "BPC-157 and TB-500 protocols for tendon, joint, and soft-tissue recovery — a frequent starting point for Weston's active and athletic patients.",
+      href: "/peptides-for-healing/",
+      cta: "Peptides for healing →",
+    },
+    {
+      name: "Peptides for Muscle Growth & Performance",
+      desc: "CJC-1295, Ipamorelin, and GH-secretagogue protocols for lean mass, recovery, and performance, designed around your labs.",
+      href: "/peptides-for-muscle-growth/",
+      cta: "Peptides for muscle growth →",
+    },
+    {
+      name: "Peptides for Belly & Visceral Fat",
+      desc: "Tesamorelin and metabolic protocols targeting visceral fat, with full metabolic workups and monitoring.",
+      href: "/peptides-for-belly-fat/",
+      cta: "Peptides for belly fat →",
+    },
+    {
+      name: "All Peptide Therapies",
+      desc: "Browse every physician-supervised peptide protocol by goal — healing, body composition, sleep, libido, and longevity.",
+      href: "/peptides/",
+      cta: "Browse the peptides hub →",
+    },
+  ],
+  relatedServicesSubtitle:
+    "Many peptide patients pair their protocol with body-composition tracking or comprehensive lab panels — all designed and monitored by the same physician.",
+
+  faqs: [
+    {
+      question: "Where can I get peptide therapy in Weston, FL?",
+      answer:
+        "Strong Health serves Weston peptide-therapy patients by appointment via telehealth, with in-person physician evaluations and on-site lab draws conducted at our Miami Brickell clinic (1000 Brickell Plaza, Miami, FL 33131) — about 30–40 minutes from Weston down I-75. Follow-up visits are conducted via telehealth statewide. Call (754) 263-6026 to book a free assessment.",
+    },
+    {
+      question: "What peptides does Strong Health prescribe for Weston patients?",
+      answer:
+        "Our physicians prescribe pharmacy-grade peptides selected for the patient's specific goals and labs. The most commonly used protocols for Weston patients include BPC-157 and TB-500 for tendon, joint, and soft-tissue recovery; CJC-1295 with Ipamorelin for performance, body composition, and sleep; Tesamorelin for visceral (belly) fat reduction; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin support. Every protocol is individualized — we don't use one-size-fits-all stacks.",
+    },
+    {
+      question: "Is peptide therapy available in Spanish for Weston patients?",
+      answer:
+        "Yes. Strong Health offers bilingual care in English and Spanish, including multiple Spanish-speaking team members and the Medical Director. This is a natural fit for Weston's large Latin American community, where many patients prefer to review labs, protocols, and dosing in Spanish.",
+    },
+    {
+      question: "Are peptides legal in Florida?",
+      answer:
+        "Yes, when prescribed by a licensed Florida physician and dispensed through a licensed compounding pharmacy. Strong Health works only with 503A and 503B pharmacies under physician orders. We do not work with research-only or gray-market peptides. Every protocol uses pharmacy-grade product with full physician oversight, ongoing monitoring, and standard Florida medical-record documentation.",
+    },
+    {
+      question: "How much does peptide therapy cost for Weston patients?",
+      answer:
+        "Your initial telehealth consult is free. Peptide protocols are month-to-month with transparent pricing — costs vary by peptide, dose, and duration. Most protocols include physician visits, monitoring labs, and pharmacy-compounded medication. We'll review the full cost of your specific protocol before you commit. We do not bill insurance directly, but we provide itemized superbills that many Broward County patients submit to plans like Florida Blue, Aetna, UnitedHealthcare, and Cigna for partial reimbursement.",
+    },
+    {
+      question: "Which peptides are best for sports recovery and performance?",
+      answer:
+        "For Weston's active and athletic patients, recovery protocols most often center on BPC-157 and TB-500 for tendon, ligament, and soft-tissue repair, while performance and body-composition goals typically use CJC-1295 with Ipamorelin to support the body's own growth hormone pulses. The right combination depends on your injury history, training load, and labs. Note that GH-secretagogue peptides can trigger anti-doping tests, so competitive athletes should disclose their sport before starting.",
+    },
+    {
+      question: "Do I need an in-person visit, or can I start peptide therapy by telehealth?",
+      answer:
+        "Florida law and our clinical standards require an in-person physician evaluation before starting peptide therapy. For Weston patients, that baseline visit is scheduled at our Miami Brickell clinic (1000 Brickell Plaza, Miami, FL 33131) and includes a physical exam, full medical history, on-site lab draw, and a detailed discussion of goals. After your baseline visit, follow-ups are conducted via telehealth — including dose adjustments, lab reviews, and renewal authorizations — with periodic in-person check-ins at the Brickell clinic for labs and physical reassessment.",
+    },
+    {
+      question: "Can peptide therapy be combined with TRT?",
+      answer:
+        "Yes, and many Weston patients do exactly that. Strong Health physicians frequently design combined protocols pairing testosterone replacement therapy with GH-secretagogue peptides like CJC-1295/Ipamorelin for body composition and recovery, or with BPC-157 for active patients managing sports-related soft-tissue injuries. Because both therapies are designed and monitored by the same physician using the same lab panels, dose interactions and overall response are tracked together rather than in silos.",
+    },
+  ],
+
+  finalCtaHeading: "Ready to talk to a Strong Health physician about peptide therapy?",
+  finalCtaCopy:
+    "Book a free assessment. Telehealth visits for Weston patients with on-site labs and in-person evaluations at our Miami Brickell clinic.",
+  physicalClinic: false,
+  parkingTransit:
+    "No Weston storefront. In-person visits and on-site labs are conducted at the Strong Health Miami Brickell clinic (about 30–40 minutes down I-75); telehealth follow-ups are available statewide.",
+  physicianAvailability:
+    "Strong Health attending physicians see Weston patients by appointment via telehealth, with in-person visits scheduled at our Miami Brickell clinic when on-site labs or exams are required.",
+  appointmentExpectations:
+    "Free first assessment, typically 30–45 minutes. Initial telehealth visit reviews history, goals, and current medications/supplements; on-site biomarker draws are scheduled at the Brickell clinic. Most patients are seen within 5 business days of booking.",
+  relatedInternalLinks: [
+    { label: "Peptides for healing & recovery", href: "/peptides-for-healing/" },
+    { label: "Peptides for tendon repair", href: "/peptides-for-tendon-repair/" },
+    { label: "Peptides for muscle growth & performance", href: "/peptides-for-muscle-growth/" },
+    { label: "Peptides for belly & visceral fat", href: "/peptides-for-belly-fat/" },
+    { label: "BPC-157 for healing & recovery", href: "/peptides/bpc-157/" },
+    { label: "TB-500 for soft-tissue repair", href: "/peptides/tb-500/" },
+    { label: "CJC-1295 / Ipamorelin for body composition", href: "/peptides/cjc-1295/" },
+    { label: "Browse the full molecule library", href: "/molecules/" },
+    { label: "All Florida locations", href: "/fl/" },
+    { label: "Strong Health services hub", href: "/" },
+  ],
+  outboundCitations: [
+    { label: "BPC-157 in tendon and soft-tissue healing (review)", url: "https://pubmed.ncbi.nlm.nih.gov/30915550/" },
+    { label: "Thymosin beta-4 (TB-500) and tissue repair", url: "https://pubmed.ncbi.nlm.nih.gov/22894631/" },
+    { label: "Ipamorelin / CJC-1295 stimulation of GH release", url: "https://pubmed.ncbi.nlm.nih.gov/16352683/" },
+  ],
+};
+
+/**
  * New York City (US-N2) — telehealth service-area page modeled on Delray
  * Beach: no physical clinic, no MedicalClinic JSON-LD/NAP, and copy that says
  * physician-supervised telehealth "for New York patients" without implying an
@@ -3464,6 +3688,7 @@ export const KANSAS_CITY_PEPTIDE_CONFIG: CityPeptideConfig = {
 export const ALL_PEPTIDE_CITIES: CityPeptideConfig[] = [
   MIAMI_PEPTIDE_CONFIG,
   DELRAY_BEACH_PEPTIDE_CONFIG,
+  WESTON_PEPTIDE_CONFIG,
   TAMPA_PEPTIDE_CONFIG,
   NEW_YORK_PEPTIDE_CONFIG,
   SAN_DIEGO_PEPTIDE_CONFIG,

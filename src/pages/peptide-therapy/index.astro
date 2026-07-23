@@ -1,0 +1,296 @@
+---
+// /peptide-therapy/ — national "peptide therapy near me" hub. Aggregates every
+// Strong Health location (in-person Miami Brickell + telehealth service areas)
+// grouped by state, and frames nationwide telehealth availability for the
+// high-volume "peptide therapy near me" query.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageShell from "../../components/shared/PageShell.astro";
+import JsonLd from "../../components/seo/JsonLd.astro";
+import {
+  breadcrumbSchema,
+  collectionPageSchema,
+  faqPageSchema,
+  medicalWebPageSchema,
+} from "../../components/seo/schemas";
+import FadeIn from "../../components/shared/FadeIn.astro";
+import Btn from "../../components/shared/Btn.astro";
+import Tag from "../../components/shared/Tag.astro";
+import Icon from "../../components/shared/Icon.astro";
+import { ALL_PEPTIDE_CITIES } from "../../data/local/cityPeptideConfig";
+
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Peptide Therapy Near Me", path: "/peptide-therapy/" },
+];
+
+const STATE_NAMES: Record<string, string> = {
+  fl: "Florida",
+  ny: "New York",
+  ca: "California",
+  nv: "Nevada",
+  ga: "Georgia",
+  tx: "Texas",
+  nc: "North Carolina",
+  ok: "Oklahoma",
+  wa: "Washington",
+  ut: "Utah",
+  mo: "Missouri",
+};
+
+// Group every city by state prefix (default "fl"), preserving config order.
+const groupsMap = new Map<string, { stateName: string; cities: { cityName: string; href: string; inPerson: boolean; clinicArea: string }[] }>();
+for (const c of ALL_PEPTIDE_CITIES) {
+  const prefix = c.statePrefix ?? "fl";
+  const stateName = c.stateName ?? STATE_NAMES[prefix] ?? prefix.toUpperCase();
+  if (!groupsMap.has(prefix)) groupsMap.set(prefix, { stateName, cities: [] });
+  groupsMap.get(prefix)!.cities.push({
+    cityName: c.cityName,
+    href: `/${prefix}/${c.slug}/peptide-therapy/`,
+    inPerson: c.physicalClinic !== false,
+    clinicArea: c.clinicArea,
+  });
+}
+const stateGroups = [...groupsMap.values()].sort((a, b) => a.stateName.localeCompare(b.stateName));
+const totalCities = ALL_PEPTIDE_CITIES.length;
+
+const goalLinks = [
+  { name: "Peptides for Healing & Recovery", href: "/peptides-for-healing/", desc: "BPC-157 and TB-500 for tendon, joint, and soft-tissue repair." },
+  { name: "Peptides for Muscle Growth", href: "/peptides-for-muscle-growth/", desc: "GH-secretagogue (HGH) peptides for lean mass and recovery." },
+  { name: "Peptides for Weight & Belly Fat", href: "/peptides-for-belly-fat/", desc: "Tesamorelin and metabolic protocols for visceral fat." },
+  { name: "Peptides for Sleep", href: "/peptides-for-sleep/", desc: "DSIP and GH peptides for deep, restorative sleep." },
+  { name: "Peptides for Libido & Sex Drive", href: "/peptides-for-libido/", desc: "PT-141 for desire, arousal, and sexual health." },
+  { name: "Browse All Peptides by Goal", href: "/peptides/", desc: "The full physician-supervised peptide therapy hub." },
+];
+
+const HUB_FAQS = [
+  {
+    question: "Is there peptide therapy near me?",
+    answer:
+      "Strong Health offers physician-supervised peptide therapy in-person at our Miami (Brickell) clinic and as a telehealth service across Florida and additional states including New York, California, Texas, Georgia, Nevada, North Carolina, Washington, Utah, Oklahoma, and Missouri. Wherever you are, care follows the same standard: an in-person baseline evaluation and labs, then telehealth follow-ups for dose adjustments and monitoring.",
+  },
+  {
+    question: "Can I do peptide therapy online or by telehealth?",
+    answer:
+      "Yes, for follow-up care. Most states and our clinical standards require an in-person physician evaluation before starting peptide therapy, so the baseline visit — physical exam, medical history, and labs — happens in person. After that, follow-ups, dose adjustments, lab reviews, and renewals are handled via telehealth, so you don't need to travel for every visit.",
+  },
+  {
+    question: "What if my city isn't listed?",
+    answer:
+      "We add telehealth service areas regularly, and many patients outside our listed cities are still eligible through our statewide and multi-state telehealth model. Call (754) 263-6026 or book a free assessment and we'll confirm whether physician-supervised peptide therapy is available where you are.",
+  },
+  {
+    question: "How do I choose a peptide therapy clinic near me?",
+    answer:
+      "Look for board-certified physician oversight, an in-person exam and real labs before any prescription, and pharmacy-grade compounds from licensed 503A/503B pharmacies — not research-only or gray-market vials handed out after a short video call. A legitimate clinic screens for contraindications, titrates doses, and monitors labs throughout the protocol.",
+  },
+];
+
+const cityItems = ALL_PEPTIDE_CITIES.map((c) => ({
+  name: `Strong Health ${c.cityName} — Peptide Therapy`,
+  url: `/${c.statePrefix ?? "fl"}/${c.slug}/peptide-therapy/`,
+}));
+---
+
+<BaseLayout
+  title="Peptide Therapy Near Me & Telehealth"
+  description="Find physician-supervised peptide therapy near you — in-person in Miami and via telehealth across Florida, New York, California, Texas, and more states."
+  path="/peptide-therapy/"
+>
+  <PageShell>
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: "Peptide Therapy Near Me — Strong Health Locations & Telehealth",
+        description:
+          "Physician-supervised peptide therapy at Strong Health's Miami (Brickell) clinic and via telehealth across multiple states.",
+        url: "/peptide-therapy/",
+        lastReviewed: "2026-07-23",
+        reviewedBy: {
+          name: "Dr. Angel Rivera, M.D.",
+          credentials: "Board-Certified",
+          role: "Medical Director — Strong Health",
+        },
+      })}
+    />
+    <JsonLd
+      schema={collectionPageSchema({
+        name: "Strong Health Peptide Therapy Locations",
+        description: "Strong Health peptide therapy locations and telehealth service areas nationwide",
+        url: "/peptide-therapy/",
+        items: cityItems,
+      })}
+    />
+    <JsonLd schema={faqPageSchema(HUB_FAQS)} />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+
+    {/* Breadcrumbs */}
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          {breadcrumbs.map((crumb, i) => (
+            <li class="flex items-center gap-1.5">
+              {i > 0 && <Icon name="chevron-right" size={12} class="text-text-subtle" />}
+              {i < breadcrumbs.length - 1 ? (
+                <a href={crumb.path} class="hover:text-gold transition-colors">
+                  {crumb.name}
+                </a>
+              ) : (
+                <span class="text-gold font-semibold">{crumb.name}</span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </nav>
+
+    {/* Hero */}
+    <section class="relative px-8 pt-12 pb-20 overflow-hidden border-b border-white/5">
+      <div aria-hidden="true" class="hidden md:block absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div aria-hidden="true" class="hidden md:block absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="flex gap-0.5">
+            {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={16} class="fill-[#C9A84C] text-gold" />)}
+          </div>
+          <span class="text-sm font-bold text-gold">4.9</span>
+          <span class="text-[13px] text-muted">from 1,000+ patient reviews</span>
+        </div>
+        <Tag>Strong Health · Peptide Therapy Near You</Tag>
+        <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[760px] tracking-[-1.5px]">
+          Peptide therapy near you, <span class="text-gold">done like real medicine.</span>
+        </h1>
+        <p class="text-[17px] text-muted leading-relaxed max-w-[620px] mb-8">
+          Physician-supervised peptide protocols in-person at our Miami (Brickell) clinic and
+          via telehealth across {stateGroups.length} states. Labs first, protocols second —
+          never a vial handed over after a 10-minute video call.
+        </p>
+        <Btn trackLead>Book Your Free Assessment →</Btn>
+        <div class="mt-4 text-xs text-muted">
+          No commitment · No insurance needed · Free first assessment
+        </div>
+      </div>
+    </section>
+
+    {/* Locations by state */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Find a Location</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Peptide therapy <span class="text-gold">near me</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[600px] mx-auto">
+            {totalCities} locations across {stateGroups.length} states. In-person physician
+            visits and on-site labs in Miami (Brickell); physician-supervised telehealth
+            everywhere else. Pick the location closest to you.
+          </p>
+        </FadeIn>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {stateGroups.map((group) => (
+            <FadeIn>
+              <div class="bg-surface-raised rounded-xl p-5 border border-white/10 h-full">
+                <div class="flex items-center gap-1.5 mb-3">
+                  <Icon name="map-pin" size={13} class="text-gold flex-shrink-0" />
+                  <span class="text-[14px] font-bold text-cream">{group.stateName}</span>
+                </div>
+                <ul class="flex flex-col gap-1.5">
+                  {group.cities.map((city) => (
+                    <li>
+                      <a href={city.href} class="text-[13px] text-gold font-semibold hover:underline">
+                        {city.cityName}
+                        {city.inPerson ? " (in-person clinic)" : ""} →
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn class="mt-8 text-center">
+          <p class="text-[14px] text-muted">
+            Don't see your city? Our multi-state telehealth model reaches many patients
+            beyond these locations.{" "}
+            <a href="/fl/" class="text-gold font-semibold hover:underline">Browse Florida locations</a>{" "}
+            or book a free assessment to confirm availability where you are.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Peptides by goal */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Physician-Supervised Protocols</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Choose peptide therapy <span class="text-gold">by goal</span>
+          </h2>
+        </FadeIn>
+        <div class="grid md:grid-cols-2 gap-5">
+          {goalLinks.map((s, i) => (
+            <FadeIn delay={i * 60}>
+              <div class="bg-surface-card rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <h3 class="text-lg font-bold text-cream mb-3">{s.name}</h3>
+                <p class="text-[14px] text-muted leading-relaxed flex-grow mb-4">{s.desc}</p>
+                <a href={s.href} class="text-[13px] font-semibold text-gold hover:underline">
+                  Learn more →
+                </a>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Near-Me FAQs</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Finding peptide therapy <span class="text-gold">near you</span>
+          </h2>
+        </FadeIn>
+        <div class="flex flex-col gap-4">
+          {HUB_FAQS.map((faq, i) => (
+            <FadeIn delay={i * 40}>
+              <details class="bg-surface-card rounded-xl border border-white/10 group">
+                <summary class="cursor-pointer p-5 list-none flex items-start justify-between gap-4">
+                  <h3 class="text-[15px] font-bold text-cream pr-2">{faq.question}</h3>
+                  <Icon
+                    name="chevron-right"
+                    size={18}
+                    class="text-gold flex-shrink-0 transition-transform group-open:rotate-90 mt-0.5"
+                  />
+                </summary>
+                <div class="px-5 pb-5 text-[14px] text-muted leading-[1.7]">{faq.answer}</div>
+              </details>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Final CTA */}
+    <section class="px-8 py-24 bg-gradient-to-br from-[#C9A84C]/[0.08] to-[#0D0F12] border-b border-white/5">
+      <div class="max-w-[700px] mx-auto text-center">
+        <FadeIn>
+          <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
+            Talk to a physician about peptide therapy
+          </h2>
+          <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
+            In-person in Miami or via telehealth from anywhere we serve. Book a free
+            assessment with a board-certified physician.
+          </p>
+          <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
+            <Icon name="phone" size={14} class="text-gold" />
+            <span>Or call the clinic directly</span>
+          </div>
+          <Btn trackLead>Book Your Free Assessment →</Btn>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

@@ -177,6 +177,10 @@ const HISTORICAL_LASTMOD = {
   "/fl/miami/prp-therapy/": "2026-07-17",
   // Tampa telehealth service-area peptide launch (physicalClinic: false).
   "/fl/tampa/peptide-therapy/": "2026-07-15",
+  // Weston (west Broward) telehealth service-area peptide launch.
+  "/fl/weston/peptide-therapy/": "2026-07-23",
+  // National "peptide therapy near me" locations hub.
+  "/peptide-therapy/": "2026-07-23",
   "/hipaa-policy/": "2026-05-27",
   // Post-cutover addition (US-N2/US-N4): NYC peptide-therapy launch date.
   "/ny/new-york/peptide-therapy/": "2026-07-14",
@@ -222,6 +226,10 @@ const HISTORICAL_LASTMOD = {
   "/peptides/kisspeptin/": "2026-07-18",
   "/peptides/selank/": "2026-07-18",
   "/peptides/melanotan-ii/": "2026-07-23",
+  // Weight-loss / metabolic peptide molecule additions.
+  "/peptides/tesofensine/": "2026-07-23",
+  "/peptides/retatrutide/": "2026-07-23",
+  "/peptides/cagrilintide/": "2026-07-23",
   "/peptides/": "2026-04-22",
   "/privacy-policy/": "2026-05-27",
   "/reviews/": "2026-06-22",

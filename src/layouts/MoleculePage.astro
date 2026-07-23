@@ -226,21 +226,26 @@ const structuredData = {
                 {m.howWePrescribe.map((p) => <p class="text-[15px] text-muted leading-[1.8] mb-4">{p}</p>)}
                 <div class="rounded-xl border border-white/10 bg-surface-card p-5 mt-2">
                   <p class="text-[14px] text-muted leading-[1.7] mb-4">
-                    Interested in skin health, pigment concerns, or evidence-based peptides? Talk to
-                    one of our physicians about approaches with real support — or explore our
-                    physician-reviewed guides.
+                    {m.doNotOfferBody ??
+                      "Interested in skin health, pigment concerns, or evidence-based peptides? Talk to one of our physicians about approaches with real support — or explore our physician-reviewed guides."}
                   </p>
                   <a
                     href={BOOKING_SMS_HREF}
                     data-track-lead
                     class="inline-flex items-center justify-center bg-gold text-surface font-bold hover:bg-gold-hover transition-colors rounded-lg uppercase tracking-[1.2px] px-6 py-3 text-[12px]"
                   >
-                    Talk to a physician about skin &amp; safety →
+                    {m.doNotOfferCtaLabel ?? "Talk to a physician about skin & safety →"}
                   </a>
                   <p class="text-[13px] text-muted mt-3">
-                    See our guide to <a href="/peptides-for-skin/" class="text-gold hover:underline">peptides for skin</a>,
-                    the honest picture on <a href="/peptides-for-tanning/" class="text-gold hover:underline">peptides for tanning</a>,
-                    or browse the <a href="/molecules/" class="text-gold hover:underline">molecule library</a>.
+                    {m.doNotOfferLinks ? (
+                      <Fragment>{m.doNotOfferLinks.map((lnk, i) => (<Fragment>{i === 0 ? "See " : i === m.doNotOfferLinks!.length - 1 ? ", or " : ", "}<a href={lnk.href} class="text-gold hover:underline">{lnk.label}</a></Fragment>))}.</Fragment>
+                    ) : (
+                      <>
+                        See our guide to <a href="/peptides-for-skin/" class="text-gold hover:underline">peptides for skin</a>,
+                        the honest picture on <a href="/peptides-for-tanning/" class="text-gold hover:underline">peptides for tanning</a>,
+                        or browse the <a href="/molecules/" class="text-gold hover:underline">molecule library</a>.
+                      </>
+                    )}
                   </p>
                 </div>
               </>

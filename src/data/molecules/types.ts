@@ -102,4 +102,13 @@ export interface MoleculeConfig {
    * The page swaps its "how we prescribe" CTA for an honest "we don't offer
    * this" callout instead of a booking push. */
   weDoNotOffer?: boolean;
+  /** Body copy for the weDoNotOffer callout. Defaults to the skin/pigment
+   * wording used by Melanotan II. Only read when `weDoNotOffer` is true. */
+  doNotOfferBody?: string;
+  /** Label for the weDoNotOffer callout's booking button. Defaults to the
+   * skin/safety wording. Only read when `weDoNotOffer` is true. */
+  doNotOfferCtaLabel?: string;
+  /** Trailing guide links for the weDoNotOffer callout. Defaults to the
+   * skin/tanning/library set. Only read when `weDoNotOffer` is true. */
+  doNotOfferLinks?: { label: string; href: string }[];
 }

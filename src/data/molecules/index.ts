@@ -20,6 +20,9 @@ import { EPITHALON } from "./epithalon";
 import { KISSPEPTIN } from "./kisspeptin";
 import { SELANK } from "./selank";
 import { MELANOTAN_II } from "./melanotan-ii";
+import { RETATRUTIDE } from "./retatrutide";
+import { CAGRILINTIDE } from "./cagrilintide";
+import { TESOFENSINE } from "./tesofensine";
 
 export const MOLECULES: MoleculeConfig[] = [
   BPC_157,
@@ -35,6 +38,9 @@ export const MOLECULES: MoleculeConfig[] = [
   MOTS_C,
   SEMAGLUTIDE,
   TIRZEPATIDE,
+  RETATRUTIDE,
+  CAGRILINTIDE,
+  TESOFENSINE,
   LL_37,
   EPITHALON,
   KISSPEPTIN,

@@ -5,7 +5,7 @@ export const KISSPEPTIN: MoleculeConfig = {
   name: "Kisspeptin",
   aliases: ["Kisspeptin-10", "Metastin"],
   group: "Sexual Health",
-  goals: ["libido", "anti-aging"],
+  goals: ["libido", "anti-aging", "testosterone"],
   seoTitle: "Kisspeptin Peptide: Uses, Evidence & Safety",
   metaDescription:
     "Kisspeptin is an investigational peptide studied for its role in reproductive hormones and libido. Review its mechanism, emerging human evidence, and safety.",

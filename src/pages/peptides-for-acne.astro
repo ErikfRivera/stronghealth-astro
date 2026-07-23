@@ -1,0 +1,49 @@
+---
+// peptides-for-acne — physician-reviewed peptide guide (peptide repositioning expansion).
+// Body text lives in the imported fragment; FAQs/citations below feed BOTH the
+// visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-acne.html?raw";
+
+const path = "/peptides-for-acne/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Do peptides help clear acne?", "answer": "There is no strong clinical evidence that peptides clear active acne. Proven treatments — retinoids, benzoyl peroxide, appropriate antibiotics, and hormonal therapy — remain first-line. Peptides like GHK-Cu are more relevant to skin repair and post-acne skin quality."}, {"question": "Are copper peptides good for acne scars?", "answer": "Copper peptides are studied for collagen synthesis and skin repair, which is why they come up for post-acne skin. Evidence specific to acne scarring is limited, and established options (retinoids, in-office procedures) have more support. A physician can help you prioritize."}, {"question": "Can I use peptides with retinoids or benzoyl peroxide?", "answer": "Often yes — repair-focused peptides are sometimes used to support the skin barrier alongside drying acne actives. Introduce products gradually and get guidance if you have sensitive or reactive skin."}, {"question": "Is LL-37 a treatment for acne?", "answer": "No. LL-37 is an antimicrobial peptide, but it is actually found at elevated levels in acne and rosacea, where it can promote inflammation. “Antimicrobial peptide” does not mean acne treatment."}, {"question": "When should I see a doctor about acne?", "answer": "If acne is painful, cystic, scarring, or not improving with over-the-counter care, see a physician or dermatologist. Early treatment of significant acne helps prevent lasting scars."}];
+
+const citations = [{"id": 1, "text": "Pickart L, Margolina A. Regenerative and protective actions of the GHK-Cu peptide in the light of the new gene data. Int J Mol Sci. 2018.", "url": "https://pubmed.ncbi.nlm.nih.gov/30049948/"}, {"id": 2, "text": "Pickart L, Vasquez-Soltero JM, Margolina A. GHK peptide as a natural modulator of multiple cellular pathways in skin regeneration. Biomed Res Int. 2015.", "url": "https://pubmed.ncbi.nlm.nih.gov/26236730/"}];
+
+const tocItems = [{"id": "what-causes", "title": "What Actually Causes Acne"}, {"id": "where-peptides-fit", "title": "Where Peptides Fit"}, {"id": "ghk-cu", "title": "Copper Peptides & Skin Repair"}, {"id": "ll-37", "title": "A Word on Antimicrobial Peptides"}, {"id": "first-line", "title": "What the Evidence Still Favors"}, {"id": "safety", "title": "Safety & When to See a Doctor"}];
+
+const relatedLinks = [{"url": "/peptides-for-skin/", "label": "Peptides for Skin: Copper Peptides, Collagen & Anti-Aging"}, {"url": "/peptides/ghk-cu/", "label": "GHK-Cu: Copper Peptide for Skin & Repair"}, {"url": "/peptides/ll-37/", "label": "LL-37: Antimicrobial Peptide Overview"}, {"url": "/collagen-peptides/", "label": "Collagen Peptides: Benefits, Uses & Evidence"}, {"url": "/peptides/", "label": "Explore the Peptide Therapy Hub"}];
+
+// Production wraps the page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Acne: An Honest Look at What Helps"
+  seoTitle="Peptides for Acne: Do They Help?"
+  subtitle="Acne is driven by oil, bacteria, inflammation, and hormones — and peptides are not a first-line treatment for any of them. Here’s a physician-reviewed, hype-free look at where peptides might play a supporting role, and where proven treatments still win."
+  seoDescription="A physician’s honest look at peptides for acne: what copper peptides can and can’t do, why they aren’t first-line, and how to treat breakouts safely."
+  path={path}
+  moleculeGoal="acne"
+  breadcrumb="Peptides for Acne"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="8 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Struggling With Persistent Acne?"
+  ctaText="Our physicians help you build an evidence-based plan — and know when to bring in dermatology for active, scarring, or hormonal acne."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

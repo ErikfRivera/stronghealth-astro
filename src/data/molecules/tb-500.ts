@@ -5,7 +5,7 @@ export const TB_500: MoleculeConfig = {
   name: "TB-500",
   aliases: ["Thymosin Beta-4 (TB4 fragment)", "TB4"],
   group: "Healing & Repair",
-  goals: ["healing", "tendon-repair", "arthritis"],
+  goals: ["healing", "tendon-repair", "arthritis", "recovery"],
   seoTitle: "TB-500 Peptide: Uses, Evidence & Safety",
   metaDescription:
     "TB-500 is a healing peptide studied for tendon, muscle, and tissue repair. Review its mechanism, evidence, dosing context, and how Strong Health prescribes it.",

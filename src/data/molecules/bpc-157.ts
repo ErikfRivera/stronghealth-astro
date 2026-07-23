@@ -5,7 +5,7 @@ export const BPC_157: MoleculeConfig = {
   name: "BPC-157",
   aliases: ["Body Protection Compound-157", "PL 14736", "Bepecin"],
   group: "Healing & Repair",
-  goals: ["healing", "tendon-repair", "arthritis"],
+  goals: ["healing", "tendon-repair", "arthritis", "recovery", "gut-health"],
   seoTitle: "BPC-157 Peptide: Uses, Evidence & Safety",
   metaDescription:
     "BPC-157 is a healing peptide studied for tendon, ligament, and gut repair. Review the mechanism, evidence, dosing context, and how Strong Health prescribes it.",

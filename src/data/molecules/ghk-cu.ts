@@ -5,7 +5,7 @@ export const GHK_CU: MoleculeConfig = {
   name: "GHK-Cu",
   aliases: ["Copper Peptide GHK-Cu", "Copper tripeptide-1"],
   group: "Cosmetic & Other",
-  goals: ["anti-aging", "healing", "collagen"],
+  goals: ["anti-aging", "healing", "collagen", "skin", "acne", "hair"],
   seoTitle: "GHK-Cu Peptide: Uses, Evidence & Safety",
   metaDescription:
     "GHK-Cu is a copper-binding peptide studied for collagen synthesis, skin repair, and anti-aging. Review evidence, safety, and how Strong Health prescribes it.",

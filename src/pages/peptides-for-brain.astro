@@ -1,0 +1,49 @@
+---
+// peptides-for-brain — physician-reviewed peptide guide (peptide repositioning expansion).
+// Body text lives in the imported fragment; FAQs/citations below feed BOTH the
+// visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-brain.html?raw";
+
+const path = "/peptides-for-brain/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [{"question": "Do peptides help with anxiety?", "answer": "Selank is studied as a non-sedating anxiolytic, and a small Russian clinical study found it comparable to a benzodiazepine for generalized anxiety. The evidence is early and limited, so it’s considered an adjunct to — not a replacement for — established anxiety care."}, {"question": "Is Selank a nootropic?", "answer": "It’s studied for both anxiety reduction and cognitive support, partly through proposed effects on BDNF and monoamine signaling. Calling it a “nootropic” overstates a still-early evidence base; think of it as a promising compound under investigation."}, {"question": "Is Selank addictive like benzodiazepines?", "answer": "Available research reports no sedation, dependence, or withdrawal with Selank, which is part of its appeal. But human data are limited, so it’s still prescribed carefully and coordinated with any existing treatment."}, {"question": "Can peptides replace my anxiety or depression medication?", "answer": "No. Peptides are not a substitute for evidence-based mental-health treatment. Never stop prescribed medication on your own; any addition or change should be made with your prescribing clinician."}, {"question": "Are brain peptides FDA-approved?", "answer": "No. Selank and related peptides are not FDA-approved in the U.S. Where used, they’re physician-prescribed, pharmacy-compounded preparations — and best considered alongside, not instead of, established care."}];
+
+const citations = [{"id": 1, "text": "Zozulya AA, et al. Efficacy and safety of Selank in the therapy of patients with generalized anxiety disorder and neurasthenia. Zh Nevrol Psikhiatr Im S S Korsakova. 2008.", "url": "https://pubmed.ncbi.nlm.nih.gov/18517033/"}, {"id": 2, "text": "Volkova A, et al. Selank affects the expression of genes involved in GABAergic neurotransmission and immune responses in the rat hippocampus. Front Pharmacol. 2016.", "url": "https://pubmed.ncbi.nlm.nih.gov/26869924/"}, {"id": 3, "text": "Kost NV, et al. Semax and Selank inhibit the enkephalin-degrading enzymes from human serum. Bioorg Khim. 2001.", "url": "https://pubmed.ncbi.nlm.nih.gov/11558266/"}];
+
+const tocItems = [{"id": "overview", "title": "Peptides and the Brain"}, {"id": "selank", "title": "Selank: Calm Without Sedation"}, {"id": "evidence", "title": "How Strong Is the Evidence?"}, {"id": "other", "title": "Other Brain-Relevant Peptides"}, {"id": "approach", "title": "How We Approach Brain & Mood"}, {"id": "safety", "title": "Safety & Important Limits"}];
+
+const relatedLinks = [{"url": "/peptides/selank/", "label": "Selank: Anxiolytic & Cognitive-Support Peptide"}, {"url": "/peptides-for-sleep/", "label": "Peptides for Sleep: How DSIP Supports Deep Sleep"}, {"url": "/peptides/dsip/", "label": "DSIP: Delta Sleep-Inducing Peptide"}, {"url": "/peptides/epithalon/", "label": "Epithalon: Longevity & Circadian Peptide"}, {"url": "/molecules/", "label": "Browse the Full Peptide Molecule Library"}];
+
+// Production wraps the page's FAQPage schema in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Brain, Focus & Mood: What to Know"
+  seoTitle="Peptides for Brain, Focus & Mood"
+  subtitle="From anxiety to mental clarity, a handful of peptides are studied for the brain — most prominently Selank. Here’s an honest, physician-reviewed look at what they may do, how early the evidence is, and why they’re an adjunct to real mental-health care, not a replacement."
+  seoDescription="How peptides like Selank are studied for anxiety, focus, and mood, what the evidence shows, and why they’re an adjunct to — not a replacement for — real care."
+  path={path}
+  moleculeGoal="brain"
+  breadcrumb="Peptides for Brain, Focus & Mood"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="8 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Want to Think and Feel Clearer?"
+  ctaText="Our physicians take brain and mood concerns seriously — coordinating with your mental-health care and using peptides only where they genuinely fit."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

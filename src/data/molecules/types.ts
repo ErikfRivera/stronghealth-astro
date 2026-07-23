@@ -27,7 +27,15 @@ export type GoalSlug =
   | "libido"
   | "sleep"
   | "anti-aging"
-  | "collagen";
+  | "collagen"
+  | "testosterone"
+  | "skin"
+  | "acne"
+  | "hair"
+  | "recovery"
+  | "brain"
+  | "gut-health"
+  | "energy";
 
 export interface MoleculeFAQ {
   question: string;

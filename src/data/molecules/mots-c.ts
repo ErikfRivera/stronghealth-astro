@@ -5,7 +5,7 @@ export const MOTS_C: MoleculeConfig = {
   name: "MOTS-c",
   aliases: ["Mitochondrial-derived peptide MOTS-c"],
   group: "Longevity",
-  goals: ["anti-aging", "weight-loss"],
+  goals: ["anti-aging", "weight-loss", "energy"],
   seoTitle: "MOTS-c Peptide: Uses, Evidence & Safety",
   metaDescription:
     "MOTS-c is a mitochondrial-derived peptide studied for AMPK activation, metabolic health, and insulin sensitivity, mostly in animals. Review the evidence here.",

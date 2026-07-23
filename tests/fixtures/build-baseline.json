@@ -572,6 +572,20 @@
         "priority": "0.8"
       }
     },
+    "/peptides-for-acne/": {
+      "title": "Peptides for Acne: Do They Help? | Strong Health",
+      "description": "A physician’s honest look at peptides for acne: what copper peptides can and can’t do, why they aren’t first-line, and how to treat breakouts safely.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-acne/",
+      "h1": "Peptides for Acne: An Honest Look at What Helps",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
     "/peptides-for-anti-aging/": {
       "title": "Peptides for Anti-Aging: The Evidence | Strong Health",
       "description": "An evidence-based look at peptides in an anti-aging context: GH secretagogues, NAD+ and sirtuins, realistic expectations, and physician-supervised safety.",
@@ -611,6 +625,62 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-brain/": {
+      "title": "Peptides for Brain, Focus & Mood | Strong Health",
+      "description": "How peptides like Selank are studied for anxiety, focus, and mood, what the evidence shows, and why they’re an adjunct to — not a replacement for — real care.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-brain/",
+      "h1": "Peptides for Brain, Focus & Mood: What to Know",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-energy/": {
+      "title": "Peptides for Energy & Fatigue | Strong Health",
+      "description": "How mitochondrial peptides like MOTS-c are studied for energy and fatigue, what the evidence shows, and why finding the real cause of fatigue comes first.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-energy/",
+      "h1": "Peptides for Energy & Fatigue: What Actually Helps",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-gut-health/": {
+      "title": "Peptides for Gut Health: BPC-157 | Strong Health",
+      "description": "How BPC-157 is studied for gut-lining repair and the gut-brain axis, what the evidence really shows, and how physician-supervised use works and stays safe.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-gut-health/",
+      "h1": "Peptides for Gut Health: BPC-157 and the Gut Lining",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-hair-growth/": {
+      "title": "Peptides for Hair Growth | Strong Health",
+      "description": "How copper peptides such as GHK-Cu are used for hair thinning, what the evidence actually shows, and how they compare with proven hair-loss treatments.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-hair-growth/",
+      "h1": "Peptides for Hair Growth: Copper Peptides & the Evidence",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
         "priority": "0.8"
       }
     },
@@ -670,6 +740,34 @@
         "priority": "0.8"
       }
     },
+    "/peptides-for-recovery/": {
+      "title": "Peptides for Recovery: BPC-157 & TB-500 | Strong Health",
+      "description": "How recovery peptides BPC-157 and TB-500 are used to support tendon, muscle, and soft-tissue repair — the evidence, the limits, and how they’re prescribed.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-recovery/",
+      "h1": "Peptides for Recovery: BPC-157, TB-500 & Faster Repair",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-skin/": {
+      "title": "Peptides for Skin & Anti-Aging | Strong Health",
+      "description": "How copper peptides like GHK-Cu support collagen, firmness, and skin repair — what the evidence shows for topical and compounded use, plus the safety facts.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-skin/",
+      "h1": "Peptides for Skin: Copper Peptides, Collagen & Anti-Aging",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
     "/peptides-for-sleep/": {
       "title": "Peptides for Sleep: DSIP and Deep Sleep | Strong Health",
       "description": "Learn how DSIP (Delta Sleep-Inducing Peptide) improves deep sleep architecture without sedation. Review clinical evidence, protocols, and safety considerations.",
@@ -684,6 +782,20 @@
         "priority": "0.8"
       }
     },
+    "/peptides-for-tanning/": {
+      "title": "Peptides for Tanning: Melanotan Risks | Strong Health",
+      "description": "The truth about tanning peptides: FDA-approved afamelanotide versus unregulated Melanotan II, the melanoma and safety risks, and why we don’t offer them.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-tanning/",
+      "h1": "Peptides for Tanning: Melanotan, Risks & the Facts",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
     "/peptides-for-tendon-repair/": {
       "title": "Peptides for Tendon Repair: BPC-157 & TB-500 | Strong Health",
       "description": "Learn how BPC-157 and TB-500 peptides accelerate tendon healing. Review clinical evidence, treatment protocols, and safety under physician supervision.",
@@ -695,6 +807,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-03-15",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-testosterone/": {
+      "title": "Peptides for Testosterone & Hormones | Strong Health",
+      "description": "How peptides like kisspeptin act on the hormone axis behind testosterone, how they differ from TRT, and the safety facts — reviewed by a physician.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-testosterone/",
+      "h1": "Peptides for Testosterone: What the Science Actually Says",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
         "priority": "0.8"
       }
     },

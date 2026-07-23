@@ -220,19 +220,47 @@ const structuredData = {
           </section>
 
           <section id="how-we-prescribe">
-            <h2 class="text-2xl font-bold text-cream mb-4">How Strong Health prescribes {m.name}</h2>
-            {m.howWePrescribe.map((p) => <p class="text-[15px] text-muted leading-[1.8] mb-4">{p}</p>)}
-            <a
-              href={BOOKING_SMS_HREF}
-              data-track-lead
-              class="inline-flex items-center justify-center bg-gold text-surface font-bold hover:bg-gold-hover transition-colors rounded-lg uppercase tracking-[1.2px] px-6 py-3 text-[12px] mt-2"
-            >
-              Get {m.name} under physician supervision →
-            </a>
-            <p class="text-[13px] text-muted mt-3">
-              Available in person at our <a href="/fl/miami/peptide-therapy/" class="text-gold hover:underline">Miami (Brickell) clinic</a>
-              and via telehealth across our <a href="/fl/" class="text-gold hover:underline">service areas</a>.
-            </p>
+            {m.weDoNotOffer ? (
+              <>
+                <h2 class="text-2xl font-bold text-cream mb-4">Why Strong Health does not offer {m.name}</h2>
+                {m.howWePrescribe.map((p) => <p class="text-[15px] text-muted leading-[1.8] mb-4">{p}</p>)}
+                <div class="rounded-xl border border-white/10 bg-surface-card p-5 mt-2">
+                  <p class="text-[14px] text-muted leading-[1.7] mb-4">
+                    Interested in skin health, pigment concerns, or evidence-based peptides? Talk to
+                    one of our physicians about approaches with real support — or explore our
+                    physician-reviewed guides.
+                  </p>
+                  <a
+                    href={BOOKING_SMS_HREF}
+                    data-track-lead
+                    class="inline-flex items-center justify-center bg-gold text-surface font-bold hover:bg-gold-hover transition-colors rounded-lg uppercase tracking-[1.2px] px-6 py-3 text-[12px]"
+                  >
+                    Talk to a physician about skin &amp; safety →
+                  </a>
+                  <p class="text-[13px] text-muted mt-3">
+                    See our guide to <a href="/peptides-for-skin/" class="text-gold hover:underline">peptides for skin</a>,
+                    the honest picture on <a href="/peptides-for-tanning/" class="text-gold hover:underline">peptides for tanning</a>,
+                    or browse the <a href="/molecules/" class="text-gold hover:underline">molecule library</a>.
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <h2 class="text-2xl font-bold text-cream mb-4">How Strong Health prescribes {m.name}</h2>
+                {m.howWePrescribe.map((p) => <p class="text-[15px] text-muted leading-[1.8] mb-4">{p}</p>)}
+                <a
+                  href={BOOKING_SMS_HREF}
+                  data-track-lead
+                  class="inline-flex items-center justify-center bg-gold text-surface font-bold hover:bg-gold-hover transition-colors rounded-lg uppercase tracking-[1.2px] px-6 py-3 text-[12px] mt-2"
+                >
+                  Get {m.name} under physician supervision →
+                </a>
+                <p class="text-[13px] text-muted mt-3">
+                  Available in person at our <a href="/fl/miami/peptide-therapy/" class="text-gold hover:underline">Miami (Brickell) clinic</a>
+                  and via telehealth across our <a href="/fl/" class="text-gold hover:underline">service areas</a>.
+                </p>
+              </>
+            )}
           </section>
 
           <section id="faq">

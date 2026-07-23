@@ -19,6 +19,7 @@ import { LL_37 } from "./ll-37";
 import { EPITHALON } from "./epithalon";
 import { KISSPEPTIN } from "./kisspeptin";
 import { SELANK } from "./selank";
+import { MELANOTAN_II } from "./melanotan-ii";
 
 export const MOLECULES: MoleculeConfig[] = [
   BPC_157,
@@ -38,6 +39,7 @@ export const MOLECULES: MoleculeConfig[] = [
   EPITHALON,
   KISSPEPTIN,
   SELANK,
+  MELANOTAN_II,
 ];
 
 /** Display order for the /molecules/ hub groups. */

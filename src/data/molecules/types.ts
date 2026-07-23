@@ -35,7 +35,8 @@ export type GoalSlug =
   | "recovery"
   | "brain"
   | "gut-health"
-  | "energy";
+  | "energy"
+  | "tanning";
 
 export interface MoleculeFAQ {
   question: string;
@@ -96,4 +97,9 @@ export interface MoleculeConfig {
   /** Optional regulatory status callout (e.g. FDA-approved medications vs.
    * compounded-peptide clinical context). */
   regulatoryNote?: string;
+  /** When true, this molecule is documented for education/SEO but Strong
+   * Health does NOT prescribe or provide it (e.g. unregulated Melanotan II).
+   * The page swaps its "how we prescribe" CTA for an honest "we don't offer
+   * this" callout instead of a booking push. */
+  weDoNotOffer?: boolean;
 }

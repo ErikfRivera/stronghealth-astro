@@ -221,6 +221,7 @@ const HISTORICAL_LASTMOD = {
   "/peptides/epithalon/": "2026-07-18",
   "/peptides/kisspeptin/": "2026-07-18",
   "/peptides/selank/": "2026-07-18",
+  "/peptides/melanotan-ii/": "2026-07-23",
   "/peptides/": "2026-04-22",
   "/privacy-policy/": "2026-05-27",
   "/reviews/": "2026-06-22",

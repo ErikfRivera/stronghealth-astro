@@ -1,0 +1,113 @@
+---
+// /peptides-for-women/ — YMYL/EEAT evidence review of peptides in women.
+// Body copy lives in src/content/fragments/peptides-for-women.html; sourced
+// from a physician-reviewable draft with primary citations. Reviewed by a
+// Strong Health clinician before publish.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-women.html?raw";
+
+const path = "/peptides-for-women/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [
+  {
+    question: "Are peptides safe for women?",
+    answer:
+      "It depends entirely on which peptide. FDA-approved peptide drugs have known safety profiles established in trials that included women. Unapproved research chemicals have no safety profile in women at all, and no reproductive toxicity data. The category label tells you nothing useful — the specific compound and your life stage are what determine risk.",
+  },
+  {
+    question: "Can I take peptides while trying to conceive?",
+    answer:
+      "For GLP-1 medications, labeling recommends discontinuing at least two months before a planned pregnancy. For unapproved peptides, there is no safety data in pregnancy, so the appropriate answer is no. Always discuss preconception planning with your OB-GYN before starting or stopping any peptide.",
+  },
+  {
+    question: "Do peptides affect birth control?",
+    answer:
+      "Tirzepatide reduces oral contraceptive absorption, and the label recommends backup or non-oral contraception for four weeks after starting and after each dose increase. Semaglutide and liraglutide do not appear to have a clinically meaningful effect. Non-oral methods — IUDs, implants, injections, patches, and rings — are unaffected.",
+  },
+  {
+    question: "Is BPC-157 legal in 2026?",
+    answer:
+      "It was removed from FDA Category 2 in April 2026, but that did not authorize compounding. It went before the Pharmacy Compounding Advisory Committee on July 23, 2026, and any legal compounding pathway would still require FDA acceptance and rulemaking after that. Check the current status before relying on any claim about its legality.",
+  },
+  {
+    question: "Do peptides help with menopause symptoms?",
+    answer:
+      "No peptide is FDA-approved for vasomotor symptoms. Oral collagen peptides have modest evidence for skin and mixed evidence for bone in menopausal women. For hot flashes, night sweats, and genitourinary symptoms, hormone therapy and approved non-hormonal options have far better evidence.",
+  },
+  {
+    question: "Will peptides help me lose weight?",
+    answer:
+      "GLP-1 and dual agonist medications such as semaglutide and tirzepatide have strong trial evidence for weight loss. Growth hormone secretagogues marketed for fat loss do not have comparable evidence in healthy women, and rapid weight loss also costs lean mass and bone density, which matters more after menopause.",
+  },
+];
+
+const citations = [
+  { id: 1, text: "U.S. FDA. VYLEESI (bremelanotide injection) prescribing information. accessdata.fda.gov." },
+  { id: 2, text: "U.S. FDA. News release: FDA approves new treatment for hypoactive sexual desire disorder in premenopausal women, June 21, 2019." },
+  { id: 3, text: "U.S. FDA. Bulk Drug Substances Nominated for Use in Compounding Under Section 503A; update of April 15, 2026. Docket FDA-2025-N-6895.", url: "https://www.regulations.gov/docket/FDA-2025-N-6895" },
+  { id: 4, text: "Simon JA, et al. Bremelanotide for hypoactive sexual desire disorder (RECONNECT trials). Obstetrics & Gynecology, 2019." },
+  { id: 5, text: "König D, Oesser S, Scharla S, Zdzieblik D, Gollhofer A. Specific collagen peptides improve bone mineral density and bone markers in postmenopausal women — a randomized controlled study. Nutrients. 2018;10(1):97.", url: "https://doi.org/10.3390/nu10010097" },
+  { id: 6, text: "Calcium and vitamin D supplementation with and without collagen on bone density and skin elasticity in menopausal women — a randomized controlled study. Clinics and Practice. 2025;15(9):168.", url: "https://doi.org/10.3390/clinpract15090168" },
+  { id: 7, text: "GLP-1 and its analogs: does sex matter? Endocrinology. 2025;166(2):bqae165." },
+  { id: 8, text: "Veldhuis JD, et al. Complementary secretagogue pairs unmask gender-related contrasts in growth hormone pulse renewal. PMID 15634714.", url: "https://pubmed.ncbi.nlm.nih.gov/15634714/" },
+  { id: 9, text: "Veldhuis JD, et al. Gender, sex-steroid, and secretagogue-selective recovery from growth hormone-induced feedback in older women and men. PMID 21613353.", url: "https://pubmed.ncbi.nlm.nih.gov/21613353/" },
+  { id: 10, text: "Skelley JW, Swearengin K, York AL, Glover LH. The impact of tirzepatide and GLP-1 receptor agonists on oral hormonal contraception. J Am Pharm Assoc. 2024;64(1):204-211." },
+  { id: 11, text: "Mounjaro (tirzepatide) prescribing information, Eli Lilly." },
+  { id: 12, text: "Wegovy (semaglutide) prescribing information, Novo Nordisk." },
+  { id: 13, text: "Jensterle M, et al. Short-term monotherapy with liraglutide or roflumilast is superior to metformin in weight loss in obese PCOS women.", url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4506413/" },
+  { id: 14, text: "Ishida J, et al. Growth hormone secretagogues: history, mechanism of action, and clinical development. JCSM Rapid Communications. 2020." },
+];
+
+const tocItems = [
+  { id: "three-tiers", title: "The Three Tiers, and Why They Matter for Women" },
+  { id: "regulatory", title: "The Regulatory Picture Is Mid-Shift" },
+  { id: "women-difference", title: "Where Being a Woman Changes the Answer" },
+  { id: "compound-by-compound", title: "Compound by Compound" },
+  { id: "safety", title: "Safety Questions Specific to Women" },
+  { id: "clinic-questions", title: "Questions Worth Asking Any Clinic" },
+  { id: "short-version", title: "The Short Version" },
+  { id: "faq", title: "FAQ" },
+];
+
+const relatedLinks = [
+  { url: "/peptides/", label: "Peptides Hub: All Peptide Therapies" },
+  { url: "/peptides-for-weight-loss/", label: "Peptides for Weight Loss: GLP-1 and GH Secretagogues" },
+  { url: "/peptides-for-libido/", label: "Peptides for Libido: PT-141 / Bremelanotide" },
+  { url: "/collagen-peptides/", label: "Collagen Peptides: Skin, Bone, and Connective Tissue" },
+  { url: "/peptides-for-anti-aging/", label: "Peptides for Anti-Aging: GH Secretagogues and NAD+" },
+  { url: "/peptides/semaglutide/", label: "Semaglutide: Mechanism, Evidence, and Use" },
+  { url: "/peptides/tirzepatide/", label: "Tirzepatide: Dual GIP/GLP-1 Agonist" },
+  { url: "/dexa-scan/", label: "DEXA Scan: Baseline Bone and Body Composition" },
+];
+
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Women: What the Evidence Actually Shows"
+  seoTitle="Peptides for Women: The Evidence"
+  subtitle="Most articles about peptides for women just add the word 'women' to a list studied in men. This one asks the narrower, useful question: for a specific compound, in women, at what life stage, what does the evidence show — and is it legal to obtain?"
+  seoDescription="A physician-reviewed, evidence-based guide to peptides for women — FDA-approved GLP-1s and bremelanotide, collagen, safety by life stage, and 2026 rules."
+  path={path}
+  moleculeGoal="weight-loss"
+  breadcrumb="Peptides for Women"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="12 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Considering Peptide Therapy? Talk to a Physician First."
+  ctaText="Our physicians review your history, labs, and life stage — including pregnancy plans and hormone therapy — and will tell you plainly which tier a compound sits in and whether the evidence supports it for you."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

@@ -712,6 +712,20 @@
         "priority": "0.8"
       }
     },
+    "/peptides-for-men/": {
+      "title": "Peptides for Men: What the Evidence Shows | Strong Health",
+      "description": "An evidence-based guide to peptides for men: what has human data, what doesn't, the 2026 legal status, and the prostate and fertility risks clinics underplay.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-men/",
+      "h1": "Peptides for Men: What the Evidence Actually Shows",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
     "/peptides-for-muscle-growth/": {
       "title": "Peptides for Muscle Growth: A Safer Path | Strong Health",
       "description": "How GH secretagogue peptides like Ipamorelin and CJC-1295 support lean muscle growth safely. Peptides vs steroids, protocols, and evidence.",
@@ -821,6 +835,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-07-16",
+        "priority": "0.8"
+      }
+    },
+    "/peptides-for-women/": {
+      "title": "Peptides for Women: The Evidence | Strong Health",
+      "description": "A physician-reviewed, evidence-based guide to peptides for women — FDA-approved GLP-1s and bremelanotide, collagen, safety by life stage, and 2026 rules.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides-for-women/",
+      "h1": "Peptides for Women: What the Evidence Actually Shows",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
         "priority": "0.8"
       }
     },

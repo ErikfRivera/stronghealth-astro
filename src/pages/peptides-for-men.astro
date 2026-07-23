@@ -1,0 +1,167 @@
+---
+// /peptides-for-men/ — long-form YMYL guide. Body text lives in the imported
+// fragment; FAQs/citations below feed BOTH the visible sections and the JSON-LD.
+import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
+import { faqPageSchema } from "../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
+import body from "../content/fragments/peptides-for-men.html?raw";
+
+const path = "/peptides-for-men/";
+const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
+
+const faqs = [
+  {
+    question: "Are peptides safe for men?",
+    answer:
+      "It depends entirely on which one. FDA-approved peptide drugs have known safety profiles from trials that included men. Research chemicals have no established human safety profile, no verified purity, and no long-term data. The word “peptide” carries no safety information on its own.",
+  },
+  {
+    question: "Is BPC-157 legal in 2026?",
+    answer:
+      "It came off FDA Category 2 in April 2026, which removed a prohibition designation but did not authorize compounding. It went before the advisory committee on July 23, 2026, with FDA staff recommending against inclusion. Any legal pathway would still require FDA acceptance plus rulemaking. Check the current status before relying on any claim.",
+  },
+  {
+    question: "Do peptides increase testosterone?",
+    answer:
+      "Growth hormone secretagogues do not directly raise testosterone. hCG and enclomiphene work on the HPG axis and can. Weight loss on GLP-1 medications frequently raises testosterone in men with obesity-related hypogonadism.",
+  },
+  {
+    question: "Will peptides affect my fertility?",
+    answer:
+      "GH secretagogues generally do not. Testosterone does, substantially — azoospermia occurs in roughly 65% of men on TRT. hCG co-administration is the established approach to preserving spermatogenesis, and it works better started early than started late.",
+  },
+  {
+    question: "Does MK-677 build muscle?",
+    answer:
+      "It raises GH and IGF-1 and increases appetite and body weight, with much of the early gain being water. It also impairs insulin sensitivity and carries a cardiac safety signal that ended its clinical development. It is banned in tested sport and by the DoD.",
+  },
+  {
+    question: "Will BPC-157 heal my tendon injury?",
+    answer:
+      "No human randomized trial has tested that. The claim rests on rodent data. Loading protocols supervised by a physiotherapist have actual evidence behind them for tendinopathy.",
+  },
+];
+
+const citations = [
+  {
+    id: 1,
+    text: "U.S. FDA. Bulk Drug Substances Nominated for Use in Compounding Under Section 503A; update of April 15, 2026. Federal Register docket FDA-2025-N-6895.",
+    url: "https://www.regulations.gov/docket/FDA-2025-N-6895",
+  },
+  {
+    id: 2,
+    text: "U.S. FDA. Pharmacy Compounding Advisory Committee briefing materials, July 2026 meeting; four-factor analysis under 21 CFR 216.23(c).",
+    url: "https://www.fda.gov/advisory-committees/human-drug-advisory-committees/pharmacy-compounding-advisory-committee",
+  },
+  {
+    id: 3,
+    text: "U.S. FDA. VYLEESI (bremelanotide injection) prescribing information.",
+    url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/210557s000lbl.pdf",
+  },
+  {
+    id: 4,
+    text: "Watts EL, et al. Circulating insulin-like growth factor-I, total and free testosterone concentrations and prostate cancer risk in 200,000 men in UK Biobank.",
+    url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8048461/",
+  },
+  {
+    id: 5,
+    text: "Shi R, et al. Insulin-like growth factor-I and prostate cancer: a meta-analysis. Br J Cancer. 2001;85(7):991-996.",
+    url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2375097/",
+  },
+  {
+    id: 6,
+    text: "Fang B, Xiao H, Fang Z. Serum insulin-like growth factor-1 and epidemiological evidence of the risk of prostate cancer. Front Oncol. 2026.",
+    url: "https://doi.org/10.3389/fonc.2025.1730382",
+  },
+  {
+    id: 7,
+    text: "Coviello AD, et al. Low-dose hCG maintains intratesticular testosterone in normal men with testosterone-induced gonadotropin suppression. (Referenced in Lee & Ramasamy, Transl Androl Urol.)",
+  },
+  {
+    id: 8,
+    text: "Hsieh TC, et al. Concomitant intramuscular human chorionic gonadotropin preserves spermatogenesis in men undergoing testosterone replacement therapy.",
+  },
+  {
+    id: 9,
+    text: "Lee JA, Ramasamy R. Indications for the use of human chorionic gonadotropic hormone for the management of infertility in hypogonadal men. Transl Androl Urol. 2018.",
+  },
+  {
+    id: 10,
+    text: "Optimal restoration of spermatogenesis after testosterone therapy using human chorionic gonadotropin and follicle-stimulating hormone. Fertil Steril. 2024.",
+    url: "https://doi.org/10.1016/j.fertnstert.2024.09.021",
+  },
+  {
+    id: 11,
+    text: "Adunsky A, et al. MK-0677 (ibutamoren mesylate) for the treatment of patients recovering from hip fracture. Arch Gerontol Geriatr. 2011.",
+  },
+  {
+    id: 12,
+    text: "Nass R, et al. Effects of an oral ghrelin mimetic on body composition and clinical outcomes in healthy older adults. Ann Intern Med. 2008;149(9):601-611.",
+    url: "https://pubmed.ncbi.nlm.nih.gov/18981485/",
+  },
+  {
+    id: 13,
+    text: "Operation Supplement Safety (U.S. Department of Defense). Performance Enhancing Substance: MK-677 (Ibutamoren).",
+    url: "https://www.opss.org/",
+  },
+  {
+    id: 14,
+    text: "Goldstein I, et al. Observational study of bremelanotide in men with sexual dysfunction, 2024.",
+  },
+  {
+    id: 15,
+    text: "Hochu G, et al. Preserving spermatogenesis in testosterone deficiency: innovations in replacement and stimulatory therapies. Transl Androl Urol. 2025.",
+  },
+];
+
+const tocItems = [
+  { id: "overview", title: "Why Men Are the Target Market" },
+  { id: "definitions", title: "Peptide, Defined — and What Isn't One" },
+  { id: "three-tiers", title: "The Three Tiers of Evidence" },
+  { id: "regulatory-status", title: "The Regulatory Situation in 2026" },
+  { id: "igf1-prostate", title: "IGF-1 and the Prostate" },
+  { id: "fertility", title: "TRT and Fertility" },
+  { id: "compound-by-compound", title: "Compound by Compound" },
+  { id: "safety-checklist", title: "Safety Checklist for Men" },
+  { id: "clinic-questions", title: "Questions to Ask Any Clinic" },
+  { id: "short-version", title: "The Short Version" },
+  { id: "faq", title: "FAQ" },
+];
+
+const relatedLinks = [
+  { url: "/peptides/", label: "Peptides Hub: All Peptide Therapies" },
+  { url: "/peptides-for-weight-loss/", label: "Peptides for Weight Loss: GLP-1 and GH Secretagogues" },
+  { url: "/peptides-for-libido/", label: "Peptides for Libido: PT-141 and Sexual Health" },
+  { url: "/peptides-for-muscle-growth/", label: "Peptides for Muscle Growth" },
+  { url: "/peptides-for-anti-aging/", label: "Peptides for Anti-Aging: GH Secretagogues and NAD+" },
+  { url: "/fl/miami/peptide-therapy/", label: "Peptide Therapy in Miami, FL" },
+];
+
+// Match the sibling peptide pages: FAQPage schema wrapped in an @graph envelope.
+const { ["@context"]: _ctx, ...faqNoCtx } = faqPageSchema(faqs) as Record<string, unknown>;
+const structuredData = { "@context": "https://schema.org", "@graph": [faqNoCtx] };
+---
+
+<BlogArticleLayout
+  title="Peptides for Men: What the Evidence Actually Shows"
+  seoTitle="Peptides for Men: What the Evidence Shows"
+  subtitle="Men are the target market for peptide marketing, and that volume gets mistaken for evidence. Here's what actually has human data behind it, what doesn't, and the male-specific risks — prostate and fertility — that most clinics underplay."
+  seoDescription="An evidence-based guide to peptides for men: what has human data, what doesn't, the 2026 legal status, and the prostate and fertility risks clinics underplay."
+  path={path}
+  breadcrumb="Peptides for Men"
+  author={author}
+  reviewer={reviewer}
+  datePublishedISO="2026-07-23"
+  dateModifiedISO="2026-07-23"
+  readTime="14 min"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  relatedLinks={relatedLinks}
+  structuredData={structuredData}
+  ctaHeading="Considering Peptide Therapy?"
+  ctaText="Our physicians evaluate the evidence, run the right baseline labs — including PSA, hematocrit, glucose, and IGF-1 — and tell you honestly what a compound can and can't do before you start."
+  ctaButtonText="Book a Peptide Consultation →"
+>
+  <Fragment set:html={body} />
+</BlogArticleLayout>

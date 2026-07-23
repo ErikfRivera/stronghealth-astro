@@ -18,14 +18,14 @@ test.describe("desktop nav dropdown", () => {
     const nav = page.getByRole("navigation", { name: "Primary" });
     const trigger = nav.getByRole("button", { name: "Peptides" });
 
-    const hubLink = nav.getByRole("link", { name: /Peptides Hub/ });
+    const hubLink = nav.getByRole("link", { name: /Peptides by Goal/ });
     await expect(hubLink).not.toBeVisible();
 
     await trigger.hover();
     await expect(hubLink).toBeVisible();
-    // A representative peptide article link is revealed too.
+    // A representative peptide goal link is revealed too.
     await expect(
-      nav.getByRole("link", { name: /Peptides for Muscle Growth/i }),
+      nav.getByRole("link", { name: "Muscle Growth", exact: true }),
     ).toBeVisible();
     await expect(hubLink).toHaveAttribute("href", "/peptides/");
   });

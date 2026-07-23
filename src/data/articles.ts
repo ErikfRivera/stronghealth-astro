@@ -36,6 +36,14 @@ export const articles: ArticleMeta[] = [
     datePublished: "2026-07-16",
   },
   {
+    title: "Peptides for Men: What the Evidence Actually Shows",
+    subtitle: "Men are the target market for peptide marketing, and that volume gets mistaken for evidence. What actually has human data, what doesn't, and the prostate and fertility risks clinics underplay.",
+    path: "/peptides-for-men/",
+    category: "Peptide Therapy",
+    readTime: "14 min read",
+    datePublished: "2026-07-23",
+  },
+  {
     title: "Pollotarianism: The Complete Guide to the Pollotarian Diet",
     subtitle: "Poultry stays, every other meat goes. What the research shows about swapping red meat for chicken — heart health, cancer risk, weight, and how to do it right.",
     path: "/pollotarianism/",

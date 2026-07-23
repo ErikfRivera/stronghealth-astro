@@ -43,6 +43,7 @@ export const ARTICLE_AUTHORSHIP: Record<
   "/peptides-for-muscle-growth/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-libido/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-belly-fat/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
+  "/peptides-for-men/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-arthritis/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/collagen-peptides/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-anti-aging/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },

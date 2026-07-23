@@ -20,6 +20,14 @@ export interface ArticleMeta {
 
 export const articles: ArticleMeta[] = [
   {
+    title: "Peptides for Women: What the Evidence Actually Shows",
+    subtitle: "A physician-reviewed look at peptides in women — from FDA-approved GLP-1s and bremelanotide to collagen — with safety by life stage and the shifting 2026 rules.",
+    path: "/peptides-for-women/",
+    category: "Peptide Therapy",
+    readTime: "12 min read",
+    datePublished: "2026-07-23",
+  },
+  {
     title: "Peptides for Anti-Aging: GH Secretagogues, NAD+, and the Longevity Axis",
     subtitle: "An evidence-based look at what physician-supervised peptide therapy can and can't do about age-related decline in the growth-hormone and NAD+ systems.",
     path: "/peptides-for-anti-aging/",
